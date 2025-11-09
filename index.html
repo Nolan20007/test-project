@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛЕСТНИЦЫ И СТРЕМЯНКИ ДЛЯ КОЛОДЦЕВ</title>
+    <style>
+        /* Общие стили */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 1400px; margin: auto; padding: 0 20px; }
+
+        /* Хедер и Навигация */
+        .header { background-color: #004d80; color: white; padding: 20px 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 2.5em; }
+        .header p { margin: 5px 0 0; font-size: 1.2em; }
+        .nav { background-color: #003366; padding: 10px 0; text-align: center; }
+        .nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; transition: color 0.3s; }
+        .nav a:hover { color: #ff9900; }
+
+        /* СТИЛЬ ДЛЯ КНОПКИ КОРЗИНЫ */
+        .cart-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            background-color: #ff9900;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .cart-link:hover { background-color: #e68a00; }
+
+        /* ОСНОВНОЕ СОДЕРЖИМОЕ */
+        .content-area { padding: 40px 0; }
+        .catalog h2 {
+            text-align: center;
+            color: #004d80;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+        }
+        
+        /* Сетка для продуктов */
+        .product-grid {
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px; 
+        }
+        
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease;
+            display: flex; 
+            flex-direction: column; 
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Стили для изображений и галереи */
+        .product-image-wrapper {
+            cursor: pointer;
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+            background-color: #f0f0f0; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Flexbox для прижатия кнопки к низу */
+        .product-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; 
+        }
+        
+        .product-title {
+            color: #004d80;
+            font-size: 18px;
+            min-height: 45px;
+            margin: 0 0 10px;
+            font-weight: bold;
+        }
+        .product-description-block p {
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* Ширина для strong, чтобы двоеточие не налезало */
+        .product-description-block strong {
+            display: inline-block;
+            width: 95px; 
+            color: #333;
+        }
+        
+        /* Прижимаем кнопку вниз */
+        .cta-button {
+            display: block;
+            text-align: center;
+            background-color: #ff9900;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: auto; 
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover { background-color: #e68a00; }
+        
+        /* Contacts and Footer */
+        .contacts { background-color: #003366; color: white; padding: 40px 0; text-align: center; margin-top: 40px; }
+        .feedback-form { background-color: white; padding: 30px; max-width: 500px; margin: 30px auto 0; border-radius: 8px; color: #333; }
+        .feedback-form input[type="text"], .feedback-form input[type="email"], .feedback-form input[type="tel"], .feedback-form textarea, .feedback-form button { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .feedback-form button { background-color: #004d80; color: white; cursor: pointer; border: none; font-weight: bold; transition: background-color 0.3s; }
+        .feedback-form button:hover { background-color: #003366; }
+        .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; }
+
+        /* Стили для Lightbox */
+        .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); padding-top: 60px; }
+        .modal-content { margin: auto; display: block; width: 90%; max-width: 1000px; background-color: white; border-radius: 8px; overflow: hidden; }
+        .close-btn { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .close-btn:hover, .close-btn:focus { color: #bbb; text-decoration: none; cursor: pointer; }
+        .gallery-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; padding-bottom: 10px; }
+        .gallery-item { flex: 0 0 100%; scroll-snap-align: start; min-width: 100%; box-sizing: border-box; }
+        .gallery-item img { width: 100%; height: auto; display: block; }
+        .gallery-nav { text-align: center; padding: 10px; background-color: #eee; }
+        .gallery-nav button { background-color: #004d80; color: white; border: none; padding: 8px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
+        .gallery-nav button:hover { background-color: #003366; }
+
+        /* Адаптивность для Grid-макета */
+        @media (max-width: 1200px) {
+            .product-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+        @media (max-width: 768px) {
+            .product-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px;
+            }
+            .product-card { max-width: none; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>ЛЕСТНИЦЫ И СТРЕМЯНКИ ДЛЯ КОЛОДЦЕВ</h1>
+            <p>Надежные металлические конструкции по типовым проектам</p>
+        </div>
+    </header>
+    <nav class="nav">
+        <div class="container" style="display: flex; justify-content: center; align-items: center;">
+            <a href="#catalog">Каталог</a>
+            <a href="#contacts">Контакты и Заказ</a>
+            <a href="cart.html" class="cart-link" style="margin-left: 30px;">
+                🛒 Корзина (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+    
+    <div class="content-area container">
+        
+        <section id="catalog" class="catalog">
+            <h2>Основные виды продукции</h2>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Лестница ВЛ" 
+                        data-image="images/vl1-large.png" 
+                        data-drawing="images/vl1-drawing.png">
+                        
+                        <img src="images/vl1.png" alt="Лестница ВЛ" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">СТРЕМЯНКИ водопроводных колодцев ТПР 901-09-11.84</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Водопровод</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
+                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                        </div>
+                        <a href="ss1.html" class="cta-button">Перейти к выбору</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Лестница ЛС ВЛ" 
+                        data-image="images/vl1-large.png" 
+                        data-drawing="images/vl1-drawing.png">
+                        
+                        <img src="images/vl1.png" alt="Лестница ЛС ВЛ" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">СТРЕМЯНКИ ЛС водопроводных колодцев ТП 901-9-8</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Водопровод</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
+                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                        </div>
+                        <a href="product-ls.html" class="cta-button">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Лестница КЛ-1" 
+                        data-image="images/kl1-large.png" 
+                        data-drawing="images/kl1-drawing.png">
+                        
+                        <img src="images/kl1.png" alt="Лестница КЛ-1" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">СТРЕМЯНКИ канализационных колодцев по ТПР 902-09-22.84</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Канализация</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
+                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                        </div>
+                        <a href="product-c1.html" class="cta-button">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Стремянка Л-18-2,7" 
+                        data-image="images/ss1-large.png" 
+                        data-drawing="images/ss1-drawing.png">
+                        
+                        <img src="images/ss1.png" alt="Стремянка Л-18-2,7" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">ЛЕСТНИЦЫ канализационные подвесные</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Канализация</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки и ступени — круглый стальной пруток ∅ 25 мм по ГОСТ 2590.</p>
+                            <p style="margin-left: 10px;">Изготавливаются по чертежам 3650.Л-18-000СБ-01.</p>
+                        </div>
+                        <a href="product-l18.html" class="cta-button">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Стремянка ЛС" 
+                        data-image="images/ls-gidro-large.png" 
+                        data-drawing="images/ls-gidro-drawing.png">
+                        
+                        <img src="images/ls-gidro.png" alt="Стремянка ЛС" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">СТРЕМЯНКИ колодцев ливневой канализации</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Ливневка</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
+                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                        </div>
+                        <a href="product-livnevka.html" class="cta-button">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Лестница ЛС.1-6" 
+                        data-image="images/vl1-large.png" 
+                        data-drawing="images/vl1-drawing.png">
+                        
+                        <img src="images/vl1.png" alt="Лестница ЛС" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">СТРЕМЯНКИ ЛС колодцев с гидрозатвором (Серия 3.902-8)</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Гидрозатвор</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
+                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                        </div>
+                        <a href="product-gidrozatvor.html" class="cta-button">Подробнее</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2>Свяжитесь с нами</h2>
+            <p><strong>Телефон:</strong> <a href="tel:+7956555996*" style="color: #ff9900;">+7 (342) 261-00-**</a></p>
+            <form class="feedback-form" action="ПОСТАВЬТЕ ССЫЛКУ НА ФОРМУ" method="POST">
+                <p>Оставьте заявку на расчет стоимости:</p>
+                <input type="text" name="name" placeholder="Ваше Имя / Компания" required>
+                <input type="tel" name="phone" placeholder="Контактный Телефон" required>
+                <textarea name="message" placeholder="Укажите тип, длину и количество лестниц" rows="3"></textarea>
+                <button type="submit">Отправить запрос</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Ваша Компания. Все права защищены.
+        </div>
+    </footer>
+
+    <div id="productModal" class="lightbox-modal" onclick="closeModal()">
+        <span class="close-btn" title="Закрыть">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 id="modalTitle" style="text-align: center; color: #004d80; padding: 10px 0; margin: 0;"></h3>
+            
+            <div class="gallery-container" id="galleryContainer">
+                <div class="gallery-item"><img id="modalImage" src="" alt="Изображение товара"></div>
+                <div class="gallery-item"><img id="modalDrawing" src="" alt="Чертеж товара"></div>
+            </div>
+
+            <div class="gallery-nav">
+                <button onclick="scrollToSlide(0)">Фото</button>
+                <button onclick="scrollToSlide(1)">Чертеж</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Инициализация элементов модального окна
+        const modal = document.getElementById("productModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalImage = document.getElementById("modalImage");
+        const modalDrawing = document.getElementById("modalDrawing");
+        const galleryContainer = document.getElementById("galleryContainer");
+        const imageWrappers = document.querySelectorAll(".product-image-wrapper");
+
+        // 1. ФУНКЦИИ МОДАЛЬНОГО ОКНА
+        
+        function openModal(title, imageUrl, drawingUrl) {
+            modalTitle.textContent = title;
+            modalImage.src = imageUrl; 
+            modalDrawing.src = drawingUrl;
+            
+            modal.style.display = "block";
+            setTimeout(() => {
+                scrollToSlide(0); 
+            }, 50); 
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        
+        // 2. ФУНКЦИЯ ПРОКРУТКИ ГАЛЕРЕИ
+        function scrollToSlide(index) {
+            const itemWidth = galleryContainer.clientWidth;
+            galleryContainer.scrollTo({
+                left: itemWidth * index,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 3. ПРИВЯЗКА СОБЫТИЙ
+        
+        document.addEventListener('DOMContentLoaded', () => {
+             // Назначаем обработчик клика для каждой миниатюры
+             imageWrappers.forEach(wrapper => {
+                 wrapper.addEventListener('click', function() {
+                     const title = this.dataset.title;
+                     const image = this.dataset.image;
+                     const drawing = this.dataset.drawing;
+                     
+                     openModal(title, image, drawing);
+                 });
+             });
+             
+             // Закрытие модального окна при нажатии клавиши ESC
+             document.addEventListener('keydown', function(event) {
+                 if (event.key === 'Escape') {
+                     closeModal();
+                 }
+             });
+        });
+        
+        // Делаем функции closeModal и scrollToSlide доступными глобально для кнопок в HTML
+        window.closeModal = closeModal;
+        window.scrollToSlide = scrollToSlide;
+    </script>
+    
+    <script>
+        /**
+         * Устанавливаем единый ключ для всех файлов (index.html, ss1.html, cart.html).
+         * Теперь все файлы используют 'cart'.
+         */
+        const CART_STORAGE_KEY = 'cart'; 
+
+        function getCart() {
+            try {
+                const cartData = localStorage.getItem(CART_STORAGE_KEY); 
+                return JSON.parse(cartData) || {};
+            } catch (e) {
+                console.error("Ошибка чтения LocalStorage:", e);
+                return {};
+            }
+        }
+
+        /**
+         * Обновляет счетчик корзины в навигации, суммируя количество всех товаров.
+         */
+        function updateCartCountDisplay() {
+            const cart = getCart();
+            let totalCount = 0;
+            
+            // Считаем общее количество всех товаров в корзине
+            for (const itemId in cart) {
+                if (cart.hasOwnProperty(itemId) && cart[itemId] && typeof cart[itemId].quantity === 'number') {
+                    // Используем parseInt на всякий случай, если данные в localStorage не идеальны
+                    totalCount += parseInt(cart[itemId].quantity) || 0; 
+                }
+            }
+            
+            const countElement = document.getElementById('cart-count'); 
+            if (countElement) {
+                countElement.textContent = totalCount;
+            }
+        }
+        
+        // 1. Запускаем обновление счетчика при загрузке страницы
+        document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
+
+        // 2. Запускаем обновление счетчика, если LocalStorage изменился (например, товар добавили на другой вкладке)
+        window.addEventListener('storage', updateCartCountDisplay);
+    </script>
+
+</body>
+</html>

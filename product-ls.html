@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СТРЕМЯНКИ ЛС водопроводных колодцев ТП 901-9-8</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+
+        /* Хедер и Навигация */
+        .header { background-color: #004d80; color: white; padding: 20px 0; }
+        .header h1 { margin: 0; font-size: 2.2em; text-align: center; }
+        .back-link { color: #ff9900; text-decoration: none; font-weight: bold; margin-bottom: 10px; display: inline-block; transition: color 0.3s; }
+        .back-link:hover { color: #e68a00; }
+
+        /* Основное содержание */
+        .product-details { padding: 40px 0; }
+        .product-details h2 { color: #004d80; font-size: 1.8em; margin-top: 30px; border-bottom: 2px solid #004d80; padding-bottom: 5px; }
+        .product-details p { line-height: 1.6; margin-bottom: 15px; }
+        
+        /* Сетка для макета */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .image-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Стили для характеристик и номенклатуры */
+        .characteristics-list { list-style: none; padding: 0; }
+        .characteristics-list li { 
+            margin-bottom: 10px; 
+            padding-left: 20px; 
+            position: relative; 
+            display: grid; /* ИСПОЛЬЗУЕМ GRID */
+            grid-template-columns: 20px 170px 1fr; /* Точка, Заголовок, Описание */
+            gap: 5px; 
+            line-height: 1.4;
+        } 
+        .characteristics-list li strong { 
+            font-weight: bold; 
+            color: #004d80; 
+            grid-column: 2 / 3; 
+            align-self: start;
+        }
+        .characteristics-list li::before {
+            content: '•';
+            color: #ff9900;
+            font-weight: bold;
+            grid-column: 1 / 2; 
+            align-self: start;
+        }
+        .characteristics-list li .description {
+            grid-column: 3 / 4; 
+            text-align: left;
+        }
+        
+        .nomenclature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .nomenclature-table th, .nomenclature-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .nomenclature-table th {
+            background-color: #004d80;
+            color: white;
+        }
+        .nomenclature-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr; 
+            }
+            .image-section { order: -1; } 
+            
+            /* Сброс Grid для мобильных */
+            .characteristics-list li { 
+                display: block; 
+                grid-template-columns: none;
+                padding-left: 0; 
+            }
+            .characteristics-list li strong { 
+                display: inline;
+                padding-right: 5px;
+                grid-column: auto;
+            }
+            .characteristics-list li::before { 
+                margin-right: 5px; 
+                grid-column: auto;
+            }
+            .characteristics-list li .description {
+                display: inline;
+                grid-column: auto;
+            }
+        }
+        
+        .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="back-link">← Вернуться в каталог</a>
+            <h1>СТРЕМЯНКИ ЛС водопроводных колодцев ТП 901-9-8</h1>
+        </div>
+    </header>
+
+    <div class="product-details container">
+        
+        <div class="content-grid">
+            <div class="image-section">
+                <img src="images/vl1-large.png" alt="СТРЕМЯНКИ ЛС водопроводных колодцев" >
+                <h2 style="margin-top: 20px;">Технический чертеж</h2>
+                <img src="images/vl1-drawing.png" alt="Чертеж стремянки ЛС">
+            </div>
+            
+            <div class="text-section">
+                <h2>Общая информация</h2>
+                <p>Производственная компания «ГРАН-Стиль» осуществляет изготовление на заказ и поставку в любой регион России, Белоруссии и Казахстана стандартных стальных сварных вертикальных лестниц-стремянок типа ЛС для водопроводных колодцев по чертежам ТП 901-9-8-III-АС-10.</p>
+                <p>Проект: Типовой проект 901-9-8 «Водопроводные колодцы» выпуск III «Прямоугольные колодцы из кирпича и из бетона для труб Ду = 250-1000 мм».</p>
+
+                <h2>Назначение и применение</h2>
+                <p>Стальные лестницы-стремянки типа ЛC, изготовленные по чертежам ТП 901-9-8-III-АС-10, применяются для спуска внутрь колодцев водопроводных сетей и водоводов с диаметром труб от 250 до 1000 мм.</p>
+                <p>Стремянки устанавливаются на внутренней поверхности стен рабочей части водопроводного колодца на расстоянии 200 мм от стены в соответствии с требованиями п. 15.16 СП 31.13330.2012 «Водоснабжение. Наружные сети и сооружения.»</p>
+                
+                <h2>Конструктивные особенности</h2>
+                <ul class="characteristics-list">
+                    <li><strong>Ширина:</strong><span class="description"> 500 мм</span></li>
+                    <li><strong>Высота (длина):</strong><span class="description"> от 1800 до 4200 мм</span></li>
+                    <li><strong>Вес (масса):</strong><span class="description"> от 22,9 до 52,0 кг</span></li>
+                    <li><strong>Вертикальные стойки:</strong><span class="description"> Стальные равнополочные горячекатаные уголки 50×50×5 мм (ГОСТ 8509)</span></li>
+                    <li><strong>Ступени:</strong><span class="description"> Круглый стальной пруток 18 мм (ГОСТ 2590 или А-I/А240 по ГОСТ 5781)</span></li>
+                    <li><strong>Количество ступеней:</strong><span class="description"> от 6 до 14 шт.</span></li>
+                    <li><strong>Шаг ступеней:</strong><span class="description"> 300 мм</span></li>
+                    <li><strong>Крепление:</strong><span class="description"> С помощью четырех кронштейнов, нижняя часть на высоту 150 мм забетонируется.</span></li>
+                    <li><strong>Марки сталей:</strong><span class="description"> Ст3кп, Ст3пс, Ст3сп (С235 или С245)</span></li>
+                    <li><strong>Антикоррозионная защита:</strong><span class="description"> Каменноугольный лак по ГОСТ 1709.</span></li>
+                </ul>
+
+                <h2>Номенклатура (Ширина 500 мм)</h2>
+                <table class="nomenclature-table">
+                    <thead>
+                        <tr>
+                            <th>Марка стремянки</th>
+                            <th>Длина лестницы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ЛС-1</td><td>1,8 м</td></tr>
+                        <tr><td>ЛС-2</td><td>2,1 м</td></tr>
+                        <tr><td>ЛС-3</td><td>2,4 м</td></tr>
+                        <tr><td>ЛС-4</td><td>2,7 м</td></tr>
+                        <tr><td>ЛС-5</td><td>3,6 м</td></tr>
+                        <tr><td>ЛС-6</td><td>3,9 м</td></tr>
+                        <tr><td>ЛС-7</td><td>4,2 м</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Ваша Компания. Все права защищены.
+        </div>
+    </footer>
+
+</body>
+</html>

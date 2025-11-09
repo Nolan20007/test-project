@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина | Оформление заказа</title>
+    <style>
+        /* Общие стили */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        
+        /* Хедер и навигация */
+        .header { background-color: #004d80; color: white; padding: 20px 0; }
+        .header h1 { margin: 0; font-size: 2.5em; text-align: center; }
+        .back-link { 
+            color: #ff9900; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            display: inline-block; 
+            transition: color 0.3s; 
+        }
+        .back-link:hover { color: #e68a00; }
+        
+        /* Таблица корзины */
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .cart-table th, .cart-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .cart-table th {
+            background-color: #004d80;
+            color: white;
+            font-weight: bold;
+        }
+        .cart-table td:nth-child(3),
+        .cart-table td:nth-child(4) {
+            text-align: center;
+            white-space: nowrap;
+        }
+        .cart-table td:nth-child(5) {
+            font-weight: bold;
+            color: #cc0000;
+            white-space: nowrap;
+        }
+        
+        /* Итоговая сумма */
+        .cart-summary-block {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9e9e9;
+            border-radius: 4px;
+        }
+        .total-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #004d80;
+        }
+        .total-price span {
+            color: #cc0000;
+        }
+        
+        /* Кнопки управления */
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .cart-actions button, .delete-item-btn {
+            padding: 10px 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .clear-cart-btn {
+            background-color: #dc3545; /* Красный */
+            color: white;
+        }
+        .clear-cart-btn:hover { background-color: #c82333; }
+        .continue-shopping-btn {
+            background-color: #ff9900; /* Оранжевый */
+            color: white;
+        }
+        .continue-shopping-btn:hover { background-color: #e68a00; }
+
+        .delete-item-btn {
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+        .delete-item-btn:hover { background-color: #e0a800; }
+
+        /* Форма заказа */
+        .order-form-section {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .order-form-section h2 {
+            color: #004d80;
+            border-bottom: 2px solid #004d80;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .order-form input[type="text"], 
+        .order-form input[type="tel"], 
+        .order-form input[type="email"], /* Добавлено email */
+        .order-form textarea { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+        .order-form button[type="submit"] {
+            background-color: #4CAF50; /* Зеленый */
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .order-form button[type="submit"]:hover { background-color: #45a049; }
+        
+        /* Сообщение о пустой корзине */
+        .empty-cart-message {
+            text-align: center;
+            padding: 50px;
+            background-color: #fff8e1;
+            border: 1px solid #ffe0b2;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .cart-table, .cart-actions {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .cart-summary-block {
+                justify-content: center;
+            }
+            .cart-actions {
+                flex-direction: column-reverse;
+            }
+            .cart-actions button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="back-link">← Продолжить покупки</a>
+            <h1>Ваша Корзина</h1>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 40px 0;">
+        
+        <div id="cart-content">
+            </div>
+        
+        <div id="checkout-section" class="order-form-section" style="display: none;">
+            <h2>Оформление заказа</h2>
+            <form id="orderForm" class="order-form">
+                <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required>
+                <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required>
+                <input type="email" id="email" placeholder="Email (необязательно)">
+                <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4"></textarea>
+                <button type="submit">Подтвердить заказ</button>
+                <p style="font-size: 0.85em; margin-top: 15px; text-align: center; color: #555;">Нажимая кнопку "Подтвердить заказ", вы даете согласие на обработку персональных данных.</p>
+            </form>
+        </div>
+        
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Ваша Компания. Все права защищены.
+        </div>
+    </footer>
+    
+    <script>
+        // === ФУНКЦИИ LOCALSTORAGE ===
+        // !!! ИСПРАВЛЕНО: Теперь используется ключ 'cart' для синхронизации с ss1.html !!!
+        const CART_STORAGE_KEY = 'cart'; 
+
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || {};
+            } catch (e) {
+                console.error("Ошибка чтения LocalStorage:", e);
+                return {};
+            }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+        }
+        
+        // === ОСНОВНЫЕ ФУНКЦИИ КОРЗИНЫ ===
+
+        function renderCart() {
+            const cart = getCart();
+            const cartContent = document.getElementById('cart-content');
+            const checkoutSection = document.getElementById('checkout-section');
+            let totalSum = 0;
+            
+            // Если корзина пуста
+            if (Object.keys(cart).length === 0) {
+                cartContent.innerHTML = `
+                    <div class="empty-cart-message">
+                        Ваша корзина пуста. <br><br>
+                        <a href="index.html" class="continue-shopping-btn">Перейти в каталог</a>
+                    </div>
+                `;
+                checkoutSection.style.display = 'none';
+                return;
+            }
+
+            // Если корзина не пуста, создаем таблицу
+            let tableHtml = `
+                <h2>Ваш заказ</h2>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Товар (Марка)</th>
+                            <th>Цена за ед. (от)</th>
+                            <th>Количество</th>
+                            <th>Сумма (от)</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            for (const itemId in cart) {
+                const item = cart[itemId];
+                // Убедимся, что price и quantity являются числами
+                const price = parseFloat(item.price);
+                const quantity = parseInt(item.quantity);
+
+                // Дополнительная проверка на корректность данных
+                if (isNaN(price) || isNaN(quantity) || quantity <= 0) {
+                    continue; 
+                }
+
+                const itemTotal = price * quantity;
+                totalSum += itemTotal;
+                
+                tableHtml += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${price.toLocaleString('ru-RU')} руб.</td>
+                        <td>${quantity} шт.</td>
+                        <td>${itemTotal.toLocaleString('ru-RU')} руб.</td>
+                        <td><button class="delete-item-btn" onclick="removeItem('${itemId}')">Удалить</button></td>
+                    </tr>
+                `;
+            }
+
+            tableHtml += `
+                    </tbody>
+                </table>
+            `;
+            
+            // Добавляем блок итоговой суммы и управления
+            tableHtml += `
+                <div class="cart-actions">
+                    <button class="clear-cart-btn" onclick="clearCart()">Очистить корзину</button>
+                    <button class="continue-shopping-btn" onclick="window.location.href='index.html'">Продолжить покупки</button>
+                </div>
+                <div class="cart-summary-block">
+                    <p class="total-price">
+                        Общая сумма (от): <span>${totalSum.toLocaleString('ru-RU')} руб.</span>
+                    </p>
+                </div>
+            `;
+            
+            cartContent.innerHTML = tableHtml;
+            checkoutSection.style.display = 'block'; // Показываем форму заказа
+        }
+        
+        // Удалить один товар
+        function removeItem(itemId) {
+            if (confirm("Вы уверены, что хотите удалить этот товар из корзины?")) {
+                let cart = getCart();
+                delete cart[itemId];
+                saveCart(cart);
+                renderCart(); // Перерисовать корзину
+            }
+        }
+
+        // Очистить всю корзину
+        function clearCart() {
+            if (confirm("Вы уверены, что хотите полностью очистить корзину?")) {
+                localStorage.removeItem(CART_STORAGE_KEY);
+                renderCart(); // Перерисовать корзину
+            }
+        }
+        
+        // Обработка отправки формы
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const comments = document.getElementById('comments').value;
+            const email = document.getElementById('email').value; // Получаем email
+
+            const currentCart = getCart();
+            const total = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            // В реальном приложении здесь должен быть AJAX-запрос на сервер
+            
+            alert(`
+                🎉 Заявка на заказ принята!
+                
+                Менеджер свяжется с Вами по телефону ${phone} для уточнения деталей.
+                Общая сумма заказа: ${total.toLocaleString('ru-RU')} руб.
+
+                (Детали:
+                Имя: ${name}
+                Email: ${email || 'Не указан'}
+                Комментарии: ${comments || 'Нет'}
+                )
+            `);
+            
+            // Очищаем корзину после успешной "отправки"
+            localStorage.removeItem(CART_STORAGE_KEY);
+            renderCart();
+            // Очищаем поля формы после отправки
+            document.getElementById('orderForm').reset();
+        });
+
+        // Запускаем отрисовку корзины при загрузке страницы
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+
+</body>
+</html>
