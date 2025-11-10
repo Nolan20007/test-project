@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЛЕСТНИЦЫ И СТРЕМЯНКИ ДЛЯ КОЛОДЦЕВ</title>
+    <meta name="description" content="Производство и продажа лестниц и стремянок для колодцев водопровода и канализации. Качественные металлические конструкции по типовым проектам.">
+    <meta name="keywords" content="лестницы для колодцев, стремянки, водопровод, канализация, металлические конструкции">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <style>
         /* Общие стили */
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
@@ -124,12 +127,64 @@
         }
         .cta-button:hover { background-color: #e68a00; }
         
+        /* Блок "Почему выбирают нас" */
+        .advantages-section {
+            background-color: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .advantages-section h2 {
+            text-align: center;
+            color: #004d80;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+        }
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .advantage-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        .advantage-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #004d80;
+        }
+        .advantage-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #004d80;
+            margin-bottom: 10px;
+        }
+        .advantage-description {
+            color: #666;
+            line-height: 1.5;
+        }
+        
         /* Contacts and Footer */
         .contacts { background-color: #003366; color: white; padding: 40px 0; text-align: center; margin-top: 40px; }
         .feedback-form { background-color: white; padding: 30px; max-width: 500px; margin: 30px auto 0; border-radius: 8px; color: #333; }
         .feedback-form input[type="text"], .feedback-form input[type="email"], .feedback-form input[type="tel"], .feedback-form textarea, .feedback-form button { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         .feedback-form button { background-color: #004d80; color: white; cursor: pointer; border: none; font-weight: bold; transition: background-color 0.3s; }
         .feedback-form button:hover { background-color: #003366; }
+        .feedback-form button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
         .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; }
 
         /* Стили для Lightbox */
@@ -156,6 +211,9 @@
                 gap: 20px;
             }
             .product-card { max-width: none; } 
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -170,6 +228,7 @@
     <nav class="nav">
         <div class="container" style="display: flex; justify-content: center; align-items: center;">
             <a href="#catalog">Каталог</a>
+            <a href="#advantages">Преимущества</a>
             <a href="#contacts">Контакты и Заказ</a>
             <a href="cart.html" class="cart-link" style="margin-left: 30px;">
                 🛒 Корзина (<span id="cart-count">0</span>)
@@ -183,16 +242,17 @@
             <h2>Основные виды продукции</h2>
             <div class="product-grid">
                 
+                <!-- 1. Стремянка для колодцев ТПР 901-09-11.84 -->
                 <div class="product-card">
                     <div class="product-image-wrapper" 
-                        data-title="Лестница ВЛ" 
+                        data-title="Стремянка ТПР 901-09-11.84" 
                         data-image="images/vl1-large.png" 
                         data-drawing="images/vl1-drawing.png">
                         
-                        <img src="images/vl1.png" alt="Лестница ВЛ" class="product-image">
+                        <img src="images/vl1.png" alt="Стремянка для колодцев ТПР 901-09-11.84" class="product-image">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">СТРЕМЯНКИ водопроводных колодцев ТПР 901-09-11.84</h3>
+                        <h3 class="product-title">Стремянка для колодцев ТПР 901-09-11.84</h3>
                         <div class="product-description-block">
                             <p><strong>Назначение:</strong> Водопровод</p>
                             <p><strong>Материал:</strong></p> 
@@ -203,106 +263,145 @@
                     </div>
                 </div>
 
+                <!-- 2. Стремянка для колодцев ТПР 902-09-22.84 -->
                 <div class="product-card">
                     <div class="product-image-wrapper" 
-                        data-title="Лестница ЛС ВЛ" 
-                        data-image="images/vl1-large.png" 
-                        data-drawing="images/vl1-drawing.png">
+                        data-title="Стремянка ТПР 902-09-22.84" 
+                        data-image="images/ss2/ss2-large.png" 
+                        data-drawing="images/ss2/ss2-drawing.png">
                         
-                        <img src="images/vl1.png" alt="Лестница ЛС ВЛ" class="product-image">
+                        <img src="images/ss2/ss2.png" alt="Стремянка для колодцев ТПР 902-09-22.84" class="product-image">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">СТРЕМЯНКИ ЛС водопроводных колодцев ТП 901-9-8</h3>
-                        <div class="product-description-block">
-                            <p><strong>Назначение:</strong> Водопровод</p>
-                            <p><strong>Материал:</strong></p> 
-                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
-                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
-                        </div>
-                        <a href="product-ls.html" class="cta-button">Подробнее</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image-wrapper" 
-                        data-title="Лестница КЛ-1" 
-                        data-image="images/kl1-large.png" 
-                        data-drawing="images/kl1-drawing.png">
-                        
-                        <img src="images/kl1.png" alt="Лестница КЛ-1" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">СТРЕМЯНКИ канализационных колодцев по ТПР 902-09-22.84</h3>
+                        <h3 class="product-title">Стремянка для колодцев ТПР 902-09-22.84</h3>
                         <div class="product-description-block">
                             <p><strong>Назначение:</strong> Канализация</p>
                             <p><strong>Материал:</strong></p> 
                             <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
                             <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
                         </div>
-                        <a href="product-c1.html" class="cta-button">Подробнее</a>
+                        <a href="ss2.html" class="cta-button">Перейти к выбору</a>
                     </div>
                 </div>
 
+                <!-- 3. Теплосетевая лестница Л-16 -->
                 <div class="product-card">
                     <div class="product-image-wrapper" 
-                        data-title="Стремянка Л-18-2,7" 
-                        data-image="images/ss1-large.png" 
-                        data-drawing="images/ss1-drawing.png">
+                        data-title="Теплосетевая лестница Л-16" 
+                        data-image="images/l16-large.png" 
+                        data-drawing="images/l16-drawing.png">
                         
-                        <img src="images/ss1.png" alt="Стремянка Л-18-2,7" class="product-image">
+                        <img src="images/l16.png" alt="Теплосетевая лестница Л-16" class="product-image">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">ЛЕСТНИЦЫ канализационные подвесные</h3>
+                        <h3 class="product-title">Теплосетевая лестница Л-16</h3>
                         <div class="product-description-block">
-                            <p><strong>Назначение:</strong> Канализация</p>
+                            <p><strong>Назначение:</strong> Теплосети</p>
                             <p><strong>Материал:</strong></p> 
-                            <p style="margin-left: 10px;">Вертикальные стойки и ступени — круглый стальной пруток ∅ 25 мм по ГОСТ 2590.</p>
-                            <p style="margin-left: 10px;">Изготавливаются по чертежам 3650.Л-18-000СБ-01.</p>
+                            <p style="margin-left: 10px;">Вертикальные стойки — стальные уголки 50×50×5 мм.</p>
+                            <p style="margin-left: 10px;">Ступени — круглый стальной пруток ∅ 18-25 мм.</p>
                         </div>
-                        <a href="product-l18.html" class="cta-button">Подробнее</a>
+                        <a href="tl.html" class="cta-button">Перейти к выбору</a>
+                    </div>
+                </div>
+
+                <!-- 4. Стремянки СГ серия 1.450.3-7.94 (пожарная стремянка) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper" 
+                        data-title="Стремянки СГ пожарные" 
+                        data-image="images/sg-large.png" 
+                        data-drawing="images/sg-drawing.png">
+                        
+                        <img src="images/sg.png" alt="Стремянки СГ серия 1.450.3-7.94" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Стремянки СГ серия 1.450.3-7.94 (пожарная стремянка)</h3>
+                        <div class="product-description-block">
+                            <p><strong>Назначение:</strong> Пожарная безопасность</p>
+                            <p><strong>Материал:</strong></p> 
+                            <p style="margin-left: 10px;">Вертикальные стойки и ступени — стальной профиль.</p>
+                            <p style="margin-left: 10px;">Изготавливаются по серии 1.450.3-7.94.</p>
+                        </div>
+                        <a href="ssg1.html" class="cta-button">Перейти к выбору</a>
                     </div>
                 </div>
                 
+                <!-- 5. Водопроводные лестницы ВЛ-2 (Л-2, Л-19) для колодцев -->
                 <div class="product-card">
                     <div class="product-image-wrapper" 
-                        data-title="Стремянка ЛС" 
-                        data-image="images/ls-gidro-large.png" 
-                        data-drawing="images/ls-gidro-drawing.png">
+                        data-title="Водопроводные лестницы ВЛ-2" 
+                        data-image="images/vl2-large.png" 
+                        data-drawing="images/vl2-drawing.png">
                         
-                        <img src="images/ls-gidro.png" alt="Стремянка ЛС" class="product-image">
+                        <img src="images/vl2.png" alt="Водопроводные лестницы ВЛ-2 (Л-2, Л-19)" class="product-image">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">СТРЕМЯНКИ колодцев ливневой канализации</h3>
+                        <h3 class="product-title">Водопроводные лестницы ВЛ-2 (Л-2, Л-19) для колодцев</h3>
                         <div class="product-description-block">
-                            <p><strong>Назначение:</strong> Ливневка</p>
+                            <p><strong>Назначение:</strong> Водопровод</p>
                             <p><strong>Материал:</strong></p> 
-                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
-                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — стальные уголки 50×50×5 мм.</p>
+                            <p style="margin-left: 10px;">Ступени — круглый стальной пруток ∅ 18 мм.</p>
                         </div>
-                        <a href="product-livnevka.html" class="cta-button">Подробнее</a>
+                        <a href="vdl.html" class="cta-button">Перейти к выбору</a>
                     </div>
                 </div>
 
+                <!-- 6. Канализационные лестницы КЛ-1 (Л-1, Л-18) для колодцев -->
                 <div class="product-card">
                     <div class="product-image-wrapper" 
-                        data-title="Лестница ЛС.1-6" 
-                        data-image="images/vl1-large.png" 
-                        data-drawing="images/vl1-drawing.png">
+                        data-title="Канализационные лестницы КЛ-1" 
+                        data-image="images/kl1-large.png" 
+                        data-drawing="images/kl1-drawing.png">
                         
-                        <img src="images/vl1.png" alt="Лестница ЛС" class="product-image">
+                        <img src="images/kl1.png" alt="Канализационные лестницы КЛ-1 (Л-1, Л-18)" class="product-image">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">СТРЕМЯНКИ ЛС колодцев с гидрозатвором (Серия 3.902-8)</h3>
+                        <h3 class="product-title">Канализационные лестницы КЛ-1 (Л-1, Л-18) для колодцев</h3>
                         <div class="product-description-block">
-                            <p><strong>Назначение:</strong> Гидрозатвор</p>
+                            <p><strong>Назначение:</strong> Канализация</p>
                             <p><strong>Материал:</strong></p> 
-                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
-                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                            <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм.</p>
+                            <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка ∅ 18 мм.</p>
                         </div>
-                        <a href="product-gidrozatvor.html" class="cta-button">Подробнее</a>
+                        <a href="product-kl1.html" class="cta-button">Подробнее</a>
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Блок "Почему выбирают нас" -->
+        <section id="advantages" class="advantages-section">
+            <div class="container">
+                <h2>Почему выбирают нас</h2>
+                <div class="advantages-grid">
+                    <div class="advantage-card">
+                        <div class="advantage-icon">🛡️</div>
+                        <div class="advantage-title">Гарантия качества ГОСТ</div>
+                        <div class="advantage-description">Вся продукция соответствует ГОСТ и строительным нормативам. Контроль качества на каждом этапе производства.</div>
+                    </div>
+                    <div class="advantage-card">
+                        <div class="advantage-icon">🏭</div>
+                        <div class="advantage-title">Собственное производство</div>
+                        <div class="advantage-description">Изготавливаем лестницы на собственном производстве. Полный контроль от сырья до готового изделия.</div>
+                    </div>
+                    <div class="advantage-card">
+                        <div class="advantage-icon">🚚</div>
+                        <div class="advantage-title">Доставка по России</div>
+                        <div class="advantage-description">Осуществляем доставку в любой регион России. Собственный автопарк и надежные транспортные компании.</div>
+                    </div>
+                    <div class="advantage-card">
+                        <div class="advantage-icon">📅</div>
+                        <div class="advantage-title">Работаем с 2010 года</div>
+                        <div class="advantage-description">14 лет успешной работы на рынке. Более 5000 выполненных заказов. Проверенная репутация.</div>
+                    </div>
+                    <div class="advantage-card">
+                        <div class="advantage-icon">👨‍💼</div>
+                        <div class="advantage-title">Персональный менеджер</div>
+                        <div class="advantage-description">За каждым клиентом закреплен персональный менеджер. Решаем вопросы оперативно и профессионально.</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -312,11 +411,11 @@
         <div class="container">
             <h2>Свяжитесь с нами</h2>
             <p><strong>Телефон:</strong> <a href="tel:+7956555996*" style="color: #ff9900;">+7 (342) 261-00-**</a></p>
-            <form class="feedback-form" action="ПОСТАВЬТЕ ССЫЛКУ НА ФОРМУ" method="POST">
+            <form class="feedback-form" id="mainContactForm">
                 <p>Оставьте заявку на расчет стоимости:</p>
-                <input type="text" name="name" placeholder="Ваше Имя / Компания" required>
-                <input type="tel" name="phone" placeholder="Контактный Телефон" required>
-                <textarea name="message" placeholder="Укажите тип, длину и количество лестниц" rows="3"></textarea>
+                <input type="text" id="mainName" placeholder="Ваше Имя / Компания" required>
+                <input type="tel" id="mainPhone" placeholder="Контактный Телефон" required>
+                <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц" rows="3"></textarea>
                 <button type="submit">Отправить запрос</button>
             </form>
         </div>
@@ -450,6 +549,66 @@
 
         // 2. Запускаем обновление счетчика, если LocalStorage изменился (например, товар добавили на другой вкладке)
         window.addEventListener('storage', updateCartCountDisplay);
+    </script>
+
+    <script>
+        // Обработчик формы на главной странице
+        document.getElementById('mainContactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('mainName').value;
+            const phone = document.getElementById('mainPhone').value;
+            const message = document.getElementById('mainMessage').value;
+
+            // Те же данные что и для корзины
+            const BOT_TOKEN = '8396068741:AAGhSNnKKcLSrjOA5tLmkFBUxO0bawyPeY8';
+            const CHAT_ID = '448461769';
+            
+            // Формируем сообщение для Telegram
+            let telegramMessage = `📞 НОВАЯ ЗАЯВКА С САЙТА!\n\n`;
+            telegramMessage += `👤 Имя: ${name}\n`;
+            telegramMessage += `📞 Телефон: ${phone}\n`;
+            telegramMessage += `💬 Сообщение: ${message || 'Не указано'}\n\n`;
+            telegramMessage += `📍 Источник: Главная страница (форма расчета стоимости)`;
+            
+            // Показываем загрузку
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            
+            // Отправляем в Telegram
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: telegramMessage,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.');
+                    // Очищаем форму
+                    document.getElementById('mainContactForm').reset();
+                } else {
+                    alert('❌ Ошибка отправки заявки. Пожалуйста, позвоните нам напрямую.');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('❌ Ошибка отправки заявки. Пожалуйста, позвоните нам напрямую.');
+            })
+            .finally(() => {
+                // Восстанавливаем кнопку
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
     </script>
 
 </body>

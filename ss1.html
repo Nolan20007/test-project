@@ -53,7 +53,6 @@
            1. СТИЛИ ГАЛЕРЕИ 
            ======================================================= */
         .image-section { 
-            /* Обертка для галереи */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -67,7 +66,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
             overflow: hidden;
-            cursor: pointer; /* Кликабельность */
+            cursor: pointer;
             border: 1px solid #ddd;
         }
         .main-image {
@@ -158,7 +157,6 @@
         }
         .modal-nav { text-align: center; padding: 10px; background-color: #eee; }
         .modal-nav button { background-color: #004d80; color: white; border: none; padding: 8px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer; }
-
 
         /* ОСТАЛЬНЫЕ СТИЛИ */
         .characteristics-list { list-style: none; padding: 0; }
@@ -291,6 +289,7 @@
         }
         .cta-button:hover { background-color: #e68a00; }
         
+        /* Мобильная адаптивность для таблицы */
         @media (max-width: 900px) {
             .content-grid {
                 grid-template-columns: 1fr; 
@@ -299,6 +298,13 @@
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
+                font-size: 12px;
+            }
+            .quantity-control input {
+                width: 25px;
+            }
+            .cart-button {
+                padding: 4px 8px;
             }
         }
     </style>
@@ -328,13 +334,13 @@
                 
                 <div class="thumbnails-control">
                     <div class="thumbnail active" onclick="changeImage('images/ss1/ss1-main-large.png', 0)">
-                        <img src="images/ss1/ss1-main-large.png" alt="Фото">
+                        <img src="images/ss1/ss1-main-large.png" alt="Фото стремянки">
                     </div>
                     <div class="thumbnail" onclick="changeImage('images/ss1/ss1-view-large.png', 1)">
-                        <img src="images/ss1/ss1-view-large.png" alt="Вид сбоку">
+                        <img src="images/ss1/ss1-view-large.png" alt="Вид стремянки сбоку">
                     </div>
                     <div class="thumbnail" onclick="changeImage('images/ss1/ss1-drawing-large.png', 2)">
-                        <img src="images/ss1/ss1-drawing-large.png" alt="Чертеж">
+                        <img src="images/ss1/ss1-drawing-large.png" alt="Чертеж стремянки">
                     </div>
                 </div>
             </div>
@@ -582,9 +588,9 @@
             <h3 id="modalTitle" style="text-align: center; color: white; background-color: #004d80; padding: 10px 0; margin: 0;">Просмотр изображений</h3>
             
             <div class="gallery-container" id="galleryContainer">
-                <div class="gallery-item"><img id="modalImage0" src="images/ss1/ss1-main-large.png" alt="Основное фото"></div>
-                <div class="gallery-item"><img id="modalImage1" src="images/ss1/ss1-view-large.png" alt="Вид сбоку"></div>
-                <div class="gallery-item"><img id="modalImage2" src="images/ss1/ss1-drawing-large.png" alt="Чертеж"></div>
+                <div class="gallery-item"><img id="modalImage0" src="images/ss1/ss1-main-large.png" alt="Основное фото стремянки"></div>
+                <div class="gallery-item"><img id="modalImage1" src="images/ss1/ss1-view-large.png" alt="Вид стремянки сбоку"></div>
+                <div class="gallery-item"><img id="modalImage2" src="images/ss1/ss1-drawing-large.png" alt="Чертеж стремянки"></div>
             </div>
 
             <div class="modal-nav">
@@ -653,8 +659,15 @@
 
         // Функция для сохранения данных корзины
         function saveCart(cart) {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartDisplay(cart);
+            try {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay(cart);
+                return true;
+            } catch (e) {
+                console.error("Ошибка сохранения корзины:", e);
+                alert('Ошибка сохранения корзины. Проверьте настройки браузера.');
+                return false;
+            }
         }
         
         // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ ОТОБРАЖЕНИЯ (ИСПРАВЛЕНА!)
@@ -685,15 +698,19 @@
             const initialCart = loadCart();
             updateCartDisplay(initialCart);
             
-            // Установка обработчиков событий для кнопок "🛒"
+            // Установка обработчиков событий для кнопок "🛒" - ИСПРАВЛЕННАЯ ВЕРСИЯ
             document.querySelectorAll('.cart-button').forEach(button => {
                 button.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-item-id');
                     const itemName = this.getAttribute('data-item-name');
                     const quantityInput = document.getElementById(itemId + '-qty');
                     const quantity = parseInt(quantityInput.value);
-                    const priceText = this.closest('tr').querySelector('td:nth-child(6)').textContent.replace(/[^\d\s]/g, '').trim().split(' ')[0];
-                    const price = parseFloat(priceText.replace(',', '')) || 0; // Извлекаем числовую часть цены
+                    
+                    // ИСПРАВЛЕННЫЙ ПАРСИНГ ЦЕНЫ
+                    const priceText = this.closest('tr').querySelector('td:nth-child(6)').textContent;
+                    // Удаляем все НЕ цифры
+                    const cleanPrice = priceText.replace(/[^\d]/g, '');
+                    const price = parseFloat(cleanPrice) || 0;
                     
                     addItemToCart(itemId, itemName, quantity, price);
                 });
@@ -727,23 +744,29 @@
 
         // Добавление товара в корзину
         function addItemToCart(id, name, quantity, price) {
-            const cart = loadCart(); 
-            
-            // Если товар уже есть в корзине, добавляем к существующему количеству
-            if (cart[id]) {
-                cart[id].quantity += quantity;
-            } else {
-                // Если товара нет, добавляем новый
-                cart[id] = { 
-                    id: id,
-                    name: name,
-                    quantity: quantity,
-                    price: price // В вашем коде price - это только базовая цена
-                };
+            try {
+                const cart = loadCart(); 
+                
+                // Если товар уже есть в корзине, добавляем к существующему количеству
+                if (cart[id]) {
+                    cart[id].quantity += quantity;
+                } else {
+                    // Если товара нет, добавляем новый
+                    cart[id] = { 
+                        id: id,
+                        name: name,
+                        quantity: quantity,
+                        price: price
+                    };
+                }
+                
+                if (saveCart(cart)) {
+                    alert(`Добавлено в корзину: ${quantity} шт. ${name}. Всего в корзине: ${cart[id].quantity} шт.`);
+                }
+            } catch (error) {
+                console.error('Ошибка добавления в корзину:', error);
+                alert('Произошла ошибка при добавлении товара в корзину');
             }
-            
-            saveCart(cart); 
-            alert(`Добавлено в корзину: ${quantity} шт. ${name}. Всего в корзине: ${cart[id].quantity} шт.`);
         }
         
         // Изменение количества товара на странице (с кнопок +/-)

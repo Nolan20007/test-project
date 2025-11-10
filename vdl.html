@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Водопроводные лестницы ВЛ-2 (Л-2, Л-19) для колодцев</title>
+    <style>
+        /* Общие стили */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        .header { background-color: #004d80; color: white; padding: 20px 0; }
+        .header h1 { margin: 0; font-size: 2.2em; text-align: center; }
+        
+        /* Стили для навигации в шапке (включая ссылку на cart.html) */
+        .header-nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .back-link { 
+            color: #ff9900; 
+            text-decoration: none; 
+            font-weight: bold; 
+            display: inline-block; 
+            transition: color 0.3s; 
+        }
+        .back-link:hover { color: #e68a00; }
+        .cart-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background-color: #ff9900;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .cart-link:hover {
+            background-color: #e68a00;
+        }
+        
+        .product-details { padding: 40px 0; }
+        .product-details h2 { color: #004d80; font-size: 1.8em; margin-top: 30px; border-bottom: 2px solid #004d80; padding-bottom: 5px; }
+        .product-details p { line-height: 1.6; margin-bottom: 15px; }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        /* =======================================================
+           1. СТИЛИ ГАЛЕРЕИ 
+           ======================================================= */
+        .image-section { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Основное фото */
+        .main-image-wrapper {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Миниатюры */
+        .thumbnails-control {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .thumbnail:hover, .thumbnail.active {
+            border-color: #ff9900;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =======================================================
+           2. СТИЛИ МОДАЛЬНОГО ОКНА 
+           ======================================================= */
+        .lightbox-modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding-top: 60px; 
+        }
+        .modal-content { 
+            margin: auto; 
+            display: block; 
+            width: 90%; 
+            max-width: 1000px; 
+            background-color: white; 
+            border-radius: 8px; 
+            overflow: hidden; 
+        }
+        .close-btn { 
+            position: absolute; 
+            top: 15px; 
+            right: 35px; 
+            color: #f1f1f1; 
+            font-size: 40px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .gallery-container { 
+            display: flex; 
+            overflow-x: scroll; 
+            scroll-snap-type: x mandatory; 
+        }
+        .gallery-item { 
+            flex: 0 0 100%; 
+            scroll-snap-align: start; 
+            min-width: 100%; 
+            box-sizing: border-box; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; 
+        }
+        .gallery-item img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            height: auto; 
+            display: block; 
+            object-fit: contain; 
+        }
+        .modal-nav { text-align: center; padding: 10px; background-color: #eee; }
+        .modal-nav button { background-color: #004d80; color: white; border: none; padding: 8px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer; }
+
+        /* ОСТАЛЬНЫЕ СТИЛИ */
+        .characteristics-list { list-style: none; padding: 0; }
+        .characteristics-list li { 
+            margin-bottom: 10px; 
+            padding-left: 20px; 
+            position: relative; 
+            display: grid; 
+            grid-template-columns: 20px 200px 1fr; 
+            gap: 5px; 
+            line-height: 1.4;
+        } 
+        .characteristics-list li strong { 
+            font-weight: bold; 
+            color: #004d80; 
+            grid-column: 2 / 3; 
+            align-self: start;
+        }
+        .characteristics-list li::before {
+            content: '•';
+            color: #ff9900;
+            font-weight: bold;
+            grid-column: 1 / 2; 
+            align-self: start;
+        }
+        .characteristics-list li .description {
+            grid-column: 3 / 4; 
+            text-align: left;
+        }
+        .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; margin-top: 40px; }
+        
+        .nomenclature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .nomenclature-table th, .nomenclature-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .nomenclature-table th {
+            background-color: #004d80;
+            color: white;
+            font-weight: bold;
+        }
+        .nomenclature-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .nomenclature-table td:nth-child(2) {
+            font-weight: bold;
+            color: #004d80;
+        }
+        .nomenclature-table td:nth-child(7) {
+            font-weight: bold;
+            color: #cc0000; 
+            white-space: nowrap;
+        }
+        .nomenclature-table .availability-icon {
+            color: #4CAF50; 
+            font-size: 1.2em;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quantity-control button, .cart-button {
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            color: #333;
+            cursor: pointer;
+            padding: 5px 8px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .quantity-control input {
+            width: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-right: none;
+            padding: 5px 0;
+            height: 28px;
+            box-sizing: border-box;
+            -moz-appearance: textfield; 
+        }
+        .cart-button {
+            background-color: #ffc107; 
+            border-color: #ffc107;
+            color: #333;
+            margin-left: 5px;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        .cart-button:hover {
+            background-color: #e0a800;
+        }
+        .advantages-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .advantages-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 1.1em;
+        }
+        .advantages-list li::before {
+            content: "★"; 
+            color: #ff9900;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .cta-button {
+            display: inline-block;
+            text-align: center;
+            background-color: #ff9900;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover { background-color: #e68a00; }
+        
+        /* Мобильная адаптивность для таблицы */
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr; 
+            }
+            .nomenclature-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                font-size: 12px;
+            }
+            .quantity-control input {
+                width: 25px;
+            }
+            .cart-button {
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-nav">
+                <a href="index.html" class="back-link">← Вернуться в каталог</a>
+                <a href="cart.html" class="cart-link">
+                    🛒 Корзина (<span id="cart-count-page">0</span>)
+                </a>
+            </div>
+            <h1>Водопроводные лестницы ВЛ-2 (Л-2, Л-19) для колодцев</h1>
+        </div>
+    </header>
+
+    <div class="product-details container">
+        
+        <div class="content-grid">
+            
+            <div class="image-section">
+                <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
+                    <img id="mainImage" src="images/vdl/vdl-large.png" alt="Водопроводная лестница ВЛ-2" class="main-image">
+                </div>
+                
+                <div class="thumbnails-control">
+                    <div class="thumbnail active" onclick="changeImage('images/vdl/vdl-large.png', 0)">
+                        <img src="images/vdl/vdl-large.png" alt="Фото лестницы ВЛ-2">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('images/vdl/vdl-drawing.png', 1)">
+                        <img src="images/vdl/vdl-drawing.png" alt="Чертеж лестницы ВЛ-2">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-section">
+                <h2>Общая информация и назначение</h2>
+                <p><strong>Водопроводные лестницы ВЛ-2 (Л-2, Л-19)</strong> используются для спуска к инженерному оборудованию и запорной арматуре в водопроводных смотровых колодцах. Водопроводы прокладываются на различной глубине, и в местах поворотов магистралей, разветвлений, переходов на другой уровень в соответствие с технологией обустраиваются водопроводные смотровые колодцы.</p>
+
+                <p>Лестницы имеют особую конструкцию, которая обеспечивает высокий уровень надежности и безопасность персоналу, работающему в непростых условиях. Водопроводные лестницы имеют продуманную эргономику, что позволяет занимать минимум объема колодца и обеспечивать спуск вниз необходимого оборудования.</p>
+                
+                <h2>Основные характеристики</h2>
+                <ul class="characteristics-list">
+                    <li><strong>Тип лестницы:</strong><span class="description"> ВЛ-2 (Л-2, Л-19)</span></li>
+                    <li><strong>Ширина лестницы:</strong><span class="description"> 424 мм</span></li>
+                    <li><strong>Высота ступени:</strong><span class="description"> 260 мм</span></li>
+                    <li><strong>Длина:</strong><span class="description"> от 100 см до 1170 см</span></li>
+                    <li><strong>Материал:</strong><span class="description"> Гладкая арматура высокой прочности</span></li>
+                    <li><strong>Конструкция:</strong><span class="description"> Со скобами для надежной фиксации за кольца ЖБИ</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>Особенности и преимущества водопроводных лестниц</h2>
+        <p>Лестницы ВЛ-2 имеют оригинальную конструкцию со скобами, которые обеспечивают надежную фиксацию за кольца ЖБИ или горловину колодца. Основными преимуществами водопроводных лестниц являются:</p>
+        <ul class="advantages-list">
+            <li>Высокие прочностные характеристики всех элементов</li>
+            <li>Устойчивость к повышенной влажности и коррозии</li>
+            <li>Высокая износоустойчивость</li>
+            <li>Продолжительный срок эксплуатации</li>
+            <li>Простой монтаж в конструкции колодца</li>
+            <li>Обеспечивает максимальный уровень безопасности</li>
+            <li>Однопроцентная конструкция с широкими ступенями</li>
+            <li>Удобный шаг расположения ступеней</li>
+        </ul>
+
+        <h2>Стоимость водопроводных лестниц ВЛ-2</h2>
+        <p>Мы предлагаем купить водопроводную лестницу на выгодных условиях. В ассортименте широкий выбор продукции высокого качества. Цена водопроводной лестницы зависит от ее длины. Предлагаем модели длиной от 100 до 1170 см, небольшой шаг длины позволяет точно подобрать лестницу для проекта любой сложности.</p>
+        
+        <p>Конструкция всех лестниц ВЛ-2 соответствует требованиям ГОСТа и строительной нормативной документации.</p>
+        
+        <table class="nomenclature-table">
+            <thead>
+                <tr>
+                    <th>Фото</th>
+                    <th>Изделие</th>
+                    <th>Длина, см</th>
+                    <th>Ширина, см</th>
+                    <th>Высота, см</th>
+                    <th>Масса, кг</th>
+                    <th>Цена</th>
+                    <th>ед. измерения</th>
+                    <th>Наличие</th>
+                    <th>Количество</th>
+                    <th>Корзина</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ВЛ-1 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1" style="max-height: 40px;"></td><td>ВЛ-1</td><td>100</td><td>42,4</td><td>26</td><td>14</td><td>1 540 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1', -1)">-</button><input type="number" id="VL-1-qty" value="1" min="1" max="99" data-price="1540"><button onclick="changeQuantity('VL-1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1" data-item-name="ВЛ-1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.1" style="max-height: 40px;"></td><td>ВЛ-1.1</td><td>110</td><td>42,4</td><td>26</td><td>15</td><td>1 690 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.1', -1)">-</button><input type="number" id="VL-1.1-qty" value="1" min="1" max="99" data-price="1690"><button onclick="changeQuantity('VL-1.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.1" data-item-name="ВЛ-1.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.2" style="max-height: 40px;"></td><td>ВЛ-1.2</td><td>120</td><td>42,4</td><td>26</td><td>16</td><td>1 830 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.2', -1)">-</button><input type="number" id="VL-1.2-qty" value="1" min="1" max="99" data-price="1830"><button onclick="changeQuantity('VL-1.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.2" data-item-name="ВЛ-1.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.3" style="max-height: 40px;"></td><td>ВЛ-1.3</td><td>130</td><td>42,4</td><td>26</td><td>17</td><td>1 985 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.3', -1)">-</button><input type="number" id="VL-1.3-qty" value="1" min="1" max="99" data-price="1985"><button onclick="changeQuantity('VL-1.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.3" data-item-name="ВЛ-1.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.4" style="max-height: 40px;"></td><td>ВЛ-1.4</td><td>140</td><td>42,4</td><td>26</td><td>18</td><td>2 155 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.4', -1)">-</button><input type="number" id="VL-1.4-qty" value="1" min="1" max="99" data-price="2155"><button onclick="changeQuantity('VL-1.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.4" data-item-name="ВЛ-1.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.5" style="max-height: 40px;"></td><td>ВЛ-1.5</td><td>150</td><td>42,4</td><td>26</td><td>19</td><td>2 305 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.5', -1)">-</button><input type="number" id="VL-1.5-qty" value="1" min="1" max="99" data-price="2305"><button onclick="changeQuantity('VL-1.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.5" data-item-name="ВЛ-1.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.6" style="max-height: 40px;"></td><td>ВЛ-1.6</td><td>160</td><td>42,4</td><td>26</td><td>20</td><td>2 455 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.6', -1)">-</button><input type="number" id="VL-1.6-qty" value="1" min="1" max="99" data-price="2455"><button onclick="changeQuantity('VL-1.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.6" data-item-name="ВЛ-1.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.7" style="max-height: 40px;"></td><td>ВЛ-1.7</td><td>170</td><td>42,4</td><td>26</td><td>21</td><td>2 610 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.7', -1)">-</button><input type="number" id="VL-1.7-qty" value="1" min="1" max="99" data-price="2610"><button onclick="changeQuantity('VL-1.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.7" data-item-name="ВЛ-1.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.8" style="max-height: 40px;"></td><td>ВЛ-1.8</td><td>180</td><td>42,4</td><td>26</td><td>22</td><td>2 765 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.8', -1)">-</button><input type="number" id="VL-1.8-qty" value="1" min="1" max="99" data-price="2765"><button onclick="changeQuantity('VL-1.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.8" data-item-name="ВЛ-1.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-1.9" style="max-height: 40px;"></td><td>ВЛ-1.9</td><td>190</td><td>42,4</td><td>26</td><td>23</td><td>2 915 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-1.9', -1)">-</button><input type="number" id="VL-1.9-qty" value="1" min="1" max="99" data-price="2915"><button onclick="changeQuantity('VL-1.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-1.9" data-item-name="ВЛ-1.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-2 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2" style="max-height: 40px;"></td><td>ВЛ-2</td><td>200</td><td>42,4</td><td>26</td><td>27</td><td>3 070 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2', -1)">-</button><input type="number" id="VL-2-qty" value="1" min="1" max="99" data-price="3070"><button onclick="changeQuantity('VL-2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2" data-item-name="ВЛ-2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.1" style="max-height: 40px;"></td><td>ВЛ-2.1</td><td>210</td><td>42,4</td><td>26</td><td>28</td><td>3 235 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.1', -1)">-</button><input type="number" id="VL-2.1-qty" value="1" min="1" max="99" data-price="3235"><button onclick="changeQuantity('VL-2.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.1" data-item-name="ВЛ-2.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.2" style="max-height: 40px;"></td><td>ВЛ-2.2</td><td>220</td><td>42,4</td><td>26</td><td>29</td><td>3 375 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.2', -1)">-</button><input type="number" id="VL-2.2-qty" value="1" min="1" max="99" data-price="3375"><button onclick="changeQuantity('VL-2.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.2" data-item-name="ВЛ-2.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.3" style="max-height: 40px;"></td><td>ВЛ-2.3</td><td>230</td><td>42,4</td><td>26</td><td>30</td><td>3 535 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.3', -1)">-</button><input type="number" id="VL-2.3-qty" value="1" min="1" max="99" data-price="3535"><button onclick="changeQuantity('VL-2.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.3" data-item-name="ВЛ-2.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.4" style="max-height: 40px;"></td><td>ВЛ-2.4</td><td>240</td><td>42,4</td><td>26</td><td>31</td><td>3 675 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.4', -1)">-</button><input type="number" id="VL-2.4-qty" value="1" min="1" max="99" data-price="3675"><button onclick="changeQuantity('VL-2.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.4" data-item-name="ВЛ-2.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.5" style="max-height: 40px;"></td><td>ВЛ-2.5</td><td>250</td><td>42,4</td><td>26</td><td>34</td><td>3 830 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.5', -1)">-</button><input type="number" id="VL-2.5-qty" value="1" min="1" max="99" data-price="3830"><button onclick="changeQuantity('VL-2.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.5" data-item-name="ВЛ-2.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.6" style="max-height: 40px;"></td><td>ВЛ-2.6</td><td>260</td><td>42,4</td><td>26</td><td>35</td><td>3 995 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.6', -1)">-</button><input type="number" id="VL-2.6-qty" value="1" min="1" max="99" data-price="3995"><button onclick="changeQuantity('VL-2.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.6" data-item-name="ВЛ-2.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.7" style="max-height: 40px;"></td><td>ВЛ-2.7</td><td>270</td><td>42,4</td><td>26</td><td>36</td><td>4 135 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.7', -1)">-</button><input type="number" id="VL-2.7-qty" value="1" min="1" max="99" data-price="4135"><button onclick="changeQuantity('VL-2.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.7" data-item-name="ВЛ-2.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.8" style="max-height: 40px;"></td><td>ВЛ-2.8</td><td>280</td><td>42,4</td><td>26</td><td>37</td><td>4 290 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.8', -1)">-</button><input type="number" id="VL-2.8-qty" value="1" min="1" max="99" data-price="4290"><button onclick="changeQuantity('VL-2.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.8" data-item-name="ВЛ-2.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-2.9" style="max-height: 40px;"></td><td>ВЛ-2.9</td><td>290</td><td>42,4</td><td>26</td><td>38</td><td>4 430 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-2.9', -1)">-</button><input type="number" id="VL-2.9-qty" value="1" min="1" max="99" data-price="4430"><button onclick="changeQuantity('VL-2.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-2.9" data-item-name="ВЛ-2.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-3 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3" style="max-height: 40px;"></td><td>ВЛ-3</td><td>300</td><td>42,4</td><td>26</td><td>39</td><td>4 590 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3', -1)">-</button><input type="number" id="VL-3-qty" value="1" min="1" max="99" data-price="4590"><button onclick="changeQuantity('VL-3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3" data-item-name="ВЛ-3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.1" style="max-height: 40px;"></td><td>ВЛ-3.1</td><td>310</td><td>42,4</td><td>26</td><td>40</td><td>4 730 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.1', -1)">-</button><input type="number" id="VL-3.1-qty" value="1" min="1" max="99" data-price="4730"><button onclick="changeQuantity('VL-3.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.1" data-item-name="ВЛ-3.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.2" style="max-height: 40px;"></td><td>ВЛ-3.2</td><td>320</td><td>42,4</td><td>26</td><td>41</td><td>4 900 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.2', -1)">-</button><input type="number" id="VL-3.2-qty" value="1" min="1" max="99" data-price="4900"><button onclick="changeQuantity('VL-3.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.2" data-item-name="ВЛ-3.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.3" style="max-height: 40px;"></td><td>ВЛ-3.3</td><td>330</td><td>42,4</td><td>26</td><td>42</td><td>5 045 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.3', -1)">-</button><input type="number" id="VL-3.3-qty" value="1" min="1" max="99" data-price="5045"><button onclick="changeQuantity('VL-3.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.3" data-item-name="ВЛ-3.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.4" style="max-height: 40px;"></td><td>ВЛ-3.4</td><td>340</td><td>42,4</td><td>26</td><td>43</td><td>5 205 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.4', -1)">-</button><input type="number" id="VL-3.4-qty" value="1" min="1" max="99" data-price="5205"><button onclick="changeQuantity('VL-3.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.4" data-item-name="ВЛ-3.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.5" style="max-height: 40px;"></td><td>ВЛ-3.5</td><td>350</td><td>42,4</td><td>26</td><td>45</td><td>5 345 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.5', -1)">-</button><input type="number" id="VL-3.5-qty" value="1" min="1" max="99" data-price="5345"><button onclick="changeQuantity('VL-3.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.5" data-item-name="ВЛ-3.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.6" style="max-height: 40px;"></td><td>ВЛ-3.6</td><td>360</td><td>42,4</td><td>26</td><td>46</td><td>5 490 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.6', -1)">-</button><input type="number" id="VL-3.6-qty" value="1" min="1" max="99" data-price="5490"><button onclick="changeQuantity('VL-3.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.6" data-item-name="ВЛ-3.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.7" style="max-height: 40px;"></td><td>ВЛ-3.7</td><td>370</td><td>42,4</td><td>26</td><td>48</td><td>5 650 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.7', -1)">-</button><input type="number" id="VL-3.7-qty" value="1" min="1" max="99" data-price="5650"><button onclick="changeQuantity('VL-3.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.7" data-item-name="ВЛ-3.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.8" style="max-height: 40px;"></td><td>ВЛ-3.8</td><td>380</td><td>42,4</td><td>26</td><td>49</td><td>5 805 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.8', -1)">-</button><input type="number" id="VL-3.8-qty" value="1" min="1" max="99" data-price="5805"><button onclick="changeQuantity('VL-3.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.8" data-item-name="ВЛ-3.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-3.9" style="max-height: 40px;"></td><td>ВЛ-3.9</td><td>390</td><td>42,4</td><td>26</td><td>50</td><td>5 955 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-3.9', -1)">-</button><input type="number" id="VL-3.9-qty" value="1" min="1" max="99" data-price="5955"><button onclick="changeQuantity('VL-3.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-3.9" data-item-name="ВЛ-3.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-4 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4" style="max-height: 40px;"></td><td>ВЛ-4</td><td>400</td><td>42,4</td><td>26</td><td>51</td><td>6 110 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4', -1)">-</button><input type="number" id="VL-4-qty" value="1" min="1" max="99" data-price="6110"><button onclick="changeQuantity('VL-4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4" data-item-name="ВЛ-4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.1" style="max-height: 40px;"></td><td>ВЛ-4.1</td><td>410</td><td>42,4</td><td>26</td><td>52</td><td>6 255 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.1', -1)">-</button><input type="number" id="VL-4.1-qty" value="1" min="1" max="99" data-price="6255"><button onclick="changeQuantity('VL-4.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.1" data-item-name="ВЛ-4.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.2" style="max-height: 40px;"></td><td>ВЛ-4.2</td><td>420</td><td>42,4</td><td>26</td><td>53</td><td>6 415 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.2', -1)">-</button><input type="number" id="VL-4.2-qty" value="1" min="1" max="99" data-price="6415"><button onclick="changeQuantity('VL-4.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.2" data-item-name="ВЛ-4.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.3" style="max-height: 40px;"></td><td>ВЛ-4.3</td><td>430</td><td>42,4</td><td>26</td><td>54</td><td>6 570 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.3', -1)">-</button><input type="number" id="VL-4.3-qty" value="1" min="1" max="99" data-price="6570"><button onclick="changeQuantity('VL-4.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.3" data-item-name="ВЛ-4.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.4" style="max-height: 40px;"></td><td>ВЛ-4.4</td><td>440</td><td>42,4</td><td>26</td><td>55</td><td>6 710 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.4', -1)">-</button><input type="number" id="VL-4.4-qty" value="1" min="1" max="99" data-price="6710"><button onclick="changeQuantity('VL-4.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.4" data-item-name="ВЛ-4.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.5" style="max-height: 40px;"></td><td>ВЛ-4.5</td><td>450</td><td>42,4</td><td>26</td><td>57</td><td>6 875 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.5', -1)">-</button><input type="number" id="VL-4.5-qty" value="1" min="1" max="99" data-price="6875"><button onclick="changeQuantity('VL-4.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.5" data-item-name="ВЛ-4.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.6" style="max-height: 40px;"></td><td>ВЛ-4.6</td><td>460</td><td>42,4</td><td>26</td><td>58</td><td>7 030 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.6', -1)">-</button><input type="number" id="VL-4.6-qty" value="1" min="1" max="99" data-price="7030"><button onclick="changeQuantity('VL-4.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.6" data-item-name="ВЛ-4.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.7" style="max-height: 40px;"></td><td>ВЛ-4.7</td><td>470</td><td>42,4</td><td>26</td><td>59</td><td>7 170 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.7', -1)">-</button><input type="number" id="VL-4.7-qty" value="1" min="1" max="99" data-price="7170"><button onclick="changeQuantity('VL-4.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.7" data-item-name="ВЛ-4.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.8" style="max-height: 40px;"></td><td>ВЛ-4.8</td><td>480</td><td>42,4</td><td>26</td><td>60</td><td>7 320 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.8', -1)">-</button><input type="number" id="VL-4.8-qty" value="1" min="1" max="99" data-price="7320"><button onclick="changeQuantity('VL-4.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.8" data-item-name="ВЛ-4.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-4.9" style="max-height: 40px;"></td><td>ВЛ-4.9</td><td>490</td><td>42,4</td><td>26</td><td>61</td><td>7 485 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-4.9', -1)">-</button><input type="number" id="VL-4.9-qty" value="1" min="1" max="99" data-price="7485"><button onclick="changeQuantity('VL-4.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-4.9" data-item-name="ВЛ-4.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-5 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5" style="max-height: 40px;"></td><td>ВЛ-5</td><td>500</td><td>42,4</td><td>26</td><td>64</td><td>7 635 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5', -1)">-</button><input type="number" id="VL-5-qty" value="1" min="1" max="99" data-price="7635"><button onclick="changeQuantity('VL-5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5" data-item-name="ВЛ-5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.1" style="max-height: 40px;"></td><td>ВЛ-5.1</td><td>510</td><td>42,4</td><td>26</td><td>65</td><td>7 775 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.1', -1)">-</button><input type="number" id="VL-5.1-qty" value="1" min="1" max="99" data-price="7775"><button onclick="changeQuantity('VL-5.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.1" data-item-name="ВЛ-5.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.2" style="max-height: 40px;"></td><td>ВЛ-5.2</td><td>520</td><td>42,4</td><td>26</td><td>66</td><td>7 920 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.2', -1)">-</button><input type="number" id="VL-5.2-qty" value="1" min="1" max="99" data-price="7920"><button onclick="changeQuantity('VL-5.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.2" data-item-name="ВЛ-5.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.3" style="max-height: 40px;"></td><td>ВЛ-5.3</td><td>530</td><td>42,4</td><td>26</td><td>67</td><td>8 075 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.3', -1)">-</button><input type="number" id="VL-5.3-qty" value="1" min="1" max="99" data-price="8075"><button onclick="changeQuantity('VL-5.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.3" data-item-name="ВЛ-5.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.4" style="max-height: 40px;"></td><td>ВЛ-5.4</td><td>540</td><td>42,4</td><td>26</td><td>68</td><td>8 225 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.4', -1)">-</button><input type="number" id="VL-5.4-qty" value="1" min="1" max="99" data-price="8225"><button onclick="changeQuantity('VL-5.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.4" data-item-name="ВЛ-5.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.5" style="max-height: 40px;"></td><td>ВЛ-5.5</td><td>550</td><td>42,4</td><td>26</td><td>71</td><td>8 385 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.5', -1)">-</button><input type="number" id="VL-5.5-qty" value="1" min="1" max="99" data-price="8385"><button onclick="changeQuantity('VL-5.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.5" data-item-name="ВЛ-5.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.6" style="max-height: 40px;"></td><td>ВЛ-5.6</td><td>560</td><td>42,4</td><td>26</td><td>72</td><td>8 540 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.6', -1)">-</button><input type="number" id="VL-5.6-qty" value="1" min="1" max="99" data-price="8540"><button onclick="changeQuantity('VL-5.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.6" data-item-name="ВЛ-5.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.7" style="max-height: 40px;"></td><td>ВЛ-5.7</td><td>570</td><td>42,4</td><td>26</td><td>73</td><td>8 685 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.7', -1)">-</button><input type="number" id="VL-5.7-qty" value="1" min="1" max="99" data-price="8685"><button onclick="changeQuantity('VL-5.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.7" data-item-name="ВЛ-5.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.8" style="max-height: 40px;"></td><td>ВЛ-5.8</td><td>580</td><td>42,4</td><td>26</td><td>74</td><td>8 835 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.8', -1)">-</button><input type="number" id="VL-5.8-qty" value="1" min="1" max="99" data-price="8835"><button onclick="changeQuantity('VL-5.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.8" data-item-name="ВЛ-5.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-5.9" style="max-height: 40px;"></td><td>ВЛ-5.9</td><td>590</td><td>42,4</td><td>26</td><td>75</td><td>8 995 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-5.9', -1)">-</button><input type="number" id="VL-5.9-qty" value="1" min="1" max="99" data-price="8995"><button onclick="changeQuantity('VL-5.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-5.9" data-item-name="ВЛ-5.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-6 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6" style="max-height: 40px;"></td><td>ВЛ-6</td><td>600</td><td>42,4</td><td>26</td><td>77</td><td>9 135 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6', -1)">-</button><input type="number" id="VL-6-qty" value="1" min="1" max="99" data-price="9135"><button onclick="changeQuantity('VL-6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6" data-item-name="ВЛ-6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.1" style="max-height: 40px;"></td><td>ВЛ-6.1</td><td>610</td><td>42,4</td><td>26</td><td>78</td><td>9 295 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.1', -1)">-</button><input type="number" id="VL-6.1-qty" value="1" min="1" max="99" data-price="9295"><button onclick="changeQuantity('VL-6.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.1" data-item-name="ВЛ-6.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.2" style="max-height: 40px;"></td><td>ВЛ-6.2</td><td>620</td><td>42,4</td><td>26</td><td>79</td><td>9 445 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.2', -1)">-</button><input type="number" id="VL-6.2-qty" value="1" min="1" max="99" data-price="9445"><button onclick="changeQuantity('VL-6.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.2" data-item-name="ВЛ-6.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.3" style="max-height: 40px;"></td><td>ВЛ-6.3</td><td>630</td><td>42,4</td><td>26</td><td>80</td><td>9 595 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.3', -1)">-</button><input type="number" id="VL-6.3-qty" value="1" min="1" max="99" data-price="9595"><button onclick="changeQuantity('VL-6.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.3" data-item-name="ВЛ-6.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.4" style="max-height: 40px;"></td><td>ВЛ-6.4</td><td>640</td><td>42,4</td><td>26</td><td>81</td><td>9 760 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.4', -1)">-</button><input type="number" id="VL-6.4-qty" value="1" min="1" max="99" data-price="9760"><button onclick="changeQuantity('VL-6.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.4" data-item-name="ВЛ-6.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.5" style="max-height: 40px;"></td><td>ВЛ-6.5</td><td>650</td><td>42,4</td><td>26</td><td>82</td><td>9 910 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.5', -1)">-</button><input type="number" id="VL-6.5-qty" value="1" min="1" max="99" data-price="9910"><button onclick="changeQuantity('VL-6.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.5" data-item-name="ВЛ-6.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.6" style="max-height: 40px;"></td><td>ВЛ-6.6</td><td>660</td><td>42,4</td><td>26</td><td>83</td><td>10 055 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.6', -1)">-</button><input type="number" id="VL-6.6-qty" value="1" min="1" max="99" data-price="10055"><button onclick="changeQuantity('VL-6.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.6" data-item-name="ВЛ-6.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.7" style="max-height: 40px;"></td><td>ВЛ-6.7</td><td>670</td><td>42,4</td><td>26</td><td>84</td><td>10 215 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.7', -1)">-</button><input type="number" id="VL-6.7-qty" value="1" min="1" max="99" data-price="10215"><button onclick="changeQuantity('VL-6.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.7" data-item-name="ВЛ-6.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.8" style="max-height: 40px;"></td><td>ВЛ-6.8</td><td>680</td><td>42,4</td><td>26</td><td>85</td><td>10 360 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.8', -1)">-</button><input type="number" id="VL-6.8-qty" value="1" min="1" max="99" data-price="10360"><button onclick="changeQuantity('VL-6.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.8" data-item-name="ВЛ-6.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-6.9" style="max-height: 40px;"></td><td>ВЛ-6.9</td><td>690</td><td>42,4</td><td>26</td><td>86</td><td>10 520 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-6.9', -1)">-</button><input type="number" id="VL-6.9-qty" value="1" min="1" max="99" data-price="10520"><button onclick="changeQuantity('VL-6.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-6.9" data-item-name="ВЛ-6.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-7 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7" style="max-height: 40px;"></td><td>ВЛ-7</td><td>700</td><td>42,4</td><td>26</td><td>89</td><td>10 665 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7', -1)">-</button><input type="number" id="VL-7-qty" value="1" min="1" max="99" data-price="10665"><button onclick="changeQuantity('VL-7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7" data-item-name="ВЛ-7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.1" style="max-height: 40px;"></td><td>ВЛ-7.1</td><td>710</td><td>42,4</td><td>26</td><td>90</td><td>10 810 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.1', -1)">-</button><input type="number" id="VL-7.1-qty" value="1" min="1" max="99" data-price="10810"><button onclick="changeQuantity('VL-7.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.1" data-item-name="ВЛ-7.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.2" style="max-height: 40px;"></td><td>ВЛ-7.2</td><td>720</td><td>42,4</td><td>26</td><td>91</td><td>10 970 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.2', -1)">-</button><input type="number" id="VL-7.2-qty" value="1" min="1" max="99" data-price="10970"><button onclick="changeQuantity('VL-7.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.2" data-item-name="ВЛ-7.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.3" style="max-height: 40px;"></td><td>ВЛ-7.3</td><td>730</td><td>42,4</td><td>26</td><td>92</td><td>11 115 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.3', -1)">-</button><input type="number" id="VL-7.3-qty" value="1" min="1" max="99" data-price="11115"><button onclick="changeQuantity('VL-7.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.3" data-item-name="ВЛ-7.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.4" style="max-height: 40px;"></td><td>ВЛ-7.4</td><td>740</td><td>42,4</td><td>26</td><td>93</td><td>11 275 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.4', -1)">-</button><input type="number" id="VL-7.4-qty" value="1" min="1" max="99" data-price="11275"><button onclick="changeQuantity('VL-7.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.4" data-item-name="ВЛ-7.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.5" style="max-height: 40px;"></td><td>ВЛ-7.5</td><td>750</td><td>42,4</td><td>26</td><td>94</td><td>11 425 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.5', -1)">-</button><input type="number" id="VL-7.5-qty" value="1" min="1" max="99" data-price="11425"><button onclick="changeQuantity('VL-7.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.5" data-item-name="ВЛ-7.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.6" style="max-height: 40px;"></td><td>ВЛ-7.6</td><td>760</td><td>42,4</td><td>26</td><td>95</td><td>11 580 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.6', -1)">-</button><input type="number" id="VL-7.6-qty" value="1" min="1" max="99" data-price="11580"><button onclick="changeQuantity('VL-7.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.6" data-item-name="ВЛ-7.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.7" style="max-height: 40px;"></td><td>ВЛ-7.7</td><td>770</td><td>42,4</td><td>26</td><td>96</td><td>11 720 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.7', -1)">-</button><input type="number" id="VL-7.7-qty" value="1" min="1" max="99" data-price="11720"><button onclick="changeQuantity('VL-7.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.7" data-item-name="ВЛ-7.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.8" style="max-height: 40px;"></td><td>ВЛ-7.8</td><td>780</td><td>42,4</td><td>26</td><td>97</td><td>11 875 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.8', -1)">-</button><input type="number" id="VL-7.8-qty" value="1" min="1" max="99" data-price="11875"><button onclick="changeQuantity('VL-7.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.8" data-item-name="ВЛ-7.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-7.9" style="max-height: 40px;"></td><td>ВЛ-7.9</td><td>790</td><td>42,4</td><td>26</td><td>98</td><td>12 025 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-7.9', -1)">-</button><input type="number" id="VL-7.9-qty" value="1" min="1" max="99" data-price="12025"><button onclick="changeQuantity('VL-7.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-7.9" data-item-name="ВЛ-7.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-8 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8" style="max-height: 40px;"></td><td>ВЛ-8</td><td>800</td><td>42,4</td><td>26</td><td>100</td><td>12 180 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8', -1)">-</button><input type="number" id="VL-8-qty" value="1" min="1" max="99" data-price="12180"><button onclick="changeQuantity('VL-8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8" data-item-name="ВЛ-8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.1" style="max-height: 40px;"></td><td>ВЛ-8.1</td><td>810</td><td>42,4</td><td>26</td><td>101</td><td>12 325 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.1', -1)">-</button><input type="number" id="VL-8.1-qty" value="1" min="1" max="99" data-price="12325"><button onclick="changeQuantity('VL-8.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.1" data-item-name="ВЛ-8.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.2" style="max-height: 40px;"></td><td>ВЛ-8.2</td><td>820</td><td>42,4</td><td>26</td><td>102</td><td>12 470 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.2', -1)">-</button><input type="number" id="VL-8.2-qty" value="1" min="1" max="99" data-price="12470"><button onclick="changeQuantity('VL-8.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.2" data-item-name="ВЛ-8.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.3" style="max-height: 40px;"></td><td>ВЛ-8.3</td><td>830</td><td>42,4</td><td>26</td><td>103</td><td>12 640 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.3', -1)">-</button><input type="number" id="VL-8.3-qty" value="1" min="1" max="99" data-price="12640"><button onclick="changeQuantity('VL-8.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.3" data-item-name="ВЛ-8.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.4" style="max-height: 40px;"></td><td>ВЛ-8.4</td><td>840</td><td>42,4</td><td>26</td><td>104</td><td>12 780 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.4', -1)">-</button><input type="number" id="VL-8.4-qty" value="1" min="1" max="99" data-price="12780"><button onclick="changeQuantity('VL-8.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.4" data-item-name="ВЛ-8.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.5" style="max-height: 40px;"></td><td>ВЛ-8.5</td><td>850</td><td>42,4</td><td>26</td><td>105</td><td>12 945 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.5', -1)">-</button><input type="number" id="VL-8.5-qty" value="1" min="1" max="99" data-price="12945"><button onclick="changeQuantity('VL-8.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.5" data-item-name="ВЛ-8.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.6" style="max-height: 40px;"></td><td>ВЛ-8.6</td><td>860</td><td>42,4</td><td>26</td><td>106</td><td>13 095 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.6', -1)">-</button><input type="number" id="VL-8.6-qty" value="1" min="1" max="99" data-price="13095"><button onclick="changeQuantity('VL-8.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.6" data-item-name="ВЛ-8.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.7" style="max-height: 40px;"></td><td>ВЛ-8.7</td><td>870</td><td>42,4</td><td>26</td><td>107</td><td>13 245 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.7', -1)">-</button><input type="number" id="VL-8.7-qty" value="1" min="1" max="99" data-price="13245"><button onclick="changeQuantity('VL-8.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.7" data-item-name="ВЛ-8.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.8" style="max-height: 40px;"></td><td>ВЛ-8.8</td><td>880</td><td>42,4</td><td>26</td><td>108</td><td>13 400 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.8', -1)">-</button><input type="number" id="VL-8.8-qty" value="1" min="1" max="99" data-price="13400"><button onclick="changeQuantity('VL-8.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.8" data-item-name="ВЛ-8.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-8.9" style="max-height: 40px;"></td><td>ВЛ-8.9</td><td>890</td><td>42,4</td><td>26</td><td>109</td><td>13 545 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-8.9', -1)">-</button><input type="number" id="VL-8.9-qty" value="1" min="1" max="99" data-price="13545"><button onclick="changeQuantity('VL-8.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-8.9" data-item-name="ВЛ-8.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-9 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9" style="max-height: 40px;"></td><td>ВЛ-9</td><td>900</td><td>42,4</td><td>26</td><td>112</td><td>13 695 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9', -1)">-</button><input type="number" id="VL-9-qty" value="1" min="1" max="99" data-price="13695"><button onclick="changeQuantity('VL-9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9" data-item-name="ВЛ-9">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.1" style="max-height: 40px;"></td><td>ВЛ-9.1</td><td>910</td><td>42,4</td><td>26</td><td>113</td><td>13 845 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.1', -1)">-</button><input type="number" id="VL-9.1-qty" value="1" min="1" max="99" data-price="13845"><button onclick="changeQuantity('VL-9.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.1" data-item-name="ВЛ-9.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.2" style="max-height: 40px;"></td><td>ВЛ-9.2</td><td>920</td><td>42,4</td><td>26</td><td>114</td><td>14 005 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.2', -1)">-</button><input type="number" id="VL-9.2-qty" value="1" min="1" max="99" data-price="14005"><button onclick="changeQuantity('VL-9.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.2" data-item-name="ВЛ-9.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.3" style="max-height: 40px;"></td><td>ВЛ-9.3</td><td>930</td><td>42,4</td><td>26</td><td>115</td><td>14 155 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.3', -1)">-</button><input type="number" id="VL-9.3-qty" value="1" min="1" max="99" data-price="14155"><button onclick="changeQuantity('VL-9.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.3" data-item-name="ВЛ-9.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.4" style="max-height: 40px;"></td><td>ВЛ-9.4</td><td>940</td><td>42,4</td><td>26</td><td>116</td><td>14 305 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.4', -1)">-</button><input type="number" id="VL-9.4-qty" value="1" min="1" max="99" data-price="14305"><button onclick="changeQuantity('VL-9.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.4" data-item-name="ВЛ-9.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.5" style="max-height: 40px;"></td><td>ВЛ-9.5</td><td>950</td><td>42,4</td><td>26</td><td>117</td><td>14 465 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.5', -1)">-</button><input type="number" id="VL-9.5-qty" value="1" min="1" max="99" data-price="14465"><button onclick="changeQuantity('VL-9.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.5" data-item-name="ВЛ-9.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.6" style="max-height: 40px;"></td><td>ВЛ-9.6</td><td>960</td><td>42,4</td><td>26</td><td>118</td><td>14 615 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.6', -1)">-</button><input type="number" id="VL-9.6-qty" value="1" min="1" max="99" data-price="14615"><button onclick="changeQuantity('VL-9.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.6" data-item-name="ВЛ-9.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.7" style="max-height: 40px;"></td><td>ВЛ-9.7</td><td>970</td><td>42,4</td><td>26</td><td>119</td><td>14 760 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.7', -1)">-</button><input type="number" id="VL-9.7-qty" value="1" min="1" max="99" data-price="14760"><button onclick="changeQuantity('VL-9.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.7" data-item-name="ВЛ-9.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.8" style="max-height: 40px;"></td><td>ВЛ-9.8</td><td>980</td><td>42,4</td><td>26</td><td>120</td><td>14 915 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.8', -1)">-</button><input type="number" id="VL-9.8-qty" value="1" min="1" max="99" data-price="14915"><button onclick="changeQuantity('VL-9.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.8" data-item-name="ВЛ-9.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-9.9" style="max-height: 40px;"></td><td>ВЛ-9.9</td><td>990</td><td>42,4</td><td>26</td><td>121</td><td>15 060 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-9.9', -1)">-</button><input type="number" id="VL-9.9-qty" value="1" min="1" max="99" data-price="15060"><button onclick="changeQuantity('VL-9.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-9.9" data-item-name="ВЛ-9.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-10 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10" style="max-height: 40px;"></td><td>ВЛ-10</td><td>1000</td><td>42,4</td><td>26</td><td>124</td><td>15 220 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10', -1)">-</button><input type="number" id="VL-10-qty" value="1" min="1" max="99" data-price="15220"><button onclick="changeQuantity('VL-10', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10" data-item-name="ВЛ-10">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.1" style="max-height: 40px;"></td><td>ВЛ-10.1</td><td>1010</td><td>42,4</td><td>26</td><td>125</td><td>15 375 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.1', -1)">-</button><input type="number" id="VL-10.1-qty" value="1" min="1" max="99" data-price="15375"><button onclick="changeQuantity('VL-10.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.1" data-item-name="ВЛ-10.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.2" style="max-height: 40px;"></td><td>ВЛ-10.2</td><td>1020</td><td>42,4</td><td>26</td><td>126</td><td>15 525 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.2', -1)">-</button><input type="number" id="VL-10.2-qty" value="1" min="1" max="99" data-price="15525"><button onclick="changeQuantity('VL-10.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.2" data-item-name="ВЛ-10.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.3" style="max-height: 40px;"></td><td>ВЛ-10.3</td><td>1030</td><td>42,4</td><td>26</td><td>127</td><td>15 665 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.3', -1)">-</button><input type="number" id="VL-10.3-qty" value="1" min="1" max="99" data-price="15665"><button onclick="changeQuantity('VL-10.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.3" data-item-name="ВЛ-10.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.4" style="max-height: 40px;"></td><td>ВЛ-10.4</td><td>1040</td><td>42,4</td><td>26</td><td>128</td><td>15 820 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.4', -1)">-</button><input type="number" id="VL-10.4-qty" value="1" min="1" max="99" data-price="15820"><button onclick="changeQuantity('VL-10.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.4" data-item-name="ВЛ-10.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.5" style="max-height: 40px;"></td><td>ВЛ-10.5</td><td>1050</td><td>42,4</td><td>26</td><td>129</td><td>15 975 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.5', -1)">-</button><input type="number" id="VL-10.5-qty" value="1" min="1" max="99" data-price="15975"><button onclick="changeQuantity('VL-10.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.5" data-item-name="ВЛ-10.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.6" style="max-height: 40px;"></td><td>ВЛ-10.6</td><td>1060</td><td>42,4</td><td>26</td><td>130</td><td>16 115 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.6', -1)">-</button><input type="number" id="VL-10.6-qty" value="1" min="1" max="99" data-price="16115"><button onclick="changeQuantity('VL-10.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.6" data-item-name="ВЛ-10.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.7" style="max-height: 40px;"></td><td>ВЛ-10.7</td><td>1070</td><td>42,4</td><td>26</td><td>131</td><td>16 290 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.7', -1)">-</button><input type="number" id="VL-10.7-qty" value="1" min="1" max="99" data-price="16290"><button onclick="changeQuantity('VL-10.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.7" data-item-name="ВЛ-10.7">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.8" style="max-height: 40px;"></td><td>ВЛ-10.8</td><td>1080</td><td>42,4</td><td>26</td><td>132</td><td>16 430 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.8', -1)">-</button><input type="number" id="VL-10.8-qty" value="1" min="1" max="99" data-price="16430"><button onclick="changeQuantity('VL-10.8', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.8" data-item-name="ВЛ-10.8">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-10.9" style="max-height: 40px;"></td><td>ВЛ-10.9</td><td>1090</td><td>42,4</td><td>26</td><td>133</td><td>16 580 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-10.9', -1)">-</button><input type="number" id="VL-10.9-qty" value="1" min="1" max="99" data-price="16580"><button onclick="changeQuantity('VL-10.9', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-10.9" data-item-name="ВЛ-10.9">🛒</button></td></tr>
+                
+                <!-- ВЛ-11 серия -->
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11" style="max-height: 40px;"></td><td>ВЛ-11</td><td>1100</td><td>42,4</td><td>26</td><td>135</td><td>16 730 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11', -1)">-</button><input type="number" id="VL-11-qty" value="1" min="1" max="99" data-price="16730"><button onclick="changeQuantity('VL-11', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11" data-item-name="ВЛ-11">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.1" style="max-height: 40px;"></td><td>ВЛ-11.1</td><td>1110</td><td>42,4</td><td>26</td><td>136</td><td>16 880 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.1', -1)">-</button><input type="number" id="VL-11.1-qty" value="1" min="1" max="99" data-price="16880"><button onclick="changeQuantity('VL-11.1', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.1" data-item-name="ВЛ-11.1">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.2" style="max-height: 40px;"></td><td>ВЛ-11.2</td><td>1120</td><td>42,4</td><td>26</td><td>137</td><td>17 040 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.2', -1)">-</button><input type="number" id="VL-11.2-qty" value="1" min="1" max="99" data-price="17040"><button onclick="changeQuantity('VL-11.2', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.2" data-item-name="ВЛ-11.2">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.3" style="max-height: 40px;"></td><td>ВЛ-11.3</td><td>1130</td><td>42,4</td><td>26</td><td>138</td><td>17 190 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.3', -1)">-</button><input type="number" id="VL-11.3-qty" value="1" min="1" max="99" data-price="17190"><button onclick="changeQuantity('VL-11.3', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.3" data-item-name="ВЛ-11.3">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.4" style="max-height: 40px;"></td><td>ВЛ-11.4</td><td>1140</td><td>42,4</td><td>26</td><td>139</td><td>17 345 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.4', -1)">-</button><input type="number" id="VL-11.4-qty" value="1" min="1" max="99" data-price="17345"><button onclick="changeQuantity('VL-11.4', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.4" data-item-name="ВЛ-11.4">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.5" style="max-height: 40px;"></td><td>ВЛ-11.5</td><td>1150</td><td>42,4</td><td>26</td><td>140</td><td>17 490 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.5', -1)">-</button><input type="number" id="VL-11.5-qty" value="1" min="1" max="99" data-price="17490"><button onclick="changeQuantity('VL-11.5', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.5" data-item-name="ВЛ-11.5">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.6" style="max-height: 40px;"></td><td>ВЛ-11.6</td><td>1160</td><td>42,4</td><td>26</td><td>141</td><td>17 640 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.6', -1)">-</button><input type="number" id="VL-11.6-qty" value="1" min="1" max="99" data-price="17640"><button onclick="changeQuantity('VL-11.6', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.6" data-item-name="ВЛ-11.6">🛒</button></td></tr>
+                <tr><td><img src="images/vdl/vdl-mini.png" alt="ВЛ-11.7" style="max-height: 40px;"></td><td>ВЛ-11.7</td><td>1170</td><td>42,4</td><td>26</td><td>142</td><td>17 795 руб.</td><td>1 шт</td><td><span class="availability-icon">✅</span></td><td class="cart-cell"><div class="quantity-control"><button onclick="changeQuantity('VL-11.7', -1)">-</button><input type="number" id="VL-11.7-qty" value="1" min="1" max="99" data-price="17795"><button onclick="changeQuantity('VL-11.7', 1)">+</button></div></td><td><button class="cart-button" data-item-id="VL-11.7" data-item-name="ВЛ-11.7">🛒</button></td></tr>
+                
+            </tbody>
+        </table>
+        <p style="font-size: 0.85em; margin-top: 10px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
+    
+        <section id="contact-summary" style="padding: 40px 0; background-color: #e9e9e9; border-top: 2px solid #004d80; margin-top: 40px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Оформление заказа и консультация</h2>
+            <p style="text-align: center;">На данный момент в корзине <strong id="cart-count-summary">0</strong> штук товаров.</p>
+            
+            <div id="contact-details" style="max-width: 800px; margin: 20px auto; background-color: white; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                <p style="font-weight: bold; color: #004d80;">Для оформления заказа и детального просмотра выбранных товаров, пожалуйста, перейдите в корзину или свяжитесь с нашим менеджером.</p>
+                <p>Наши специалисты оперативно обработают ваш запрос, уточнят финальную стоимость (с учетом объема и доставки) и помогут завершить покупку.</p>
+                <p style="margin-top: 15px;">Вы можете оставить заявку на главной странице или позвонить по телефону:</p>
+                <p style="font-size: 1.2em; font-weight: bold; color: #ff9900; text-align: center;">+7 (XXX) XXX-XX-XX</p>
+            </div>
+            
+            <p style="text-align: center;">
+                <a href="cart.html" class="cta-button" style="margin-top: 0; display: inline-block; margin-right: 15px;">Перейти в корзину</a>
+                <a href="index.html#contacts" class="cta-button" style="margin-top: 0; display: inline-block; background-color: #004d80;">Оставить заявку на звонок</a>
+            </p>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Ваша Компания. Все права защищены.
+        </div>
+    </footer>
+    
+    <div id="productModal" class="lightbox-modal" onclick="closeModal()">
+        <span class="close-btn" title="Закрыть">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 id="modalTitle" style="text-align: center; color: white; background-color: #004d80; padding: 10px 0; margin: 0;">Просмотр изображений</h3>
+            
+            <div class="gallery-container" id="galleryContainer">
+                <div class="gallery-item"><img id="modalImage0" src="images/vdl/vdl-large.png" alt="Основное фото водопроводной лестницы"></div>
+                <div class="gallery-item"><img id="modalImage1" src="images/vdl/vdl-drawing.png" alt="Чертеж водопроводной лестницы"></div>
+            </div>
+
+            <div class="modal-nav">
+                <button onclick="scrollToSlide(0)">Основное фото</button>
+                <button onclick="scrollToSlide(1)">Чертеж</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // === 1. Глобальные переменные ===
+        const mainImage = document.getElementById('mainImage');
+        const mainImageWrapper = document.getElementById('mainImageWrapper');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const modal = document.getElementById("productModal");
+        const galleryContainer = document.getElementById("galleryContainer");
+        
+        // === 2. ФУНКЦИИ ГАЛЕРЕИ И ЛАЙТБОКСА ===
+
+        function changeImage(src, index) {
+            mainImage.src = src;
+            
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[index].classList.add('active');
+
+            mainImageWrapper.setAttribute('data-current-slide', index);
+        }
+
+        mainImageWrapper.onclick = function() {
+            openModal();
+        }
+
+        function openModal() {
+            modal.style.display = "block";
+            const currentSlide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+            scrollToSlide(currentSlide);
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        
+        function scrollToSlide(index) {
+            const itemWidth = galleryContainer.clientWidth;
+            galleryContainer.scrollTo({
+                left: itemWidth * index,
+                behavior: 'smooth'
+            });
+        }
+        
+        // =======================================================
+        // === 3. ФУНКЦИИ КОРЗИНЫ ===
+        // =======================================================
+
+        // Функция для загрузки данных корзины
+        function loadCart() {
+            const cartString = localStorage.getItem('cart') || '{}';
+            try {
+                return JSON.parse(cartString);
+            } catch (e) {
+                console.error("Ошибка при парсинге корзины из localStorage:", e);
+                return {}; 
+            }
+        }
+
+        // Функция для сохранения данных корзины
+        function saveCart(cart) {
+            try {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay(cart);
+                return true;
+            } catch (e) {
+                console.error("Ошибка сохранения корзины:", e);
+                alert('Ошибка сохранения корзины. Проверьте настройки браузера.');
+                return false;
+            }
+        }
+        
+        // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ ОТОБРАЖЕНИЯ
+        function updateCartDisplay(cart) {
+            let totalQuantity = 0;
+            // Считаем общее количество штук товаров
+            for (const itemId in cart) {
+                if (cart.hasOwnProperty(itemId)) {
+                    totalQuantity += cart[itemId].quantity;
+                }
+            }
+            
+            // Обновляем счетчик в шапке
+            document.getElementById('cart-count-page').textContent = totalQuantity;
+            // Обновляем счетчик в секции "Оформление заказа"
+            document.getElementById('cart-count-summary').textContent = totalQuantity;
+
+            // Обновление значений в полях ввода, синхронизация
+            document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
+                const itemId = input.id.replace('-qty', '');
+                // Устанавливаем количество из корзины или оставляем 1, если товара там нет
+                input.value = cart[itemId] ? cart[itemId].quantity : 1; 
+            });
+        }
+
+        // Инициализация при загрузке страницы
+        window.onload = function() {
+            const initialCart = loadCart();
+            updateCartDisplay(initialCart);
+            
+            // Установка обработчиков событий для кнопок "🛒"
+            document.querySelectorAll('.cart-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = this.getAttribute('data-item-id');
+                    const itemName = this.getAttribute('data-item-name');
+                    const quantityInput = document.getElementById(itemId + '-qty');
+                    const quantity = parseInt(quantityInput.value);
+                    const priceText = this.closest('tr').querySelector('td:nth-child(7)').textContent.replace(/[^\d]/g, '');
+                    const price = parseFloat(priceText) || 0;
+                    
+                    addItemToCart(itemId, itemName, quantity, price);
+                });
+            });
+
+            // Обработчик события для ввода количества
+            document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
+                input.addEventListener('change', function(event) {
+                    let val = parseInt(this.value);
+                    if (isNaN(val) || val < 1) {
+                        val = 1;
+                    }
+                    if (val > 99) { 
+                        val = 99; 
+                    }
+                    this.value = val;
+                    
+                    // Обновляем корзину при изменении поля ввода, только если товар УЖЕ в корзине
+                    const itemId = this.id.replace('-qty', '');
+                    const cart = loadCart();
+                    if (cart[itemId]) {
+                        cart[itemId].quantity = val;
+                        saveCart(cart);
+                    }
+                });
+            });
+        }
+
+        // Добавление товара в корзину
+        function addItemToCart(id, name, quantity, price) {
+            try {
+                const cart = loadCart(); 
+                
+                // Если товар уже есть в корзине, добавляем к существующему количеству
+                if (cart[id]) {
+                    cart[id].quantity += quantity;
+                } else {
+                    // Если товара нет, добавляем новый
+                    cart[id] = { 
+                        id: id,
+                        name: name,
+                        quantity: quantity,
+                        price: price
+                    };
+                }
+                
+                if (saveCart(cart)) {
+                    alert(`Добавлено в корзину: ${quantity} шт. ${name}. Всего в корзине: ${cart[id].quantity} шт.`);
+                }
+            } catch (error) {
+                console.error('Ошибка добавления в корзину:', error);
+                alert('Произошла ошибка при добавлении товара в корзину');
+            }
+        }
+        
+        // Изменение количества товара на странице (с кнопок +/-)
+        function changeQuantity(id, delta) {
+            const quantityInput = document.getElementById(id + '-qty');
+            let currentQuantity = parseInt(quantityInput.value);
+            
+            // Новое количество
+            let newQuantity = currentQuantity + delta;
+            
+            // Ограничения
+            if (newQuantity < 1) newQuantity = 1;
+            if (newQuantity > 99) newQuantity = 99;
+            
+            quantityInput.value = newQuantity;
+            
+            // Синхронизация с корзиной (если товар уже добавлен!)
+            const cart = loadCart();
+            if (cart[id]) {
+                cart[id].quantity = newQuantity;
+                saveCart(cart);
+            }
+        }
+    </script>
+
+</body>
+</html>
