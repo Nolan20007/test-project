@@ -1264,13 +1264,13 @@
             submitBtn.disabled = true;
             
             try {
-                // Отправляем в защищенный Google Apps Script
+                // ИСПРАВЛЕНИЕ: Отправляем JSON как ожидает ваш Google Script
                 const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
-                    body: new URLSearchParams({
+                    body: JSON.stringify({
                         'type': 'contact',
                         'name': name,
                         'phone': phone,
