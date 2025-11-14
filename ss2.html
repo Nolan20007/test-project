@@ -5,307 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Стальная стремянка для колодцев ТПР 902-09-22.84</title>
     <style>
-        /* Общие стили */
+        /* Все стили остаются без изменений */
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
         .container { max-width: 1200px; margin: auto; padding: 0 20px; }
         .header { background-color: #004d80; color: white; padding: 20px 0; }
         .header h1 { margin: 0; font-size: 2.2em; text-align: center; }
-        
-        /* Стили для навигации в шапке (включая ссылку на cart.html) */
-        .header-nav {
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .back-link { 
-            color: #ff9900; 
-            text-decoration: none; 
-            font-weight: bold; 
-            display: inline-block; 
-            transition: color 0.3s; 
-        }
+        .header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .back-link { color: #ff9900; text-decoration: none; font-weight: bold; display: inline-block; transition: color 0.3s; }
         .back-link:hover { color: #e68a00; }
-        .cart-link {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 8px 15px;
-            background-color: #ff9900;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .cart-link:hover {
-            background-color: #e68a00;
-        }
-        
+        .cart-link { color: white; text-decoration: none; font-weight: bold; padding: 8px 15px; background-color: #ff9900; border-radius: 4px; transition: background-color 0.3s; }
+        .cart-link:hover { background-color: #e68a00; }
         .product-details { padding: 40px 0; }
         .product-details h2 { color: #004d80; font-size: 1.8em; margin-top: 30px; border-bottom: 2px solid #004d80; padding-bottom: 5px; }
         .product-details p { line-height: 1.6; margin-bottom: 15px; }
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            margin-top: 30px;
-        }
-        
-        /* =======================================================
-           1. СТИЛИ ГАЛЕРЕИ 
-           ======================================================= */
-        .image-section { 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        /* Основное фото */
-        .main-image-wrapper {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid #ddd;
-        }
-        .main-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-        }
-
-        /* Миниатюры */
-        .thumbnails-control {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-        .thumbnail:hover, .thumbnail.active {
-            border-color: #ff9900;
-        }
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* =======================================================
-           2. СТИЛИ МОДАЛЬНОГО ОКНА 
-           ======================================================= */
-        .lightbox-modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; top: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0, 0, 0, 0.9);
-            padding-top: 60px; 
-        }
-        .modal-content { 
-            margin: auto; 
-            display: block; 
-            width: 90%; 
-            max-width: 1000px; 
-            background-color: white; 
-            border-radius: 8px; 
-            overflow: hidden; 
-        }
-        .close-btn { 
-            position: absolute; 
-            top: 15px; 
-            right: 35px; 
-            color: #f1f1f1; 
-            font-size: 40px; 
-            font-weight: bold; 
-            cursor: pointer; 
-        }
-        .gallery-container { 
-            display: flex; 
-            overflow-x: scroll; 
-            scroll-snap-type: x mandatory; 
-        }
-        .gallery-item { 
-            flex: 0 0 100%; 
-            scroll-snap-align: start; 
-            min-width: 100%; 
-            box-sizing: border-box; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh; 
-        }
-        .gallery-item img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            height: auto; 
-            display: block; 
-            object-fit: contain; 
-        }
+        .content-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 30px; }
+        .image-section { display: flex; flex-direction: column; align-items: center; }
+        .main-image-wrapper { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 10px; overflow: hidden; cursor: pointer; border: 1px solid #ddd; }
+        .main-image { width: 100%; height: auto; display: block; object-fit: contain; }
+        .thumbnails-control { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        .thumbnail { width: 80px; height: 80px; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+        .thumbnail:hover, .thumbnail.active { border-color: #ff9900; }
+        .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+        .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); padding-top: 60px; }
+        .modal-content { margin: auto; display: block; width: 90%; max-width: 1000px; background-color: white; border-radius: 8px; overflow: hidden; }
+        .close-btn { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
+        .gallery-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; }
+        .gallery-item { flex: 0 0 100%; scroll-snap-align: start; min-width: 100%; box-sizing: border-box; display: flex; justify-content: center; align-items: center; height: 80vh; }
+        .gallery-item img { max-width: 100%; max-height: 100%; height: auto; display: block; object-fit: contain; }
         .modal-nav { text-align: center; padding: 10px; background-color: #eee; }
         .modal-nav button { background-color: #004d80; color: white; border: none; padding: 8px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer; }
-
-        /* ОСТАЛЬНЫЕ СТИЛИ */
         .characteristics-list { list-style: none; padding: 0; }
-        .characteristics-list li { 
-            margin-bottom: 10px; 
-            padding-left: 20px; 
-            position: relative; 
-            display: grid; 
-            grid-template-columns: 20px 200px 1fr; 
-            gap: 5px; 
-            line-height: 1.4;
-        } 
-        .characteristics-list li strong { 
-            font-weight: bold; 
-            color: #004d80; 
-            grid-column: 2 / 3; 
-            align-self: start;
-        }
-        .characteristics-list li::before {
-            content: '•';
-            color: #ff9900;
-            font-weight: bold;
-            grid-column: 1 / 2; 
-            align-self: start;
-        }
-        .characteristics-list li .description {
-            grid-column: 3 / 4; 
-            text-align: left;
-        }
+        .characteristics-list li { margin-bottom: 10px; padding-left: 20px; position: relative; display: grid; grid-template-columns: 20px 200px 1fr; gap: 5px; line-height: 1.4; } 
+        .characteristics-list li strong { font-weight: bold; color: #004d80; grid-column: 2 / 3; align-self: start; }
+        .characteristics-list li::before { content: '•'; color: #ff9900; font-weight: bold; grid-column: 1 / 2; align-self: start; }
+        .characteristics-list li .description { grid-column: 3 / 4; text-align: left; }
         .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; margin-top: 40px; }
-        
-        .nomenclature-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        .nomenclature-table th, .nomenclature-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .nomenclature-table th {
-            background-color: #004d80;
-            color: white;
-            font-weight: bold;
-        }
-        .nomenclature-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .nomenclature-table td:nth-child(2) {
-            font-weight: bold;
-            color: #004d80;
-        }
-        .nomenclature-table td:nth-child(7) {
-            font-weight: bold;
-            color: #cc0000; 
-            white-space: nowrap;
-        }
-        .nomenclature-table .availability-icon {
-            color: #4CAF50; 
-            font-size: 1.2em;
-        }
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .quantity-control button, .cart-button {
-            border: 1px solid #ccc;
-            background-color: #f0f0f0;
-            color: #333;
-            cursor: pointer;
-            padding: 5px 8px;
-            font-weight: bold;
-            line-height: 1;
-        }
-        .quantity-control input {
-            width: 30px;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-left: none;
-            border-right: none;
-            padding: 5px 0;
-            height: 28px;
-            box-sizing: border-box;
-            -moz-appearance: textfield; 
-        }
-        .cart-button {
-            background-color: #ffc107; 
-            border-color: #ffc107;
-            color: #333;
-            margin-left: 5px;
-            padding: 6px 10px;
-            border-radius: 4px;
-        }
-        .cart-button:hover {
-            background-color: #e0a800;
-        }
-        .advantages-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .advantages-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 8px;
-            line-height: 1.5;
-            font-size: 1.1em;
-        }
-        .advantages-list li::before {
-            content: "★"; 
-            color: #ff9900;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .cta-button {
-            display: inline-block;
-            text-align: center;
-            background-color: #ff9900;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
+        .nomenclature-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+        .nomenclature-table th, .nomenclature-table td { border: 1px solid #ddd; padding: 8px; text-align: center; vertical-align: middle; }
+        .nomenclature-table th { background-color: #004d80; color: white; font-weight: bold; }
+        .nomenclature-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .nomenclature-table td:nth-child(2) { font-weight: bold; color: #004d80; }
+        .nomenclature-table td:nth-child(7) { font-weight: bold; color: #cc0000; white-space: nowrap; }
+        .nomenclature-table .availability-icon { color: #4CAF50; font-size: 1.2em; }
+        .quantity-control { display: flex; align-items: center; justify-content: center; }
+        .quantity-control button, .cart-button { border: 1px solid #ccc; background-color: #f0f0f0; color: #333; cursor: pointer; padding: 5px 8px; font-weight: bold; line-height: 1; }
+        .quantity-control input { width: 30px; text-align: center; border: 1px solid #ccc; border-left: none; border-right: none; padding: 5px 0; height: 28px; box-sizing: border-box; -moz-appearance: textfield; }
+        .cart-button { background-color: #ffc107; border-color: #ffc107; color: #333; margin-left: 5px; padding: 6px 10px; border-radius: 4px; }
+        .cart-button:hover { background-color: #e0a800; }
+        .advantages-list { list-style: none; padding-left: 0; }
+        .advantages-list li { position: relative; padding-left: 25px; margin-bottom: 8px; line-height: 1.5; font-size: 1.1em; }
+        .advantages-list li::before { content: "★"; color: #ff9900; font-weight: bold; position: absolute; left: 0; top: 0; }
+        .cta-button { display: inline-block; text-align: center; background-color: #ff9900; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
         .cta-button:hover { background-color: #e68a00; }
+        .loading { text-align: center; padding: 20px; color: #666; }
         
-        /* Мобильная адаптивность для таблицы */
         @media (max-width: 900px) {
-            .content-grid {
-                grid-template-columns: 1fr; 
-            }
-            .nomenclature-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-                font-size: 12px;
-            }
-            .quantity-control input {
-                width: 25px;
-            }
-            .cart-button {
-                padding: 4px 8px;
-            }
+            .content-grid { grid-template-columns: 1fr; }
+            .nomenclature-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
+            .quantity-control input { width: 25px; }
+            .cart-button { padding: 4px 8px; }
         }
     </style>
 </head>
@@ -380,386 +138,10 @@
         <p>В нашей компании вы можете приобрести стальные стремянки ТПР 902-09-22.84 по наиболее доступной цене. Изделия изготавливаются из стали в строгом соответствии с ГОСТом, отличаясь повышенной надежностью и практичностью.</p>
         <p>Цена на стальную стремянку напрямую зависит от длины изделия. Мы предлагаем широкий ассортимент конструкций длиной от 60 до 600 см, что позволяет точно подобрать изделие в соответствии с глубиной конкретного колодца.</p>
         
-        <table class="nomenclature-table">
-            <thead>
-                <tr>
-                    <th>Фото</th>
-                    <th>Изделие</th>
-                    <th>Длина, см</th>
-                    <th>Ширина, см</th>
-                    <th>Высота, см</th>
-                    <th>Масса, кг</th>
-                    <th>Цена</th>
-                    <th>ед. измерения</th>
-                    <th>Наличие</th>
-                    <th>Количество</th>
-                    <th>Корзина</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-00" style="max-height: 40px;"></td>
-                    <td>С-1-00</td>
-                    <td>60</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>6,6</td>
-                    <td>970 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-00', -1)">-</button>
-                            <input type="number" id="C-1-00-qty" value="1" min="1" max="99" data-price="970">
-                            <button onclick="changeQuantity('C-1-00', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-00" data-item-name="С-1-00">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-01" style="max-height: 40px;"></td>
-                    <td>С-1-01</td>
-                    <td>90</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>9,7</td>
-                    <td>1 450 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-01', -1)">-</button>
-                            <input type="number" id="C-1-01-qty" value="1" min="1" max="99" data-price="1450">
-                            <button onclick="changeQuantity('C-1-01', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-01" data-item-name="С-1-01">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-02" style="max-height: 40px;"></td>
-                    <td>С-1-02</td>
-                    <td>120</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>12,9</td>
-                    <td>1 930 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-02', -1)">-</button>
-                            <input type="number" id="C-1-02-qty" value="1" min="1" max="99" data-price="1930">
-                            <button onclick="changeQuantity('C-1-02', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-02" data-item-name="С-1-02">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-03" style="max-height: 40px;"></td>
-                    <td>С-1-03</td>
-                    <td>150</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>16,2</td>
-                    <td>2 415 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-03', -1)">-</button>
-                            <input type="number" id="C-1-03-qty" value="1" min="1" max="99" data-price="2415">
-                            <button onclick="changeQuantity('C-1-03', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-03" data-item-name="С-1-03">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-04" style="max-height: 40px;"></td>
-                    <td>С-1-04</td>
-                    <td>180</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>19,5</td>
-                    <td>2 875 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-04', -1)">-</button>
-                            <input type="number" id="C-1-04-qty" value="1" min="1" max="99" data-price="2875">
-                            <button onclick="changeQuantity('C-1-04', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-04" data-item-name="С-1-04">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-05" style="max-height: 40px;"></td>
-                    <td>С-1-05</td>
-                    <td>210</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>22,7</td>
-                    <td>3 350 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-05', -1)">-</button>
-                            <input type="number" id="C-1-05-qty" value="1" min="1" max="99" data-price="3350">
-                            <button onclick="changeQuantity('C-1-05', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-05" data-item-name="С-1-05">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-06" style="max-height: 40px;"></td>
-                    <td>С-1-06</td>
-                    <td>240</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>25,9</td>
-                    <td>3 835 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-06', -1)">-</button>
-                            <input type="number" id="C-1-06-qty" value="1" min="1" max="99" data-price="3835">
-                            <button onclick="changeQuantity('C-1-06', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-06" data-item-name="С-1-06">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-07" style="max-height: 40px;"></td>
-                    <td>С-1-07</td>
-                    <td>270</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>29,2</td>
-                    <td>4 310 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-07', -1)">-</button>
-                            <input type="number" id="C-1-07-qty" value="1" min="1" max="99" data-price="4310">
-                            <button onclick="changeQuantity('C-1-07', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-07" data-item-name="С-1-07">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-08" style="max-height: 40px;"></td>
-                    <td>С-1-08</td>
-                    <td>300</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>32,4</td>
-                    <td>4 780 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-08', -1)">-</button>
-                            <input type="number" id="C-1-08-qty" value="1" min="1" max="99" data-price="4780">
-                            <button onclick="changeQuantity('C-1-08', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-08" data-item-name="С-1-08">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-09" style="max-height: 40px;"></td>
-                    <td>С-1-09</td>
-                    <td>330</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>35,7</td>
-                    <td>5 255 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-09', -1)">-</button>
-                            <input type="number" id="C-1-09-qty" value="1" min="1" max="99" data-price="5255">
-                            <button onclick="changeQuantity('C-1-09', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-09" data-item-name="С-1-09">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-10" style="max-height: 40px;"></td>
-                    <td>С-1-10</td>
-                    <td>360</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>38,9</td>
-                    <td>5 735 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-10', -1)">-</button>
-                            <input type="number" id="C-1-10-qty" value="1" min="1" max="99" data-price="5735">
-                            <button onclick="changeQuantity('C-1-10', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-10" data-item-name="С-1-10">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-11" style="max-height: 40px;"></td>
-                    <td>С-1-11</td>
-                    <td>390</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>42,1</td>
-                    <td>6 205 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-11', -1)">-</button>
-                            <input type="number" id="C-1-11-qty" value="1" min="1" max="99" data-price="6205">
-                            <button onclick="changeQuantity('C-1-11', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-11" data-item-name="С-1-11">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-12" style="max-height: 40px;"></td>
-                    <td>С-1-12</td>
-                    <td>420</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>45,4</td>
-                    <td>6 680 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-12', -1)">-</button>
-                            <input type="number" id="C-1-12-qty" value="1" min="1" max="99" data-price="6680">
-                            <button onclick="changeQuantity('C-1-12', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-12" data-item-name="С-1-12">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-13" style="max-height: 40px;"></td>
-                    <td>С-1-13</td>
-                    <td>450</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>48,6</td>
-                    <td>7 160 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-13', -1)">-</button>
-                            <input type="number" id="C-1-13-qty" value="1" min="1" max="99" data-price="7160">
-                            <button onclick="changeQuantity('C-1-13', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-13" data-item-name="С-1-13">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-14" style="max-height: 40px;"></td>
-                    <td>С-1-14</td>
-                    <td>480</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>51,9</td>
-                    <td>7 635 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-14', -1)">-</button>
-                            <input type="number" id="C-1-14-qty" value="1" min="1" max="99" data-price="7635">
-                            <button onclick="changeQuantity('C-1-14', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-14" data-item-name="С-1-14">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-15" style="max-height: 40px;"></td>
-                    <td>С-1-15</td>
-                    <td>510</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>55,1</td>
-                    <td>8 120 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-15', -1)">-</button>
-                            <input type="number" id="C-1-15-qty" value="1" min="1" max="99" data-price="8120">
-                            <button onclick="changeQuantity('C-1-15', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-15" data-item-name="С-1-15">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-16" style="max-height: 40px;"></td>
-                    <td>С-1-16</td>
-                    <td>540</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>58,2</td>
-                    <td>8 585 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-16', -1)">-</button>
-                            <input type="number" id="C-1-16-qty" value="1" min="1" max="99" data-price="8585">
-                            <button onclick="changeQuantity('C-1-16', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-16" data-item-name="С-1-16">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-17" style="max-height: 40px;"></td>
-                    <td>С-1-17</td>
-                    <td>570</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>61,4</td>
-                    <td>9 065 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-17', -1)">-</button>
-                            <input type="number" id="C-1-17-qty" value="1" min="1" max="99" data-price="9065">
-                            <button onclick="changeQuantity('C-1-17', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-17" data-item-name="С-1-17">🛒</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/ss2/ss2-mini.png" alt="С-1-18" style="max-height: 40px;"></td>
-                    <td>С-1-18</td>
-                    <td>600</td>
-                    <td>50</td>
-                    <td>5</td>
-                    <td>64,6</td>
-                    <td>9 545 руб.</td>
-                    <td>1 шт</td>
-                    <td><span class="availability-icon">✅</span></td>
-                    <td class="cart-cell">
-                        <div class="quantity-control">
-                            <button onclick="changeQuantity('C-1-18', -1)">-</button>
-                            <input type="number" id="C-1-18-qty" value="1" min="1" max="99" data-price="9545">
-                            <button onclick="changeQuantity('C-1-18', 1)">+</button>
-                        </div>
-                    </td>
-                    <td><button class="cart-button" data-item-id="C-1-18" data-item-name="С-1-18">🛒</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Таблица будет загружена через JavaScript -->
+        <div id="nomenclature-container">
+            <div class="loading">Загрузка данных о продукции...</div>
+        </div>
         <p style="font-size: 0.85em; margin-top: 10px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
     
         <section id="contact-summary" style="padding: 40px 0; background-color: #e9e9e9; border-top: 2px solid #004d80; margin-top: 40px;">
@@ -810,6 +192,7 @@
         const thumbnails = document.querySelectorAll('.thumbnail');
         const modal = document.getElementById("productModal");
         const galleryContainer = document.getElementById("galleryContainer");
+        const CSV_URL = 'https://nolan20007.github.io/test-project/data/ss2-products.csv';
         
         // === 2. ФУНКЦИИ ГАЛЕРЕИ И ЛАЙТБОКСА ===
 
@@ -845,10 +228,125 @@
         }
         
         // =======================================================
-        // === 3. ФУНКЦИИ КОРЗИНЫ ===
+        // === 3. ЗАГРУЗКА ДАННЫХ ИЗ CSV ФАЙЛА ===
         // =======================================================
 
-        // Функция для загрузки данных корзины
+        function parseCSV(csvText) {
+            const lines = csvText.split('\n').filter(line => line.trim() !== '');
+            if (lines.length < 2) return [];
+            
+            const headers = lines[0].split(',').map(header => header.trim());
+            const products = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',').map(value => value.trim());
+                if (values.length === headers.length) {
+                    const product = {};
+                    headers.forEach((header, index) => {
+                        product[header] = values[index] || '';
+                    });
+                    products.push(product);
+                }
+            }
+            
+            return products;
+        }
+
+        async function loadProductData() {
+            try {
+                const response = await fetch(CSV_URL);
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки CSV файла');
+                }
+                const csvText = await response.text();
+                return parseCSV(csvText);
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                showErrorMessage('Данные о продукции временно недоступны');
+                return [];
+            }
+        }
+
+        function showErrorMessage(message) {
+            const container = document.getElementById('nomenclature-container');
+            container.innerHTML = `
+                <div class="loading" style="color: #d32f2f; background: #ffebee; padding: 20px; border-radius: 8px; border: 1px solid #f44336;">
+                    <strong>⚠️ Ошибка загрузки</strong><br>
+                    ${message}
+                </div>
+            `;
+        }
+
+        function generateTableHTML(products) {
+            if (products.length === 0) {
+                return '<div class="loading">Нет данных о продукции</div>';
+            }
+
+            let tableHTML = `
+                <table class="nomenclature-table">
+                    <thead>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Изделие</th>
+                            <th>Длина, см</th>
+                            <th>Ширина, см</th>
+                            <th>Высота, см</th>
+                            <th>Масса, кг</th>
+                            <th>Цена</th>
+                            <th>ед. измерения</th>
+                            <th>Наличие</th>
+                            <th>Количество</th>
+                            <th>Корзина</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            products.forEach(product => {
+                tableHTML += `
+                    <tr>
+                        <td><img src="${product.image}" alt="${product.name}" style="max-height: 40px;"></td>
+                        <td>${product.name}</td>
+                        <td>${product.length}</td>
+                        <td>${product.width}</td>
+                        <td>${product.height}</td>
+                        <td>${product.weight}</td>
+                        <td>${parseInt(product.price).toLocaleString('ru-RU')} руб.</td>
+                        <td>${product.unit}</td>
+                        <td><span class="availability-icon">${product.available}</span></td>
+                        <td class="cart-cell">
+                            <div class="quantity-control">
+                                <button onclick="changeQuantity('${product.id}', -1)">-</button>
+                                <input type="number" id="${product.id}-qty" value="1" min="1" max="99" data-price="${product.price}">
+                                <button onclick="changeQuantity('${product.id}', 1)">+</button>
+                            </div>
+                        </td>
+                        <td><button class="cart-button" data-item-id="${product.id}" data-item-name="${product.name}">🛒</button></td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            return tableHTML;
+        }
+
+        async function loadNomenclatureTable() {
+            const container = document.getElementById('nomenclature-container');
+            const products = await loadProductData();
+            container.innerHTML = generateTableHTML(products);
+            
+            // Инициализируем обработчики для кнопок корзины
+            initializeCartButtons();
+        }
+
+        // =======================================================
+        // === 4. ФУНКЦИИ КОРЗИНЫ ===
+        // =======================================================
+
         function loadCart() {
             const cartString = localStorage.getItem('cart') || '{}';
             try {
@@ -859,7 +357,6 @@
             }
         }
 
-        // Функция для сохранения данных корзины
         function saveCart(cart) {
             try {
                 localStorage.setItem('cart', JSON.stringify(cart));
@@ -872,49 +369,37 @@
             }
         }
         
-        // ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ ОТОБРАЖЕНИЯ
         function updateCartDisplay(cart) {
             let totalQuantity = 0;
-            // Считаем общее количество штук товаров
             for (const itemId in cart) {
                 if (cart.hasOwnProperty(itemId)) {
                     totalQuantity += cart[itemId].quantity;
                 }
             }
             
-            // Обновляем счетчик в шапке
             document.getElementById('cart-count-page').textContent = totalQuantity;
-            // Обновляем счетчик в секции "Оформление заказа"
             document.getElementById('cart-count-summary').textContent = totalQuantity;
 
-            // Обновление значений в полях ввода, синхронизация
+            // Синхронизация полей ввода с корзиной
             document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
                 const itemId = input.id.replace('-qty', '');
-                // Устанавливаем количество из корзины или оставляем 1, если товара там нет
-                input.value = cart[itemId] ? cart[itemId].quantity : 1; 
+                input.value = cart[itemId] ? cart[itemId].quantity : 1;
             });
         }
 
-        // Инициализация при загрузке страницы
-        window.onload = function() {
-            const initialCart = loadCart();
-            updateCartDisplay(initialCart);
-            
-            // Установка обработчиков событий для кнопок "🛒"
+        function initializeCartButtons() {
             document.querySelectorAll('.cart-button').forEach(button => {
                 button.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-item-id');
                     const itemName = this.getAttribute('data-item-name');
                     const quantityInput = document.getElementById(itemId + '-qty');
                     const quantity = parseInt(quantityInput.value);
-                    const priceText = this.closest('tr').querySelector('td:nth-child(7)').textContent.replace(/[^\d]/g, '');
-                    const price = parseFloat(priceText) || 0;
+                    const price = parseFloat(quantityInput.getAttribute('data-price'));
                     
                     addItemToCart(itemId, itemName, quantity, price);
                 });
             });
 
-            // Обработчик события для ввода количества
             document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
                 input.addEventListener('change', function(event) {
                     let val = parseInt(this.value);
@@ -926,7 +411,6 @@
                     }
                     this.value = val;
                     
-                    // Обновляем корзину при изменении поля ввода, только если товар УЖЕ в корзине
                     const itemId = this.id.replace('-qty', '');
                     const cart = loadCart();
                     if (cart[itemId]) {
@@ -937,16 +421,13 @@
             });
         }
 
-        // Добавление товара в корзину
         function addItemToCart(id, name, quantity, price) {
             try {
                 const cart = loadCart(); 
                 
-                // Если товар уже есть в корзине, добавляем к существующему количеству
                 if (cart[id]) {
                     cart[id].quantity += quantity;
                 } else {
-                    // Если товара нет, добавляем новый
                     cart[id] = { 
                         id: id,
                         name: name,
@@ -964,27 +445,36 @@
             }
         }
         
-        // Изменение количества товара на странице (с кнопок +/-)
         function changeQuantity(id, delta) {
             const quantityInput = document.getElementById(id + '-qty');
             let currentQuantity = parseInt(quantityInput.value);
             
-            // Новое количество
             let newQuantity = currentQuantity + delta;
-            
-            // Ограничения
             if (newQuantity < 1) newQuantity = 1;
             if (newQuantity > 99) newQuantity = 99;
             
             quantityInput.value = newQuantity;
             
-            // Синхронизация с корзиной (если товар уже добавлен!)
             const cart = loadCart();
             if (cart[id]) {
                 cart[id].quantity = newQuantity;
                 saveCart(cart);
             }
         }
+
+        // =======================================================
+        // === 5. ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ ===
+        // =======================================================
+
+        window.onload = function() {
+            // Загружаем таблицу с данными
+            loadNomenclatureTable();
+            
+            // Инициализируем корзину
+            const initialCart = loadCart();
+            updateCartDisplay(initialCart);
+        };
+
     </script>
 
 </body>

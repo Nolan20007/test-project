@@ -1,0 +1,12 @@
+id,name,length,width,weight,price,unit,available,image
+TS-1,ТС-1,100,50,16.5,1595,1 шт,✅,images/tl/tl-mini.png
+TS-1.1,ТС-1.1,110,50,18,1775,1 шт,✅,images/tl/tl-mini.png
+TS-1.2,ТС-1.2,120,50,19.5,1945,1 шт,✅,images/tl/tl-mini.png
+TS-1.3,ТС-1.3,130,50,21,2090,1 шт,✅,images/tl/tl-mini.png
+TS-1.4,ТС-1.4,140,50,22.5,2250,1 шт,✅,images/tl/tl-mini.png
+TS-1.5,ТС-1.5,150,50,24,2405,1 шт,✅,images/tl/tl-mini.png
+TS-1.6,ТС-1.6,160,50,25.5,2560,1 шт,✅,images/tl/tl-mini.png
+TS-1.7,ТС-1.7,170,50,27,2725,1 шт,✅,images/tl/tl-mini.png
+TS-1.8,ТС-1.8,180,50,28.5,2890,1 шт,✅,images/tl/tl-mini.png
+TS-1.9,ТС-1.9,190,50,30,3035,1 шт,✅,images/tl/tl-mini.png
+TS-2,ТС-2,200,50,31.5,3200,1 шт,✅,images/tl/tl-mini.png

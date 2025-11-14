@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Канализационные лестницы КЛ-1 (Л-1, Л-18) для колодцев</title>
+    <style>
+        /* Общие стили */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        .header { background-color: #004d80; color: white; padding: 20px 0; }
+        .header h1 { margin: 0; font-size: 2.2em; text-align: center; }
+        
+        /* Стили для навигации в шапке (включая ссылку на cart.html) */
+        .header-nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .back-link { 
+            color: #ff9900; 
+            text-decoration: none; 
+            font-weight: bold; 
+            display: inline-block; 
+            transition: color 0.3s; 
+        }
+        .back-link:hover { color: #e68a00; }
+        .cart-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background-color: #ff9900;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .cart-link:hover {
+            background-color: #e68a00;
+        }
+        
+        .product-details { padding: 40px 0; }
+        .product-details h2 { color: #004d80; font-size: 1.8em; margin-top: 30px; border-bottom: 2px solid #004d80; padding-bottom: 5px; }
+        .product-details p { line-height: 1.6; margin-bottom: 15px; }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        /* =======================================================
+           1. СТИЛИ ГАЛЕРЕИ 
+           ======================================================= */
+        .image-section { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Основное фото */
+        .main-image-wrapper {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Миниатюры */
+        .thumbnails-control {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .thumbnail:hover, .thumbnail.active {
+            border-color: #ff9900;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =======================================================
+           2. СТИЛИ МОДАЛЬНОГО ОКНА 
+           ======================================================= */
+        .lightbox-modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding-top: 60px; 
+        }
+        .modal-content { 
+            margin: auto; 
+            display: block; 
+            width: 90%; 
+            max-width: 1000px; 
+            background-color: white; 
+            border-radius: 8px; 
+            overflow: hidden; 
+        }
+        .close-btn { 
+            position: absolute; 
+            top: 15px; 
+            right: 35px; 
+            color: #f1f1f1; 
+            font-size: 40px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .gallery-container { 
+            display: flex; 
+            overflow-x: scroll; 
+            scroll-snap-type: x mandatory; 
+        }
+        .gallery-item { 
+            flex: 0 0 100%; 
+            scroll-snap-align: start; 
+            min-width: 100%; 
+            box-sizing: border-box; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; 
+        }
+        .gallery-item img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            height: auto; 
+            display: block; 
+            object-fit: contain; 
+        }
+        .modal-nav { text-align: center; padding: 10px; background-color: #eee; }
+        .modal-nav button { background-color: #004d80; color: white; border: none; padding: 8px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer; }
+
+        /* ОСТАЛЬНЫЕ СТИЛИ */
+        .characteristics-list { list-style: none; padding: 0; }
+        .characteristics-list li { 
+            margin-bottom: 10px; 
+            padding-left: 20px; 
+            position: relative; 
+            display: grid; 
+            grid-template-columns: 20px 200px 1fr; 
+            gap: 5px; 
+            line-height: 1.4;
+        } 
+        .characteristics-list li strong { 
+            font-weight: bold; 
+            color: #004d80; 
+            grid-column: 2 / 3; 
+            align-self: start;
+        }
+        .characteristics-list li::before {
+            content: '•';
+            color: #ff9900;
+            font-weight: bold;
+            grid-column: 1 / 2; 
+            align-self: start;
+        }
+        .characteristics-list li .description {
+            grid-column: 3 / 4; 
+            text-align: left;
+        }
+        .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; margin-top: 40px; }
+        
+        .nomenclature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .nomenclature-table th, .nomenclature-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .nomenclature-table th {
+            background-color: #004d80;
+            color: white;
+            font-weight: bold;
+        }
+        .nomenclature-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .nomenclature-table td:nth-child(2) {
+            font-weight: bold;
+            color: #004d80;
+        }
+        .nomenclature-table td:nth-child(7) {
+            font-weight: bold;
+            color: #cc0000; 
+            white-space: nowrap;
+        }
+        .nomenclature-table .availability-icon {
+            color: #4CAF50; 
+            font-size: 1.2em;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quantity-control button, .cart-button {
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            color: #333;
+            cursor: pointer;
+            padding: 5px 8px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .quantity-control input {
+            width: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-right: none;
+            padding: 5px 0;
+            height: 28px;
+            box-sizing: border-box;
+            -moz-appearance: textfield; 
+        }
+        .cart-button {
+            background-color: #ffc107; 
+            border-color: #ffc107;
+            color: #333;
+            margin-left: 5px;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        .cart-button:hover {
+            background-color: #e0a800;
+        }
+        .advantages-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .advantages-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 1.1em;
+        }
+        .advantages-list li::before {
+            content: "★"; 
+            color: #ff9900;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .cta-button {
+            display: inline-block;
+            text-align: center;
+            background-color: #ff9900;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover { background-color: #e68a00; }
+        .loading { text-align: center; padding: 20px; color: #666; }
+        
+        /* Мобильная адаптивность для таблицы */
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr; 
+            }
+            .nomenclature-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                font-size: 12px;
+            }
+            .quantity-control input {
+                width: 25px;
+            }
+            .cart-button {
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-nav">
+                <a href="index.html" class="back-link">← Вернуться в каталог</a>
+                <a href="cart.html" class="cart-link">
+                    🛒 Корзина (<span id="cart-count-page">0</span>)
+                </a>
+            </div>
+            <h1>Канализационные лестницы КЛ-1 (Л-1, Л-18) для колодцев</h1>
+        </div>
+    </header>
+
+    <div class="product-details container">
+        
+        <div class="content-grid">
+            
+            <div class="image-section">
+                <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
+                    <img id="mainImage" src="images/kl1/kl1-large.png" alt="Канализационная лестница КЛ-1" class="main-image">
+                </div>
+                
+                <div class="thumbnails-control">
+                    <div class="thumbnail active" onclick="changeImage('images/kl1/kl1-large.png', 0)">
+                        <img src="images/kl1/kl1-large.png" alt="Фото лестницы КЛ-1">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('images/kl1/kl1-drawing.png', 1)">
+                        <img src="images/kl1/kl1-drawing.png" alt="Чертеж лестницы КЛ-1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-section">
+                <h2>Общая информация и назначение</h2>
+                <p><strong>Канализационные лестницы КЛ-1 (Л-1, Л-18)</strong> используются для спуска к инженерному оборудованию и запорной арматуре в канализационных смотровых колодцах. Системы коммуникаций, расположенные под землей, имеют сложную разветвленную структуру. В местах поворотов, понижения уровня, установки запорной арматуры обустраиваются смотровые колодцы.</p>
+
+                <p>Глубина колодцев может превышать 5 метров и для того, чтобы опуститься вниз требуется специальные конструкции – канализационные лестницы КЛ-1. Они обеспечивают необходимый уровень безопасности и комфорта. Непростые условия эксплуатации выдвигают производителям ряд требований, которые строго соблюдаются. Это позволяет гарантировать удобный доступ персонала с инструментом и оборудованием к инженерным системам.</p>
+                
+                <h2>Основные характеристики</h2>
+                <ul class="characteristics-list">
+                    <li><strong>Тип лестницы:</strong><span class="description"> КЛ-1 (Л-1, Л-18)</span></li>
+                    <li><strong>Ширина лестницы:</strong><span class="description"> 410 мм</span></li>
+                    <li><strong>Высота ступени:</strong><span class="description"> 330 мм</span></li>
+                    <li><strong>Длина:</strong><span class="description"> от 100 см до 1170 см</span></li>
+                    <li><strong>Материал:</strong><span class="description"> Высококачественная сталь</span></li>
+                    <li><strong>Толщина прутков:</strong><span class="description"> не менее 25 мм</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>Особенности и преимущества канализационных лестниц КЛ-1</h2>
+        <p>Особенностью лестницы для колодцев является ее оригинальная конструкция. КЛ-1 имеет мощные крюки, которые позволяют надежно зафиксировать конструкцию в горловине колодца и обеспечивают повышенную грузоподъемность. Другой особенностью является два параллельных пролета со ступенями, что позволяет обеспечить более удобный спуск.</p>
+        
+        <p>Среди основных преимуществ канализационных лестниц:</p>
+        <ul class="advantages-list">
+            <li>Высокая прочность всей конструкции гарантирует безопасный спуск</li>
+            <li>При изготовлении используется высококачественная сталь, более устойчивая к сложным условиям эксплуатации</li>
+            <li>Толщина прутков, используемых для производства конструкций, составляет не менее 25 мм</li>
+            <li>Высокая устойчивость к коррозии позволяет металлу дольше сопротивляться разрушению при высокой влажности воздуха</li>
+            <li>Высокая износоустойчивость и продолжительный срок эксплуатации</li>
+            <li>Надежная и простая фиксация в колодце</li>
+            <li>Два параллельных пролета со ступенями для удобного спуска</li>
+            <li>Мощные крюки для надежной фиксации</li>
+        </ul>
+
+        <h2>Стоимость канализационных лестниц</h2>
+        <p>Предлагаем купить канализационные лестницы по низким ценам с гарантией качества. В нашем ассортименте конструкции длиной от 100 до 1170 см, шириной 41 см. Удобный шаг ступенек обеспечивает комфортный спуск специалистов на дно колодца.</p>
+        
+        <p>В каталоге представлено более 100 видов лестниц, что позволит подобрать модель в точном соответствие с реализуемым проектом. Все лестницы соответствуют требованиям ГОСТа и строительной нормативной документации.</p>
+        
+        <!-- Таблица будет загружена через JavaScript -->
+        <div id="nomenclature-container">
+            <div class="loading">Загрузка данных о продукции...</div>
+        </div>
+        <p style="font-size: 0.85em; margin-top: 10px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
+    
+        <section id="contact-summary" style="padding: 40px 0; background-color: #e9e9e9; border-top: 2px solid #004d80; margin-top: 40px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Оформление заказа и консультация</h2>
+            <p style="text-align: center;">На данный момент в корзине <strong id="cart-count-summary">0</strong> штук товаров.</p>
+            
+            <div id="contact-details" style="max-width: 800px; margin: 20px auto; background-color: white; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+                <p style="font-weight: bold; color: #004d80;">Для оформления заказа и детального просмотра выбранных товаров, пожалуйста, перейдите в корзину или свяжитесь с нашим менеджером.</p>
+                <p>Наши специалисты оперативно обработают ваш запрос, уточнят финальную стоимость (с учетом объема и доставки) и помогут завершить покупку.</p>
+                <p style="margin-top: 15px;">Вы можете оставить заявку на главной странице или позвонить по телефону:</p>
+                <p style="font-size: 1.2em; font-weight: bold; color: #ff9900; text-align: center;">+7 (XXX) XXX-XX-XX</p>
+            </div>
+            
+            <p style="text-align: center;">
+                <a href="cart.html" class="cta-button" style="margin-top: 0; display: inline-block; margin-right: 15px;">Перейти в корзину</a>
+                <a href="index.html#contacts" class="cta-button" style="margin-top: 0; display: inline-block; background-color: #004d80;">Оставить заявку на звонок</a>
+            </p>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Ваша Компания. Все права защищены.
+        </div>
+    </footer>
+    
+    <div id="productModal" class="lightbox-modal" onclick="closeModal()">
+        <span class="close-btn" title="Закрыть">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 id="modalTitle" style="text-align: center; color: white; background-color: #004d80; padding: 10px 0; margin: 0;">Просмотр изображений</h3>
+            
+            <div class="gallery-container" id="galleryContainer">
+                <div class="gallery-item"><img id="modalImage0" src="images/kl1/kl1-large.png" alt="Основное фото канализационной лестницы"></div>
+                <div class="gallery-item"><img id="modalImage1" src="images/kl1/kl1-drawing.png" alt="Чертеж канализационной лестницы"></div>
+            </div>
+
+            <div class="modal-nav">
+                <button onclick="scrollToSlide(0)">Основное фото</button>
+                <button onclick="scrollToSlide(1)">Чертеж</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // === 1. Глобальные переменные ===
+        const mainImage = document.getElementById('mainImage');
+        const mainImageWrapper = document.getElementById('mainImageWrapper');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const modal = document.getElementById("productModal");
+        const galleryContainer = document.getElementById("galleryContainer");
+        const CSV_URL = 'data/kl1-products.csv'; // Путь к CSV файлу для канализационных лестниц
+        
+        // === 2. ФУНКЦИИ ГАЛЕРЕИ И ЛАЙТБОКСА ===
+
+        function changeImage(src, index) {
+            mainImage.src = src;
+            
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[index].classList.add('active');
+
+            mainImageWrapper.setAttribute('data-current-slide', index);
+        }
+
+        mainImageWrapper.onclick = function() {
+            openModal();
+        }
+
+        function openModal() {
+            modal.style.display = "block";
+            const currentSlide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+            scrollToSlide(currentSlide);
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        
+        function scrollToSlide(index) {
+            const itemWidth = galleryContainer.clientWidth;
+            galleryContainer.scrollTo({
+                left: itemWidth * index,
+                behavior: 'smooth'
+            });
+        }
+        
+        // =======================================================
+        // === 3. ЗАГРУЗКА ДАННЫХ ИЗ CSV ФАЙЛА ===
+        // =======================================================
+
+        function parseCSV(csvText) {
+            const lines = csvText.split('\n').filter(line => line.trim() !== '');
+            if (lines.length < 2) return [];
+            
+            const headers = lines[0].split(',').map(header => header.trim());
+            const products = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',').map(value => value.trim());
+                if (values.length === headers.length) {
+                    const product = {};
+                    headers.forEach((header, index) => {
+                        product[header] = values[index] || '';
+                    });
+                    products.push(product);
+                }
+            }
+            
+            return products;
+        }
+
+        async function loadProductData() {
+            try {
+                const response = await fetch(CSV_URL);
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки CSV файла');
+                }
+                const csvText = await response.text();
+                return parseCSV(csvText);
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                showErrorMessage('Данные о продукции временно недоступны');
+                return [];
+            }
+        }
+
+        function showErrorMessage(message) {
+            const container = document.getElementById('nomenclature-container');
+            container.innerHTML = `
+                <div class="loading" style="color: #d32f2f; background: #ffebee; padding: 20px; border-radius: 8px; border: 1px solid #f44336;">
+                    <strong>⚠️ Ошибка загрузки</strong><br>
+                    ${message}
+                </div>
+            `;
+        }
+
+        function generateTableHTML(products) {
+            if (products.length === 0) {
+                return '<div class="loading">Нет данных о продукции</div>';
+            }
+
+            let tableHTML = `
+                <table class="nomenclature-table">
+                    <thead>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Изделие</th>
+                            <th>Длина, см</th>
+                            <th>Ширина, см</th>
+                            <th>Масса, кг</th>
+                            <th>Цена</th>
+                            <th>ед. измерения</th>
+                            <th>Наличие</th>
+                            <th>Количество</th>
+                            <th>Корзина</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            products.forEach(product => {
+                tableHTML += `
+                    <tr>
+                        <td><img src="${product.image}" alt="${product.name}" style="max-height: 40px;"></td>
+                        <td>${product.name}</td>
+                        <td>${product.length}</td>
+                        <td>${product.width}</td>
+                        <td>${product.weight}</td>
+                        <td>от ${parseInt(product.price).toLocaleString('ru-RU')} руб.</td>
+                        <td>${product.unit}</td>
+                        <td><span class="availability-icon">${product.available}</span></td>
+                        <td class="cart-cell">
+                            <div class="quantity-control">
+                                <button onclick="changeQuantity('${product.id}', -1)">-</button>
+                                <input type="number" id="${product.id}-qty" value="1" min="1" max="99" data-price="${product.price}">
+                                <button onclick="changeQuantity('${product.id}', 1)">+</button>
+                            </div>
+                        </td>
+                        <td><button class="cart-button" data-item-id="${product.id}" data-item-name="${product.name}">🛒</button></td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            return tableHTML;
+        }
+
+        async function loadNomenclatureTable() {
+            const container = document.getElementById('nomenclature-container');
+            const products = await loadProductData();
+            container.innerHTML = generateTableHTML(products);
+            
+            // Инициализируем обработчики для кнопок корзины
+            initializeCartButtons();
+        }
+
+        // =======================================================
+        // === 4. ФУНКЦИИ КОРЗИНЫ ===
+        // =======================================================
+
+        function loadCart() {
+            const cartString = localStorage.getItem('cart') || '{}';
+            try {
+                return JSON.parse(cartString);
+            } catch (e) {
+                console.error("Ошибка при парсинге корзины из localStorage:", e);
+                return {}; 
+            }
+        }
+
+        function saveCart(cart) {
+            try {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay(cart);
+                return true;
+            } catch (e) {
+                console.error("Ошибка сохранения корзины:", e);
+                alert('Ошибка сохранения корзины. Проверьте настройки браузера.');
+                return false;
+            }
+        }
+        
+        function updateCartDisplay(cart) {
+            let totalQuantity = 0;
+            for (const itemId in cart) {
+                if (cart.hasOwnProperty(itemId)) {
+                    totalQuantity += cart[itemId].quantity;
+                }
+            }
+            
+            document.getElementById('cart-count-page').textContent = totalQuantity;
+            document.getElementById('cart-count-summary').textContent = totalQuantity;
+
+            // Синхронизация полей ввода с корзиной
+            document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
+                const itemId = input.id.replace('-qty', '');
+                input.value = cart[itemId] ? cart[itemId].quantity : 1;
+            });
+        }
+
+        function initializeCartButtons() {
+            document.querySelectorAll('.cart-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = this.getAttribute('data-item-id');
+                    const itemName = this.getAttribute('data-item-name');
+                    const quantityInput = document.getElementById(itemId + '-qty');
+                    const quantity = parseInt(quantityInput.value);
+                    const price = parseFloat(quantityInput.getAttribute('data-price'));
+                    
+                    addItemToCart(itemId, itemName, quantity, price);
+                });
+            });
+
+            document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
+                input.addEventListener('change', function(event) {
+                    let val = parseInt(this.value);
+                    if (isNaN(val) || val < 1) {
+                        val = 1;
+                    }
+                    if (val > 99) { 
+                        val = 99; 
+                    }
+                    this.value = val;
+                    
+                    const itemId = this.id.replace('-qty', '');
+                    const cart = loadCart();
+                    if (cart[itemId]) {
+                        cart[itemId].quantity = val;
+                        saveCart(cart);
+                    }
+                });
+            });
+        }
+
+        function addItemToCart(id, name, quantity, price) {
+            try {
+                const cart = loadCart(); 
+                
+                if (cart[id]) {
+                    cart[id].quantity += quantity;
+                } else {
+                    cart[id] = { 
+                        id: id,
+                        name: name,
+                        quantity: quantity,
+                        price: price
+                    };
+                }
+                
+                if (saveCart(cart)) {
+                    alert(`Добавлено в корзину: ${quantity} шт. ${name}. Всего в корзине: ${cart[id].quantity} шт.`);
+                }
+            } catch (error) {
+                console.error('Ошибка добавления в корзину:', error);
+                alert('Произошла ошибка при добавлении товара в корзину');
+            }
+        }
+        
+        function changeQuantity(id, delta) {
+            const quantityInput = document.getElementById(id + '-qty');
+            let currentQuantity = parseInt(quantityInput.value);
+            
+            let newQuantity = currentQuantity + delta;
+            if (newQuantity < 1) newQuantity = 1;
+            if (newQuantity > 99) newQuantity = 99;
+            
+            quantityInput.value = newQuantity;
+            
+            const cart = loadCart();
+            if (cart[id]) {
+                cart[id].quantity = newQuantity;
+                saveCart(cart);
+            }
+        }
+
+        // =======================================================
+        // === 5. ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ ===
+        // =======================================================
+
+        window.onload = function() {
+            // Загружаем таблицу с данными
+            loadNomenclatureTable();
+            
+            // Инициализируем корзину
+            const initialCart = loadCart();
+            updateCartDisplay(initialCart);
+        };
+
+    </script>
+
+</body>
+</html>

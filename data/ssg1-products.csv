@@ -1,0 +1,11 @@
+id,name,length,width,weight,price,unit,available,image
+SG-22,СГ-22,220,70,39.2,7245,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-28,СГ-28,280,70,50,9220,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-34,СГ-34,340,70,61,11200,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-40,СГ-40,400,70,71.8,13175,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-46,СГ-46,460,70,82.8,15150,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-52,СГ-52,520,70,94,17115,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-58,СГ-58,580,70,104.4,19095,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-64,СГ-64,640,70,115.4,21070,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-70,СГ-70,700,70,126.2,23045,1 шт,✅,images/ssg1/ssg1-mini.png
+SG-82,СГ-82,820,70,148,26995,1 шт,✅,images/ssg1/ssg1-mini.png
