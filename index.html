@@ -175,17 +175,130 @@
             line-height: 1.5;
         }
         
-        /* Contacts and Footer */
-        .contacts { background-color: #003366; color: white; padding: 40px 0; text-align: center; margin-top: 40px; }
-        .feedback-form { background-color: white; padding: 30px; max-width: 500px; margin: 30px auto 0; border-radius: 8px; color: #333; }
-        .feedback-form input[type="text"], .feedback-form input[type="email"], .feedback-form input[type="tel"], .feedback-form textarea, .feedback-form button { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .feedback-form button { background-color: #004d80; color: white; cursor: pointer; border: none; font-weight: bold; transition: background-color 0.3s; }
-        .feedback-form button:hover { background-color: #003366; }
-        .feedback-form button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
+        /* Контактный блок */
+        .contacts {
+            background: linear-gradient(135deg, #004d80 0%, #003366 100%);
+            color: white;
+            padding: 60px 0;
         }
-        .footer { background-color: #222; color: #bbb; text-align: center; padding: 15px 0; font-size: 0.85em; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-icon {
+            font-size: 2em;
+            flex-shrink: 0;
+        }
+
+        .contact-info h3 {
+            margin: 0 0 10px 0;
+            color: #ff9900;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-info a:hover {
+            color: #ff9900;
+        }
+
+        /* Форма обратной связи */
+        .feedback-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        .feedback-form h3 {
+            text-align: center;
+            color: #004d80;
+            margin-bottom: 30px;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .feedback-form button {
+            background: #ff9900;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .feedback-form button:hover {
+            background: #e68a00;
+        }
+
+        /* Подвал */
+        .footer {
+            background: #222;
+            color: #bbb;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: #ff9900;
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-section a:hover {
+            color: #ff9900;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
 
         /* Стили для Lightbox */
         .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); padding-top: 60px; }
@@ -213,6 +326,17 @@
             .product-card { max-width: none; } 
             .advantages-grid {
                 grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .feedback-form {
+                padding: 20px;
+                margin: 0 15px;
             }
         }
     </style>
@@ -407,23 +531,93 @@
 
     </div>
     
+    <!-- ОБНОВЛЕННЫЙ БЛОК КОНТАКТОВ -->
     <section id="contacts" class="contacts">
         <div class="container">
             <h2>Свяжитесь с нами</h2>
-            <p><strong>Телефон:</strong> <a href="tel:+7956555996*" style="color: #ff9900;">+7 (965) 555-99-6*</a></p>
-            <form class="feedback-form" id="mainContactForm">
-                <p>Оставьте заявку на расчет стоимости:</p>
-                <input type="text" id="mainName" placeholder="Ваше Имя / Компания" required>
-                <input type="tel" id="mainPhone" placeholder="Укажите контактный телефон, Email и Telegram" required>
-                <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="3"></textarea>
-                <button type="submit">Отправить запрос</button>
-            </form>
+            
+            <div class="contact-grid">
+                <!-- Телефоны -->
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h3>Телефоны</h3>
+                        <a href="tel:+7965555996*">+7 (965) 555-99-6*</a>
+                        <a href="tel:+7965555996*">+7 (965) 555-99-6*</a>
+                    </div>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <a href="mailto:info@ваш-сайт.ru">info@ваш-сайт.ru</a>
+                        <a href="mailto:sales@ваш-сайт.ru">sales@ваш-сайт.ru</a>
+                    </div>
+                </div>
+                
+                <!-- Время работы -->
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-info">
+                        <h3>Время работы</h3>
+                        <p>Пн-Пт: 9:00-18:00</p>
+                        <p>Сб: 10:00-15:00</p>
+                        <p>Вс: выходной</p>
+                    </div>
+                </div>
+                
+                <!-- Адрес -->
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-info">
+                        <h3>Адрес</h3>
+                        <p>г. Пермь, ул. Промышленная, д. 15</p>
+                        <p>(склад и офис)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Форма обратной связи -->
+            <div class="feedback-form">
+                <h3>Оставить заявку на расчет</h3>
+                <form id="mainContactForm">
+                    <input type="text" id="mainName" placeholder="Ваше Имя / Компания" required>
+                    <input type="tel" id="mainPhone" placeholder="Укажите контактный телефон, Email и Telegram" required>
+                    <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4"></textarea>
+                    <button type="submit">Отправить запрос</button>
+                </form>
+            </div>
         </div>
     </section>
 
+    <!-- ОБНОВЛЕННЫЙ ПОДВАЛ -->
     <footer class="footer">
         <div class="container">
-            &copy; 2025 Ваша Компания. Все права защищены.
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <a href="tel:+7965555996*">📞 +7 (965) 555-99-6*</a>
+                    <a href="mailto:info@ваш-сайт.ru">✉️ info@ваш-сайт.ru</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Время работы</h4>
+                    <p>Пн-Пт: 9:00-18:00</p>
+                    <p>Сб: 10:00-15:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Продукция</h4>
+                    <a href="ss1.html">Стремянки водопроводные</a>
+                    <a href="ss2.html">Стремянки канализационные</a>
+                    <a href="tl.html">Лестницы теплосетевые</a>
+                    <a href="kl1.html">Лестницы КЛ-1</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Ваша Компания. Все права защищены.
+            </div>
         </div>
     </footer>
 
