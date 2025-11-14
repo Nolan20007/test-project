@@ -1,3 +1,5 @@
+[file name]: index.html
+[file content begin]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -1045,9 +1047,9 @@
             <div class="feedback-form">
                 <h3>Оставить заявку на расчет</h3>
                 <form id="mainContactForm">
-                    <input type="text" id="mainName" placeholder="Ваше Имя / Компания" required>
-                    <input type="tel" id="mainPhone" placeholder="Укажите контактный телефон, Email и Telegram" required>
-                    <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4"></textarea>
+                    <input type="text" id="mainName" placeholder="Ваше Имя / Компания" required maxlength="100">
+                    <input type="tel" id="mainPhone" placeholder="Укажите контактный телефон, Email и Telegram" required maxlength="100">
+                    <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4" maxlength="500"></textarea>
                     <button type="submit">Отправить запрос</button>
                 </form>
             </div>
@@ -1129,12 +1131,59 @@
     </div>
     
     <script>
+        // === КОНФИГУРАЦИЯ ===
+        const CONFIG = {
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec',
+            CART_STORAGE_KEY: 'kolodets_cart_v1'
+        };
+
+        // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
+        function sanitizeInput(text) {
+            if (typeof text !== 'string') return '';
+            return text.replace(/[<>&"']/g, '');
+        }
+
+        function validatePhone(phone) {
+            return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
+        }
+
+        // === КОРЗИНА ===
+        function getCart() {
+            try {
+                const cartData = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
+                return JSON.parse(cartData) || {};
+            } catch (e) {
+                console.error("Ошибка чтения LocalStorage:", e);
+                return {};
+            }
+        }
+
+        function updateCartCountDisplay() {
+            const cart = getCart();
+            let totalCount = 0;
+            
+            for (const itemId in cart) {
+                if (cart.hasOwnProperty(itemId) && cart[itemId] && typeof cart[itemId].quantity === 'number') {
+                    totalCount += parseInt(cart[itemId].quantity) || 0;
+                }
+            }
+            
+            const countElement = document.getElementById('cart-count');
+            if (countElement) {
+                countElement.textContent = totalCount;
+            }
+        }
+        
+        // Обновление счетчика при загрузке
+        document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
+        window.addEventListener('storage', updateCartCountDisplay);
+
         // Инициализация элементов модального окна
         const modal = document.getElementById("productModal");
         const modalTitle = document.getElementById("modalTitle");
         const modalImage = document.getElementById("modalImage");
         const modalDrawing = document.getElementById("modalDrawing");
-        const galleryContainer = document.getElementById("galleryContainer");
+        const galleryContainerIndex = document.getElementById("galleryContainer");
         const imageWrappers = document.querySelectorAll(".product-image-wrapper");
 
         // 1. ФУНКЦИИ МОДАЛЬНОГО ОКНА
@@ -1156,8 +1205,8 @@
         
         // 2. ФУНКЦИЯ ПРОКРУТКИ ГАЛЕРЕИ
         function scrollToSlide(index) {
-            const itemWidth = galleryContainer.clientWidth;
-            galleryContainer.scrollTo({
+            const itemWidth = galleryContainerIndex.clientWidth;
+            galleryContainerIndex.scrollTo({
                 left: itemWidth * index,
                 behavior: 'smooth'
             });
@@ -1188,61 +1237,25 @@
         // Делаем функции closeModal и scrollToSlide доступными глобально для кнопок в HTML
         window.closeModal = closeModal;
         window.scrollToSlide = scrollToSlide;
-    </script>
-    
-    <script>
-        /**
-         * Устанавливаем единый ключ для всех файлов (index.html, ss1.html, cart.html).
-         * Теперь все файлы используют 'cart'.
-         */
-        const CART_STORAGE_KEY = 'cart'; 
 
-        function getCart() {
-            try {
-                const cartData = localStorage.getItem(CART_STORAGE_KEY); 
-                return JSON.parse(cartData) || {};
-            } catch (e) {
-                console.error("Ошибка чтения LocalStorage:", e);
-                return {};
-            }
-        }
-
-        /**
-         * Обновляет счетчик корзины в навигации, суммируя количество всех товаров.
-         */
-        function updateCartCountDisplay() {
-            const cart = getCart();
-            let totalCount = 0;
-            
-            // Считаем общее количество всех товаров в корзине
-            for (const itemId in cart) {
-                if (cart.hasOwnProperty(itemId) && cart[itemId] && typeof cart[itemId].quantity === 'number') {
-                    // Используем parseInt на всякий случай, если данные в localStorage не идеальны
-                    totalCount += parseInt(cart[itemId].quantity) || 0; 
-                }
-            }
-            
-            const countElement = document.getElementById('cart-count'); 
-            if (countElement) {
-                countElement.textContent = totalCount;
-            }
-        }
-        
-        // 1. Запускаем обновление счетчика при загрузке страницы
-        document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
-
-        // 2. Запускаем обновление счетчика, если LocalStorage изменился (например, товар добавили на другой вкладке)
-        window.addEventListener('storage', updateCartCountDisplay);
-    </script>
-
-    <script>
         // Обработчик формы на главной странице
-        document.getElementById('mainContactForm').addEventListener('submit', function(event) {
+        document.getElementById('mainContactForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             
-            const name = document.getElementById('mainName').value;
-            const phone = document.getElementById('mainPhone').value;
-            const message = document.getElementById('mainMessage').value;
+            const name = sanitizeInput(document.getElementById('mainName').value);
+            const phone = sanitizeInput(document.getElementById('mainPhone').value);
+            const message = sanitizeInput(document.getElementById('mainMessage').value);
+            
+            // Валидация
+            if (!name || name.length < 2) {
+                alert('Пожалуйста, введите корректное имя');
+                return;
+            }
+
+            if (!validatePhone(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
             
             // Показываем загрузку
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -1250,42 +1263,42 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
             
-            // Отправляем в защищенный Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    type: 'contact', 
-                    name: name,
-                    phone: phone,
-                    message: message || '',
-                    source: 'Главная страница'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
+            try {
+                // Отправляем в защищенный Google Apps Script
+                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'type': 'contact',
+                        'name': name,
+                        'phone': phone,
+                        'message': message || '',
+                        'source': 'Главная страница'
+                    })
+                });
+
+                const data = await response.json();
+                
                 if (data.success) {
                     alert('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.');
-                    // Очищаем форму
                     document.getElementById('mainContactForm').reset();
                 } else {
-                    alert('❌ Ошибка отправки заявки. Пожалуйста, позвоните нам напрямую.');
-                    console.error('Google Script Error:', data);
+                    throw new Error(data.error || 'Неизвестная ошибка');
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Ошибка:', error);
                 alert('❌ Ошибка отправки заявки. Пожалуйста, позвоните нам напрямую.');
-            })
-            .finally(() => {
+            } finally {
                 // Восстанавливаем кнопку
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            });
+            }
         });
+
     </script>
 
 </body>
 </html>
+[file content end]

@@ -1,3 +1,5 @@
+[file name]: cart.html
+[file content begin]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -206,10 +208,10 @@
         <div id="checkout-section" class="order-form-section" style="display: none;">
             <h2>Оформление заказа</h2>
             <form id="orderForm" class="order-form">
-                <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required>
-                <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required>
-                <input type="email" id="email" placeholder="Email (необязательно)">
-                <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4"></textarea>
+                <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100">
+                <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20">
+                <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
+                <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
                 <button type="submit">Подтвердить заказ</button>
                 <p style="font-size: 0.85em; margin-top: 15px; text-align: center; color: #555;">Нажимая кнопку "Подтвердить заказ", вы даете согласие на обработку персональных данных.</p>
             </form>
@@ -224,12 +226,50 @@
     </footer>
     
     <script>
-        // === ФУНКЦИИ LOCALSTORAGE ===
-        const CART_STORAGE_KEY = 'cart'; 
+        // === КОНФИГУРАЦИЯ ===
+        const CONFIG = {
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec',
+            CART_STORAGE_KEY: 'kolodets_cart_v1'
+        };
 
+        // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
+        function sanitizeInput(text) {
+            if (typeof text !== 'string') return '';
+            return text.replace(/[<>&"']/g, '');
+        }
+
+        function validatePhone(phone) {
+            return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
+        }
+
+        function validateEmail(email) {
+            if (!email) return true; // email не обязателен
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // === ФУНКЦИИ LOCALSTORAGE ===
         function getCart() {
             try {
-                return JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || {};
+                const cartData = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
+                if (!cartData) return {};
+                
+                const cart = JSON.parse(cartData);
+                
+                // Валидация структуры корзины
+                if (typeof cart !== 'object') return {};
+                
+                // Очистка от невалидных данных
+                Object.keys(cart).forEach(key => {
+                    const item = cart[key];
+                    if (!item || typeof item !== 'object' || 
+                        !item.id || !item.name || 
+                        typeof item.quantity !== 'number' || item.quantity <= 0 ||
+                        typeof item.price !== 'number' || item.price < 0) {
+                        delete cart[key];
+                    }
+                });
+                
+                return cart;
             } catch (e) {
                 console.error("Ошибка чтения LocalStorage:", e);
                 return {};
@@ -238,7 +278,7 @@
 
         function saveCart(cart) {
             try {
-                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+                localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(cart));
                 return true;
             } catch (e) {
                 console.error("Ошибка сохранения в LocalStorage:", e);
@@ -299,11 +339,11 @@
                 
                 tableHtml += `
                     <tr>
-                        <td>${item.name}</td>
+                        <td>${sanitizeInput(item.name)}</td>
                         <td>${price.toLocaleString('ru-RU')} руб.</td>
                         <td>${quantity} шт.</td>
                         <td>${itemTotal.toLocaleString('ru-RU')} руб.</td>
-                        <td><button class="delete-item-btn" onclick="removeItem('${itemId}')">Удалить</button></td>
+                        <td><button class="delete-item-btn" onclick="removeItem('${sanitizeInput(itemId)}')">Удалить</button></td>
                     </tr>
                 `;
             }
@@ -350,21 +390,42 @@
             }
             
             if (confirm("Вы уверены, что хотите полностью очистить корзину? Это действие нельзя отменить.")) {
-                localStorage.removeItem(CART_STORAGE_KEY);
+                localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
                 renderCart(); // Перерисовать корзину
             }
         }
         
         // Обработка отправки формы в Telegram
-        document.getElementById('orderForm').addEventListener('submit', function(event) {
+        document.getElementById('orderForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const comments = document.getElementById('comments').value;
-            const email = document.getElementById('email').value;
+            const name = sanitizeInput(document.getElementById('name').value);
+            const phone = sanitizeInput(document.getElementById('phone').value);
+            const comments = sanitizeInput(document.getElementById('comments').value);
+            const email = sanitizeInput(document.getElementById('email').value);
+
+            // Валидация данных
+            if (!name || name.length < 2) {
+                alert('Пожалуйста, введите корректное имя');
+                return;
+            }
+
+            if (!validatePhone(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+
+            if (email && !validateEmail(email)) {
+                alert('Пожалуйста, введите корректный email адрес');
+                return;
+            }
 
             const currentCart = getCart();
+            if (Object.keys(currentCart).length === 0) {
+                alert('Корзина пуста');
+                return;
+            }
+
             const total = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             // Формируем сообщение для Telegram
@@ -387,51 +448,67 @@
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
-            
-            // Отправляем в защищенный Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    type: 'order',
-                    name: name,
-                    phone: phone,
-                    email: email || '',
-                    comments: comments || '',
-                    cartText: message,
-                    total: total.toLocaleString('ru-RU')
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
+
+            try {
+                // Отправляем в защищенный Google Apps Script
+                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'type': 'order',
+                        'name': name,
+                        'phone': phone,
+                        'email': email || '',
+                        'comments': comments || '',
+                        'cartText': message,
+                        'total': total.toLocaleString('ru-RU')
+                    })
+                });
+
+                const data = await response.json();
+                
                 if (data.success) {
                     alert('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
                     
                     // Очищаем корзину после успешной отправки
-                    localStorage.removeItem(CART_STORAGE_KEY);
+                    localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
                     renderCart();
                     document.getElementById('orderForm').reset();
                 } else {
-                    alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую.');
                     console.error('Google Script Error:', data);
+                    throw new Error(data.error || 'Неизвестная ошибка');
                 }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую.');
-            })
-            .finally(() => {
+            } catch (error) {
+                console.error('Ошибка отправки заказа:', error);
+                
+                // Альтернативный способ связи
+                const alternativeMessage = `Не удалось отправить заказ через форму. Пожалуйста, свяжитесь с нами напрямую по телефону: +7 (965) 555-99-6* или отправьте заказ на email: info@stremyanki-dlya-kolodcev.ru\n\nДанные заказа:\n${message.replace(/\\n/g, '\n')}`;
+                
+                alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую или отправьте заказ на email.');
+                
+                // Предлагаем отправить email
+                if (confirm('Хотите отправить заказ по email?')) {
+                    const emailSubject = 'Заказ с сайта stremyanki-dlya-kolodcev.ru';
+                    const emailBody = alternativeMessage;
+                    window.location.href = `mailto:info@stremyanki-dlya-kolodcev.ru?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                }
+            } finally {
                 // Восстанавливаем кнопку
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            });
+            }
         });
 
         // Запускаем отрисовку корзины при загрузке страницы
         document.addEventListener('DOMContentLoaded', renderCart);
+
+        // Делаем функции глобальными для HTML
+        window.removeItem = removeItem;
+        window.clearCart = clearCart;
     </script>
 
 </body>
 </html>
+[file content end]
