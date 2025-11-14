@@ -1243,17 +1243,6 @@
             const name = document.getElementById('mainName').value;
             const phone = document.getElementById('mainPhone').value;
             const message = document.getElementById('mainMessage').value;
-
-            // Те же данные что и для корзины
-            const BOT_TOKEN = '8396068741:AAGhSNnKKcLSrjOA5tLmkFBUxO0bawyPeY8';
-            const CHAT_ID = '448461769';
-            
-            // Формируем сообщение для Telegram
-            let telegramMessage = `📞 НОВАЯ ЗАЯВКА С САЙТА!\n\n`;
-            telegramMessage += `👤 Имя: ${name}\n`;
-            telegramMessage += `📞 Телефон: ${phone}\n`;
-            telegramMessage += `💬 Сообщение: ${message || 'Не указано'}\n\n`;
-            telegramMessage += `📍 Источник: Главная страница (форма расчета стоимости)`;
             
             // Показываем загрузку
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -1261,26 +1250,29 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
             
-            // Отправляем в Telegram
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            // Отправляем в защищенный Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: telegramMessage,
-                    parse_mode: 'HTML'
+                    type: 'contact', 
+                    name: name,
+                    phone: phone,
+                    message: message || '',
+                    source: 'Главная страница'
                 })
             })
             .then(response => response.json())
             .then(data => {
-                if (data.ok) {
+                if (data.success) {
                     alert('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.');
                     // Очищаем форму
                     document.getElementById('mainContactForm').reset();
                 } else {
                     alert('❌ Ошибка отправки заявки. Пожалуйста, позвоните нам напрямую.');
+                    console.error('Google Script Error:', data);
                 }
             })
             .catch(error => {

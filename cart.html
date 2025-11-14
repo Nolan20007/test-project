@@ -219,7 +219,7 @@
 
     <footer class="footer">
         <div class="container">
-            &copy; 2025 Ваша Компания. Все права защищены.
+            &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
         </div>
     </footer>
     
@@ -367,10 +367,6 @@
             const currentCart = getCart();
             const total = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-            // ВАШИ ДАННЫЕ - УЖЕ ПОДСТАВЛЕНЫ!
-            const BOT_TOKEN = '8396068741:AAGhSNnKKcLSrjOA5tLmkFBUxO0bawyPeY8';
-            const CHAT_ID = '448461769';
-            
             // Формируем сообщение для Telegram
             let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
             message += `👤 Имя: ${name}\n`;
@@ -392,21 +388,25 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
             
-            // Отправляем в Telegram
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            // Отправляем в защищенный Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
+                    type: 'order',
+                    name: name,
+                    phone: phone,
+                    email: email || '',
+                    comments: comments || '',
+                    cartText: message,
+                    total: total.toLocaleString('ru-RU')
                 })
             })
             .then(response => response.json())
             .then(data => {
-                if (data.ok) {
+                if (data.success) {
                     alert('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
                     
                     // Очищаем корзину после успешной отправки
@@ -415,7 +415,7 @@
                     document.getElementById('orderForm').reset();
                 } else {
                     alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую.');
-                    console.error('Telegram API Error:', data);
+                    console.error('Google Script Error:', data);
                 }
             })
             .catch(error => {
