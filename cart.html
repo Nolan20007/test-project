@@ -1,5 +1,3 @@
-[file name]: cart.html
-[file content begin]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -286,9 +284,132 @@
                 return false;
             }
         }
-        
-        // === ОСНОВНЫЕ ФУНКЦИИ КОРЗИНЫ ===
 
+        // === ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ===
+        function calculateTotal(cart) {
+            return Object.values(cart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        }
+
+        function formatOrderMessage(name, phone, email, comments, cart, total) {
+            let message = `🎉 НОВЫЙ ЗАКАЗ С САЙТА\n\n`;
+            message += `👤 Имя: ${name}\n`;
+            message += `📞 Телефон: ${phone}\n`;
+            if (email) message += `📧 Email: ${email}\n`;
+            if (comments) message += `💬 Комментарий: ${comments}\n`;
+            message += `📅 Дата: ${new Date().toLocaleString('ru-RU')}\n\n`;
+            message += `🛒 СОСТАВ ЗАКАЗА:\n`;
+            
+            for (const itemId in cart) {
+                const item = cart[itemId];
+                message += `▫️ ${item.name}\n`;
+                message += `   Количество: ${item.quantity} шт.\n`;
+                message += `   Цена: ${item.price.toLocaleString('ru-RU')} руб.\n`;
+                message += `   Сумма: ${(item.price * item.quantity).toLocaleString('ru-RU')} руб.\n\n`;
+            }
+            
+            message += `💰 ОБЩАЯ СУММА: ${total.toLocaleString('ru-RU')} руб.\n\n`;
+            message += `🌐 Источник: stremyanki-dlya-kolodcev.ru`;
+            
+            return message;
+        }
+
+        // === ФУНКЦИЯ ОТПРАВКИ В GOOGLE SCRIPT ===
+        async function sendOrderToGoogleScript(name, phone, email, comments, cart) {
+            try {
+                console.log('🔧 Отправка заказа в Google Script...');
+                
+                const total = calculateTotal(cart);
+                const cartText = formatOrderMessage(name, phone, email, comments, cart, total);
+                
+                // Формируем данные для отправки
+                const formData = new URLSearchParams({
+                    'type': 'order',
+                    'name': name,
+                    'phone': phone,
+                    'message': `Email: ${email || 'не указан'}\nКомментарий: ${comments || 'нет'}\n\n${cartText}`,
+                    'source': 'cart_page',
+                    'total': total.toString()
+                });
+
+                console.log('📤 Данные для отправки:', Object.fromEntries(formData));
+
+                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                });
+
+                console.log('📥 Ответ получен, статус:', response.status);
+
+                // ВАЖНО: Добавляем await здесь!
+                const responseText = await response.text();
+                console.log('📄 Текст ответа:', responseText);
+
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('❌ Ошибка парсинга JSON:', e);
+                    // Если не JSON, возможно Google Script возвращает HTML или текст
+                    if (responseText.includes('успех') || responseText.includes('success')) {
+                        return true;
+                    }
+                    throw new Error('Неверный формат ответа: ' + responseText.substring(0, 100));
+                }
+
+                console.log('✅ Parsed data:', data);
+
+                // Универсальная проверка успеха
+                if (data.success === true || data.status === 'success' || data.result === 'success') {
+                    return true;
+                } else {
+                    throw new Error(data.error || data.message || 'Неизвестная ошибка сервера');
+                }
+                
+            } catch (error) {
+                console.error('❌ Ошибка отправки заказа:', error);
+                return false;
+            }
+        }
+
+        // === РЕЗЕРВНЫЙ МЕТОД ОТПРАВКИ ===
+        async function sendOrderBackup(name, phone, email, comments, cart) {
+            const total = calculateTotal(cart);
+            const orderMessage = formatOrderMessage(name, phone, email, comments, cart, total);
+            
+            // 1. Пытаемся открыть Telegram
+            const telegramUrl = `https://t.me/share/url?text=${encodeURIComponent(orderMessage)}`;
+            
+            // 2. Формируем email
+            const emailSubject = `Заказ с сайта: ${name}`;
+            const emailBody = orderMessage;
+            const mailtoUrl = `mailto:info@stremyanki-dlya-kolodcev.ru?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Показываем пользователю варианты
+            const userChoice = confirm(
+                '📧 Заказ готов к отправке!\n\n' +
+                'Нажмите:\n' +
+                '• "OK" - чтобы отправить через Email\n' +
+                '• "Отмена" - чтобы отправить через Telegram\n\n' +
+                'Или просто позвоните нам: +7 (965) 555-99-6*'
+            );
+            
+            if (userChoice) {
+                // Открываем почтовый клиент
+                window.location.href = mailtoUrl;
+                alert('Открывается ваш почтовый клиент. Пожалуйста, нажмите "Отправить" в письме.');
+            } else {
+                // Открываем Telegram
+                window.open(telegramUrl, '_blank');
+                alert('Открывается Telegram. Пожалуйста, выберите контакт и отправьте сообщение.');
+            }
+            
+            return true;
+        }
+
+        // === ОСНОВНЫЕ ФУНКЦИИ КОРЗИНЫ ===
         function renderCart() {
             const cart = getCart();
             const cartContent = document.getElementById('cart-content');
@@ -325,7 +446,6 @@
 
             for (const itemId in cart) {
                 const item = cart[itemId];
-                // Убедимся, что price и quantity являются числами
                 const price = parseFloat(item.price);
                 const quantity = parseInt(item.quantity);
 
@@ -395,7 +515,7 @@
             }
         }
         
-        // Обработка отправки формы в Telegram
+        // === ОБРАБОТЧИК ФОРМЫ ЗАКАЗА ===
         document.getElementById('orderForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             
@@ -404,19 +524,14 @@
             const comments = sanitizeInput(document.getElementById('comments').value);
             const email = sanitizeInput(document.getElementById('email').value);
 
-            // Валидация данных
+            // Валидация
             if (!name || name.length < 2) {
-                alert('Пожалуйста, введите корректное имя');
+                alert('Пожалуйста, введите корректное имя (минимум 2 символа)');
                 return;
             }
 
             if (!validatePhone(phone)) {
                 alert('Пожалуйста, введите корректный номер телефона');
-                return;
-            }
-
-            if (email && !validateEmail(email)) {
-                alert('Пожалуйста, введите корректный email адрес');
                 return;
             }
 
@@ -426,23 +541,6 @@
                 return;
             }
 
-            const total = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-            // Формируем сообщение для Telegram
-            let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
-            message += `👤 Имя: ${name}\n`;
-            message += `📞 Телефон: ${phone}\n`;
-            message += `📧 Email: ${email || 'Не указан'}\n`;
-            message += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
-            message += `🛒 Состав заказа:\n`;
-            
-            for (const itemId in currentCart) {
-                const item = currentCart[itemId];
-                message += `• ${item.name} - ${item.quantity} шт. × ${item.price} руб. = ${(item.price * item.quantity).toLocaleString('ru-RU')} руб.\n`;
-            }
-            
-            message += `\n💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.`;
-            
             // Показываем загрузку
             const submitBtn = document.querySelector('#orderForm button[type="submit"]');
             const originalText = submitBtn.textContent;
@@ -450,50 +548,26 @@
             submitBtn.disabled = true;
 
             try {
-                // Отправляем в защищенный Google Apps Script
-                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams({
-                        'type': 'order',
-                        'name': name,
-                        'phone': phone,
-                        'email': email || '',
-                        'comments': comments || '',
-                        'cartText': message,
-                        'total': total.toLocaleString('ru-RU')
-                    })
-                });
-
-                const data = await response.json();
+                console.log('🚀 Начало отправки заказа...');
                 
-                if (data.success) {
-                    alert('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
+                // Пытаемся отправить через Google Script
+                const success = await sendOrderToGoogleScript(name, phone, email, comments, currentCart);
+                
+                if (success) {
+                    alert('✅ Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
                     
                     // Очищаем корзину после успешной отправки
                     localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
                     renderCart();
                     document.getElementById('orderForm').reset();
                 } else {
-                    console.error('Google Script Error:', data);
-                    throw new Error(data.error || 'Неизвестная ошибка');
+                    // Если не получилось, используем резервный метод
+                    console.log('🔄 Переход на резервный метод...');
+                    await sendOrderBackup(name, phone, email, comments, currentCart);
                 }
             } catch (error) {
-                console.error('Ошибка отправки заказа:', error);
-                
-                // Альтернативный способ связи
-                const alternativeMessage = `Не удалось отправить заказ через форму. Пожалуйста, свяжитесь с нами напрямую по телефону: +7 (965) 555-99-6* или отправьте заказ на email: info@stremyanki-dlya-kolodcev.ru\n\nДанные заказа:\n${message.replace(/\\n/g, '\n')}`;
-                
-                alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую или отправьте заказ на email.');
-                
-                // Предлагаем отправить email
-                if (confirm('Хотите отправить заказ по email?')) {
-                    const emailSubject = 'Заказ с сайта stremyanki-dlya-kolodcev.ru';
-                    const emailBody = alternativeMessage;
-                    window.location.href = `mailto:info@stremyanki-dlya-kolodcev.ru?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-                }
+                console.error('💥 Критическая ошибка:', error);
+                alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам: +7 (965) 555-99-6*');
             } finally {
                 // Восстанавливаем кнопку
                 submitBtn.textContent = originalText;
@@ -511,4 +585,3 @@
 
 </body>
 </html>
-[file content end]
