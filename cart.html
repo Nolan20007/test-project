@@ -389,6 +389,11 @@
                 return;
             }
 
+            if (email && !validateEmail(email)) {
+                alert('Пожалуйста, введите корректный email адрес');
+                return;
+            }
+
             const currentCart = getCart();
             if (Object.keys(currentCart).length === 0) {
                 alert('Корзина пуста');
@@ -411,7 +416,7 @@
             }
             
             message += `\n💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.`;
-
+            
             // Показываем загрузку
             const submitBtn = document.querySelector('#orderForm button[type="submit"]');
             const originalText = submitBtn.textContent;
@@ -423,9 +428,9 @@
                 const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json', // ← МЕНЯЕМ НА JSON
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ // ← ОТПРАВЛЯЕМ JSON
+                    body: JSON.stringify({
                         'type': 'order',
                         'name': name,
                         'phone': phone,
@@ -446,6 +451,7 @@
                     renderCart();
                     document.getElementById('orderForm').reset();
                 } else {
+                    console.error('Google Script Error:', data);
                     throw new Error(data.error || 'Неизвестная ошибка');
                 }
             } catch (error) {
