@@ -1,0 +1,20 @@
+/* TEAM */
+Владелец: Производство лестниц для колодцев
+Город: Пермь
+Сайт: https://stremyanki-dlya-kolodcev.ru
+Email: info@stremyanki-dlya-kolodcev.ru
+Телефон: +7 (965) 555-99-6*
+
+/* Технологии */
+HTML5: структура сайта
+CSS3: стили и адаптивность
+JavaScript: интерактивность
+Google Analytics: аналитика посещений
+Yandex Metrica: веб-аналитика
+
+/* Благодарности */
+Google Fonts: шрифты
+Open Source: сообщество разработчиков
+
+/* Последнее обновление */
+2025 год
