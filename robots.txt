@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+Crawl-delay: 1
+
+Sitemap: https://stremyanki-dlya-kolodcev.ru/sitemap.xml
+
+# Яндекс
+User-agent: Yandex
+Crawl-delay: 2
+
+# Google
+User-agent: Googlebot
+Allow: /

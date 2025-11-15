@@ -10,6 +10,18 @@
     <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/tl.html" />
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="Теплосетевая лестница Л-16 для колодцев | Купить в Перми">
+    <meta property="og:description" content="✅ Производство теплосетевых лестниц Л-16. ГОСТ качество. Доставка по России. Цены от производителя.">
+    <meta property="og:image" content="https://stremyanki-dlya-kolodcev.ru/images/tl/tl-large.png">
+    <meta property="og:url" content="https://stremyanki-dlya-kolodcev.ru/tl.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Теплосетевая лестница Л-16 для колодцев">
+    <meta name="twitter:description" content="✅ Производство теплосетевых лестниц Л-16. ГОСТ качество. Доставка по России.">
+    
     <!-- Schema.org разметка -->
     <script type="application/ld+json">
     {
@@ -30,12 +42,15 @@
         "seller": {
           "@type": "Organization",
           "name": "Производство лестниц и стремянок для колодцев"
-        }
+        },
+        "areaServed": "RU"
       },
       "image": [
         "https://stremyanki-dlya-kolodcev.ru/images/tl/tl-large.png",
         "https://stremyanki-dlya-kolodcev.ru/images/tl/tl-drawing.png"
-      ]
+      ],
+      "sku": "Л-16",
+      "mpn": "Л-16"
     }
     </script>
     
@@ -599,6 +614,69 @@
             }
         }
     </style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33M762M7CX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-33M762M7CX');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105333281', 'ym');
+
+    ym(105333281, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/105333281" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Отслеживание целей -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Отслеживание отправки форм
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function() {
+            ym(105333281, 'reachGoal', 'contact_form_submit');
+            gtag('event', 'form_submit');
+        });
+    });
+    
+    // Клики по телефону
+    const phones = document.querySelectorAll('a[href^="tel:"]');
+    phones.forEach(phone => {
+        phone.addEventListener('click', function() {
+            ym(105333281, 'reachGoal', 'phone_click');
+            gtag('event', 'phone_click');
+        });
+    });
+    
+    // Добавление в корзину
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('cart-button') || 
+            e.target.closest('.cart-button')) {
+            ym(105333281, 'reachGoal', 'add_to_cart');
+            gtag('event', 'add_to_cart');
+        }
+    });
+    
+    // Просмотр товара
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.product-card') || 
+            e.target.closest('.product-image-wrapper')) {
+            ym(105333281, 'reachGoal', 'product_view');
+            gtag('event', 'view_item');
+        }
+    });
+});
+</script>
 </head>
 <body>
 
@@ -728,6 +806,27 @@
     </div>
     
     <script>
+        // === КОНФИГУРАЦИЯ ===
+        const CONFIG = {
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec',
+            CART_STORAGE_KEY: 'kolodets_cart_v1'
+        };
+
+        // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
+        function sanitizeInput(text) {
+            if (typeof text !== 'string') return '';
+            return text.replace(/[<>&"']/g, '');
+        }
+
+        function validatePhone(phone) {
+            return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
+        }
+
+        function validateEmail(email) {
+            if (!email) return true; // email не обязателен
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
         // === 1. Глобальные переменные ===
         const mainImage = document.getElementById('mainImage');
         const mainImageWrapper = document.getElementById('mainImageWrapper');
@@ -787,7 +886,10 @@
                     headers.forEach((header, index) => {
                         product[header] = values[index] || '';
                     });
-                    products.push(product);
+                    // Валидация данных продукта
+                    if (product.id && product.name && product.price) {
+                        products.push(product);
+                    }
                 }
             }
             
@@ -814,7 +916,7 @@
             container.innerHTML = `
                 <div class="loading" style="color: #d32f2f; background: #ffebee; padding: 20px; border-radius: 8px; border: 1px solid #f44336;">
                     <strong>⚠️ Ошибка загрузки</strong><br>
-                    ${message}
+                    ${sanitizeInput(message)}
                 </div>
             `;
         }
@@ -844,24 +946,29 @@
             `;
 
             products.forEach(product => {
+                // Валидация и санитизация данных
+                const safeName = sanitizeInput(product.name);
+                const safePrice = parseFloat(product.price) || 0;
+                const safeImage = product.image || 'images/default-product.png';
+                
                 tableHTML += `
                     <tr>
-                        <td><img src="${product.image}" alt="${product.name}" style="max-height: 40px;"></td>
-                        <td>${product.name}</td>
-                        <td>${product.length}</td>
-                        <td>${product.width}</td>
-                        <td>${product.weight}</td>
-                        <td>от ${parseInt(product.price).toLocaleString('ru-RU')} руб.</td>
-                        <td>${product.unit}</td>
-                        <td><span class="availability-icon">${product.available}</span></td>
+                        <td><img src="${safeImage}" alt="${safeName}" style="max-height: 40px;" onerror="this.src='images/default-product.png'"></td>
+                        <td>${safeName}</td>
+                        <td>${sanitizeInput(product.length)}</td>
+                        <td>${sanitizeInput(product.width)}</td>
+                        <td>${sanitizeInput(product.weight)}</td>
+                        <td>от ${safePrice.toLocaleString('ru-RU')} руб.</td>
+                        <td>${sanitizeInput(product.unit)}</td>
+                        <td><span class="availability-icon">${sanitizeInput(product.available)}</span></td>
                         <td class="cart-cell">
                             <div class="quantity-control">
-                                <button onclick="changeQuantity('${product.id}', -1)">-</button>
-                                <input type="number" id="${product.id}-qty" value="1" min="1" max="99" data-price="${product.price}">
-                                <button onclick="changeQuantity('${product.id}', 1)">+</button>
+                                <button onclick="changeQuantity('${sanitizeInput(product.id)}', -1)">-</button>
+                                <input type="number" id="${sanitizeInput(product.id)}-qty" value="1" min="1" max="99" data-price="${safePrice}">
+                                <button onclick="changeQuantity('${sanitizeInput(product.id)}', 1)">+</button>
                             </div>
                         </td>
-                        <td><button class="cart-button" data-item-id="${product.id}" data-item-name="${product.name}">🛒</button></td>
+                        <td><button class="cart-button" data-item-id="${sanitizeInput(product.id)}" data-item-name="${safeName}">🛒</button></td>
                     </tr>
                 `;
             });
@@ -888,19 +995,45 @@
         // =======================================================
 
         function loadCart() {
-            const cartString = localStorage.getItem('cart') || '{}';
             try {
-                return JSON.parse(cartString);
+                const cartString = localStorage.getItem(CONFIG.CART_STORAGE_KEY) || '{}';
+                const cart = JSON.parse(cartString);
+                
+                // Валидация структуры корзины
+                if (typeof cart !== 'object') return {};
+                
+                // Очистка от невалидных данных
+                Object.keys(cart).forEach(key => {
+                    if (!cart[key] || typeof cart[key] !== 'object' || 
+                        !cart[key].id || !cart[key].name || 
+                        typeof cart[key].quantity !== 'number' || 
+                        typeof cart[key].price !== 'number') {
+                        delete cart[key];
+                    }
+                });
+                
+                return cart;
             } catch (e) {
-                console.error("Ошибка при парсинге корзины из localStorage:", e);
+                console.error("Ошибка при загрузке корзины:", e);
                 return {}; 
             }
         }
 
         function saveCart(cart) {
             try {
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartDisplay(cart);
+                // Дополнительная валидация перед сохранением
+                const validCart = {};
+                Object.keys(cart).forEach(key => {
+                    const item = cart[key];
+                    if (item && item.id && item.name && 
+                        typeof item.quantity === 'number' && item.quantity > 0 &&
+                        typeof item.price === 'number' && item.price >= 0) {
+                        validCart[key] = item;
+                    }
+                });
+                
+                localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(validCart));
+                updateCartDisplay(validCart);
                 return true;
             } catch (e) {
                 console.error("Ошибка сохранения корзины:", e);
@@ -913,7 +1046,7 @@
             let totalQuantity = 0;
             for (const itemId in cart) {
                 if (cart.hasOwnProperty(itemId)) {
-                    totalQuantity += cart[itemId].quantity;
+                    totalQuantity += parseInt(cart[itemId].quantity) || 0;
                 }
             }
             
@@ -923,18 +1056,26 @@
             // Синхронизация полей ввода с корзиной
             document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
                 const itemId = input.id.replace('-qty', '');
-                input.value = cart[itemId] ? cart[itemId].quantity : 1;
+                if (cart[itemId]) {
+                    input.value = cart[itemId].quantity;
+                }
             });
         }
 
         function initializeCartButtons() {
             document.querySelectorAll('.cart-button').forEach(button => {
                 button.addEventListener('click', function() {
-                    const itemId = this.getAttribute('data-item-id');
-                    const itemName = this.getAttribute('data-item-name');
+                    const itemId = sanitizeInput(this.getAttribute('data-item-id'));
+                    const itemName = sanitizeInput(this.getAttribute('data-item-name'));
                     const quantityInput = document.getElementById(itemId + '-qty');
-                    const quantity = parseInt(quantityInput.value);
-                    const price = parseFloat(quantityInput.getAttribute('data-price'));
+                    
+                    if (!quantityInput) {
+                        console.error('Не найден элемент количества для товара:', itemId);
+                        return;
+                    }
+                    
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    const price = parseFloat(quantityInput.getAttribute('data-price')) || 0;
                     
                     addItemToCart(itemId, itemName, quantity, price);
                 });
@@ -963,10 +1104,16 @@
 
         function addItemToCart(id, name, quantity, price) {
             try {
+                if (!id || !name || quantity <= 0 || price < 0) {
+                    throw new Error('Невалидные данные товара');
+                }
+                
                 const cart = loadCart(); 
                 
                 if (cart[id]) {
                     cart[id].quantity += quantity;
+                    // Защита от переполнения
+                    if (cart[id].quantity > 999) cart[id].quantity = 999;
                 } else {
                     cart[id] = { 
                         id: id,
@@ -987,7 +1134,9 @@
         
         function changeQuantity(id, delta) {
             const quantityInput = document.getElementById(id + '-qty');
-            let currentQuantity = parseInt(quantityInput.value);
+            if (!quantityInput) return;
+            
+            let currentQuantity = parseInt(quantityInput.value) || 1;
             
             let newQuantity = currentQuantity + delta;
             if (newQuantity < 1) newQuantity = 1;
@@ -1014,6 +1163,13 @@
             const initialCart = loadCart();
             updateCartDisplay(initialCart);
         };
+
+        // Делаем функции глобальными для HTML
+        window.changeImage = changeImage;
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.scrollToSlide = scrollToSlide;
+        window.changeQuantity = changeQuantity;
 
     </script>
 
