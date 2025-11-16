@@ -3,7 +3,7 @@
 Город: Пермь
 Сайт: https://stremyanki-dlya-kolodcev.ru
 Email: info@stremyanki-dlya-kolodcev.ru
-Телефон: +7 (965) 555-99-6*
+Телефон: +7 (965) 555-99-66
 
 /* Технологии */
 HTML5: структура сайта

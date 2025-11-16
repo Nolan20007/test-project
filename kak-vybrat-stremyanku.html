@@ -27,71 +27,37 @@
         .article-meta { color: #666; font-size: 0.9em; margin-bottom: 20px; }
         .footer { background: #222; color: #bbb; text-align: center; padding: 20px 0; margin-top: 40px; }
     </style>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-33M762M7CX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-33M762M7CX');
-</script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105333281', 'ym');
-
-    ym(105333281, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/105333281" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<!-- Отслеживание целей -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Отслеживание отправки форм
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function() {
-            ym(105333281, 'reachGoal', 'contact_form_submit');
-            gtag('event', 'form_submit');
-        });
-    });
-    
-    // Клики по телефону
-    const phones = document.querySelectorAll('a[href^="tel:"]');
-    phones.forEach(phone => {
-        phone.addEventListener('click', function() {
-            ym(105333281, 'reachGoal', 'phone_click');
-            gtag('event', 'phone_click');
-        });
-    });
-    
-    // Добавление в корзину
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('cart-button') || 
-            e.target.closest('.cart-button')) {
-            ym(105333281, 'reachGoal', 'add_to_cart');
-            gtag('event', 'add_to_cart');
-        }
-    });
-    
-    // Просмотр товара
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.product-card') || 
-            e.target.closest('.product-image-wrapper')) {
-            ym(105333281, 'reachGoal', 'product_view');
-            gtag('event', 'view_item');
-        }
-    });
-});
-</script>
+<!-- Подключение аналитики -->
+<script src="js/analytics.js"></script>
 </head>
 <body>
+<!-- Article для статьи -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Как выбрать стремянку для колодца",
+  "description": "Полное руководство по выбору стремянки для колодца. Критерии выбора, сравнение моделей, ГОСТ требования и советы от производителя.",
+  "author": {"@type": "Organization", "name": "Производство лестниц для колодцев"},
+  "publisher": {"@type": "Organization", "name": "Производство лестниц для колодцев"},
+  "datePublished": "2024-01-15",
+  "dateModified": "2024-01-15"
+}
+</script>
+
+<!-- BreadcrumbList для статьи -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList", 
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stremyanki-dlya-kolodcev.ru/"},
+    {"@type": "ListItem", "position": 2, "name": "Полезные статьи", "item": "https://stremyanki-dlya-kolodcev.ru/#articles"},
+    {"@type": "ListItem", "position": 3, "name": "Как выбрать стремянку", "item": "https://stremyanki-dlya-kolodcev.ru/kak-vybrat-stremyanku.html"}
+  ]
+}
+</script>
+
 
     <header class="header">
         <div class="container">

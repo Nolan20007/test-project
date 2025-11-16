@@ -619,71 +619,49 @@
             }
         }
     </style>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-33M762M7CX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-33M762M7CX');
-</script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105333281', 'ym');
-
-    ym(105333281, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/105333281" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<!-- Отслеживание целей -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Отслеживание отправки форм
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function() {
-            ym(105333281, 'reachGoal', 'contact_form_submit');
-            gtag('event', 'form_submit');
-        });
-    });
-    
-    // Клики по телефону
-    const phones = document.querySelectorAll('a[href^="tel:"]');
-    phones.forEach(phone => {
-        phone.addEventListener('click', function() {
-            ym(105333281, 'reachGoal', 'phone_click');
-            gtag('event', 'phone_click');
-        });
-    });
-    
-    // Добавление в корзину
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('cart-button') || 
-            e.target.closest('.cart-button')) {
-            ym(105333281, 'reachGoal', 'add_to_cart');
-            gtag('event', 'add_to_cart');
-        }
-    });
-    
-    // Просмотр товара
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.product-card') || 
-            e.target.closest('.product-image-wrapper')) {
-            ym(105333281, 'reachGoal', 'product_view');
-            gtag('event', 'view_item');
-        }
-    });
-});
-</script>
+<!-- Подключение аналитики -->
+<script src="js/analytics.js"></script>
 </head>
 <body>
+<!-- Product для tl.html -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product", 
+  "name": "Лестница тепловых сетей Л-16",
+  "description": "Лестница для тепловых сетей Л-16. Конструкция из стального уголка 50×50×5 мм, пруток ∅18 мм. Для обслуживания теплотрасс.",
+  "brand": {"@type": "Brand", "name": "Производство лестниц для колодцев"},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9", 
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "6"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "RUB",
+    "price": "7800",
+    "priceValidUntil": "2025-12-31", 
+    "availability": "https://schema.org/InStock",
+    "seller": {"@type": "Organization", "name": "Производство лестниц и стремянок для колодцев"}
+  },
+  "image": ["https://stremyanki-dlya-kolodcev.ru/images/l16-large.png"]
+}
+</script>
+
+<!-- BreadcrumbList для tl.html -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", 
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stremyanki-dlya-kolodcev.ru/"},
+    {"@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://stremyanki-dlya-kolodcev.ru/#catalog"},
+    {"@type": "ListItem", "position": 3, "name": "Лестница тепловых сетей Л-16", "item": "https://stremyanki-dlya-kolodcev.ru/tl.html"}
+  ]
+}
+</script>
 
     <header class="header">
         <div class="container">
@@ -693,7 +671,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     🛒 Корзина (<span id="cart-count-page">0</span>)
                 </a>
             </div>
-            <h1>ТЕПЛОСЕТЕВАЯ ЛЕСТНИЦА Л-16 ДЛЯ КОЛОДЦЕВ</h1>
+            <h1>Теплосетевая лестница Л-16 для колодцев</h1>
         </div>
     </header>
 
