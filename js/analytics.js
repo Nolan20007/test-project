@@ -1,18 +1,21 @@
 // js/analytics.js
 function loadAnalytics() {
-    // Яндекс.Метрика
-    const yandexScript = document.createElement('script');
-    yandexScript.innerHTML = `
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+    // Яндекс.Метрика — инициализация
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-        ym(105333281, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    `;
-    document.head.appendChild(yandexScript);
+    // ВАЖНО: без ssr:true — иначе Метрика не считает визиты
+    ym(105333281, 'init', {
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        accurateTrackBounce: true,
+        trackLinks: true
+    });
 
     // Google Analytics
     const gtagScript1 = document.createElement('script');
@@ -21,7 +24,7 @@ function loadAnalytics() {
     document.head.appendChild(gtagScript1);
 
     const gtagScript2 = document.createElement('script');
-    gtagScript2.innerHTML = `
+    gtagScript2.text = `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -34,7 +37,7 @@ function loadAnalytics() {
     noscript.innerHTML = '<div><img src="https://mc.yandex.ru/watch/105333281" style="position:absolute; left:-9999px;" alt="" /></div>';
     document.body.appendChild(noscript);
 
-    // === ДОБАВЛЯЕМ ОТСЛЕЖИВАНИЕ ЦЕЛЕЙ ===
+    // === ОТСЛЕЖИВАНИЕ ЦЕЛЕЙ ===
     document.addEventListener('DOMContentLoaded', function() {
         // Отслеживание отправки форм
         const forms = document.querySelectorAll('form');
