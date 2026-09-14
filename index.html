@@ -1024,8 +1024,7 @@
                 <div class="contact-item">
                     <div class="contact-icon">📞</div>
                     <div class="contact-info">
-                        <h3>Телефоны</h3>
-                        <a href="tel:+79655559966">+7 (965) 555-99-66</a>
+                        <h3>Телефон</h3>
                         <a href="tel:+79655559966">+7 (965) 555-99-66</a>
                     </div>
                 </div>
@@ -1066,8 +1065,8 @@
             <div class="feedback-form">
                 <h3>Оставить заявку на расчет</h3>
                 <form id="mainContactForm">
-                    <input type="tel" id="mainPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
-                    <input type="tel" id="mainPhone" placeholder="Укажите контактный телефон, Email и Telegram" required maxlength="100">
+                    <input type="text" id="mainName" placeholder="Ваше имя" required maxlength="100">
+                    <input type="text" id="mainPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
                     <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4" maxlength="500"></textarea>
                     <button type="submit">Отправить запрос</button>
                 </form>
@@ -1153,7 +1152,8 @@
         // === КОНФИГУРАЦИЯ ===
         const CONFIG = {
             GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec',
-            CART_STORAGE_KEY: 'kolodets_cart_v1'
+            CART_STORAGE_KEY: 'kolodets_cart_v1',
+            WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
         };
 
         // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
@@ -1162,10 +1162,10 @@
             return text.replace(/[<>&"']/g, '');
         }
 
-function validatePhone(phone) {
-    // Разрешаем телефоны, email и telegram
-    return /^[\d\s\-\+\(\)@\.a-zA-Z]{5,50}$/.test(phone);
-}
+        function validatePhone(phone) {
+            // Разрешаем телефоны, email и telegram
+            return /^[\d\s\-\+\(\)@\.a-zA-Z]{5,50}$/.test(phone);
+        }
 
         // === КОРЗИНА ===
         function getCart() {
@@ -1258,61 +1258,64 @@ function validatePhone(phone) {
         window.closeModal = closeModal;
         window.scrollToSlide = scrollToSlide;
 
-        // Обработчик формы на главной странице
+        // === Обработчик формы на главной странице (Telegram + почта Web3Forms) ===
         document.getElementById('mainContactForm').addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+
             const name = sanitizeInput(document.getElementById('mainName').value);
             const phone = sanitizeInput(document.getElementById('mainPhone').value);
             const message = sanitizeInput(document.getElementById('mainMessage').value);
-            
-            // Валидация
+
             if (!name || name.length < 2) {
                 alert('Пожалуйста, введите корректное имя');
                 return;
             }
-
             if (!validatePhone(phone)) {
-                alert('Пожалуйста, введите корректный номер телефона');
+                alert('Пожалуйста, введите корректный контакт');
                 return;
             }
-            
-            // Показываем загрузку
+
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
-            
-            try {
-// Используем mode: 'no-cors' для обхода CORS
-const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors', // ← ДОБАВИТЬ ЭТУ СТРОКУ!
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        'type': 'contact',
-        'name': name,
-        'phone': phone,
-        'message': message || '',
-        'source': 'Главная страница'
-    })
-});
 
-// При mode: 'no-cors' response будет opaque, поэтому считаем успехом
-console.log('Заявка отправлена (no-cors mode)');
+            // 1. Отправка в Google Script (Telegram) — как было
+            const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'type': 'contact',
+                    'name': name,
+                    'phone': phone,
+                    'message': message || '',
+                    'source': 'Главная страница'
+                })
+            }).catch(err => console.warn('Google Script ошибка:', err));
 
-alert('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.');
-document.getElementById('mainContactForm').reset();
-            } catch (error) {
-                console.error('Ошибка:', error);
-                alert('❌ Ошибка отправки заявки. Пожалуйста, позвоните нам напрямую.');
-            } finally {
-                // Восстанавливаем кнопку
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
+            // 2. Отправка на почту через Web3Forms
+            const mailData = new FormData();
+            mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
+            mailData.append('subject', 'Заявка с главной страницы — stremyanki-dlya-kolodcev.ru');
+            mailData.append('from_name', 'Сайт лестниц для колодцев');
+            mailData.append('name', name);
+            mailData.append('contact', phone);
+            mailData.append('message', message || '');
+            mailData.append('source', 'Главная страница');
+
+            const mailPromise = fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: mailData
+            }).catch(err => console.warn('Web3Forms ошибка:', err));
+
+            await Promise.allSettled([telegramPromise, mailPromise]);
+
+            alert('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.');
+            document.getElementById('mainContactForm').reset();
+
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         });
 
     </script>

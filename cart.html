@@ -243,7 +243,8 @@
         // === КОНФИГУРАЦИЯ ===
         const CONFIG = {
             GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec',
-            CART_STORAGE_KEY: 'kolodets_cart_v1'
+            CART_STORAGE_KEY: 'kolodets_cart_v1',
+            WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
         };
 
         // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
@@ -385,7 +386,7 @@
             }
         }
         
-        // Обработка отправки формы в Telegram
+        // Обработка отправки формы (Telegram + почта Web3Forms)
         document.getElementById('orderForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             
@@ -418,7 +419,7 @@
 
             const total = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-            // Формируем сообщение для Telegram
+            // Формируем сообщение
             let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
             message += `👤 Имя: ${name}\n`;
             message += `📞 Телефон: ${phone}\n`;
@@ -440,33 +441,47 @@
             submitBtn.disabled = true;
 
             try {
-// Используем mode: 'no-cors' для обхода CORS
-const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors', // ← ДОБАВИТЬ ЭТУ СТРОКУ!
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        'type': 'order',
-        'name': name,
-        'phone': phone,
-        'email': email || '',
-        'comments': comments || '',
-        'cartText': message,
-        'total': total.toLocaleString('ru-RU')
-    })
-});
+                // 1. Отправка в Google Script (Telegram) — как было
+                const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        'type': 'order',
+                        'name': name,
+                        'phone': phone,
+                        'email': email || '',
+                        'comments': comments || '',
+                        'cartText': message,
+                        'total': total.toLocaleString('ru-RU')
+                    })
+                }).catch(err => console.warn('Google Script ошибка:', err));
 
-// При mode: 'no-cors' response будет opaque, поэтому считаем успехом
-console.log('Заказ отправлен (no-cors mode)');
+                // 2. Отправка на почту через Web3Forms
+                const mailData = new FormData();
+                mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
+                mailData.append('subject', 'НОВЫЙ ЗАКАЗ с сайта stremyanki-dlya-kolodcev.ru');
+                mailData.append('from_name', 'Сайт лестниц для колодцев');
+                mailData.append('name', name);
+                mailData.append('phone', phone);
+                mailData.append('email', email || 'не указан');
+                mailData.append('comments', comments || 'нет');
+                mailData.append('cart', message);
+                mailData.append('total', total.toLocaleString('ru-RU') + ' руб.');
 
-alert('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
+                const mailPromise = fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: mailData
+                }).catch(err => console.warn('Web3Forms ошибка:', err));
 
-// Очищаем корзину после отправки
-localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
-renderCart();
-document.getElementById('orderForm').reset();
+                await Promise.allSettled([telegramPromise, mailPromise]);
+
+                alert('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
+
+                // Очищаем корзину после отправки
+                localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
+                renderCart();
+                document.getElementById('orderForm').reset();
             } catch (error) {
                 console.error('Ошибка отправки заказа:', error);
                 alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую: +7 (965) 555-99-66');
