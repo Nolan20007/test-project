@@ -2,7 +2,7 @@
 Владелец: Производство лестниц для колодцев
 Город: Пермь
 Сайт: https://stremyanki-dlya-kolodcev.ru
-Email: info@stremyanki-dlya-kolodcev.ru
+Email: stremyanki-dlya-kolodcev@mail.ru
 Телефон: +7 (965) 555-99-66
 
 /* Технологии */
@@ -17,4 +17,4 @@ Google Fonts: шрифты
 Open Source: сообщество разработчиков
 
 /* Последнее обновление */
-2025 год
+2026 год
