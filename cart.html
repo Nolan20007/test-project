@@ -498,16 +498,12 @@
                 }).catch(err => console.warn('Google Script ошибка:', err));
 
                 // 2. Отправка на почту через Web3Forms
+                // Всё содержимое заказа — в одном поле form_data, чтобы не было дублей
                 const mailData = new FormData();
                 mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
                 mailData.append('subject', 'НОВЫЙ ЗАКАЗ с сайта stremyanki-dlya-kolodcev.ru');
                 mailData.append('from_name', 'Сайт лестниц для колодцев');
-                mailData.append('name', name);
-                mailData.append('phone', phone);
-                mailData.append('email', email || 'не указан');
-                mailData.append('comments', comments || 'нет');
-                mailData.append('cart', message);
-                mailData.append('total', total.toLocaleString('ru-RU') + ' руб.');
+                mailData.append('form_data', message);
 
                 const mailPromise = fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
