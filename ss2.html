@@ -33,7 +33,7 @@
       "offers": {
         "@type": "Offer",
         "priceCurrency": "RUB",
-        "price": "7500",
+        "price": "970",
         "priceValidUntil": "2025-12-31",
         "availability": "https://schema.org/InStock",
         "seller": {
@@ -294,7 +294,7 @@
         }
         .nomenclature-table tr:nth-child(even) { background-color: #f9f9f9; }
         .nomenclature-table td:nth-child(2) { font-weight: bold; color: #004d80; }
-        .nomenclature-table td:nth-child(7) { font-weight: bold; color: #cc0000; white-space: nowrap; }
+        .nomenclature-table td:nth-child(6) { font-weight: bold; color: #cc0000; white-space: nowrap; }
         .nomenclature-table .availability-icon { color: #4CAF50; font-size: 1.2em; }
         .quantity-control { 
             display: flex; 
@@ -881,7 +881,6 @@
                             <th>Изделие</th>
                             <th>Длина, см</th>
                             <th>Ширина, см</th>
-                            <th>Высота, см</th>
                             <th>Масса, кг</th>
                             <th>Цена</th>
                             <th>ед. измерения</th>
@@ -905,7 +904,6 @@
                         <td>${safeName}</td>
                         <td>${sanitizeInput(product.length)}</td>
                         <td>${sanitizeInput(product.width)}</td>
-                        <td>${sanitizeInput(product.height)}</td>
                         <td>${sanitizeInput(product.weight)}</td>
                         <td>от ${safePrice.toLocaleString('ru-RU')} руб.</td>
                         <td>${sanitizeInput(product.unit)}</td>
