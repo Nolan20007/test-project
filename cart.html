@@ -15,6 +15,10 @@
 <link rel="dns-prefetch" href="https://mc.yandex.ru">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <title>Корзина | Оформление заказа</title>
+    
+    <!-- Toast-уведомления -->
+    <link rel="stylesheet" href="css/toast.css">
+    
     <style>
         /* Общие стили */
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
@@ -253,6 +257,28 @@
             WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
         };
 
+        // === TOAST-УВЕДОМЛЕНИЯ (локальная копия, чтобы не подключать весь cart.js) ===
+        function showToast(message, type = 'success', duration = 3000) {
+            let container = document.querySelector('.toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.className = 'toast-container';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'toast ' + type;
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        }
+
         // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
         function sanitizeInput(text) {
             if (typeof text !== 'string') return '';
@@ -285,7 +311,7 @@
                 return true;
             } catch (e) {
                 console.error("Ошибка сохранения в LocalStorage:", e);
-                alert('Ошибка сохранения корзины. Проверьте настройки браузера.');
+                showToast('Ошибка сохранения корзины. Проверьте настройки браузера.', 'error');
                 return false;
             }
         }
@@ -382,13 +408,14 @@
         function clearCart() {
             const cart = getCart();
             if (Object.keys(cart).length === 0) {
-                alert('Корзина уже пуста');
+                showToast('Корзина уже пуста', 'info');
                 return;
             }
             
             if (confirm("Вы уверены, что хотите полностью очистить корзину? Это действие нельзя отменить.")) {
                 localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
                 renderCart(); // Перерисовать корзину
+                showToast('Корзина очищена', 'success');
             }
         }
         
@@ -403,23 +430,23 @@
 
             // Валидация данных
             if (!name || name.length < 2) {
-                alert('Пожалуйста, введите корректное имя');
+                showToast('Пожалуйста, введите корректное имя', 'error');
                 return;
             }
 
             if (!validatePhone(phone)) {
-                alert('Пожалуйста, введите корректный номер телефона');
+                showToast('Пожалуйста, введите корректный номер телефона', 'error');
                 return;
             }
 
             if (email && !validateEmail(email)) {
-                alert('Пожалуйста, введите корректный email адрес');
+                showToast('Пожалуйста, введите корректный email адрес', 'error');
                 return;
             }
 
             const currentCart = getCart();
             if (Object.keys(currentCart).length === 0) {
-                alert('Корзина пуста');
+                showToast('Корзина пуста', 'error');
                 return;
             }
 
@@ -489,7 +516,7 @@
 
                 await Promise.allSettled([telegramPromise, mailPromise]);
 
-                alert('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.');
+                showToast('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.', 'success', 4000);
 
                 // Очищаем корзину после отправки
                 localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
@@ -497,7 +524,7 @@
                 document.getElementById('orderForm').reset();
             } catch (error) {
                 console.error('Ошибка отправки заказа:', error);
-                alert('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую: +7 (965) 555-99-66');
+                showToast('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую: +7 (965) 555-99-66', 'error', 5000);
             } finally {
                 // Восстанавливаем кнопку
                 submitBtn.textContent = originalText;

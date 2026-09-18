@@ -19,6 +19,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
 
+    <!-- Toast-уведомления -->
+    <link rel="stylesheet" href="css/toast.css">
     
     <!-- Schema.org разметка -->
     <script type="application/ld+json">
@@ -1167,6 +1169,28 @@
             WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
         };
 
+        // === TOAST-УВЕДОМЛЕНИЯ (локальная копия) ===
+        function showToast(message, type = 'success', duration = 3000) {
+            let container = document.querySelector('.toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.className = 'toast-container';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'toast ' + type;
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        }
+
         // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
         function sanitizeInput(text) {
             if (typeof text !== 'string') return '';
@@ -1178,7 +1202,7 @@
             return /^[\d\s\-\+\(\)@\.a-zA-Z]{5,50}$/.test(phone);
         }
 
-        // === КОРЗИНА ===
+        // === КОРЗИНА — только чтение счётчика (без записи) ===
         function getCart() {
             try {
                 const cartData = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
@@ -1278,11 +1302,11 @@
             const message = sanitizeInput(document.getElementById('mainMessage').value);
 
             if (!name || name.length < 2) {
-                alert('Пожалуйста, введите корректное имя');
+                showToast('Пожалуйста, введите корректное имя', 'error');
                 return;
             }
             if (!validatePhone(phone)) {
-                alert('Пожалуйста, введите корректный контакт');
+                showToast('Пожалуйста, введите корректный контакт', 'error');
                 return;
             }
 
@@ -1322,7 +1346,7 @@
 
             await Promise.allSettled([telegramPromise, mailPromise]);
 
-            alert('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.');
+            showToast('✅ Заявка успешно отправлена! Менеджер свяжется с вами для расчета стоимости.', 'success', 4000);
             document.getElementById('mainContactForm').reset();
 
             submitBtn.textContent = originalText;

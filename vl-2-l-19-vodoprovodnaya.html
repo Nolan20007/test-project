@@ -18,6 +18,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
 
+    <!-- Toast-уведомления -->
+    <link rel="stylesheet" href="css/toast.css">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Водопроводная лестница ВЛ-2 (Л-2, Л-19) для колодцев | Купить в Перми">
@@ -471,7 +473,6 @@
                 height: 60px;
             }
             
-            /* Таблица - горизонтальная прокрутка */
             .nomenclature-table { 
                 display: block; 
                 overflow-x: auto; 
@@ -495,7 +496,6 @@
                 font-size: 11px;
             }
             
-            /* Характеристики - адаптивная сетка */
             .characteristics-list li {
                 grid-template-columns: 15px 1fr;
                 gap: 8px;
@@ -516,7 +516,6 @@
                 grid-column: 1 / 2;
             }
             
-            /* Секция контактов */
             #contact-summary {
                 padding: 30px 0;
                 margin-top: 30px;
@@ -762,27 +761,15 @@
         </div>
     </div>
     
+    <!-- Подключение общих функций корзины и toast -->
+    <script src="js/cart.js"></script>
+    
     <script>
-        // === КОНФИГУРАЦИЯ ===
-        const CONFIG = {
+        // === КОНФИГУРАЦИЯ страницы ===
+        window.CONFIG = {
             GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyz0g0OHYIowfiR6osF8Hc89-uhTsd9k13XOAVkdjKzExHyzwjDTAjKTW8wHzYDLIi8/exec',
             CART_STORAGE_KEY: 'kolodets_cart_v1'
         };
-
-        // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
-        function sanitizeInput(text) {
-            if (typeof text !== 'string') return '';
-            return text.replace(/[<>&"']/g, '');
-        }
-
-        function validatePhone(phone) {
-            return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
-        }
-
-        function validateEmail(email) {
-            if (!email) return true; // email не обязателен
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
 
         // === 1. Глобальные переменные ===
         const mainImage = document.getElementById('mainImage');
@@ -790,7 +777,7 @@
         const thumbnails = document.querySelectorAll('.thumbnail');
         const modal = document.getElementById("productModal");
         const galleryContainer = document.getElementById("galleryContainer");
-        const CSV_URL = 'data/vdl-products.csv'; // Путь к CSV файлу для водопроводных лестниц
+        const CSV_URL = 'data/vdl-products.csv';
         
         // === 2. ФУНКЦИИ ГАЛЕРЕИ И ЛАЙТБОКСА ===
 
@@ -843,7 +830,6 @@
                     headers.forEach((header, index) => {
                         product[header] = values[index] || '';
                     });
-                    // Валидация данных продукта
                     if (product.id && product.name && product.price) {
                         products.push(product);
                     }
@@ -903,7 +889,6 @@
             `;
 
             products.forEach(product => {
-                // Валидация и санитизация данных
                 const safeName = sanitizeInput(product.name);
                 const safePrice = parseFloat(product.price) || 0;
                 const safeImage = product.image || 'images/default-product.png';
@@ -943,190 +928,26 @@
             const products = await loadProductData();
             container.innerHTML = generateTableHTML(products);
             
-            // Инициализируем обработчики для кнопок корзины
+            // Инициализируем обработчики для кнопок корзины (функция из cart.js)
             initializeCartButtons();
         }
 
         // =======================================================
-        // === 4. ФУНКЦИИ КОРЗИНЫ ===
-        // =======================================================
-
-        function loadCart() {
-            try {
-                const cartString = localStorage.getItem(CONFIG.CART_STORAGE_KEY) || '{}';
-                const cart = JSON.parse(cartString);
-                
-                // Валидация структуры корзины
-                if (typeof cart !== 'object') return {};
-                
-                // Очистка от невалидных данных
-                Object.keys(cart).forEach(key => {
-                    if (!cart[key] || typeof cart[key] !== 'object' || 
-                        !cart[key].id || !cart[key].name || 
-                        typeof cart[key].quantity !== 'number' || 
-                        typeof cart[key].price !== 'number') {
-                        delete cart[key];
-                    }
-                });
-                
-                return cart;
-            } catch (e) {
-                console.error("Ошибка при загрузке корзины:", e);
-                return {}; 
-            }
-        }
-
-        function saveCart(cart) {
-            try {
-                // Дополнительная валидация перед сохранением
-                const validCart = {};
-                Object.keys(cart).forEach(key => {
-                    const item = cart[key];
-                    if (item && item.id && item.name && 
-                        typeof item.quantity === 'number' && item.quantity > 0 &&
-                        typeof item.price === 'number' && item.price >= 0) {
-                        validCart[key] = item;
-                    }
-                });
-                
-                localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(validCart));
-                updateCartDisplay(validCart);
-                return true;
-            } catch (e) {
-                console.error("Ошибка сохранения корзины:", e);
-                alert('Ошибка сохранения корзины. Проверьте настройки браузера.');
-                return false;
-            }
-        }
-        
-        function updateCartDisplay(cart) {
-            let totalQuantity = 0;
-            for (const itemId in cart) {
-                if (cart.hasOwnProperty(itemId)) {
-                    totalQuantity += parseInt(cart[itemId].quantity) || 0;
-                }
-            }
-            
-            document.getElementById('cart-count-page').textContent = totalQuantity;
-            document.getElementById('cart-count-summary').textContent = totalQuantity;
-
-            // Синхронизация полей ввода с корзиной
-            document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
-                const itemId = input.id.replace('-qty', '');
-                if (cart[itemId]) {
-                    input.value = cart[itemId].quantity;
-                }
-            });
-        }
-
-        function initializeCartButtons() {
-            document.querySelectorAll('.cart-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    const itemId = sanitizeInput(this.getAttribute('data-item-id'));
-                    const itemName = sanitizeInput(this.getAttribute('data-item-name'));
-                    const quantityInput = document.getElementById(itemId + '-qty');
-                    
-                    if (!quantityInput) {
-                        console.error('Не найден элемент количества для товара:', itemId);
-                        return;
-                    }
-                    
-                    const quantity = parseInt(quantityInput.value) || 1;
-                    const price = parseFloat(quantityInput.getAttribute('data-price')) || 0;
-                    
-                    addItemToCart(itemId, itemName, quantity, price);
-                });
-            });
-
-            document.querySelectorAll('.nomenclature-table input[type="number"]').forEach(input => {
-                input.addEventListener('change', function(event) {
-                    let val = parseInt(this.value);
-                    if (isNaN(val) || val < 1) {
-                        val = 1;
-                    }
-                    if (val > 99) { 
-                        val = 99; 
-                    }
-                    this.value = val;
-                    
-                    const itemId = this.id.replace('-qty', '');
-                    const cart = loadCart();
-                    if (cart[itemId]) {
-                        cart[itemId].quantity = val;
-                        saveCart(cart);
-                    }
-                });
-            });
-        }
-
-        function addItemToCart(id, name, quantity, price) {
-            try {
-                if (!id || !name || quantity <= 0 || price < 0) {
-                    throw new Error('Невалидные данные товара');
-                }
-                
-                const cart = loadCart(); 
-                
-                if (cart[id]) {
-                    cart[id].quantity += quantity;
-                    // Защита от переполнения
-                    if (cart[id].quantity > 999) cart[id].quantity = 999;
-                } else {
-                    cart[id] = { 
-                        id: id,
-                        name: name,
-                        quantity: quantity,
-                        price: price
-                    };
-                }
-                
-                if (saveCart(cart)) {
-                    alert(`Добавлено в корзину: ${quantity} шт. ${name}. Всего в корзине: ${cart[id].quantity} шт.`);
-                }
-            } catch (error) {
-                console.error('Ошибка добавления в корзину:', error);
-                alert('Произошла ошибка при добавлении товара в корзину');
-            }
-        }
-        
-        function changeQuantity(id, delta) {
-            const quantityInput = document.getElementById(id + '-qty');
-            if (!quantityInput) return;
-            
-            let currentQuantity = parseInt(quantityInput.value) || 1;
-            
-            let newQuantity = currentQuantity + delta;
-            if (newQuantity < 1) newQuantity = 1;
-            if (newQuantity > 99) newQuantity = 99;
-            
-            quantityInput.value = newQuantity;
-            
-            const cart = loadCart();
-            if (cart[id]) {
-                cart[id].quantity = newQuantity;
-                saveCart(cart);
-            }
-        }
-
-        // =======================================================
-        // === 5. ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ ===
+        // === 4. ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ ===
         // =======================================================
 
         window.onload = function() {
             // Загружаем таблицу с данными
             loadNomenclatureTable();
             
-            // Инициализируем корзину
-            const initialCart = loadCart();
-            updateCartDisplay(initialCart);
+            // Счётчик корзины обновляется автоматически в cart.js через DOMContentLoaded
         };
 
-        // Делаем функции глобальными для HTML
+        // Делаем функции галереи глобальными для HTML
         window.changeImage = changeImage;
         window.openModal = openModal;
         window.closeModal = closeModal;
         window.scrollToSlide = scrollToSlide;
-        window.changeQuantity = changeQuantity;
 
     </script>
 
