@@ -328,8 +328,8 @@
 
             for (const itemId in cart) {
                 const item = cart[itemId];
-                const price = parseFloat(item.price);
-                const quantity = parseInt(item.quantity);
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 0;
 
                 const itemTotal = price * quantity;
                 totalSum += itemTotal;
@@ -423,7 +423,11 @@
                 return;
             }
 
-            const total = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = Object.values(currentCart).reduce((sum, item) => {
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 0;
+                return sum + (price * quantity);
+            }, 0);
 
             // Формируем сообщение
             let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
@@ -435,7 +439,10 @@
             
             for (const itemId in currentCart) {
                 const item = currentCart[itemId];
-                message += `• ${item.name} - ${item.quantity} шт. × ${item.price} руб. = ${(item.price * item.quantity).toLocaleString('ru-RU')} руб.\n`;
+                const itemPrice = parseFloat(item.price) || 0;
+                const itemQuantity = parseInt(item.quantity) || 0;
+                const itemTotal = itemPrice * itemQuantity;
+                message += `• ${sanitizeInput(item.name)} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
             }
             
             message += `\n💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.`;
