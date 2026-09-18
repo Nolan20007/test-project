@@ -45,7 +45,7 @@ function showToast(message, type = 'success', duration = 3000) {
 
 function sanitizeInput(text) {
     if (typeof text !== 'string') return '';
-    return text.replace(/[<>&"']/g, '');
+    return text.replace(/[<>&"'\/\\]/g, '');
 }
 
 // === КОРЗИНА ===
