@@ -61,12 +61,18 @@
         <priority>0.7</priority>
     </url>
     
-    <!-- Сервисные страницы -->
     <url>
-        <loc>https://stremyanki-dlya-kolodcev.ru/cart.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <loc>https://stremyanki-dlya-kolodcev.ru/montazh-stremyanok-v-kolodcy.html</loc>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.3</priority>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/gost-trebovaniya-k-lestnicam.html</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
 </urlset>
