@@ -1,10 +1,10 @@
 id,name,length,width,weight,price,unit,available,image
-C-1,С-1,120,50,13.8,1930,1 шт,✅,images/vl-mini.png
-C-2,С-2,150,50,17,2415,1 шт,✅,images/vl-mini.png
-C-3,С-3,180,50,20.3,2875,1 шт,✅,images/vl-mini.png
-C-4,С-4,210,50,23.5,3350,1 шт,✅,images/vl-mini.png
-C-5,С-5,220,50,23.6,3585,1 шт,✅,images/vl-mini.png
-C-6,С-6,240,50,26.7,3835,1 шт,✅,images/vl-mini.png
-C-7,С-7,270,50,30,4310,1 шт,✅,images/vl-mini.png
-C-8,С-8,420,50,46,6680,1 шт,✅,images/vl-mini.png
-C-9,С-9,450,50,49.3,7160,1 шт,✅,images/vl-mini.png
+C-1,С-1,120,50,13.0,2340,1 шт,✅,images/vl-mini.png
+C-2,С-2,150,50,16.3,2935,1 шт,✅,images/vl-mini.png
+C-3,С-3,180,50,19.6,3530,1 шт,✅,images/vl-mini.png
+C-4,С-4,210,50,22.8,4105,1 шт,✅,images/vl-mini.png
+C-5,С-5,220,50,23.9,4300,1 шт,✅,images/vl-mini.png
+C-6,С-6,240,50,26.1,4700,1 шт,✅,images/vl-mini.png
+C-7,С-7,270,50,29.3,5275,1 шт,✅,images/vl-mini.png
+C-8,С-8,420,50,45.7,8225,1 шт,✅,images/vl-mini.png
+C-9,С-9,450,50,48.9,8800,1 шт,✅,images/vl-mini.png
