@@ -236,6 +236,18 @@
                 <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20">
                 <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
                 <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
+                
+                <!-- Поле для файла -->
+                <label for="orderFile" style="display: block; margin-bottom: 8px; font-size: 14px; color: #555;">
+                    📎 Прикрепить файл (чертёж, фото) — до 5 МБ:
+                </label>
+                <input type="file" id="orderFile" name="attachment" 
+                       accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" 
+                       style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
+                    Форматы: PDF, JPG, PNG, DOC, DOCX. Максимум 5 МБ.
+                </p>
+                
                 <button type="submit">Подтвердить заказ</button>
                 <p style="font-size: 0.85em; margin-top: 15px; text-align: center; color: #555;">Нажимая кнопку "Подтвердить заказ", вы даете согласие на обработку персональных данных.</p>
             </form>
@@ -480,6 +492,18 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
 
+            // === Обработка файла ===
+            const fileInput = document.getElementById('orderFile');
+            const file = fileInput.files[0];
+            const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 МБ
+
+            if (file && file.size > MAX_FILE_SIZE) {
+                showToast('Файл больше 5 МБ. Пришлите его отдельно на почту stremyanki-dlya-kolodcev@mail.ru', 'error', 6000);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+
             try {
                 // 1. Отправка в Google Script (Telegram) — как было
                 const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
@@ -493,7 +517,8 @@
                         'email': email || '',
                         'comments': comments || '',
                         'cartText': message,
-                        'total': total.toLocaleString('ru-RU')
+                        'total': total.toLocaleString('ru-RU'),
+                        'hasFile': !!file
                     })
                 }).catch(err => console.warn('Google Script ошибка:', err));
 
@@ -504,6 +529,11 @@
                 mailData.append('subject', 'НОВЫЙ ЗАКАЗ с сайта stremyanki-dlya-kolodcev.ru');
                 mailData.append('from_name', 'Сайт лестниц для колодцев');
                 mailData.append('form_data', message);
+
+                // Прикрепляем файл, если он есть
+                if (file) {
+                    mailData.append('attachment', file);
+                }
 
                 const mailPromise = fetch('https://api.web3forms.com/submit', {
                     method: 'POST',

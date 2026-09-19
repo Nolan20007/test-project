@@ -1079,6 +1079,18 @@
                     <input type="text" id="mainName" placeholder="Ваше имя" required maxlength="100">
                     <input type="text" id="mainPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
                     <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4" maxlength="500"></textarea>
+                    
+                    <!-- Поле для файла -->
+                    <label for="mainFile" style="display: block; margin-bottom: 8px; font-size: 14px; color: #555;">
+                        📎 Прикрепить файл (чертёж, фото) — до 5 МБ:
+                    </label>
+                    <input type="file" id="mainFile" name="attachment" 
+                           accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" 
+                           style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; background: #fafafa;">
+                    <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
+                        Форматы: PDF, JPG, PNG, DOC, DOCX. Максимум 5 МБ.
+                    </p>
+                    
                     <button type="submit">Отправить запрос</button>
                 </form>
             </div>
@@ -1310,12 +1322,24 @@
                 return;
             }
 
+            // === Обработка файла ===
+            const fileInput = document.getElementById('mainFile');
+            const file = fileInput.files[0];
+            const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 МБ
+
+            if (file && file.size > MAX_FILE_SIZE) {
+                showToast('Файл больше 5 МБ. Пришлите его отдельно на почту stremyanki-dlya-kolodcev@mail.ru', 'error', 6000);
+                return;
+            }
+
+            const hasFile = !!file;
+
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
 
-            // 1. Отправка в Google Script (Telegram) — как было
+            // 1. Отправка в Google Script (Telegram) — добавляем флаг hasFile
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -1325,11 +1349,12 @@
                     'name': name,
                     'phone': phone,
                     'message': message || '',
-                    'source': 'Главная страница'
+                    'source': 'Главная страница',
+                    'hasFile': hasFile
                 })
             }).catch(err => console.warn('Google Script ошибка:', err));
 
-            // 2. Отправка на почту через Web3Forms
+            // 2. Отправка на почту через Web3Forms (с файлом, если есть)
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', 'Заявка с главной страницы — stremyanki-dlya-kolodcev.ru');
@@ -1338,6 +1363,11 @@
             mailData.append('contact', phone);
             mailData.append('message', message || '');
             mailData.append('source', 'Главная страница');
+
+            // Прикрепляем файл, если он есть
+            if (file) {
+                mailData.append('attachment', file);
+            }
 
             const mailPromise = fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
