@@ -293,6 +293,19 @@
         .feedback-form button:hover {
             background: #e68a00;
         }
+        .form-consent {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .form-consent a {
+            color: #004d80;
+            text-decoration: none;
+        }
+        .form-consent a:hover {
+            text-decoration: underline;
+        }
         
         /* CTA */
         .cta-block {
@@ -544,7 +557,7 @@
 
             <div class="faq-item">
                 <div class="faq-question">Работаете ли с юридическими лицами?</div>
-                <div class="faq-answer">Да. Работаем по безналичному расчёту. Предоставляем счёт, договор, УПД и все закрывающие документы.</div>
+                <div class="faq-answer">Да. Работаем по безналичному расчёту. Предоставляем счёт, договор, УПД и все закрывающие документы. <a href="o-kompanii.html" style="color: #004d80;">Реквизиты →</a></div>
             </div>
 
             <div class="faq-item">
@@ -561,6 +574,11 @@
                     <input type="text" id="deliveryPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
                     <textarea id="deliveryMessage" placeholder="Укажите город доставки, тип и длину лестниц" rows="3" maxlength="500"></textarea>
                     <button type="submit">Отправить запрос</button>
+                    <p class="form-consent">
+                        Нажимая кнопку, вы соглашаетесь с 
+                        <a href="publichnaya-oferta.html">публичной офертой</a> и 
+                        <a href="politika-konfidencialnosti.html">политикой конфиденциальности</a>.
+                    </p>
                 </form>
             </div>
 

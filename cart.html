@@ -15,6 +15,7 @@
 <link rel="dns-prefetch" href="https://mc.yandex.ru">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <title>Корзина | Оформление заказа</title>
+    <meta name="robots" content="noindex, follow">
     
     <!-- Toast-уведомления -->
     <link rel="stylesheet" href="css/toast.css">
@@ -173,6 +174,21 @@
             color: #333;
         }
 
+        /* Согласие на обработку данных */
+        .form-consent {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .form-consent a {
+            color: #004d80;
+            text-decoration: none;
+        }
+        .form-consent a:hover {
+            text-decoration: underline;
+        }
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .cart-table, .cart-actions {
@@ -254,7 +270,12 @@
                 </p>
                 
                 <button type="submit">Подтвердить заказ</button>
-                <p style="font-size: 0.85em; margin-top: 15px; text-align: center; color: #555;">Нажимая кнопку "Подтвердить заказ", вы даете согласие на обработку персональных данных.</p>
+                <p class="form-consent">
+                    Нажимая кнопку "Подтвердить заказ", вы соглашаетесь с 
+                    <a href="publichnaya-oferta.html">публичной офертой</a> и 
+                    <a href="politika-konfidencialnosti.html">политикой конфиденциальности</a>, 
+                    и даёте согласие на обработку персональных данных.
+                </p>
             </form>
         </div>
         
