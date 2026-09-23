@@ -27,10 +27,14 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Производство лестниц и стремянок для колодцев",
+      "name": "ИП Гневашева Кристина Дмитриевна",
+      "alternateName": "Производство лестниц и стремянок для колодцев",
       "description": "Производство и продажа лестниц и стремянок для колодцев водопровода и канализации. ГОСТ качество. Доставка по России.",
       "url": "https://stremyanki-dlya-kolodcev.ru/",
       "telephone": "+79655559966",
+      "email": "stremyanki-dlya-kolodcev@mail.ru",
+      "taxID": "591791797420",
+      "vatID": "321595800089601",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "ул. Василия Васильева, д. 33",
@@ -442,6 +446,20 @@
             background: #e68a00;
         }
 
+        .form-consent {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .form-consent a {
+            color: #004d80;
+            text-decoration: none;
+        }
+        .form-consent a:hover {
+            text-decoration: underline;
+        }
+
         /* Подвал */
         .footer {
             background: #222;
@@ -814,6 +832,7 @@
             <a href="#advantages">Преимущества</a>
             <a href="#articles">Полезные статьи</a>
             <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+            <a href="o-kompanii.html">О компании</a>
             <a href="#contacts">Контакты и Заказ</a>
             <a href="cart.html" class="cart-link" style="margin-left: 30px;">
                 🛒 Корзина (<span id="cart-count">0</span>)
@@ -1030,7 +1049,7 @@
     <!-- БЛОК КОНТАКТОВ -->
     <section id="contacts" class="contacts">
         <div class="container">
-            <h2>Свяжитесь с нами</h2>
+            <h2>Заказать или задать вопрос</h2>
             
             <div class="contact-grid">
                 <!-- Телефон -->
@@ -1081,23 +1100,15 @@
                     <input type="text" id="mainPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
                     <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4" maxlength="500"></textarea>
                     
-                    <!-- Поле для файла — СКРЫТО (включить, когда будет Web3Forms Pro) -->
-                    <!--
-                    <label for="mainFile" style="display: block; margin-bottom: 8px; font-size: 14px; color: #555;">
-                        📎 Прикрепить файл (чертёж, фото) — до 5 МБ:
-                    </label>
-                    <input type="file" id="mainFile" name="attachment" 
-                           accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" 
-                           style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; background: #fafafa;">
-                    <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
-                        Форматы: PDF, JPG, PNG, DOC, DOCX. Максимум 5 МБ.
-                    </p>
-                    -->
                     <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
                         Чертёж или фото пришлите на почту <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: #004d80;">stremyanki-dlya-kolodcev@mail.ru</a>
                     </p>
                     
                     <button type="submit">Отправить запрос</button>
+                    <p class="form-consent">
+                        Нажимая кнопку, вы соглашаетесь с 
+                        <a href="politika-konfidencialnosti.html">политикой конфиденциальности</a>
+                    </p>
                 </form>
             </div>
         </div>
@@ -1134,6 +1145,8 @@
     <a href="montazh-stremyanok-v-kolodcy.html">Монтаж стремянок</a>
 <a href="gost-trebovaniya-k-lestnicam.html">ГОСТ требования</a>
 <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+<a href="o-kompanii.html">О компании</a>
+<a href="politika-konfidencialnosti.html">Политика конфиденциальности</a>
 <a href="sitemap.xml">Карта сайта</a>
 </div>
             </div>
@@ -1143,9 +1156,12 @@
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Производство лестниц и стремянок для колодцев",
+              "name": "ИП Гневашева Кристина Дмитриевна",
+              "alternateName": "Производство лестниц и стремянок для колодцев",
               "url": "https://stremyanki-dlya-kolodcev.ru/",
               "logo": "https://stremyanki-dlya-kolodcev.ru/images/logo.png",
+              "taxID": "591791797420",
+              "vatID": "321595800089601",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+79655559966",
