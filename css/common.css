@@ -1,0 +1,269 @@
+/* === ПЕРЕМЕННЫЕ === */
+:root {
+    --primary-color: #0E5C80;
+    --primary-color-hover: #116D97;
+    --accent-color: #0C4C6A;
+    --dark-color: #333;
+    --light-color: #ebf8ff;
+    --light-color-hover: #d1efff;
+    --font-family: 'Rubik', sans-serif;
+    --inputs-buttons-border-radius: 15px;
+    --price-with-compare-color: #ff3131;
+    --quote-color: #ff9900;
+    --quote-color-hover: #e68a00;
+}
+
+/* === БАЗА === */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+    color: #1b1b1b;
+    overflow-x: hidden;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+* { box-sizing: border-box; }
+
+/* === ШАПКА === */
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 22px 0;
+    text-align: center;
+}
+.header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    line-height: 1.2;
+    font-weight: 600;
+}
+.header p {
+    margin: 8px 0 0;
+    font-size: 1.05em;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+}
+.header .back-link {
+    color: #ff9900;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95em;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+.header .back-link:hover { text-decoration: underline; }
+
+/* === НАВИГАЦИЯ === */
+.nav {
+    background-color: var(--accent-color);
+    padding: 12px 0;
+    text-align: center;
+}
+.nav .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.nav a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.2s;
+    display: inline-block;
+}
+.nav a:hover { color: #ffffff; }
+
+.cart-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 16px;
+    background-color: var(--primary-color-hover);
+    border-radius: var(--inputs-buttons-border-radius);
+    transition: background-color 0.2s;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
+}
+.cart-link:hover { background-color: var(--accent-color); }
+
+.btn-get-quote {
+    display: inline-block;
+    background: var(--quote-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--inputs-buttons-border-radius);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+.btn-get-quote:hover {
+    background: var(--quote-color-hover);
+    transform: translateY(-1px);
+}
+
+/* === ХЛЕБНЫЕ КРОШКИ === */
+.breadcrumbs {
+    margin: 20px 0;
+    font-size: 0.85em;
+    color: #7a8a9a;
+}
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs span { color: #7a8a9a; }
+
+/* === МОДАЛКА СЧЁТ/КП === */
+.quote-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.quote-modal.show { display: flex; }
+.quote-modal-content {
+    background: white;
+    border-radius: var(--inputs-buttons-border-radius);
+    padding: 32px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.quote-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.quote-close:hover { color: var(--primary-color); }
+.quote-modal-content h3 {
+    margin: 0 0 8px;
+    color: var(--dark-color);
+    font-size: 1.35em;
+    font-weight: 600;
+}
+.quote-desc {
+    color: #686868;
+    font-size: 14px;
+    margin: 0 0 22px;
+    line-height: 1.5;
+}
+.quote-modal-content input,
+.quote-modal-content textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border: 1px solid #d0d8e0;
+    border-radius: var(--inputs-buttons-border-radius);
+    font-size: 15px;
+    font-family: inherit;
+}
+.quote-modal-content input:focus,
+.quote-modal-content textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+.quote-modal-content button[type="submit"] {
+    background: var(--quote-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: var(--inputs-buttons-border-radius);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+.quote-modal-content button[type="submit"]:hover {
+    background: var(--quote-color-hover);
+}
+
+/* === ПОДВАЛ === */
+.footer {
+    background: #333;
+    color: #ffffff;
+    padding: 40px 0 20px;
+    font-size: 14px;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.footer-section h4 {
+    color: #ffffff;
+    margin: 0 0 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.footer-section a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+    transition: opacity 0.2s;
+}
+.footer-section a:hover { opacity: 0.5; }
+.footer-section p {
+    margin: 0 0 6px;
+    color: #ffffff;
+    font-size: 13.5px;
+}
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+}
+
+/* === МОБИЛЬНАЯ === */
+@media (max-width: 768px) {
+    body { font-size: 14.5px; }
+    .container { padding: 0 15px; }
+    .header { padding: 18px 0; }
+    .header h1 { font-size: 1.5em; padding: 0 10px; }
+    .header p { font-size: 0.95em; padding: 0 10px; }
+    .nav .container { flex-direction: column; gap: 10px; }
+    .nav a { margin: 2px 8px; font-size: 13.5px; }
+    .cart-link { margin-left: 0; font-size: 13.5px; padding: 7px 14px; }
+    .btn-get-quote { margin-left: 0; font-size: 13.5px; padding: 8px 16px; }
+    .footer { padding: 30px 0 15px; }
+    .footer-content { grid-template-columns: 1fr; gap: 22px; }
+    .footer-section { text-align: center; }
+    .quote-modal-content { padding: 24px; }
+}
