@@ -109,7 +109,7 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
 
-            // === Текст сообщения для Telegram ===
+            // === Текст сообщения для Telegram и почты ===
             const body = `📄 ЗАПРОС СЧЁТА/КП
 
 🏢 Компания: ${company}
@@ -136,17 +136,11 @@
             }).catch(err => console.warn('TG ошибка:', err));
 
             // === 2. Почта через Web3Forms ===
+            // Оставляем только form_data — отдельные поля убраны, чтобы не было дублирования
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', 'Запрос счёта/КП — stremyanki-dlya-kolodcev.ru');
             mailData.append('from_name', 'Сайт лестниц для колодцев');
-            mailData.append('company', company);
-            mailData.append('inn', inn);
-            mailData.append('name', name);
-            mailData.append('contact', phone);
-            mailData.append('message', message || '');
-            mailData.append('source', 'Форма счёт/КП: ' + window.location.pathname);
-            // ГЛАВНОЕ: дублируем всё сообщение целиком — ИНН точно придёт
             mailData.append('form_data', body);
 
             const mailPromise = fetch('https://api.web3forms.com/submit', {
