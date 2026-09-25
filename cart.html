@@ -3,576 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://mc.yandex.ru">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-
-<!-- Оптимизация загрузки -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://mc.yandex.ru">
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <title>Корзина | Оформление заказа</title>
     <meta name="robots" content="noindex, follow">
-    
-    <!-- Toast-уведомления -->
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
+
     <link rel="stylesheet" href="css/toast.css">
-    
+    <link rel="stylesheet" href="css/common.css">
+
     <style>
-        /* Общие стили */
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-        
-        /* Хедер и навигация */
-        .header { background-color: #004d80; color: white; padding: 20px 0; }
-        .header h1 { margin: 0; font-size: 2.5em; text-align: center; }
-        .back-link { 
-            color: #ff9900; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin-bottom: 10px; 
-            display: inline-block; 
-            transition: color 0.3s; 
+        .cart-page { padding: 20px 0 40px; }
+        .cart-page h1 {
+            text-align: center;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            font-size: 1.9em;
+            font-weight: 600;
         }
-        .back-link:hover { color: #e68a00; }
-        
-        /* Таблица корзины */
         .cart-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: var(--inputs-buttons-border-radius);
+            overflow: hidden;
+            border: 1px solid #eef2f6;
         }
         .cart-table th, .cart-table td {
-            border: 1px solid #ddd;
+            border-bottom: 1px solid #eef2f6;
             padding: 12px;
             text-align: left;
             vertical-align: middle;
         }
         .cart-table th {
-            background-color: #004d80;
+            background-color: var(--primary-color);
             color: white;
-            font-weight: bold;
+            font-weight: 500;
         }
         .cart-table td:nth-child(3),
-        .cart-table td:nth-child(4) {
-            text-align: center;
-            white-space: nowrap;
-        }
+        .cart-table td:nth-child(4) { text-align: center; white-space: nowrap; }
         .cart-table td:nth-child(5) {
-            font-weight: bold;
+            font-weight: 600;
             color: #cc0000;
             white-space: nowrap;
         }
-        
-        /* Итоговая сумма */
         .cart-summary-block {
             display: flex;
             justify-content: flex-end;
             margin-top: 20px;
-            padding: 15px;
-            background-color: #e9e9e9;
-            border-radius: 4px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: var(--inputs-buttons-border-radius);
         }
         .total-price {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #004d80;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--dark-color);
         }
-        .total-price span {
-            color: #cc0000;
-        }
-        
-        /* Кнопки управления */
+        .total-price span { color: #cc0000; }
         .cart-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .cart-actions button, .delete-item-btn {
-            padding: 10px 20px;
-            font-weight: bold;
+        .cart-actions button {
+            padding: 12px 24px;
+            font-weight: 500;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--inputs-buttons-border-radius);
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-family: inherit;
+            font-size: 15px;
+            transition: background-color 0.2s;
         }
         .clear-cart-btn {
-            background-color: #dc3545; /* Красный */
+            background-color: #dc3545;
             color: white;
         }
         .clear-cart-btn:hover { background-color: #c82333; }
         .continue-shopping-btn {
-            background-color: #ff9900; /* Оранжевый */
+            background-color: var(--primary-color);
             color: white;
+            text-decoration: none;
+            display: inline-block;
         }
-        .continue-shopping-btn:hover { background-color: #e68a00; }
-
+        .continue-shopping-btn:hover { background-color: var(--primary-color-hover); }
         .delete-item-btn {
             background-color: #ffc107;
             color: #333;
-            padding: 5px 10px;
+            padding: 6px 12px;
             font-size: 0.9em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
         }
         .delete-item-btn:hover { background-color: #e0a800; }
 
-        /* Форма заказа */
         .order-form-section {
             margin-top: 40px;
             padding: 30px;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
         }
         .order-form-section h2 {
-            color: #004d80;
-            border-bottom: 2px solid #004d80;
-            padding-bottom: 5px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 8px;
             margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
         }
-        .order-form input[type="text"], 
-        .order-form input[type="tel"], 
+        .order-form input[type="text"],
+        .order-form input[type="tel"],
         .order-form input[type="email"],
-        .order-form textarea { 
-            width: 100%; 
-            padding: 12px; 
-            margin-bottom: 15px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            box-sizing: border-box; 
+        .order-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 15px;
+            border: 1px solid #d0d8e0;
+            border-radius: var(--inputs-buttons-border-radius);
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 15px;
+        }
+        .order-form input:focus,
+        .order-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
         .order-form button[type="submit"] {
-            background-color: #4CAF50; /* Зеленый */
+            background-color: #4CAF50;
             color: white;
             width: 100%;
             padding: 15px;
             border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 1.1em;
+            border-radius: var(--inputs-buttons-border-radius);
+            font-weight: 600;
+            font-size: 1.05em;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-family: inherit;
         }
         .order-form button[type="submit"]:hover { background-color: #45a049; }
         .order-form button[type="submit"]:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
-        
-        /* Сообщение о пустой корзине */
+
         .empty-cart-message {
             text-align: center;
             padding: 50px;
-            background-color: #fff8e1;
-            border: 1px solid #ffe0b2;
-            border-radius: 8px;
+            background-color: var(--light-color);
+            border-radius: var(--inputs-buttons-border-radius);
             margin-top: 30px;
             font-size: 1.2em;
             color: #333;
         }
+        .empty-cart-message .continue-shopping-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--inputs-buttons-border-radius);
+            font-weight: 500;
+            margin-top: 15px;
+        }
 
-        /* Согласие на обработку данных */
         .form-consent {
             font-size: 0.85em;
             color: #888;
             margin-top: 15px;
             text-align: center;
         }
-        .form-consent a {
-            color: #004d80;
-            text-decoration: none;
-        }
-        .form-consent a:hover {
-            text-decoration: underline;
-        }
+        .form-consent a { color: var(--primary-color); text-decoration: none; }
+        .form-consent a:hover { text-decoration: underline; }
 
-        /* Адаптивность */
         @media (max-width: 768px) {
-            .cart-table, .cart-actions {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-            .cart-summary-block {
-                justify-content: center;
-            }
-            .cart-actions {
-                flex-direction: column-reverse;
-            }
-            .cart-actions button {
-                margin-top: 10px;
-            }
+            .cart-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 13px; }
+            .cart-table th, .cart-table td { padding: 8px 6px; font-size: 12px; }
+            .cart-summary-block { justify-content: center; }
+            .cart-actions { flex-direction: column-reverse; }
+            .cart-actions button, .cart-actions .continue-shopping-btn { width: 100%; text-align: center; }
+            .order-form-section { padding: 20px; }
+            .cart-page h1 { font-size: 1.5em; }
         }
-
-        /* Стили для уведомлений */
-        .notification {
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
     </style>
-<!-- Подключение аналитики -->
-<script src="js/analytics.js"></script>
+    <script src="js/analytics.js"></script>
 </head>
 <body>
-<!-- WebPage для корзины -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage", 
+  "@type": "WebPage",
   "name": "Корзина заказов",
   "description": "Оформление заказа на лестницы и стремянки для колодцев"
 }
 </script>
 
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="back-link">← Продолжить покупки</a>
-            <h1>Ваша Корзина</h1>
-        </div>
-    </header>
+<header class="header">
+    <div class="container">
+        <h1>Ваша Корзина</h1>
+        <p>Оформление заказа на лестницы и стремянки</p>
+    </div>
+</header>
 
-    <div class="container" style="padding: 40px 0;">
-        
-        <div id="cart-content">
-            <!-- Сюда загружается содержимое корзины -->
-        </div>
-        
-        <div id="checkout-section" class="order-form-section" style="display: none;">
-            <h2>Оформление заказа</h2>
-            <form id="orderForm" class="order-form">
-                <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100">
-                <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20">
-                <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
-                <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
-                
-                <!-- Поле для файла — СКРЫТО (включить, когда будет Web3Forms Pro) -->
-                <!--
-                <label for="orderFile" style="display: block; margin-bottom: 8px; font-size: 14px; color: #555;">
-                    📎 Прикрепить файл (чертёж, фото) — до 5 МБ:
-                </label>
-                <input type="file" id="orderFile" name="attachment" 
-                       accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" 
-                       style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
-                    Форматы: PDF, JPG, PNG, DOC, DOCX. Максимум 5 МБ.
-                </p>
-                -->
-                <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
-                    Чертёж или фото пришлите на почту <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: #004d80;">stremyanki-dlya-kolodcev@mail.ru</a>
-                </p>
-                
-                <button type="submit">Подтвердить заказ</button>
-                <p class="form-consent">
-                    Нажимая кнопку "Подтвердить заказ", вы соглашаетесь с 
-                    <a href="publichnaya-oferta.html">публичной офертой</a> и 
-                    <a href="politika-konfidencialnosti.html">политикой конфиденциальности</a>, 
-                    и даёте согласие на обработку персональных данных.
-                </p>
-            </form>
-        </div>
-        
+<nav class="nav">
+    <div class="container">
+        <a href="index.html#catalog">Каталог</a>
+        <a href="index.html#advantages">Преимущества</a>
+        <a href="index.html#articles">Полезные статьи</a>
+        <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+        <a href="o-kompanii.html">О компании</a>
+        <a href="index.html#contacts">Контакты и Заказ</a>
+        <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a> ›
+        <span>Корзина</span>
+    </div>
+</div>
+
+<div class="cart-page container">
+
+    <div id="cart-content"></div>
+
+    <div id="checkout-section" class="order-form-section" style="display: none;">
+        <h2>Оформление заказа</h2>
+        <form id="orderForm" class="order-form">
+            <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100">
+            <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20">
+            <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
+            <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
+
+            <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
+                Чертёж или фото пришлите на почту <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color);">stremyanki-dlya-kolodcev@mail.ru</a>
+            </p>
+
+            <button type="submit">Подтвердить заказ</button>
+            <p class="form-consent">
+                Нажимая кнопку "Подтвердить заказ", вы соглашаетесь с
+                <a href="publichnaya-oferta.html">публичной офертой</a> и
+                <a href="politika-konfidencialnosti.html">политикой конфиденциальности</a>,
+                и даёте согласие на обработку персональных данных.
+            </p>
+        </form>
     </div>
 
-    <footer class="footer">
-        <div class="container">
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <a href="tel:+79655559966">📞 +7 (965) 555-99-66</a>
+                <a href="mailto:stremyanki-dlya-kolodcev@mail.ru">✉️ stremyanki-dlya-kolodcev@mail.ru</a>
+                <p>📍 г. Пермь, ул. Василия Васильева, д. 33</p>
+            </div>
+            <div class="footer-section">
+                <h4>Время работы</h4>
+                <p>Пн-Пт: 9:00-18:00</p>
+                <p>Сб: 10:00-15:00</p>
+                <p>Вс: выходной</p>
+            </div>
+            <div class="footer-section">
+                <h4>Продукция</h4>
+                <a href="ss1.html">Стремянки водопроводные ТПР 901</a>
+                <a href="ss2.html">Стремянки канализационные ТПР 902</a>
+                <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
+                <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
+                <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
+                <a href="ssg1.html">Пожарные стремянки СГ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Полезные материалы</h4>
+                <a href="kak-vybrat-stremyanku.html">Как выбрать стремянку</a>
+                <a href="montazh-stremyanok-v-kolodcy.html">Монтаж стремянок</a>
+                <a href="gost-trebovaniya-k-lestnicam.html">ГОСТ требования</a>
+                <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+                <a href="o-kompanii.html">О компании</a>
+                <a href="politika-konfidencialnosti.html">Политика конфиденциальности</a>
+                <a href="publichnaya-oferta.html">Публичная оферта</a>
+                <a href="sitemap.xml">Карта сайта</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
             &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
         </div>
-    </footer>
-    
-    <script>
-        // === КОНФИГУРАЦИЯ ===
-        const CONFIG = {
-            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
-            CART_STORAGE_KEY: 'kolodets_cart_v1',
-            WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
-        };
+    </div>
+</footer>
 
-        // === TOAST-УВЕДОМЛЕНИЯ (локальная копия, чтобы не подключать весь cart.js) ===
-        function showToast(message, type = 'success', duration = 3000) {
-            let container = document.querySelector('.toast-container');
-            if (!container) {
-                container = document.createElement('div');
-                container.className = 'toast-container';
-                document.body.appendChild(container);
-            }
+<script src="js/quote-modal.js"></script>
+<script>
+    const CONFIG = {
+        GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
+        CART_STORAGE_KEY: 'kolodets_cart_v1',
+        WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
+    };
 
-            const toast = document.createElement('div');
-            toast.className = 'toast ' + type;
-            toast.textContent = message;
-            container.appendChild(toast);
-
-            setTimeout(() => toast.classList.add('show'), 10);
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
-            }, duration);
+    function showToast(message, type = 'success', duration = 3000) {
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'toast-container';
+            document.body.appendChild(container);
         }
+        const toast = document.createElement('div');
+        toast.className = 'toast ' + type;
+        toast.textContent = message;
+        container.appendChild(toast);
+        setTimeout(() => toast.classList.add('show'), 10);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, duration);
+    }
 
-        // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
-        function sanitizeInput(text) {
-            if (typeof text !== 'string') return '';
-            return text.replace(/[<>&"'\/\\]/g, '');
+    function sanitizeInput(text) {
+        if (typeof text !== 'string') return '';
+        return text.replace(/[<>&"'\/\\]/g, '');
+    }
+    function validatePhone(phone) {
+        return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
+    }
+    function validateEmail(email) {
+        if (!email) return true;
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function getCart() {
+        try {
+            const data = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
+            return JSON.parse(data) || {};
+        } catch (e) {
+            console.error("Ошибка чтения LocalStorage:", e);
+            return {};
         }
+    }
 
-        function validatePhone(phone) {
-            return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
+    function saveCart(cart) {
+        try {
+            localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(cart));
+            return true;
+        } catch (e) {
+            console.error("Ошибка сохранения:", e);
+            showToast('Ошибка сохранения корзины', 'error');
+            return false;
         }
+    }
 
-        function validateEmail(email) {
-            if (!email) return true; // email не обязателен
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    function updateCartCountDisplay() {
+        const cart = getCart();
+        let totalCount = 0;
+        for (const id in cart) {
+            if (cart[id] && typeof cart[id].quantity === 'number') totalCount += parseInt(cart[id].quantity) || 0;
         }
+        const el = document.getElementById('cart-count-page');
+        if (el) el.textContent = totalCount;
+    }
 
-        // === ФУНКЦИИ LOCALSTORAGE ===
-        function getCart() {
-            try {
-                const cartData = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
-                return JSON.parse(cartData) || {};
-            } catch (e) {
-                console.error("Ошибка чтения LocalStorage:", e);
-                return {};
-            }
-        }
+    function renderCart() {
+        const cart = getCart();
+        const cartContent = document.getElementById('cart-content');
+        const checkoutSection = document.getElementById('checkout-section');
+        let totalSum = 0;
 
-        function saveCart(cart) {
-            try {
-                localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(cart));
-                return true;
-            } catch (e) {
-                console.error("Ошибка сохранения в LocalStorage:", e);
-                showToast('Ошибка сохранения корзины. Проверьте настройки браузера.', 'error');
-                return false;
-            }
-        }
-        
-        // === ОСНОВНЫЕ ФУНКЦИИ КОРЗИНЫ ===
-
-        function renderCart() {
-            const cart = getCart();
-            const cartContent = document.getElementById('cart-content');
-            const checkoutSection = document.getElementById('checkout-section');
-            let totalSum = 0;
-            
-            // Если корзина пуста
-            if (Object.keys(cart).length === 0) {
-                cartContent.innerHTML = `
-                    <div class="empty-cart-message">
-                        Ваша корзина пуста. <br><br>
-                        <a href="index.html" class="continue-shopping-btn" style="display: inline-block; padding: 10px 20px; background-color: #ff9900; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Перейти в каталог</a>
-                    </div>
-                `;
-                checkoutSection.style.display = 'none';
-                return;
-            }
-
-            // Если корзина не пуста, создаем таблицу
-            let tableHtml = `
-                <h2>Ваш заказ</h2>
-                <table class="cart-table">
-                    <thead>
-                        <tr>
-                            <th>Товар (Марка)</th>
-                            <th>Цена за ед. (от)</th>
-                            <th>Количество</th>
-                            <th>Сумма (от)</th>
-                            <th>Действия</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        if (Object.keys(cart).length === 0) {
+            cartContent.innerHTML = `
+                <div class="empty-cart-message">
+                    Ваша корзина пуста. <br><br>
+                    <a href="index.html" class="continue-shopping-btn">Перейти в каталог</a>
+                </div>
             `;
+            checkoutSection.style.display = 'none';
+            updateCartCountDisplay();
+            return;
+        }
 
-            for (const itemId in cart) {
-                const item = cart[itemId];
-                const price = parseFloat(item.price) || 0;
-                const quantity = parseInt(item.quantity) || 0;
-
-                const itemTotal = price * quantity;
-                totalSum += itemTotal;
-                
-                tableHtml += `
+        let tableHtml = `
+            <h2 style="color: var(--dark-color); margin-bottom: 15px;">Ваш заказ</h2>
+            <table class="cart-table">
+                <thead>
                     <tr>
-                        <td>${sanitizeInput(item.name)}</td>
-                        <td>${price.toLocaleString('ru-RU')} руб.</td>
-                        <td>${quantity} шт.</td>
-                        <td>${itemTotal.toLocaleString('ru-RU')} руб.</td>
-                        <td><button class="delete-item-btn" onclick="removeItem('${sanitizeInput(itemId)}')">Удалить</button></td>
+                        <th>Товар (Марка)</th>
+                        <th>Цена за ед. (от)</th>
+                        <th>Количество</th>
+                        <th>Сумма (от)</th>
+                        <th>Действия</th>
                     </tr>
-                `;
-            }
+                </thead>
+                <tbody>
+        `;
+
+        for (const itemId in cart) {
+            const item = cart[itemId];
+            const price = parseFloat(item.price) || 0;
+            const quantity = parseInt(item.quantity) || 0;
+            const itemTotal = price * quantity;
+            totalSum += itemTotal;
 
             tableHtml += `
-                    </tbody>
-                </table>
+                <tr>
+                    <td>${sanitizeInput(item.name)}</td>
+                    <td>${price.toLocaleString('ru-RU')} руб.</td>
+                    <td>${quantity} шт.</td>
+                    <td>${itemTotal.toLocaleString('ru-RU')} руб.</td>
+                    <td><button class="delete-item-btn" onclick="removeItem('${sanitizeInput(itemId)}')">Удалить</button></td>
+                </tr>
             `;
-            
-            // Добавляем блок итоговой суммы и управления
-            tableHtml += `
-                <div class="cart-actions">
-                    <button class="clear-cart-btn" onclick="clearCart()">Очистить корзину</button>
-                    <button class="continue-shopping-btn" onclick="window.location.href='index.html'">Продолжить покупки</button>
-                </div>
-                <div class="cart-summary-block">
-                    <p class="total-price">
-                        Общая сумма (от): <span>${totalSum.toLocaleString('ru-RU')} руб.</span>
-                    </p>
-                </div>
-            `;
-            
-            cartContent.innerHTML = tableHtml;
-            checkoutSection.style.display = 'block'; // Показываем форму заказа
-        }
-        
-        // Удалить один товар
-        function removeItem(itemId) {
-            if (confirm("Вы уверены, что хотите удалить этот товар из корзины?")) {
-                let cart = getCart();
-                delete cart[itemId];
-                if (saveCart(cart)) {
-                    renderCart(); // Перерисовать корзину
-                }
-            }
         }
 
-        // Очистить всю корзину
-        function clearCart() {
-            const cart = getCart();
-            if (Object.keys(cart).length === 0) {
-                showToast('Корзина уже пуста', 'info');
-                return;
-            }
-            
-            if (confirm("Вы уверены, что хотите полностью очистить корзину? Это действие нельзя отменить.")) {
-                localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
-                renderCart(); // Перерисовать корзину
-                showToast('Корзина очищена', 'success');
-            }
-        }
-        
-        // Обработка отправки формы (Telegram + почта Web3Forms)
-        document.getElementById('orderForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            
-            const name = sanitizeInput(document.getElementById('name').value);
-            const phone = sanitizeInput(document.getElementById('phone').value);
-            const comments = sanitizeInput(document.getElementById('comments').value);
-            const email = sanitizeInput(document.getElementById('email').value);
+        tableHtml += `</tbody></table>`;
+        tableHtml += `
+            <div class="cart-actions">
+                <button class="clear-cart-btn" onclick="clearCart()">Очистить корзину</button>
+                <a href="index.html" class="continue-shopping-btn" style="padding: 12px 24px;">Продолжить покупки</a>
+            </div>
+            <div class="cart-summary-block">
+                <p class="total-price">Общая сумма (от): <span>${totalSum.toLocaleString('ru-RU')} руб.</span></p>
+            </div>
+        `;
 
-            // Валидация данных
-            if (!name || name.length < 2) {
-                showToast('Пожалуйста, введите корректное имя', 'error');
-                return;
-            }
+        cartContent.innerHTML = tableHtml;
+        checkoutSection.style.display = 'block';
+        updateCartCountDisplay();
+    }
 
-            if (!validatePhone(phone)) {
-                showToast('Пожалуйста, введите корректный номер телефона', 'error');
-                return;
-            }
-
-            if (email && !validateEmail(email)) {
-                showToast('Пожалуйста, введите корректный email адрес', 'error');
-                return;
-            }
-
-            const currentCart = getCart();
-            if (Object.keys(currentCart).length === 0) {
-                showToast('Корзина пуста', 'error');
-                return;
-            }
-
-            const total = Object.values(currentCart).reduce((sum, item) => {
-                const price = parseFloat(item.price) || 0;
-                const quantity = parseInt(item.quantity) || 0;
-                return sum + (price * quantity);
-            }, 0);
-
-            // Формируем сообщение
-            let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
-            message += `👤 Имя: ${name}\n`;
-            message += `📞 Телефон: ${phone}\n`;
-            message += `📧 Email: ${email || 'Не указан'}\n`;
-            message += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
-            message += `🛒 Состав заказа:\n`;
-            
-            for (const itemId in currentCart) {
-                const item = currentCart[itemId];
-                const itemPrice = parseFloat(item.price) || 0;
-                const itemQuantity = parseInt(item.quantity) || 0;
-                const itemTotal = itemPrice * itemQuantity;
-                message += `• ${sanitizeInput(item.name)} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
-            }
-            
-            message += `\n💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.`;
-            
-            // Показываем загрузку
-            const submitBtn = document.querySelector('#orderForm button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Отправка...';
-            submitBtn.disabled = true;
-
-            try {
-                // 1. Отправка в Google Script (Telegram) — как было
-                const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        'type': 'order',
-                        'name': name,
-                        'phone': phone,
-                        'email': email || '',
-                        'comments': comments || '',
-                        'cartText': message,
-                        'total': total.toLocaleString('ru-RU')
-                    })
-                }).catch(err => console.warn('Google Script ошибка:', err));
-
-                // 2. Отправка на почту через Web3Forms
-                // Всё содержимое заказа — в одном поле form_data, чтобы не было дублей
-                const mailData = new FormData();
-                mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
-                mailData.append('subject', 'НОВЫЙ ЗАКАЗ с сайта stremyanki-dlya-kolodcev.ru');
-                mailData.append('from_name', 'Сайт лестниц для колодцев');
-                mailData.append('form_data', message);
-
-                const mailPromise = fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: mailData
-                }).catch(err => console.warn('Web3Forms ошибка:', err));
-
-                await Promise.allSettled([telegramPromise, mailPromise]);
-
-                showToast('🎉 Заказ успешно отправлен! Менеджер свяжется с вами в ближайшее время.', 'success', 4000);
-
-                // Очищаем корзину после отправки
-                localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
+    function removeItem(itemId) {
+        if (confirm("Удалить этот товар из корзины?")) {
+            let cart = getCart();
+            delete cart[itemId];
+            if (saveCart(cart)) {
                 renderCart();
-                document.getElementById('orderForm').reset();
-            } catch (error) {
-                console.error('Ошибка отправки заказа:', error);
-                showToast('❌ Ошибка отправки заказа. Пожалуйста, позвоните нам напрямую: +7 (965) 555-99-66', 'error', 5000);
-            } finally {
-                // Восстанавливаем кнопку
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                showToast('Товар удалён', 'success');
             }
-        });
+        }
+    }
 
-        // Запускаем отрисовку корзины при загрузке страницы
-        document.addEventListener('DOMContentLoaded', renderCart);
+    function clearCart() {
+        const cart = getCart();
+        if (Object.keys(cart).length === 0) {
+            showToast('Корзина уже пуста', 'info');
+            return;
+        }
+        if (confirm("Полностью очистить корзину?")) {
+            localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
+            renderCart();
+            showToast('Корзина очищена', 'success');
+        }
+    }
 
-        // Делаем функции глобальными для HTML
-        window.removeItem = removeItem;
-        window.clearCart = clearCart;
-    </script>
+    document.getElementById('orderForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const name = sanitizeInput(document.getElementById('name').value);
+        const phone = sanitizeInput(document.getElementById('phone').value);
+        const comments = sanitizeInput(document.getElementById('comments').value);
+        const email = sanitizeInput(document.getElementById('email').value);
+
+        if (!name || name.length < 2) { showToast('Введите корректное имя', 'error'); return; }
+        if (!validatePhone(phone)) { showToast('Введите корректный телефон', 'error'); return; }
+        if (email && !validateEmail(email)) { showToast('Введите корректный email', 'error'); return; }
+
+        const currentCart = getCart();
+        if (Object.keys(currentCart).length === 0) { showToast('Корзина пуста', 'error'); return; }
+
+        const total = Object.values(currentCart).reduce((sum, item) => {
+            return sum + (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 0);
+        }, 0);
+
+        let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
+        message += `👤 Имя: ${name}\n`;
+        message += `📞 Телефон: ${phone}\n`;
+        message += `📧 Email: ${email || 'Не указан'}\n`;
+        message += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
+        message += `🛒 Состав заказа:\n`;
+
+        for (const itemId in currentCart) {
+            const item = currentCart[itemId];
+            const itemPrice = parseFloat(item.price) || 0;
+            const itemQuantity = parseInt(item.quantity) || 0;
+            const itemTotal = itemPrice * itemQuantity;
+            message += `• ${sanitizeInput(item.name)} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
+        }
+        message += `\n💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.`;
+
+        const submitBtn = document.querySelector('#orderForm button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Отправка...';
+        submitBtn.disabled = true;
+
+        try {
+            const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'order', name, phone,
+                    email: email || '',
+                    comments: comments || '',
+                    cartText: message,
+                    total: total.toLocaleString('ru-RU')
+                })
+            }).catch(err => console.warn('Google Script ошибка:', err));
+
+            const mailData = new FormData();
+            mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
+            mailData.append('subject', 'НОВЫЙ ЗАКАЗ с сайта stremyanki-dlya-kolodcev.ru');
+            mailData.append('from_name', 'Сайт лестниц для колодцев');
+            mailData.append('form_data', message);
+
+            const mailPromise = fetch('https://api.web3forms.com/submit', {
+                method: 'POST', body: mailData
+            }).catch(err => console.warn('Web3Forms ошибка:', err));
+
+            await Promise.allSettled([telegramPromise, mailPromise]);
+
+            showToast('🎉 Заказ успешно отправлен! Менеджер свяжется с вами.', 'success', 4000);
+
+            localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
+            renderCart();
+            document.getElementById('orderForm').reset();
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            showToast('❌ Ошибка отправки. Позвоните нам: +7 (965) 555-99-66', 'error', 5000);
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', renderCart);
+    window.addEventListener('storage', renderCart);
+
+    window.removeItem = removeItem;
+    window.clearCart = clearCart;
+</script>
 
 </body>
 </html>

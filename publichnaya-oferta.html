@@ -3,90 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Оптимизация загрузки -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://mc.yandex.ru">
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://mc.yandex.ru">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     <title>Публичная оферта — договор купли-продажи | ИП Гневашева К.Д.</title>
     <meta name="description" content="Публичная оферта на заключение договора купли-продажи лестниц и стремянок для колодцев. ИП Гневашева Кристина Дмитриевна. Условия заказа, оплаты и доставки.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/publichnaya-oferta.html" />
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/common.css">
 
     <style>
-        * { box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; padding: 0; 
-            background-color: #f4f4f4; 
-            color: #333; 
-            line-height: 1.65; 
-            font-size: 16px;
+        .content-area {
+            background: white;
+            padding: 40px 50px;
+            margin: 25px 0;
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
         }
-        .container { max-width: 1000px; margin: auto; padding: 0 20px; }
-        .header { background-color: #004d80; color: white; padding: 25px 0; }
-        .header h1 { margin: 10px 0 0; font-size: 1.8em; line-height: 1.3; text-align: left; }
-        .back-link { 
-            color: #ff9900; text-decoration: none; font-weight: bold; 
-            display: inline-block; font-size: 0.95em;
+        .article-meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
         }
-        .back-link:hover { text-decoration: underline; }
-        .content-area { 
-            background: white; padding: 40px 50px; margin: 25px 0; 
-            border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        .content-area h2 {
+            color: var(--primary-color);
+            margin: 35px 0 15px;
+            font-size: 1.3em;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 600;
         }
-        h2 { 
-            color: #004d80; margin: 35px 0 15px; font-size: 1.3em; 
-            padding-bottom: 6px; border-bottom: 1px solid #e0e0e0;
+        .content-area h2:first-of-type { margin-top: 0; }
+        .content-area p { margin: 0 0 15px; line-height: 1.65; }
+        .content-area ul, .content-area ol { margin: 0 0 20px; padding-left: 25px; }
+        .content-area ul li, .content-area ol li { margin-bottom: 8px; line-height: 1.6; }
+        .content-area a { color: var(--primary-color); text-decoration: none; }
+        .content-area a:hover { text-decoration: underline; }
+
+        .highlight {
+            background: var(--light-color);
+            padding: 20px 25px;
+            border-radius: var(--inputs-buttons-border-radius);
+            margin: 25px 0;
+            border-left: 5px solid var(--primary-color);
         }
-        h2:first-of-type { margin-top: 0; }
-        p { margin: 0 0 15px; }
-        ul, ol { margin: 0 0 20px; padding-left: 25px; }
-        ul li, ol li { margin-bottom: 8px; }
-        .article-meta { 
-            color: #888; font-size: 0.9em; margin-bottom: 25px;
-            padding-bottom: 15px; border-bottom: 1px solid #eee;
+        .important {
+            background: #fff3e0;
+            padding: 20px 25px;
+            border-radius: var(--inputs-buttons-border-radius);
+            margin: 25px 0;
+            border-left: 5px solid #ff9900;
         }
-        .highlight { 
-            background: #e7f3ff; padding: 20px 25px; border-radius: 8px; 
-            margin: 25px 0; border-left: 5px solid #004d80;
-        }
-        .important { 
-            background: #fff3e0; padding: 20px 25px; border-radius: 8px; 
-            margin: 25px 0; border-left: 5px solid #ff9900;
-        }
-        .breadcrumbs { margin: 20px 0; font-size: 0.9em; color: #666; }
-        .breadcrumbs a { color: #004d80; text-decoration: none; }
-        .breadcrumbs a:hover { text-decoration: underline; }
-        .footer { 
-            background: #222; color: #bbb; text-align: center; 
-            padding: 25px 0; margin-top: 40px; font-size: 0.9em;
-        }
-        .footer a { color: #ff9900; text-decoration: none; }
+
         table {
-            width: 100%; border-collapse: collapse; margin: 15px 0 25px; font-size: 15px;
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 25px;
+            font-size: 15px;
         }
         th, td {
-            padding: 10px 14px; text-align: left; border: 1px solid #e0e0e0;
+            padding: 10px 14px;
+            text-align: left;
+            border: 1px solid #eef2f6;
         }
-        th { background: #f0f7ff; color: #004d80; font-weight: bold; }
+        th { background: var(--light-color); color: var(--primary-color); font-weight: 500; }
+
         @media (max-width: 768px) {
-            .content-area { padding: 25px 20px; margin: 15px 0; }
-            .header h1 { font-size: 1.4em; }
-            h2 { font-size: 1.15em; margin: 25px 0 12px; }
+            .content-area { padding: 25px 20px; }
+            .content-area h2 { font-size: 1.15em; margin: 25px 0 12px; }
             th, td { padding: 8px 10px; font-size: 13px; }
         }
+        @media (max-width: 480px) {
+            .content-area { padding: 20px 15px; }
+        }
     </style>
-<!-- Подключение аналитики -->
-<script src="js/analytics.js"></script>
+    <script src="js/analytics.js"></script>
 </head>
 <body>
 
-<!-- BreadcrumbList -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -98,159 +102,221 @@
 }
 </script>
 
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="back-link">← Вернуться на главную</a>
-            <h1>Публичная оферта</h1>
-        </div>
-    </header>
-
+<header class="header">
     <div class="container">
-        <div class="breadcrumbs">
-            <a href="index.html">Главная</a> > 
-            <span>Публичная оферта</span>
-        </div>
-        
-        <div class="content-area">
-            <div class="article-meta">
-                Дата последнего обновления: 23 сентября 2026 года
-            </div>
-
-            <div class="highlight">
-                Настоящий документ является публичной офертой (предложением) <strong>Индивидуального предпринимателя Гневашевой Кристины Дмитриевны</strong> (ИНН 591791797420, ОГРНИП 321595800089601) в соответствии со статьёй 437 Гражданского кодекса РФ и содержит все существенные условия договора купли-продажи товаров, представленных на сайте <strong>https://stremyanki-dlya-kolodcev.ru</strong>.
-            </div>
-
-            <h2>1. Термины и определения</h2>
-            <p>1.1. <strong>Продавец</strong> — Индивидуальный предприниматель Гневашева Кристина Дмитриевна (ИНН 591791797420, ОГРНИП 321595800089601).</p>
-            <p>1.2. <strong>Покупатель</strong> — любое физическое или юридическое лицо, осуществившее заказ товара на Сайте.</p>
-            <p>1.3. <strong>Сайт</strong> — интернет-ресурс, расположенный по адресу https://stremyanki-dlya-kolodcev.ru.</p>
-            <p>1.4. <strong>Товар</strong> — лестницы, стремянки и металлоконструкции для колодцев, представленные в каталоге Сайта.</p>
-            <p>1.5. <strong>Заказ</strong> — оформленный Покупателем запрос на приобретение Товара через формы на Сайте, по телефону или электронной почте.</p>
-
-            <h2>2. Предмет договора</h2>
-            <p>2.1. Продавец обязуется передать Покупателю Товар, а Покупатель обязуется принять и оплатить Товар на условиях настоящего Договора.</p>
-            <p>2.2. Наименование, длина, ширина, вес, цена Товара и иные характеристики указаны в карточках Товара на Сайте и в счёте, выставляемом Продавцом.</p>
-            <p>2.3. Продавец имеет право изменять ассортимент и цены на Товар без предварительного уведомления. Актуальная информация всегда доступна на Сайте.</p>
-
-            <h2>3. Момент заключения договора</h2>
-            <p>3.1. Акцептом настоящей оферты (принятием её условий) является:</p>
-            <ul>
-                <li>оформление Заказа через формы на Сайте;</li>
-                <li>подтверждение Заказа по телефону или электронной почте;</li>
-                <li>оплата выставленного счёта.</li>
-            </ul>
-            <p>3.2. С момента акцепта оферты Покупатель считается ознакомленным с условиями настоящего Договора и согласным с ними.</p>
-
-            <h2>4. Оформление заказа</h2>
-            <p>4.1. Заказ может быть оформлен следующими способами:</p>
-            <ul>
-                <li>через корзину на Сайте;</li>
-                <li>через формы обратной связи на Сайте;</li>
-                <li>по телефону: +7 (965) 555-99-66;</li>
-                <li>по электронной почте: stremyanki-dlya-kolodcev@mail.ru.</li>
-            </ul>
-            <p>4.2. При оформлении Заказа Покупатель предоставляет следующие данные: имя (или название компании), контактный телефон, адрес электронной почты (при необходимости), комментарий к Заказу.</p>
-            <p>4.3. Покупатель несёт ответственность за достоверность предоставленных данных.</p>
-
-            <h2>5. Цена и порядок оплаты</h2>
-            <p>5.1. Цены на Товар указаны в рублях РФ на Сайте и могут быть изменены Продавцом в любое время без предварительного уведомления.</p>
-            <p>5.2. Окончательная стоимость Заказа определяется Продавцом и фиксируется в счёте (для юридических лиц) или в подтверждении Заказа (для физических лиц).</p>
-            <p>5.3. Способы оплаты:</p>
-            <table>
-                <tr>
-                    <th>Способ оплаты</th>
-                    <th>Для кого</th>
-                    <th>Условия</th>
-                </tr>
-                <tr>
-                    <td>Наличные</td>
-                    <td>Физические лица</td>
-                    <td>При самовывозе в Перми</td>
-                </tr>
-                <tr>
-                    <td>Банковская карта</td>
-                    <td>Физические лица</td>
-                    <td>Онлайн-оплата (по согласованию)</td>
-                </tr>
-                <tr>
-                    <td>Безналичный расчёт</td>
-                    <td>Юридические лица, ИП</td>
-                    <td>Счёт, договор, УПД</td>
-                </tr>
-            </table>
-            <p>5.4. Обязательство Покупателя по оплате считается исполненным с момента поступления денежных средств на расчётный счёт Продавца (при безналичной оплате) или внесения наличных.</p>
-
-            <h2>6. Доставка товара</h2>
-            <p>6.1. Способы доставки:</p>
-            <ul>
-                <li><strong>Самовывоз</strong> — г. Пермь, ул. Василия Васильева, д. 33. Бесплатно.</li>
-                <li><strong>Доставка по Перми</strong> — 1–3 дня. Бесплатно.</li>
-                <li><strong>Доставка по Пермскому краю</strong> — 1–5 дней. Стоимость обговаривается с менеджером.</li>
-                <li><strong>Доставка по России</strong> — транспортными компаниями (СДЭК, Деловые линии, ПЭК и др.) до терминала в городе Покупателя. Сроки 3–14 дней.</li>
-            </ul>
-            <div class="important">
-                <strong>Бесплатная доставка по России:</strong> при заказе от 50 погонных метров лестниц в одном заказе — доставка осуществляется за счёт Продавца.
-            </div>
-            <p>6.2. Право собственности на Товар переходит к Покупателю с момента передачи Товара.</p>
-            <p>6.3. Риск случайной гибели или повреждения Товара переходит к Покупателю с момента передачи Товара.</p>
-
-            <h2>7. Возврат и обмен товара</h2>
-            <p>7.1. Возврат и обмен Товара осуществляется в соответствии с Законом РФ «О защите прав потребителей» от 07.02.1992 № 2300-1.</p>
-            <p>7.2. Покупатель-физическое лицо имеет право отказаться от Товара в течение <strong>14 дней</strong> с момента его получения, если Товар не был в употреблении, сохранена его упаковка и товарный вид.</p>
-            <p>7.3. Возврат Товара надлежащего качества возможен при условии:</p>
-            <ul>
-                <li>Товар не был в использовании;</li>
-                <li>Сохранены его потребительские свойства;</li>
-                <li>Сохранены документы, подтверждающие покупку.</li>
-            </ul>
-            <p>7.4. <strong>Товары, изготовленные по индивидуальным размерам Покупателя, возврату и обмену не подлежат</strong> (п. 4 ст. 26.1 Закона «О защите прав потребителей»).</p>
-            <p>7.5. Для оформления возврата Покупатель должен связаться с Продавцом по телефону или электронной почте и согласовать порядок возврата.</p>
-
-            <h2>8. Ответственность сторон</h2>
-            <p>8.1. Продавец не несёт ответственности за ущерб, возникший в результате неправильной эксплуатации Товара Покупателем.</p>
-            <p>8.2. Продавец не несёт ответственности за задержки доставки, возникшие по вине транспортных компаний.</p>
-            <p>8.3. Стороны несут ответственность в соответствии с действующим законодательством РФ.</p>
-
-            <h2>9. Персональные данные</h2>
-            <p>9.1. Оформляя Заказ, Покупатель даёт согласие на обработку своих персональных данных в соответствии с <a href="politika-konfidencialnosti.html" style="color: #004d80;">Политикой конфиденциальности</a> Продавца.</p>
-            <p>9.2. Персональные данные используются исключительно для обработки Заказа, доставки Товара и связи с Покупателем.</p>
-
-            <h2>10. Разрешение споров</h2>
-            <p>10.1. Все споры, возникающие из настоящего Договора, разрешаются путём переговоров.</p>
-            <p>10.2. При невозможности разрешения спора путём переговоров — в соответствии с законодательством РФ.</p>
-
-            <h2>11. Реквизиты Продавца</h2>
-            <div class="highlight">
-                <strong>ИП Гневашева Кристина Дмитриевна</strong><br>
-                ИНН: 591791797420<br>
-                ОГРНИП: 321595800089601<br>
-                ОКПО: 2010460227<br>
-                Юридический адрес: Пермский край, М.р-н Кунгурский, С.п. Сергинское, д. Андроново<br>
-                Банк: ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК<br>
-                Р/с: 40802.810.0.49770057775<br>
-                Кор/с: 30101.810.9.00000000603<br>
-                БИК: 042202603<br>
-                Телефон: <a href="tel:+79655559966" style="color: #004d80;">+7 (965) 555-99-66</a><br>
-                Email: <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: #004d80;">stremyanki-dlya-kolodcev@mail.ru</a>
-            </div>
-
-            <h2>12. Заключительные положения</h2>
-            <p>12.1. Продавец имеет право вносить изменения в настоящую оферту без предварительного уведомления Покупателя.</p>
-            <p>12.2. Актуальная версия оферты всегда доступна по адресу: <a href="https://stremyanki-dlya-kolodcev.ru/publichnaya-oferta.html" style="color: #004d80;">https://stremyanki-dlya-kolodcev.ru/publichnaya-oferta.html</a></p>
-            <p>12.3. Во всём остальном, что не предусмотрено настоящей офертой, стороны руководствуются действующим законодательством РФ.</p>
-
-            <div class="article-meta" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
-                Дата публикации: 23 сентября 2026 года
-            </div>
-
-        </div>
+        <h1>Публичная оферта</h1>
+        <p>Договор купли-продажи товаров</p>
     </div>
+</header>
 
-    <footer class="footer">
-        <div class="container">
+<nav class="nav">
+    <div class="container">
+        <a href="index.html#catalog">Каталог</a>
+        <a href="index.html#advantages">Преимущества</a>
+        <a href="index.html#articles">Полезные статьи</a>
+        <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+        <a href="o-kompanii.html">О компании</a>
+        <a href="index.html#contacts">Контакты и Заказ</a>
+        <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a> ›
+        <span>Публичная оферта</span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content-area">
+        <div class="article-meta">Дата последнего обновления: 23 сентября 2026 года</div>
+
+        <div class="highlight">
+            Настоящий документ является публичной офертой (предложением) <strong>Индивидуального предпринимателя Гневашевой Кристины Дмитриевны</strong> (ИНН 591791797420, ОГРНИП 321595800089601) в соответствии со статьёй 437 Гражданского кодекса РФ и содержит все существенные условия договора купли-продажи товаров, представленных на сайте <strong>https://stremyanki-dlya-kolodcev.ru</strong>.
+        </div>
+
+        <h2>1. Термины и определения</h2>
+        <p>1.1. <strong>Продавец</strong> — Индивидуальный предприниматель Гневашева Кристина Дмитриевна (ИНН 591791797420, ОГРНИП 321595800089601).</p>
+        <p>1.2. <strong>Покупатель</strong> — любое физическое или юридическое лицо, осуществившее заказ товара на Сайте.</p>
+        <p>1.3. <strong>Сайт</strong> — интернет-ресурс, расположенный по адресу https://stremyanki-dlya-kolodcev.ru.</p>
+        <p>1.4. <strong>Товар</strong> — лестницы, стремянки и металлоконструкции для колодцев, представленные в каталоге Сайта.</p>
+        <p>1.5. <strong>Заказ</strong> — оформленный Покупателем запрос на приобретение Товара через формы на Сайте, по телефону или электронной почте.</p>
+
+        <h2>2. Предмет договора</h2>
+        <p>2.1. Продавец обязуется передать Покупателю Товар, а Покупатель обязуется принять и оплатить Товар на условиях настоящего Договора.</p>
+        <p>2.2. Наименование, длина, ширина, вес, цена Товара и иные характеристики указаны в карточках Товара на Сайте и в счёте, выставляемом Продавцом.</p>
+        <p>2.3. Продавец имеет право изменять ассортимент и цены на Товар без предварительного уведомления. Актуальная информация всегда доступна на Сайте.</p>
+
+        <h2>3. Момент заключения договора</h2>
+        <p>3.1. Акцептом настоящей оферты (принятием её условий) является:</p>
+        <ul>
+            <li>оформление Заказа через формы на Сайте;</li>
+            <li>подтверждение Заказа по телефону или электронной почте;</li>
+            <li>оплата выставленного счёта.</li>
+        </ul>
+        <p>3.2. С момента акцепта оферты Покупатель считается ознакомленным с условиями настоящего Договора и согласным с ними.</p>
+
+        <h2>4. Оформление заказа</h2>
+        <p>4.1. Заказ может быть оформлен следующими способами:</p>
+        <ul>
+            <li>через корзину на Сайте;</li>
+            <li>через формы обратной связи на Сайте;</li>
+            <li>по телефону: +7 (965) 555-99-66;</li>
+            <li>по электронной почте: stremyanki-dlya-kolodcev@mail.ru.</li>
+        </ul>
+        <p>4.2. При оформлении Заказа Покупатель предоставляет следующие данные: имя (или название компании), контактный телефон, адрес электронной почты (при необходимости), комментарий к Заказу.</p>
+        <p>4.3. Покупатель несёт ответственность за достоверность предоставленных данных.</p>
+
+        <h2>5. Цена и порядок оплаты</h2>
+        <p>5.1. Цены на Товар указаны в рублях РФ на Сайте и могут быть изменены Продавцом в любое время без предварительного уведомления.</p>
+        <p>5.2. Окончательная стоимость Заказа определяется Продавцом и фиксируется в счёте (для юридических лиц) или в подтверждении Заказа (для физических лиц).</p>
+        <p>5.3. Способы оплаты:</p>
+        <table>
+            <tr>
+                <th>Способ оплаты</th>
+                <th>Для кого</th>
+                <th>Условия</th>
+            </tr>
+            <tr>
+                <td>Наличные</td>
+                <td>Физические лица</td>
+                <td>При самовывозе в Перми</td>
+            </tr>
+            <tr>
+                <td>Банковская карта</td>
+                <td>Физические лица</td>
+                <td>Онлайн-оплата (по согласованию)</td>
+            </tr>
+            <tr>
+                <td>Безналичный расчёт</td>
+                <td>Юридические лица, ИП</td>
+                <td>Счёт, договор, УПД</td>
+            </tr>
+        </table>
+        <p>5.4. Обязательство Покупателя по оплате считается исполненным с момента поступления денежных средств на расчётный счёт Продавца (при безналичной оплате) или внесения наличных.</p>
+
+        <h2>6. Доставка товара</h2>
+        <p>6.1. Способы доставки:</p>
+        <ul>
+            <li><strong>Самовывоз</strong> — г. Пермь, ул. Василия Васильева, д. 33. Бесплатно.</li>
+            <li><strong>Доставка по Перми</strong> — 1–3 дня. Бесплатно.</li>
+            <li><strong>Доставка по Пермскому краю</strong> — 1–5 дней. Стоимость обговаривается с менеджером.</li>
+            <li><strong>Доставка по России</strong> — транспортными компаниями (СДЭК, Деловые линии, ПЭК и др.) до терминала в городе Покупателя. Сроки 3–14 дней.</li>
+        </ul>
+        <div class="important">
+            <strong>Бесплатная доставка по России:</strong> при заказе от 50 погонных метров лестниц в одном заказе — доставка осуществляется за счёт Продавца.
+        </div>
+        <p>6.2. Право собственности на Товар переходит к Покупателю с момента передачи Товара.</p>
+        <p>6.3. Риск случайной гибели или повреждения Товара переходит к Покупателю с момента передачи Товара.</p>
+
+        <h2>7. Возврат и обмен товара</h2>
+        <p>7.1. Возврат и обмен Товара осуществляется в соответствии с Законом РФ «О защите прав потребителей» от 07.02.1992 № 2300-1.</p>
+        <p>7.2. Покупатель-физическое лицо имеет право отказаться от Товара в течение <strong>14 дней</strong> с момента его получения, если Товар не был в употреблении, сохранена его упаковка и товарный вид.</p>
+        <p>7.3. Возврат Товара надлежащего качества возможен при условии:</p>
+        <ul>
+            <li>Товар не был в использовании;</li>
+            <li>Сохранены его потребительские свойства;</li>
+            <li>Сохранены документы, подтверждающие покупку.</li>
+        </ul>
+        <p>7.4. <strong>Товары, изготовленные по индивидуальным размерам Покупателя, возврату и обмену не подлежат</strong> (п. 4 ст. 26.1 Закона «О защите прав потребителей»).</p>
+        <p>7.5. Для оформления возврата Покупатель должен связаться с Продавцом по телефону или электронной почте и согласовать порядок возврата.</p>
+
+        <h2>8. Ответственность сторон</h2>
+        <p>8.1. Продавец не несёт ответственности за ущерб, возникший в результате неправильной эксплуатации Товара Покупателем.</p>
+        <p>8.2. Продавец не несёт ответственности за задержки доставки, возникшие по вине транспортных компаний.</p>
+        <p>8.3. Стороны несут ответственность в соответствии с действующим законодательством РФ.</p>
+
+        <h2>9. Персональные данные</h2>
+        <p>9.1. Оформляя Заказ, Покупатель даёт согласие на обработку своих персональных данных в соответствии с <a href="politika-konfidencialnosti.html">Политикой конфиденциальности</a> Продавца.</p>
+        <p>9.2. Персональные данные используются исключительно для обработки Заказа, доставки Товара и связи с Покупателем.</p>
+
+        <h2>10. Разрешение споров</h2>
+        <p>10.1. Все споры, возникающие из настоящего Договора, разрешаются путём переговоров.</p>
+        <p>10.2. При невозможности разрешения спора путём переговоров — в соответствии с законодательством РФ.</p>
+
+        <h2>11. Реквизиты Продавца</h2>
+        <div class="highlight">
+            <strong>ИП Гневашева Кристина Дмитриевна</strong><br>
+            ИНН: 591791797420<br>
+            ОГРНИП: 321595800089601<br>
+            ОКПО: 2010460227<br>
+            Юридический адрес: Пермский край, М.р-н Кунгурский, С.п. Сергинское, д. Андроново<br>
+            Банк: ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК<br>
+            Р/с: 40802.810.0.49770057775<br>
+            Кор/с: 30101.810.9.00000000603<br>
+            БИК: 042202603<br>
+            Телефон: <a href="tel:+79655559966">+7 (965) 555-99-66</a><br>
+            Email: <a href="mailto:stremyanki-dlya-kolodcev@mail.ru">stremyanki-dlya-kolodcev@mail.ru</a>
+        </div>
+
+        <h2>12. Заключительные положения</h2>
+        <p>12.1. Продавец имеет право вносить изменения в настоящую оферту без предварительного уведомления Покупателя.</p>
+        <p>12.2. Актуальная версия оферты всегда доступна по адресу: <a href="https://stremyanki-dlya-kolodcev.ru/publichnaya-oferta.html">https://stremyanki-dlya-kolodcev.ru/publichnaya-oferta.html</a></p>
+        <p>12.3. Во всём остальном, что не предусмотрено настоящей офертой, стороны руководствуются действующим законодательством РФ.</p>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <a href="tel:+79655559966">📞 +7 (965) 555-99-66</a>
+                <a href="mailto:stremyanki-dlya-kolodcev@mail.ru">✉️ stremyanki-dlya-kolodcev@mail.ru</a>
+                <p>📍 г. Пермь, ул. Василия Васильева, д. 33</p>
+            </div>
+            <div class="footer-section">
+                <h4>Время работы</h4>
+                <p>Пн-Пт: 9:00-18:00</p>
+                <p>Сб: 10:00-15:00</p>
+                <p>Вс: выходной</p>
+            </div>
+            <div class="footer-section">
+                <h4>Продукция</h4>
+                <a href="ss1.html">Стремянки водопроводные ТПР 901</a>
+                <a href="ss2.html">Стремянки канализационные ТПР 902</a>
+                <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
+                <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
+                <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
+                <a href="ssg1.html">Пожарные стремянки СГ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Полезные материалы</h4>
+                <a href="kak-vybrat-stremyanku.html">Как выбрать стремянку</a>
+                <a href="montazh-stremyanok-v-kolodcy.html">Монтаж стремянок</a>
+                <a href="gost-trebovaniya-k-lestnicam.html">ГОСТ требования</a>
+                <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+                <a href="o-kompanii.html">О компании</a>
+                <a href="politika-konfidencialnosti.html">Политика конфиденциальности</a>
+                <a href="publichnaya-oferta.html">Публичная оферта</a>
+                <a href="sitemap.xml">Карта сайта</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
             &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
         </div>
-    </footer>
+    </div>
+</footer>
+
+<script src="js/quote-modal.js"></script>
+<script>
+    function updateCartCountDisplay() {
+        try {
+            const cart = JSON.parse(localStorage.getItem('kolodets_cart_v1')) || {};
+            let totalCount = 0;
+            for (const id in cart) {
+                if (cart[id] && typeof cart[id].quantity === 'number') totalCount += parseInt(cart[id].quantity) || 0;
+            }
+            const el = document.getElementById('cart-count-page');
+            if (el) el.textContent = totalCount;
+        } catch (e) {}
+    }
+    document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
+    window.addEventListener('storage', updateCartCountDisplay);
+</script>
 
 </body>
 </html>
