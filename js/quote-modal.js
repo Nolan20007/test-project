@@ -109,6 +109,7 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
 
+            // === Текст сообщения для Telegram ===
             const body = `📄 ЗАПРОС СЧЁТА/КП
 
 🏢 Компания: ${company}
@@ -117,6 +118,7 @@
 📞 Телефон/Email: ${phone}
 💬 Комментарий: ${message || 'Нет'}`;
 
+            // === 1. Telegram через Google Apps Script ===
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -133,6 +135,7 @@
                 })
             }).catch(err => console.warn('TG ошибка:', err));
 
+            // === 2. Почта через Web3Forms ===
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', 'Запрос счёта/КП — stremyanki-dlya-kolodcev.ru');
@@ -143,6 +146,8 @@
             mailData.append('contact', phone);
             mailData.append('message', message || '');
             mailData.append('source', 'Форма счёт/КП: ' + window.location.pathname);
+            // ГЛАВНОЕ: дублируем всё сообщение целиком — ИНН точно придёт
+            mailData.append('form_data', body);
 
             const mailPromise = fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
