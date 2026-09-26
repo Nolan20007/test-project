@@ -10,7 +10,7 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <title>Прайс-лист на лестницы и стремянки для колодцев | Цены от производителя</title>
-    <meta name="description" content="✅ Актуальный прайс-лист на лестницы и стремянки для колодцев: ТПР 901, ТПР 902, КЛ-1, ВЛ-2, Л-16, СГ. Цены от производителя. Доставка по России. ☎ +7 (965) 555-99-66">
+    <meta name="description" content="✅ Актуальный прайс-лист на лестницы и стремянки для колодцев: ТПР 901, ТПР 902, ТМП 902, КЛ-1, ВЛ-2, Л-16, СГ. Цены от производителя. Доставка по России. ☎ +7 (965) 555-99-66">
     <meta name="keywords" content="прайс-лист лестницы для колодцев, цены стремянки для колодцев, стоимость лестницы ТПР 901, цена ТПР 902, прайс КЛ-1, прайс ВЛ-2, прайс Л-16, прайс СГ">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/price-list.html" />
@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon.png">
 
+    <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="css/common.css">
 
     <script type="application/ld+json">
@@ -26,7 +27,7 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Прайс-лист на лестницы и стремянки для колодцев",
-      "description": "Актуальные цены от производителя на лестницы и стремянки для колодцев.",
+      "description": "Актуальные цены от производителя на лестницы и стремянки для колодцев. 7 категорий продукции, цены от минимальной стоимости.",
       "url": "https://stremyanki-dlya-kolodcev.ru/price-list.html"
     }
     </script>
@@ -50,6 +51,14 @@
         .content-area h2:first-of-type { margin-top: 0; }
         .content-area p { margin: 0 0 15px; line-height: 1.65; }
 
+        .highlight {
+            background: var(--light-color);
+            padding: 22px 25px;
+            border-radius: var(--inputs-buttons-border-radius);
+            margin: 25px 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
         .table-wrap {
             overflow-x: auto;
             margin: 20px 0 30px;
@@ -63,9 +72,9 @@
             background: white;
         }
         th, td {
-            padding: 12px 14px;
+            padding: 14px 16px;
             text-align: left;
-            vertical-align: top;
+            vertical-align: middle;
             border-bottom: 1px solid #eef2f6;
         }
         th {
@@ -76,16 +85,95 @@
         }
         tr:last-child td { border-bottom: none; }
         tr:nth-child(even) td { background: #f8fbfe; }
-        td.price { font-weight: 600; color: #cc0000; white-space: nowrap; }
-        td.mark { font-weight: 500; color: var(--primary-color); }
 
-        .highlight {
-            background: var(--light-color);
-            padding: 22px 25px;
-            border-radius: var(--inputs-buttons-border-radius);
-            margin: 25px 0;
-            border-left: 5px solid var(--primary-color);
+        td.mark {
+            font-weight: 500;
+            color: var(--primary-color);
+            white-space: nowrap;
         }
+        td.price-from {
+            font-weight: 600;
+            color: #cc0000;
+            white-space: nowrap;
+            font-size: 1.05em;
+        }
+        td.link-cell { text-align: right; }
+        td.link-cell a {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-color);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        td.link-cell a:hover {
+            color: var(--primary-color-hover);
+            border-bottom-style: solid;
+        }
+
+        .product-card {
+            background: #fafbfc;
+            border: 1px solid #eef2f6;
+            border-radius: var(--inputs-buttons-border-radius);
+            padding: 22px 26px;
+            margin-bottom: 16px;
+            transition: box-shadow 0.2s;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 16px rgba(14, 92, 128, 0.06);
+        }
+        .product-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .product-card__title {
+            font-size: 1.15em;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .product-card__price {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #cc0000;
+            white-space: nowrap;
+        }
+        .product-card__desc {
+            color: #686868;
+            font-size: 0.95em;
+            line-height: 1.55;
+            margin: 0 0 14px;
+        }
+        .product-card__meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.88em;
+            color: #888;
+            margin-bottom: 14px;
+        }
+        .product-card__meta span strong {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        .product-card__link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 22px;
+            text-decoration: none;
+            border-radius: var(--inputs-buttons-border-radius);
+            font-weight: 500;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .product-card__link:hover { background: var(--primary-color-hover); }
 
         .cta-block {
             background: var(--primary-color);
@@ -93,7 +181,7 @@
             padding: 35px 30px;
             border-radius: var(--inputs-buttons-border-radius);
             text-align: center;
-            margin: 40px 0;
+            margin: 40px 0 0;
         }
         .cta-block h3 {
             color: white;
@@ -133,11 +221,16 @@
         @media (max-width: 768px) {
             .content-area { padding: 25px 20px; }
             .content-area h2 { font-size: 1.3em; }
-            th, td { padding: 8px 6px; font-size: 12px; }
+            th, td { padding: 10px 8px; font-size: 13px; }
+            .product-card { padding: 18px 20px; }
+            .product-card__title { font-size: 1.05em; }
+            .product-card__price { font-size: 1.1em; }
         }
         @media (max-width: 480px) {
             .content-area { padding: 20px 15px; }
             .content-area h2 { font-size: 1.15em; }
+            th, td { padding: 8px 6px; font-size: 12px; }
+            .product-card__header { flex-direction: column; gap: 8px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -158,7 +251,7 @@
 <header class="header">
     <div class="container">
         <h1>Прайс-лист на лестницы и стремянки для колодцев</h1>
-        <p>Актуальные цены от производителя</p>
+        <p>Актуальные цены от производителя — обзор по категориям</p>
     </div>
 </header>
 
@@ -171,7 +264,7 @@
         <a href="o-kompanii.html">О компании</a>
         <a href="index.html#contacts">Контакты и Заказ</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
 </nav>
 
@@ -185,184 +278,184 @@
 <div class="container">
     <div class="content-area">
 
-        <p>Актуальные цены на продукцию собственного производства. Все изделия изготовлены по типовым проектам (ТПР) и ГОСТ. Цены указаны за одно изделие.</p>
+        <p>В этом разделе — обзор цен по всем категориям продукции. Полный ассортимент с конкретными типоразмерами, весами и точными ценами — на страницах товаров. Цены указаны от минимальной стоимости за одно изделие.</p>
 
         <div class="highlight">
-            <strong>Важно:</strong> цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от длины изделия и условий поставки. Для точного расчёта — позвоните или оставьте заявку.
+            <strong>Важно:</strong> цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от длины изделия, объёма заказа и условий доставки. Для точного расчёта — позвоните или оставьте заявку.
         </div>
 
-        <!-- ТПР 901 -->
-        <h2>Стремянки ТПР 901-09-11.84 (водопровод)</h2>
+        <h2>Сводная таблица цен</h2>
+
         <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
-                        <th>Марка</th>
-                        <th>Длина, см</th>
-                        <th>Ширина, см</th>
-                        <th>Вес, кг</th>
-                        <th>Цена, ₽</th>
+                        <th>Категория</th>
+                        <th>Назначение</th>
+                        <th>Длина</th>
+                        <th>Цена от</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td class="mark">С-1</td><td>120</td><td>50</td><td>13,0</td><td class="price">2 340</td></tr>
-                    <tr><td class="mark">С-2</td><td>150</td><td>50</td><td>16,3</td><td class="price">2 934</td></tr>
-                    <tr><td class="mark">С-3</td><td>180</td><td>50</td><td>19,6</td><td class="price">3 528</td></tr>
-                    <tr><td class="mark">С-4</td><td>225</td><td>50</td><td>23,7</td><td class="price">4 266</td></tr>
-                    <tr><td class="mark">С-5</td><td>240</td><td>50</td><td>26,7</td><td class="price">4 806</td></tr>
-                    <tr><td class="mark">С-6</td><td>210</td><td>50</td><td>23,5</td><td class="price">4 230</td></tr>
-                    <tr><td class="mark">С-7</td><td>270</td><td>50</td><td>30,0</td><td class="price">5 400</td></tr>
-                    <tr><td class="mark">С-8</td><td>420</td><td>50</td><td>46,0</td><td class="price">8 280</td></tr>
-                    <tr><td class="mark">С-9</td><td>450</td><td>50</td><td>49,36</td><td class="price">8 885</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- ТПР 902 -->
-        <h2>Стремянки ТПР 902-09-22.84 (канализация)</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
                     <tr>
-                        <th>Марка</th>
-                        <th>Длина, см</th>
-                        <th>Ширина, см</th>
-                        <th>Вес, кг</th>
-                        <th>Цена, ₽</th>
+                        <td class="mark">ТПР 901-09-11.84</td>
+                        <td>Водопроводные колодцы</td>
+                        <td>120 – 450 см</td>
+                        <td class="price-from">2 340 ₽</td>
+                        <td class="link-cell"><a href="ss1.html">Подробнее →</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="mark">С1-00</td><td>60</td><td>50</td><td>6,5</td><td class="price">1 170</td></tr>
-                    <tr><td class="mark">С1-01</td><td>90</td><td>50</td><td>9,8</td><td class="price">1 764</td></tr>
-                    <tr><td class="mark">С1-02</td><td>120</td><td>50</td><td>13,0</td><td class="price">2 340</td></tr>
-                    <tr><td class="mark">С1-03</td><td>150</td><td>50</td><td>16,3</td><td class="price">2 934</td></tr>
-                    <tr><td class="mark">С1-04</td><td>180</td><td>50</td><td>19,6</td><td class="price">3 528</td></tr>
-                    <tr><td class="mark">С1-05</td><td>210</td><td>50</td><td>22,8</td><td class="price">4 104</td></tr>
-                    <tr><td class="mark">С1-06</td><td>240</td><td>50</td><td>26,1</td><td class="price">4 698</td></tr>
-                    <tr><td class="mark">С1-07</td><td>270</td><td>50</td><td>29,3</td><td class="price">5 274</td></tr>
-                    <tr><td class="mark">С1-08</td><td>300</td><td>50</td><td>32,6</td><td class="price">5 868</td></tr>
-                    <tr><td class="mark">С1-09</td><td>330</td><td>50</td><td>35,9</td><td class="price">6 462</td></tr>
-                    <tr><td class="mark">С1-10</td><td>360</td><td>50</td><td>39,1</td><td class="price">7 038</td></tr>
-                    <tr><td class="mark">С1-11</td><td>390</td><td>50</td><td>42,4</td><td class="price">7 632</td></tr>
-                    <tr><td class="mark">С1-12</td><td>420</td><td>50</td><td>45,7</td><td class="price">8 226</td></tr>
-                    <tr><td class="mark">С1-13</td><td>450</td><td>50</td><td>48,9</td><td class="price">8 802</td></tr>
-                    <tr><td class="mark">С1-14</td><td>480</td><td>50</td><td>52,2</td><td class="price">9 396</td></tr>
-                    <tr><td class="mark">С1-15</td><td>510</td><td>50</td><td>55,4</td><td class="price">9 972</td></tr>
-                    <tr><td class="mark">С1-16</td><td>540</td><td>50</td><td>58,7</td><td class="price">10 566</td></tr>
-                    <tr><td class="mark">С1-17</td><td>570</td><td>50</td><td>62,0</td><td class="price">11 160</td></tr>
-                    <tr><td class="mark">С1-18</td><td>600</td><td>50</td><td>65,2</td><td class="price">11 736</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- КЛ-1 -->
-        <h2>Канализационные лестницы КЛ-1 (Л-1, Л-18)</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
                     <tr>
-                        <th>Марка</th>
-                        <th>Длина, см</th>
-                        <th>Ширина, см</th>
-                        <th>Материал</th>
-                        <th>Цена, ₽</th>
+                        <td class="mark">ТПР 902-09-22.84</td>
+                        <td>Канализационные колодцы</td>
+                        <td>60 – 600 см</td>
+                        <td class="price-from">1 170 ₽</td>
+                        <td class="link-cell"><a href="ss2.html">Подробнее →</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="mark">КЛ-1</td><td>100</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">3 570</td></tr>
-                    <tr><td class="mark">КЛ-1</td><td>150</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">4 500</td></tr>
-                    <tr><td class="mark">КЛ-1</td><td>200</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">5 400</td></tr>
-                    <tr><td class="mark">КЛ-1</td><td>300</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">7 200</td></tr>
-                    <tr><td class="mark">КЛ-1</td><td>500</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">10 800</td></tr>
-                    <tr><td class="mark">КЛ-1</td><td>800</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">16 200</td></tr>
-                    <tr><td class="mark">КЛ-1</td><td>1170</td><td>41</td><td>Арматура А1 Ø25</td><td class="price">22 500</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- ВЛ-2 -->
-        <h2>Водопроводные лестницы ВЛ-2 (Л-2, Л-19)</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
                     <tr>
-                        <th>Марка</th>
-                        <th>Длина, см</th>
-                        <th>Ширина, см</th>
-                        <th>Материал</th>
-                        <th>Цена, ₽</th>
+                        <td class="mark">ТМП 902-09-46.88</td>
+                        <td>Дождевая канализация</td>
+                        <td>150 – 270 см</td>
+                        <td class="price-from">2 934 ₽</td>
+                        <td class="link-cell"><a href="tmp-902.html">Подробнее →</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="mark">ВЛ-2</td><td>100</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">2 465</td></tr>
-                    <tr><td class="mark">ВЛ-2</td><td>150</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">3 200</td></tr>
-                    <tr><td class="mark">ВЛ-2</td><td>200</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">4 000</td></tr>
-                    <tr><td class="mark">ВЛ-2</td><td>300</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">5 600</td></tr>
-                    <tr><td class="mark">ВЛ-2</td><td>500</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">8 800</td></tr>
-                    <tr><td class="mark">ВЛ-2</td><td>800</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">13 500</td></tr>
-                    <tr><td class="mark">ВЛ-2</td><td>1170</td><td>42,4</td><td>Арматура А1 Ø22–28</td><td class="price">19 200</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Л-16 -->
-        <h2>Лестницы тепловых сетей Л-16</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
                     <tr>
-                        <th>Марка</th>
-                        <th>Длина, см</th>
-                        <th>Ширина, см</th>
-                        <th>Исполнение</th>
-                        <th>Цена, ₽</th>
+                        <td class="mark">Л-16 (50 ТС)</td>
+                        <td>Теплосети</td>
+                        <td>100 – 1170 см</td>
+                        <td class="price-from">2 070 ₽</td>
+                        <td class="link-cell"><a href="l-16-dlya-teplovyh-setej.html">Подробнее →</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="mark">Л-16</td><td>100</td><td>50</td><td>Уголок 50×50×5</td><td class="price">2 070</td></tr>
-                    <tr><td class="mark">Л-16</td><td>150</td><td>50</td><td>Уголок 50×50×5</td><td class="price">2 700</td></tr>
-                    <tr><td class="mark">Л-16</td><td>200</td><td>50</td><td>Уголок 50×50×5</td><td class="price">3 400</td></tr>
-                    <tr><td class="mark">Л-16</td><td>300</td><td>50</td><td>Уголок 50×50×5</td><td class="price">4 800</td></tr>
-                    <tr><td class="mark">Л-16</td><td>500</td><td>50</td><td>Уголок 50×50×5</td><td class="price">7 500</td></tr>
-                    <tr><td class="mark">Л-16 (усил.)</td><td>100</td><td>63</td><td>Уголок 63×63×5</td><td class="price">2 500</td></tr>
-                    <tr><td class="mark">Л-16 (усил.)</td><td>200</td><td>63</td><td>Уголок 63×63×5</td><td class="price">4 100</td></tr>
-                    <tr><td class="mark">Л-16 (усил.)</td><td>300</td><td>63</td><td>Уголок 63×63×5</td><td class="price">5 800</td></tr>
-                    <tr><td class="mark">Л-16 (усил.)</td><td>500</td><td>63</td><td>Уголок 63×63×5</td><td class="price">9 000</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- СГ -->
-        <h2>Пожарные стремянки СГ серия 1.450.3-7.94</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
                     <tr>
-                        <th>Марка</th>
-                        <th>Высота, см</th>
-                        <th>Ширина, см</th>
-                        <th>Материал</th>
-                        <th>Цена, ₽</th>
+                        <td class="mark">Л-16 (63 ТС)</td>
+                        <td>Теплосети (усиленное)</td>
+                        <td>100 – 1170 см</td>
+                        <td class="price-from">2 620 ₽</td>
+                        <td class="link-cell"><a href="l-16-dlya-teplovyh-setej.html">Подробнее →</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="mark">СГ</td><td>220</td><td>70</td><td>Уголок 75×75×6</td><td class="price">8 625</td></tr>
-                    <tr><td class="mark">СГ</td><td>280</td><td>70</td><td>Уголок 75×75×6</td><td class="price">10 500</td></tr>
-                    <tr><td class="mark">СГ</td><td>340</td><td>70</td><td>Уголок 75×75×6</td><td class="price">12 400</td></tr>
-                    <tr><td class="mark">СГ</td><td>400</td><td>70</td><td>Уголок 75×75×6</td><td class="price">14 300</td></tr>
-                    <tr><td class="mark">СГ</td><td>500</td><td>70</td><td>Уголок 75×75×6</td><td class="price">17 500</td></tr>
-                    <tr><td class="mark">СГ</td><td>600</td><td>70</td><td>Уголок 75×75×6</td><td class="price">20 800</td></tr>
-                    <tr><td class="mark">СГ</td><td>700</td><td>70</td><td>Уголок 75×75×6</td><td class="price">24 000</td></tr>
-                    <tr><td class="mark">СГ</td><td>820</td><td>70</td><td>Уголок 75×75×6</td><td class="price">27 500</td></tr>
+                    <tr>
+                        <td class="mark">СГ 1.450.3-7.94</td>
+                        <td>Пожарная безопасность</td>
+                        <td>220 – 820 см</td>
+                        <td class="price-from">8 625 ₽</td>
+                        <td class="link-cell"><a href="ssg1.html">Подробнее →</a></td>
+                    </tr>
+                    <tr>
+                        <td class="mark">ВЛ-2 (Л-2, Л-19)</td>
+                        <td>Водопроводные колодцы</td>
+                        <td>100 – 1170 см</td>
+                        <td class="price-from">2 465 ₽</td>
+                        <td class="link-cell"><a href="vl-2-l-19-vodoprovodnaya.html">Подробнее →</a></td>
+                    </tr>
+                    <tr>
+                        <td class="mark">КЛ-1 (Л-1, Л-18)</td>
+                        <td>Канализационные колодцы</td>
+                        <td>100 – 1170 см</td>
+                        <td class="price-from">3 570 ₽</td>
+                        <td class="link-cell"><a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Подробнее →</a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
 
-        <p class="note">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
+        <h2>Категории продукции</h2>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Стремянки ТПР 901-09-11.84</h3>
+                <div class="product-card__price">от 2 340 ₽</div>
+            </div>
+            <p class="product-card__desc">Стальные стремянки для водопроводных колодцев. Уголок 50×50×5 мм, пруток ∅18 мм, ширина 500 мм. Соответствие ТПР 901-09-11.84 и СП 31.13330.2012.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>9</strong></span>
+                <span>Длина: <strong>120 – 450 см</strong></span>
+            </div>
+            <a href="ss1.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Стремянки ТПР 902-09-22.84</h3>
+                <div class="product-card__price">от 1 170 ₽</div>
+            </div>
+            <p class="product-card__desc">Стальные стремянки для канализационных колодцев. Уголок 50×50×5 мм, пруток ∅18 мм, ширина 500 мм. Соответствие ТПР 902-09-22.84 и СП 32.13330.2012.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>19</strong></span>
+                <span>Длина: <strong>60 – 600 см</strong></span>
+            </div>
+            <a href="ss2.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Стремянки ТМП 902-09-46.88</h3>
+                <div class="product-card__price">от 2 934 ₽</div>
+            </div>
+            <p class="product-card__desc">Стремянки для колодцев дождевой (ливневой) канализации. Три типа колодцев: круглые (КЖ.И.1), прямоугольные (КЖ.И.7), перепадные камеры (КЖ.И.15). Покрытие — каменноугольный лак.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>11</strong></span>
+                <span>Длина: <strong>150 – 270 см</strong></span>
+            </div>
+            <a href="tmp-902.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Лестницы тепловых сетей Л-16</h3>
+                <div class="product-card__price">от 2 070 ₽</div>
+            </div>
+            <p class="product-card__desc">Лестницы для тепловых камер и колодцев. Два исполнения: уголок 50×50×5 мм (ширина 500 мм) и усиленный уголок 63×63×5 мм (ширина 630 мм). Покрытие — сурик железный в 2 слоя.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>216</strong> (по 108 в каждом исполнении)</span>
+                <span>Длина: <strong>100 – 1170 см</strong></span>
+            </div>
+            <a href="l-16-dlya-teplovyh-setej.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Пожарные стремянки СГ 1.450.3-7.94</h3>
+                <div class="product-card__price">от 8 625 ₽</div>
+            </div>
+            <p class="product-card__desc">Пожарные стремянки для эвакуации. Уголок 75×75×6 мм, ширина 700 мм. Соответствие ГОСТ Р 53254 к вертикальным стационарным пожарным лестницам типа П1.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>10</strong></span>
+                <span>Высота: <strong>220 – 820 см</strong></span>
+            </div>
+            <a href="ssg1.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Водопроводные лестницы ВЛ-2 (Л-2, Л-19)</h3>
+                <div class="product-card__price">от 2 465 ₽</div>
+            </div>
+            <p class="product-card__desc">Навесные лестницы из гладкой арматуры А1 Ø22–28 мм. Ширина 424 мм, крепление крюками R35 к горловине колодца. Легко снимаются и переносятся между колодцами.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>108</strong></span>
+                <span>Длина: <strong>100 – 1170 см</strong></span>
+            </div>
+            <a href="vl-2-l-19-vodoprovodnaya.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-card__header">
+                <h3 class="product-card__title">Канализационные лестницы КЛ-1 (Л-1, Л-18)</h3>
+                <div class="product-card__price">от 3 570 ₽</div>
+            </div>
+            <p class="product-card__desc">Навесные лестницы из гладкой арматуры А1 Ø25 мм. Два параллельных пролёта со ступенями, ширина 410 мм. Мощные крюки для фиксации в горловине колодца.</p>
+            <div class="product-card__meta">
+                <span>Типоразмеров: <strong>108</strong></span>
+                <span>Длина: <strong>100 – 1170 см</strong></span>
+            </div>
+            <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html" class="product-card__link">Смотреть весь ассортимент →</a>
+        </div>
+
+        <p class="note">*Точные цены на все типоразмеры смотрите на страницах товаров. Цены указаны от минимальной стоимости и не являются публичной офертой.</p>
 
         <div class="cta-block">
             <h3>Нужен точный расчёт?</h3>
-            <p>Оставьте заявку — менеджер рассчитает стоимость под ваш проект и глубину колодца.</p>
+            <p>Оставьте заявку — менеджер рассчитает стоимость под ваш проект, глубину колодца и объём заказа.</p>
             <a href="tel:+79655559966" class="cta-phone">+7 (965) 555-99-66</a>
             <a href="index.html#contacts" class="cta-btn">Оставить заявку</a>
         </div>
@@ -389,6 +482,7 @@
                 <h4>Продукция</h4>
                 <a href="ss1.html">Стремянки водопроводные ТПР 901</a>
                 <a href="ss2.html">Стремянки канализационные ТПР 902</a>
+                <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>

@@ -230,7 +230,7 @@
         <a href="o-kompanii.html">О компании</a>
         <a href="index.html#contacts">Контакты и Заказ</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
 </nav>
 
@@ -288,6 +288,7 @@
                 <h4>Продукция</h4>
                 <a href="ss1.html">Стремянки водопроводные ТПР 901</a>
                 <a href="ss2.html">Стремянки канализационные ТПР 902</a>
+                <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
@@ -350,16 +351,12 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    // === ФОРМАТИРОВАНИЕ ДЛИНЫ ДЛЯ ПОЗИЦИЙ (в сантиметрах) ===
-    // "280" → "280 см"
     function formatLength(cm) {
         const n = parseFloat(cm);
         if (isNaN(n) || n <= 0) return '';
         return Math.round(n) + ' см';
     }
 
-    // === ФОРМАТИРОВАНИЕ ОБЩЕЙ ДЛИНЫ (в метрах) — для итогов ===
-    // "4320" → "43.2 м"
     function formatTotalLength(cm) {
         const n = parseFloat(cm);
         if (isNaN(n) || n <= 0) return '0 м';
@@ -437,7 +434,6 @@
             const itemTotal = price * quantity;
             totalSum += itemTotal;
 
-            // В корзине показываем " (280 см)"
             const lengthStr = item.length ? ` (${formatLength(item.length)})` : '';
 
             tableHtml += `
@@ -506,7 +502,6 @@
         const currentCart = getCart();
         if (Object.keys(currentCart).length === 0) { showToast('Корзина пуста', 'error'); return; }
 
-        // === РАСЧЁТ ИТОГОВ ===
         let total = 0;
         let totalLengthCm = 0;
         let totalWeightKg = 0;
@@ -524,9 +519,8 @@
         }
 
         const totalWeightRounded = Math.round(totalWeightKg);
-        const totalLengthStr = formatTotalLength(totalLengthCm); // ← в метрах
+        const totalLengthStr = formatTotalLength(totalLengthCm);
 
-        // === СБОРКА СООБЩЕНИЯ ===
         let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
         message += `👤 Имя: ${name}\n`;
         message += `📞 Телефон: ${phone}\n`;
@@ -539,7 +533,6 @@
             const itemPrice = parseFloat(item.price) || 0;
             const itemQuantity = parseInt(item.quantity) || 0;
             const itemTotal = itemPrice * itemQuantity;
-            // В составе заказа — тоже в см
             const lengthStr = item.length ? ` (${formatLength(item.length)})` : '';
             message += `• ${sanitizeInput(item.name)}${lengthStr} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
         }
