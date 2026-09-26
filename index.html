@@ -100,21 +100,9 @@
             color: var(--dark-color);
             font-size: 15px;
             min-height: 60px;
-            margin: 0 0 6px;
+            margin: 0 0 10px;
             font-weight: 500;
             line-height: 1.35;
-        }
-        /* ===== Маркировки под названием ===== */
-        .product-marks {
-            font-size: 11.5px;
-            color: #9aa4ae;
-            margin: 0 0 10px;
-            line-height: 1.45;
-            letter-spacing: 0.01em;
-            min-height: 34px;       /* 2 строки — выравнивание карточек */
-        }
-        .product-marks__label {
-            color: #b8c0c8;         /* «Маркировки:» чуть светлее */
         }
         .product-description-block p {
             margin-bottom: 5px;
@@ -124,7 +112,7 @@
         }
         .product-description-block strong {
             display: inline-block;
-            width: 85px;
+            width: 95px;                 /* ← было 85, увеличил под "Маркировки:" */
             color: var(--dark-color);
             font-weight: 500;
         }
@@ -430,7 +418,6 @@
             .product-grid { grid-template-columns: 1fr; gap: 16px; }
             .product-image-wrapper { height: 180px; }
             .product-title { font-size: 15px; min-height: auto; }
-            .product-marks { min-height: auto; }
             .product-price { font-size: 17px; }
             .advantages-section, .articles-section { padding: 40px 0; margin: 20px 0; }
             .advantages-section h2, .articles-section h2 { font-size: 1.5em; }
@@ -446,6 +433,7 @@
         @media (max-width: 480px) {
             .product-image-wrapper { height: 160px; }
             .product-title { font-size: 14px; }
+            .product-description-block strong { width: 90px; }
             .advantages-section h2, .articles-section h2, .contacts h2, .catalog h2 { font-size: 1.4em; }
             .contact-info a { font-size: 16px; }
         }
@@ -509,9 +497,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Стремянка для колодцев ТПР 901-09-11.84</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> С-1, С-2, С-3 … С-9 (9 типоразмеров)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Водопроводные колодцы</p>
+                        <p><strong>Маркировки:</strong> С-1, С-2, С-3 … С-9 (9 типоразмеров)</p>
                         <p><strong>Ширина:</strong> 500 мм</p>
                         <p><strong>Материал:</strong> уголок 50×50×5 мм, пруток ∅18 мм</p>
                     </div>
@@ -532,9 +520,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Стремянка для колодцев ТПР 902-09-22.84</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> С-1-00 … С-1-18 (19 типоразмеров)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Канализационные колодцы</p>
+                        <p><strong>Маркировки:</strong> С-1-00 … С-1-18 (19 типоразмеров)</p>
                         <p><strong>Ширина:</strong> 500 мм</p>
                         <p><strong>Материал:</strong> уголок 50×50×5 мм, пруток ∅18 мм</p>
                     </div>
@@ -555,9 +543,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Стремянка для колодцев ТМП 902-09-46.88</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> Ст.1 … Ст.5 (КЖ.И.1, КЖ.И.7, КЖ.И.15)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Дождевая канализация</p>
+                        <p><strong>Маркировки:</strong> Ст.1 … Ст.5 (КЖ.И.1, КЖ.И.7, КЖ.И.15)</p>
                         <p><strong>Ширина:</strong> 500 мм</p>
                         <p><strong>Материал:</strong> уголок 50×50×5 мм, пруток ∅18 мм</p>
                     </div>
@@ -578,9 +566,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Лестница тепловых сетей Л-16</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> ТС-1 … ТС-11.7 (108 типоразмеров)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Теплосети</p>
+                        <p><strong>Маркировки:</strong> ТС-1 … ТС-11.7 (108 типоразмеров)</p>
                         <p><strong>Ширина:</strong> 500 / 630 мм</p>
                         <p><strong>Материал:</strong> уголок 50×50×5 или 63×63×5 мм, пруток Ø18 мм</p>
                     </div>
@@ -601,9 +589,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Стремянки СГ серия 1.450.3-7.94 (пожарная стремянка)</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> СГ22, СГ28, СГ34 … СГ82 (10 типоразмеров)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Пожарная безопасность</p>
+                        <p><strong>Маркировки:</strong> СГ22, СГ28, СГ34 … СГ82 (10 типоразмеров)</p>
                         <p><strong>Ширина:</strong> 700 мм</p>
                         <p><strong>Материал:</strong> уголок 75×75×6 мм, пруток ∅18 мм</p>
                     </div>
@@ -624,9 +612,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Водопроводные лестницы ВЛ-2 (Л-2, Л-19) для колодцев</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> ВЛ-1 … ВЛ-11.7 (108 типоразмеров)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Водопроводные колодцы</p>
+                        <p><strong>Маркировки:</strong> ВЛ-1 … ВЛ-11.7 (108 типоразмеров)</p>
                         <p><strong>Ширина:</strong> 424 мм</p>
                         <p><strong>Материал:</strong> арматура А1 Ø22–28 мм</p>
                     </div>
@@ -647,9 +635,9 @@
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Канализационные лестницы КЛ-1 (Л-1, Л-18) для колодцев</h3>
-                    <div class="product-marks"><span class="product-marks__label">Маркировки:</span> КЛ-1 … КЛ-11.7 (108 типоразмеров)</div>
                     <div class="product-description-block">
                         <p><strong>Назначение:</strong> Канализационные колодцы</p>
+                        <p><strong>Маркировки:</strong> КЛ-1 … КЛ-11.7 (108 типоразмеров)</p>
                         <p><strong>Ширина:</strong> 410 мм</p>
                         <p><strong>Материал:</strong> арматура А1 Ø25 мм</p>
                     </div>
