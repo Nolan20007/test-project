@@ -44,46 +44,99 @@
     </script>
 
     <style>
-        .product-details { padding: 20px 0 40px; }
+        .product-details { padding: 0 0 30px; }
+
+        .breadcrumbs {
+            margin: 0;
+            padding: 5px 0;
+        }
+
         .product-details h2 {
             color: var(--primary-color);
             font-size: 1.6em;
-            margin-top: 30px;
+            margin-top: 20px;
+            margin-bottom: 8px;
             border-bottom: 2px solid var(--light-color);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             line-height: 1.3;
             font-weight: 600;
         }
-        .product-details p { line-height: 1.6; margin-bottom: 15px; }
+        .content-grid + h2 { margin-top: 10px; }
+
+        .product-details p { line-height: 1.5; margin-bottom: 10px; }
+
+        .price-description { margin-top: 20px; }
+        .price-description p:last-child { margin-bottom: 0; }
+
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 40px;
-            margin-top: 30px;
+            margin-top: 10px;
         }
-        .image-section { display: flex; flex-direction: column; align-items: center; }
+
+        .image-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+        }
+
         .main-image-wrapper {
             width: 100%;
+            background: #ffffff;
             border-radius: var(--inputs-buttons-border-radius);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             margin-bottom: 10px;
             overflow: hidden;
             cursor: pointer;
             border: 1px solid #eef2f6;
+            position: relative;
         }
-        .main-image { width: 100%; height: auto; display: block; }
-        .thumbnails-control { display: flex; gap: 10px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
-        .thumbnail {
-            width: 80px; height: 80px;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            overflow: hidden;
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 480px;
+            object-fit: contain;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+
+        .image-toggle {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 999px;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .image-toggle__btn {
+            border: none;
+            background: transparent;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 999px;
             cursor: pointer;
-            transition: border-color 0.2s;
-            flex-shrink: 0;
+            color: #555;
+            transition: all 0.2s;
+            font-family: inherit;
+            white-space: nowrap;
         }
-        .thumbnail:hover, .thumbnail.active { border-color: var(--primary-color); }
-        .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+        .image-toggle__btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .image-toggle__btn:hover:not(.active) {
+            background: #eef2f6;
+        }
 
         .characteristics-list { list-style: none; padding: 0; }
         .characteristics-list li {
@@ -103,20 +156,104 @@
         }
         .characteristics-list li .description { grid-column: 3 / 4; }
 
-        .advantages-list { list-style: none; padding-left: 0; }
-        .advantages-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 8px;
-            line-height: 1.5;
-            font-size: 1.05em;
+        /* ===== Раскрывающийся блок "Подробнее" ===== */
+        .info-details {
+            margin: 25px 0 0;
+            border: 1px solid #c8d9ea;
+            border-radius: var(--inputs-buttons-border-radius);
+            background: #fafbfc;
+            overflow: hidden;
         }
-        .advantages-list li::before {
-            content: "★";
+        .info-details summary {
+            cursor: pointer;
+            padding: 14px 20px;
             color: var(--primary-color);
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 15px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: background 0.2s;
+            user-select: none;
+            background: #dbe7f3;              /* ← потемнее, заметный фон */
+        }
+        .info-details summary::-webkit-details-marker { display: none; }
+        .info-details summary::after {
+            content: "▾";
+            font-size: 14px;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .info-details[open] summary::after { transform: rotate(180deg); }
+        .info-details summary:hover { background: #c9dcee; }   /* ← потемнее при наведении */
+        .info-details[open] summary { border-bottom: 1px solid #c8d9ea; }
+
+        .info-details__content {
+            padding: 20px 24px 24px;
+            animation: fadeSlide 0.25s ease;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-4px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-details__content h3 {
+            font-size: 1.05em;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+        .info-details__content h3:first-child { margin-top: 0; }
+
+        .info-details__content p {
+            font-size: 0.95em;
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+
+        .info-details__content .characteristics-list li {
+            grid-template-columns: 20px 180px 1fr;
+            font-size: 0.95em;
+        }
+
+        .advantages-compact {
+            margin: 30px 0;
+            padding: 20px 24px;
+            background: #f7fafc;
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--inputs-buttons-border-radius);
+        }
+        .advantages-compact__title {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin: 0 0 14px;
+            font-weight: 600;
+            border: none;
+            padding: 0;
+        }
+        .advantages-compact__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 30px;
+        }
+        .advantages-compact__list li {
+            position: relative;
+            padding-left: 22px;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+        .advantages-compact__list li::before {
+            content: "✓";
             position: absolute;
-            left: 0; top: 0;
+            left: 0;
+            top: 0;
+            color: #4CAF50;
+            font-weight: bold;
         }
 
         .lightbox-modal {
@@ -261,12 +398,21 @@
             .characteristics-list li .description { grid-column: 1 / 3; margin-top: 5px; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .cta-button { width: 90%; max-width: 280px; margin: 0; }
-            .thumbnail { width: 60px; height: 60px; }
+        }
+        @media (max-width: 600px) {
+            .advantages-compact__list { grid-template-columns: 1fr; }
+            .info-details summary { font-size: 14px; padding: 12px 16px; }
+            .info-details__content { padding: 16px; }
+            .info-details__content .characteristics-list li { grid-template-columns: 15px 1fr; }
+            .info-details__content .characteristics-list li strong { grid-column: 2 / 3; }
+            .info-details__content .characteristics-list li .description { grid-column: 1 / 3; margin-top: 4px; }
         }
         @media (max-width: 480px) {
-            .thumbnail { width: 50px; height: 50px; }
             .gallery-item { height: 50vh; }
             .cta-button { padding: 10px 20px; font-size: 14px; }
+            .image-toggle { bottom: 8px; right: 8px; padding: 3px; }
+            .image-toggle__btn { padding: 5px 10px; font-size: 12px; }
+            .main-image { max-height: 380px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -319,13 +465,9 @@
         <div class="image-section">
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
                 <img id="mainImage" src="images/ssg1/ssg1-large.png" alt="Пожарная стремянка СГ" class="main-image">
-            </div>
-            <div class="thumbnails-control">
-                <div class="thumbnail active" onclick="changeImage('images/ssg1/ssg1-large.png', 0)">
-                    <img src="images/ssg1/ssg1-large.png" alt="Фото">
-                </div>
-                <div class="thumbnail" onclick="changeImage('images/ssg1/ssg1-drawing.png', 1)">
-                    <img src="images/ssg1/ssg1-drawing.png" alt="Чертеж">
+                <div class="image-toggle">
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-large.png', 0)">Фото</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-drawing.png', 1)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -344,29 +486,58 @@
                 <li><strong>Ступени (шаг 300 мм):</strong><span class="description"> Круглый стальной пруток ∅ 18 мм</span></li>
                 <li><strong>Антикоррозионная защита:</strong><span class="description"> Защитное покрытие</span></li>
             </ul>
+
+            <details class="info-details">
+                <summary>
+                    <span>Подробнее: материалы, ГОСТы, условия эксплуатации</span>
+                </summary>
+                <div class="info-details__content">
+
+                    <h3>Дополнительные технические данные</h3>
+                    <ul class="characteristics-list">
+                        <li><strong>Материал:</strong><span class="description"> Углеродистые стали Ст3кп, Ст3пс, Ст3сп5 по ГОСТ 380</span></li>
+                        <li><strong>Нагрузка на ступень:</strong><span class="description"> 1,8 кН (180 кгс)</span></li>
+                        <li><strong>Антикоррозионная защита:</strong><span class="description"> Грунт ГФ-021 по ГОСТ 25129; по желанию заказчика возможен дополнительный слой эмали ПФ-115 по ГОСТ 6465</span></li>
+                        <li><strong>Комплектация:</strong><span class="description"> Ограждение ОСГ по серии 1.450.3-7.94.2 (при высоте &gt; 2,8 м) — при необходимости укажите в заказе</span></li>
+                    </ul>
+
+                    <h3>Соответствие стандартам и условия эксплуатации</h3>
+                    <p>Лестницы-стремянки полностью соответствуют требованиям <strong>ГОСТ Р 53254</strong> к вертикальным стационарным пожарным лестницам <strong>типа П1</strong>. Применяются внутри и снаружи отапливаемых и неотапливаемых зданий промышленных предприятий и инженерных сооружений, возводимых и эксплуатируемых в районах с расчётной температурой <strong>не ниже –65 °С</strong>, с неагрессивной и слабой степенью агрессивного воздействия среды.</p>
+
+                    <h3>Материалы и производство</h3>
+                    <p>В производстве используется сертифицированный горячекатаный металлопрокат (вертикальные Г-образные стойки стремянок выполнены из стальных горячекатаных уголков сечением 75×75×6 мм по ГОСТ 8509) из углеродистых сталей марок <strong>Ст3кп</strong> (С235 по ГОСТ 27772), <strong>Ст3пс</strong> (С245) и <strong>Ст3сп5</strong> (С255). Ступени лестниц-стремянок диаметром 18 мм из круглого стального прутка по ГОСТ 2590. Лестницы свариваются по типовым чертежам <strong>1.450.3-7.94.2-КМ4</strong>.</p>
+
+                </div>
+            </details>
         </div>
     </div>
 
-    <h2>Преимущества стремянок СГ</h2>
-    <ul class="advantages-list">
-        <li>Приемлемая цена</li>
-        <li>Длительный срок эксплуатации</li>
-        <li>Качественные материалы</li>
-        <li>Металл защищен от коррозии</li>
-        <li>Простой монтаж</li>
-        <li>Оптимальная ширина 70 см для удобного использования</li>
-        <li>Шаг ступеней 30 см оптимален для спуска и подъема</li>
-        <li>Соответствие требованиям пожарной безопасности</li>
-    </ul>
-
     <h2>Стоимость стремянок СГ</h2>
-    <p>Предлагаем купить стремянки для самых разных зданий на оптимальных условиях. В каталоге представлен большой ассортимент конструкций. Модели различаются по высоте, количеству ступеней. Длина лестниц начинается от 2.2 м, минимальное количество ступеней – 4.</p>
-    <p>Цена на стремянки пожарные определяется техническими параметрами. Все модели изготовлены в строгом соответствии с техническими требованиями безопасности.</p>
 
     <div id="nomenclature-container">
         <div class="loading">Загрузка данных о продукции...</div>
     </div>
-    <p style="font-size: 0.85em; margin-top: 10px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
+
+    <div class="price-description">
+        <p>Предлагаем купить стремянки для самых разных зданий на оптимальных условиях. В каталоге представлен большой ассортимент конструкций. Модели различаются по высоте, количеству ступеней. Длина лестниц начинается от 2.2 м, минимальное количество ступеней – 4.</p>
+        <p>Цена на стремянки пожарные определяется техническими параметрами. Все модели изготовлены в строгом соответствии с техническими требованиями безопасности.</p>
+    </div>
+
+    <p style="font-size: 0.85em; margin-top: 15px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
+
+    <section class="advantages-compact">
+        <h3 class="advantages-compact__title">Преимущества стремянок СГ</h3>
+        <ul class="advantages-compact__list">
+            <li>Приемлемая цена</li>
+            <li>Длительный срок эксплуатации</li>
+            <li>Качественные материалы</li>
+            <li>Металл защищен от коррозии</li>
+            <li>Простой монтаж</li>
+            <li>Оптимальная ширина 70 см для удобного использования</li>
+            <li>Шаг ступеней 30 см оптимален для спуска и подъема</li>
+            <li>Соответствие требованиям пожарной безопасности</li>
+        </ul>
+    </section>
 
     <section class="contact-summary">
         <h2>Оформление заказа и консультация</h2>
@@ -462,15 +633,15 @@
 
     const mainImage = document.getElementById('mainImage');
     const mainImageWrapper = document.getElementById('mainImageWrapper');
-    const thumbnails = document.querySelectorAll('.thumbnail');
     const modal = document.getElementById("productModal");
     const galleryContainer = document.getElementById("galleryContainer");
     const CSV_URL = 'data/ssg1-products.csv';
 
     function changeImage(src, index) {
         mainImage.src = src;
-        thumbnails.forEach(t => t.classList.remove('active'));
-        thumbnails[index].classList.add('active');
+        const btns = document.querySelectorAll('.image-toggle__btn, .image-tabs button');
+        btns.forEach(b => b.classList.remove('active'));
+        if (btns[index]) btns[index].classList.add('active');
         mainImageWrapper.setAttribute('data-current-slide', index);
     }
     mainImageWrapper.onclick = () => openModal();
