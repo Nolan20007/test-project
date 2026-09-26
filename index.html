@@ -55,8 +55,8 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
         .product-card {
             background-color: #ffffff;
@@ -74,7 +74,7 @@
         .product-image-wrapper {
             cursor: pointer;
             position: relative;
-            height: 220px;
+            height: 200px;
             overflow: hidden;
             border-bottom: 1px solid #eef2f6;
             background-color: #fafbfc;
@@ -91,43 +91,42 @@
         }
         .product-card:hover .product-image { transform: scale(1.03); }
         .product-content {
-            padding: 20px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         .product-title {
             color: var(--dark-color);
-            font-size: 17px;
-            min-height: 48px;
-            margin: 0 0 12px;
+            font-size: 15px;
+            min-height: 60px;
+            margin: 0 0 10px;
             font-weight: 500;
             line-height: 1.35;
         }
         .product-description-block p {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             color: #686868;
-            font-size: 13.5px;
+            font-size: 12.5px;
             line-height: 1.5;
         }
         .product-description-block strong {
             display: inline-block;
-            width: 95px;
+            width: 85px;
             color: var(--dark-color);
             font-weight: 500;
         }
-        /* ЦЕНА — прижата к низу, чтобы выровнять по кнопке */
         .product-price {
             margin-top: auto;
-            padding-top: 14px;
-            margin-bottom: 16px;
-            font-size: 20px;
+            padding-top: 12px;
+            margin-bottom: 14px;
+            font-size: 18px;
             font-weight: 600;
             color: var(--primary-color);
             line-height: 1.2;
         }
         .product-price .price-label {
-            font-size: 13px;
+            font-size: 12px;
             color: #686868;
             font-weight: 400;
             margin-right: 4px;
@@ -139,12 +138,12 @@
             text-align: center;
             background-color: var(--primary-color);
             color: white;
-            padding: 12px;
+            padding: 10px 12px;
             text-decoration: none;
             border-radius: var(--inputs-buttons-border-radius);
             font-weight: 500;
             transition: background-color 0.2s;
-            font-size: 14px;
+            font-size: 13px;
         }
         .cta-button:hover { background-color: var(--primary-color-hover); }
 
@@ -409,13 +408,17 @@
         .gallery-nav button:hover { background-color: var(--primary-color-hover); }
 
         @media (max-width: 1200px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .product-image-wrapper { height: 180px; }
         }
         @media (max-width: 768px) {
             .product-grid { grid-template-columns: 1fr; gap: 16px; }
             .product-image-wrapper { height: 180px; }
-            .product-title { font-size: 16px; min-height: auto; }
-            .product-price { font-size: 18px; }
+            .product-title { font-size: 15px; min-height: auto; }
+            .product-price { font-size: 17px; }
             .advantages-section, .articles-section { padding: 40px 0; margin: 20px 0; }
             .advantages-section h2, .articles-section h2 { font-size: 1.5em; }
             .advantages-grid, .articles-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -429,7 +432,7 @@
         }
         @media (max-width: 480px) {
             .product-image-wrapper { height: 160px; }
-            .product-title { font-size: 15px; }
+            .product-title { font-size: 14px; }
             .advantages-section h2, .articles-section h2, .contacts h2, .catalog h2 { font-size: 1.4em; }
             .contact-info a { font-size: 16px; }
         }
@@ -468,7 +471,7 @@
         <a href="o-kompanii.html">О компании</a>
         <a href="#contacts">Контакты и Заказ</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
 </nav>
 
@@ -527,6 +530,30 @@
                         <span class="price-value">1 170 ₽</span>
                     </div>
                     <a href="ss2.html" class="cta-button">Перейти к выбору</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper"
+                    data-title="Стремянка ТМП 902-09-46.88"
+                    data-image="images/tmp-902/tmp-main-large.png"
+                    data-drawing="images/tmp-902/tmp-drawing-large.png">
+                    <img src="images/tmp-902/tmp-main-large.png" alt="Стремянка для колодцев ТМП 902-09-46.88" class="product-image">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Стремянка для колодцев ТМП 902-09-46.88</h3>
+                    <div class="product-description-block">
+                        <p><strong>Назначение:</strong> Дождевая (ливневая) канализация</p>
+                        <p><strong>Материал:</strong></p>
+                        <p style="margin-left: 10px;">Вертикальные стойки стремянки — из стальных горячекатаных уголков сечением 50x50x5 мм по ГОСТ 8509.</p>
+                        <p style="margin-left: 10px;">Ступени лестницы-стремянки — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм.</p>
+                        <p style="margin-left: 10px;">Покрытие — каменноугольный лак по ГОСТ 1709.</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-label">Цена от:</span>
+                        <span class="price-value">2 934 ₽</span>
+                    </div>
+                    <a href="tmp-902.html" class="cta-button">Перейти к выбору</a>
                 </div>
             </div>
 
@@ -761,6 +788,7 @@
                 <h4>Продукция</h4>
                 <a href="ss1.html">Стремянки водопроводные ТПР 901</a>
                 <a href="ss2.html">Стремянки канализационные ТПР 902</a>
+                <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
