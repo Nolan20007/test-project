@@ -75,16 +75,16 @@
             margin-top: 10px;
         }
 
+        /* ===== УБРАН белый фон, чтобы не было полосы под фото ===== */
         .image-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #ffffff;
         }
 
         .main-image-wrapper {
             width: 100%;
-            height: 500px;                 /* ← ФИКСИРОВАННАЯ ВЫСОТА */
+            height: 500px;
             background: #ffffff;
             border-radius: var(--inputs-buttons-border-radius);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
@@ -108,7 +108,6 @@
             background: #ffffff;
         }
 
-        /* ===== Кнопки Фото/Вид/Чертёж — вертикально, в правом нижнем углу ===== */
         .image-toggle {
             position: absolute;
             bottom: 12px;
@@ -162,7 +161,6 @@
         }
         .characteristics-list li .description { grid-column: 3 / 4; }
 
-        /* ===== Раскрывающийся блок "Подробнее" ===== */
         .info-details {
             margin: 25px 0 0;
             border: 1px solid #c8d9ea;
@@ -224,7 +222,6 @@
             font-size: 0.95em;
         }
 
-        /* ===== Компактный блок преимуществ ===== */
         .advantages-compact {
             margin: 30px 0;
             padding: 20px 24px;
@@ -383,7 +380,6 @@
         }
         .cta-button:hover { background-color: var(--primary-color-hover); }
 
-        /* ===== Компактный блок "Оформление заказа и консультация" ===== */
         .contact-summary {
             padding: 24px 0;
             background-color: var(--light-color);
@@ -420,7 +416,7 @@
             .cta-button { padding: 10px 20px; font-size: 14px; }
             .image-toggle { bottom: 8px; right: 8px; padding: 3px; }
             .image-toggle__btn { padding: 5px 10px; font-size: 12px; }
-            .main-image-wrapper { height: 380px; }    /* ← высота обёртки на мобиле */
+            .main-image-wrapper { height: 380px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -455,7 +451,7 @@
         <a href="o-kompanii.html">О компании</a>
         <a href="index.html#contacts">Контакты и Заказ</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
 </nav>
 
