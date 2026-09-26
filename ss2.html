@@ -38,6 +38,7 @@
       },
       "image": [
         "https://stremyanki-dlya-kolodcev.ru/images/ss2/ss2-large.png",
+        "https://stremyanki-dlya-kolodcev.ru/images/ss2/ss2-large-2.png",
         "https://stremyanki-dlya-kolodcev.ru/images/ss2/ss2-drawing.png"
       ]
     }
@@ -469,8 +470,9 @@
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
                 <img id="mainImage" src="images/ss2/ss2-large.png" alt="Стремянка ТПР 902-09-22.84" class="main-image">
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ss2/ss2-large.png', 0)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/ss2-drawing.png', 1)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ss2/ss2-large.png', 0)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/ss2-large-2.png', 1)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/ss2-drawing.png', 2)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -575,6 +577,7 @@
                 <h4>Продукция</h4>
                 <a href="ss1.html">Стремянки водопроводные ТПР 901</a>
                 <a href="ss2.html">Стремянки канализационные ТПР 902</a>
+                <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
@@ -618,12 +621,14 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><img src="images/ss2/ss2-large.png" alt="Основное фото"></div>
+            <div class="gallery-item"><img src="images/ss2/ss2-large.png" alt="Фото 1"></div>
+            <div class="gallery-item"><img src="images/ss2/ss2-large-2.png" alt="Фото 2"></div>
             <div class="gallery-item"><img src="images/ss2/ss2-drawing.png" alt="Чертеж"></div>
         </div>
         <div class="modal-nav">
-            <button onclick="scrollToSlide(0)">Фото</button>
-            <button onclick="scrollToSlide(1)">Чертёж</button>
+            <button onclick="scrollToSlide(0)">Фото 1</button>
+            <button onclick="scrollToSlide(1)">Фото 2</button>
+            <button onclick="scrollToSlide(2)">Чертёж</button>
         </div>
     </div>
 </div>
