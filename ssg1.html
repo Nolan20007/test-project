@@ -378,15 +378,16 @@
         .cta-button.secondary { background-color: var(--accent-color); }
         .cta-button.secondary:hover { background-color: #083b52; }
 
+        /* ===== Компактный блок "Оформление заказа и консультация" ===== */
         .contact-summary {
-            padding: 40px 0;
+            padding: 24px 0;
             background-color: var(--light-color);
             border-top: 2px solid var(--primary-color);
-            margin-top: 40px;
+            margin-top: 24px;
             border-radius: var(--inputs-buttons-border-radius);
         }
-        .contact-summary h2 { text-align: center; margin-bottom: 20px; color: var(--dark-color); border: none; }
-        .contact-summary p { text-align: center; }
+        .contact-summary h2 { text-align: center; margin-bottom: 12px; color: var(--dark-color); border: none; }
+        .contact-summary p { text-align: center; margin-bottom: 8px; }
 
         @media (max-width: 900px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -545,10 +546,11 @@
     <section class="contact-summary">
         <h2>Оформление заказа и консультация</h2>
         <p>На данный момент в корзине <strong id="cart-count-summary">0</strong> шт. товаров.</p>
-        <p style="max-width: 700px; margin: 20px auto; color: #555;">Для оформления заказа и детального просмотра выбранных товаров, перейдите в корзину или свяжитесь с нашим менеджером. Наши специалисты оперативно обработают ваш запрос, уточнят финальную стоимость (с учетом объема и доставки) и помогут завершить покупку.</p>
+        <p style="max-width: 700px; margin: 12px auto; color: #555;">Для оформления заказа и детального просмотра выбранных товаров, перейдите в корзину или свяжитесь с нашим менеджером. Наши специалисты оперативно обработают ваш запрос, уточнят финальную стоимость (с учетом объема и доставки) и помогут завершить покупку.</p>
         <p style="font-size: 1.2em; font-weight: bold; color: var(--primary-color); text-align: center;">+7 (965) 555-99-66</p>
         <div class="buttons-row">
             <a href="cart.html" class="cta-button">Перейти в корзину</a>
+            <button class="cta-button" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
             <a href="index.html#contacts" class="cta-button secondary">Оставить заявку на звонок</a>
         </div>
     </section>
@@ -575,7 +577,7 @@
                 <a href="ss2.html">Стремянки канализационные ТПР 902</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
-                <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
+                <a href="l-16-dlya-teplovykh-setej.html">Лестницы тепловых сетей Л-16</a>
                 <a href="ssg1.html">Пожарные стремянки СГ</a>
             </div>
             <div class="footer-section">
