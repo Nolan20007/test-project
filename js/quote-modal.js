@@ -156,6 +156,15 @@
                     color: var(--primary-color, #0e5c80);
                     text-align: right;
                 }
+                /* ===== Мелкая сноска под итогом ===== */
+                .quote-cart-preview__disclaimer {
+                    margin-top: 6px;
+                    font-size: 11px;
+                    line-height: 1.4;
+                    color: #9aa4ae;
+                    text-align: right;
+                    font-style: italic;
+                }
                 .quote-cart-preview__empty {
                     font-size: 13px;
                     line-height: 1.55;
@@ -242,7 +251,10 @@
             </div>
             ${listHtml}
             <div class="quote-cart-preview__total">
-                Итого: ${totals.total.toLocaleString('ru-RU')} ₽
+                Итого (от): ${totals.total.toLocaleString('ru-RU')} ₽
+            </div>
+            <div class="quote-cart-preview__disclaimer">
+                *Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки
             </div>
         `;
 
@@ -337,7 +349,7 @@
                     body += `• ${sanitizeInput(item.name)}${lengthStr} - ${quantity} шт. × ${price.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
                 }
                 body += `\n📊 ИТОГИ ЗАКАЗА:\n`;
-                body += `💰 Общая сумма: ${totals.total.toLocaleString('ru-RU')} руб.\n`;
+                body += `💰 Общая сумма (от): ${totals.total.toLocaleString('ru-RU')} руб.\n`;
                 body += `📏 Общая длина: ${formatTotalLength(totals.totalLengthCm)}\n`;
                 body += `⚖️ Общий вес: ${Math.round(totals.totalWeightKg)} кг`;
             } else {
@@ -378,7 +390,7 @@
 
             showToast('✅ Запрос отправлен! Пришлём счёт в течение рабочего дня.', 'success');
             this.reset();
-            cartForQuote = {}; // сбрасываем локальную копию
+            cartForQuote = {};
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
             window.closeQuoteModal();
