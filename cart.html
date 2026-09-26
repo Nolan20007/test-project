@@ -350,6 +350,15 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
+    // === ФОРМАТИРОВАНИЕ ДЛИНЫ В МЕТРАХ ===
+    // На вход: сантиметры (220, 400, 820).
+    // На выход: "2.2 м", "4 м", "8.2 м".
+    function formatLength(cm) {
+        const n = parseFloat(cm);
+        if (isNaN(n) || n <= 0) return '';
+        return (n / 100).toFixed(2).replace(/\.?0+$/, '') + ' м';
+    }
+
     function getCart() {
         try {
             const data = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
@@ -421,9 +430,12 @@
             const itemTotal = price * quantity;
             totalSum += itemTotal;
 
+            // Длина — покупателю показываем в метрах. Вес — НЕ показываем.
+            const lengthStr = item.length ? ` — ${formatLength(item.length)}` : '';
+
             tableHtml += `
                 <tr>
-                    <td>${sanitizeInput(item.name)}</td>
+                    <td>${sanitizeInput(item.name)}${lengthStr}</td>
                     <td>${price.toLocaleString('ru-RU')} руб.</td>
                     <td>${quantity} шт.</td>
                     <td>${itemTotal.toLocaleString('ru-RU')} руб.</td>
@@ -487,10 +499,30 @@
         const currentCart = getCart();
         if (Object.keys(currentCart).length === 0) { showToast('Корзина пуста', 'error'); return; }
 
-        const total = Object.values(currentCart).reduce((sum, item) => {
-            return sum + (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 0);
-        }, 0);
+        // === РАСЧЁТ ИТОГОВ ===
+        let total = 0;              // общая сумма (руб)
+        let totalLengthCm = 0;      // общая длина (см)
+        let totalWeightKg = 0;      // общий вес (кг)
 
+        for (const itemId in currentCart) {
+            const item = currentCart[itemId];
+            const itemPrice = parseFloat(item.price) || 0;
+            const itemQuantity = parseInt(item.quantity) || 0;
+            const itemLength = parseFloat(item.length) || 0;
+            const itemWeight = parseFloat(item.weight) || 0;
+
+            total += itemPrice * itemQuantity;
+            totalLengthCm += itemLength * itemQuantity;
+            totalWeightKg += itemWeight * itemQuantity;
+        }
+
+        const totalLengthM = totalLengthCm / 100;
+        const totalWeightRounded = Math.round(totalWeightKg);
+
+        // Форматирование общей длины: "12.4 м" или "12 м"
+        const totalLengthStr = totalLengthM.toFixed(2).replace(/\.?0+$/, '') + ' м';
+
+        // === СБОРКА СООБЩЕНИЯ ===
         let message = `🎉 НОВЫЙ ЗАКАЗ!\n\n`;
         message += `👤 Имя: ${name}\n`;
         message += `📞 Телефон: ${phone}\n`;
@@ -503,9 +535,14 @@
             const itemPrice = parseFloat(item.price) || 0;
             const itemQuantity = parseInt(item.quantity) || 0;
             const itemTotal = itemPrice * itemQuantity;
-            message += `• ${sanitizeInput(item.name)} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
+            const lengthStr = item.length ? ` (${formatLength(item.length)})` : '';
+            message += `• ${sanitizeInput(item.name)}${lengthStr} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
         }
-        message += `\n💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.`;
+
+        message += `\n📊 ИТОГИ ЗАКАЗА:\n`;
+        message += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
+        message += `📏 Общая длина: ${totalLengthStr}\n`;
+        message += `⚖️ Общий вес: ${totalWeightRounded} кг`;
 
         const submitBtn = document.querySelector('#orderForm button[type="submit"]');
         const originalText = submitBtn.textContent;
@@ -521,7 +558,9 @@
                     email: email || '',
                     comments: comments || '',
                     cartText: message,
-                    total: total.toLocaleString('ru-RU')
+                    total: total.toLocaleString('ru-RU'),
+                    totalLength: totalLengthStr,
+                    totalWeight: totalWeightRounded
                 })
             }).catch(err => console.warn('Google Script ошибка:', err));
 
