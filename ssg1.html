@@ -104,11 +104,13 @@
             background: #ffffff;
         }
 
+        /* ===== Кнопки Фото/Чертёж — ВЕРТИКАЛЬНО, в правом нижнем углу ===== */
         .image-toggle {
             position: absolute;
             bottom: 12px;
             right: 12px;
             display: flex;
+            flex-direction: column;        /* ← вертикально */
             gap: 4px;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(4px);
@@ -451,7 +453,7 @@
         <a href="o-kompanii.html">О компании</a>
         <a href="index.html#contacts">Контакты и Заказ</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
+        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
 </nav>
 
@@ -550,8 +552,8 @@
         <p style="font-size: 1.2em; font-weight: bold; color: var(--primary-color); text-align: center;">+7 (965) 555-99-66</p>
         <div class="buttons-row">
             <a href="cart.html" class="cta-button">Перейти в корзину</a>
-            <button class="cta-button" onclick="openQuoteModal()">📄 Получить счёт/КП</button>
-            <a href="index.html#contacts" class="cta-button secondary">Оставить заявку на звонок</a>
+            <button class="cta-button" onclick="openQuoteModal()">Получить расчет/КП</button>
+            <a href="index.html#contacts" class="cta-button">Оставить заявку на звонок</a>
         </div>
     </section>
 </div>
