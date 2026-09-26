@@ -518,15 +518,22 @@
         </div>
     </div>
 
-    <h2>Стоимость стремянок ТМП 902-09-46.88</h2>
-
-    <div id="nomenclature-container">
+    <h2>Стремянки для круглых колодцев ТМП 902-09-46.88</h2>
+    <p>Лестницы-стремянки для круглых канализационных колодцев по черт. ТМП 902-09-46.88-КЖ.И.1 (альбом III «Колодцы круглые для труб Ду = 300 – 1200 мм»).</p>
+    <div id="nomenclature-kruglye">
         <div class="loading">Загрузка данных о продукции...</div>
     </div>
 
-    <div class="price-description">
-        <p>В нашей компании вы можете приобрести стальные стремянки ТМП 902-09-46.88 по наиболее доступной цене. Изделия изготавливаются из стали в строгом соответствии с ГОСТом.</p>
-        <p>Цена на стальную стремянку напрямую зависит от длины изделия. Мы предлагаем широкий ассортимент конструкций длиной от 150 до 270 см.</p>
+    <h2>Стремянки для прямоугольных колодцев ТМП 902-09-46.88</h2>
+    <p>Лестницы-стремянки для прямоугольных канализационных колодцев по черт. ТМП 902-09-46.88-КЖ.И.7 (альбом IV «Колодцы прямоугольные для труб Ду = 300 – 1600 мм»).</p>
+    <div id="nomenclature-pryamougolnye">
+        <div class="loading">Загрузка данных о продукции...</div>
+    </div>
+
+    <h2>Стремянки для перепадных камер ТМП 902-09-46.88</h2>
+    <p>Лестницы-стремянки для перепадных камер по черт. ТМП 902-09-46.88-КЖ.И.15 (альбом VI «Строительные изделия для армирования перепадных камер»).</p>
+    <div id="nomenclature-perepadnye">
+        <div class="loading">Загрузка данных о продукции...</div>
     </div>
 
     <p style="font-size: 0.85em; margin-top: 15px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
@@ -641,7 +648,12 @@
     const mainImageWrapper = document.getElementById('mainImageWrapper');
     const modal = document.getElementById("productModal");
     const galleryContainer = document.getElementById("galleryContainer");
-    const CSV_URL = 'data/tmp-902-products.csv';
+
+    const CSV_SOURCES = [
+        { url: 'data/tmp-902-kruglye.csv',        containerId: 'nomenclature-kruglye' },
+        { url: 'data/tmp-902-pryamougolnye.csv',  containerId: 'nomenclature-pryamougolnye' },
+        { url: 'data/tmp-902-perepadnye.csv',     containerId: 'nomenclature-perepadnye' }
+    ];
 
     function changeImage(src, index) {
         mainImage.src = src;
@@ -676,20 +688,14 @@
         return products;
     }
 
-    async function loadProductData() {
+    async function loadProductData(url) {
         try {
-            const r = await fetch(CSV_URL);
+            const r = await fetch(url);
             if (!r.ok) throw new Error('Ошибка');
             return parseCSV(await r.text());
         } catch (e) {
-            showErrorMessage('Данные о продукции временно недоступны');
             return [];
         }
-    }
-
-    function showErrorMessage(message) {
-        document.getElementById('nomenclature-container').innerHTML =
-            `<div class="loading" style="color: #d32f2f; background: #ffebee; padding: 20px; border-radius: 8px;"><strong>⚠️ Ошибка загрузки</strong><br>${sanitizeInput(message)}</div>`;
     }
 
     function generateTableHTML(products) {
@@ -717,13 +723,18 @@
         return html + '</tbody></table>';
     }
 
-    async function loadNomenclatureTable() {
-        const container = document.getElementById('nomenclature-container');
-        container.innerHTML = generateTableHTML(await loadProductData());
+    async function loadAllTables() {
+        for (const source of CSV_SOURCES) {
+            const products = await loadProductData(source.url);
+            const container = document.getElementById(source.containerId);
+            if (container) {
+                container.innerHTML = generateTableHTML(products);
+            }
+        }
         if (typeof initializeCartButtons === 'function') initializeCartButtons();
     }
 
-    window.onload = loadNomenclatureTable;
+    window.onload = loadAllTables;
     window.changeImage = changeImage;
     window.openModal = openModal;
     window.closeModal = closeModal;
