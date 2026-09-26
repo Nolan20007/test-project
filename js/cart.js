@@ -3,10 +3,6 @@
 // Файл: js/cart.js
 // ============================================
 
-// === КОНФИГУРАЦИЯ ===
-// Использует window.CONFIG, заданный на каждой странице.
-// Если не задан — значения по умолчанию.
-
 function getCartConfig() {
     if (typeof window.CONFIG === 'object' && window.CONFIG.CART_STORAGE_KEY) {
         return window.CONFIG;
@@ -118,17 +114,21 @@ function updateCartCounters(cart) {
 
 // === ДОБАВЛЕНИЕ ТОВАРА В КОРЗИНУ ===
 
-function addItemToCart(id, name, quantity, price) {
+function addItemToCart(id, name, quantity, price, length, weight) {
     try {
         if (!id || !name || quantity <= 0 || price < 0) {
             throw new Error('Невалидные данные товара');
         }
 
         const cart = loadCart();
+        const safeLength = length || '';
+        const safeWeight = weight || '';
 
         if (cart[id]) {
             cart[id].quantity += quantity;
             if (cart[id].quantity > 999) cart[id].quantity = 999;
+            if (safeLength && !cart[id].length) cart[id].length = safeLength;
+            if (safeWeight && !cart[id].weight) cart[id].weight = safeWeight;
             if (saveCart(cart)) {
                 showToast(`Товар уже в корзине. Теперь: ${cart[id].quantity} шт.`, 'success');
             }
@@ -136,6 +136,8 @@ function addItemToCart(id, name, quantity, price) {
             cart[id] = {
                 id: id,
                 name: name,
+                length: safeLength,
+                weight: safeWeight,
                 quantity: quantity,
                 price: price
             };
@@ -180,6 +182,8 @@ function initializeCartButtons() {
         button.addEventListener('click', function () {
             const itemId = sanitizeInput(this.getAttribute('data-item-id'));
             const itemName = sanitizeInput(this.getAttribute('data-item-name'));
+            const itemLength = sanitizeInput(this.getAttribute('data-item-length') || '');
+            const itemWeight = sanitizeInput(this.getAttribute('data-item-weight') || '');
             const quantityInput = document.getElementById(itemId + '-qty');
 
             if (!quantityInput) {
@@ -190,7 +194,7 @@ function initializeCartButtons() {
             const quantity = parseInt(quantityInput.value) || 1;
             const price = parseFloat(quantityInput.getAttribute('data-price')) || 0;
 
-            addItemToCart(itemId, itemName, quantity, price);
+            addItemToCart(itemId, itemName, quantity, price, itemLength, itemWeight);
         });
     });
 
