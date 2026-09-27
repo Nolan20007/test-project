@@ -374,12 +374,11 @@
         .modal-content {
             margin: auto;
             display: block;
-            width: 95%;
-            max-width: 1300px;
+            width: 90%;
+            max-width: 1000px;
             background-color: white;
             border-radius: var(--inputs-buttons-border-radius);
             overflow: hidden;
-            position: relative;
         }
         .close-btn {
             position: absolute;
@@ -389,70 +388,24 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            z-index: 1001;
         }
         .close-btn:hover { color: var(--primary-color); }
-        .gallery-container {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-        }
-        .gallery-item {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            min-width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 85vh;
-            max-height: 900px;
-        }
-        .gallery-item img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .gallery-nav {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 24px;
-            padding: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            z-index: 1002;
-            max-height: calc(100% - 40px);
-            overflow-y: auto;
-        }
+        .gallery-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; padding-bottom: 10px; }
+        .gallery-item { flex: 0 0 100%; scroll-snap-align: start; min-width: 100%; }
+        .gallery-item img { width: 100%; height: auto; display: block; }
+        .gallery-nav { text-align: center; padding: 10px; background-color: #fafafa; }
         .gallery-nav button {
-            background-color: transparent;
-            color: #444;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .gallery-nav button:hover {
-            background-color: #eef2f6;
-        }
-        .gallery-nav button.active {
             background-color: var(--primary-color);
             color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: var(--inputs-buttons-border-radius);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
         }
+        .gallery-nav button:hover { background-color: var(--primary-color-hover); }
 
         @media (max-width: 1200px) {
             .product-grid { grid-template-columns: repeat(3, 1fr); }
@@ -483,9 +436,6 @@
             .product-description-block strong { width: 90px; }
             .advantages-section h2, .articles-section h2, .contacts h2, .catalog h2 { font-size: 1.4em; }
             .contact-info a { font-size: 16px; }
-            .gallery-item { height: 60vh; max-height: 500px; }
-            .gallery-nav { bottom: 10px; right: 10px; padding: 5px; border-radius: 18px; }
-            .gallery-nav button { padding: 6px 12px; font-size: 12px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -541,12 +491,8 @@
             <div class="product-card">
                 <div class="product-image-wrapper"
                     data-title="Стремянка ТПР 901-09-11.84"
-                    data-vid-1="images/ss1/vid-1.png"
-                    data-vid-2="images/ss1/vid-2.png"
-                    data-vid-3="images/ss1/vid-3.png"
-                    data-foto-1="images/ss1/foto-1.png"
-                    data-foto-2="images/ss1/foto-2.png"
-                    data-chertezh="images/ss1/chertezh.png">
+                    data-image="images/ss1/vid-1.png"
+                    data-drawing="images/ss1/chertezh.png">
                     <img src="images/ss1/vid-1.png" alt="Стремянка для колодцев ТПР 901-09-11.84" class="product-image">
                 </div>
                 <div class="product-content">
@@ -568,12 +514,8 @@
             <div class="product-card">
                 <div class="product-image-wrapper"
                     data-title="Стремянка ТПР 902-09-22.84"
-                    data-vid-1="images/ss2/vid-1.png"
-                    data-vid-2="images/ss2/vid-2.png"
-                    data-vid-3="images/ss2/vid-3.png"
-                    data-foto-1="images/ss2/foto-1.png"
-                    data-foto-2="images/ss2/foto-2.png"
-                    data-chertezh="images/ss2/chertezh.png">
+                    data-image="images/ss2/vid-1.png"
+                    data-drawing="images/ss2/chertezh.png">
                     <img src="images/ss2/vid-1.png" alt="Стремянка для колодцев ТПР 902-09-22.84" class="product-image">
                 </div>
                 <div class="product-content">
@@ -595,12 +537,8 @@
             <div class="product-card">
                 <div class="product-image-wrapper"
                     data-title="Стремянка ТМП 902-09-46.88"
-                    data-vid-1="images/tmp-902/vid-1.png"
-                    data-vid-2="images/tmp-902/vid-2.png"
-                    data-vid-3="images/tmp-902/vid-3.png"
-                    data-foto-1="images/tmp-902/foto-1.png"
-                    data-foto-2="images/tmp-902/foto-2.png"
-                    data-chertezh="images/tmp-902/chertezh.png">
+                    data-image="images/tmp-902/vid-1.png"
+                    data-drawing="images/tmp-902/chertezh.png">
                     <img src="images/tmp-902/vid-1.png" alt="Стремянка для колодцев ТМП 902-09-46.88" class="product-image">
                 </div>
                 <div class="product-content">
@@ -622,13 +560,9 @@
             <div class="product-card">
                 <div class="product-image-wrapper"
                     data-title="Лестница тепловых сетей Л-16"
-                    data-vid-1="images/tl/vid-1.png"
-                    data-vid-2="images/tl/vid-2.png"
-                    data-vid-3="images/tl/vid-3.png"
-                    data-foto-1="images/tl/foto-1.png"
-                    data-foto-2="images/tl/foto-2.png"
-                    data-chertezh="images/tl/chertezh.png">
-                    <img src="images/tl/vid-1.png" alt="Лестница тепловых сетей Л-16" class="product-image">
+                    data-image="images/tl/tl-large.png"
+                    data-drawing="images/tl/tl-drawing.png">
+                    <img src="images/l16.png" alt="Лестница тепловых сетей Л-16" class="product-image">
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Лестница тепловых сетей Л-16</h3>
@@ -852,7 +786,7 @@
                 <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
-                <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
+                <a href="l-16-dlya-teplovoyh-setej.html">Лестницы тепловых сетей Л-16</a>
                 <a href="ssg1.html">Пожарные стремянки СГ</a>
             </div>
             <div class="footer-section">
@@ -892,16 +826,15 @@
 <div id="productModal" class="lightbox-modal" onclick="closeModal()">
     <span class="close-btn" title="Закрыть">&times;</span>
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h3 id="modalTitle" style="text-align: center; color: var(--dark-color); padding: 12px 0; margin: 0; font-size: 1.1em;"></h3>
+        <h3 id="modalTitle" style="text-align: center; color: var(--dark-color); padding: 10px 0; margin: 0;"></h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><img id="modalImg1" src="" alt="Вид 1"></div>
-            <div class="gallery-item"><img id="modalImg2" src="" alt="Вид 2"></div>
-            <div class="gallery-item"><img id="modalImg3" src="" alt="Вид 3"></div>
-            <div class="gallery-item"><img id="modalImg4" src="" alt="Фото 1"></div>
-            <div class="gallery-item"><img id="modalImg5" src="" alt="Фото 2"></div>
-            <div class="gallery-item"><img id="modalImg6" src="" alt="Чертёж"></div>
+            <div class="gallery-item"><img id="modalImage" src="" alt="Изображение товара"></div>
+            <div class="gallery-item"><img id="modalDrawing" src="" alt="Чертеж товара"></div>
         </div>
-        <div class="gallery-nav" id="galleryNav"></div>
+        <div class="gallery-nav">
+            <button onclick="scrollToSlide(0)">Фото</button>
+            <button onclick="scrollToSlide(1)">Чертеж</button>
+        </div>
     </div>
 </div>
 
@@ -964,107 +897,30 @@
 
     const modal = document.getElementById("productModal");
     const modalTitle = document.getElementById("modalTitle");
-    const modalImgs = [
-        document.getElementById("modalImg1"),
-        document.getElementById("modalImg2"),
-        document.getElementById("modalImg3"),
-        document.getElementById("modalImg4"),
-        document.getElementById("modalImg5"),
-        document.getElementById("modalImg6")
-    ];
-    const galleryContainer = document.getElementById("galleryContainer");
-    const galleryNav = document.getElementById("galleryNav");
+    const modalImage = document.getElementById("modalImage");
+    const modalDrawing = document.getElementById("modalDrawing");
+    const galleryContainerIndex = document.getElementById("galleryContainer");
     const imageWrappers = document.querySelectorAll(".product-image-wrapper");
 
-    let currentSlide = 0;
-    let totalSlides = 0;
-
-    function openModal(wrapper) {
-        modalTitle.textContent = wrapper.getAttribute('data-title') || '';
-
-        const vid1 = wrapper.getAttribute('data-vid-1');
-        const vid2 = wrapper.getAttribute('data-vid-2');
-        const vid3 = wrapper.getAttribute('data-vid-3');
-        const foto1 = wrapper.getAttribute('data-foto-1');
-        const foto2 = wrapper.getAttribute('data-foto-2');
-        const chertezh = wrapper.getAttribute('data-chertezh');
-
-        const img = wrapper.getAttribute('data-image');
-        const draw = wrapper.getAttribute('data-drawing');
-
-        if (vid1 && vid2 && vid3 && foto1 && foto2 && chertezh) {
-            modalImgs[0].src = vid1;
-            modalImgs[1].src = vid2;
-            modalImgs[2].src = vid3;
-            modalImgs[3].src = foto1;
-            modalImgs[4].src = foto2;
-            modalImgs[5].src = chertezh;
-
-            galleryNav.innerHTML = ''
-                + '<button data-slide="0" onclick="scrollToSlide(0)">Вид 1</button>'
-                + '<button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>'
-                + '<button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>'
-                + '<button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>'
-                + '<button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>'
-                + '<button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>';
-
-            totalSlides = 6;
-        } else {
-            modalImgs[0].src = img || '';
-            modalImgs[1].src = draw || '';
-            modalImgs[2].src = '';
-            modalImgs[3].src = '';
-            modalImgs[4].src = '';
-            modalImgs[5].src = '';
-
-            galleryNav.innerHTML = ''
-                + '<button data-slide="0" onclick="scrollToSlide(0)">Фото</button>'
-                + '<button data-slide="1" onclick="scrollToSlide(1)">Чертёж</button>';
-
-            totalSlides = 2;
-        }
-
-        currentSlide = 0;
+    function openModal(title, imageUrl, drawingUrl) {
+        modalTitle.textContent = title;
+        modalImage.src = imageUrl;
+        modalDrawing.src = drawingUrl;
         modal.style.display = "block";
-
-        setTimeout(() => {
-            scrollToSlide(0);
-            setActiveButton(0);
-        }, 50);
+        setTimeout(() => scrollToSlide(0), 50);
     }
 
     function closeModal() { modal.style.display = "none"; }
 
     function scrollToSlide(index) {
-        if (index < 0 || index >= totalSlides) return;
-        currentSlide = index;
-        const itemWidth = galleryContainer.clientWidth;
-        galleryContainer.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
-        setActiveButton(index);
+        const itemWidth = galleryContainerIndex.clientWidth;
+        galleryContainerIndex.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
     }
-
-    function setActiveButton(index) {
-        const buttons = galleryNav.querySelectorAll('button');
-        buttons.forEach((btn, i) => {
-            if (i === index) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-    }
-
-    galleryContainer.addEventListener('scroll', () => {
-        const itemWidth = galleryContainer.clientWidth;
-        if (itemWidth === 0) return;
-        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
-        if (newIndex !== currentSlide && newIndex >= 0 && newIndex < totalSlides) {
-            currentSlide = newIndex;
-            setActiveButton(newIndex);
-        }
-    });
 
     document.addEventListener('DOMContentLoaded', () => {
         imageWrappers.forEach(wrapper => {
             wrapper.addEventListener('click', function() {
-                openModal(this);
+                openModal(this.dataset.title, this.dataset.image, this.dataset.drawing);
             });
         });
         document.addEventListener('keydown', e => {

@@ -37,8 +37,9 @@
         "seller": {"@type": "Organization", "name": "Производство лестниц и стремянок для колодцев"}
       },
       "image": [
-        "https://stremyanki-dlya-kolodcev.ru/images/tl/tl-large.png",
-        "https://stremyanki-dlya-kolodcev.ru/images/tl/tl-drawing.png"
+        "https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png",
+        "https://stremyanki-dlya-kolodcev.ru/images/tl/foto-1.png",
+        "https://stremyanki-dlya-kolodcev.ru/images/tl/chertezh.png"
       ]
     }
     </script>
@@ -96,9 +97,11 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            border-radius: 999px;
-            padding: 4px;
+            border-radius: 24px;
+            padding: 5px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: calc(100% - 24px);
+            overflow-y: auto;
         }
         .image-toggle__btn {
             border: none;
@@ -215,7 +218,6 @@
             color: #4CAF50;
             font-weight: bold;
         }
-        /* ===== ВИЗУАЛЬНАЯ ГРУППА ДЛЯ ПРАЙСА ===== */
         .price-group {
             margin: 24px 0;
             padding: 22px 26px 26px;
@@ -255,10 +257,11 @@
             margin: auto;
             display: block;
             width: 95%;
-            max-width: 1000px;
+            max-width: 1300px;
             background-color: white;
             border-radius: var(--inputs-buttons-border-radius);
             overflow: hidden;
+            position: relative;
         }
         .close-btn {
             position: absolute;
@@ -277,22 +280,53 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 85vh;
+            max-height: 900px;
         }
-        .gallery-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .modal-nav { text-align: center; padding: 10px; background-color: #fafafa; }
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .modal-nav {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 1002;
+            max-height: calc(100% - 40px);
+            overflow-y: auto;
+        }
         .modal-nav button {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: transparent;
+            color: #444;
             border: none;
-            padding: 8px 15px;
-            margin: 0 5px;
-            border-radius: var(--inputs-buttons-border-radius);
+            padding: 8px 16px;
+            border-radius: 999px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            margin: 0;
         }
-        .modal-nav button:hover { background-color: var(--primary-color-hover); }
+        .modal-nav button:hover { background-color: #eef2f6; }
+        .modal-nav button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
         .nomenclature-table {
             width: 100%;
             border-collapse: collapse;
@@ -389,11 +423,13 @@
             .advantages-compact__list { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
-            .gallery-item { height: 50vh; }
+            .gallery-item { height: 60vh; max-height: 500px; }
             .cta-button { padding: 10px 20px; font-size: 14px; }
-            .image-toggle { bottom: 8px; right: 8px; padding: 3px; }
+            .image-toggle { bottom: 8px; right: 8px; padding: 4px; border-radius: 18px; }
             .image-toggle__btn { padding: 5px 10px; font-size: 12px; }
             .main-image-wrapper { height: 380px; }
+            .modal-nav { bottom: 10px; right: 10px; padding: 5px; border-radius: 18px; }
+            .modal-nav button { padding: 6px 12px; font-size: 12px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -445,10 +481,14 @@
     <div class="content-grid">
         <div class="image-section">
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
-                <img id="mainImage" src="images/tl/tl-large.png" alt="Лестница тепловых сетей Л-16" class="main-image">
+                <img id="mainImage" src="images/tl/vid-1.png" alt="Лестница тепловых сетей Л-16" class="main-image">
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/tl/tl-large.png', 0)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/tl-drawing.png', 1)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/tl/vid-1.png', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/vid-2.png', 1)">Вид 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/vid-3.png', 2)">Вид 3</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/foto-1.png', 3)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/foto-2.png', 4)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/chertezh.png', 5)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -602,12 +642,20 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><img src="images/tl/tl-large.png" alt="Основное фото"></div>
-            <div class="gallery-item"><img src="images/tl/tl-drawing.png" alt="Чертеж"></div>
+            <div class="gallery-item"><img src="images/tl/vid-1.png" alt="Вид 1"></div>
+            <div class="gallery-item"><img src="images/tl/vid-2.png" alt="Вид 2"></div>
+            <div class="gallery-item"><img src="images/tl/vid-3.png" alt="Вид 3"></div>
+            <div class="gallery-item"><img src="images/tl/foto-1.png" alt="Фото 1"></div>
+            <div class="gallery-item"><img src="images/tl/foto-2.png" alt="Фото 2"></div>
+            <div class="gallery-item"><img src="images/tl/chertezh.png" alt="Чертеж"></div>
         </div>
-        <div class="modal-nav">
-            <button onclick="scrollToSlide(0)">Фото</button>
-            <button onclick="scrollToSlide(1)">Чертёж</button>
+        <div class="modal-nav" id="modalNav">
+            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
+            <button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>
+            <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
+            <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
+            <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
+            <button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>
         </div>
     </div>
 </div>
@@ -624,6 +672,7 @@
     const mainImageWrapper = document.getElementById('mainImageWrapper');
     const modal = document.getElementById("productModal");
     const galleryContainer = document.getElementById("galleryContainer");
+    const modalNav = document.getElementById("modalNav");
 
     const CSV_SOURCES = [
         { url: 'data/tl-products.csv',    containerId: 'nomenclature-50' },
@@ -640,12 +689,27 @@
     mainImageWrapper.onclick = () => openModal();
     function openModal() {
         modal.style.display = "block";
-        setTimeout(() => scrollToSlide(parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0)), 50);
+        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        setTimeout(() => scrollToSlide(slide), 50);
     }
     function closeModal() { modal.style.display = "none"; }
     function scrollToSlide(index) {
         galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
+        setActiveModalButton(index);
     }
+    function setActiveModalButton(index) {
+        const buttons = modalNav.querySelectorAll('button');
+        buttons.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+    galleryContainer.addEventListener('scroll', () => {
+        const itemWidth = galleryContainer.clientWidth;
+        if (itemWidth === 0) return;
+        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
+        setActiveModalButton(newIndex);
+    });
 
     function parseCSV(csvText) {
         const lines = csvText.split('\n').filter(l => l.trim() !== '');
