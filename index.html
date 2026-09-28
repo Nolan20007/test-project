@@ -44,7 +44,7 @@
     </script>
 
     <style>
-        .content-area { padding: 40px 0; }
+        .content-area { padding: 20px 0; }
         .catalog h2 {
             text-align: center;
             color: var(--dark-color);
@@ -55,7 +55,7 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
         .product-card {
@@ -73,6 +73,16 @@
         }
         .product-image-wrapper {
             cursor: pointer;
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid #eef2f6;
+            background-color: #fafbfc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image-wrapper-static {
             position: relative;
             height: 200px;
             overflow: hidden;
@@ -144,6 +154,11 @@
             font-weight: 500;
             transition: background-color 0.2s;
             font-size: 13px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%;
+            box-sizing: border-box;
         }
         .cta-button:hover { background-color: var(--primary-color-hover); }
 
@@ -460,10 +475,12 @@
         @media (max-width: 900px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .product-image-wrapper { height: 180px; }
+            .product-image-wrapper-static { height: 180px; }
         }
         @media (max-width: 768px) {
             .product-grid { grid-template-columns: 1fr; gap: 16px; }
             .product-image-wrapper { height: 180px; }
+            .product-image-wrapper-static { height: 180px; }
             .product-title { font-size: 15px; min-height: auto; }
             .product-price { font-size: 17px; }
             .advantages-section, .articles-section { padding: 40px 0; margin: 20px 0; }
@@ -479,6 +496,7 @@
         }
         @media (max-width: 480px) {
             .product-image-wrapper { height: 160px; }
+            .product-image-wrapper-static { height: 160px; }
             .product-title { font-size: 14px; }
             .product-description-block strong { width: 90px; }
             .advantages-section h2, .articles-section h2, .contacts h2, .catalog h2 { font-size: 1.4em; }
@@ -715,6 +733,26 @@
                 </div>
             </div>
 
+            <div class="product-card">
+                <div class="product-image-wrapper-static">
+                    <img src="images/nestandart/nestandart-mini.png" alt="Изготовление нестандартных лестниц и металлоконструкций" class="product-image">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Изготовим стремянку, лестницу или любую металлоконструкцию по вашему ТЗ</h3>
+                    <div class="product-description-block">
+                        <p><strong>Назначение:</strong> Любые нестандартные условия</p>
+                        <p><strong>Материал:</strong> По ТЗ заказчика</p>
+                        <p><strong>Размеры:</strong> По чертежу</p>
+                        <p><strong>Цена:</strong> По согласованию</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-label">Цена:</span>
+                        <span class="price-value">По согласованию</span>
+                    </div>
+                    <a href="javascript:void(0)" class="cta-button" onclick="openCustomOrderModal()">Заказать изготовление</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -906,6 +944,7 @@
 </div>
 
 <script src="js/quote-modal.js"></script>
+<script src="js/custom-order-modal.js"></script>
 <script>
     const CONFIG = {
         GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
