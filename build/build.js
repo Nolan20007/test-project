@@ -2,16 +2,16 @@ const fs = require('fs');
 const path = require('path');
 
 const PAGES = [
-  { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
-  { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
-  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
-  { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
-  { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  { html: 'l-16-dlya-teplovyh-setej.html', tables: [
+  { html: 'ss1.html', productName: 'Стремянки для водопроводных колодцев ТПР 901-09-11.84', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
+  { html: 'ss2.html', productName: 'Стремянки для канализационных колодцев ТПР 902-09-22.84', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
+  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', productName: 'Канализационные лестницы КЛ-1 (Л-1, Л-18)', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
+  { html: 'vl-2-l-19-vodoprovodnaya.html', productName: 'Водопроводные лестницы ВЛ-2 (Л-2, Л-19)', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
+  { html: 'ssg1.html', productName: 'Пожарные стремянки СГ серия 1.450.3-7.94', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
+  { html: 'l-16-dlya-teplovyh-setej.html', productName: 'Лестницы тепловых сетей Л-16 (ТС)', tables: [
       { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
       { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
   ]},
-  { html: 'tmp-902.html', tables: [
+  { html: 'tmp-902.html', productName: 'Стремянки для колодцев ТМП 902-09-46.88', tables: [
       { id: 'nomenclature-kruglye', csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
@@ -20,6 +20,8 @@ const PAGES = [
 
 const M_START = '<!-- NOMENCLATURE_START -->';
 const M_END   = '<!-- NOMENCLATURE_END -->';
+const JSONLD_START = '<!-- JSONLD_PRODUCT_START -->';
+const JSONLD_END   = '<!-- JSONLD_PRODUCT_END -->';
 
 function parseCSV(text) {
   const rows = []; let row = []; let field = ''; let inQ = false;
@@ -111,6 +113,60 @@ function replaceContainer(html, containerId, innerHtml) {
          html.slice(endIdx);
 }
 
+// ==== JSON-LD Product: генерируем разметку для страницы ====
+function buildProductJsonLd(page, products, pageUrl) {
+  if (!products.length) return '';
+
+  const prices = products
+    .map(p => parseFloat(p.price))
+    .filter(n => !isNaN(n) && n > 0);
+
+  const minPrice = prices.length ? Math.min(...prices) : 0;
+  const maxPrice = prices.length ? Math.max(...prices) : 0;
+
+  const obj = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": page.productName,
+    "description": page.productName + " — цены от производителя, доставка по России.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Производство лестниц и стремянок для колодцев"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "RUB",
+      "lowPrice": String(minPrice),
+      "highPrice": String(maxPrice),
+      "offerCount": String(products.length),
+      "availability": "https://schema.org/InStock",
+      "url": pageUrl,
+      "seller": {
+        "@type": "Organization",
+        "name": "ИП Гневашева Кристина Дмитриевна"
+      }
+    }
+  };
+
+  return JSON.stringify(obj, null, 2);
+}
+
+// Вставляет JSON-LD между маркерами JSONLD_PRODUCT_START/END в <head>
+function replaceJsonLd(html, jsonLd) {
+  const block = `${JSONLD_START}\n<script type="application/ld+json">\n${jsonLd}\n</script>\n${JSONLD_END}`;
+
+  const re = new RegExp(
+    `${JSONLD_START.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}[\\s\\S]*?${JSONLD_END.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}`
+  );
+
+  if (re.test(html)) {
+    return html.replace(re, block);
+  }
+
+  // Если маркеров нет — вставим перед </head>
+  return html.replace('</head>', `${block}\n</head>`);
+}
+
 function build() {
   let changed = 0;
   PAGES.forEach(page => {
@@ -119,11 +175,15 @@ function build() {
     let html = fs.readFileSync(htmlPath, 'utf8');
     let changedThisPage = false;
 
+    // Собираем товары со всех таблиц страницы
+    const allProducts = [];
     page.tables.forEach(t => {
       const csvPath = path.resolve(__dirname, '..', t.csv);
       if (!fs.existsSync(csvPath)) { console.warn(`  ⚠ Нет CSV: ${t.csv}`); return; }
       const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
       const products = parseCSV(csv);
+      allProducts.push(...products);
+
       const newHtml = replaceContainer(html, t.id, buildTable(products));
       if (newHtml !== html) {
         html = newHtml; changedThisPage = true;
@@ -132,6 +192,17 @@ function build() {
         console.log(`  · ${page.html} → #${t.id} без изменений`);
       }
     });
+
+    // Генерируем и вставляем JSON-LD
+    const pageUrl = 'https://stremyanki-dlya-kolodcev.ru/' + page.html;
+    const jsonLd = buildProductJsonLd(page, allProducts, pageUrl);
+    if (jsonLd) {
+      const newHtml = replaceJsonLd(html, jsonLd);
+      if (newHtml !== html) {
+        html = newHtml; changedThisPage = true;
+        console.log(`  ✓ ${page.html} → JSON-LD Product (${allProducts.length} товаров)`);
+      }
+    }
 
     if (changedThisPage) {
       fs.writeFileSync(htmlPath, html, 'utf8');
