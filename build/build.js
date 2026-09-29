@@ -1,17 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
+
 const PAGES = [
-  { html: 'ss1.html', productName: 'Стремянки для водопроводных колодцев ТПР 901-09-11.84', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
-  { html: 'ss2.html', productName: 'Стремянки для канализационных колодцев ТПР 902-09-22.84', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
-  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', productName: 'Канализационные лестницы КЛ-1 (Л-1, Л-18)', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
-  { html: 'vl-2-l-19-vodoprovodnaya.html', productName: 'Водопроводные лестницы ВЛ-2 (Л-2, Л-19)', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
-  { html: 'ssg1.html', productName: 'Пожарные стремянки СГ серия 1.450.3-7.94', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  { html: 'l-16-dlya-teplovyh-setej.html', productName: 'Лестницы тепловых сетей Л-16 (ТС)', tables: [
+  { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
+  { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
+  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
+  { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
+  { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
+  { html: 'l-16-dlya-teplovyh-setej.html', tables: [
       { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
       { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
   ]},
-  { html: 'tmp-902.html', productName: 'Стремянки для колодцев ТМП 902-09-46.88', tables: [
+  { html: 'tmp-902.html', tables: [
       { id: 'nomenclature-kruglye', csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
@@ -20,8 +22,8 @@ const PAGES = [
 
 const M_START = '<!-- NOMENCLATURE_START -->';
 const M_END   = '<!-- NOMENCLATURE_END -->';
-const JSONLD_START = '<!-- JSONLD_PRODUCT_START -->';
-const JSONLD_END   = '<!-- JSONLD_PRODUCT_END -->';
+const JSONLD_START = '<!-- JSONLD_PRODUCTS_START -->';
+const JSONLD_END   = '<!-- JSONLD_PRODUCTS_END -->';
 
 function parseCSV(text) {
   const rows = []; let row = []; let field = ''; let inQ = false;
@@ -53,6 +55,10 @@ function esc(s) {
 function fmtPrice(p) {
   const n = parseFloat(p); return isNaN(n) ? '—' : n.toLocaleString('ru-RU');
 }
+// Безопасный id для якоря (кириллица → транслит, но проще — с префиксом item-)
+function safeAnchor(id) {
+  return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
+}
 
 function buildTable(products) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
@@ -64,8 +70,9 @@ function buildTable(products) {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
           weight = esc(p.weight), unit = esc(p.unit), available = esc(p.available),
           img = esc(p.image || 'images/default-product.png'),
-          price = parseFloat(p.price) || 0;
-    html += `<tr>
+          price = parseFloat(p.price) || 0,
+          anchor = safeAnchor(p.id);
+    html += `<tr id="${anchor}">
       <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>${name}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
       <td>от ${fmtPrice(price)} руб.</td><td>${unit}</td>
@@ -113,47 +120,64 @@ function replaceContainer(html, containerId, innerHtml) {
          html.slice(endIdx);
 }
 
-// ==== JSON-LD Product: генерируем разметку для страницы ====
-function buildProductJsonLd(page, products, pageUrl) {
+// ==== JSON-LD: массив из N Product (по одному на каждый товар из CSV) ====
+function buildProductListJsonLd(products, pageUrl) {
   if (!products.length) return '';
 
-  const prices = products
-    .map(p => parseFloat(p.price))
-    .filter(n => !isNaN(n) && n > 0);
-
-  const minPrice = prices.length ? Math.min(...prices) : 0;
-  const maxPrice = prices.length ? Math.max(...prices) : 0;
-
-  const obj = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": page.productName,
-    "description": page.productName + " — цены от производителя, доставка по России.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Производство лестниц и стремянок для колодцев"
-    },
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "RUB",
-      "lowPrice": String(minPrice),
-      "highPrice": String(maxPrice),
-      "offerCount": String(products.length),
-      "availability": "https://schema.org/InStock",
-      "url": pageUrl,
-      "seller": {
-        "@type": "Organization",
-        "name": "ИП Гневашева Кристина Дмитриевна"
+  const items = products.map(p => {
+    const price = parseFloat(p.price) || 0;
+    const anchor = safeAnchor(p.id);
+    const obj = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": p.name,
+      "sku": p.id,
+      "mpn": p.id,
+      "image": SITE_URL + '/' + (p.image || 'images/default-product.png'),
+      "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
+      "brand": {
+        "@type": "Brand",
+        "name": "Производство лестниц и стремянок для колодцев"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": pageUrl + '#' + anchor,
+        "priceCurrency": "RUB",
+        "price": String(price),
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "ИП Гневашева Кристина Дмитриевна"
+        }
       }
-    }
-  };
+    };
+    return JSON.stringify(obj, null, 2);
+  });
 
-  return JSON.stringify(obj, null, 2);
+  // Оборачиваем каждый в свой <script type="application/ld+json">
+  return items
+    .map(json => `<script type="application/ld+json">\n${json}\n</script>`)
+    .join('\n');
 }
 
-// Вставляет JSON-LD между маркерами JSONLD_PRODUCT_START/END в <head>
+// Удаляем старые JSON-LD Product из <head> (если есть)
+function stripOldProductJsonLd(html) {
+  // Ищем <script type="application/ld+json">...</script>, где внутри "@type": "Product"
+  return html.replace(
+    /<script\s+type=["']application\/ld\+json["']\s*>([\s\S]*?)<\/script>/gi,
+    (match, inner) => {
+      // Пропускаем если это НЕ Product (Breadcrumb, Organization, WebSite, LocalBusiness оставляем)
+      if (/"@type"\s*:\s*"Product"/i.test(inner)) {
+        return '<!-- removed old Product JSON-LD -->';
+      }
+      return match;
+    }
+  );
+}
+
 function replaceJsonLd(html, jsonLd) {
-  const block = `${JSONLD_START}\n<script type="application/ld+json">\n${jsonLd}\n</script>\n${JSONLD_END}`;
+  const block = `${JSONLD_START}\n${jsonLd}\n${JSONLD_END}`;
 
   const re = new RegExp(
     `${JSONLD_START.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}[\\s\\S]*?${JSONLD_END.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}`
@@ -163,7 +187,7 @@ function replaceJsonLd(html, jsonLd) {
     return html.replace(re, block);
   }
 
-  // Если маркеров нет — вставим перед </head>
+  // Вставляем перед </head>
   return html.replace('</head>', `${block}\n</head>`);
 }
 
@@ -175,7 +199,7 @@ function build() {
     let html = fs.readFileSync(htmlPath, 'utf8');
     let changedThisPage = false;
 
-    // Собираем товары со всех таблиц страницы
+    // Собираем товары со всех таблиц
     const allProducts = [];
     page.tables.forEach(t => {
       const csvPath = path.resolve(__dirname, '..', t.csv);
@@ -193,14 +217,21 @@ function build() {
       }
     });
 
-    // Генерируем и вставляем JSON-LD
-    const pageUrl = 'https://stremyanki-dlya-kolodcev.ru/' + page.html;
-    const jsonLd = buildProductJsonLd(page, allProducts, pageUrl);
+    // Удаляем старые Product JSON-LD
+    const cleanedHtml = stripOldProductJsonLd(html);
+    if (cleanedHtml !== html) {
+      html = cleanedHtml; changedThisPage = true;
+      console.log(`  ✓ ${page.html} → удалены старые Product JSON-LD`);
+    }
+
+    // Генерируем и вставляем новые
+    const pageUrl = SITE_URL + '/' + page.html;
+    const jsonLd = buildProductListJsonLd(allProducts, pageUrl);
     if (jsonLd) {
       const newHtml = replaceJsonLd(html, jsonLd);
       if (newHtml !== html) {
         html = newHtml; changedThisPage = true;
-        console.log(`  ✓ ${page.html} → JSON-LD Product (${allProducts.length} товаров)`);
+        console.log(`  ✓ ${page.html} → JSON-LD: ${allProducts.length} товаров`);
       }
     }
 
