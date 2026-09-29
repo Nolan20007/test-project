@@ -3,19 +3,19 @@ const path = require('path');
 
 const PAGES = [
   { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
-  // { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
-  // { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
-  // { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
-  // { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  // { html: 'l-16-dlya-teplovyh-setej.html', tables: [
-  //     { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
-  //     { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
-  // ]},
-  // { html: 'tmp-902.html', tables: [
-  //     { id: 'nomenclature-kruglye', csv: 'data/tmp-902-kruglye.csv' },
-  //     { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
-  //     { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
-  // ]},
+  { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
+  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
+  { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
+  { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
+  { html: 'l-16-dlya-teplovyh-setej.html', tables: [
+      { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
+      { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
+  ]},
+  { html: 'tmp-902.html', tables: [
+      { id: 'nomenclature-kruglye', csv: 'data/tmp-902-kruglye.csv' },
+      { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
+      { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
+  ]},
 ];
 
 const M_START = '<!-- NOMENCLATURE_START -->';
