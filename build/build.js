@@ -55,7 +55,6 @@ function esc(s) {
 function fmtPrice(p) {
   const n = parseFloat(p); return isNaN(n) ? '—' : n.toLocaleString('ru-RU');
 }
-// Безопасный id для якоря (кириллица → транслит, но проще — с префиксом item-)
 function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
@@ -120,10 +119,9 @@ function replaceContainer(html, containerId, innerHtml) {
          html.slice(endIdx);
 }
 
-// ==== JSON-LD: массив из N Product (по одному на каждый товар из CSV) ====
+// ==== JSON-LD: массив Product ====
 function buildProductListJsonLd(products, pageUrl) {
   if (!products.length) return '';
-
   const items = products.map(p => {
     const price = parseFloat(p.price) || 0;
     const anchor = safeAnchor(p.id);
@@ -135,10 +133,7 @@ function buildProductListJsonLd(products, pageUrl) {
       "mpn": p.id,
       "image": SITE_URL + '/' + (p.image || 'images/default-product.png'),
       "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
-      "brand": {
-        "@type": "Brand",
-        "name": "Производство лестниц и стремянок для колодцев"
-      },
+      "brand": { "@type": "Brand", "name": "Производство лестниц и стремянок для колодцев" },
       "offers": {
         "@type": "Offer",
         "url": pageUrl + '#' + anchor,
@@ -146,28 +141,18 @@ function buildProductListJsonLd(products, pageUrl) {
         "price": String(price),
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "seller": {
-          "@type": "Organization",
-          "name": "ИП Гневашева Кристина Дмитриевна"
-        }
+        "seller": { "@type": "Organization", "name": "ИП Гневашева Кристина Дмитриевна" }
       }
     };
     return JSON.stringify(obj, null, 2);
   });
-
-  // Оборачиваем каждый в свой <script type="application/ld+json">
-  return items
-    .map(json => `<script type="application/ld+json">\n${json}\n</script>`)
-    .join('\n');
+  return items.map(json => `<script type="application/ld+json">\n${json}\n</script>`).join('\n');
 }
 
-// Удаляем старые JSON-LD Product из <head> (если есть)
 function stripOldProductJsonLd(html) {
-  // Ищем <script type="application/ld+json">...</script>, где внутри "@type": "Product"
   return html.replace(
     /<script\s+type=["']application\/ld\+json["']\s*>([\s\S]*?)<\/script>/gi,
     (match, inner) => {
-      // Пропускаем если это НЕ Product (Breadcrumb, Organization, WebSite, LocalBusiness оставляем)
       if (/"@type"\s*:\s*"Product"/i.test(inner)) {
         return '<!-- removed old Product JSON-LD -->';
       }
@@ -178,28 +163,60 @@ function stripOldProductJsonLd(html) {
 
 function replaceJsonLd(html, jsonLd) {
   const block = `${JSONLD_START}\n${jsonLd}\n${JSONLD_END}`;
-
   const re = new RegExp(
     `${JSONLD_START.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}[\\s\\S]*?${JSONLD_END.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}`
   );
-
-  if (re.test(html)) {
-    return html.replace(re, block);
-  }
-
-  // Вставляем перед </head>
+  if (re.test(html)) return html.replace(re, block);
   return html.replace('</head>', `${block}\n</head>`);
+}
+
+// ==== НОВОЕ: обновление минимальных цен на index.html ====
+function getMinPriceFromCsvs(csvFiles) {
+  let min = Infinity;
+  csvFiles.forEach(file => {
+    const csvPath = path.resolve(__dirname, '..', 'data', file.trim());
+    if (!fs.existsSync(csvPath)) {
+      console.warn(`  ⚠ Не найден CSV для прайса: ${file}`);
+      return;
+    }
+    const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
+    const products = parseCSV(csv);
+    products.forEach(p => {
+      const price = parseFloat(p.price);
+      if (!isNaN(price) && price > 0 && price < min) min = price;
+    });
+  });
+  return min === Infinity ? null : min;
+}
+
+function updateIndexPrices(html) {
+  // Ищем все маркеры <!-- PRICE_START:min:file1.csv,file2.csv -->...<!-- PRICE_END -->
+  const re = /<!--\s*PRICE_START:min:([^>]+?)\s*-->([\s\S]*?)<!--\s*PRICE_END\s*-->/g;
+  let updated = 0;
+
+  const newHtml = html.replace(re, (match, csvList, oldContent) => {
+    const min = getMinPriceFromCsvs(csvList.split(','));
+    if (min === null) return match;
+
+    const formatted = fmtPrice(min) + ' ₽';
+    const newBlock = `<!-- PRICE_START:min:${csvList.trim()} -->${formatted}<!-- PRICE_END -->`;
+    if (newBlock !== match) updated++;
+    return newBlock;
+  });
+
+  return { html: newHtml, updated };
 }
 
 function build() {
   let changed = 0;
+
+  // 1. Обрабатываем страницы каталога
   PAGES.forEach(page => {
     const htmlPath = path.resolve(__dirname, '..', page.html);
     if (!fs.existsSync(htmlPath)) { console.warn(`⚠ Нет файла: ${page.html}`); return; }
     let html = fs.readFileSync(htmlPath, 'utf8');
     let changedThisPage = false;
 
-    // Собираем товары со всех таблиц
     const allProducts = [];
     page.tables.forEach(t => {
       const csvPath = path.resolve(__dirname, '..', t.csv);
@@ -217,14 +234,12 @@ function build() {
       }
     });
 
-    // Удаляем старые Product JSON-LD
     const cleanedHtml = stripOldProductJsonLd(html);
     if (cleanedHtml !== html) {
       html = cleanedHtml; changedThisPage = true;
       console.log(`  ✓ ${page.html} → удалены старые Product JSON-LD`);
     }
 
-    // Генерируем и вставляем новые
     const pageUrl = SITE_URL + '/' + page.html;
     const jsonLd = buildProductListJsonLd(allProducts, pageUrl);
     if (jsonLd) {
@@ -240,6 +255,23 @@ function build() {
       changed++;
     }
   });
+
+  // 2. Обрабатываем index.html (обновление минимальных цен)
+  const indexPath = path.resolve(__dirname, '..', 'index.html');
+  if (fs.existsSync(indexPath)) {
+    const html = fs.readFileSync(indexPath, 'utf8');
+    const result = updateIndexPrices(html);
+    if (result.html !== html) {
+      fs.writeFileSync(indexPath, result.html, 'utf8');
+      console.log(`  ✓ index.html → обновлено цен: ${result.updated}`);
+      changed++;
+    } else {
+      console.log(`  · index.html без изменений`);
+    }
+  } else {
+    console.warn(`⚠ Нет файла: index.html`);
+  }
+
   console.log(`\nГотово. Обновлено страниц: ${changed}`);
 }
 
