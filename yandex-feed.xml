@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-10-01 09:01">
+  <shop>
+    <name>Производство лестниц и стремянок для колодцев</name>
+    <company>ИП Гневашева Кристина Дмитриевна</company>
+    <url>https://stremyanki-dlya-kolodcev.ru</url>
+    <currencies>
+      <currency id="RUB" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Стремянки и лестницы для колодцев</category>
+    </categories>
+    <offers>
+    <offer id="C-1" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-1</url>
+      <price>1950</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-1)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-1). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
+    </offer>
+    <offer id="C-2" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-2</url>
+      <price>2445</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-2)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-2</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-2). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
+    </offer>
+    <offer id="C-3" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-3</url>
+      <price>2940</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-3)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-3</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-3). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
+    </offer>
+    <offer id="C-4" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-4</url>
+      <price>3555</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-4)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-4</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-4). Длина 225 см, ширина 50 см, масса 23.7 кг.</description>
+    </offer>
+    <offer id="C-5" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-5</url>
+      <price>4005</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-5)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-5</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-5). Длина 240 см, ширина 50 см, масса 26.7 кг.</description>
+    </offer>
+    <offer id="C-6" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-6</url>
+      <price>3525</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-6)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-6</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-6). Длина 210 см, ширина 50 см, масса 23.5 кг.</description>
+    </offer>
+    <offer id="C-7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-7</url>
+      <price>4500</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-7)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-7</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-7). Длина 270 см, ширина 50 см, масса 30.0 кг.</description>
+    </offer>
+    <offer id="C-8" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-8</url>
+      <price>6900</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-8)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-8</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-8). Длина 420 см, ширина 50 см, масса 46.0 кг.</description>
+    </offer>
+    <offer id="C-9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-9</url>
+      <price>7404</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 901-09-11.84 (С-9)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-9</model>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-9). Длина 450 см, ширина 50 см, масса 49.36 кг.</description>
+    </offer>
+    <offer id="C-1-00" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-00</url>
+      <price>975</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-00)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-00</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-00). Длина 60 см, ширина 50 см, масса 6.5 кг.</description>
+    </offer>
+    <offer id="C-1-01" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-01</url>
+      <price>1470</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-01)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-01</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-01). Длина 90 см, ширина 50 см, масса 9.8 кг.</description>
+    </offer>
+    <offer id="C-1-02" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-02</url>
+      <price>1950</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-02)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-02</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-02). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
+    </offer>
+    <offer id="C-1-03" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-03</url>
+      <price>2445</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-03)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-03</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-03). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
+    </offer>
+    <offer id="C-1-04" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-04</url>
+      <price>2940</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-04)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-04</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-04). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
+    </offer>
+    <offer id="C-1-05" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-05</url>
+      <price>3420</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-05)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-05</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-05). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
+    </offer>
+    <offer id="C-1-06" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-06</url>
+      <price>3915</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-06)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-06</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-06). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
+    </offer>
+    <offer id="C-1-07" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-07</url>
+      <price>4395</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-07)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-07</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-07). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
+    </offer>
+    <offer id="C-1-08" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-08</url>
+      <price>4890</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-08)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-08</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-08). Длина 300 см, ширина 50 см, масса 32.6 кг.</description>
+    </offer>
+    <offer id="C-1-09" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-09</url>
+      <price>5385</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-09)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-09</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-09). Длина 330 см, ширина 50 см, масса 35.9 кг.</description>
+    </offer>
+    <offer id="C-1-10" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-10</url>
+      <price>5865</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-10)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-10</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-10). Длина 360 см, ширина 50 см, масса 39.1 кг.</description>
+    </offer>
+    <offer id="C-1-11" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-11</url>
+      <price>6360</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-11)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-11</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-11). Длина 390 см, ширина 50 см, масса 42.4 кг.</description>
+    </offer>
+    <offer id="C-1-12" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-12</url>
+      <price>6855</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-12)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-12</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-12). Длина 420 см, ширина 50 см, масса 45.7 кг.</description>
+    </offer>
+    <offer id="C-1-13" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-13</url>
+      <price>7335</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-13)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-13</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-13). Длина 450 см, ширина 50 см, масса 48.9 кг.</description>
+    </offer>
+    <offer id="C-1-14" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-14</url>
+      <price>7830</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-14)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-14</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-14). Длина 480 см, ширина 50 см, масса 52.2 кг.</description>
+    </offer>
+    <offer id="C-1-15" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-15</url>
+      <price>8310</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-15)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-15</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-15). Длина 510 см, ширина 50 см, масса 55.4 кг.</description>
+    </offer>
+    <offer id="C-1-16" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-16</url>
+      <price>8805</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-16)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-16</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-16). Длина 540 см, ширина 50 см, масса 58.7 кг.</description>
+    </offer>
+    <offer id="C-1-17" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-17</url>
+      <price>9300</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-17)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-17</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-17). Длина 570 см, ширина 50 см, масса 62.0 кг.</description>
+    </offer>
+    <offer id="C-1-18" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/ss2.html#item-C-1-18</url>
+      <price>9780</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
+      <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-18)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>C-1-18</model>
+      <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-18). Длина 600 см, ширина 50 см, масса 65.2 кг.</description>
+    </offer>
+    </offers>
+  </shop>
+</yml_catalog>
