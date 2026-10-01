@@ -1,0 +1,46 @@
+name: Fix modal a11y (Шаг 3.2)
+
+on:
+  workflow_dispatch:   # запуск вручную из вкладки Actions
+
+jobs:
+  fix-modal:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # чтобы закоммитить изменения обратно
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run fix-modal-a11y.js
+        run: node scripts/fix-modal-a11y.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit & push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(a11y): fix modal #productModal (шаг 3.2) [skip ci]"
+          git push
+
+      - name: No changes
+        if: steps.changes.outputs.has_changes == 'false'
+        run: echo "✓ Изменений нет — скрипт ничего не поменял (всё уже обновлено)"
