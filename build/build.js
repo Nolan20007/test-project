@@ -20,10 +20,18 @@ const PAGES = [
   ]},
 ];
 
-// Какие CSV идут в фид Яндекса (пока только ss1 и ss2)
+// Какие CSV идут в фид Яндекса (по 20 товаров из каждого)
 const FEED_SOURCES = [
-  { csv: 'data/ss1-products.csv', page: 'ss1.html', bigImage: 'images/ss1/vid-1.png' },
-  { csv: 'data/ss2-products.csv', page: 'ss2.html', bigImage: 'images/ss2/vid-1.png' },
+  { csv: 'data/ss1-products.csv',             page: 'ss1.html',             bigImage: 'images/ss1/vid-1.png',  limit: 20 },
+  { csv: 'data/ss2-products.csv',             page: 'ss2.html',             bigImage: 'images/ss2/vid-1.png',  limit: 20 },
+  { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/ssg1-large.png', limit: 20 },
+  { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20 },
+  { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20 },
+  { csv: 'data/kl1-products.csv',             page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/kl1-large.png', limit: 20 },
+  { csv: 'data/vdl-products.csv',             page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20 },
+  { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20 },
+  { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20 },
+  { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20 },
 ];
 
 const M_START = '<!-- NOMENCLATURE_START -->';
@@ -186,7 +194,8 @@ function buildYandexFeed() {
       return;
     }
     const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
-    const products = parseCSV(csv);
+    let products = parseCSV(csv);
+    if (src.limit) products = products.slice(0, src.limit);
 
     products.forEach(p => {
       const price = parseFloat(p.price) || 0;
