@@ -1106,18 +1106,28 @@
     window.closeModal = closeModal;
     window.scrollToSlide = scrollToSlide;
 
+    // ==== ОБРАБОТЧИК #mainContactForm ====
     document.getElementById('mainContactForm').addEventListener('submit', async function(event) {
         event.preventDefault();
-        const name = sanitizeInput(document.getElementById('mainName').value);
-        const phone = sanitizeInput(document.getElementById('mainPhone').value);
+
+        const nameEl = document.getElementById('mainName');
+        const phoneEl = document.getElementById('mainPhone');
+        const name = sanitizeInput(nameEl.value);
+        const phone = sanitizeInput(phoneEl.value);
         const message = sanitizeInput(document.getElementById('mainMessage').value);
 
+        clearFormInvalid(this);
+
         if (!name || name.length < 2) {
+            setFieldInvalid(nameEl, true);
             showToast('Пожалуйста, введите корректное имя', 'error');
+            nameEl.focus();
             return;
         }
         if (!validatePhone(phone)) {
+            setFieldInvalid(phoneEl, true);
             showToast('Пожалуйста, введите корректный контакт', 'error');
+            phoneEl.focus();
             return;
         }
 
@@ -1157,6 +1167,9 @@
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     });
+
+    // ==== Авто-сброс aria-invalid при вводе ====
+    bindAutoClearInvalid(document.getElementById('mainContactForm'));
 </script>
 
 </body>
