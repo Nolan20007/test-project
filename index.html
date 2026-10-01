@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="css/common.css">
 
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -531,20 +534,18 @@
     </div>
 </header>
 
-<!-- NAV_START -->
 <nav class="nav">
     <div class="container">
-        <a href="index.html#catalog">Каталог</a>
-        <a href="index.html#advantages">Преимущества</a>
-        <a href="index.html#articles">Полезные статьи</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#articles">Полезные статьи</a>
         <a href="dostavka-i-oplata.html">Доставка и оплата</a>
         <a href="o-kompanii.html">О компании</a>
-        <a href="index.html#contacts">Контакты и Заказ</a>
+        <a href="#contacts">Контакты и Заказ</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
         <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
 </nav>
-<!-- NAV_END -->
 
 <div class="container">
     <div class="breadcrumbs">
@@ -870,7 +871,6 @@
     </div>
 </section>
 
-<!-- FOOTER_START -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -909,12 +909,26 @@
             </div>
         </div>
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "ИП Гневашева Кристина Дмитриевна",
+          "alternateName": "Производство лестниц и стремянок для колодцев",
+          "url": "https://stremyanki-dlya-kolodcev.ru/",
+          "logo": "https://stremyanki-dlya-kolodcev.ru/images/logo.png",
+          "taxID": "591791797420",
+          "vatID": "321595800089601",
+          "contactPoint": {"@type": "ContactPoint","telephone": "+79655559966","contactType": "customer service","areaServed": "RU","availableLanguage": "Russian"},
+          "sameAs": []
+        }
+        </script>
+
         <div class="footer-bottom">
             &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
         </div>
     </div>
 </footer>
-<!-- FOOTER_END -->
 
 <div id="productModal" class="lightbox-modal" onclick="closeModal()">
     <span class="close-btn" title="Закрыть">&times;</span>
@@ -935,42 +949,9 @@
 <script src="js/quote-modal.js"></script>
 <script src="js/custom-order-modal.js"></script>
 <script>
-    const CONFIG = {
-        GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
-        CART_STORAGE_KEY: 'kolodets_cart_v1',
-        WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
-    };
-
-    function showToast(message, type = 'success', duration = 3000) {
-        let container = document.querySelector('.toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'toast-container';
-            document.body.appendChild(container);
-        }
-        const toast = document.createElement('div');
-        toast.className = 'toast ' + type;
-        toast.textContent = message;
-        container.appendChild(toast);
-        setTimeout(() => toast.classList.add('show'), 10);
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, duration);
-    }
-
-    function sanitizeInput(text) {
-        if (typeof text !== 'string') return '';
-        return text.replace(/[<>&"'\/\\]/g, '');
-    }
-
-    function validatePhone(phone) {
-        return /^[\d\s\-\+\(\)@\.a-zA-Z]{5,50}$/.test(phone);
-    }
-
     function getCart() {
         try {
-            const cartData = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
+            const cartData = localStorage.getItem(window.CONFIG.CART_STORAGE_KEY);
             return JSON.parse(cartData) || {};
         } catch (e) { return {}; }
     }
@@ -983,7 +964,7 @@
                 totalCount += parseInt(cart[itemId].quantity) || 0;
             }
         }
-        const countElement = document.getElementById('cart-count');
+        const countElement = document.getElementById('cart-count-page');
         if (countElement) countElement.textContent = totalCount;
     }
 
