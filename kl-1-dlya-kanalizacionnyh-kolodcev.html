@@ -4886,17 +4886,10 @@
 <script src="js/cart.js"></script>
 <script src="js/quote-modal.js"></script>
 <script>
-    window.CONFIG = {
-        GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
-        CART_STORAGE_KEY: 'kolodets_cart_v1'
-    };
-
     const mainImage = document.getElementById('mainImage');
     const mainImageWrapper = document.getElementById('mainImageWrapper');
     const modal = document.getElementById("productModal");
     const galleryContainer = document.getElementById("galleryContainer");
-    const CSV_URL = 'data/kl1-products.csv';
-
     function changeImage(src, index) {
         mainImage.src = src;
         const btns = document.querySelectorAll('.image-toggle__btn');
@@ -4914,71 +4907,7 @@
         galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
     }
 
-    function parseCSV(csvText) {
-        const lines = csvText.split('\n').filter(l => l.trim() !== '');
-        if (lines.length < 2) return [];
-        const headers = lines[0].split(',').map(h => h.trim());
-        const products = [];
-        for (let i = 1; i < lines.length; i++) {
-            const values = lines[i].split(',').map(v => v.trim());
-            if (values.length === headers.length) {
-                const p = {};
-                headers.forEach((h, idx) => p[h] = values[idx] || '');
-                if (p.id && p.name && p.price) products.push(p);
-            }
-        }
-        return products;
-    }
-
-    async function loadProductData() {
-        try {
-            const r = await fetch(CSV_URL);
-            if (!r.ok) throw new Error('Ошибка');
-            return parseCSV(await r.text());
-        } catch (e) {
-            showErrorMessage('Данные о продукции временно недоступны');
-            return [];
-        }
-    }
-
-    function showErrorMessage(message) {
-        document.getElementById('nomenclature-container').innerHTML =
-            `<div class="loading" style="color: #d32f2f; background: #ffebee; padding: 20px; border-radius: 8px;"><strong>⚠️ Ошибка загрузки</strong><br>${sanitizeInput(message)}</div>`;
-    }
-
-    function generateTableHTML(products) {
-        if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
-        let html = `<table class="nomenclature-table"><thead><tr>
-            <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
-            <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
-            <th>Количество</th><th>Корзина</th></tr></thead><tbody>`;
-        products.forEach(p => {
-            const n = sanitizeInput(p.name), pr = parseFloat(p.price) || 0;
-            const img = p.image || 'images/default-product.png';
-            html += `<tr>
-                <td><img src="${img}" alt="${n}" style="max-height: 40px;" onerror="this.src='images/default-product.png'"></td>
-                <td>${n}</td><td>${sanitizeInput(p.length)}</td><td>${sanitizeInput(p.width)}</td>
-                <td>${sanitizeInput(p.weight)}</td><td>от ${pr.toLocaleString('ru-RU')} руб.</td>
-                <td>${sanitizeInput(p.unit)}</td><td><span class="availability-icon">${sanitizeInput(p.available)}</span></td>
-                <td class="cart-cell"><div class="quantity-control">
-                    <button onclick="changeQuantity('${sanitizeInput(p.id)}', -1)">-</button>
-                    <input type="number" id="${sanitizeInput(p.id)}-qty" value="1" min="1" max="99" data-price="${pr}">
-                    <button onclick="changeQuantity('${sanitizeInput(p.id)}', 1)">+</button>
-                </div></td>
-                <td><button class="cart-button" data-item-id="${sanitizeInput(p.id)}" data-item-name="${n}" data-item-length="${sanitizeInput(p.length)}" data-item-weight="${sanitizeInput(p.weight)}">🛒</button></td>
-            </tr>`;
-        });
-        return html + '</tbody></table>';
-    }
-
-    async function loadNomenclatureTable() {
-        const container = document.getElementById('nomenclature-container');
-        container.innerHTML = generateTableHTML(await loadProductData());
-        if (typeof initializeCartButtons === 'function') initializeCartButtons();
-    }
-
-    window.onload = loadNomenclatureTable;
-    window.changeImage = changeImage;
+    async async window.changeImage = changeImage;
     window.openModal = openModal;
     window.closeModal = closeModal;
     window.scrollToSlide = scrollToSlide;
