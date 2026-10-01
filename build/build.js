@@ -20,6 +20,12 @@ const PAGES = [
   ]},
 ];
 
+// Какие CSV идут в фид Яндекса (пока только ss1 и ss2)
+const FEED_SOURCES = [
+  { csv: 'data/ss1-products.csv', page: 'ss1.html', bigImage: 'images/ss1/vid-1.png' },
+  { csv: 'data/ss2-products.csv', page: 'ss2.html', bigImage: 'images/ss2/vid-1.png' },
+];
+
 const M_START = '<!-- NOMENCLATURE_START -->';
 const M_END   = '<!-- NOMENCLATURE_END -->';
 const JSONLD_START = '<!-- JSONLD_PRODUCTS_START -->';
@@ -119,7 +125,6 @@ function replaceContainer(html, containerId, innerHtml) {
          html.slice(endIdx);
 }
 
-// ==== JSON-LD: массив Product ====
 function buildProductListJsonLd(products, pageUrl) {
   if (!products.length) return '';
   const items = products.map(p => {
@@ -170,47 +175,68 @@ function replaceJsonLd(html, jsonLd) {
   return html.replace('</head>', `${block}\n</head>`);
 }
 
-// ==== НОВОЕ: обновление минимальных цен на index.html ====
-function getMinPriceFromCsvs(csvFiles) {
-  let min = Infinity;
-  csvFiles.forEach(file => {
-    const csvPath = path.resolve(__dirname, '..', 'data', file.trim());
+// ===== Фид для Яндекса =====
+function buildYandexFeed() {
+  const offers = [];
+
+  FEED_SOURCES.forEach(src => {
+    const csvPath = path.resolve(__dirname, '..', src.csv);
     if (!fs.existsSync(csvPath)) {
-      console.warn(`  ⚠ Не найден CSV для прайса: ${file}`);
+      console.warn(`  ⚠ CSV для фида не найден: ${src.csv}`);
       return;
     }
     const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
     const products = parseCSV(csv);
+
     products.forEach(p => {
-      const price = parseFloat(p.price);
-      if (!isNaN(price) && price > 0 && price < min) min = price;
+      const price = parseFloat(p.price) || 0;
+      if (price <= 0) return;
+
+      const anchor = safeAnchor(p.id);
+      const url = `${SITE_URL}/${src.page}#${anchor}`;
+      const picture = `${SITE_URL}/${src.bigImage}`;
+
+      offers.push(`    <offer id="${esc(p.id)}" available="true">
+      <url>${esc(url)}</url>
+      <price>${price}</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>${esc(picture)}</picture>
+      <name>${esc(p.name)}</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Стремянка для колодцев</typePrefix>
+      <model>${esc(p.id)}</model>
+      <description>${esc(p.name)}. Длина ${esc(p.length)} см, ширина ${esc(p.width)} см, масса ${esc(p.weight)} кг.</description>
+    </offer>`);
     });
   });
-  return min === Infinity ? null : min;
-}
 
-function updateIndexPrices(html) {
-  // Ищем все маркеры <!-- PRICE_START:min:file1.csv,file2.csv -->...<!-- PRICE_END -->
-  const re = /<!--\s*PRICE_START:min:([^>]+?)\s*-->([\s\S]*?)<!--\s*PRICE_END\s*-->/g;
-  let updated = 0;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="${new Date().toISOString().slice(0,16).replace('T',' ')}">
+  <shop>
+    <name>Производство лестниц и стремянок для колодцев</name>
+    <company>ИП Гневашева Кристина Дмитриевна</company>
+    <url>${SITE_URL}</url>
+    <currencies>
+      <currency id="RUB" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Стремянки и лестницы для колодцев</category>
+    </categories>
+    <offers>
+${offers.join('\n')}
+    </offers>
+  </shop>
+</yml_catalog>
+`;
 
-  const newHtml = html.replace(re, (match, csvList, oldContent) => {
-    const min = getMinPriceFromCsvs(csvList.split(','));
-    if (min === null) return match;
-
-    const formatted = fmtPrice(min) + ' ₽';
-    const newBlock = `<!-- PRICE_START:min:${csvList.trim()} -->${formatted}<!-- PRICE_END -->`;
-    if (newBlock !== match) updated++;
-    return newBlock;
-  });
-
-  return { html: newHtml, updated };
+  const outPath = path.resolve(__dirname, '..', 'yandex-feed.xml');
+  fs.writeFileSync(outPath, xml, 'utf8');
+  console.log(`  ✓ yandex-feed.xml создан (${offers.length} товаров)`);
 }
 
 function build() {
   let changed = 0;
-
-  // 1. Обрабатываем страницы каталога
   PAGES.forEach(page => {
     const htmlPath = path.resolve(__dirname, '..', page.html);
     if (!fs.existsSync(htmlPath)) { console.warn(`⚠ Нет файла: ${page.html}`); return; }
@@ -256,21 +282,9 @@ function build() {
     }
   });
 
-  // 2. Обрабатываем index.html (обновление минимальных цен)
-  const indexPath = path.resolve(__dirname, '..', 'index.html');
-  if (fs.existsSync(indexPath)) {
-    const html = fs.readFileSync(indexPath, 'utf8');
-    const result = updateIndexPrices(html);
-    if (result.html !== html) {
-      fs.writeFileSync(indexPath, result.html, 'utf8');
-      console.log(`  ✓ index.html → обновлено цен: ${result.updated}`);
-      changed++;
-    } else {
-      console.log(`  · index.html без изменений`);
-    }
-  } else {
-    console.warn(`⚠ Нет файла: index.html`);
-  }
+  // Фид для Яндекса
+  console.log('\nГенерация yandex-feed.xml...');
+  buildYandexFeed();
 
   console.log(`\nГотово. Обновлено страниц: ${changed}`);
 }
