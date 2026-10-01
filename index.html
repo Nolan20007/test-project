@@ -408,7 +408,7 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-        
+
             /* a11y:button-reset */
             background: transparent;
             border: none;
@@ -938,8 +938,8 @@
     </div>
 </footer>
 
-<div id="productModal" class="lightbox-modal" onclick="closeModal()">
-    <span class="close-btn" title="Закрыть">&times;</span>
+<div id="productModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="closeModal()">
+    <button type="button" class="close-btn" title="Закрыть" aria-label="Закрыть окно" onclick="closeModal()">&times;</button>
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: var(--dark-color); padding: 12px 0; margin: 0; font-size: 1.1em;"></h3>
         <div class="gallery-container" id="galleryContainer">
@@ -1033,7 +1033,6 @@
                 + '<button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>';
 
             totalSlides = 6;
-        modalA11y.open();
         } else {
             modalImgs[0].src = img || '';
             modalImgs[1].src = draw || '';
@@ -1051,6 +1050,7 @@
 
         currentSlide = 0;
         modal.style.display = "block";
+        modalA11y.open();
 
         setTimeout(() => {
             scrollToSlide(0);
@@ -1058,8 +1058,10 @@
         }, 50);
     }
 
-    function closeModal() { modalA11y.close();
-        modal.style.display = "none"; }
+    function closeModal() {
+        modalA11y.close();
+        modal.style.display = "none";
+    }
 
     function scrollToSlide(index) {
         if (index < 0 || index >= totalSlides) return;
