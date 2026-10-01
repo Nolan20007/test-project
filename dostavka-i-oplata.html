@@ -446,8 +446,11 @@
             <h3>Уточнить стоимость доставки</h3>
             <p>Оставьте контакт — рассчитаем доставку в ваш город и ответим на вопросы.</p>
             <form id="deliveryForm">
-                <input type="text" id="deliveryName" placeholder="Ваше имя" required maxlength="100">
-                <input type="text" id="deliveryPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
+                <label for="deliveryName" class="visually-hidden">Ваше имя</label>
+                <input type="text" id="deliveryName" placeholder="Ваше имя" required maxlength="100" aria-required="true">
+                <label for="deliveryPhone" class="visually-hidden">Телефон, Email или Telegram</label>
+                <input type="text" id="deliveryPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100" aria-required="true">
+                <label for="deliveryMessage" class="visually-hidden">Сообщение о доставке</label>
                 <textarea id="deliveryMessage" placeholder="Укажите город доставки, тип и длину лестниц" rows="3" maxlength="500"></textarea>
                 <button type="submit">Отправить запрос</button>
                 <p class="form-consent">

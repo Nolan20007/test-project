@@ -862,8 +862,11 @@
         <div class="feedback-form">
             <h3>Оставить заявку на расчет</h3>
             <form id="mainContactForm">
-                <input type="text" id="mainName" placeholder="Ваше имя" required maxlength="100">
-                <input type="text" id="mainPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
+                <label for="mainName" class="visually-hidden">Ваше имя</label>
+                <input type="text" id="mainName" placeholder="Ваше имя" required maxlength="100" aria-required="true">
+                <label for="mainPhone" class="visually-hidden">Телефон, Email или Telegram</label>
+                <input type="text" id="mainPhone" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100" aria-required="true">
+                <label for="mainMessage" class="visually-hidden">Сообщение</label>
                 <textarea id="mainMessage" placeholder="Укажите тип, длину и количество лестниц или задайте вопрос" rows="4" maxlength="500"></textarea>
                 <p style="font-size: 0.85em; color: #7a8a9a; margin-bottom: 15px;">
                     Чертёж или фото пришлите на почту <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color);">stremyanki-dlya-kolodcev@mail.ru</a>

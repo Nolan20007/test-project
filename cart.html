@@ -375,10 +375,14 @@
     <div id="checkout-section" class="order-form-section" style="display: none;">
         <h2>Оформление заказа</h2>
         <form id="orderForm" class="order-form">
-            <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100">
-            <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20">
-            <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
-            <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
+            <label for="name" class="visually-hidden">Ваше Имя или название компании</label>
+                <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100" aria-required="true">
+            <label for="phone" class="visually-hidden">Контактный телефон</label>
+                <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20" aria-required="true">
+            <label for="email" class="visually-hidden">Email (необязательно)</label>
+                <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
+            <label for="comments" class="visually-hidden">Комментарии к заказу</label>
+                <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
 
             <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
                 Чертёж или фото пришлите на почту <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color);">stremyanki-dlya-kolodcev@mail.ru</a>
