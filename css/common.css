@@ -269,7 +269,6 @@ body {
 }
 
 /* === A11Y: VISUALLY HIDDEN === */
-/* Скрывает элемент визуально, но оставляет его доступным для скринридеров */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -280,4 +279,16 @@ body {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* === A11Y: ARIA-INVALID === */
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: #dc3545 !important;
+    background-color: #fff5f5;
+}
+input[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus {
+    outline: 2px solid #dc3545;
+    outline-offset: 1px;
 }
