@@ -1,11 +1,15 @@
 // Общие утилиты для всего сайта
 
-// Toast-уведомления
+// Toast-уведомления (a11y: role="status" + aria-live="polite")
 function showToast(message, type = 'success', duration = 3000) {
     let container = document.querySelector('.toast-container');
     if (!container) {
         container = document.createElement('div');
         container.className = 'toast-container';
+        // === A11Y: озвучивание через скринридер ===
+        container.setAttribute('role', 'status');
+        container.setAttribute('aria-live', 'polite');
+        container.setAttribute('aria-atomic', 'false');
         document.body.appendChild(container);
     }
     const toast = document.createElement('div');
@@ -17,6 +21,21 @@ function showToast(message, type = 'success', duration = 3000) {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
     }, duration);
+}
+
+/**
+ * A11Y: скрытое озвучивание текста для скринридеров.
+ * Полезно, когда нет визуального тоста, но нужно объявить статус.
+ */
+function announceToScreenReader(text, politeness = 'polite') {
+    const region = document.createElement('div');
+    region.setAttribute('role', politeness === 'assertive' ? 'alert' : 'status');
+    region.setAttribute('aria-live', politeness);
+    region.setAttribute('aria-atomic', 'true');
+    region.style.cssText = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
+    region.textContent = text;
+    document.body.appendChild(region);
+    setTimeout(() => region.remove(), 1500);
 }
 
 // Очистка ввода
@@ -63,11 +82,6 @@ window.addEventListener('storage', updateCartCountDisplay);
 
 /* === A11Y: aria-invalid helpers === */
 
-/**
- * Помечает поле как невалидное или снимает метку.
- * @param {HTMLElement|string} fieldOrId — элемент или id
- * @param {boolean} isInvalid — true = ошибка, false = ок
- */
 function setFieldInvalid(fieldOrId, isInvalid) {
     const el = typeof fieldOrId === 'string'
         ? document.getElementById(fieldOrId)
@@ -81,9 +95,6 @@ function setFieldInvalid(fieldOrId, isInvalid) {
     }
 }
 
-/**
- * Снимает aria-invalid со всех полей формы.
- */
 function clearFormInvalid(formEl) {
     if (!formEl) return;
     formEl.querySelectorAll('[aria-invalid]').forEach(el => {
@@ -91,9 +102,6 @@ function clearFormInvalid(formEl) {
     });
 }
 
-/**
- * Автоснятие aria-invalid при вводе — пользователь начал исправлять.
- */
 function bindAutoClearInvalid(formEl) {
     if (!formEl) return;
     formEl.querySelectorAll('input, textarea').forEach(el => {
@@ -108,20 +116,6 @@ function bindAutoClearInvalid(formEl) {
 
 /* === A11Y: focus-trap для модальных окон === */
 
-/**
- * Инициализирует доступность модального окна:
- * — фокус-трап внутри модалки
- * — возврат фокуса на элемент, который её открыл
- * — скрытие фонового контента от скринридеров (aria-hidden)
- * — блокировка скролла body
- * — закрытие по Esc
- *
- * @param {HTMLElement} modalEl — корневой элемент модалки
- * @param {Object} options
- * @param {string[]} [options.backgroundSelectors] — селекторы фоновых блоков
- * @param {string}   [options.initialFocus] — селектор элемента для автофокуса
- * @returns {{open: Function, close: Function}}
- */
 function initModalA11y(modalEl, options = {}) {
     if (!modalEl) {
         return { open: () => {}, close: () => {} };
@@ -211,7 +205,6 @@ function initModalA11y(modalEl, options = {}) {
             document.body.style.overflow = 'hidden';
             document.addEventListener('keydown', handleKeydown);
 
-            // Автофокус
             setTimeout(() => {
                 const target = initialFocusSelector
                     ? modalEl.querySelector(initialFocusSelector)
@@ -233,7 +226,6 @@ function initModalA11y(modalEl, options = {}) {
             document.body.style.overflow = '';
             document.removeEventListener('keydown', handleKeydown);
 
-            // Возврат фокуса
             if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
                 try { lastFocusedEl.focus(); } catch (e) {}
             }
