@@ -175,23 +175,22 @@ function initModalA11y(modalEl, options = {}) {
         isOpen = true;
         previouslyFocused = document.activeElement;
 
+        // 1) Сначала переводим фокус внутрь модалки
+        let target = null;
+        if (opts.initialFocus) {
+            target = modalEl.querySelector(opts.initialFocus);
+        }
+        if (!target) {
+            const focusables = getFocusable();
+            target = focusables[0] || modalEl;
+        }
+        if (target && typeof target.focus === 'function') {
+            target.focus();
+        }
+
+        // 2) Потом скрываем фон и включаем trap
         hideBackground();
         document.addEventListener('keydown', onKeydown, true);
-
-        // Автофокус
-        setTimeout(() => {
-            let target = null;
-            if (opts.initialFocus) {
-                target = modalEl.querySelector(opts.initialFocus);
-            }
-            if (!target) {
-                const focusables = getFocusable();
-                target = focusables[0] || modalEl;
-            }
-            if (target && typeof target.focus === 'function') {
-                target.focus();
-            }
-        }, 50);
     }
 
     function close() {
