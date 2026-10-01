@@ -47,6 +47,27 @@
     </script>
 
     <style>
+        /* === A11Y: skip-link === */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            z-index: 100000;
+            padding: 12px 24px;
+            background: var(--quote-color, #ff9900);
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            border-radius: 0 0 var(--inputs-buttons-border-radius, 15px) 0;
+            transition: left 0.2s;
+        }
+        .skip-link:focus {
+            left: 0;
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+        }
+
         .content-area { padding: 20px 0; }
         .catalog h2 {
             text-align: center;
@@ -521,6 +542,9 @@
 </head>
 <body>
 
+<!-- === A11Y: skip-link === -->
+<a href="#catalog" class="skip-link">Перейти к содержимому</a>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -561,7 +585,7 @@
     </div>
 </div>
 
-<div class="content-area container">
+<div class="content-area container" id="main-content">
 
     <section id="catalog" class="catalog">
         <h2>Каталог лестниц и стремянок для колодцев</h2>
