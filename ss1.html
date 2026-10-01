@@ -1038,6 +1038,13 @@
     const mainImage = document.getElementById('mainImage');
     const mainImageWrapper = document.getElementById('mainImageWrapper');
     const modal = document.getElementById("productModal");
+
+    /* a11y:focus-trap */
+    const modalA11y = initModalA11y(modal, {
+        backgroundSelectors: ['header', 'nav', 'main', 'footer'],
+        initialFocus: '.close-btn'
+    });
+
     const galleryContainer = document.getElementById("galleryContainer");
     const modalNav = document.getElementById("modalNav");
     function changeImage(src, index) {
@@ -1052,8 +1059,10 @@
         modal.style.display = "block";
         const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
         setTimeout(() => scrollToSlide(slide), 50);
+        modalA11y.open();
     }
-    function closeModal() { modal.style.display = "none"; }
+    function closeModal() { modalA11y.close();
+        modal.style.display = "none"; }
 
     /* a11y:escape */
     document.addEventListener('keydown', function (e) {

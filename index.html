@@ -980,6 +980,13 @@
     window.addEventListener('storage', updateCartCountDisplay);
 
     const modal = document.getElementById("productModal");
+
+    /* a11y:focus-trap */
+    const modalA11y = initModalA11y(modal, {
+        backgroundSelectors: ['header', 'nav', 'main', 'footer'],
+        initialFocus: '.close-btn'
+    });
+
     const modalTitle = document.getElementById("modalTitle");
     const modalImgs = [
         document.getElementById("modalImg1"),
@@ -1026,6 +1033,7 @@
                 + '<button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>';
 
             totalSlides = 6;
+        modalA11y.open();
         } else {
             modalImgs[0].src = img || '';
             modalImgs[1].src = draw || '';
@@ -1050,7 +1058,8 @@
         }, 50);
     }
 
-    function closeModal() { modal.style.display = "none"; }
+    function closeModal() { modalA11y.close();
+        modal.style.display = "none"; }
 
     function scrollToSlide(index) {
         if (index < 0 || index >= totalSlides) return;
