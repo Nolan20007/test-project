@@ -311,4 +311,131 @@
         // Крестик: Enter/Space
         const closeBtn = modal.querySelector('.quote-close');
         if (closeBtn) {
-            close
+            closeBtn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    window.closeQuoteModal();
+                }
+            });
+        }
+
+        const form = document.getElementById('quoteForm');
+        if (!form) return;
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const companyEl = document.getElementById('quoteCompany');
+            const innEl = document.getElementById('quoteINN');
+            const nameEl = document.getElementById('quoteName');
+            const phoneEl = document.getElementById('quotePhone');
+
+            const company = sanitizeInput(companyEl.value);
+            const inn = sanitizeInput(innEl.value);
+            const name = sanitizeInput(nameEl.value);
+            const phone = sanitizeInput(phoneEl.value);
+            const message = sanitizeInput(document.getElementById('quoteMessage').value);
+
+            clearFormInvalid(form);
+
+            if (!company) {
+                setFieldInvalid(companyEl, true);
+                showToast('Укажите название компании', 'error');
+                companyEl.focus();
+                return;
+            }
+            if (!/^\d{10,12}$/.test(inn)) {
+                setFieldInvalid(innEl, true);
+                showToast('ИНН должен содержать 10 или 12 цифр', 'error');
+                innEl.focus();
+                return;
+            }
+            if (!name) {
+                setFieldInvalid(nameEl, true);
+                showToast('Укажите контактное лицо', 'error');
+                nameEl.focus();
+                return;
+            }
+            if (!phone) {
+                setFieldInvalid(phoneEl, true);
+                showToast('Укажите телефон или email', 'error');
+                phoneEl.focus();
+                return;
+            }
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+
+            let body = `📄 ЗАПРОС СЧЁТА/КП\n\n`;
+            body += `🏢 Компания: ${company}\n`;
+            body += `🆔 ИНН: ${inn}\n`;
+            body += `👤 Контакт: ${name}\n`;
+            body += `📞 Телефон/Email: ${phone}\n`;
+            body += `💬 Комментарий: ${message || 'Нет'}\n`;
+
+            const items = Object.values(cartForQuote).filter(i => i && i.id && i.name);
+
+            if (items.length > 0) {
+                const totals = calculateTotals(cartForQuote);
+                body += `\n🛒 Товары из корзины:\n`;
+                for (const id in cartForQuote) {
+                    const item = cartForQuote[id];
+                    if (!item || !item.name) continue;
+                    const price = parseFloat(item.price) || 0;
+                    const quantity = parseInt(item.quantity) || 0;
+                    const itemTotal = price * quantity;
+                    const lengthStr = item.length ? ` (${formatLength(item.length)})` : '';
+                    body += `• ${sanitizeInput(item.name)}${lengthStr} - ${quantity} шт. × ${price.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
+                }
+                body += `\n📊 ИТОГИ ЗАКАЗА:\n`;
+                body += `💰 Общая сумма (от): ${totals.total.toLocaleString('ru-RU')} руб.\n`;
+                body += `📏 Общая длина: ${formatTotalLength(totals.totalLengthCm)}\n`;
+                body += `⚖️ Общий вес: ${Math.round(totals.totalWeightKg)} кг`;
+            } else {
+                body += `\n🛒 Товары из корзины: не выбраны (запрос на общий расчёт)`;
+            }
+
+            const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'quote',
+                    company: company,
+                    inn: inn,
+                    name: name,
+                    phone: phone,
+                    message: message || '',
+                    cartText: body,
+                    hasCartItems: items.length > 0,
+                    source: 'Форма счёт/КП: ' + window.location.pathname
+                })
+            }).catch(err => console.warn('TG ошибка:', err));
+
+            const mailData = new FormData();
+            mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
+            mailData.append('subject', 'Запрос счёта/КП — stremyanki-dlya-kolodcev.ru');
+            mailData.append('from_name', 'Сайт лестниц для колодцев');
+            mailData.append('form_data', body);
+
+            const mailPromise = fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: mailData
+            }).catch(err => console.warn('Mail ошибка:', err));
+
+            await Promise.allSettled([telegramPromise, mailPromise]);
+
+            showToast('✅ Запрос отправлен! Пришлём счёт в течение рабочего дня.', 'success');
+            this.reset();
+            cartForQuote = {};
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            window.closeQuoteModal();
+        });
+
+        // Автосброс aria-invalid при вводе
+        bindAutoClearInvalid(form);
+    });
+})();
