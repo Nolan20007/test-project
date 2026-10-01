@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-01 16:17">
+<yml_catalog date="2026-10-01 16:26">
   <shop>
     <name>Производство лестниц и стремянок для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -109,7 +109,7 @@
     </offer>
     <offer id="C-9" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-9</url>
-      <price>7404</price>
+      <price>7405</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
