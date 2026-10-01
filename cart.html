@@ -376,13 +376,13 @@
         <h2>Оформление заказа</h2>
         <form id="orderForm" class="order-form">
             <label for="name" class="visually-hidden">Ваше Имя или название компании</label>
-                <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100" aria-required="true">
+            <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100" aria-required="true">
             <label for="phone" class="visually-hidden">Контактный телефон</label>
-                <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20" aria-required="true">
+            <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20" aria-required="true">
             <label for="email" class="visually-hidden">Email (необязательно)</label>
-                <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
+            <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
             <label for="comments" class="visually-hidden">Комментарии к заказу</label>
-                <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
+            <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
 
             <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
                 Чертёж или фото пришлите на почту <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color);">stremyanki-dlya-kolodcev@mail.ru</a>
@@ -472,7 +472,7 @@
 
 <script src="js/quote-modal.js"></script>
 <script>
-                        function formatLength(cm) {
+    function formatLength(cm) {
         const n = parseFloat(cm);
         if (isNaN(n) || n <= 0) return '';
         return Math.round(n) + ' см';
@@ -484,7 +484,7 @@
         return (n / 100).toFixed(2).replace(/\.?0+$/, '') + ' м';
     }
 
-        function saveCart(cart) {
+    function saveCart(cart) {
         try {
             localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(cart));
             return true;
@@ -495,7 +495,7 @@
         }
     }
 
-        function renderCart() {
+    function renderCart() {
         const cart = getCart();
         const cartContent = document.getElementById('cart-content');
         const checkoutSection = document.getElementById('checkout-section');
@@ -594,7 +594,7 @@
         const yyyy = now.getFullYear();
         const mm = String(now.getMonth() + 1).padStart(2, '0');
         const dd = String(now.getDate()).padStart(2, '0');
-        const rand = String(Math.floor(Math.random() * 9000) + 1000); // 1000-9999
+        const rand = String(Math.floor(Math.random() * 9000) + 1000);
         return `ORD-${yyyy}${mm}${dd}-${rand}`;
     }
 
@@ -605,10 +605,8 @@
         document.getElementById('order-number').textContent = orderNumber;
         document.getElementById('order-success').style.display = 'block';
 
-        // Прокрутить вверх, чтобы блок был виден
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Таймер обратного отсчёта (5 секунд)
         const timerEl = document.getElementById('order-timer');
         let secondsLeft = 5;
 
@@ -623,29 +621,53 @@
         }
         updateTimer();
 
-        // Очистить корзину через 5 секунд
         setTimeout(() => {
             localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
             updateCartCountDisplay();
         }, 5000);
     }
 
+    // ==== ОБРАБОТЧИК #orderForm ====
     document.getElementById('orderForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        const name = sanitizeInput(document.getElementById('name').value);
-        const phone = sanitizeInput(document.getElementById('phone').value);
-        const comments = sanitizeInput(document.getElementById('comments').value);
-        const email = sanitizeInput(document.getElementById('email').value);
+        const nameEl = document.getElementById('name');
+        const phoneEl = document.getElementById('phone');
+        const emailEl = document.getElementById('email');
+        const commentsEl = document.getElementById('comments');
 
-        if (!name || name.length < 2) { showToast('Введите корректное имя', 'error'); return; }
-        if (!validatePhone(phone)) { showToast('Введите корректный телефон', 'error'); return; }
-        if (email && !validateEmail(email)) { showToast('Введите корректный email', 'error'); return; }
+        const name = sanitizeInput(nameEl.value);
+        const phone = sanitizeInput(phoneEl.value);
+        const comments = sanitizeInput(commentsEl.value);
+        const email = sanitizeInput(emailEl.value);
+
+        clearFormInvalid(this);
+
+        if (!name || name.length < 2) {
+            setFieldInvalid(nameEl, true);
+            showToast('Введите корректное имя', 'error');
+            nameEl.focus();
+            return;
+        }
+        if (!validatePhone(phone)) {
+            setFieldInvalid(phoneEl, true);
+            showToast('Введите корректный телефон', 'error');
+            phoneEl.focus();
+            return;
+        }
+        if (email && !validateEmail(email)) {
+            setFieldInvalid(emailEl, true);
+            showToast('Введите корректный email', 'error');
+            emailEl.focus();
+            return;
+        }
 
         const currentCart = getCart();
-        if (Object.keys(currentCart).length === 0) { showToast('Корзина пуста', 'error'); return; }
+        if (Object.keys(currentCart).length === 0) {
+            showToast('Корзина пуста', 'error');
+            return;
+        }
 
-        // Генерируем номер заказа
         const orderNumber = generateOrderNumber();
 
         let total = 0;
@@ -721,10 +743,7 @@
 
             await Promise.allSettled([telegramPromise, mailPromise]);
 
-            // Показываем блок благодарности
             showOrderSuccess(orderNumber);
-
-            // Лёгкий toast в довесок
             showToast('🎉 Заказ успешно отправлен!', 'success', 4000);
 
             document.getElementById('orderForm').reset();
@@ -742,6 +761,9 @@
 
     window.removeItem = removeItem;
     window.clearCart = clearCart;
+
+    // ==== Авто-сброс aria-invalid при вводе ====
+    bindAutoClearInvalid(document.getElementById('orderForm'));
 </script>
 
 </body>
