@@ -1173,7 +1173,47 @@
     const galleryContainer = document.getElementById("galleryContainer");
     const modalNav = document.getElementById("modalNav");
 
-window.changeImage = changeImage;
+
+    /* a11y:restore-broken-fns */
+    function changeImage(src, index) {
+        mainImage.src = src;
+        const btns = document.querySelectorAll('.image-toggle__btn');
+        btns.forEach(b => b.classList.remove('active'));
+        if (btns[index]) btns[index].classList.add('active');
+        mainImageWrapper.setAttribute('data-current-slide', index);
+    }
+    mainImageWrapper.onclick = () => openModal();
+    function openModal() {
+        modal.style.display = "block";
+        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        setTimeout(() => scrollToSlide(slide), 50);
+    }
+    function closeModal() { modal.style.display = "none"; }
+
+    /* a11y:escape */
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function scrollToSlide(index) {
+        galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
+        setActiveModalButton(index);
+    }
+    function setActiveModalButton(index) {
+        const buttons = modalNav.querySelectorAll('button');
+        buttons.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+    galleryContainer.addEventListener('scroll', () => {
+        const itemWidth = galleryContainer.clientWidth;
+        if (itemWidth === 0) return;
+        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
+        setActiveModalButton(newIndex);
+    });
+
+    window.changeImage = changeImage;
     window.openModal = openModal;
     window.closeModal = closeModal;
     window.scrollToSlide = scrollToSlide;
