@@ -22,6 +22,8 @@
         if (!container) {
             container = document.createElement('div');
             container.className = 'toast-container';
+            container.setAttribute('role', 'status');
+            container.setAttribute('aria-live', 'polite');
             document.body.appendChild(container);
         }
         const toast = document.createElement('div');
@@ -44,19 +46,29 @@
         modal = document.createElement('div');
         modal.id = 'customOrderModal';
         modal.className = 'quote-modal';
+        // === A11Y ===
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'customOrderModalTitle');
         modal.innerHTML = `
             <div class="quote-modal-content" onclick="event.stopPropagation()">
-                <span class="quote-close" onclick="closeCustomOrderModal()">&times;</span>
-                <h3>Заказать изготовление</h3>
+                <span class="quote-close" role="button" tabindex="0" aria-label="Закрыть окно" onclick="closeCustomOrderModal()">&times;</span>
+                <h3 id="customOrderModalTitle">Заказать изготовление</h3>
                 <p class="quote-desc">
                     Изготовим стремянку, лестницу или любую металлоконструкцию по вашему ТЗ.
                     Опишите задачу — ответим с расчётом в течение рабочего дня.
                 </p>
 
                 <form id="customOrderForm">
-                    <input type="text" id="customOrderName" placeholder="Ваше имя" required maxlength="100">
-                    <input type="text" id="customOrderContact" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100">
-                    <textarea id="customOrderDesc" placeholder="Опишите, что нужно изготовить: размеры, материал, назначение" rows="4" required maxlength="700"></textarea>
+                    <label for="customOrderName" class="visually-hidden">Ваше имя</label>
+                    <input type="text" id="customOrderName" placeholder="Ваше имя" required maxlength="100" aria-required="true">
+
+                    <label for="customOrderContact" class="visually-hidden">Телефон, Email или Telegram</label>
+                    <input type="text" id="customOrderContact" placeholder="Телефон, Email или Telegram (@username)" required maxlength="100" aria-required="true">
+
+                    <label for="customOrderDesc" class="visually-hidden">Описание задачи</label>
+                    <textarea id="customOrderDesc" placeholder="Опишите, что нужно изготовить: размеры, материал, назначение" rows="4" required maxlength="700" aria-required="true"></textarea>
+
                     <p style="font-size: 0.85em; color: #888; margin: 0 0 15px; line-height: 1.4;">
                         📎 Чертёж, фото или ТЗ пришлите на почту
                         <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color); font-weight: 500;">stremyanki-dlya-kolodcev@mail.ru</a>
@@ -97,26 +109,49 @@
             if (e.target === modal) window.closeCustomOrderModal();
         });
 
+        // Закрытие по Enter/Space на крестике
+        const closeBtn = modal.querySelector('.quote-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    window.closeCustomOrderModal();
+                }
+            });
+        }
+
         const form = document.getElementById('customOrderForm');
         if (!form) return;
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const name = sanitizeInput(document.getElementById('customOrderName').value);
-            const contact = sanitizeInput(document.getElementById('customOrderContact').value);
-            const desc = sanitizeInput(document.getElementById('customOrderDesc').value);
+            const nameEl = document.getElementById('customOrderName');
+            const contactEl = document.getElementById('customOrderContact');
+            const descEl = document.getElementById('customOrderDesc');
+
+            const name = sanitizeInput(nameEl.value);
+            const contact = sanitizeInput(contactEl.value);
+            const desc = sanitizeInput(descEl.value);
+
+            clearFormInvalid(form);
 
             if (!name || name.length < 2) {
+                setFieldInvalid(nameEl, true);
                 showToast('Пожалуйста, введите корректное имя', 'error');
+                nameEl.focus();
                 return;
             }
             if (!validateContact(contact)) {
+                setFieldInvalid(contactEl, true);
                 showToast('Пожалуйста, введите корректный контакт', 'error');
+                contactEl.focus();
                 return;
             }
             if (!desc || desc.length < 5) {
+                setFieldInvalid(descEl, true);
                 showToast('Опишите задачу подробнее (минимум 5 символов)', 'error');
+                descEl.focus();
                 return;
             }
 
@@ -125,13 +160,11 @@
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
 
-            // === Сборка текста сообщения ===
             let body = `🛠 ЗАЯВКА НА НЕСТАНДАРТНОЕ ИЗДЕЛИЕ\n\n`;
             body += `👤 Имя: ${name}\n`;
             body += `📞 Контакт: ${contact}\n`;
             body += `📝 Описание задачи:\n${desc}`;
 
-            // === 1. Telegram через Google Apps Script ===
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -145,7 +178,6 @@
                 })
             }).catch(err => console.warn('TG ошибка:', err));
 
-            // === 2. Почта через Web3Forms ===
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', 'Заявка на нестандартное изделие — stremyanki-dlya-kolodcev.ru');
@@ -168,5 +200,8 @@
             submitBtn.disabled = false;
             window.closeCustomOrderModal();
         });
+
+        // Автосброс aria-invalid при вводе
+        bindAutoClearInvalid(form);
     });
 })();
