@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-01 12:16">
+<yml_catalog date="2026-10-01 12:22">
   <shop>
     <name>Производство лестниц и стремянок для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -19,7 +19,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-1). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
     </offer>
@@ -31,7 +31,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-2</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-2). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
@@ -43,7 +43,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-3)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-3</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-3). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
@@ -55,7 +55,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-4)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-4</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-4). Длина 225 см, ширина 50 см, масса 23.7 кг.</description>
     </offer>
@@ -67,7 +67,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-5)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-5</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-5). Длина 240 см, ширина 50 см, масса 26.7 кг.</description>
     </offer>
@@ -79,7 +79,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-6)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-6</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-6). Длина 210 см, ширина 50 см, масса 23.5 кг.</description>
     </offer>
@@ -91,7 +91,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-7</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-7). Длина 270 см, ширина 50 см, масса 30.0 кг.</description>
     </offer>
@@ -103,7 +103,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-8)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-8</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-8). Длина 420 см, ширина 50 см, масса 46.0 кг.</description>
     </offer>
@@ -115,7 +115,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 901-09-11.84 (С-9)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-9</model>
       <description>Стремянка для колодцев ТПР 901-09-11.84 (С-9). Длина 450 см, ширина 50 см, масса 49.36 кг.</description>
     </offer>
@@ -127,7 +127,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-00)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-00</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-00). Длина 60 см, ширина 50 см, масса 6.5 кг.</description>
     </offer>
@@ -139,7 +139,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-01)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-01</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-01). Длина 90 см, ширина 50 см, масса 9.8 кг.</description>
     </offer>
@@ -151,7 +151,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-02)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-02</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-02). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
     </offer>
@@ -163,7 +163,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-03)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-03</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-03). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
@@ -175,7 +175,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-04)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-04</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-04). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
@@ -187,7 +187,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-05)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-05</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-05). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
@@ -199,7 +199,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-06)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-06</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-06). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
@@ -211,7 +211,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-07)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-07</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-07). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
     </offer>
@@ -223,7 +223,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-08)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-08</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-08). Длина 300 см, ширина 50 см, масса 32.6 кг.</description>
     </offer>
@@ -235,7 +235,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-09)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-09</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-09). Длина 330 см, ширина 50 см, масса 35.9 кг.</description>
     </offer>
@@ -247,7 +247,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-10)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-10</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-10). Длина 360 см, ширина 50 см, масса 39.1 кг.</description>
     </offer>
@@ -259,7 +259,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-11)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-11</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-11). Длина 390 см, ширина 50 см, масса 42.4 кг.</description>
     </offer>
@@ -271,7 +271,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-12)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-12</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-12). Длина 420 см, ширина 50 см, масса 45.7 кг.</description>
     </offer>
@@ -283,7 +283,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-13)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-13</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-13). Длина 450 см, ширина 50 см, масса 48.9 кг.</description>
     </offer>
@@ -295,7 +295,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-14)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-14</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-14). Длина 480 см, ширина 50 см, масса 52.2 кг.</description>
     </offer>
@@ -307,7 +307,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-15)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-15</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-15). Длина 510 см, ширина 50 см, масса 55.4 кг.</description>
     </offer>
@@ -319,7 +319,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-16)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-16</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-16). Длина 540 см, ширина 50 см, масса 58.7 кг.</description>
     </offer>
@@ -331,7 +331,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-17)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-17</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-17). Длина 570 см, ширина 50 см, масса 62.0 кг.</description>
     </offer>
@@ -343,7 +343,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.png</picture>
       <name>Стремянка для колодцев ТПР 902-09-22.84 (С-1-18)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-18</model>
       <description>Стремянка для колодцев ТПР 902-09-22.84 (С-1-18). Длина 600 см, ширина 50 см, масса 65.2 кг.</description>
     </offer>
@@ -355,7 +355,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ22</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-22</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ22. Длина 220 см, ширина 70 см, масса 39.2 кг.</description>
     </offer>
@@ -367,7 +367,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ28</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-28</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ28. Длина 280 см, ширина 70 см, масса 50 кг.</description>
     </offer>
@@ -379,7 +379,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ34</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-34</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ34. Длина 340 см, ширина 70 см, масса 61 кг.</description>
     </offer>
@@ -391,7 +391,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ40</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-40</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ40. Длина 400 см, ширина 70 см, масса 71.8 кг.</description>
     </offer>
@@ -403,7 +403,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ46</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-46</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ46. Длина 460 см, ширина 70 см, масса 82.8 кг.</description>
     </offer>
@@ -415,7 +415,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ52</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-52</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ52. Длина 520 см, ширина 70 см, масса 94 кг.</description>
     </offer>
@@ -427,7 +427,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ58</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-58</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ58. Длина 580 см, ширина 70 см, масса 104.4 кг.</description>
     </offer>
@@ -439,7 +439,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ64</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-64</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ64. Длина 640 см, ширина 70 см, масса 115.4 кг.</description>
     </offer>
@@ -451,7 +451,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ70</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-70</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ70. Длина 700 см, ширина 70 см, масса 126.2 кг.</description>
     </offer>
@@ -463,7 +463,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
       <name>Пожарная стремянка серия 1.450.3-7.94 СГ82</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-82</model>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ82. Длина 820 см, ширина 70 см, масса 148 кг.</description>
     </offer>
@@ -475,7 +475,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1). Длина 100 см, ширина 50 см, масса 10.9 кг.</description>
     </offer>
@@ -487,7 +487,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.1</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.1). Длина 110 см, ширина 50 см, масса 12.0 кг.</description>
     </offer>
@@ -499,7 +499,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.2</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.2). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
     </offer>
@@ -511,7 +511,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.3)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.3</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.3). Длина 130 см, ширина 50 см, масса 14.1 кг.</description>
     </offer>
@@ -523,7 +523,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.4)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.4</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.4). Длина 140 см, ширина 50 см, масса 15.2 кг.</description>
     </offer>
@@ -535,7 +535,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.5)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.5</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.5). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
@@ -547,7 +547,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.6)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.6</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.6). Длина 160 см, ширина 50 см, масса 17.4 кг.</description>
     </offer>
@@ -559,7 +559,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.7</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.7). Длина 170 см, ширина 50 см, масса 18.5 кг.</description>
     </offer>
@@ -571,7 +571,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.8)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.8</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.8). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
@@ -583,7 +583,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-1.9)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.9</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.9). Длина 190 см, ширина 50 см, масса 20.7 кг.</description>
     </offer>
@@ -595,7 +595,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2). Длина 200 см, ширина 50 см, масса 21.7 кг.</description>
     </offer>
@@ -607,7 +607,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.1</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.1). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
@@ -619,7 +619,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.2</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.2). Длина 220 см, ширина 50 см, масса 23.9 кг.</description>
     </offer>
@@ -631,7 +631,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.3)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.3</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.3). Длина 230 см, ширина 50 см, масса 25.0 кг.</description>
     </offer>
@@ -643,7 +643,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.4)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.4</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.4). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
@@ -655,7 +655,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.5)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.5</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.5). Длина 250 см, ширина 50 см, масса 27.2 кг.</description>
     </offer>
@@ -667,7 +667,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.6)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.6</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.6). Длина 260 см, ширина 50 см, масса 28.3 кг.</description>
     </offer>
@@ -679,7 +679,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.7</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.7). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
     </offer>
@@ -691,7 +691,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.8)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.8</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.8). Длина 280 см, ширина 50 см, масса 30.4 кг.</description>
     </offer>
@@ -703,7 +703,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (50 ТС-2.9)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.9</model>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.9). Длина 290 см, ширина 50 см, масса 31.5 кг.</description>
     </offer>
@@ -715,7 +715,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1). Длина 100 см, ширина 63 см, масса 13.8 кг.</description>
     </offer>
@@ -727,7 +727,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.1</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.1). Длина 110 см, ширина 63 см, масса 15.2 кг.</description>
     </offer>
@@ -739,7 +739,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.2</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.2). Длина 120 см, ширина 63 см, масса 16.6 кг.</description>
     </offer>
@@ -751,7 +751,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.3)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.3</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.3). Длина 130 см, ширина 63 см, масса 18.0 кг.</description>
     </offer>
@@ -763,7 +763,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.4)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.4</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.4). Длина 140 см, ширина 63 см, масса 19.3 кг.</description>
     </offer>
@@ -775,7 +775,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.5)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.5</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.5). Длина 150 см, ширина 63 см, масса 20.7 кг.</description>
     </offer>
@@ -787,7 +787,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.6)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.6</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.6). Длина 160 см, ширина 63 см, масса 22.1 кг.</description>
     </offer>
@@ -799,7 +799,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.7</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.7). Длина 170 см, ширина 63 см, масса 23.5 кг.</description>
     </offer>
@@ -811,7 +811,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.8)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.8</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.8). Длина 180 см, ширина 63 см, масса 24.9 кг.</description>
     </offer>
@@ -823,7 +823,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-1.9)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.9</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.9). Длина 190 см, ширина 63 см, масса 26.2 кг.</description>
     </offer>
@@ -835,7 +835,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2). Длина 200 см, ширина 63 см, масса 27.6 кг.</description>
     </offer>
@@ -847,7 +847,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.1</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.1). Длина 210 см, ширина 63 см, масса 29.0 кг.</description>
     </offer>
@@ -859,7 +859,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.2)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.2</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.2). Длина 220 см, ширина 63 см, масса 30.4 кг.</description>
     </offer>
@@ -871,7 +871,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.3)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.3</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.3). Длина 230 см, ширина 63 см, масса 31.8 кг.</description>
     </offer>
@@ -883,7 +883,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.4)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.4</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.4). Длина 240 см, ширина 63 см, масса 33.1 кг.</description>
     </offer>
@@ -895,7 +895,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.5)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.5</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.5). Длина 250 см, ширина 63 см, масса 34.5 кг.</description>
     </offer>
@@ -907,7 +907,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.6)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.6</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.6). Длина 260 см, ширина 63 см, масса 35.9 кг.</description>
     </offer>
@@ -919,7 +919,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.7</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.7). Длина 270 см, ширина 63 см, масса 37.3 кг.</description>
     </offer>
@@ -931,7 +931,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.8)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.8</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.8). Длина 280 см, ширина 63 см, масса 38.7 кг.</description>
     </offer>
@@ -943,7 +943,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.png</picture>
       <name>Лестница тепловых сетей Л-16 (63 ТС-2.9)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.9</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.9). Длина 290 см, ширина 63 см, масса 40.1 кг.</description>
     </offer>
@@ -955,7 +955,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1</model>
       <description>КЛ-1. Длина 100 см, ширина 41 см, масса 20 кг.</description>
     </offer>
@@ -967,7 +967,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.1</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.1</model>
       <description>КЛ-1.1. Длина 110 см, ширина 41 см, масса 22 кг.</description>
     </offer>
@@ -979,7 +979,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.2</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.2</model>
       <description>КЛ-1.2. Длина 120 см, ширина 41 см, масса 24 кг.</description>
     </offer>
@@ -991,7 +991,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.3</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.3</model>
       <description>КЛ-1.3. Длина 130 см, ширина 41 см, масса 26 кг.</description>
     </offer>
@@ -1003,7 +1003,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.4</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.4</model>
       <description>КЛ-1.4. Длина 140 см, ширина 41 см, масса 28 кг.</description>
     </offer>
@@ -1015,7 +1015,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.5</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.5</model>
       <description>КЛ-1.5. Длина 150 см, ширина 41 см, масса 30 кг.</description>
     </offer>
@@ -1027,7 +1027,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.6</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.6</model>
       <description>КЛ-1.6. Длина 160 см, ширина 41 см, масса 32 кг.</description>
     </offer>
@@ -1039,7 +1039,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.7</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.7</model>
       <description>КЛ-1.7. Длина 170 см, ширина 41 см, масса 34 кг.</description>
     </offer>
@@ -1051,7 +1051,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.8</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.8</model>
       <description>КЛ-1.8. Длина 180 см, ширина 41 см, масса 36 кг.</description>
     </offer>
@@ -1063,7 +1063,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-1.9</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.9</model>
       <description>КЛ-1.9. Длина 190 см, ширина 41 см, масса 38 кг.</description>
     </offer>
@@ -1075,7 +1075,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2</model>
       <description>КЛ-2. Длина 200 см, ширина 41 см, масса 40 кг.</description>
     </offer>
@@ -1087,7 +1087,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.1</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.1</model>
       <description>КЛ-2.1. Длина 210 см, ширина 41 см, масса 42 кг.</description>
     </offer>
@@ -1099,7 +1099,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.2</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.2</model>
       <description>КЛ-2.2. Длина 220 см, ширина 41 см, масса 44 кг.</description>
     </offer>
@@ -1111,7 +1111,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.3</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.3</model>
       <description>КЛ-2.3. Длина 230 см, ширина 41 см, масса 46 кг.</description>
     </offer>
@@ -1123,7 +1123,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.4</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.4</model>
       <description>КЛ-2.4. Длина 240 см, ширина 41 см, масса 48 кг.</description>
     </offer>
@@ -1135,7 +1135,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.5</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.5</model>
       <description>КЛ-2.5. Длина 250 см, ширина 41 см, масса 50 кг.</description>
     </offer>
@@ -1147,7 +1147,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.6</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.6</model>
       <description>КЛ-2.6. Длина 260 см, ширина 41 см, масса 52 кг.</description>
     </offer>
@@ -1159,7 +1159,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.7</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.7</model>
       <description>КЛ-2.7. Длина 270 см, ширина 41 см, масса 54 кг.</description>
     </offer>
@@ -1171,7 +1171,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.8</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.8</model>
       <description>КЛ-2.8. Длина 280 см, ширина 41 см, масса 56 кг.</description>
     </offer>
@@ -1183,7 +1183,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
       <name>КЛ-2.9</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.9</model>
       <description>КЛ-2.9. Длина 290 см, ширина 41 см, масса 58 кг.</description>
     </offer>
@@ -1195,7 +1195,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1</model>
       <description>ВЛ-1. Длина 100 см, ширина 42.4 см, масса 14 кг.</description>
     </offer>
@@ -1207,7 +1207,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.1</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.1</model>
       <description>ВЛ-1.1. Длина 110 см, ширина 42.4 см, масса 15 кг.</description>
     </offer>
@@ -1219,7 +1219,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.2</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.2</model>
       <description>ВЛ-1.2. Длина 120 см, ширина 42.4 см, масса 16 кг.</description>
     </offer>
@@ -1231,7 +1231,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.3</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.3</model>
       <description>ВЛ-1.3. Длина 130 см, ширина 42.4 см, масса 17 кг.</description>
     </offer>
@@ -1243,7 +1243,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.4</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.4</model>
       <description>ВЛ-1.4. Длина 140 см, ширина 42.4 см, масса 18 кг.</description>
     </offer>
@@ -1255,7 +1255,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.5</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.5</model>
       <description>ВЛ-1.5. Длина 150 см, ширина 42.4 см, масса 19 кг.</description>
     </offer>
@@ -1267,7 +1267,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.6</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.6</model>
       <description>ВЛ-1.6. Длина 160 см, ширина 42.4 см, масса 20 кг.</description>
     </offer>
@@ -1279,7 +1279,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.7</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.7</model>
       <description>ВЛ-1.7. Длина 170 см, ширина 42.4 см, масса 21 кг.</description>
     </offer>
@@ -1291,7 +1291,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.8</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.8</model>
       <description>ВЛ-1.8. Длина 180 см, ширина 42.4 см, масса 22 кг.</description>
     </offer>
@@ -1303,7 +1303,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-1.9</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.9</model>
       <description>ВЛ-1.9. Длина 190 см, ширина 42.4 см, масса 23 кг.</description>
     </offer>
@@ -1315,7 +1315,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2</model>
       <description>ВЛ-2. Длина 200 см, ширина 42.4 см, масса 27 кг.</description>
     </offer>
@@ -1327,7 +1327,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.1</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.1</model>
       <description>ВЛ-2.1. Длина 210 см, ширина 42.4 см, масса 28 кг.</description>
     </offer>
@@ -1339,7 +1339,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.2</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.2</model>
       <description>ВЛ-2.2. Длина 220 см, ширина 42.4 см, масса 29 кг.</description>
     </offer>
@@ -1351,7 +1351,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.3</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.3</model>
       <description>ВЛ-2.3. Длина 230 см, ширина 42.4 см, масса 30 кг.</description>
     </offer>
@@ -1363,7 +1363,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.4</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.4</model>
       <description>ВЛ-2.4. Длина 240 см, ширина 42.4 см, масса 31 кг.</description>
     </offer>
@@ -1375,7 +1375,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.5</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.5</model>
       <description>ВЛ-2.5. Длина 250 см, ширина 42.4 см, масса 34 кг.</description>
     </offer>
@@ -1387,7 +1387,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.6</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.6</model>
       <description>ВЛ-2.6. Длина 260 см, ширина 42.4 см, масса 35 кг.</description>
     </offer>
@@ -1399,7 +1399,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.7</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.7</model>
       <description>ВЛ-2.7. Длина 270 см, ширина 42.4 см, масса 36 кг.</description>
     </offer>
@@ -1411,7 +1411,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.8</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.8</model>
       <description>ВЛ-2.8. Длина 280 см, ширина 42.4 см, масса 37 кг.</description>
     </offer>
@@ -1423,7 +1423,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/vl2-large.png</picture>
       <name>ВЛ-2.9</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.9</model>
       <description>ВЛ-2.9. Длина 290 см, ширина 42.4 см, масса 38 кг.</description>
     </offer>
@@ -1435,7 +1435,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для круглых колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.1)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.1.КЖ.И.1</model>
       <description>Стремянка для круглых колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.1). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
@@ -1447,7 +1447,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.1.КЖ.И.7</model>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.7). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
@@ -1459,7 +1459,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.2 - КЖ.И.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.2.КЖ.И.7</model>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.2 - КЖ.И.7). Длина 165 см, ширина 50 см, масса 17.9 кг.</description>
     </offer>
@@ -1471,7 +1471,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.3 - КЖ.И.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.3.КЖ.И.7</model>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.3 - КЖ.И.7). Длина 170 см, ширина 50 см, масса 18.5 кг.</description>
     </offer>
@@ -1483,7 +1483,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.4 - КЖ.И.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.4.КЖ.И.7</model>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.4 - КЖ.И.7). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
@@ -1495,7 +1495,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.5 - КЖ.И.7)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.5.КЖ.И.7</model>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.5 - КЖ.И.7). Длина 190 см, ширина 50 см, масса 20.7 кг.</description>
     </offer>
@@ -1507,7 +1507,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.1 - КЖ.И.15)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.1.КЖ.И.15</model>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.1 - КЖ.И.15). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
@@ -1519,7 +1519,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.2 - КЖ.И.15)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.2.КЖ.И.15</model>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.2 - КЖ.И.15). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
@@ -1531,7 +1531,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.3 - КЖ.И.15)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.3.КЖ.И.15</model>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.3 - КЖ.И.15). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
@@ -1543,7 +1543,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.4 - КЖ.И.15)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.4.КЖ.И.15</model>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.4 - КЖ.И.15). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
@@ -1555,7 +1555,7 @@
       <picture>https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.png</picture>
       <name>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.5 - КЖ.И.15)</name>
       <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Стремянка для колодцев</typePrefix>
+      <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.5.КЖ.И.15</model>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.5 - КЖ.И.15). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
     </offer>
