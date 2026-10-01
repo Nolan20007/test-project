@@ -520,14 +520,30 @@
 
 <script src="js/quote-modal.js"></script>
 <script>
-                                document.getElementById('deliveryForm').addEventListener('submit', async function(event) {
+    // ==== ОБРАБОТЧИК #deliveryForm ====
+    document.getElementById('deliveryForm').addEventListener('submit', async function(event) {
         event.preventDefault();
-        const name = sanitizeInput(document.getElementById('deliveryName').value);
-        const phone = sanitizeInput(document.getElementById('deliveryPhone').value);
+
+        const nameEl = document.getElementById('deliveryName');
+        const phoneEl = document.getElementById('deliveryPhone');
+        const name = sanitizeInput(nameEl.value);
+        const phone = sanitizeInput(phoneEl.value);
         const message = sanitizeInput(document.getElementById('deliveryMessage').value);
 
-        if (!name || name.length < 2) { showToast('Введите корректное имя', 'error'); return; }
-        if (!validatePhone(phone)) { showToast('Введите корректный контакт', 'error'); return; }
+        clearFormInvalid(this);
+
+        if (!name || name.length < 2) {
+            setFieldInvalid(nameEl, true);
+            showToast('Введите корректное имя', 'error');
+            nameEl.focus();
+            return;
+        }
+        if (!validatePhone(phone)) {
+            setFieldInvalid(phoneEl, true);
+            showToast('Введите корректный контакт', 'error');
+            phoneEl.focus();
+            return;
+        }
 
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
@@ -563,6 +579,9 @@
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     });
+
+    // ==== Авто-сброс aria-invalid при вводе ====
+    bindAutoClearInvalid(document.getElementById('deliveryForm'));
 </script>
 
 </body>
