@@ -299,14 +299,6 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-        
-            /* a11y:button-reset */
-            background: transparent;
-            border: none;
-            padding: 0;
-            font-family: inherit;
-            line-height: 1;
-            color: #f1f1f1;
         }
         .gallery-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; }
         .gallery-item {
@@ -1173,7 +1165,57 @@
     const galleryContainer = document.getElementById("galleryContainer");
     const modalNav = document.getElementById("modalNav");
 
-window.changeImage = changeImage;
+    const CSV_SOURCES = [
+        { url: 'data/tmp-902-kruglye.csv',        containerId: 'nomenclature-kruglye' },
+        { url: 'data/tmp-902-pryamougolnye.csv',  containerId: 'nomenclature-pryamougolnye' },
+        { url: 'data/tmp-902-perepadnye.csv',     containerId: 'nomenclature-perepadnye' }
+    ];
+
+    function changeImage(src, index) {
+        mainImage.src = src;
+        const btns = document.querySelectorAll('.image-toggle__btn');
+        btns.forEach(b => b.classList.remove('active'));
+        if (btns[index]) btns[index].classList.add('active');
+        mainImageWrapper.setAttribute('data-current-slide', index);
+    }
+    mainImageWrapper.onclick = () => openModal();
+    function openModal() {
+        modal.style.display = "block";
+        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        setTimeout(() => scrollToSlide(slide), 50);
+    }
+    function closeModal() { modal.style.display = "none"; }
+    function scrollToSlide(index) {
+        galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
+        setActiveModalButton(index);
+    }
+    function setActiveModalButton(index) {
+        const buttons = modalNav.querySelectorAll('button');
+        buttons.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+    galleryContainer.addEventListener('scroll', () => {
+        const itemWidth = galleryContainer.clientWidth;
+        if (itemWidth === 0) return;
+        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
+        setActiveModalButton(newIndex);
+    });
+
+    async async function loadAllTables() {
+        for (const source of CSV_SOURCES) {
+            const products = await loadProductData(source.url);
+            const container = document.getElementById(source.containerId);
+            if (container) {
+                container.innerHTML = generateTableHTML(products);
+            }
+        }
+        if (typeof initializeCartButtons === 'function') initializeCartButtons();
+    }
+
+    window.onload = loadAllTables;
+    window.changeImage = changeImage;
     window.openModal = openModal;
     window.closeModal = closeModal;
     window.scrollToSlide = scrollToSlide;

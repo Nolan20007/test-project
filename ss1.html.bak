@@ -9,11 +9,11 @@
     <link rel="dns-prefetch" href="https://mc.yandex.ru">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    <title>Пожарные стремянки СГ серия 1.450.3-7.94</title>
-    <meta name="description" content="🛒 Купить пожарные стремянки СГ серия 1.450.3-7.94 по цене от производителя. ГОСТ качество. Доставка по России. Закажите по телефону +7 (965) 555-99-66">
-    <meta name="keywords" content="пожарные стремянки СГ, стремянки пожарные 1.450.3-7.94, эвакуационные лестницы, пожарные лестницы СГ, купить пожарную стремянку">
+    <title>Стремянки для водопроводных колодцев ТПР 901-09-11.84</title>
+    <meta name="description" content="🛒 Купить стремянки для водопроводных колодцев ТПР 901-09-11.84 по цене от производителя. ГОСТ качество. Доставка по России. Закажите по телефону +7 (965) 555-99-66">
+    <meta name="keywords" content="стремянки ТПР 901-09-11.84, стремянки водопроводные, лестницы для водопроводных колодцев, тпр 901-09-11.84, купить стремянку для колодца, цена стремянки водопроводной">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/ssg1.html" />
+    <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/ss1.html" />
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -59,7 +59,6 @@
             margin-top: 10px;
         }
 
-        /* ===== УБРАН белый фон, чтобы не было полосы под фото ===== */
         .image-section {
             display: flex;
             flex-direction: column;
@@ -102,9 +101,11 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            border-radius: 999px;
-            padding: 4px;
+            border-radius: 24px;
+            padding: 5px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: calc(100% - 24px);
+            overflow-y: auto;
         }
         .image-toggle__btn {
             border: none;
@@ -258,10 +259,11 @@
             margin: auto;
             display: block;
             width: 95%;
-            max-width: 1000px;
+            max-width: 1300px;
             background-color: white;
             border-radius: var(--inputs-buttons-border-radius);
             overflow: hidden;
+            position: relative;
         }
         .close-btn {
             position: absolute;
@@ -271,14 +273,6 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-        
-            /* a11y:button-reset */
-            background: transparent;
-            border: none;
-            padding: 0;
-            font-family: inherit;
-            line-height: 1;
-            color: #f1f1f1;
         }
         .gallery-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; }
         .gallery-item {
@@ -288,22 +282,54 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 85vh;
+            max-height: 900px;
         }
-        .gallery-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .modal-nav { text-align: center; padding: 10px; background-color: #fafafa; }
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .modal-nav {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 1002;
+            max-height: calc(100% - 40px);
+            overflow-y: auto;
+        }
         .modal-nav button {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: transparent;
+            color: #444;
             border: none;
-            padding: 8px 15px;
-            margin: 0 5px;
-            border-radius: var(--inputs-buttons-border-radius);
+            padding: 8px 16px;
+            border-radius: 999px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            margin: 0;
         }
-        .modal-nav button:hover { background-color: var(--primary-color-hover); }
+        .modal-nav button:hover { background-color: #eef2f6; }
+        .modal-nav button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
         .nomenclature-table {
             width: 100%;
@@ -404,11 +430,13 @@
             .advantages-compact__list { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
-            .gallery-item { height: 50vh; }
+            .gallery-item { height: 60vh; max-height: 500px; }
             .cta-button { padding: 10px 20px; font-size: 14px; }
-            .image-toggle { bottom: 8px; right: 8px; padding: 3px; }
+            .image-toggle { bottom: 8px; right: 8px; padding: 4px; border-radius: 18px; }
             .image-toggle__btn { padding: 5px 10px; font-size: 12px; }
             .main-image-wrapper { height: 380px; }
+            .modal-nav { bottom: 10px; right: 10px; padding: 5px; border-radius: 18px; }
+            .modal-nav button { padding: 6px 12px; font-size: 12px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -420,20 +448,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ22",
-  "sku": "SG-22",
-  "mpn": "SG-22",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ22. Длина 220 см, ширина 70 см, масса 39.2 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-1)",
+  "sku": "C-1",
+  "mpn": "C-1",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-1). Длина 120 см, ширина 50 см, масса 13.0 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-22",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-1",
     "priceCurrency": "RUB",
-    "price": "8625",
+    "price": "1950",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -447,20 +475,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ28",
-  "sku": "SG-28",
-  "mpn": "SG-28",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ28. Длина 280 см, ширина 70 см, масса 50 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-2)",
+  "sku": "C-2",
+  "mpn": "C-2",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-2). Длина 150 см, ширина 50 см, масса 16.3 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-28",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-2",
     "priceCurrency": "RUB",
-    "price": "11000",
+    "price": "2445",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -474,20 +502,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ34",
-  "sku": "SG-34",
-  "mpn": "SG-34",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ34. Длина 340 см, ширина 70 см, масса 61 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-3)",
+  "sku": "C-3",
+  "mpn": "C-3",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-3). Длина 180 см, ширина 50 см, масса 19.6 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-34",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-3",
     "priceCurrency": "RUB",
-    "price": "13420",
+    "price": "2940",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -501,20 +529,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ40",
-  "sku": "SG-40",
-  "mpn": "SG-40",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ40. Длина 400 см, ширина 70 см, масса 71.8 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-4)",
+  "sku": "C-4",
+  "mpn": "C-4",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-4). Длина 225 см, ширина 50 см, масса 23.7 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-40",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-4",
     "priceCurrency": "RUB",
-    "price": "15795",
+    "price": "3555",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -528,20 +556,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ46",
-  "sku": "SG-46",
-  "mpn": "SG-46",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ46. Длина 460 см, ширина 70 см, масса 82.8 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-5)",
+  "sku": "C-5",
+  "mpn": "C-5",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-5). Длина 240 см, ширина 50 см, масса 26.7 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-46",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-5",
     "priceCurrency": "RUB",
-    "price": "18215",
+    "price": "4005",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -555,20 +583,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ52",
-  "sku": "SG-52",
-  "mpn": "SG-52",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ52. Длина 520 см, ширина 70 см, масса 94 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-6)",
+  "sku": "C-6",
+  "mpn": "C-6",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-6). Длина 210 см, ширина 50 см, масса 23.5 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-52",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-6",
     "priceCurrency": "RUB",
-    "price": "20680",
+    "price": "3525",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -582,20 +610,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ58",
-  "sku": "SG-58",
-  "mpn": "SG-58",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ58. Длина 580 см, ширина 70 см, масса 104.4 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-7)",
+  "sku": "C-7",
+  "mpn": "C-7",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-7). Длина 270 см, ширина 50 см, масса 30.0 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-58",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-7",
     "priceCurrency": "RUB",
-    "price": "22970",
+    "price": "4500",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -609,20 +637,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ64",
-  "sku": "SG-64",
-  "mpn": "SG-64",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ64. Длина 640 см, ширина 70 см, масса 115.4 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-8)",
+  "sku": "C-8",
+  "mpn": "C-8",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-8). Длина 420 см, ширина 50 см, масса 46.0 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-64",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-8",
     "priceCurrency": "RUB",
-    "price": "25390",
+    "price": "6900",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -636,47 +664,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ70",
-  "sku": "SG-70",
-  "mpn": "SG-70",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ70. Длина 700 см, ширина 70 см, масса 126.2 кг.",
+  "name": "Стремянка для колодцев ТПР 901-09-11.84 (С-9)",
+  "sku": "C-9",
+  "mpn": "C-9",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-mini.png",
+  "description": "Стремянка для колодцев ТПР 901-09-11.84 (С-9). Длина 450 см, ширина 50 см, масса 49.36 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Производство лестниц и стремянок для колодцев"
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-70",
+    "url": "https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-9",
     "priceCurrency": "RUB",
-    "price": "27765",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition",
-    "seller": {
-      "@type": "Organization",
-      "name": "ИП Гневашева Кристина Дмитриевна"
-    }
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Пожарная стремянка серия 1.450.3-7.94 СГ82",
-  "sku": "SG-82",
-  "mpn": "SG-82",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-mini.png",
-  "description": "Пожарная стремянка серия 1.450.3-7.94 СГ82. Длина 820 см, ширина 70 см, масса 148 кг.",
-  "brand": {
-    "@type": "Brand",
-    "name": "Производство лестниц и стремянок для колодцев"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-82",
-    "priceCurrency": "RUB",
-    "price": "32560",
+    "price": "7404",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
     "seller": {
@@ -697,15 +698,15 @@
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stremyanki-dlya-kolodcev.ru/"},
     {"@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://stremyanki-dlya-kolodcev.ru/#catalog"},
-    {"@type": "ListItem", "position": 3, "name": "Пожарные стремянки СГ", "item": "https://stremyanki-dlya-kolodcev.ru/ssg1.html"}
+    {"@type": "ListItem", "position": 3, "name": "Стремянки ТПР 901-09-11.84", "item": "https://stremyanki-dlya-kolodcev.ru/ss1.html"}
   ]
 }
 </script>
 
 <header class="header">
     <div class="container">
-        <h1>Пожарные стремянки СГ серия 1.450.3-7.94</h1>
-        <p>Стальные пожарные стремянки для эвакуации по серии 1.450.3-7.94</p>
+        <h1>Стремянки для водопроводных колодцев ТПР 901-09-11.84</h1>
+        <p>Стальные стремянки для водопроводных колодцев по типовому проекту</p>
     </div>
 </header>
 
@@ -730,7 +731,7 @@
     <div class="breadcrumbs">
         <a href="index.html">Главная</a> ›
         <a href="index.html#catalog">Каталог</a> ›
-        <span>Пожарные стремянки СГ</span>
+        <span>Стремянки ТПР 901</span>
     </div>
 </div>
 
@@ -739,27 +740,31 @@
     <div class="content-grid">
         <div class="image-section">
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
-                <img id="mainImage" src="images/ssg1/ssg1-large.png" alt="Пожарная стремянка СГ" class="main-image">
+                <img id="mainImage" src="images/ss1/vid-1.png" alt="Стремянка ТПР 901-09-11.84" class="main-image">
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-large.png', 0)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-drawing.png', 1)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ss1/vid-1.png', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/vid-2.png', 1)">Вид 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/vid-3.png', 2)">Вид 3</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/foto-1.png', 3)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/foto-2.png', 4)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/chertezh.png', 5)">Чертёж</button>
                 </div>
             </div>
         </div>
 
         <div class="text-section">
             <h2>Общая информация и назначение</h2>
-            <p><strong>Пожарные стремянки СГ серия 1.450.3-7.94</strong> — это металлические вертикальные конструкции, предназначенные для эвакуации людей в случае пожара. Жилые и производственные здания должны быть оснащены такими лестницами в соответствии с требованиями пожарной безопасности.</p>
-            <p>Изделия изготовлены в строгом соответствии с серией 1.450.3-7.94 и предназначены для обеспечения безопасного спуска и подъема при эвакуации и проведении аварийно-спасательных работ.</p>
+            <p><strong>Стальные стремянки для колодцев ТПР</strong> используются для проведения плановых работ в водопроводных колодцах, обеспечивая безопасный спуск и подъем персонала. Эти простые и надежные конструкции изготовлены в строгом соответствии с проектными чертежами ТПР 901-09-11.84 и подходят для установки как в железобетонных, так и в кирпичных колодцах.</p>
+            <p>Для корректного монтажа рекомендуется применение специальных кронштейнов, что позволяет расположить стремянку на расстоянии около 100 мм от внутренней стенки ЖБИ кольца. Изделия выполнены из качественной стали, в основе конструкции – уголок 50х50 мм. Ступени произведены из стального прута диаметром 18 мм с комфортным шагом 300 мм.</p>
 
             <h2>Основные характеристики</h2>
             <ul class="characteristics-list">
-                <li><strong>Серия:</strong><span class="description"> 1.450.3-7.94</span></li>
-                <li><strong>Ширина лестницы:</strong><span class="description"> 700 мм</span></li>
-                <li><strong>Высота:</strong><span class="description"> от 220 см до 820 см</span></li>
-                <li><strong>Вертикальные стойки:</strong><span class="description"> Стальные уголки 75×75×6 мм</span></li>
-                <li><strong>Ступени (шаг 300 мм):</strong><span class="description"> Круглый стальной пруток ∅ 18 мм</span></li>
-                <li><strong>Антикоррозионная защита:</strong><span class="description"> Защитное покрытие</span></li>
+                <li><strong>Типовой проект:</strong><span class="description"> ТПР 901-09-11.84</span></li>
+                <li><strong>Ширина лестницы:</strong><span class="description"> 500 мм</span></li>
+                <li><strong>Длина (высота):</strong><span class="description"> от 120 см до 450 см</span></li>
+                <li><strong>Вертикальные стойки:</strong><span class="description"> Стальные горячекатаные уголки 50×50×5 мм по ГОСТ 8509</span></li>
+                <li><strong>Ступени (шаг 300 мм):</strong><span class="description"> Круглый стальной пруток ∅ 18 мм по ГОСТ 2590</span></li>
+                <li><strong>Антикоррозионная защита:</strong><span class="description"> Масляная краска по ГОСТ 8292 (железный сурик МА-15)</span></li>
             </ul>
 
             <details class="info-details">
@@ -770,182 +775,168 @@
 
                     <h3>Дополнительные технические данные</h3>
                     <ul class="characteristics-list">
-                        <li><strong>Материал:</strong><span class="description"> Углеродистые стали Ст3кп, Ст3пс, Ст3сп5 по ГОСТ 380</span></li>
-                        <li><strong>Нагрузка на ступень:</strong><span class="description"> 1,8 кН (180 кгс)</span></li>
-                        <li><strong>Антикоррозионная защита:</strong><span class="description"> Грунт ГФ-021 по ГОСТ 25129; по желанию заказчика возможен дополнительный слой эмали ПФ-115 по ГОСТ 6465</span></li>
-                        <li><strong>Комплектация:</strong><span class="description"> Ограждение ОСГ по серии 1.450.3-7.94.2 (при высоте &gt; 2,8 м) — при необходимости укажите в заказе</span></li>
+                        <li><strong>Чертёж:</strong><span class="description"> ТПР 901-09-11.84-КЖИ.С-1 (альбом V «Строительные изделия»)</span></li>
+                        <li><strong>Вес стремянок:</strong><span class="description"> от 12,9 до 48,3 кг (10,74 кг/п.м)</span></li>
+                        <li><strong>Материал:</strong><span class="description"> Горячекатаный металлопрокат из сталей Ст3кп, Ст3пс, Ст3сп по ГОСТ 380 (С235 или С245 по ГОСТ 27772)</span></li>
+                        <li><strong>Крепление:</strong><span class="description"> Кронштейны из уголка 50×50×5 мм по ГОСТ 8509 на расстоянии 100 мм от стены и 300 мм от дна колодца. Кронштейны можно заказать у нас отдельно — при необходимости укажите в заказе</span></li>
+                        <li><strong>Антикоррозионная защита:</strong><span class="description"> Один, два или три слоя масляной краски по ГОСТ 8292 (железный сурик МА-15 по ГОСТ 10503)</span></li>
                     </ul>
 
                     <h3>Соответствие стандартам и условия эксплуатации</h3>
-                    <p>Лестницы-стремянки полностью соответствуют требованиям <strong>ГОСТ Р 53254</strong> к вертикальным стационарным пожарным лестницам <strong>типа П1</strong>. Применяются внутри и снаружи отапливаемых и неотапливаемых зданий промышленных предприятий и инженерных сооружений, возводимых и эксплуатируемых в районах с расчётной температурой <strong>не ниже –65 °С</strong>, с неагрессивной и слабой степенью агрессивного воздействия среды.</p>
+                    <p>Стальные лестницы-стремянки, изготовленные по чертежам <strong>ТПР 901-09-11.84-КЖИ.С-1</strong>, применяются для спуска внутрь колодцев водопроводных сетей и водоводов с диаметром труб от 50 до 1200 мм. Стремянки устанавливаются на внутренней поверхности стен рабочей части водопроводного колодца в соответствии с требованиями <strong>п. 15.16 СП 31.13330.2012</strong> «Водоснабжение. Наружные сети и сооружения» (актуализированная редакция СНиП 2.04.02-84).</p>
 
                     <h3>Материалы и производство</h3>
-                    <p>В производстве используется сертифицированный горячекатаный металлопрокат (вертикальные Г-образные стойки стремянок выполнены из стальных горячекатаных уголков сечением 75×75×6 мм по ГОСТ 8509) из углеродистых сталей марок <strong>Ст3кп</strong> (С235 по ГОСТ 27772), <strong>Ст3пс</strong> (С245) и <strong>Ст3сп5</strong> (С255). Ступени лестниц-стремянок диаметром 18 мм из круглого стального прутка по ГОСТ 2590. Лестницы свариваются по типовым чертежам <strong>1.450.3-7.94.2-КМ4</strong>.</p>
+                    <p>Крепление водопроводных стремянок осуществляется с помощью кронштейнов из стальных горячекатаных уголков сечением 50×50×5 мм по ГОСТ 8509 на расстоянии 100 мм от стены и 300 мм от дна колодца (см. лист ТПР 901-09-11.84-АС-2 альбома II «Колодцы водопроводные круглые из сборного железобетона для труб Ду = 50 – 600 мм» и лист ТПР 901-09-11.84-АС-7 альбома III «Колодцы водопроводные круглые из кирпича и из бетона для труб Ду = 50 – 600 мм»).</p>
 
                 </div>
             </details>
         </div>
     </div>
 
-    <h2>Стоимость стремянок СГ</h2>
+    <h2>Стоимость стремянок ТПР 901-09-11.84</h2>
 
     <div id="nomenclature-container">
 <!-- NOMENCLATURE_START -->
 <table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
-    <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-SG-22">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ22" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ22</td><td>220</td><td>70</td><td>39.2</td>
-      <td>от 8 625 руб.</td><td>1 шт</td>
+    <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-C-1">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-1)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-1)</td><td>120</td><td>50</td><td>13.0</td>
+      <td>от 1 950 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-22', -1)">−</button>
-        <input type="number" id="SG-22-qty" value="1" min="1" max="99" data-price="8625">
-        <button type="button" onclick="changeQuantity('SG-22', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-1', -1)">−</button>
+        <input type="number" id="C-1-qty" value="1" min="1" max="99" data-price="1950">
+        <button type="button" onclick="changeQuantity('C-1', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-22" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ22"
-            data-item-length="220" data-item-weight="39.2">🛒</button></td>
-    </tr><tr id="item-SG-28">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ28" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ28</td><td>280</td><td>70</td><td>50</td>
-      <td>от 11 000 руб.</td><td>1 шт</td>
+            data-item-id="C-1" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-1)"
+            data-item-length="120" data-item-weight="13.0">🛒</button></td>
+    </tr><tr id="item-C-2">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-2)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-2)</td><td>150</td><td>50</td><td>16.3</td>
+      <td>от 2 445 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-28', -1)">−</button>
-        <input type="number" id="SG-28-qty" value="1" min="1" max="99" data-price="11000">
-        <button type="button" onclick="changeQuantity('SG-28', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-2', -1)">−</button>
+        <input type="number" id="C-2-qty" value="1" min="1" max="99" data-price="2445">
+        <button type="button" onclick="changeQuantity('C-2', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-28" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ28"
-            data-item-length="280" data-item-weight="50">🛒</button></td>
-    </tr><tr id="item-SG-34">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ34" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ34</td><td>340</td><td>70</td><td>61</td>
-      <td>от 13 420 руб.</td><td>1 шт</td>
+            data-item-id="C-2" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-2)"
+            data-item-length="150" data-item-weight="16.3">🛒</button></td>
+    </tr><tr id="item-C-3">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-3)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-3)</td><td>180</td><td>50</td><td>19.6</td>
+      <td>от 2 940 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-34', -1)">−</button>
-        <input type="number" id="SG-34-qty" value="1" min="1" max="99" data-price="13420">
-        <button type="button" onclick="changeQuantity('SG-34', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-3', -1)">−</button>
+        <input type="number" id="C-3-qty" value="1" min="1" max="99" data-price="2940">
+        <button type="button" onclick="changeQuantity('C-3', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-34" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ34"
-            data-item-length="340" data-item-weight="61">🛒</button></td>
-    </tr><tr id="item-SG-40">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ40" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ40</td><td>400</td><td>70</td><td>71.8</td>
-      <td>от 15 795 руб.</td><td>1 шт</td>
+            data-item-id="C-3" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-3)"
+            data-item-length="180" data-item-weight="19.6">🛒</button></td>
+    </tr><tr id="item-C-4">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-4)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-4)</td><td>225</td><td>50</td><td>23.7</td>
+      <td>от 3 555 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-40', -1)">−</button>
-        <input type="number" id="SG-40-qty" value="1" min="1" max="99" data-price="15795">
-        <button type="button" onclick="changeQuantity('SG-40', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-4', -1)">−</button>
+        <input type="number" id="C-4-qty" value="1" min="1" max="99" data-price="3555">
+        <button type="button" onclick="changeQuantity('C-4', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-40" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ40"
-            data-item-length="400" data-item-weight="71.8">🛒</button></td>
-    </tr><tr id="item-SG-46">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ46" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ46</td><td>460</td><td>70</td><td>82.8</td>
-      <td>от 18 215 руб.</td><td>1 шт</td>
+            data-item-id="C-4" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-4)"
+            data-item-length="225" data-item-weight="23.7">🛒</button></td>
+    </tr><tr id="item-C-5">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-5)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-5)</td><td>240</td><td>50</td><td>26.7</td>
+      <td>от 4 005 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-46', -1)">−</button>
-        <input type="number" id="SG-46-qty" value="1" min="1" max="99" data-price="18215">
-        <button type="button" onclick="changeQuantity('SG-46', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-5', -1)">−</button>
+        <input type="number" id="C-5-qty" value="1" min="1" max="99" data-price="4005">
+        <button type="button" onclick="changeQuantity('C-5', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-46" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ46"
-            data-item-length="460" data-item-weight="82.8">🛒</button></td>
-    </tr><tr id="item-SG-52">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ52" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ52</td><td>520</td><td>70</td><td>94</td>
-      <td>от 20 680 руб.</td><td>1 шт</td>
+            data-item-id="C-5" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-5)"
+            data-item-length="240" data-item-weight="26.7">🛒</button></td>
+    </tr><tr id="item-C-6">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-6)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-6)</td><td>210</td><td>50</td><td>23.5</td>
+      <td>от 3 525 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-52', -1)">−</button>
-        <input type="number" id="SG-52-qty" value="1" min="1" max="99" data-price="20680">
-        <button type="button" onclick="changeQuantity('SG-52', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-6', -1)">−</button>
+        <input type="number" id="C-6-qty" value="1" min="1" max="99" data-price="3525">
+        <button type="button" onclick="changeQuantity('C-6', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-52" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ52"
-            data-item-length="520" data-item-weight="94">🛒</button></td>
-    </tr><tr id="item-SG-58">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ58" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ58</td><td>580</td><td>70</td><td>104.4</td>
-      <td>от 22 970 руб.</td><td>1 шт</td>
+            data-item-id="C-6" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-6)"
+            data-item-length="210" data-item-weight="23.5">🛒</button></td>
+    </tr><tr id="item-C-7">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-7)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-7)</td><td>270</td><td>50</td><td>30.0</td>
+      <td>от 4 500 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-58', -1)">−</button>
-        <input type="number" id="SG-58-qty" value="1" min="1" max="99" data-price="22970">
-        <button type="button" onclick="changeQuantity('SG-58', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-7', -1)">−</button>
+        <input type="number" id="C-7-qty" value="1" min="1" max="99" data-price="4500">
+        <button type="button" onclick="changeQuantity('C-7', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-58" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ58"
-            data-item-length="580" data-item-weight="104.4">🛒</button></td>
-    </tr><tr id="item-SG-64">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ64" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ64</td><td>640</td><td>70</td><td>115.4</td>
-      <td>от 25 390 руб.</td><td>1 шт</td>
+            data-item-id="C-7" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-7)"
+            data-item-length="270" data-item-weight="30.0">🛒</button></td>
+    </tr><tr id="item-C-8">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-8)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-8)</td><td>420</td><td>50</td><td>46.0</td>
+      <td>от 6 900 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-64', -1)">−</button>
-        <input type="number" id="SG-64-qty" value="1" min="1" max="99" data-price="25390">
-        <button type="button" onclick="changeQuantity('SG-64', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-8', -1)">−</button>
+        <input type="number" id="C-8-qty" value="1" min="1" max="99" data-price="6900">
+        <button type="button" onclick="changeQuantity('C-8', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-64" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ64"
-            data-item-length="640" data-item-weight="115.4">🛒</button></td>
-    </tr><tr id="item-SG-70">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ70" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ70</td><td>700</td><td>70</td><td>126.2</td>
-      <td>от 27 765 руб.</td><td>1 шт</td>
+            data-item-id="C-8" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-8)"
+            data-item-length="420" data-item-weight="46.0">🛒</button></td>
+    </tr><tr id="item-C-9">
+      <td><img src="images/ss1/vid-mini.png" alt="Стремянка для колодцев ТПР 901-09-11.84 (С-9)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Стремянка для колодцев ТПР 901-09-11.84 (С-9)</td><td>450</td><td>50</td><td>49.36</td>
+      <td>от 7 404 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-70', -1)">−</button>
-        <input type="number" id="SG-70-qty" value="1" min="1" max="99" data-price="27765">
-        <button type="button" onclick="changeQuantity('SG-70', 1)">+</button>
+        <button type="button" onclick="changeQuantity('C-9', -1)">−</button>
+        <input type="number" id="C-9-qty" value="1" min="1" max="99" data-price="7404">
+        <button type="button" onclick="changeQuantity('C-9', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="SG-70" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ70"
-            data-item-length="700" data-item-weight="126.2">🛒</button></td>
-    </tr><tr id="item-SG-82">
-      <td><img src="images/ssg1/ssg1-mini.png" alt="Пожарная стремянка серия 1.450.3-7.94 СГ82" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Пожарная стремянка серия 1.450.3-7.94 СГ82</td><td>820</td><td>70</td><td>148</td>
-      <td>от 32 560 руб.</td><td>1 шт</td>
-      <td><span class="availability-icon">✅</span></td>
-      <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('SG-82', -1)">−</button>
-        <input type="number" id="SG-82-qty" value="1" min="1" max="99" data-price="32560">
-        <button type="button" onclick="changeQuantity('SG-82', 1)">+</button>
-      </div></td>
-      <td><button type="button" class="cart-button"
-            data-item-id="SG-82" data-item-name="Пожарная стремянка серия 1.450.3-7.94 СГ82"
-            data-item-length="820" data-item-weight="148">🛒</button></td>
+            data-item-id="C-9" data-item-name="Стремянка для колодцев ТПР 901-09-11.84 (С-9)"
+            data-item-length="450" data-item-weight="49.36">🛒</button></td>
     </tr></tbody></table>
 <!-- NOMENCLATURE_END -->
 </div>
 
     <div class="price-description">
-        <p>Предлагаем купить стремянки для самых разных зданий на оптимальных условиях. В каталоге представлен большой ассортимент конструкций. Модели различаются по высоте, количеству ступеней. Длина лестниц начинается от 2.2 м, минимальное количество ступеней – 4.</p>
-        <p>Цена на стремянки пожарные определяется техническими параметрами. Все модели изготовлены в строгом соответствии с техническими требованиями безопасности.</p>
+        <p>В нашей компании вы можете приобрести стальные стремянки ТПР 901-09-11.84 по наиболее доступной цене. Изделия изготавливаются из стали в строгом соответствии с ГОСТом, отличаясь повышенной надежностью и практичностью.</p>
+        <p>Цена на стальную стремянку ТПР 901-09-11.84 напрямую зависит от длины изделия. Мы предлагаем широкий ассортимент конструкций длиной от 1200 до 4500 мм.</p>
     </div>
 
     <p style="font-size: 0.85em; margin-top: 15px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
 
     <section class="advantages-compact">
-        <h3 class="advantages-compact__title">Преимущества стремянок СГ</h3>
+        <h3 class="advantages-compact__title">Преимущества стремянок ТПР 901-09-11.84</h3>
         <ul class="advantages-compact__list">
-            <li>Приемлемая цена</li>
-            <li>Длительный срок эксплуатации</li>
-            <li>Качественные материалы</li>
-            <li>Металл защищен от коррозии</li>
-            <li>Простой монтаж</li>
-            <li>Оптимальная ширина 70 см для удобного использования</li>
-            <li>Шаг ступеней 30 см оптимален для спуска и подъема</li>
-            <li>Соответствие требованиям пожарной безопасности</li>
+            <li>Простой и быстрый монтаж в колодце</li>
+            <li>Высокий уровень надежности и прочности конструкции</li>
+            <li>Продолжительный срок эксплуатации благодаря качеству материалов</li>
+            <li>Хорошая защита от коррозии</li>
+            <li>Доступная цена при высоком качестве изготовления</li>
+            <li>Соответствие ГОСТ и строительным нормативам</li>
         </ul>
     </section>
 
@@ -1010,17 +1001,25 @@
 </footer>
 <!-- FOOTER_END -->
 
-<div id="productModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="closeModal()">
-    <button type="button" class="close-btn" title="Закрыть" aria-label="Закрыть окно" onclick="closeModal()">&times;</button>
+<div id="productModal" class="lightbox-modal" onclick="closeModal()">
+    <span class="close-btn" title="Закрыть">&times;</span>
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><img src="images/ssg1/ssg1-large.png" alt="Основное фото"></div>
-            <div class="gallery-item"><img src="images/ssg1/ssg1-drawing.png" alt="Чертеж"></div>
+            <div class="gallery-item"><img src="images/ss1/vid-1.png" alt="Вид 1"></div>
+            <div class="gallery-item"><img src="images/ss1/vid-2.png" alt="Вид 2"></div>
+            <div class="gallery-item"><img src="images/ss1/vid-3.png" alt="Вид 3"></div>
+            <div class="gallery-item"><img src="images/ss1/foto-1.png" alt="Фото 1"></div>
+            <div class="gallery-item"><img src="images/ss1/foto-2.png" alt="Фото 2"></div>
+            <div class="gallery-item"><img src="images/ss1/chertezh.png" alt="Чертеж"></div>
         </div>
-        <div class="modal-nav">
-            <button onclick="scrollToSlide(0)">Основное фото</button>
-            <button onclick="scrollToSlide(1)">Чертеж</button>
+        <div class="modal-nav" id="modalNav">
+            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
+            <button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>
+            <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
+            <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
+            <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
+            <button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>
         </div>
     </div>
 </div>
@@ -1032,9 +1031,10 @@
     const mainImageWrapper = document.getElementById('mainImageWrapper');
     const modal = document.getElementById("productModal");
     const galleryContainer = document.getElementById("galleryContainer");
+    const modalNav = document.getElementById("modalNav");
     function changeImage(src, index) {
         mainImage.src = src;
-        const btns = document.querySelectorAll('.image-toggle__btn, .image-tabs button');
+        const btns = document.querySelectorAll('.image-toggle__btn');
         btns.forEach(b => b.classList.remove('active'));
         if (btns[index]) btns[index].classList.add('active');
         mainImageWrapper.setAttribute('data-current-slide', index);
@@ -1042,18 +1042,27 @@
     mainImageWrapper.onclick = () => openModal();
     function openModal() {
         modal.style.display = "block";
-        setTimeout(() => scrollToSlide(parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0)), 50);
+        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        setTimeout(() => scrollToSlide(slide), 50);
     }
     function closeModal() { modal.style.display = "none"; }
-
-    /* a11y:escape */
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-    });
-
     function scrollToSlide(index) {
         galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
+        setActiveModalButton(index);
     }
+    function setActiveModalButton(index) {
+        const buttons = modalNav.querySelectorAll('button');
+        buttons.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+    galleryContainer.addEventListener('scroll', () => {
+        const itemWidth = galleryContainer.clientWidth;
+        if (itemWidth === 0) return;
+        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
+        setActiveModalButton(newIndex);
+    });
 
     window.changeImage = changeImage;
     window.openModal = openModal;
