@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="css/common.css">
 
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -510,44 +513,7 @@
 
 <script src="js/quote-modal.js"></script>
 <script>
-    const CONFIG = {
-        GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
-        CART_STORAGE_KEY: 'kolodets_cart_v1',
-        WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
-    };
-
-    function sanitizeInput(text) {
-        if (typeof text !== 'string') return '';
-        return text.replace(/[<>&"'\/\\]/g, '');
-    }
-    function validatePhone(phone) {
-        return /^[\d\s\-\+\(\)@\.a-zA-Z]{5,50}$/.test(phone);
-    }
-    function showToast(message, type = 'success') {
-        let c = document.querySelector('.toast-container');
-        if (!c) { c = document.createElement('div'); c.className = 'toast-container'; document.body.appendChild(c); }
-        const t = document.createElement('div');
-        t.className = 'toast ' + type;
-        t.textContent = message;
-        c.appendChild(t);
-        setTimeout(() => t.classList.add('show'), 10);
-        setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 3500);
-    }
-
-    function getCart() { try { return JSON.parse(localStorage.getItem(CONFIG.CART_STORAGE_KEY)) || {}; } catch (e) { return {}; } }
-    function updateCartCountDisplay() {
-        const cart = getCart();
-        let totalCount = 0;
-        for (const id in cart) {
-            if (cart[id] && typeof cart[id].quantity === 'number') totalCount += parseInt(cart[id].quantity) || 0;
-        }
-        const el = document.getElementById('cart-count-page');
-        if (el) el.textContent = totalCount;
-    }
-    document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
-    window.addEventListener('storage', updateCartCountDisplay);
-
-    document.getElementById('deliveryForm').addEventListener('submit', async function(event) {
+                                document.getElementById('deliveryForm').addEventListener('submit', async function(event) {
         event.preventDefault();
         const name = sanitizeInput(document.getElementById('deliveryName').value);
         const phone = sanitizeInput(document.getElementById('deliveryPhone').value);

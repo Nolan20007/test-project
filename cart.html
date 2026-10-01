@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="css/common.css">
 
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+
     <style>
         .cart-page { padding: 20px 0 40px; }
         .cart-page h1 {
@@ -461,43 +464,7 @@
 
 <script src="js/quote-modal.js"></script>
 <script>
-    const CONFIG = {
-        GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxdYce6Fb2ZPnUxce-kzxi2XAmNLTB7YdZlCZkmhvgymIwNyGcT5O4xB3FRhxPGaL31/exec',
-        CART_STORAGE_KEY: 'kolodets_cart_v1',
-        WEB3FORMS_KEY: '2bbcdc46-5397-4fa1-b7ca-4947bceb267b'
-    };
-
-    function showToast(message, type = 'success', duration = 3000) {
-        let container = document.querySelector('.toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'toast-container';
-            document.body.appendChild(container);
-        }
-        const toast = document.createElement('div');
-        toast.className = 'toast ' + type;
-        toast.textContent = message;
-        container.appendChild(toast);
-        setTimeout(() => toast.classList.add('show'), 10);
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, duration);
-    }
-
-    function sanitizeInput(text) {
-        if (typeof text !== 'string') return '';
-        return text.replace(/[<>&"'\/\\]/g, '');
-    }
-    function validatePhone(phone) {
-        return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
-    }
-    function validateEmail(email) {
-        if (!email) return true;
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    function formatLength(cm) {
+                        function formatLength(cm) {
         const n = parseFloat(cm);
         if (isNaN(n) || n <= 0) return '';
         return Math.round(n) + ' см';
@@ -509,17 +476,7 @@
         return (n / 100).toFixed(2).replace(/\.?0+$/, '') + ' м';
     }
 
-    function getCart() {
-        try {
-            const data = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
-            return JSON.parse(data) || {};
-        } catch (e) {
-            console.error("Ошибка чтения LocalStorage:", e);
-            return {};
-        }
-    }
-
-    function saveCart(cart) {
+        function saveCart(cart) {
         try {
             localStorage.setItem(CONFIG.CART_STORAGE_KEY, JSON.stringify(cart));
             return true;
@@ -530,17 +487,7 @@
         }
     }
 
-    function updateCartCountDisplay() {
-        const cart = getCart();
-        let totalCount = 0;
-        for (const id in cart) {
-            if (cart[id] && typeof cart[id].quantity === 'number') totalCount += parseInt(cart[id].quantity) || 0;
-        }
-        const el = document.getElementById('cart-count-page');
-        if (el) el.textContent = totalCount;
-    }
-
-    function renderCart() {
+        function renderCart() {
         const cart = getCart();
         const cartContent = document.getElementById('cart-content');
         const checkoutSection = document.getElementById('checkout-section');

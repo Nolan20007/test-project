@@ -21,6 +21,9 @@
 
     <link rel="stylesheet" href="css/common.css">
 
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+
     <style>
         .error-page {
             flex: 1;
@@ -258,21 +261,7 @@
 
 <script src="js/quote-modal.js"></script>
 <script>
-    function updateCartCountDisplay() {
-        try {
-            const cart = JSON.parse(localStorage.getItem('kolodets_cart_v1')) || {};
-            let totalCount = 0;
-            for (const id in cart) {
-                if (cart[id] && typeof cart[id].quantity === 'number') totalCount += parseInt(cart[id].quantity) || 0;
-            }
-            const el = document.querySelector('.cart-link');
-            if (el && !el.querySelector('span')) {
-                el.innerHTML = '🛒 Корзина (' + totalCount + ')';
-            }
-        } catch (e) {}
-    }
-    document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
-</script>
+        </script>
 
 </body>
 </html>

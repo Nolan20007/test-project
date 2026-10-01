@@ -20,6 +20,9 @@
 
     <link rel="stylesheet" href="css/common.css">
 
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+
     <style>
         .content-area {
             background: white;
@@ -258,20 +261,7 @@
 
 <script src="js/quote-modal.js"></script>
 <script>
-    function updateCartCountDisplay() {
-        try {
-            const cart = JSON.parse(localStorage.getItem('kolodets_cart_v1')) || {};
-            let totalCount = 0;
-            for (const id in cart) {
-                if (cart[id] && typeof cart[id].quantity === 'number') totalCount += parseInt(cart[id].quantity) || 0;
-            }
-            const el = document.getElementById('cart-count-page');
-            if (el) el.textContent = totalCount;
-        } catch (e) {}
-    }
-    document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
-    window.addEventListener('storage', updateCartCountDisplay);
-</script>
+            </script>
 
 </body>
 </html>
