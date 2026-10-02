@@ -62,8 +62,6 @@
         .content-area p { margin: 0 0 15px; line-height: 1.65; }
         .content-area ul { margin: 0 0 20px; padding-left: 25px; }
         .content-area ul li { margin-bottom: 8px; line-height: 1.55; }
-        .content-area a { color: var(--primary-color); text-decoration: none; }
-        .content-area a:hover { text-decoration: underline; }
 
         .highlight {
             background: var(--light-color);
@@ -80,19 +78,11 @@
             padding: 26px 30px;
             margin: 20px 0 30px;
         }
-        .album-card__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-        }
         .album-card__title {
             font-size: 1.2em;
             color: var(--primary-color);
             font-weight: 600;
-            margin: 0;
+            margin: 0 0 16px;
             line-height: 1.35;
         }
         .album-card__meta {
@@ -118,7 +108,8 @@
             gap: 12px;
             flex-wrap: wrap;
         }
-        .album-btn {
+        /* ===== Кнопки ===== */
+        .content-area a.album-btn {
             display: inline-block;
             padding: 11px 24px;
             text-decoration: none;
@@ -128,24 +119,37 @@
             font-family: inherit;
             transition: all 0.2s;
             cursor: pointer;
-            border: 2px solid var(--primary-color);
             background: var(--primary-color);
-            color: #fff;
+            color: #ffffff;
+            border: 2px solid var(--primary-color);
         }
-        .album-btn:hover {
+        .content-area a.album-btn:hover {
             background: var(--primary-color-hover);
             border-color: var(--primary-color-hover);
+            color: #ffffff;
         }
 
-        .toc-plain {
+        /* ===== Оглавление внутри карточки ===== */
+        .album-card__toc {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f6;
+        }
+        .album-card__toc h4 {
+            color: var(--primary-color);
+            font-size: 1.05em;
+            font-weight: 600;
+            margin: 0 0 14px;
+        }
+        .album-card__toc ul {
             list-style: disc;
             padding-left: 25px;
-            margin: 0 0 20px;
+            margin: 0;
         }
-        .toc-plain li {
+        .album-card__toc li {
             margin-bottom: 6px;
             line-height: 1.55;
-            font-size: 0.95em;
+            font-size: 0.93em;
         }
 
         .contact-summary {
@@ -158,11 +162,13 @@
         .contact-summary h2 { text-align: center; margin-bottom: 12px; color: var(--dark-color); border: none; }
         .contact-summary p { text-align: center; margin-bottom: 8px; }
         .buttons-row { display: flex; justify-content: center; gap: 20px; margin-top: 25px; flex-wrap: wrap; }
-        .cta-button {
+
+        .content-area a.cta-button,
+        .content-area button.cta-button {
             display: inline-block;
             text-align: center;
             background-color: var(--primary-color);
-            color: white;
+            color: #ffffff;
             padding: 12px 25px;
             text-decoration: none;
             border-radius: var(--inputs-buttons-border-radius);
@@ -175,7 +181,11 @@
             margin: 5px 10px;
             font-family: inherit;
         }
-        .cta-button:hover { background-color: var(--primary-color-hover); }
+        .content-area a.cta-button:hover,
+        .content-area button.cta-button:hover {
+            background-color: var(--primary-color-hover);
+            color: #ffffff;
+        }
 
         @media (max-width: 768px) {
             .content-area { padding: 25px 20px; }
@@ -185,7 +195,8 @@
             .album-card__meta { grid-template-columns: 1fr; gap: 4px; }
             .album-card__meta dt { font-size: 0.9em; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
-            .cta-button { width: 90%; max-width: 280px; margin: 0; }
+            .content-area a.cta-button,
+            .content-area button.cta-button { width: 90%; max-width: 280px; margin: 0; }
         }
         @media (max-width: 480px) {
             .content-area { padding: 20px 15px; }
@@ -250,9 +261,7 @@
         <h2>Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</h2>
 
         <div class="album-card">
-            <div class="album-card__header">
-                <h3 class="album-card__title">901-09-11.84. Альбом V. Строительные изделия</h3>
-            </div>
+            <h3 class="album-card__title">901-09-11.84. Альбом V. Строительные изделия</h3>
 
             <dl class="album-card__meta">
                 <dt>Обозначение:</dt>
@@ -290,30 +299,32 @@
                 <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF в новой вкладке</a>
                 <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
             </div>
-        </div>
 
-        <h3>Оглавление альбома</h3>
-        <ul class="toc-plain">
-            <li>901-09-11.84 КЖИ.МН1 Скоба ходовая</li>
-            <li>901-09-11.84 КЖИ.С1СБ Стремянка. Сборочный чертеж</li>
-            <li>901-09-11.84 КЖИ.С1 Стремянка</li>
-            <li>901-09-11.84 КЖИ.П1 Плита днища</li>
-            <li>901-09-11.84 КЖИ.Са1 Сетка арматурная</li>
-            <li>901-09-11.84 КЖИ.П4 Плита днища</li>
-            <li>901-09-11.84 КЖИ.П4СБ Плита днища. Сборочный чертеж</li>
-            <li>901-09-11.84 КЖИ.Са7СБ Сетка арматурная. Сборочный чертеж</li>
-            <li>901-09-11.84 КЖИ.Са7 Сетка арматурная</li>
-            <li>901-09-11.84 КЖИ.П9 Плита днища</li>
-            <li>901-09-11.84 КЖИ.Са17 Сетка арматурная</li>
-            <li>901-09-11.84 КЖИ.П13 Плита днища</li>
-            <li>901-09-11.84 КЖИ.Са25 Сетка арматурная</li>
-            <li>901-09-11.84 КЖИ.П16 Плита днища</li>
-            <li>901-09-11.84 КЖИ.Са31 Сетка арматурная</li>
-            <li>901-09-11.84 КЖИ.П20 Плита перекрытия</li>
-            <li>901-09-11.84 КЖИ.П23 Плита перекрытия</li>
-            <li>901-09-11.84 КЖИ.П26 Плита перекрытия</li>
-            <li>901-09-11.84 КЖИ.П29 Плита перекрытия</li>
-        </ul>
+            <div class="album-card__toc">
+                <h4>Оглавление альбома</h4>
+                <ul>
+                    <li>901-09-11.84 КЖИ.МН1 Скоба ходовая</li>
+                    <li>901-09-11.84 КЖИ.С1СБ Стремянка. Сборочный чертеж</li>
+                    <li>901-09-11.84 КЖИ.С1 Стремянка</li>
+                    <li>901-09-11.84 КЖИ.П1 Плита днища</li>
+                    <li>901-09-11.84 КЖИ.Са1 Сетка арматурная</li>
+                    <li>901-09-11.84 КЖИ.П4 Плита днища</li>
+                    <li>901-09-11.84 КЖИ.П4СБ Плита днища. Сборочный чертеж</li>
+                    <li>901-09-11.84 КЖИ.Са7СБ Сетка арматурная. Сборочный чертеж</li>
+                    <li>901-09-11.84 КЖИ.Са7 Сетка арматурная</li>
+                    <li>901-09-11.84 КЖИ.П9 Плита днища</li>
+                    <li>901-09-11.84 КЖИ.Са17 Сетка арматурная</li>
+                    <li>901-09-11.84 КЖИ.П13 Плита днища</li>
+                    <li>901-09-11.84 КЖИ.Са25 Сетка арматурная</li>
+                    <li>901-09-11.84 КЖИ.П16 Плита днища</li>
+                    <li>901-09-11.84 КЖИ.Са31 Сетка арматурная</li>
+                    <li>901-09-11.84 КЖИ.П20 Плита перекрытия</li>
+                    <li>901-09-11.84 КЖИ.П23 Плита перекрытия</li>
+                    <li>901-09-11.84 КЖИ.П26 Плита перекрытия</li>
+                    <li>901-09-11.84 КЖИ.П29 Плита перекрытия</li>
+                </ul>
+            </div>
+        </div>
 
         <section class="contact-summary">
             <h2>Оформление заказа и консультация</h2>
