@@ -176,11 +176,10 @@
                 .quote-cart-preview__empty a:hover {
                     border-bottom-style: solid;
                 }
-                /* Переключатель Юрлицо / Физлицо */
                 .quote-toggle {
                     display: flex;
                     gap: 0;
-                    margin: 0 0 18px;
+                    margin: 0 0 20px;
                     border-radius: var(--inputs-buttons-border-radius, 8px);
                     overflow: hidden;
                     border: 2px solid var(--primary-color, #0e5c80);
@@ -216,17 +215,15 @@
             <div class="quote-modal-content" onclick="event.stopPropagation()">
                 <span class="quote-close" role="button" tabindex="0" aria-label="Закрыть окно" onclick="closeQuoteModal()">&times;</span>
                 <h3 id="quoteModalTitle">Получить расчет/КП</h3>
-                <p class="quote-desc">Работаем с юрлицами и ИП. Пришлём счёт и коммерческое предложение в течение рабочего дня.</p>
-
-                <div class="quote-cart-preview" id="quoteCartPreview"></div>
 
                 <div class="quote-toggle" role="tablist" aria-label="Тип лица">
                     <button type="button" class="quote-toggle__btn active" data-type="legal" onclick="setQuoteType('legal')" role="tab" aria-selected="true">Юридическое лицо</button>
                     <button type="button" class="quote-toggle__btn" data-type="physical" onclick="setQuoteType('physical')" role="tab" aria-selected="false">Физическое лицо</button>
                 </div>
 
+                <div class="quote-cart-preview" id="quoteCartPreview"></div>
+
                 <form id="quoteForm">
-                    <!-- Юрлицо -->
                     <div class="quote-fields-legal active" data-fields="legal">
                         <label for="quoteCompany" class="visually-hidden">Название компании</label>
                         <input type="text" id="quoteCompany" placeholder="Название компании" maxlength="100" aria-required="true">
@@ -241,7 +238,6 @@
                         <input type="text" id="quotePhone" placeholder="Телефон или Email" maxlength="100" aria-required="true">
                     </div>
 
-                    <!-- Физлицо -->
                     <div class="quote-fields-physical" data-fields="physical">
                         <label for="quotePhysName" class="visually-hidden">Ваше имя</label>
                         <input type="text" id="quotePhysName" placeholder="Ваше имя" maxlength="100" aria-required="true">
@@ -265,7 +261,6 @@
         return modal;
     }
 
-    // ===== Переключатель типа лица =====
     let quoteType = 'legal';
 
     window.setQuoteType = function(type) {
@@ -283,7 +278,6 @@
             block.classList.toggle('active', block.getAttribute('data-fields') === type);
         });
 
-        // Переключить required у невидимых полей (чтобы браузер не ругался)
         modal.querySelectorAll('.quote-fields-legal input, .quote-fields-physical input').forEach(inp => {
             if (inp.closest('.quote-fields-legal.active, .quote-fields-physical.active')) {
                 inp.setAttribute('required', 'required');
@@ -356,7 +350,7 @@
         ensureModal();
         cartForQuote = getCartFromStorage();
         renderCartPreview();
-        setQuoteType('legal'); // По умолчанию — юрлицо
+        setQuoteType('legal');
         document.getElementById('quoteModal').classList.add('show');
         document.body.style.overflow = 'hidden';
     };
