@@ -9,8 +9,6 @@
 
     let cartForQuote = {};
 
-    // ============ УТИЛИТЫ ============
-
     function sanitizeInput(text) {
         if (typeof text !== 'string') return '';
         return text.replace(/[<>&"'\/\\]/g, '');
@@ -82,8 +80,6 @@
         }, 3500);
     }
 
-    // ============ МОДАЛКА ============
-
     function ensureModal() {
         let modal = document.getElementById('quoteModal');
         if (modal) return modal;
@@ -91,7 +87,6 @@
         modal = document.createElement('div');
         modal.id = 'quoteModal';
         modal.className = 'quote-modal';
-        // === A11Y ===
         modal.setAttribute('role', 'dialog');
         modal.setAttribute('aria-modal', 'true');
         modal.setAttribute('aria-labelledby', 'quoteModalTitle');
@@ -181,6 +176,42 @@
                 .quote-cart-preview__empty a:hover {
                     border-bottom-style: solid;
                 }
+                /* Переключатель Юрлицо / Физлицо */
+                .quote-toggle {
+                    display: flex;
+                    gap: 0;
+                    margin: 0 0 18px;
+                    border-radius: var(--inputs-buttons-border-radius, 8px);
+                    overflow: hidden;
+                    border: 2px solid var(--primary-color, #0e5c80);
+                }
+                .quote-toggle__btn {
+                    flex: 1;
+                    padding: 10px 12px;
+                    border: none;
+                    background: transparent;
+                    color: var(--primary-color, #0e5c80);
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    font-family: inherit;
+                    transition: all 0.2s;
+                }
+                .quote-toggle__btn:hover:not(.active) {
+                    background: #f0f7fb;
+                }
+                .quote-toggle__btn.active {
+                    background: var(--primary-color, #0e5c80);
+                    color: #fff;
+                }
+                .quote-fields-legal,
+                .quote-fields-physical {
+                    display: none;
+                }
+                .quote-fields-legal.active,
+                .quote-fields-physical.active {
+                    display: block;
+                }
             </style>
             <div class="quote-modal-content" onclick="event.stopPropagation()">
                 <span class="quote-close" role="button" tabindex="0" aria-label="Закрыть окно" onclick="closeQuoteModal()">&times;</span>
@@ -189,18 +220,35 @@
 
                 <div class="quote-cart-preview" id="quoteCartPreview"></div>
 
+                <div class="quote-toggle" role="tablist" aria-label="Тип лица">
+                    <button type="button" class="quote-toggle__btn active" data-type="legal" onclick="setQuoteType('legal')" role="tab" aria-selected="true">Юридическое лицо</button>
+                    <button type="button" class="quote-toggle__btn" data-type="physical" onclick="setQuoteType('physical')" role="tab" aria-selected="false">Физическое лицо</button>
+                </div>
+
                 <form id="quoteForm">
-                    <label for="quoteCompany" class="visually-hidden">Название компании</label>
-                    <input type="text" id="quoteCompany" placeholder="Название компании" required maxlength="100" aria-required="true">
+                    <!-- Юрлицо -->
+                    <div class="quote-fields-legal active" data-fields="legal">
+                        <label for="quoteCompany" class="visually-hidden">Название компании</label>
+                        <input type="text" id="quoteCompany" placeholder="Название компании" maxlength="100" aria-required="true">
 
-                    <label for="quoteINN" class="visually-hidden">ИНН</label>
-                    <input type="text" id="quoteINN" placeholder="ИНН (10 или 12 цифр)" required maxlength="12" pattern="[0-9]{10,12}" aria-required="true">
+                        <label for="quoteINN" class="visually-hidden">ИНН</label>
+                        <input type="text" id="quoteINN" placeholder="ИНН (10 или 12 цифр)" maxlength="12" pattern="[0-9]{10,12}" aria-required="true">
 
-                    <label for="quoteName" class="visually-hidden">Контактное лицо</label>
-                    <input type="text" id="quoteName" placeholder="Контактное лицо" required maxlength="100" aria-required="true">
+                        <label for="quoteName" class="visually-hidden">Контактное лицо</label>
+                        <input type="text" id="quoteName" placeholder="Контактное лицо" maxlength="100" aria-required="true">
 
-                    <label for="quotePhone" class="visually-hidden">Телефон или Email</label>
-                    <input type="text" id="quotePhone" placeholder="Телефон или Email" required maxlength="100" aria-required="true">
+                        <label for="quotePhone" class="visually-hidden">Телефон или Email</label>
+                        <input type="text" id="quotePhone" placeholder="Телефон или Email" maxlength="100" aria-required="true">
+                    </div>
+
+                    <!-- Физлицо -->
+                    <div class="quote-fields-physical" data-fields="physical">
+                        <label for="quotePhysName" class="visually-hidden">Ваше имя</label>
+                        <input type="text" id="quotePhysName" placeholder="Ваше имя" maxlength="100" aria-required="true">
+
+                        <label for="quotePhysContact" class="visually-hidden">Телефон или Email</label>
+                        <input type="text" id="quotePhysContact" placeholder="Телефон или Email" maxlength="100" aria-required="true">
+                    </div>
 
                     <label for="quoteMessage" class="visually-hidden">Комментарий к запросу</label>
                     <textarea id="quoteMessage" placeholder="Что нужно: тип лестниц, длина, количество" rows="3" maxlength="500"></textarea>
@@ -217,7 +265,33 @@
         return modal;
     }
 
-    // ============ РЕНДЕР БЛОКА «ТОВАРЫ ИЗ КОРЗИНЫ» ============
+    // ===== Переключатель типа лица =====
+    let quoteType = 'legal';
+
+    window.setQuoteType = function(type) {
+        quoteType = type;
+        const modal = document.getElementById('quoteModal');
+        if (!modal) return;
+
+        modal.querySelectorAll('.quote-toggle__btn').forEach(btn => {
+            const isActive = btn.getAttribute('data-type') === type;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        modal.querySelectorAll('[data-fields]').forEach(block => {
+            block.classList.toggle('active', block.getAttribute('data-fields') === type);
+        });
+
+        // Переключить required у невидимых полей (чтобы браузер не ругался)
+        modal.querySelectorAll('.quote-fields-legal input, .quote-fields-physical input').forEach(inp => {
+            if (inp.closest('.quote-fields-legal.active, .quote-fields-physical.active')) {
+                inp.setAttribute('required', 'required');
+            } else {
+                inp.removeAttribute('required');
+            }
+        });
+    };
 
     function renderCartPreview() {
         const preview = document.getElementById('quoteCartPreview');
@@ -278,12 +352,11 @@
         }
     }
 
-    // ============ ОТКРЫТИЕ / ЗАКРЫТИЕ ============
-
     window.openQuoteModal = function() {
         ensureModal();
         cartForQuote = getCartFromStorage();
         renderCartPreview();
+        setQuoteType('legal'); // По умолчанию — юрлицо
         document.getElementById('quoteModal').classList.add('show');
         document.body.style.overflow = 'hidden';
     };
@@ -299,8 +372,6 @@
         if (e.key === 'Escape') window.closeQuoteModal();
     });
 
-    // ============ ОТПРАВКА ФОРМЫ ============
-
     document.addEventListener('DOMContentLoaded', function() {
         const modal = ensureModal();
 
@@ -308,7 +379,6 @@
             if (e.target === modal) window.closeQuoteModal();
         });
 
-        // Крестик: Enter/Space
         const closeBtn = modal.querySelector('.quote-close');
         if (closeBtn) {
             closeBtn.addEventListener('keydown', function(e) {
@@ -325,55 +395,64 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const companyEl = document.getElementById('quoteCompany');
-            const innEl = document.getElementById('quoteINN');
-            const nameEl = document.getElementById('quoteName');
-            const phoneEl = document.getElementById('quotePhone');
-
-            const company = sanitizeInput(companyEl.value);
-            const inn = sanitizeInput(innEl.value);
-            const name = sanitizeInput(nameEl.value);
-            const phone = sanitizeInput(phoneEl.value);
             const message = sanitizeInput(document.getElementById('quoteMessage').value);
 
-            clearFormInvalid(form);
+            let body = '';
+            let contactInfo = {};
+            let subject = '';
 
-            if (!company) {
-                setFieldInvalid(companyEl, true);
-                showToast('Укажите название компании', 'error');
-                companyEl.focus();
-                return;
-            }
-            if (!/^\d{10,12}$/.test(inn)) {
-                setFieldInvalid(innEl, true);
-                showToast('ИНН должен содержать 10 или 12 цифр', 'error');
-                innEl.focus();
-                return;
-            }
-            if (!name) {
-                setFieldInvalid(nameEl, true);
-                showToast('Укажите контактное лицо', 'error');
-                nameEl.focus();
-                return;
-            }
-            if (!phone) {
-                setFieldInvalid(phoneEl, true);
-                showToast('Укажите телефон или email', 'error');
-                phoneEl.focus();
-                return;
+            if (quoteType === 'legal') {
+                const companyEl = document.getElementById('quoteCompany');
+                const innEl = document.getElementById('quoteINN');
+                const nameEl = document.getElementById('quoteName');
+                const phoneEl = document.getElementById('quotePhone');
+
+                const company = sanitizeInput(companyEl.value);
+                const inn = sanitizeInput(innEl.value);
+                const name = sanitizeInput(nameEl.value);
+                const phone = sanitizeInput(phoneEl.value);
+
+                clearFormInvalid(form);
+
+                if (!company) { setFieldInvalid(companyEl, true); showToast('Укажите название компании', 'error'); companyEl.focus(); return; }
+                if (!/^\d{10,12}$/.test(inn)) { setFieldInvalid(innEl, true); showToast('ИНН должен содержать 10 или 12 цифр', 'error'); innEl.focus(); return; }
+                if (!name) { setFieldInvalid(nameEl, true); showToast('Укажите контактное лицо', 'error'); nameEl.focus(); return; }
+                if (!phone) { setFieldInvalid(phoneEl, true); showToast('Укажите телефон или email', 'error'); phoneEl.focus(); return; }
+
+                contactInfo = { name: name, phone: phone, company: company, inn: inn };
+                subject = 'Запрос счёта/КП (Юрлицо) — stremyanki-dlya-kolodcev.ru';
+
+                body += `📄 ЗАПРОС СЧЁТА/КП — ЮРИДИЧЕСКОЕ ЛИЦО\n\n`;
+                body += `🏢 Компания: ${company}\n`;
+                body += `🆔 ИНН: ${inn}\n`;
+                body += `👤 Контакт: ${name}\n`;
+                body += `📞 Телефон/Email: ${phone}\n`;
+                body += `💬 Комментарий: ${message || 'Нет'}\n`;
+            } else {
+                const physNameEl = document.getElementById('quotePhysName');
+                const physContactEl = document.getElementById('quotePhysContact');
+
+                const physName = sanitizeInput(physNameEl.value);
+                const physContact = sanitizeInput(physContactEl.value);
+
+                clearFormInvalid(form);
+
+                if (!physName || physName.length < 2) { setFieldInvalid(physNameEl, true); showToast('Укажите ваше имя', 'error'); physNameEl.focus(); return; }
+                if (!physContact) { setFieldInvalid(physContactEl, true); showToast('Укажите телефон или email', 'error'); physContactEl.focus(); return; }
+
+                contactInfo = { name: physName, phone: physContact, company: '', inn: '' };
+                subject = 'Запрос счёта/КП (Физлицо) — stremyanki-dlya-kolodcev.ru';
+
+                body += `📄 ЗАПРОС СЧЁТА/КП — ФИЗИЧЕСКОЕ ЛИЦО\n\n`;
+                body += `👤 Имя: ${physName}\n`;
+                body += `📞 Телефон/Email: ${physContact}\n`;
+                body += `💬 Комментарий: ${message || 'Нет'}\n`;
             }
 
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Отправка...';
             submitBtn.disabled = true;
-
-            let body = `📄 ЗАПРОС СЧЁТА/КП\n\n`;
-            body += `🏢 Компания: ${company}\n`;
-            body += `🆔 ИНН: ${inn}\n`;
-            body += `👤 Контакт: ${name}\n`;
-            body += `📞 Телефон/Email: ${phone}\n`;
-            body += `💬 Комментарий: ${message || 'Нет'}\n`;
 
             const items = Object.values(cartForQuote).filter(i => i && i.id && i.name);
 
@@ -402,11 +481,11 @@
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    type: 'quote',
-                    company: company,
-                    inn: inn,
-                    name: name,
-                    phone: phone,
+                    type: quoteType === 'legal' ? 'quote_legal' : 'quote_physical',
+                    name: contactInfo.name,
+                    phone: contactInfo.phone,
+                    company: contactInfo.company,
+                    inn: contactInfo.inn,
                     message: message || '',
                     cartText: body,
                     hasCartItems: items.length > 0,
@@ -416,7 +495,7 @@
 
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
-            mailData.append('subject', 'Запрос счёта/КП — stremyanki-dlya-kolodcev.ru');
+            mailData.append('subject', subject);
             mailData.append('from_name', 'Сайт лестниц для колодцев');
             mailData.append('form_data', body);
 
@@ -435,7 +514,6 @@
             window.closeQuoteModal();
         });
 
-        // Автосброс aria-invalid при вводе
         bindAutoClearInvalid(form);
     });
 })();
