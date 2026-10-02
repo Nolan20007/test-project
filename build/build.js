@@ -63,6 +63,10 @@ const PRICE_END = '<!-- PRICE_END -->';
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
+// ===== Analytics: во все страницы, где его нет =====
+const ANALYTICS_TAG = '<script src="js/analytics.js"></script>';
+const ANALYTICS_RE = /<script\s+src=["']js\/analytics\.js["'][^>]*>\s*<\/script>/i;
+
 function loadInclude(name) {
   const filePath = path.resolve(__dirname, '..', 'includes', name);
   if (!fs.existsSync(filePath)) {
@@ -396,9 +400,16 @@ function processMarkers(file, navContent, footerContent) {
     console.log(`  ✓ ${file} → цены обновлены из CSV`);
   }
 
+  // ===== ANALYTICS: вставить подключение, если его нет =====
+  if (!ANALYTICS_RE.test(html) && html.includes('</head>')) {
+    html = html.replace('</head>', `    ${ANALYTICS_TAG}\n</head>`);
+    changed = true;
+    console.log(`  ✓ ${file} → добавлен analytics.js`);
+  }
+
   if (changed) {
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log(`  ✓ ${file} → NAV/FOOTER/PRICE обновлены`);
+    console.log(`  ✓ ${file} → NAV/FOOTER/PRICE/ANALYTICS обновлены`);
     return true;
   }
   return false;
@@ -413,7 +424,7 @@ function build() {
   if (navContent)    console.log('  ✓ includes/nav.html');
   if (footerContent) console.log('  ✓ includes/footer.html');
 
-  console.log('\nОбработка NAV, FOOTER, PRICE...');
+  console.log('\nОбработка NAV, FOOTER, PRICE, ANALYTICS...');
   ALL_HTML_FILES.forEach(file => {
     if (processMarkers(file, navContent, footerContent)) changed++;
   });
