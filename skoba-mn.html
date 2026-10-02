@@ -459,34 +459,7 @@
     <script src="js/analytics.js"></script>
 
     <!-- JSONLD_PRODUCTS_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Скоба ходовая ТПР 901-09-11.84 МН-1",
-  "sku": "MN-1",
-  "mpn": "MN-1",
-  "image": "https://stremyanki-dlya-kolodcev.ru/images/scoba-nm/vid-mini.png",
-  "description": "Скоба ходовая ТПР 901-09-11.84 МН-1. Длина 370 см, ширина 240 см, масса 1.36 кг.",
-  "brand": {
-    "@type": "Brand",
-    "name": "Производство лестниц и стремянок для колодцев"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://stremyanki-dlya-kolodcev.ru/skoba-mn.html#item-MN-1",
-    "priceCurrency": "RUB",
-    "price": "430",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition",
-    "seller": {
-      "@type": "Organization",
-      "name": "ИП Гневашева Кристина Дмитриевна"
-    }
-  }
-}
-</script>
-<!-- JSONLD_PRODUCTS_END -->
+    <!-- JSONLD_PRODUCTS_END -->
 </head>
 <body>
 
@@ -542,8 +515,10 @@
                 <img id="mainImage" src="images/scoba-nm/vid-1.png" alt="Скоба ходовая МН-1 ТПР 901-09-11.84" class="main-image"
                      onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');">
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/scoba-nm/vid-1.png', 0)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/chertezh.png', 1)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/scoba-nm/vid-1.png', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-1.png', 1)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-2.png', 2)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/chertezh.png', 3)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -618,25 +593,8 @@
 
     <div id="nomenclature-container">
 <!-- NOMENCLATURE_START -->
-<table class="nomenclature-table"><thead><tr>
-    <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
-    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
-    <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-MN-1">
-      <td><img src="images/scoba-nm/vid-mini.png" alt="Скоба ходовая ТПР 901-09-11.84 МН-1" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Скоба ходовая ТПР 901-09-11.84 МН-1</td><td>370</td><td>240</td><td>1.36</td>
-      <td>от 430 руб.</td><td>1 шт</td>
-      <td><span class="availability-icon">✅</span></td>
-      <td class="cart-cell"><div class="quantity-control">
-        <button type="button" onclick="changeQuantity('MN-1', -1)">−</button>
-        <input type="number" id="MN-1-qty" value="1" min="1" max="99" data-price="430">
-        <button type="button" onclick="changeQuantity('MN-1', 1)">+</button>
-      </div></td>
-      <td><button type="button" class="cart-button"
-            data-item-id="MN-1" data-item-name="Скоба ходовая ТПР 901-09-11.84 МН-1"
-            data-item-length="370" data-item-weight="1.36">🛒</button></td>
-    </tr></tbody></table>
 <!-- NOMENCLATURE_END -->
-</div>
+    </div>
 
     <div class="price-description">
         <p>В нашей компании вы можете приобрести скобы ходовые ТПР 901-09-11.84 по доступной цене. Изделия изготавливаются из конструкционной стали Ст3 методом гибки в строгом соответствии с типовыми проектными решениями.</p>
@@ -727,19 +685,15 @@
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
             <div class="gallery-item"><img src="images/scoba-nm/vid-1.png" alt="Вид 1" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
-            <div class="gallery-item"><img src="images/scoba-nm/vid-2.png" alt="Вид 2" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
-            <div class="gallery-item"><img src="images/scoba-nm/vid-3.png" alt="Вид 3" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
             <div class="gallery-item"><img src="images/scoba-nm/foto-1.png" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
             <div class="gallery-item"><img src="images/scoba-nm/foto-2.png" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
             <div class="gallery-item"><img src="images/scoba-nm/chertezh.png" alt="Чертеж" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
         </div>
         <div class="modal-nav" id="modalNav">
             <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
-            <button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>
-            <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
-            <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
-            <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
-            <button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>
+            <button data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
+            <button data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
+            <button data-slide="3" onclick="scrollToSlide(3)">Чертёж</button>
         </div>
     </div>
 </div>
