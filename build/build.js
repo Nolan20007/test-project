@@ -20,15 +20,17 @@ const PAGES = [
   ]},
   { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
   { html: 'price-list.html', tables: [
-      { id: 'nomenclature-ss1',       csv: 'data/ss1-products.csv' },
-      { id: 'nomenclature-ss2',       csv: 'data/ss2-products.csv' },
-      { id: 'nomenclature-tmp-902',   csv: 'data/tmp-902-kruglye.csv' },
-      { id: 'nomenclature-tl-50',     csv: 'data/tl-products.csv' },
-      { id: 'nomenclature-tl-63',     csv: 'data/tl-63-products.csv' },
-      { id: 'nomenclature-ssg1',      csv: 'data/ssg1-products.csv' },
-      { id: 'nomenclature-vdl',       csv: 'data/vdl-products.csv' },
-      { id: 'nomenclature-kl1',       csv: 'data/kl1-products.csv' },
-      { id: 'nomenclature-scoba-nm',  csv: 'data/scoba-nm-products.csv' }
+      { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
+      { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
+      { id: 'nomenclature-tmp-902-kruglye',       csv: 'data/tmp-902-kruglye.csv' },
+      { id: 'nomenclature-tmp-902-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
+      { id: 'nomenclature-tmp-902-perepadnye',    csv: 'data/tmp-902-perepadnye.csv' },
+      { id: 'nomenclature-tl-50',                 csv: 'data/tl-products.csv' },
+      { id: 'nomenclature-tl-63',                 csv: 'data/tl-63-products.csv' },
+      { id: 'nomenclature-ssg1',                  csv: 'data/ssg1-products.csv' },
+      { id: 'nomenclature-vdl',                   csv: 'data/vdl-products.csv' },
+      { id: 'nomenclature-kl1',                   csv: 'data/kl1-products.csv' },
+      { id: 'nomenclature-scoba-nm',              csv: 'data/scoba-nm-products.csv' }
   ]},
 ];
 
@@ -55,7 +57,6 @@ const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
 
-// Порог для кнопки «Показать все»: >11 строк → показываем 10 + кнопку
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
@@ -115,9 +116,6 @@ function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
 
-// ===== Таблица =====
-// enableCollapse: true → для прайса (>11 строк показывает 10 + кнопка)
-//                 false → все строки видны (для страниц товаров)
 function buildTable(products, enableCollapse) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
 
