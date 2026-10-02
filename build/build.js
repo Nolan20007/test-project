@@ -18,6 +18,8 @@ const PAGES = [
       { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
   ]},
+  // ===== Новая страница: Скобы ходовые ТПР 901-09-11.84 =====
+  { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
 ];
 
 const FEED_SOURCES = [
@@ -31,6 +33,8 @@ const FEED_SOURCES = [
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
+  // ===== Новая группа: Скобы ходовые ТПР 901-09-11.84 =====
+  { csv: 'data/scoba-nm-products.csv',        page: 'skoba-mn.html',        bigImage: 'images/scoba-nm/vid-1.png', limit: 20, typePrefix: 'Скоба ходовая' },
 ];
 
 const M_START = '<!-- NOMENCLATURE_START -->';
@@ -42,63 +46,15 @@ const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
 
-// ===== Единые шаблоны NAV и FOOTER =====
-const NAV_TEMPLATE = `<nav class="nav">
-    <div class="container">
-        <a href="index.html#catalog">Каталог</a>
-        <a href="index.html#advantages">Преимущества</a>
-        <a href="index.html#articles">Полезные статьи</a>
-        <a href="dostavka-i-oplata.html">Доставка и оплата</a>
-        <a href="o-kompanii.html">О компании</a>
-        <a href="index.html#contacts">Контакты и Заказ</a>
-        <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
-    </div>
-</nav>`;
-
-const FOOTER_TEMPLATE = `<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Контакты</h4>
-                <a href="tel:+79655559966">📞 +7 (965) 555-99-66</a>
-                <a href="mailto:stremyanki-dlya-kolodcev@mail.ru">✉️ stremyanki-dlya-kolodcev@mail.ru</a>
-                <p>📍 г. Пермь, ул. Василия Васильева, д. 33</p>
-            </div>
-            <div class="footer-section">
-                <h4>Время работы</h4>
-                <p>Пн-Пт: 9:00-18:00</p>
-                <p>Сб: 10:00-15:00</p>
-                <p>Вс: выходной</p>
-            </div>
-            <div class="footer-section">
-                <h4>Продукция</h4>
-                <a href="ss1.html">Стремянки ТПР 901-09-11.84</a>
-                <a href="ss2.html">Стремянки ТПР 902-09-22.84</a>
-                <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
-                <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
-                <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
-                <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
-                <a href="ssg1.html">Пожарные стремянки СГ</a>
-            </div>
-            <div class="footer-section">
-                <h4>Полезные материалы</h4>
-                <a href="kak-vybrat-stremyanku.html">Как выбрать стремянку</a>
-                <a href="montazh-stremyanok-v-kolodcy.html">Монтаж стремянок</a>
-                <a href="gost-trebovaniya-k-lestnicam.html">ГОСТ требования</a>
-                <a href="dostavka-i-oplata.html">Доставка и оплата</a>
-                <a href="o-kompanii.html">О компании</a>
-                <a href="politika-konfidencialnosti.html">Политика конфиденциальности</a>
-                <a href="publichnaya-oferta.html">Публичная оферта</a>
-                <a href="sitemap.xml">Карта сайта</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
-        </div>
-    </div>
-</footer>`;
+// ===== Чтение NAV и FOOTER из includes/ =====
+function loadInclude(name) {
+  const filePath = path.resolve(__dirname, '..', 'includes', name);
+  if (!fs.existsSync(filePath)) {
+    console.warn(`  ⚠ Не найден includes/${name} — пропускаю замену.`);
+    return null;
+  }
+  return fs.readFileSync(filePath, 'utf8').trim();
+}
 
 // Универсальная замена между маркерами (простая, через indexOf)
 function replaceBetweenMarkers(html, startMarker, endMarker, newContent) {
@@ -340,28 +296,33 @@ const ALL_HTML_FILES = [
   'ssg1.html',
   'tmp-902.html',
   'vl-2-l-19-vodoprovodnaya.html',
+  // ===== Новая страница =====
+  'skoba-mn.html',
 ];
 
-function processMarkers(file) {
+function processMarkers(file, navContent, footerContent) {
   const filePath = path.resolve(__dirname, '..', file);
   if (!fs.existsSync(filePath)) return false;
 
   let html = fs.readFileSync(filePath, 'utf8');
-  const original = html;
   let changed = false;
 
   // NAV
-  const navResult = replaceBetweenMarkers(html, NAV_START, NAV_END, NAV_TEMPLATE);
-  if (navResult.replaced) {
-    html = navResult.html;
-    changed = true;
+  if (navContent) {
+    const navResult = replaceBetweenMarkers(html, NAV_START, NAV_END, navContent);
+    if (navResult.replaced) {
+      html = navResult.html;
+      changed = true;
+    }
   }
 
   // FOOTER
-  const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, FOOTER_TEMPLATE);
-  if (footerResult.replaced) {
-    html = footerResult.html;
-    changed = true;
+  if (footerContent) {
+    const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, footerContent);
+    if (footerResult.replaced) {
+      html = footerResult.html;
+      changed = true;
+    }
   }
 
   if (changed) {
@@ -375,10 +336,17 @@ function processMarkers(file) {
 function build() {
   let changed = 0;
 
+  // === Читаем includes/ ===
+  console.log('Чтение includes/...');
+  const navContent = loadInclude('nav.html');
+  const footerContent = loadInclude('footer.html');
+  if (navContent)    console.log('  ✓ includes/nav.html');
+  if (footerContent) console.log('  ✓ includes/footer.html');
+
   // === NAV/FOOTER для ВСЕХ страниц ===
-  console.log('Обработка NAV и FOOTER...');
+  console.log('\nОбработка NAV и FOOTER...');
   ALL_HTML_FILES.forEach(file => {
-    if (processMarkers(file)) changed++;
+    if (processMarkers(file, navContent, footerContent)) changed++;
   });
 
   // === NOMENCLATURE для страниц товаров ===
