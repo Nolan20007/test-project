@@ -55,6 +55,10 @@ const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
 
+// Порог для кнопки «Показать все»: >11 строк → показываем 10 + кнопку
+const COLLAPSE_THRESHOLD = 11;
+const COLLAPSE_SHOW = 10;
+
 function loadInclude(name) {
   const filePath = path.resolve(__dirname, '..', 'includes', name);
   if (!fs.existsSync(filePath)) {
@@ -111,19 +115,30 @@ function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
 
-function buildTable(products) {
+// ===== Таблица =====
+// enableCollapse: true → для прайса (>11 строк показывает 10 + кнопка)
+//                 false → все строки видны (для страниц товаров)
+function buildTable(products, enableCollapse) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
+
+  const total = products.length;
+  const needCollapse = enableCollapse && total > COLLAPSE_THRESHOLD;
+
   let html = `<table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody>`;
-  products.forEach(p => {
+
+  products.forEach((p, idx) => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
           weight = esc(p.weight), unit = esc(p.unit), available = esc(p.available),
           img = esc(p.image || 'images/default-product.png'),
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
-    html += `<tr id="${anchor}">
+
+    const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
+
+    html += `<tr id="${anchor}"${hiddenStyle}>
       <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>${name}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
       <td>от ${fmtPrice(price)} руб.</td><td>${unit}</td>
@@ -138,7 +153,20 @@ function buildTable(products) {
             data-item-length="${length}" data-item-weight="${weight}">🛒</button></td>
     </tr>`;
   });
-  return html + '</tbody></table>';
+
+  html += `</tbody></table>`;
+
+  if (needCollapse) {
+    const uid = 'tbl-' + Math.random().toString(36).slice(2, 8);
+    html = html.replace('<table class="nomenclature-table"', `<table id="${uid}" class="nomenclature-table"`);
+    html += `<div class="table-toggle-wrap">
+      <button type="button" class="table-toggle-btn" data-target="${uid}" data-total="${total}" onclick="toggleTableRows(this)">
+        Показать все (${total}) ▾
+      </button>
+    </div>`;
+  }
+
+  return html;
 }
 
 function replaceContainer(html, containerId, innerHtml) {
@@ -357,33 +385,28 @@ function build() {
     let changedThisPage = false;
 
     const allProducts = [];
+    const isPriceList = page.html === 'price-list.html';
+
     page.tables.forEach(t => {
       const csvPath = path.resolve(__dirname, '..', t.csv);
       if (!fs.existsSync(csvPath)) { console.warn(`  ⚠ Нет CSV: ${t.csv}`); return; }
       const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
       const products = parseCSV(csv);
 
-      if (page.html === 'price-list.html') {
-        const newHtml = replaceContainer(html, t.id, buildTable(products));
-        if (newHtml !== html) {
-          html = newHtml; changedThisPage = true;
-          console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
-        } else {
-          console.log(`  · ${page.html} → #${t.id} без изменений`);
-        }
-      } else {
+      if (!isPriceList) {
         allProducts.push(...products);
-        const newHtml = replaceContainer(html, t.id, buildTable(products));
-        if (newHtml !== html) {
-          html = newHtml; changedThisPage = true;
-          console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
-        } else {
-          console.log(`  · ${page.html} → #${t.id} без изменений`);
-        }
+      }
+
+      const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList));
+      if (newHtml !== html) {
+        html = newHtml; changedThisPage = true;
+        console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
+      } else {
+        console.log(`  · ${page.html} → #${t.id} без изменений`);
       }
     });
 
-    if (page.html !== 'price-list.html') {
+    if (!isPriceList) {
       const cleanedHtml = stripOldProductJsonLd(html);
       if (cleanedHtml !== html) {
         html = cleanedHtml; changedThisPage = true;
