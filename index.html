@@ -11,8 +11,8 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <title>Лестницы и стремянки для колодцев | Производство и продажа</title>
-    <meta name="description" content="✅ Лестницы и стремянки для колодцев: ТПР 901, ТПР 902, КЛ-1, ВЛ-2, Л-16, СГ. ГОСТ. Доставка по России. ☎ +7 (965) 555-99-66">
-    <meta name="keywords" content="лестницы для колодцев, стремянки для колодцев, купить лестницу для колодца, производство лестниц, лестницы колодезные">
+    <meta name="description" content="✅ Лестницы и стремянки для колодцев: ТПР 901, ТПР 902, КЛ-1, ВЛ-2, Л-16, СГ, скобы ходовые ТПР 901-09-11.84. ГОСТ. Доставка по России. ☎ +7 (965) 555-99-66">
+    <meta name="keywords" content="лестницы для колодцев, стремянки для колодцев, купить лестницу для колодца, производство лестниц, лестницы колодезные, скобы ходовые ТПР 901-09-11.84">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/" />
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -166,6 +166,28 @@
             margin-right: 4px;
         }
         .product-price .price-value { color: var(--primary-color); }
+
+        /* Заглушка для изображений «в работе» */
+        .image-placeholder {
+            background: #f0f4f8;
+            position: relative;
+        }
+        .image-placeholder::before {
+            content: "Изображение в работе";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a8a9a;
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-align: center;
+            padding: 16px;
+        }
+        .image-placeholder img { display: none !important; }
 
         .cta-button {
             display: block;
@@ -453,6 +475,8 @@
             align-items: center;
             height: 85vh;
             max-height: 900px;
+            background: #f0f4f8;
+            position: relative;
         }
         .gallery-item img {
             max-width: 100%;
@@ -768,6 +792,36 @@
                 </div>
             </div>
 
+            <!-- ===== 8-я карточка: Скобы ходовые ТПР 901-09-11.84 ===== -->
+            <div class="product-card">
+                <div class="product-image-wrapper"
+                    data-title="Скобы ходовые ТПР 901-09-11.84"
+                    data-vid-1="images/scoba-nm/vid-1.png"
+                    data-vid-2="images/scoba-nm/vid-2.png"
+                    data-vid-3="images/scoba-nm/vid-3.png"
+                    data-foto-1="images/scoba-nm/foto-1.png"
+                    data-foto-2="images/scoba-nm/foto-2.png"
+                    data-chertezh="images/scoba-nm/chertezh.png">
+                    <img src="images/scoba-nm/vid-1.png" alt="Скоба ходовая МН-1 ТПР 901-09-11.84" class="product-image"
+                         onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Скобы ходовые ТПР 901-09-11.84</h3>
+                    <div class="product-description-block">
+                        <p><strong>Назначение:</strong> Повышение устойчивости колодцев</p>
+                        <p><strong>Маркировки:</strong> МН-1</p>
+                        <p><strong>Длина:</strong> 370 мм (развёртка 850 мм)</p>
+                        <p><strong>Материал:</strong> Сталь Ст3, 8 мм</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-label">Цена от:</span>
+                        <span class="price-value">530 ₽</span>
+                    </div>
+                    <a href="skoba-mn.html" class="cta-button">Перейти к выбору</a>
+                </div>
+            </div>
+
+            <!-- ===== 9-я карточка: Нестандартные изделия ===== -->
             <div class="product-card">
                 <div class="product-image-wrapper-static">
                     <img src="images/nestandart/nestandart-mini.png" alt="Изготовление нестандартных лестниц и металлоконструкций" class="product-image">
@@ -926,6 +980,7 @@
                 <a href="ss1.html">Стремянки ТПР 901-09-11.84</a>
                 <a href="ss2.html">Стремянки ТПР 902-09-22.84</a>
                 <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
+                <a href="skoba-mn.html">Скобы ходовые ТПР 901-09-11.84</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
@@ -970,12 +1025,12 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: var(--dark-color); padding: 12px 0; margin: 0; font-size: 1.1em;"></h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><img id="modalImg1" src="" alt="Вид 1"></div>
-            <div class="gallery-item"><img id="modalImg2" src="" alt="Вид 2"></div>
-            <div class="gallery-item"><img id="modalImg3" src="" alt="Вид 3"></div>
-            <div class="gallery-item"><img id="modalImg4" src="" alt="Фото 1"></div>
-            <div class="gallery-item"><img id="modalImg5" src="" alt="Фото 2"></div>
-            <div class="gallery-item"><img id="modalImg6" src="" alt="Чертёж"></div>
+            <div class="gallery-item"><img id="modalImg1" src="" alt="Вид 1" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
+            <div class="gallery-item"><img id="modalImg2" src="" alt="Вид 2" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
+            <div class="gallery-item"><img id="modalImg3" src="" alt="Вид 3" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
+            <div class="gallery-item"><img id="modalImg4" src="" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
+            <div class="gallery-item"><img id="modalImg5" src="" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
+            <div class="gallery-item"><img id="modalImg6" src="" alt="Чертёж" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></div>
         </div>
         <div class="gallery-nav" id="galleryNav"></div>
     </div>
@@ -1051,6 +1106,15 @@
             modalImgs[4].src = foto2;
             modalImgs[5].src = chertezh;
 
+            modalImgs.forEach(im => {
+                im.style.display = '';
+                im.parentElement.classList.remove('image-placeholder');
+                im.onerror = function() {
+                    this.style.display = 'none';
+                    this.parentElement.classList.add('image-placeholder');
+                };
+            });
+
             galleryNav.innerHTML = ''
                 + '<button data-slide="0" onclick="scrollToSlide(0)">Вид 1</button>'
                 + '<button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>'
@@ -1067,6 +1131,15 @@
             modalImgs[3].src = '';
             modalImgs[4].src = '';
             modalImgs[5].src = '';
+
+            modalImgs.forEach(im => {
+                im.style.display = '';
+                im.parentElement.classList.remove('image-placeholder');
+                im.onerror = function() {
+                    this.style.display = 'none';
+                    this.parentElement.classList.add('image-placeholder');
+                };
+            });
 
             galleryNav.innerHTML = ''
                 + '<button data-slide="0" onclick="scrollToSlide(0)">Фото</button>'

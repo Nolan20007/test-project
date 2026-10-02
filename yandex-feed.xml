@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-02 12:21">
+<yml_catalog date="2026-10-02 12:00">
   <shop>
     <name>Производство лестниц и стремянок для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -947,6 +947,21 @@
       <model>TS-63-2.9</model>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.9). Длина 290 см, ширина 63 см, масса 40.1 кг.</description>
     </offer>
+
+    <!-- ===== Скобы ходовые ТПР 901-09-11.84 ===== -->
+    <offer id="MN-1" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoba-mn.html#item-MN-1</url>
+      <price>530</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/scoba-nm/vid-1.png</picture>
+      <name>Скобы ходовые ТПР 901-09-11.84 (МН-1)</name>
+      <vendor>Производство лестниц для колодцев</vendor>
+      <typePrefix>Скоба ходовая</typePrefix>
+      <model>MN-1</model>
+      <description>Скобы ходовые ТПР 901-09-11.84 (МН-1). Длина 370 мм, ширина 240 мм, масса 1.36 кг. Сталь Ст3, 8 мм. Повышают устойчивость колодцев к сейсмической активности.</description>
+    </offer>
+
     <offer id="KL-1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1</url>
       <price>3570</price>
@@ -1558,18 +1573,6 @@
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.5.КЖ.И.15</model>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.5 - КЖ.И.15). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
-    </offer>
-    <offer id="MN-1" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/skoba-mn.html#item-MN-1</url>
-      <price>530</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/scoba-nm/vid-1.png</picture>
-      <name>Скоба ходовая МН-1 ТПР 901-09-11.84</name>
-      <vendor>Производство лестниц для колодцев</vendor>
-      <typePrefix>Скоба ходовая</typePrefix>
-      <model>MN-1</model>
-      <description>Скоба ходовая МН-1 ТПР 901-09-11.84. Длина 370 см, ширина 240 см, масса 1.36 кг.</description>
     </offer>
     </offers>
   </shop>
