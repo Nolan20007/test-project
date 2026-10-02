@@ -19,17 +19,16 @@ const PAGES = [
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
   ]},
   { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
-  // ===== Прайс-лист: 9 таблиц по категориям =====
   { html: 'price-list.html', tables: [
-      { id: 'nomenclature-ss1',       csv: 'data/ss1-products.csv',            page: 'ss1.html' },
-      { id: 'nomenclature-ss2',       csv: 'data/ss2-products.csv',            page: 'ss2.html' },
-      { id: 'nomenclature-tmp-902',   csv: 'data/tmp-902-kruglye.csv',         page: 'tmp-902.html' },
-      { id: 'nomenclature-tl-50',     csv: 'data/tl-products.csv',             page: 'l-16-dlya-teplovyh-setej.html' },
-      { id: 'nomenclature-tl-63',     csv: 'data/tl-63-products.csv',          page: 'l-16-dlya-teplovyh-setej.html' },
-      { id: 'nomenclature-ssg1',      csv: 'data/ssg1-products.csv',           page: 'ssg1.html' },
-      { id: 'nomenclature-vdl',       csv: 'data/vdl-products.csv',            page: 'vl-2-l-19-vodoprovodnaya.html' },
-      { id: 'nomenclature-kl1',       csv: 'data/kl1-products.csv',            page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html' },
-      { id: 'nomenclature-scoba-nm',  csv: 'data/scoba-nm-products.csv',       page: 'skoba-mn.html' }
+      { id: 'nomenclature-ss1',       csv: 'data/ss1-products.csv' },
+      { id: 'nomenclature-ss2',       csv: 'data/ss2-products.csv' },
+      { id: 'nomenclature-tmp-902',   csv: 'data/tmp-902-kruglye.csv' },
+      { id: 'nomenclature-tl-50',     csv: 'data/tl-products.csv' },
+      { id: 'nomenclature-tl-63',     csv: 'data/tl-63-products.csv' },
+      { id: 'nomenclature-ssg1',      csv: 'data/ssg1-products.csv' },
+      { id: 'nomenclature-vdl',       csv: 'data/vdl-products.csv' },
+      { id: 'nomenclature-kl1',       csv: 'data/kl1-products.csv' },
+      { id: 'nomenclature-scoba-nm',  csv: 'data/scoba-nm-products.csv' }
   ]},
 ];
 
@@ -112,21 +111,18 @@ function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
 
-function buildTable(products, targetPage) {
+function buildTable(products) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
   let html = `<table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
-    <th>Количество</th><th>Корзина</th><th>Подробнее</th></tr></thead><tbody>`;
+    <th>Количество</th><th>Корзина</th></tr></thead><tbody>`;
   products.forEach(p => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
           weight = esc(p.weight), unit = esc(p.unit), available = esc(p.available),
           img = esc(p.image || 'images/default-product.png'),
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
-    const detailLink = targetPage
-      ? `<a href="${esc(targetPage)}#${anchor}">Подробнее →</a>`
-      : '';
     html += `<tr id="${anchor}">
       <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>${name}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
@@ -140,7 +136,6 @@ function buildTable(products, targetPage) {
       <td><button type="button" class="cart-button"
             data-item-id="${id}" data-item-name="${name}"
             data-item-length="${length}" data-item-weight="${weight}">🛒</button></td>
-      <td class="link-cell">${detailLink}</td>
     </tr>`;
   });
   return html + '</tbody></table>';
@@ -369,7 +364,7 @@ function build() {
       const products = parseCSV(csv);
 
       if (page.html === 'price-list.html') {
-        const newHtml = replaceContainer(html, t.id, buildTable(products, t.page || null));
+        const newHtml = replaceContainer(html, t.id, buildTable(products));
         if (newHtml !== html) {
           html = newHtml; changedThisPage = true;
           console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
