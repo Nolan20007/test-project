@@ -52,13 +52,6 @@
             font-weight: 600;
         }
         .content-area h2:first-of-type { margin-top: 0; }
-        .content-area h3 {
-            color: #333;
-            margin: 25px 0 12px;
-            font-size: 1.15em;
-            font-weight: 500;
-        }
-        .content-area h3::before { content: "▸ "; color: var(--primary-color); }
         .content-area p { margin: 0 0 15px; line-height: 1.65; }
         .content-area ul { margin: 0 0 20px; padding-left: 25px; }
         .content-area ul li { margin-bottom: 8px; line-height: 1.55; }
@@ -78,19 +71,18 @@
             padding: 26px 30px;
             margin: 20px 0 30px;
         }
-        .album-card__title {
-            font-size: 1.2em;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin: 0 0 16px;
-            line-height: 1.35;
+        .album-card__body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
         }
         .album-card__meta {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 8px 20px;
-            margin: 15px 0;
-            font-size: 0.93em;
+            grid-template-columns: 130px 1fr;
+            gap: 8px 16px;
+            margin: 0;
+            font-size: 0.9em;
             line-height: 1.5;
         }
         .album-card__meta dt {
@@ -102,13 +94,32 @@
             margin: 0;
             font-weight: 500;
         }
+
+        .album-card__toc h4 {
+            color: var(--primary-color);
+            font-size: 1em;
+            font-weight: 600;
+            margin: 0 0 12px;
+        }
+        .album-card__toc ul {
+            list-style: disc;
+            padding-left: 22px;
+            margin: 0;
+        }
+        .album-card__toc li {
+            margin-bottom: 5px;
+            line-height: 1.5;
+            font-size: 0.85em;
+        }
+
         .album-card__actions {
-            margin-top: 20px;
+            margin-top: 26px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f6;
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
         }
-        /* ===== Кнопки ===== */
         .content-area a.album-btn {
             display: inline-block;
             padding: 11px 24px;
@@ -127,29 +138,6 @@
             background: var(--primary-color-hover);
             border-color: var(--primary-color-hover);
             color: #ffffff;
-        }
-
-        /* ===== Оглавление внутри карточки ===== */
-        .album-card__toc {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid #eef2f6;
-        }
-        .album-card__toc h4 {
-            color: var(--primary-color);
-            font-size: 1.05em;
-            font-weight: 600;
-            margin: 0 0 14px;
-        }
-        .album-card__toc ul {
-            list-style: disc;
-            padding-left: 25px;
-            margin: 0;
-        }
-        .album-card__toc li {
-            margin-bottom: 6px;
-            line-height: 1.55;
-            font-size: 0.93em;
         }
 
         .contact-summary {
@@ -187,13 +175,15 @@
             color: #ffffff;
         }
 
+        @media (max-width: 900px) {
+            .album-card__body { grid-template-columns: 1fr; gap: 24px; }
+        }
         @media (max-width: 768px) {
             .content-area { padding: 25px 20px; }
             .content-area h2 { font-size: 1.3em; }
-            .content-area h3 { font-size: 1.05em; }
             .album-card { padding: 20px 18px; }
             .album-card__meta { grid-template-columns: 1fr; gap: 4px; }
-            .album-card__meta dt { font-size: 0.9em; }
+            .album-card__meta dt { font-size: 0.88em; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .content-area a.cta-button,
             .content-area button.cta-button { width: 90%; max-width: 280px; margin: 0; }
@@ -261,68 +251,70 @@
         <h2>Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</h2>
 
         <div class="album-card">
-            <h3 class="album-card__title">901-09-11.84. Альбом V. Строительные изделия</h3>
+            <div class="album-card__body">
 
-            <dl class="album-card__meta">
-                <dt>Обозначение:</dt>
-                <dd>Типовые проектные решения 901-09-11.84</dd>
+                <dl class="album-card__meta">
+                    <dt>Обозначение:</dt>
+                    <dd>Типовые проектные решения 901-09-11.84</dd>
 
-                <dt>Обозначение (англ.):</dt>
-                <dd>901-09-11.84</dd>
+                    <dt>Обозначение (англ.):</dt>
+                    <dd>901-09-11.84</dd>
 
-                <dt>Статус:</dt>
-                <dd>Справочные материалы, МП, ТПР</dd>
+                    <dt>Статус:</dt>
+                    <dd>Справочные материалы, МП, ТПР</dd>
 
-                <dt>Название:</dt>
-                <dd>Альбом V. Строительные изделия</dd>
+                    <dt>Название:</dt>
+                    <dd>Альбом V. Строительные изделия</dd>
 
-                <dt>Дата добавления в базу:</dt>
-                <dd>01.09.2013</dd>
+                    <dt>Дата добавления в базу:</dt>
+                    <dd>01.09.2013</dd>
 
-                <dt>Дата актуализации:</dt>
-                <dd>01.01.2021</dd>
+                    <dt>Дата актуализации:</dt>
+                    <dd>01.01.2021</dd>
 
-                <dt>Дата введения:</dt>
-                <dd>20.05.1983</dd>
+                    <dt>Дата введения:</dt>
+                    <dd>20.05.1983</dd>
 
-                <dt>Разработан:</dt>
-                <dd>ЦНИИЭП инженерного оборудования Госгражданстроя</dd>
+                    <dt>Разработан:</dt>
+                    <dd>ЦНИИЭП инженерного оборудования Госгражданстроя</dd>
 
-                <dt>Утверждён:</dt>
-                <dd>20.05.1983 Госгражданстрой (Gosgrazhdanstroy 146)</dd>
+                    <dt>Утверждён:</dt>
+                    <dd>20.05.1983 Госгражданстрой (Gosgrazhdanstroy 146)</dd>
 
-                <dt>Издан:</dt>
-                <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1988 г.)</dd>
-            </dl>
+                    <dt>Издан:</dt>
+                    <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1988 г.)</dd>
+                </dl>
+
+                <div class="album-card__toc">
+                    <h4>Оглавление альбома</h4>
+                    <ul>
+                        <li>901-09-11.84 КЖИ.МН1 Скоба ходовая</li>
+                        <li>901-09-11.84 КЖИ.С1СБ Стремянка. Сборочный чертеж</li>
+                        <li>901-09-11.84 КЖИ.С1 Стремянка</li>
+                        <li>901-09-11.84 КЖИ.П1 Плита днища</li>
+                        <li>901-09-11.84 КЖИ.Са1 Сетка арматурная</li>
+                        <li>901-09-11.84 КЖИ.П4 Плита днища</li>
+                        <li>901-09-11.84 КЖИ.П4СБ Плита днища. Сборочный чертеж</li>
+                        <li>901-09-11.84 КЖИ.Са7СБ Сетка арматурная. Сборочный чертеж</li>
+                        <li>901-09-11.84 КЖИ.Са7 Сетка арматурная</li>
+                        <li>901-09-11.84 КЖИ.П9 Плита днища</li>
+                        <li>901-09-11.84 КЖИ.Са17 Сетка арматурная</li>
+                        <li>901-09-11.84 КЖИ.П13 Плита днища</li>
+                        <li>901-09-11.84 КЖИ.Са25 Сетка арматурная</li>
+                        <li>901-09-11.84 КЖИ.П16 Плита днища</li>
+                        <li>901-09-11.84 КЖИ.Са31 Сетка арматурная</li>
+                        <li>901-09-11.84 КЖИ.П20 Плита перекрытия</li>
+                        <li>901-09-11.84 КЖИ.П23 Плита перекрытия</li>
+                        <li>901-09-11.84 КЖИ.П26 Плита перекрытия</li>
+                        <li>901-09-11.84 КЖИ.П29 Плита перекрытия</li>
+                    </ul>
+                </div>
+
+            </div>
 
             <div class="album-card__actions">
                 <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF в новой вкладке</a>
                 <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
-            </div>
-
-            <div class="album-card__toc">
-                <h4>Оглавление альбома</h4>
-                <ul>
-                    <li>901-09-11.84 КЖИ.МН1 Скоба ходовая</li>
-                    <li>901-09-11.84 КЖИ.С1СБ Стремянка. Сборочный чертеж</li>
-                    <li>901-09-11.84 КЖИ.С1 Стремянка</li>
-                    <li>901-09-11.84 КЖИ.П1 Плита днища</li>
-                    <li>901-09-11.84 КЖИ.Са1 Сетка арматурная</li>
-                    <li>901-09-11.84 КЖИ.П4 Плита днища</li>
-                    <li>901-09-11.84 КЖИ.П4СБ Плита днища. Сборочный чертеж</li>
-                    <li>901-09-11.84 КЖИ.Са7СБ Сетка арматурная. Сборочный чертеж</li>
-                    <li>901-09-11.84 КЖИ.Са7 Сетка арматурная</li>
-                    <li>901-09-11.84 КЖИ.П9 Плита днища</li>
-                    <li>901-09-11.84 КЖИ.Са17 Сетка арматурная</li>
-                    <li>901-09-11.84 КЖИ.П13 Плита днища</li>
-                    <li>901-09-11.84 КЖИ.Са25 Сетка арматурная</li>
-                    <li>901-09-11.84 КЖИ.П16 Плита днища</li>
-                    <li>901-09-11.84 КЖИ.Са31 Сетка арматурная</li>
-                    <li>901-09-11.84 КЖИ.П20 Плита перекрытия</li>
-                    <li>901-09-11.84 КЖИ.П23 Плита перекрытия</li>
-                    <li>901-09-11.84 КЖИ.П26 Плита перекрытия</li>
-                    <li>901-09-11.84 КЖИ.П29 Плита перекрытия</li>
-                </ul>
             </div>
         </div>
 
