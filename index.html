@@ -47,7 +47,6 @@
     </script>
 
     <style>
-        /* === A11Y: skip-link === */
         .skip-link {
             position: absolute;
             left: -9999px;
@@ -167,7 +166,6 @@
         }
         .product-price .price-value { color: var(--primary-color); }
 
-        /* Заглушка для изображений «в работе» */
         .image-placeholder {
             background: #f0f4f8;
             position: relative;
@@ -451,8 +449,6 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-
-            /* a11y:button-reset */
             background: transparent;
             border: none;
             padding: 0;
@@ -566,7 +562,6 @@
 </head>
 <body>
 
-<!-- === A11Y: skip-link === -->
 <a href="#catalog" class="skip-link">Перейти к содержимому</a>
 
 <script type="application/ld+json">
@@ -638,7 +633,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->1 950 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->1 950 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ss1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -692,7 +687,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="tmp-902.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -719,7 +714,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="l-16-dlya-teplovyh-setej.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -742,7 +737,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ssg1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -765,7 +760,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:vdl-products.csv -->2 465 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:vdl-products.csv -->2 465 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="vl-2-l-19-vodoprovodnaya.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -788,7 +783,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv -->3 570 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv -->3 570 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -799,8 +794,6 @@
                 <div class="product-image-wrapper"
                     data-title="Скобы ходовые ТПР 901-09-11.84"
                     data-vid-1="images/scoba-nm/vid-1.png"
-                    data-vid-2="images/scoba-nm/vid-2.png"
-                    data-vid-3="images/scoba-nm/vid-3.png"
                     data-foto-1="images/scoba-nm/foto-1.png"
                     data-foto-2="images/scoba-nm/foto-2.png"
                     data-chertezh="images/scoba-nm/chertezh.png">
@@ -817,7 +810,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value">530 ₽</span>
+                        <span class="price-value"><!-- PRICE_START:min:scoba-nm-products.csv -->430 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="skoba-mn.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -1004,6 +997,21 @@
             </div>
         </div>
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "ИП Гневашева Кристина Дмитриевна",
+          "alternateName": "Производство лестниц и стремянок для колодцев",
+          "url": "https://stremyanki-dlya-kolodcev.ru/",
+          "logo": "https://stremyanki-dlya-kolodcev.ru/images/logo.png",
+          "taxID": "591791797420",
+          "vatID": "321595800089601",
+          "contactPoint": {"@type": "ContactPoint","telephone": "+79655559966","contactType": "customer service","areaServed": "RU","availableLanguage": "Russian"},
+          "sameAs": []
+        }
+        </script>
+
         <div class="footer-bottom">
             &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
         </div>
@@ -1054,7 +1062,6 @@
 
     const modal = document.getElementById("productModal");
 
-    /* a11y:focus-trap */
     const modalA11y = initModalA11y(modal, {
         backgroundSelectors: ['header', 'nav', 'main', 'footer'],
         initialFocus: '.close-btn'
@@ -1089,56 +1096,44 @@
         const img = wrapper.getAttribute('data-image');
         const draw = wrapper.getAttribute('data-drawing');
 
-        if (vid1 && vid2 && vid3 && foto1 && foto2 && chertezh) {
-            modalImgs[0].src = vid1;
-            modalImgs[1].src = vid2;
-            modalImgs[2].src = vid3;
-            modalImgs[3].src = foto1;
-            modalImgs[4].src = foto2;
-            modalImgs[5].src = chertezh;
+        const slides = [];
+        if (vid1) slides.push({ src: vid1, label: 'Вид 1' });
+        if (vid2) slides.push({ src: vid2, label: 'Вид 2' });
+        if (vid3) slides.push({ src: vid3, label: 'Вид 3' });
+        if (foto1) slides.push({ src: foto1, label: 'Фото 1' });
+        if (foto2) slides.push({ src: foto2, label: 'Фото 2' });
+        if (chertezh) slides.push({ src: chertezh, label: 'Чертёж' });
+        if (img) slides.push({ src: img, label: 'Фото' });
+        if (draw) slides.push({ src: draw, label: 'Чертёж' });
 
-            modalImgs.forEach(im => {
+        modalImgs.forEach((im, i) => {
+            if (slides[i]) {
+                im.src = slides[i].src;
+                im.alt = slides[i].label;
                 im.style.display = '';
                 im.parentElement.classList.remove('image-placeholder');
                 im.onerror = function() {
                     this.style.display = 'none';
                     this.parentElement.classList.add('image-placeholder');
                 };
-            });
-
-            galleryNav.innerHTML = ''
-                + '<button data-slide="0" onclick="scrollToSlide(0)">Вид 1</button>'
-                + '<button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>'
-                + '<button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>'
-                + '<button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>'
-                + '<button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>'
-                + '<button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>';
-
-            totalSlides = 6;
-        } else {
-            modalImgs[0].src = img || '';
-            modalImgs[1].src = draw || '';
-            modalImgs[2].src = '';
-            modalImgs[3].src = '';
-            modalImgs[4].src = '';
-            modalImgs[5].src = '';
-
-            modalImgs.forEach(im => {
-                im.style.display = '';
+            } else {
+                im.src = '';
+                im.alt = '';
+                im.style.display = 'none';
                 im.parentElement.classList.remove('image-placeholder');
-                im.onerror = function() {
-                    this.style.display = 'none';
-                    this.parentElement.classList.add('image-placeholder');
-                };
-            });
+            }
+        });
 
-            galleryNav.innerHTML = ''
-                + '<button data-slide="0" onclick="scrollToSlide(0)">Фото</button>'
-                + '<button data-slide="1" onclick="scrollToSlide(1)">Чертёж</button>';
+        const galleryItems = galleryContainer.querySelectorAll('.gallery-item');
+        galleryItems.forEach((item, i) => {
+            item.style.display = slides[i] ? '' : 'none';
+        });
 
-            totalSlides = 2;
-        }
+        galleryNav.innerHTML = slides.map((s, i) =>
+            `<button data-slide="${i}" onclick="scrollToSlide(${i})">${s.label}</button>`
+        ).join('');
 
+        totalSlides = slides.length;
         currentSlide = 0;
         modal.style.display = "block";
         modalA11y.open();
@@ -1194,7 +1189,6 @@
     window.closeModal = closeModal;
     window.scrollToSlide = scrollToSlide;
 
-    // ==== ОБРАБОТЧИК #mainContactForm ====
     document.getElementById('mainContactForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -1256,7 +1250,6 @@
         submitBtn.disabled = false;
     });
 
-    // ==== Авто-сброс aria-invalid при вводе ====
     bindAutoClearInvalid(document.getElementById('mainContactForm'));
 </script>
 
