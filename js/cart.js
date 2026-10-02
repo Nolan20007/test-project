@@ -223,6 +223,7 @@ function initializeCartButtons() {
 document.addEventListener('DOMContentLoaded', function () {
     const initialCart = loadCart();
     updateCartCounters(initialCart);
+    initializeCartButtons();   // <-- ЭТА СТРОКА ДОБАВЛЕНА
 });
 
 window.addEventListener('storage', function () {
