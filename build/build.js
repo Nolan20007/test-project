@@ -325,6 +325,7 @@ const ALL_HTML_FILES = [
   'ss1.html',
   'ss2.html',
   'ssg1.html',
+  'tipovye-proekty.html',
   'tmp-902.html',
   'vl-2-l-19-vodoprovodnaya.html',
   'skoba-mn.html',
