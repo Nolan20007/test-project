@@ -126,7 +126,6 @@ function replacePrices(html) {
   let result = html;
   let replaced = false;
 
-  // Ищем все блоки: <!-- PRICE_START:min:file1.csv,file2.csv --> ... <!-- PRICE_END -->
   const regex = /<!--\s*PRICE_START:min:([^\s>]+?)\s*-->[\s\S]*?<!--\s*PRICE_END\s*-->/g;
 
   result = result.replace(regex, (match, filesStr) => {
@@ -190,7 +189,7 @@ function buildTable(products, enableCollapse) {
       </div></td>
       <td><button type="button" class="cart-button"
             data-item-id="${id}" data-item-name="${name}"
-            data-item-length="${length}" data-item-weight="${weight}">🛒</button></td>
+            data-item-length="${length}" data-item-weight="${weight}">В корзину</button></td>
     </tr>`;
   });
 
@@ -390,7 +389,6 @@ function processMarkers(file, navContent, footerContent) {
     if (footerResult.replaced) { html = footerResult.html; changed = true; }
   }
 
-  // ===== Подстановка цен =====
   const priceResult = replacePrices(html);
   if (priceResult.replaced) {
     html = priceResult.html;
