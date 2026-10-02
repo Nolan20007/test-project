@@ -308,10 +308,15 @@ textarea[aria-invalid="true"]:focus {
     cursor: pointer;
     transition: background-color 0.2s;
     white-space: nowrap;
+    outline: none;
 }
 .cart-button:hover {
     background-color: var(--primary-color-hover);
 }
 .cart-button:active {
     transform: translateY(1px);
+}
+.cart-button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
