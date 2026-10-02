@@ -57,6 +57,9 @@ const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
 
+const PRICE_START_RE = /<!--\s*PRICE_START:min:([^>]+?)\s*-->/;
+const PRICE_END = '<!-- PRICE_END -->';
+
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
@@ -116,6 +119,45 @@ function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
 
+// ===== Подстановка минимальных цен по маркерам PRICE_START/PRICE_END =====
+function replacePrices(html) {
+  if (!html.includes('PRICE_START')) return { html, replaced: false };
+
+  let result = html;
+  let replaced = false;
+
+  // Ищем все блоки: <!-- PRICE_START:min:file1.csv,file2.csv --> ... <!-- PRICE_END -->
+  const regex = /<!--\s*PRICE_START:min:([^\s>]+?)\s*-->[\s\S]*?<!--\s*PRICE_END\s*-->/g;
+
+  result = result.replace(regex, (match, filesStr) => {
+    const csvFiles = filesStr.split(',').map(s => s.trim()).filter(Boolean);
+    let minPrice = Infinity;
+
+    csvFiles.forEach(csvRelPath => {
+      const csvPath = path.resolve(__dirname, '..', 'data', csvRelPath.trim());
+      if (!fs.existsSync(csvPath)) {
+        console.warn(`  ⚠ PRICE: CSV не найден — ${csvRelPath}`);
+        return;
+      }
+      const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
+      const products = parseCSV(csv);
+      products.forEach(p => {
+        const price = parseFloat(p.price) || 0;
+        if (price > 0 && price < minPrice) minPrice = price;
+      });
+    });
+
+    if (minPrice === Infinity) return match;
+
+    const formatted = fmtPrice(minPrice) + ' ₽';
+    replaced = true;
+    return `<!-- PRICE_START:min:${filesStr} -->${formatted}<!-- PRICE_END -->`;
+  });
+
+  return { html: result, replaced };
+}
+
+// ===== Таблица =====
 function buildTable(products, enableCollapse) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
 
@@ -340,23 +382,25 @@ function processMarkers(file, navContent, footerContent) {
 
   if (navContent) {
     const navResult = replaceBetweenMarkers(html, NAV_START, NAV_END, navContent);
-    if (navResult.replaced) {
-      html = navResult.html;
-      changed = true;
-    }
+    if (navResult.replaced) { html = navResult.html; changed = true; }
   }
 
   if (footerContent) {
     const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, footerContent);
-    if (footerResult.replaced) {
-      html = footerResult.html;
-      changed = true;
-    }
+    if (footerResult.replaced) { html = footerResult.html; changed = true; }
+  }
+
+  // ===== Подстановка цен =====
+  const priceResult = replacePrices(html);
+  if (priceResult.replaced) {
+    html = priceResult.html;
+    changed = true;
+    console.log(`  ✓ ${file} → цены обновлены из CSV`);
   }
 
   if (changed) {
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log(`  ✓ ${file} → NAV/FOOTER вставлены`);
+    console.log(`  ✓ ${file} → NAV/FOOTER/PRICE обновлены`);
     return true;
   }
   return false;
@@ -371,7 +415,7 @@ function build() {
   if (navContent)    console.log('  ✓ includes/nav.html');
   if (footerContent) console.log('  ✓ includes/footer.html');
 
-  console.log('\nОбработка NAV и FOOTER...');
+  console.log('\nОбработка NAV, FOOTER, PRICE...');
   ALL_HTML_FILES.forEach(file => {
     if (processMarkers(file, navContent, footerContent)) changed++;
   });
@@ -392,9 +436,7 @@ function build() {
       const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
       const products = parseCSV(csv);
 
-      if (!isPriceList) {
-        allProducts.push(...products);
-      }
+      if (!isPriceList) allProducts.push(...products);
 
       const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList));
       if (newHtml !== html) {
