@@ -18,8 +18,19 @@ const PAGES = [
       { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
   ]},
-  // ===== Новая страница: Скобы ходовые ТПР 901-09-11.84 =====
   { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
+  // ===== Прайс-лист: 9 таблиц по категориям =====
+  { html: 'price-list.html', tables: [
+      { id: 'nomenclature-ss1',       csv: 'data/ss1-products.csv',            page: 'ss1.html' },
+      { id: 'nomenclature-ss2',       csv: 'data/ss2-products.csv',            page: 'ss2.html' },
+      { id: 'nomenclature-tmp-902',   csv: 'data/tmp-902-kruglye.csv',         page: 'tmp-902.html' },
+      { id: 'nomenclature-tl-50',     csv: 'data/tl-products.csv',             page: 'l-16-dlya-teplovyh-setej.html' },
+      { id: 'nomenclature-tl-63',     csv: 'data/tl-63-products.csv',          page: 'l-16-dlya-teplovyh-setej.html' },
+      { id: 'nomenclature-ssg1',      csv: 'data/ssg1-products.csv',           page: 'ssg1.html' },
+      { id: 'nomenclature-vdl',       csv: 'data/vdl-products.csv',            page: 'vl-2-l-19-vodoprovodnaya.html' },
+      { id: 'nomenclature-kl1',       csv: 'data/kl1-products.csv',            page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html' },
+      { id: 'nomenclature-scoba-nm',  csv: 'data/scoba-nm-products.csv',       page: 'skoba-mn.html' }
+  ]},
 ];
 
 const FEED_SOURCES = [
@@ -33,7 +44,6 @@ const FEED_SOURCES = [
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
-  // ===== Новая группа: Скобы ходовые ТПР 901-09-11.84 =====
   { csv: 'data/scoba-nm-products.csv',        page: 'skoba-mn.html',        bigImage: 'images/scoba-nm/vid-1.png', limit: 20, typePrefix: 'Скоба ходовая' },
 ];
 
@@ -46,7 +56,6 @@ const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
 
-// ===== Чтение NAV и FOOTER из includes/ =====
 function loadInclude(name) {
   const filePath = path.resolve(__dirname, '..', 'includes', name);
   if (!fs.existsSync(filePath)) {
@@ -56,7 +65,6 @@ function loadInclude(name) {
   return fs.readFileSync(filePath, 'utf8').trim();
 }
 
-// Универсальная замена между маркерами (простая, через indexOf)
 function replaceBetweenMarkers(html, startMarker, endMarker, newContent) {
   const startIdx = html.indexOf(startMarker);
   const endIdx = html.indexOf(endMarker);
@@ -104,18 +112,21 @@ function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
 
-function buildTable(products) {
+function buildTable(products, targetPage) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
   let html = `<table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
-    <th>Количество</th><th>Корзина</th></tr></thead><tbody>`;
+    <th>Количество</th><th>Корзина</th><th>Подробнее</th></tr></thead><tbody>`;
   products.forEach(p => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
           weight = esc(p.weight), unit = esc(p.unit), available = esc(p.available),
           img = esc(p.image || 'images/default-product.png'),
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
+    const detailLink = targetPage
+      ? `<a href="${esc(targetPage)}#${anchor}">Подробнее →</a>`
+      : '';
     html += `<tr id="${anchor}">
       <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>${name}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
@@ -129,6 +140,7 @@ function buildTable(products) {
       <td><button type="button" class="cart-button"
             data-item-id="${id}" data-item-name="${name}"
             data-item-length="${length}" data-item-weight="${weight}">🛒</button></td>
+      <td class="link-cell">${detailLink}</td>
     </tr>`;
   });
   return html + '</tbody></table>';
@@ -214,7 +226,6 @@ function replaceJsonLd(html, jsonLd) {
   return html.replace('</head>', `${block}\n</head>`);
 }
 
-// ===== Фид для Яндекса =====
 function buildYandexFeed() {
   const offers = [];
 
@@ -276,7 +287,6 @@ ${offers.join('\n')}
   console.log(`  ✓ yandex-feed.xml создан (${offers.length} товаров)`);
 }
 
-// ===== Обработка NAV/FOOTER для ВСЕХ HTML-файлов =====
 const ALL_HTML_FILES = [
   'index.html',
   '404.html',
@@ -296,7 +306,6 @@ const ALL_HTML_FILES = [
   'ssg1.html',
   'tmp-902.html',
   'vl-2-l-19-vodoprovodnaya.html',
-  // ===== Новая страница =====
   'skoba-mn.html',
 ];
 
@@ -307,7 +316,6 @@ function processMarkers(file, navContent, footerContent) {
   let html = fs.readFileSync(filePath, 'utf8');
   let changed = false;
 
-  // NAV
   if (navContent) {
     const navResult = replaceBetweenMarkers(html, NAV_START, NAV_END, navContent);
     if (navResult.replaced) {
@@ -316,7 +324,6 @@ function processMarkers(file, navContent, footerContent) {
     }
   }
 
-  // FOOTER
   if (footerContent) {
     const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, footerContent);
     if (footerResult.replaced) {
@@ -336,20 +343,17 @@ function processMarkers(file, navContent, footerContent) {
 function build() {
   let changed = 0;
 
-  // === Читаем includes/ ===
   console.log('Чтение includes/...');
   const navContent = loadInclude('nav.html');
   const footerContent = loadInclude('footer.html');
   if (navContent)    console.log('  ✓ includes/nav.html');
   if (footerContent) console.log('  ✓ includes/footer.html');
 
-  // === NAV/FOOTER для ВСЕХ страниц ===
   console.log('\nОбработка NAV и FOOTER...');
   ALL_HTML_FILES.forEach(file => {
     if (processMarkers(file, navContent, footerContent)) changed++;
   });
 
-  // === NOMENCLATURE для страниц товаров ===
   console.log('\nОбработка таблиц и JSON-LD...');
   PAGES.forEach(page => {
     const htmlPath = path.resolve(__dirname, '..', page.html);
@@ -363,30 +367,42 @@ function build() {
       if (!fs.existsSync(csvPath)) { console.warn(`  ⚠ Нет CSV: ${t.csv}`); return; }
       const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
       const products = parseCSV(csv);
-      allProducts.push(...products);
 
-      const newHtml = replaceContainer(html, t.id, buildTable(products));
-      if (newHtml !== html) {
-        html = newHtml; changedThisPage = true;
-        console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
+      if (page.html === 'price-list.html') {
+        const newHtml = replaceContainer(html, t.id, buildTable(products, t.page || null));
+        if (newHtml !== html) {
+          html = newHtml; changedThisPage = true;
+          console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
+        } else {
+          console.log(`  · ${page.html} → #${t.id} без изменений`);
+        }
       } else {
-        console.log(`  · ${page.html} → #${t.id} без изменений`);
+        allProducts.push(...products);
+        const newHtml = replaceContainer(html, t.id, buildTable(products));
+        if (newHtml !== html) {
+          html = newHtml; changedThisPage = true;
+          console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
+        } else {
+          console.log(`  · ${page.html} → #${t.id} без изменений`);
+        }
       }
     });
 
-    const cleanedHtml = stripOldProductJsonLd(html);
-    if (cleanedHtml !== html) {
-      html = cleanedHtml; changedThisPage = true;
-      console.log(`  ✓ ${page.html} → удалены старые Product JSON-LD`);
-    }
+    if (page.html !== 'price-list.html') {
+      const cleanedHtml = stripOldProductJsonLd(html);
+      if (cleanedHtml !== html) {
+        html = cleanedHtml; changedThisPage = true;
+        console.log(`  ✓ ${page.html} → удалены старые Product JSON-LD`);
+      }
 
-    const pageUrl = SITE_URL + '/' + page.html;
-    const jsonLd = buildProductListJsonLd(allProducts, pageUrl);
-    if (jsonLd) {
-      const newHtml = replaceJsonLd(html, jsonLd);
-      if (newHtml !== html) {
-        html = newHtml; changedThisPage = true;
-        console.log(`  ✓ ${page.html} → JSON-LD: ${allProducts.length} товаров`);
+      const pageUrl = SITE_URL + '/' + page.html;
+      const jsonLd = buildProductListJsonLd(allProducts, pageUrl);
+      if (jsonLd) {
+        const newHtml = replaceJsonLd(html, jsonLd);
+        if (newHtml !== html) {
+          html = newHtml; changedThisPage = true;
+          console.log(`  ✓ ${page.html} → JSON-LD: ${allProducts.length} товаров`);
+        }
       }
     }
 
@@ -396,7 +412,6 @@ function build() {
     }
   });
 
-  // === Фид для Яндекса ===
   console.log('\nГенерация yandex-feed.xml...');
   buildYandexFeed();
 
