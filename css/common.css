@@ -292,3 +292,26 @@ textarea[aria-invalid="true"]:focus {
     outline: 2px solid #dc3545;
     outline-offset: 1px;
 }
+
+/* === КНОПКА "В КОРЗИНУ" В ТАБЛИЦАХ ПРАЙСА === */
+.cart-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--inputs-buttons-border-radius);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+.cart-button:hover {
+    background-color: var(--primary-color-hover);
+}
+.cart-button:active {
+    transform: translateY(1px);
+}
