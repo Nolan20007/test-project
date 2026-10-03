@@ -358,7 +358,7 @@
         .nomenclature-table .availability-icon { color: #4CAF50; font-size: 1.2em; }
 
         .quantity-control { display: flex; align-items: center; justify-content: center; }
-        .quantity-control button {
+        .quantity-control button, .cart-button {
             border: 1px solid #cfcfcf;
             background-color: #f0f0f0;
             color: #333;
@@ -375,7 +375,17 @@
             border-right: none;
             padding: 5px 0;
             height: 28px;
-        }.loading { text-align: center; padding: 20px; color: #666; }
+        }
+        .cart-button {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+            margin-left: 5px;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+        .cart-button:hover { background-color: var(--primary-color-hover); }
+        .loading { text-align: center; padding: 20px; color: #666; }
 
         .buttons-row { display: flex; justify-content: center; gap: 20px; margin-top: 25px; flex-wrap: wrap; }
         .cta-button {
@@ -715,8 +725,8 @@
         <a href="index.html#advantages">Преимущества</a>
         <a href="index.html#articles">Полезные статьи</a>
         <a href="dostavka-i-oplata.html">Доставка и оплата</a>
+        <a href="o-kompanii.html">О компании</a>
         <a href="index.html#contacts">Контакты и Заказ</a>
-        <a href="mailto:stremyanki-dlya-kolodcev@mail.ru">✉️ stremyanki-dlya-kolodcev@mail.ru</a>
         <a href="cart.html" class="cart-link">🛒 Корзина (<span id="cart-count-page">0</span>)</a>
         <button class="btn-get-quote" onclick="openQuoteModal()">📄 Получить расчет/КП</button>
     </div>
@@ -745,7 +755,8 @@
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/vid-3.png', 2)">Вид 3</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/foto-1.png', 3)">Фото 1</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/foto-2.png', 4)">Фото 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/chertezh.png', 5)">Чертёж</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/album.png', 5)">Альбом</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss1/chertezh.png', 6)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -974,7 +985,6 @@
                 <a href="ss1.html">Стремянки ТПР 901-09-11.84</a>
                 <a href="ss2.html">Стремянки ТПР 902-09-22.84</a>
                 <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
-                <a href="skoba-mn.html">Скобы ходовые ТПР 901-09-11.84</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
@@ -985,8 +995,6 @@
                 <a href="kak-vybrat-stremyanku.html">Как выбрать стремянку</a>
                 <a href="montazh-stremyanok-v-kolodcy.html">Монтаж стремянок</a>
                 <a href="gost-trebovaniya-k-lestnicam.html">ГОСТ требования</a>
-                <a href="price-list.html">Прайс-лист</a>
-                <a href="tipovye-proekty.html">Типовые проектные решения (Альбомы)</a>
                 <a href="dostavka-i-oplata.html">Доставка и оплата</a>
                 <a href="o-kompanii.html">О компании</a>
                 <a href="politika-konfidencialnosti.html">Политика конфиденциальности</a>
@@ -1012,6 +1020,7 @@
             <div class="gallery-item"><img src="images/ss1/vid-3.png" alt="Вид 3"></div>
             <div class="gallery-item"><img src="images/ss1/foto-1.png" alt="Фото 1"></div>
             <div class="gallery-item"><img src="images/ss1/foto-2.png" alt="Фото 2"></div>
+            <div class="gallery-item"><img src="images/ss1/album.png" alt="Альбом"></div>
             <div class="gallery-item"><img src="images/ss1/chertezh.png" alt="Чертеж"></div>
         </div>
         <div class="modal-nav" id="modalNav">
@@ -1020,7 +1029,8 @@
             <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
             <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
             <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
-            <button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>
+            <button data-slide="5" onclick="scrollToSlide(5)">Альбом</button>
+            <button data-slide="6" onclick="scrollToSlide(6)">Чертёж</button>
         </div>
     </div>
 </div>
