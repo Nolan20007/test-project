@@ -40,7 +40,16 @@
         </div>
 
         <div class="footer-bottom">
-            &copy; 2025 Производство лестниц и стремянок для колодцев. Все права защищены.
+            &copy; <span id="footer-year">2026</span> Производство лестниц и стремянок для колодцев. Все права защищены.
         </div>
     </div>
 </footer>
+
+<script>
+    (function () {
+        var yearEl = document.getElementById('footer-year');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
+    })();
+</script>
