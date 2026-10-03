@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-03 14:50">
+<yml_catalog date="2026-10-03 14:55">
   <shop>
     <name>Производство лестниц и стремянок для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -13,7 +13,7 @@
     <offers>
     <offer id="C-1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-1</url>
-      <price>1950</price>
+      <price>2076</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -21,11 +21,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-1). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-1). Длина 120 см, ширина 50 см, масса 13.84 кг.</description>
     </offer>
     <offer id="C-2" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-2</url>
-      <price>2445</price>
+      <price>2562</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -33,11 +33,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-2</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-2). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-2). Длина 150 см, ширина 50 см, масса 17.08 кг.</description>
     </offer>
     <offer id="C-3" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-3</url>
-      <price>2940</price>
+      <price>3045</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -45,11 +45,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-3</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-3). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-3). Длина 180 см, ширина 50 см, масса 20.30 кг.</description>
     </offer>
     <offer id="C-4" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-4</url>
-      <price>3555</price>
+      <price>3552</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -57,11 +57,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-4</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-4). Длина 225 см, ширина 50 см, масса 23.7 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-4). Длина 225 см, ширина 50 см, масса 23.68 кг.</description>
     </offer>
     <offer id="C-5" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-5</url>
-      <price>4005</price>
+      <price>4011</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -69,11 +69,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-5</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-5). Длина 240 см, ширина 50 см, масса 26.7 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-5). Длина 240 см, ширина 50 см, масса 26.74 кг.</description>
     </offer>
     <offer id="C-6" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-6</url>
-      <price>3525</price>
+      <price>3528</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -81,7 +81,7 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-6</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-6). Длина 210 см, ширина 50 см, масса 23.5 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-6). Длина 210 см, ширина 50 см, масса 23.52 кг.</description>
     </offer>
     <offer id="C-7" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-7</url>
@@ -93,11 +93,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-7</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-7). Длина 270 см, ширина 50 см, масса 30.0 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-7). Длина 270 см, ширина 50 см, масса 30.00 кг.</description>
     </offer>
     <offer id="C-8" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-8</url>
-      <price>6900</price>
+      <price>6909</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
@@ -105,11 +105,11 @@
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-8</model>
-      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-8). Длина 420 см, ширина 50 см, масса 46.0 кг.</description>
+      <description>Стремянка для колодцев ТПР 901-09-11.84 (С-8). Длина 420 см, ширина 50 см, масса 46.06 кг.</description>
     </offer>
     <offer id="C-9" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ss1.html#item-C-9</url>
-      <price>7405</price>
+      <price>7404</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.png</picture>
