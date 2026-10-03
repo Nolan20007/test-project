@@ -10,8 +10,8 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <title>Типовые проектные решения (Альбомы) — строительные изделия для колодцев</title>
-    <meta name="description" content="✅ Типовые проектные решения (Альбомы) для строительных изделий колодцев: 901-09-11.84, ТПР 902-09-22.84. Скобы, стремянки, плиты днища, сетки арматурные. Скачать PDF. ☎ +7 (965) 555-99-66">
-    <meta name="keywords" content="типовые проектные решения, ТПР 901-09-11.84, ТПР 902-09-22.84, альбом V строительные изделия, альбом VII строительные изделия, КЖИ, скоба ходовая, стремянка, плита днища, сетка арматурная">
+    <meta name="description" content="✅ Типовые проектные решения (Альбомы) для строительных изделий колодцев: 901-09-11.84, ТПР 902-09-22.84, ТМП 902-09-46.88. Скобы, стремянки, плиты днища, сетки арматурные. Скачать PDF. ☎ +7 (965) 555-99-66">
+    <meta name="keywords" content="типовые проектные решения, ТПР 901-09-11.84, ТПР 902-09-22.84, ТМП 902-09-46.88, альбом V строительные изделия, альбом VII строительные изделия, альбом III колодцы круглые, КЖИ, скоба ходовая, стремянка, плита днища, сетка арматурная">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/tipovye-proekty.html" />
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -30,12 +30,14 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Типовые проектные решения (Альбомы)",
-      "description": "Типовые проектные решения для строительных изделий колодцев: 901-09-11.84, ТПР 902-09-22.84 и другие.",
+      "description": "Типовые проектные решения для строительных изделий колодцев: 901-09-11.84, ТПР 902-09-22.84, ТМП 902-09-46.88 и другие.",
       "url": "https://stremyanki-dlya-kolodcev.ru/tipovye-proekty.html"
     }
     </script>
 
     <style>
+        html { scroll-behavior: smooth; }
+
         .content-area {
             background: white;
             padding: 40px 50px;
@@ -64,12 +66,46 @@
             border-left: 5px solid var(--primary-color);
         }
 
+        /* ===== Навигация по альбомам вверху ===== */
+        .albums-nav {
+            margin: 30px 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .albums-nav__title {
+            font-size: 1em;
+            color: var(--dark-color);
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+        .albums-nav__link {
+            display: block;
+            padding: 14px 20px;
+            background: #f7fafc;
+            border: 1px solid #eef2f6;
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--inputs-buttons-border-radius);
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.95em;
+            line-height: 1.4;
+            transition: background-color 0.2s, transform 0.2s, color 0.2s;
+        }
+        .albums-nav__link:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
         .album-card {
             background: #fafbfc;
             border: 1px solid #eef2f6;
             border-radius: var(--inputs-buttons-border-radius);
             padding: 26px 30px;
             margin: 20px 0 30px;
+            scroll-margin-top: 100px;
         }
         .album-card__body {
             display: grid;
@@ -112,6 +148,20 @@
             font-size: 0.85em;
         }
 
+        /* ===== Ссылка в оглавлении — вся строка кликабельна ===== */
+        .album-card__toc a.toc-link {
+            color: #444;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .album-card__toc a.toc-link:hover {
+            color: var(--primary-color);
+            border-bottom-style: solid;
+        }
+
+        /* ===== Кнопки PDF — белые с синим обрамлением ===== */
         .album-card__actions {
             margin-top: 26px;
             padding-top: 20px;
@@ -130,13 +180,12 @@
             font-family: inherit;
             transition: all 0.2s;
             cursor: pointer;
-            background: var(--primary-color);
-            color: #ffffff;
+            background: #ffffff;
+            color: var(--primary-color);
             border: 2px solid var(--primary-color);
         }
         .content-area a.album-btn:hover {
-            background: var(--primary-color-hover);
-            border-color: var(--primary-color-hover);
+            background: var(--primary-color);
             color: #ffffff;
         }
 
@@ -187,10 +236,13 @@
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .content-area a.cta-button,
             .content-area button.cta-button { width: 90%; max-width: 280px; margin: 0; }
+            .album-card__actions { flex-direction: column; }
+            .content-area a.album-btn { width: 100%; text-align: center; }
         }
         @media (max-width: 480px) {
             .content-area { padding: 20px 15px; }
             .content-area h2 { font-size: 1.15em; }
+            .albums-nav__link { padding: 12px 16px; font-size: 0.9em; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -248,8 +300,16 @@
             <strong>Зачем это нужно:</strong> при закупке лестниц и стремянок для колодцев — особенно для государственных и муниципальных объектов — заказчику важно убедиться, что изделия соответствуют проектным решениям. Все альбомы, представленные здесь, — официальные источники, по которым мы изготавливаем продукцию.
         </div>
 
+        <!-- ===== Навигация по альбомам ===== -->
+        <nav class="albums-nav" aria-label="Список альбомов на странице">
+            <div class="albums-nav__title">На странице представлены:</div>
+            <a href="#album-901-v" class="albums-nav__link">Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</a>
+            <a href="#album-902-vii" class="albums-nav__link">Типовые проектные решения 902-09-22.84. Альбом VII. Строительные изделия</a>
+            <a href="#album-902-tmp-iii" class="albums-nav__link">Типовые материалы для проектирования 902-09-46.88. Альбом III. Колодцы круглые для труб dy=300-1200 мм</a>
+        </nav>
+
         <!-- ===== Альбом 1: ТПР 901-09-11.84 Альбом V ===== -->
-        <h2>Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</h2>
+        <h2 id="album-901-v">Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</h2>
 
         <div class="album-card">
             <div class="album-card__body">
@@ -289,9 +349,9 @@
                 <div class="album-card__toc">
                     <h4>Оглавление альбома</h4>
                     <ul>
-                        <li>901-09-11.84 КЖИ.МН1 Скоба ходовая</li>
+                        <li><a href="skoba-mn.html" class="toc-link">901-09-11.84 КЖИ.МН1 Скоба ходовая</a></li>
                         <li>901-09-11.84 КЖИ.С1СБ Стремянка. Сборочный чертеж</li>
-                        <li>901-09-11.84 КЖИ.С1 Стремянка</li>
+                        <li><a href="ss1.html" class="toc-link">901-09-11.84 КЖИ.С1 Стремянка</a></li>
                         <li>901-09-11.84 КЖИ.П1 Плита днища</li>
                         <li>901-09-11.84 КЖИ.Са1 Сетка арматурная</li>
                         <li>901-09-11.84 КЖИ.П4 Плита днища</li>
@@ -314,13 +374,13 @@
             </div>
 
             <div class="album-card__actions">
-                <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF в новой вкладке</a>
+                <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
                 <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
             </div>
         </div>
 
         <!-- ===== Альбом 2: ТПР 902-09-22.84 Альбом VII ===== -->
-        <h2>Типовые проектные решения 902-09-22.84. Альбом VII. Строительные изделия</h2>
+        <h2 id="album-902-vii">Типовые проектные решения 902-09-22.84. Альбом VII. Строительные изделия</h2>
 
         <div class="album-card">
             <div class="album-card__body">
@@ -373,7 +433,7 @@
                         <li>ТПР 902-09-22.84-КЖИ.П3 Са6 Сетка арматурная Са6</li>
                         <li>ТПР 902-09-22.84-КЖИ.С1 СБ Сборочный чертеж</li>
                         <li>ТПР 902-09-22.84-КЖИ.ЗО Звено ограждения</li>
-                        <li>ТПР 902-09-22.84-КЖИ.С1 Стремянка С1</li>
+                        <li><a href="ss2.html" class="toc-link">ТПР 902-09-22.84-КЖИ.С1 Стремянка С1</a></li>
                         <li>ТПР 902-09-22.84-КЖИ.К1 Крышка металлическая К1</li>
                         <li>ТПР 902-09-22.84-КЖИ.К2 Крышка деревянная К2</li>
                         <li>ТПР 902-09-22.84-КЖИ.СР10 СБ Сборочный чертеж</li>
@@ -398,8 +458,78 @@
             </div>
 
             <div class="album-card__actions">
-                <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF в новой вкладке</a>
+                <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
                 <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+            </div>
+        </div>
+
+        <!-- ===== Альбом 3: ТМП 902-09-46.88 Альбом III ===== -->
+        <h2 id="album-902-tmp-iii">Типовые материалы для проектирования 902-09-46.88. Альбом III. Колодцы круглые для труб dy=300-1200 мм</h2>
+
+        <div class="album-card">
+            <div class="album-card__body">
+
+                <dl class="album-card__meta">
+                    <dt>Обозначение:</dt>
+                    <dd>Типовые материалы для проектирования 902-09-46.88</dd>
+
+                    <dt>Обозначение (англ.):</dt>
+                    <dd>902-09-46.88</dd>
+
+                    <dt>Статус:</dt>
+                    <dd>Справочные материалы, МП, ТПР</dd>
+
+                    <dt>Название:</dt>
+                    <dd>Альбом III. Колодцы круглые для труб dy=300-1200 мм</dd>
+
+                    <dt>Дата добавления в базу:</dt>
+                    <dd>01.09.2013</dd>
+
+                    <dt>Дата актуализации:</dt>
+                    <dd>01.01.2021</dd>
+
+                    <dt>Дата введения:</dt>
+                    <dd>20.03.1989</dd>
+
+                    <dt>Разработан:</dt>
+                    <dd>Гипрокоммундортранс Минжилкомхоза РСФСР</dd>
+
+                    <dt>Утверждён:</dt>
+                    <dd>20.03.1989 Министерство жилищно-коммунального хозяйства Московской области (70)</dd>
+
+                    <dt>Издан:</dt>
+                    <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1989 г.)</dd>
+                </dl>
+
+                <div class="album-card__toc">
+                    <h4>Оглавление альбома</h4>
+                    <ul>
+                        <li>Колодцы линейные для труб dу = 300 - 600 мм. Таблицы 1, 2</li>
+                        <li>Колодцы линейные для труб dу = 800 - 1200 мм. Таблицы 3, 4</li>
+                        <li>Колодцы поворотные для труб dу = 300 - 600 мм. Таблицы 5, 6</li>
+                        <li>Колодцы поворотные для труб dу = 800 - 1000 мм. Таблицы 7, 8</li>
+                        <li>Колодцы поворотные. Углы поворота и рекомендуемые радиусы. Таблицы 9</li>
+                        <li>Колодцы узловые с одним присоединением для труб dу = 300 - 600 мм. Таблицы 10, 11</li>
+                        <li>Колодцы узловые с одним присоединением для труб dу = 800 - 1200 мм. Таблицы 12, 13</li>
+                        <li>Колодцы узловые с двумя присоединениями для труб dу = 800 - 1200 мм. Таблицы 15, 14</li>
+                        <li>Колодцы узловые с двумя присоединениями для труб dу = 800 - 1200 мм</li>
+                        <li>Колодцы узловые с двумя присоединениями для труб dу = 800 - 1200 мм. Таблицы 16, 17</li>
+                        <li>Дополнительные мероприятия. Таблица 18</li>
+                        <li>Конструкция горловины d = 700 мм. Таблица 19</li>
+                        <li>Конструкция горловины d = 1000 мм. Таблица 20</li>
+                        <li>Горловина d = 1000 мм. Таблица 20</li>
+                        <li>Привязка колодцев. Таблицы 21, 22. Пример расчета</li>
+                        <li>Узлы заделки труб, крепления стремянки и устройство лотка колодца</li>
+                        <li><a href="tmp-902.html" class="toc-link">КЖ.И.1 Стремянка Ст 1</a></li>
+                        <li>КЖ.И.2 Люк канализационный 1000х1000 мм. Эскизный чертеж общего вида</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="album-card__actions">
+                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-III-Kolodcy-kruglye-dlya-trub-dy-300-1200-mm.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
+                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-III-Kolodcy-kruglye-dlya-trub-dy-300-1200-mm.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
             </div>
         </div>
 
