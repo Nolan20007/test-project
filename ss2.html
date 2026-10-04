@@ -57,12 +57,16 @@
             grid-template-columns: 1fr 2fr;
             gap: 40px;
             margin-top: 10px;
+            align-items: start;
         }
 
+        /* Левая колонка: верхняя картинка сверху, альбом — снизу */
         .image-section {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            position: relative;
         }
 
         .main-image-wrapper {
@@ -79,6 +83,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .main-image {
@@ -89,6 +94,88 @@
             object-fit: contain;
             display: block;
             background: #ffffff;
+        }
+
+        /* ===== Блок с картинкой альбома слева (десктоп) ===== */
+        .album-sidebar {
+            display: none;
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--inputs-buttons-border-radius);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-top: 0;
+            padding: 16px 0 20px;
+            overflow: hidden;
+            border: 1px solid #eef2f6;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            transition: box-shadow 0.2s;
+        }
+        .album-sidebar:hover {
+            box-shadow: 0 6px 16px rgba(14, 92, 128, 0.12);
+        }
+        .album-sidebar.is-visible {
+            display: flex;
+        }
+        .album-sidebar__caption {
+            font-size: 12.5px;
+            color: #7a8a9a;
+            text-align: center;
+            line-height: 1.45;
+            margin-bottom: 12px;
+            padding: 0 16px;
+        }
+        .album-sidebar__image-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .album-sidebar__image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background: #ffffff;
+        }
+
+        /* ===== Встроенная картинка альбома (мобильная) ===== */
+        .album-inline {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .album-inline__caption {
+            font-size: 12px;
+            color: #7a8a9a;
+            margin-bottom: 10px;
+            line-height: 1.45;
+        }
+        .album-inline img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
+        }
+
+        /* ===== Ссылка на альбом в тексте (как product-link) ===== */
+        .product-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .product-link:hover {
+            color: var(--primary-color-hover);
+            border-bottom-color: var(--primary-color-hover);
+            border-bottom-style: solid;
         }
 
         .image-toggle {
@@ -273,14 +360,13 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-        
+
             /* a11y:button-reset */
             background: transparent;
             border: none;
             padding: 0;
             font-family: inherit;
             line-height: 1;
-            color: #f1f1f1;
         }
         .gallery-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; }
         .gallery-item {
@@ -408,6 +494,7 @@
 
         @media (max-width: 900px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .image-section { justify-content: flex-start; }
             .product-details h2 { font-size: 1.3em; }
             .nomenclature-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
             .nomenclature-table th, .nomenclature-table td { padding: 6px 4px; font-size: 11px; }
@@ -416,6 +503,10 @@
             .characteristics-list li .description { grid-column: 1 / 3; margin-top: 5px; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .cta-button { width: 90%; max-width: 280px; margin: 0; }
+
+            /* Скрываем десктопный блок с альбомом — на мобильном показываем встроенный */
+            .album-sidebar { display: none !important; }
+            .album-inline { display: block; }
         }
         @media (max-width: 600px) {
             .product-details { padding-left: 16px; padding-right: 16px; }
@@ -1015,7 +1106,19 @@
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/vid-3.png', 2)">Вид 3</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/foto-1.png', 3)">Фото 1</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/foto-2.png', 4)">Фото 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/chertezh.png', 5)">Чертёж</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/album.png', 5)">Альбом</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ss2/chertezh.png', 6)">Чертёж</button>
+                </div>
+            </div>
+
+            <!-- Десктопный блок с картинкой альбома. Показывается через JS, когда открыт info-details -->
+            <div class="album-sidebar" id="albumSidebar" aria-hidden="true">
+                <div class="album-sidebar__caption">
+                    Типовые проектные решения 902-09-22.84.<br>
+                    Альбом VII. Строительные изделия. Лист 11
+                </div>
+                <div class="album-sidebar__image-wrapper">
+                    <img src="images/ss2/album.png" alt="Альбом ТПР 902-09-22.84, Лист 11" class="album-sidebar__image">
                 </div>
             </div>
         </div>
@@ -1035,7 +1138,7 @@
                 <li><strong>Антикоррозионная защита:</strong><span class="description"> Масляная краска по ГОСТ 8292 (железный сурик МА-15)</span></li>
             </ul>
 
-            <details class="info-details">
+            <details class="info-details" id="infoDetails">
                 <summary>
                     <span>Подробнее: материалы, ГОСТы, условия эксплуатации</span>
                 </summary>
@@ -1043,7 +1146,7 @@
 
                     <h3>Дополнительные технические данные</h3>
                     <ul class="characteristics-list">
-                        <li><strong>Чертёж:</strong><span class="description"> ТПР 902-09-22.84-КЖИ.С1.СБ (альбом VII «Строительные изделия»)</span></li>
+                        <li><strong>Чертёж:</strong><span class="description"> ТПР 902-09-22.84-КЖИ.С1.СБ (<a href="tipovye-proekty.html#album-902-vii" class="product-link">альбом VII «Строительные изделия»</a>)</span></li>
                         <li><strong>Вес стремянок:</strong><span class="description"> от 6,5 до 65,2 кг (10,8 кг/п.м)</span></li>
                         <li><strong>Материал:</strong><span class="description"> Горячекатаный металлопрокат из сталей Ст3кп (С235 по ГОСТ 27772), Ст3пс (С245 по ГОСТ 27772) или Ст3сп5 (С255 по ГОСТ 27772)</span></li>
                         <li><strong>Диаметр обслуживаемых труб:</strong><span class="description"> от 150 до 1500 мм (смотровые колодцы); от 150 до 600 мм (перепадные колодцы и дюкеры)</span></li>
@@ -1057,6 +1160,15 @@
                     <h3>Материалы и производство</h3>
                     <p>В производстве используется сертифицированный горячекатаный металлопрокат из сталей марок <strong>Ст3кп</strong> (С235 по ГОСТ 27772), <strong>Ст3пс</strong> (С245 по ГОСТ 27772) или <strong>Ст3сп5</strong> (С255 по ГОСТ 27772). Вертикальные стойки стремянок выполнены из равнополочных горячекатаных уголков по ГОСТ 8509 сечением 50×50×5 мм, ступени — из круглого стального прутка по ГОСТ 2590 ∅ 18 мм. Все конструкции свариваются по типовым чертежам <strong>ТПР 902-09-22.84-КЖИ.С1.СБ</strong>.</p>
                     <p>Крепление канализационных стремянок типа С1 в колодце осуществляется с помощью кронштейнов из стальных горячекатаных уголков сечением 50×50×5 мм по ГОСТ 8509 с шагом через 600 мм на расстоянии 100 мм от стены рабочей части и в 300 мм от дна круглого колодца. В прямоугольных бетонных колодцах низ стремянок замоноличивается на высоту 150 мм.</p>
+
+                    <!-- Мобильный блок с картинкой альбома. Показывается только на мобильных -->
+                    <div class="album-inline">
+                        <div class="album-inline__caption">
+                            Типовые проектные решения 902-09-22.84.<br>
+                            Альбом VII. Строительные изделия. Лист 11
+                        </div>
+                        <img src="images/ss2/album.png" alt="Альбом ТПР 902-09-22.84, Лист 11">
+                    </div>
 
                 </div>
             </details>
@@ -1086,7 +1198,7 @@
     </tr><tr id="item-C-1-01">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-01)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-01)</td><td>90</td><td>50</td><td>9.8</td>
-      <td>от 1 470 руб.</td><td>1 шт</td>
+      <td>от 1 470 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-01', -1)">−</button>
@@ -1099,7 +1211,7 @@
     </tr><tr id="item-C-1-02">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-02)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-02)</td><td>120</td><td>50</td><td>13.0</td>
-      <td>от 1 950 руб.</td><td>1 шт</td>
+      <td>от 1 950 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-02', -1)">−</button>
@@ -1112,7 +1224,7 @@
     </tr><tr id="item-C-1-03">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-03)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-03)</td><td>150</td><td>50</td><td>16.3</td>
-      <td>от 2 445 руб.</td><td>1 шт</td>
+      <td>от 2 445 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-03', -1)">−</button>
@@ -1125,7 +1237,7 @@
     </tr><tr id="item-C-1-04">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-04)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-04)</td><td>180</td><td>50</td><td>19.6</td>
-      <td>от 2 940 руб.</td><td>1 шт</td>
+      <td>от 2 940 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-04', -1)">−</button>
@@ -1138,7 +1250,7 @@
     </tr><tr id="item-C-1-05">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-05)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-05)</td><td>210</td><td>50</td><td>22.8</td>
-      <td>от 3 420 руб.</td><td>1 шт</td>
+      <td>от 3 420 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-05', -1)">−</button>
@@ -1151,7 +1263,7 @@
     </tr><tr id="item-C-1-06">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-06)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-06)</td><td>240</td><td>50</td><td>26.1</td>
-      <td>от 3 915 руб.</td><td>1 шт</td>
+      <td>от 3 915 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-06', -1)">−</button>
@@ -1164,7 +1276,7 @@
     </tr><tr id="item-C-1-07">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-07)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-07)</td><td>270</td><td>50</td><td>29.3</td>
-      <td>от 4 395 руб.</td><td>1 шт</td>
+      <td>от 4 395 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-07', -1)">−</button>
@@ -1177,7 +1289,7 @@
     </tr><tr id="item-C-1-08">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-08)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-08)</td><td>300</td><td>50</td><td>32.6</td>
-      <td>от 4 890 руб.</td><td>1 шт</td>
+      <td>от 4 890 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-08', -1)">−</button>
@@ -1190,7 +1302,7 @@
     </tr><tr id="item-C-1-09">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-09)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-09)</td><td>330</td><td>50</td><td>35.9</td>
-      <td>от 5 385 руб.</td><td>1 шт</td>
+      <td>от 5 385 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-09', -1)">−</button>
@@ -1203,7 +1315,7 @@
     </tr><tr id="item-C-1-10">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-10)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-10)</td><td>360</td><td>50</td><td>39.1</td>
-      <td>от 5 865 руб.</td><td>1 шт</td>
+      <td>от 5 865 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-10', -1)">−</button>
@@ -1216,7 +1328,7 @@
     </tr><tr id="item-C-1-11">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-11)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-11)</td><td>390</td><td>50</td><td>42.4</td>
-      <td>от 6 360 руб.</td><td>1 шт</td>
+      <td>от 6 360 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-11', -1)">−</button>
@@ -1229,7 +1341,7 @@
     </tr><tr id="item-C-1-12">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-12)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-12)</td><td>420</td><td>50</td><td>45.7</td>
-      <td>от 6 855 руб.</td><td>1 шт</td>
+      <td>от 6 855 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-12', -1)">−</button>
@@ -1242,7 +1354,7 @@
     </tr><tr id="item-C-1-13">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-13)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-13)</td><td>450</td><td>50</td><td>48.9</td>
-      <td>от 7 335 руб.</td><td>1 шт</td>
+      <td>от 7 335 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-13', -1)">−</button>
@@ -1255,7 +1367,7 @@
     </tr><tr id="item-C-1-14">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-14)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-14)</td><td>480</td><td>50</td><td>52.2</td>
-      <td>от 7 830 руб.</td><td>1 шт</td>
+      <td>от 7 830 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-14', -1)">−</button>
@@ -1268,7 +1380,7 @@
     </tr><tr id="item-C-1-15">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-15)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-15)</td><td>510</td><td>50</td><td>55.4</td>
-      <td>от 8 310 руб.</td><td>1 шт</td>
+      <td>от 8 310 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-15', -1)">−</button>
@@ -1281,7 +1393,7 @@
     </tr><tr id="item-C-1-16">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-16)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-16)</td><td>540</td><td>50</td><td>58.7</td>
-      <td>от 8 805 руб.</td><td>1 шт</td>
+      <td>от 8 805 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-16', -1)">−</button>
@@ -1294,7 +1406,7 @@
     </tr><tr id="item-C-1-17">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-17)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-17)</td><td>570</td><td>50</td><td>62.0</td>
-      <td>от 9 300 руб.</td><td>1 шт</td>
+      <td>от 9 300 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-17', -1)">−</button>
@@ -1307,7 +1419,7 @@
     </tr><tr id="item-C-1-18">
       <td><img src="images/ss2/vid-mini.png" alt="Стремянка для колодцев ТПР 902-09-22.84 (С-1-18)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для колодцев ТПР 902-09-22.84 (С-1-18)</td><td>600</td><td>50</td><td>65.2</td>
-      <td>от 9 780 руб.</td><td>1 шт</td>
+      <td>от 9 780 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('C-1-18', -1)">−</button>
@@ -1423,6 +1535,7 @@
             <div class="gallery-item"><img src="images/ss2/vid-3.png" alt="Вид 3"></div>
             <div class="gallery-item"><img src="images/ss2/foto-1.png" alt="Фото 1"></div>
             <div class="gallery-item"><img src="images/ss2/foto-2.png" alt="Фото 2"></div>
+            <div class="gallery-item"><img src="images/ss2/album.png" alt="Альбом"></div>
             <div class="gallery-item"><img src="images/ss2/chertezh.png" alt="Чертеж"></div>
         </div>
         <div class="modal-nav" id="modalNav">
@@ -1431,7 +1544,8 @@
             <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
             <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
             <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
-            <button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>
+            <button data-slide="5" onclick="scrollToSlide(5)">Альбом</button>
+            <button data-slide="6" onclick="scrollToSlide(6)">Чертёж</button>
         </div>
     </div>
 </div>
@@ -1458,10 +1572,12 @@
         if (btns[index]) btns[index].classList.add('active');
         mainImageWrapper.setAttribute('data-current-slide', index);
     }
-    mainImageWrapper.onclick = () => openModal();
-    function openModal() {
+    mainImageWrapper.onclick = () => openModal(0);
+    function openModal(startSlide) {
         modal.style.display = "block";
-        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        const slide = (typeof startSlide === 'number')
+            ? startSlide
+            : parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
         setTimeout(() => scrollToSlide(slide), 50);
         modalA11y.open();
     }
@@ -1490,6 +1606,75 @@
         const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
         setActiveModalButton(newIndex);
     });
+
+    /* ===== Блок "Подробнее + картинка альбома слева" ===== */
+    const infoDetails = document.getElementById('infoDetails');
+    const albumSidebar = document.getElementById('albumSidebar');
+
+    function syncAlbumSidebar() {
+        if (!infoDetails || !albumSidebar) return;
+        if (infoDetails.open) {
+            albumSidebar.classList.add('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'false');
+        } else {
+            albumSidebar.classList.remove('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', syncAlbumSidebar);
+        syncAlbumSidebar();
+    }
+
+    /* ===== Синхронизация ВЕРХА альбома с ВЕРХОМ info-details ===== */
+    function syncAlbumTopWithDetails() {
+        if (!infoDetails || !albumSidebar) return;
+        if (!infoDetails.open) {
+            albumSidebar.style.marginTop = '0px';
+            return;
+        }
+        /* Сбрасываем margin, чтобы измерить «естественное» положение */
+        albumSidebar.style.marginTop = '0px';
+
+        /* Если ширина окна <= 900px, альбом скрыт — ничего не делаем */
+        if (window.innerWidth <= 900) return;
+
+        const detailsRect = infoDetails.getBoundingClientRect();
+        const albumRect = albumSidebar.getBoundingClientRect();
+        const mainImageRect = mainImageWrapper.getBoundingClientRect();
+
+        /* Насколько верх альбома должен опуститься, чтобы совпасть с верхом details.
+           Считаем от текущего положения альбома (после main-image-wrapper). */
+        const desiredDelta = detailsRect.top - albumRect.top;
+
+        /* Текущий margin-top, который мы уже выставили (в px) */
+        const currentMargin = parseFloat(getComputedStyle(albumSidebar).marginTop) || 0;
+
+        /* Новый margin-top: текущий + дельта. */
+        let newMargin = currentMargin + desiredDelta;
+        if (newMargin < 0) newMargin = 0;
+
+        albumSidebar.style.marginTop = newMargin + 'px';
+    }
+
+    /* Синхронизация при загрузке, ресайзе и toggle */
+    window.addEventListener('load', syncAlbumTopWithDetails);
+    window.addEventListener('resize', syncAlbumTopWithDetails);
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', function () {
+            /* Даём браузеру пересчитать layout после открытия/закрытия */
+            setTimeout(syncAlbumTopWithDetails, 0);
+        });
+    }
+
+    /* Клик по блоку с альбомом открывает модалку на слайде "Альбом" (индекс 5) */
+    if (albumSidebar) {
+        albumSidebar.addEventListener('click', function (e) {
+            e.stopPropagation();
+            openModal(5);
+        });
+    }
 
     window.changeImage = changeImage;
     window.openModal = openModal;
