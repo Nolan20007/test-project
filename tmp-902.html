@@ -57,12 +57,16 @@
             grid-template-columns: 1fr 2fr;
             gap: 40px;
             margin-top: 10px;
+            align-items: start;
         }
 
+        /* Левая колонка: верхняя картинка сверху, альбом — снизу */
         .image-section {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            position: relative;
         }
 
         .main-image-wrapper {
@@ -79,6 +83,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .main-image {
@@ -89,6 +94,115 @@
             object-fit: contain;
             display: block;
             background: #ffffff;
+        }
+
+        /* ===== Блок с картинкой альбома слева (десктоп) ===== */
+        .album-sidebar {
+            display: none;
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--inputs-buttons-border-radius);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-top: 0;
+            padding: 16px 0 20px;
+            overflow: hidden;
+            border: 1px solid #eef2f6;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            transition: box-shadow 0.2s;
+        }
+        .album-sidebar.is-visible {
+            display: flex;
+        }
+
+        /* Табы выбора альбома */
+        .album-sidebar__tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            padding: 0 16px;
+            margin-bottom: 12px;
+        }
+        .album-sidebar__tab {
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .album-sidebar__tab:hover {
+            background: var(--light-color);
+        }
+        .album-sidebar__tab.active {
+            background: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .album-sidebar__caption {
+            font-size: 12.5px;
+            color: #7a8a9a;
+            text-align: center;
+            line-height: 1.45;
+            margin-bottom: 12px;
+            padding: 0 16px;
+        }
+        .album-sidebar__image-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .album-sidebar__image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background: #ffffff;
+        }
+
+        /* ===== Встроенная картинка альбома (мобильная) ===== */
+        .album-inline {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .album-inline__caption {
+            font-size: 12px;
+            color: #7a8a9a;
+            margin-bottom: 10px;
+            line-height: 1.45;
+        }
+        .album-inline img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
+        }
+
+        /* ===== Ссылка на альбом в тексте (как product-link) ===== */
+        .product-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .product-link:hover {
+            color: var(--primary-color-hover);
+            border-bottom-color: var(--primary-color-hover);
+            border-bottom-style: solid;
         }
 
         .image-toggle {
@@ -433,6 +547,7 @@
 
         @media (max-width: 900px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .image-section { justify-content: flex-start; }
             .product-details h2 { font-size: 1.3em; }
             .nomenclature-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
             .nomenclature-table th, .nomenclature-table td { padding: 6px 4px; font-size: 11px; }
@@ -443,6 +558,10 @@
             .cta-button { width: 90%; max-width: 280px; margin: 0; }
             .price-group { padding: 16px 14px 18px; }
             .price-group__title { font-size: 1.2em; }
+
+            /* Скрываем десктопный блок с альбомом — на мобильном показываем встроенный */
+            .album-sidebar { display: none !important; }
+            .album-inline { display: block; }
         }
         @media (max-width: 600px) {
             .product-details { padding-left: 16px; padding-right: 16px; }
@@ -826,7 +945,29 @@
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-3.png', 2)">Вид 3</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/foto-1.png', 3)">Фото 1</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/foto-2.png', 4)">Фото 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/chertezh.png', 5)">Чертёж</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-3.png', 5)">Альбом III</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-4.png', 6)">Альбом IV</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-6.png', 7)">Альбом VI</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/chertezh.png', 8)">Чертёж</button>
+                </div>
+            </div>
+
+            <!-- Десктопный блок с картинкой альбома. Показывается через JS, когда открыт info-details -->
+            <div class="album-sidebar" id="albumSidebar" aria-hidden="true">
+
+                <!-- Табы выбора альбома -->
+                <div class="album-sidebar__tabs">
+                    <button type="button" class="album-sidebar__tab active" data-album="0" onclick="setAlbum(0)">Альбом III. Круглые</button>
+                    <button type="button" class="album-sidebar__tab" data-album="1" onclick="setAlbum(1)">Альбом IV. Прямоугольные</button>
+                    <button type="button" class="album-sidebar__tab" data-album="2" onclick="setAlbum(2)">Альбом VI. Перепадные</button>
+                </div>
+
+                <div class="album-sidebar__caption" id="albumCaption">
+                    Типовые материалы для проектирования 902-09-46.88.<br>
+                    Альбом III. Колодцы круглые для труб dy=300-1200 мм
+                </div>
+                <div class="album-sidebar__image-wrapper">
+                    <img src="images/tmp-902/album-3.png" alt="Альбом ТМП 902-09-46.88, Альбом III" class="album-sidebar__image" id="albumImage">
                 </div>
             </div>
         </div>
@@ -846,7 +987,7 @@
                 <li><strong>Антикоррозионная защита:</strong><span class="description"> Каменноугольный лак по ГОСТ 1709 (1–3 слоя)</span></li>
             </ul>
 
-            <details class="info-details">
+            <details class="info-details" id="infoDetails">
                 <summary>
                     <span>Подробнее: материалы, ГОСТы, условия эксплуатации</span>
                 </summary>
@@ -885,7 +1026,7 @@
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-Ст.1.КЖ.И.1">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для круглых колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.1)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для круглых колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.1)</td><td>150</td><td>50</td><td>16.3</td>
-      <td>от 2 445 руб.</td><td>1 шт</td>
+      <td>от 2 445 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.1.КЖ.И.1', -1)">−</button>
@@ -911,7 +1052,7 @@
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-Ст.1.КЖ.И.7">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.7)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.7)</td><td>150</td><td>50</td><td>16.3</td>
-      <td>от 2 445 руб.</td><td>1 шт</td>
+      <td>от 2 445 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.1.КЖ.И.7', -1)">−</button>
@@ -924,7 +1065,7 @@
     </tr><tr id="item-Ст.2.КЖ.И.7">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.2 - КЖ.И.7)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.2 - КЖ.И.7)</td><td>165</td><td>50</td><td>17.9</td>
-      <td>от 2 685 руб.</td><td>1 шт</td>
+      <td>от 2 685 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.2.КЖ.И.7', -1)">−</button>
@@ -937,7 +1078,7 @@
     </tr><tr id="item-Ст.3.КЖ.И.7">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.3 - КЖ.И.7)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.3 - КЖ.И.7)</td><td>170</td><td>50</td><td>18.5</td>
-      <td>от 2 775 руб.</td><td>1 шт</td>
+      <td>от 2 775 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.3.КЖ.И.7', -1)">−</button>
@@ -950,7 +1091,7 @@
     </tr><tr id="item-Ст.4.КЖ.И.7">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.4 - КЖ.И.7)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.4 - КЖ.И.7)</td><td>180</td><td>50</td><td>19.6</td>
-      <td>от 2 940 руб.</td><td>1 шт</td>
+      <td>от 2 940 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.4.КЖ.И.7', -1)">−</button>
@@ -963,7 +1104,7 @@
     </tr><tr id="item-Ст.5.КЖ.И.7">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.5 - КЖ.И.7)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.5 - КЖ.И.7)</td><td>190</td><td>50</td><td>20.7</td>
-      <td>от 3 105 руб.</td><td>1 шт</td>
+      <td>от 3 105 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.5.КЖ.И.7', -1)">−</button>
@@ -989,7 +1130,7 @@
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-Ст.1.КЖ.И.15">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.1 - КЖ.И.15)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.1 - КЖ.И.15)</td><td>150</td><td>50</td><td>16.3</td>
-      <td>от 2 445 руб.</td><td>1 шт</td>
+      <td>от 2 445 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.1.КЖ.И.15', -1)">−</button>
@@ -1002,7 +1143,7 @@
     </tr><tr id="item-Ст.2.КЖ.И.15">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.2 - КЖ.И.15)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.2 - КЖ.И.15)</td><td>180</td><td>50</td><td>19.6</td>
-      <td>от 2 940 руб.</td><td>1 шт</td>
+      <td>от 2 940 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.2.КЖ.И.15', -1)">−</button>
@@ -1015,7 +1156,7 @@
     </tr><tr id="item-Ст.3.КЖ.И.15">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.3 - КЖ.И.15)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.3 - КЖ.И.15)</td><td>210</td><td>50</td><td>22.8</td>
-      <td>от 3 420 руб.</td><td>1 шт</td>
+      <td>от 3 420 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.3.КЖ.И.15', -1)">−</button>
@@ -1028,7 +1169,7 @@
     </tr><tr id="item-Ст.4.КЖ.И.15">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.4 - КЖ.И.15)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.4 - КЖ.И.15)</td><td>240</td><td>50</td><td>26.1</td>
-      <td>от 3 915 руб.</td><td>1 шт</td>
+      <td>от 3 915 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.4.КЖ.И.15', -1)">−</button>
@@ -1041,7 +1182,7 @@
     </tr><tr id="item-Ст.5.КЖ.И.15">
       <td><img src="images/tmp-902/vid-mini.png" alt="Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.5 - КЖ.И.15)" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.5 - КЖ.И.15)</td><td>270</td><td>50</td><td>29.3</td>
-      <td>от 4 395 руб.</td><td>1 шт</td>
+      <td>от 4 395 руб.</td><td>1 шт</td>
       <td><span class="availability-icon">✅</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('Ст.5.КЖ.И.15', -1)">−</button>
@@ -1153,6 +1294,9 @@
             <div class="gallery-item"><img src="images/tmp-902/vid-3.png" alt="Вид 3"></div>
             <div class="gallery-item"><img src="images/tmp-902/foto-1.png" alt="Фото 1"></div>
             <div class="gallery-item"><img src="images/tmp-902/foto-2.png" alt="Фото 2"></div>
+            <div class="gallery-item"><img src="images/tmp-902/album-3.png" alt="Альбом III"></div>
+            <div class="gallery-item"><img src="images/tmp-902/album-4.png" alt="Альбом IV"></div>
+            <div class="gallery-item"><img src="images/tmp-902/album-6.png" alt="Альбом VI"></div>
             <div class="gallery-item"><img src="images/tmp-902/chertezh.png" alt="Чертеж"></div>
         </div>
         <div class="modal-nav" id="modalNav">
@@ -1161,7 +1305,10 @@
             <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
             <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
             <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
-            <button data-slide="5" onclick="scrollToSlide(5)">Чертёж</button>
+            <button data-slide="5" onclick="scrollToSlide(5)">Альбом III</button>
+            <button data-slide="6" onclick="scrollToSlide(6)">Альбом IV</button>
+            <button data-slide="7" onclick="scrollToSlide(7)">Альбом VI</button>
+            <button data-slide="8" onclick="scrollToSlide(8)">Чертёж</button>
         </div>
     </div>
 </div>
@@ -1182,7 +1329,6 @@
     const galleryContainer = document.getElementById("galleryContainer");
     const modalNav = document.getElementById("modalNav");
 
-    /* a11y:restore-broken-fns */
     function changeImage(src, index) {
         mainImage.src = src;
         const btns = document.querySelectorAll('.image-toggle__btn');
@@ -1225,10 +1371,118 @@
         setActiveModalButton(newIndex);
     });
 
+    /* ===== Блок "Подробнее + картинка альбома слева" ===== */
+    const infoDetails = document.getElementById('infoDetails');
+    const albumSidebar = document.getElementById('albumSidebar');
+
+    function syncAlbumSidebar() {
+        if (!infoDetails || !albumSidebar) return;
+        if (infoDetails.open) {
+            albumSidebar.classList.add('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'false');
+        } else {
+            albumSidebar.classList.remove('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', syncAlbumSidebar);
+        syncAlbumSidebar();
+    }
+
+    /* ===== Синхронизация ВЕРХА альбома с ВЕРХОМ info-details ===== */
+    function syncAlbumTopWithDetails() {
+        if (!infoDetails || !albumSidebar) return;
+        if (!infoDetails.open) {
+            albumSidebar.style.marginTop = '0px';
+            return;
+        }
+        albumSidebar.style.marginTop = '0px';
+        if (window.innerWidth <= 900) return;
+
+        const detailsRect = infoDetails.getBoundingClientRect();
+        const albumRect = albumSidebar.getBoundingClientRect();
+        const desiredDelta = detailsRect.top - albumRect.top;
+        const currentMargin = parseFloat(getComputedStyle(albumSidebar).marginTop) || 0;
+        let newMargin = currentMargin + desiredDelta;
+        if (newMargin < 0) newMargin = 0;
+        albumSidebar.style.marginTop = newMargin + 'px';
+    }
+
+    window.addEventListener('load', syncAlbumTopWithDetails);
+    window.addEventListener('resize', syncAlbumTopWithDetails);
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', function () {
+            setTimeout(syncAlbumTopWithDetails, 0);
+        });
+    }
+
+    /* ===== Переключение альбома в .album-sidebar ===== */
+    const albumData = [
+        {
+            src: 'images/tmp-902/album-3.png',
+            caption: 'Типовые материалы для проектирования 902-09-46.88.<br>Альбом III. Колодцы круглые для труб dy=300-1200 мм',
+            alt: 'Альбом ТМП 902-09-46.88, Альбом III',
+            modalSlide: 5
+        },
+        {
+            src: 'images/tmp-902/album-4.png',
+            caption: 'Типовые материалы для проектирования 902-09-46.88.<br>Альбом IV. Колодцы прямоугольные для труб dy=300-1600 мм',
+            alt: 'Альбом ТМП 902-09-46.88, Альбом IV',
+            modalSlide: 6
+        },
+        {
+            src: 'images/tmp-902/album-6.png',
+            caption: 'Типовые материалы для проектирования 902-09-46.88.<br>Альбом VI. Строительные изделия для армирования перепадных камер',
+            alt: 'Альбом ТМП 902-09-46.88, Альбом VI',
+            modalSlide: 7
+        }
+    ];
+
+    function setAlbum(index) {
+        const data = albumData[index];
+        if (!data) return;
+
+        const albumImage = document.getElementById('albumImage');
+        const albumCaption = document.getElementById('albumCaption');
+        if (albumImage) {
+            albumImage.src = data.src;
+            albumImage.alt = data.alt;
+        }
+        if (albumCaption) {
+            albumCaption.innerHTML = data.caption;
+        }
+
+        const tabs = albumSidebar.querySelectorAll('.album-sidebar__tab');
+        tabs.forEach((tab, i) => {
+            if (i === index) tab.classList.add('active');
+            else tab.classList.remove('active');
+        });
+    }
+
+    /* Клик по картинке альбома открывает модалку на нужном слайде */
+    if (albumSidebar) {
+        const albumImageWrapper = albumSidebar.querySelector('.album-sidebar__image-wrapper');
+        if (albumImageWrapper) {
+            albumImageWrapper.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const activeTab = albumSidebar.querySelector('.album-sidebar__tab.active');
+                const idx = activeTab ? parseInt(activeTab.getAttribute('data-album')) : 0;
+                const data = albumData[idx];
+                if (!data) return;
+                modal.style.display = "block";
+                setTimeout(() => scrollToSlide(data.modalSlide), 50);
+                modalA11y.open();
+            });
+        }
+    }
+
     window.changeImage = changeImage;
     window.openModal = openModal;
     window.closeModal = closeModal;
     window.scrollToSlide = scrollToSlide;
+    window.setAlbum = setAlbum;
 </script>
 
 </body>
