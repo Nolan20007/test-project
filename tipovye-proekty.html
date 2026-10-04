@@ -29,7 +29,7 @@
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Типовые проектные решения (Альбомы)",
+      "name": "Типовые проектные решения (Альбомы III, IV, V, VI, VII)",
       "description": "Типовые проектные решения для строительных изделий колодцев: 901-09-11.84, ТПР 902-09-22.84, ТМП 902-09-46.88 и другие.",
       "url": "https://stremyanki-dlya-kolodcev.ru/tipovye-proekty.html"
     }
@@ -45,15 +45,6 @@
             border-radius: var(--inputs-buttons-border-radius);
             border: 1px solid #eef2f6;
         }
-        .content-area h2 {
-            color: var(--primary-color);
-            margin: 35px 0 15px;
-            font-size: 1.5em;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--light-color);
-            font-weight: 600;
-        }
-        .content-area h2:first-of-type { margin-top: 0; }
         .content-area p { margin: 0 0 15px; line-height: 1.65; }
         .content-area ul { margin: 0 0 20px; padding-left: 25px; }
         .content-area ul li { margin-bottom: 8px; line-height: 1.55; }
@@ -66,105 +57,110 @@
             border-left: 5px solid var(--primary-color);
         }
 
-        /* ===== Навигация по альбомам вверху ===== */
-        .albums-nav {
-            margin: 30px 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .albums-nav__title {
-            font-size: 1em;
-            color: var(--dark-color);
-            font-weight: 600;
-            margin: 0 0 6px;
-        }
-        .albums-nav__link {
-            display: block;
-            padding: 14px 20px;
-            background: #f7fafc;
-            border: 1px solid #eef2f6;
-            border-left: 4px solid var(--primary-color);
+        /* ===== Аккордеон альбомов ===== */
+        .album-acc {
+            margin: 14px 0;
+            border: 1px solid #c8d9ea;
             border-radius: var(--inputs-buttons-border-radius);
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 500;
-            font-size: 0.95em;
-            line-height: 1.4;
-            transition: background-color 0.2s, transform 0.2s, color 0.2s;
-        }
-        .albums-nav__link:hover {
-            background: var(--primary-color);
-            color: #ffffff;
-            transform: translateX(3px);
-        }
-
-        .album-card {
             background: #fafbfc;
-            border: 1px solid #eef2f6;
-            border-radius: var(--inputs-buttons-border-radius);
-            padding: 26px 30px;
-            margin: 20px 0 30px;
-            scroll-margin-top: 100px;
+            overflow: hidden;
         }
-        .album-card__body {
+        .album-acc > summary {
+            cursor: pointer;
+            padding: 16px 22px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.02em;
+            line-height: 1.35;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: background 0.2s;
+            user-select: none;
+            background: #dbe7f3;
+        }
+        .album-acc > summary::-webkit-details-marker { display: none; }
+        .album-acc > summary::after {
+            content: "▾";
+            font-size: 14px;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .album-acc[open] > summary::after { transform: rotate(180deg); }
+        .album-acc > summary:hover { background: #c9dcee; }
+        .album-acc[open] > summary { border-bottom: 1px solid #c8d9ea; }
+
+        .album-acc__body {
+            padding: 22px 26px 26px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
+            gap: 24px 32px;
+            animation: fadeSlide 0.25s ease;
         }
-        .album-card__meta {
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-4px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .album-meta {
             display: grid;
-            grid-template-columns: 130px 1fr;
-            gap: 8px 16px;
+            grid-template-columns: 170px 1fr;
+            gap: 8px 14px;
             margin: 0;
             font-size: 0.9em;
             line-height: 1.5;
+            align-self: start;
         }
-        .album-card__meta dt {
+        .album-meta dt {
             color: #7a8a9a;
             font-weight: 400;
         }
-        .album-card__meta dd {
+        .album-meta dd {
             color: #333;
             margin: 0;
             font-weight: 500;
         }
 
-        .album-card__toc h4 {
+        .album-toc {
+            align-self: start;
+        }
+        .album-toc h4 {
             color: var(--primary-color);
             font-size: 1em;
             font-weight: 600;
             margin: 0 0 12px;
         }
-        .album-card__toc ul {
+        .album-toc ul {
             list-style: disc;
             padding-left: 22px;
             margin: 0;
+            columns: 2;
+            column-gap: 24px;
         }
-        .album-card__toc li {
+        .album-toc li {
             margin-bottom: 5px;
             line-height: 1.5;
             font-size: 0.85em;
+            break-inside: avoid;
         }
-
-        /* ===== Ссылка в оглавлении — вся строка кликабельна ===== */
-        .album-card__toc a.toc-link {
+        .album-toc a.toc-link {
             color: #444;
             text-decoration: none;
             display: block;
             border-bottom: 1px dashed var(--primary-color);
             transition: color 0.2s, border-color 0.2s;
+            font-weight: 600;
         }
-        .album-card__toc a.toc-link:hover {
+        .album-toc a.toc-link:hover {
             color: var(--primary-color);
             border-bottom-style: solid;
         }
 
-        /* ===== Кнопки PDF — белые с синим обрамлением ===== */
-        .album-card__actions {
-            margin-top: 26px;
-            padding-top: 20px;
+        .album-actions {
+            grid-column: 1 / -1;
+            padding-top: 18px;
             border-top: 1px solid #eef2f6;
             display: flex;
             gap: 12px;
@@ -187,6 +183,23 @@
         .content-area a.album-btn:hover {
             background: var(--primary-color);
             color: #ffffff;
+        }
+
+        .album-image {
+            grid-column: 1 / -1;
+            padding-top: 22px;
+            border-top: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .album-image img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
+            background: #ffffff;
         }
 
         .contact-summary {
@@ -225,24 +238,29 @@
         }
 
         @media (max-width: 900px) {
-            .album-card__body { grid-template-columns: 1fr; gap: 24px; }
+            .album-acc__body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .album-toc ul {
+                columns: 1;
+            }
         }
         @media (max-width: 768px) {
             .content-area { padding: 25px 20px; }
-            .content-area h2 { font-size: 1.3em; }
-            .album-card { padding: 20px 18px; }
-            .album-card__meta { grid-template-columns: 1fr; gap: 4px; }
-            .album-card__meta dt { font-size: 0.88em; }
+            .album-acc > summary { padding: 14px 16px; font-size: 0.95em; }
+            .album-acc__body { padding: 18px 16px 22px; }
+            .album-meta { grid-template-columns: 1fr; gap: 4px; }
+            .album-meta dt { font-size: 0.88em; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .content-area a.cta-button,
             .content-area button.cta-button { width: 90%; max-width: 280px; margin: 0; }
-            .album-card__actions { flex-direction: column; }
+            .album-actions { flex-direction: column; }
             .content-area a.album-btn { width: 100%; text-align: center; }
         }
         @media (max-width: 480px) {
             .content-area { padding: 20px 15px; }
-            .content-area h2 { font-size: 1.15em; }
-            .albums-nav__link { padding: 12px 16px; font-size: 0.9em; }
+            .album-acc > summary { font-size: 0.9em; padding: 12px 14px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -255,14 +273,14 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stremyanki-dlya-kolodcev.ru/"},
-    {"@type": "ListItem", "position": 2, "name": "Типовые проектные решения (Альбомы)", "item": "https://stremyanki-dlya-kolodcev.ru/tipovye-proekty.html"}
+    {"@type": "ListItem", "position": 2, "name": "Типовые проектные решения (Альбомы III, IV, V, VI, VII)", "item": "https://stremyanki-dlya-kolodcev.ru/tipovye-proekty.html"}
   ]
 }
 </script>
 
 <header class="header">
     <div class="container">
-        <h1>Типовые проектные решения (Альбомы)</h1>
+        <h1>Типовые проектные решения (Альбомы III, IV, V, VI, VII)</h1>
         <p>Строительные изделия для колодцев по типовым проектам</p>
     </div>
 </header>
@@ -287,7 +305,7 @@
 <div class="container">
     <div class="breadcrumbs">
         <a href="index.html">Главная</a> ›
-        <span>Типовые проектные решения (Альбомы)</span>
+        <span>Типовые проектные решения (Альбомы III, IV, V, VI, VII)</span>
     </div>
 </div>
 
@@ -300,23 +318,12 @@
             <strong>Зачем это нужно:</strong> при закупке лестниц и стремянок для колодцев — особенно для государственных и муниципальных объектов — заказчику важно убедиться, что изделия соответствуют проектным решениям. Все альбомы, представленные здесь, — официальные источники, по которым мы изготавливаем продукцию.
         </div>
 
-        <!-- ===== Навигация по альбомам ===== -->
-        <nav class="albums-nav" aria-label="Список альбомов на странице">
-            <div class="albums-nav__title">На странице представлены:</div>
-            <a href="#album-901-v" class="albums-nav__link">Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</a>
-            <a href="#album-902-vii" class="albums-nav__link">Типовые проектные решения 902-09-22.84. Альбом VII. Строительные изделия</a>
-            <a href="#album-902-tmp-iii" class="albums-nav__link">Типовые материалы для проектирования 902-09-46.88. Альбом III. Колодцы круглые для труб dy=300-1200 мм</a>
-            <a href="#album-902-tmp-iv" class="albums-nav__link">Типовые материалы для проектирования 902-09-46.88. Альбом IV. Колодцы прямоугольные для труб dy=300-1600 мм</a>
-            <a href="#album-902-tmp-vi" class="albums-nav__link">Типовые материалы для проектирования 902-09-46.88. Альбом VI. Строительные изделия для армирования перепадных камер</a>
-        </nav>
-
         <!-- ===== Альбом 1: ТПР 901-09-11.84 Альбом V ===== -->
-        <h2 id="album-901-v">Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</h2>
+        <details class="album-acc" id="album-901-v">
+            <summary>Типовые проектные решения 901-09-11.84. Альбом V. Строительные изделия</summary>
+            <div class="album-acc__body">
 
-        <div class="album-card">
-            <div class="album-card__body">
-
-                <dl class="album-card__meta">
+                <dl class="album-meta">
                     <dt>Обозначение:</dt>
                     <dd>Типовые проектные решения 901-09-11.84</dd>
 
@@ -348,7 +355,7 @@
                     <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1988 г.)</dd>
                 </dl>
 
-                <div class="album-card__toc">
+                <div class="album-toc">
                     <h4>Оглавление альбома</h4>
                     <ul>
                         <li><a href="skoba-mn.html" class="toc-link">901-09-11.84 КЖИ.МН1 Скоба ходовая</a></li>
@@ -373,21 +380,24 @@
                     </ul>
                 </div>
 
-            </div>
+                <div class="album-actions">
+                    <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
+                    <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                </div>
 
-            <div class="album-card__actions">
-                <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
-                <a href="files/Tipovye-proektnye-resheniya-901-09-11.84-Albom-V-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                <div class="album-image">
+                    <img src="images/ss1/album.png" alt="Альбом ТПР 901-09-11.84, Строительные изделия">
+                </div>
+
             </div>
-        </div>
+        </details>
 
         <!-- ===== Альбом 2: ТПР 902-09-22.84 Альбом VII ===== -->
-        <h2 id="album-902-vii">Типовые проектные решения 902-09-22.84. Альбом VII. Строительные изделия</h2>
+        <details class="album-acc" id="album-902-vii">
+            <summary>Типовые проектные решения 902-09-22.84. Альбом VII. Строительные изделия</summary>
+            <div class="album-acc__body">
 
-        <div class="album-card">
-            <div class="album-card__body">
-
-                <dl class="album-card__meta">
+                <dl class="album-meta">
                     <dt>Обозначение:</dt>
                     <dd>Типовые проектные решения 902-09-22.84</dd>
 
@@ -419,7 +429,7 @@
                     <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1988 г.)</dd>
                 </dl>
 
-                <div class="album-card__toc">
+                <div class="album-toc">
                     <h4>Оглавление альбома</h4>
                     <ul>
                         <li>ТПР 902-09-22.84-КЖИ.ПД Плита дорожная ПД</li>
@@ -457,21 +467,24 @@
                     </ul>
                 </div>
 
-            </div>
+                <div class="album-actions">
+                    <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
+                    <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                </div>
 
-            <div class="album-card__actions">
-                <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
-                <a href="files/Tipovye-proektnye-resheniya-902-09-22.84-Albom-VII-Stroitelnye-izdeliya.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                <div class="album-image">
+                    <img src="images/ss2/album.png" alt="Альбом ТПР 902-09-22.84, Строительные изделия">
+                </div>
+
             </div>
-        </div>
+        </details>
 
         <!-- ===== Альбом 3: ТМП 902-09-46.88 Альбом III ===== -->
-        <h2 id="album-902-tmp-iii">Типовые материалы для проектирования 902-09-46.88. Альбом III. Колодцы круглые для труб dy=300-1200 мм</h2>
+        <details class="album-acc" id="album-902-tmp-iii">
+            <summary>Типовые материалы для проектирования 902-09-46.88. Альбом III. Колодцы круглые для труб dy=300-1200 мм</summary>
+            <div class="album-acc__body">
 
-        <div class="album-card">
-            <div class="album-card__body">
-
-                <dl class="album-card__meta">
+                <dl class="album-meta">
                     <dt>Обозначение:</dt>
                     <dd>Типовые материалы для проектирования 902-09-46.88</dd>
 
@@ -503,7 +516,7 @@
                     <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1989 г.)</dd>
                 </dl>
 
-                <div class="album-card__toc">
+                <div class="album-toc">
                     <h4>Оглавление альбома</h4>
                     <ul>
                         <li>Колодцы линейные для труб dу = 300 - 600 мм. Таблицы 1, 2</li>
@@ -527,21 +540,24 @@
                     </ul>
                 </div>
 
-            </div>
+                <div class="album-actions">
+                    <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-III-Kolodcy-kruglye-dlya-trub-dy-300-1200-mm.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
+                    <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-III-Kolodcy-kruglye-dlya-trub-dy-300-1200-mm.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                </div>
 
-            <div class="album-card__actions">
-                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-III-Kolodcy-kruglye-dlya-trub-dy-300-1200-mm.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
-                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-III-Kolodcy-kruglye-dlya-trub-dy-300-1200-mm.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                <div class="album-image">
+                    <img src="images/tmp-902/album-3.png" alt="Альбом ТМП 902-09-46.88, Альбом III, Колодцы круглые">
+                </div>
+
             </div>
-        </div>
+        </details>
 
         <!-- ===== Альбом 4: ТМП 902-09-46.88 Альбом IV ===== -->
-        <h2 id="album-902-tmp-iv">Типовые материалы для проектирования 902-09-46.88. Альбом IV. Колодцы прямоугольные для труб dy=300-1600 мм</h2>
+        <details class="album-acc" id="album-902-tmp-iv">
+            <summary>Типовые материалы для проектирования 902-09-46.88. Альбом IV. Колодцы прямоугольные для труб dy=300-1600 мм</summary>
+            <div class="album-acc__body">
 
-        <div class="album-card">
-            <div class="album-card__body">
-
-                <dl class="album-card__meta">
+                <dl class="album-meta">
                     <dt>Обозначение:</dt>
                     <dd>Типовые материалы для проектирования 902-09-46.88</dd>
 
@@ -573,7 +589,7 @@
                     <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1989 г.)</dd>
                 </dl>
 
-                <div class="album-card__toc">
+                <div class="album-toc">
                     <h4>Оглавление альбома</h4>
                     <ul>
                         <li>Архитектурно-строительные решения</li>
@@ -617,21 +633,24 @@
                     </ul>
                 </div>
 
-            </div>
+                <div class="album-actions">
+                    <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-IV-Kolodcy-pryamougolnye-dlya-trub-dy-300-1600-mm.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
+                    <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-IV-Kolodcy-pryamougolnye-dlya-trub-dy-300-1600-mm.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                </div>
 
-            <div class="album-card__actions">
-                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-IV-Kolodcy-pryamougolnye-dlya-trub-dy-300-1600-mm.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
-                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-IV-Kolodcy-pryamougolnye-dlya-trub-dy-300-1600-mm.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                <div class="album-image">
+                    <img src="images/tmp-902/album-4.png" alt="Альбом ТМП 902-09-46.88, Альбом IV, Колодцы прямоугольные">
+                </div>
+
             </div>
-        </div>
+        </details>
 
         <!-- ===== Альбом 5: ТМП 902-09-46.88 Альбом VI ===== -->
-        <h2 id="album-902-tmp-vi">Типовые материалы для проектирования 902-09-46.88. Альбом VI. Строительные изделия для армирования перепадных камер</h2>
+        <details class="album-acc" id="album-902-tmp-vi">
+            <summary>Типовые материалы для проектирования 902-09-46.88. Альбом VI. Строительные изделия для армирования перепадных камер</summary>
+            <div class="album-acc__body">
 
-        <div class="album-card">
-            <div class="album-card__body">
-
-                <dl class="album-card__meta">
+                <dl class="album-meta">
                     <dt>Обозначение:</dt>
                     <dd>Типовые материалы для проектирования 902-09-46.88</dd>
 
@@ -663,7 +682,7 @@
                     <dd>ЦИТП Госстроя СССР (CITP, Gosstroy (USSR), 1989 г.)</dd>
                 </dl>
 
-                <div class="album-card__toc">
+                <div class="album-toc">
                     <h4>Оглавление альбома</h4>
                     <ul>
                         <li>КЖ.И.1СБ Сетка арматурная С1</li>
@@ -703,13 +722,17 @@
                     </ul>
                 </div>
 
-            </div>
+                <div class="album-actions">
+                    <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-VI-Stroitelnye-izdeliya-dlya-armirovaniya-perepadnyh-kamer.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
+                    <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-VI-Stroitelnye-izdeliya-dlya-armirovaniya-perepadnyh-kamer.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                </div>
 
-            <div class="album-card__actions">
-                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-VI-Stroitelnye-izdeliya-dlya-armirovaniya-perepadnyh-kamer.pdf" class="album-btn" target="_blank" rel="noopener">📥 Открыть PDF</a>
-                <a href="files/Tipovye-materialy-dlya-proektirovaniya-902-09-46.88-Albom-VI-Stroitelnye-izdeliya-dlya-armirovaniya-perepadnyh-kamer.pdf" class="album-btn" download>⬇️ Скачать PDF</a>
+                <div class="album-image">
+                    <img src="images/tmp-902/album-6.png" alt="Альбом ТМП 902-09-46.88, Альбом VI, Строительные изделия для армирования перепадных камер">
+                </div>
+
             </div>
-        </div>
+        </details>
 
         <section class="contact-summary">
             <h2>Оформление заказа и консультация</h2>
