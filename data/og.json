@@ -1,0 +1,47 @@
+{
+  "index.html": {
+    "title": "Стремянки и лестницы для колодцев от производителя",
+    "description": "Изготовление и продажа стремянок от С-1 до С-1-18, ТПР, ТМП, скоб ходовых, лестниц КЛ-1, ВЛ-2, Л-16 и пожарных СГ. Доставка по России.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/vid-1.webp"
+  },
+  "ss1.html": {
+    "title": "Стремянки ТПР 901-09-11.84 для колодцев от С-1 до С-9",
+    "description": "Стальные стремянки от С-1 до С-9 ТПР 901-09-11.84. Ширина 50 см, длина от 120 до 450 см. Цена от производителя.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/ss1/vid-1.webp"
+  },
+  "ss2.html": {
+    "title": "Стремянки ТПР 902-09-22.84 для колодцев от С-1-00 до С-1-18",
+    "description": "Стремянки ТПР 902-09-22.84 от С-1-00 до С-1-18 для канализационных колодцев. Ширина 50 см, длина от 60 до 600 см.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-1.webp"
+  },
+  "tmp-902.html": {
+    "title": "Стремянки ТМП 902-09-46.88 для колодцев",
+    "description": "Стремянки ТМП 902-09-46.88 для ливневой канализации. Круглые, прямоугольные, перепадные.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/tmp-902/vid-1.webp"
+  },
+  "ssg1.html": {
+    "title": "Пожарные стремянки СГ серия 1.450.3-7.94",
+    "description": "Стальные пожарные стремянки СГ по серии 1.450.3-7.94. Ширина 70 см, длина от 220 до 820 см. ГОСТ Р 53254.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.webp"
+  },
+  "kl-1-dlya-kanalizacionnyh-kolodcev.html": {
+    "title": "Канализационные лестницы КЛ-1 для колодцев",
+    "description": "Навесные лестницы КЛ-1 (Л-1, Л-18) из арматуры А1 Ø25 мм. Ширина 41 см, длина от 100 до 1170 см.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.webp"
+  },
+  "vl-2-l-19-vodoprovodnaya.html": {
+    "title": "Водопроводные лестницы ВЛ-2 для колодцев",
+    "description": "Навесные лестницы ВЛ-2 (Л-2, Л-19) из арматуры А1. Ширина 42,4 см, длина от 100 до 1170 см.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/vl2-large.webp"
+  },
+  "skoba-mn.html": {
+    "title": "Скобы ходовые ТПР 901-09-11.84 МН-1",
+    "description": "Ходовые скобы МН-1 из арматуры Ø18 мм. Соответствие СП 31.13330.2012 и ГОСТ 8020-2016.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/scoba-nm/vid-1.webp"
+  },
+  "l-16-dlya-teplovyh-setej.html": {
+    "title": "Лестницы тепловых сетей Л-16 для колодцев",
+    "description": "Лестницы Л-16 (ТС) в двух исполнениях: уголок 50×50×5 и 63×63×5 мм. Длина от 100 до 1170 см.",
+    "image": "https://stremyanki-dlya-kolodcev.ru/images/tl/vid-1.webp"
+  }
+}
