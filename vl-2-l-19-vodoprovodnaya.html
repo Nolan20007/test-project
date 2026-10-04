@@ -3327,8 +3327,8 @@
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
                 <picture><source srcset="images/vl2-large.webp" type="image/webp"><img id="mainImage" src="images/vl2-large.png" alt="Водопроводная лестница ВЛ-2" class="main-image"></picture>
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/vl2-large.png', 0)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/vl2-drawing.png', 1)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/vl2-large.png','images/vl2-large.webp', 0)">Фото</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/vl2-drawing.png','images/vl2-drawing.webp', 1)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -4904,7 +4904,10 @@
     const mainImageWrapper = document.getElementById('mainImageWrapper');
     const modal = document.getElementById("productModal");
     const galleryContainer = document.getElementById("galleryContainer");
-    function changeImage(src, index) {
+    function changeImage(pngSrc, webpSrc, index) {
+        const source = document.getElementById('mainSource');
+        if (source) source.srcset = webpSrc;
+        mainImage.src = pngSrc;
         mainImage.src = src;
         const btns = document.querySelectorAll('.image-toggle__btn');
         btns.forEach(b => b.classList.remove('active'));

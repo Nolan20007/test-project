@@ -532,10 +532,10 @@
                 <picture><source srcset="images/scoba-nm/vid-1.webp" type="image/webp"><img id="mainImage" src="images/scoba-nm/vid-1.png" alt="Скоба ходовая МН-1 ТПР 901-09-11.84" class="main-image"
                      onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture>
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/scoba-nm/vid-1.png', 0)">Вид 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-1.png', 1)">Фото 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-2.png', 2)">Фото 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/chertezh.png', 3)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/scoba-nm/vid-1.png','images/scoba-nm/vid-1.webp', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-1.png','images/scoba-nm/foto-1.webp', 1)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-2.png','images/scoba-nm/foto-2.webp', 2)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/chertezh.png','images/scoba-nm/chertezh.webp', 3)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -756,7 +756,10 @@
     const galleryContainer = document.getElementById("galleryContainer");
     const modalNav = document.getElementById("modalNav");
 
-    function changeImage(src, index) {
+    function changeImage(pngSrc, webpSrc, index) {
+        const source = document.getElementById('mainSource');
+        if (source) source.srcset = webpSrc;
+        mainImage.src = pngSrc;
         mainImage.src = src;
         mainImageWrapper.classList.remove('image-placeholder');
         mainImage.style.display = '';

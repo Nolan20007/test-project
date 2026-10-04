@@ -6305,12 +6305,12 @@
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
                 <picture><source srcset="images/tl/vid-1.webp" type="image/webp"><img id="mainImage" src="images/tl/vid-1.png" alt="Лестница тепловых сетей Л-16" class="main-image"></picture>
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/tl/vid-1.png', 0)">Вид 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/vid-2.png', 1)">Вид 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/vid-3.png', 2)">Вид 3</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/foto-1.png', 3)">Фото 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/foto-2.png', 4)">Фото 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/chertezh.png', 5)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/tl/vid-1.png','images/tl/vid-1.webp', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/vid-2.png','images/tl/vid-2.webp', 1)">Вид 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/vid-3.png','images/tl/vid-3.webp', 2)">Вид 3</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/foto-1.png','images/tl/foto-1.webp', 3)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/foto-2.png','images/tl/foto-2.webp', 4)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tl/chertezh.png','images/tl/chertezh.webp', 5)">Чертёж</button>
                 </div>
             </div>
         </div>
@@ -9320,7 +9320,10 @@
 
 
     /* a11y:restore-broken-fns */
-    function changeImage(src, index) {
+    function changeImage(pngSrc, webpSrc, index) {
+        const source = document.getElementById('mainSource');
+        if (source) source.srcset = webpSrc;
+        mainImage.src = pngSrc;
         mainImage.src = src;
         const btns = document.querySelectorAll('.image-toggle__btn');
         btns.forEach(b => b.classList.remove('active'));

@@ -940,15 +940,15 @@
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
                 <picture><source srcset="images/tmp-902/vid-1.webp" type="image/webp"><img id="mainImage" src="images/tmp-902/vid-1.png" alt="Стремянка ТМП 902-09-46.88" class="main-image"></picture>
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-1.png', 0)">Вид 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-2.png', 1)">Вид 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-3.png', 2)">Вид 3</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/foto-1.png', 3)">Фото 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/foto-2.png', 4)">Фото 2</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-3.png', 5)">Альбом III</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-4.png', 6)">Альбом IV</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-6.png', 7)">Альбом VI</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/chertezh.png', 8)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-1.png','images/tmp-902/vid-1.webp', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-2.png','images/tmp-902/vid-2.webp', 1)">Вид 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/vid-3.png','images/tmp-902/vid-3.webp', 2)">Вид 3</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/foto-1.png','images/tmp-902/foto-1.webp', 3)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/foto-2.png','images/tmp-902/foto-2.webp', 4)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-3.png','images/tmp-902/album-3.webp', 5)">Альбом III</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-4.png','images/tmp-902/album-4.webp', 6)">Альбом IV</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/album-6.png','images/tmp-902/album-6.webp', 7)">Альбом VI</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/tmp-902/chertezh.png','images/tmp-902/chertezh.webp', 8)">Чертёж</button>
                 </div>
             </div>
 
@@ -1329,7 +1329,10 @@
     const galleryContainer = document.getElementById("galleryContainer");
     const modalNav = document.getElementById("modalNav");
 
-    function changeImage(src, index) {
+    function changeImage(pngSrc, webpSrc, index) {
+        const source = document.getElementById('mainSource');
+        if (source) source.srcset = webpSrc;
+        mainImage.src = pngSrc;
         mainImage.src = src;
         const btns = document.querySelectorAll('.image-toggle__btn');
         btns.forEach(b => b.classList.remove('active'));
