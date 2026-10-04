@@ -63,7 +63,11 @@ function wrapImg(imgTag) {
     const webpSrc = pngToWebp(src);
     if (!fileExists(webpSrc)) return null;
 
-    return `<picture><source srcset="${webpSrc}" type="image/webp">${imgTag}</picture>`;
+    // Главная картинка товара: добавляем id, чтобы changeImage() мог менять webp-источник
+    const id = getAttr(imgTag, 'id');
+    const sourceIdAttr = (id === 'mainImage') ? ' id="mainSource"' : '';
+
+    return `<picture><source${sourceIdAttr} srcset="${webpSrc}" type="image/webp">${imgTag}</picture>`;
 }
 
 function processFile(relPath) {
