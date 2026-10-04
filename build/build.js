@@ -67,6 +67,10 @@ const COLLAPSE_SHOW = 10;
 const ANALYTICS_TAG = '<script src="js/analytics.js"></script>';
 const ANALYTICS_RE = /<script\s+src=["']js\/analytics\.js["'][^>]*>\s*<\/script>/i;
 
+// ===== OG-теги из data/og.json =====
+const OG_START = '<!-- OG_START -->';
+const OG_END   = '<!-- OG_END -->';
+
 function loadInclude(name) {
   const filePath = path.resolve(__dirname, '..', 'includes', name);
   if (!fs.existsSync(filePath)) {
@@ -376,6 +380,59 @@ const ALL_HTML_FILES = [
   'skoba-mn.html',
 ];
 
+function insertOgTags(html, file) {
+  const ogPath = path.resolve(__dirname, '..', 'data', 'og.json');
+  if (!fs.existsSync(ogPath)) return { html, replaced: false };
+
+  let ogData;
+  try {
+    ogData = JSON.parse(fs.readFileSync(ogPath, 'utf8'));
+  } catch (e) {
+    console.warn(`  ⚠ OG: не удалось прочитать data/og.json — ${e.message}`);
+    return { html, replaced: false };
+  }
+
+  const data = ogData[file];
+  if (!data) return { html, replaced: false };
+
+  const url = SITE_URL + '/' + (file === 'index.html' ? '' : file);
+  const type = (file === 'index.html') ? 'website' : 'product';
+
+  const block = `${OG_START}
+<meta property="og:type" content="${type}">
+<meta property="og:title" content="${esc(data.title)}">
+<meta property="og:description" content="${esc(data.description)}">
+<meta property="og:image" content="${esc(data.image)}">
+<meta property="og:url" content="${url}">
+${OG_END}`;
+
+  // Если маркеры уже есть — заменяем блок между ними
+  const re = new RegExp(
+    OG_START.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +
+    '[\\s\\S]*?' +
+    OG_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  );
+  if (re.test(html)) {
+    const newHtml = html.replace(re, block);
+    return { html: newHtml, replaced: newHtml !== html };
+  }
+
+  // Если маркеров нет — вставляем после <link rel="canonical" ...>
+  const canonRe = /(<link\s+rel=["']canonical["'][^>]*>)/i;
+  if (canonRe.test(html)) {
+    const newHtml = html.replace(canonRe, `$1\n${block}`);
+    return { html: newHtml, replaced: newHtml !== html };
+  }
+
+  // На всякий случай — вставляем перед </head>
+  if (html.includes('</head>')) {
+    const newHtml = html.replace('</head>', `${block}\n</head>`);
+    return { html: newHtml, replaced: newHtml !== html };
+  }
+
+  return { html, replaced: false };
+}
+
 function processMarkers(file, navContent, footerContent) {
   const filePath = path.resolve(__dirname, '..', file);
   if (!fs.existsSync(filePath)) return false;
@@ -407,9 +464,17 @@ function processMarkers(file, navContent, footerContent) {
     console.log(`  ✓ ${file} → добавлен analytics.js`);
   }
 
+  // ===== OG: вставить/обновить og-теги =====
+  const ogResult = insertOgTags(html, file);
+  if (ogResult.replaced) {
+    html = ogResult.html;
+    changed = true;
+    console.log(`  ✓ ${file} → OG-теги обновлены`);
+  }
+
   if (changed) {
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log(`  ✓ ${file} → NAV/FOOTER/PRICE/ANALYTICS обновлены`);
+    console.log(`  ✓ ${file} → NAV/FOOTER/PRICE/ANALYTICS/OG обновлены`);
     return true;
   }
   return false;
@@ -424,7 +489,7 @@ function build() {
   if (navContent)    console.log('  ✓ includes/nav.html');
   if (footerContent) console.log('  ✓ includes/footer.html');
 
-  console.log('\nОбработка NAV, FOOTER, PRICE, ANALYTICS...');
+  console.log('\nОбработка NAV, FOOTER, PRICE, ANALYTICS, OG...');
   ALL_HTML_FILES.forEach(file => {
     if (processMarkers(file, navContent, footerContent)) changed++;
   });
