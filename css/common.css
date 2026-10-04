@@ -33,6 +33,9 @@ body {
 }
 * { box-sizing: border-box; }
 
+/* === PICTURE: не ломать flex-центрирование картинок === */
+picture { display: contents; }
+
 /* === ШАПКА === */
 .header {
     background-color: var(--primary-color);
