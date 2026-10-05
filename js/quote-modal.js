@@ -123,11 +123,22 @@
                     font-family: inherit;
                     transition: all 0.2s;
                     white-space: nowrap;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 4px;
                 }
                 .quote-cart-preview__clear:hover {
                     background: #fff;
                     color: #cc0000;
                     border-color: #cc0000;
+                }
+                .quote-cart-preview__clear img {
+                    display: block;
+                    filter: brightness(0) saturate(100%) invert(50%) sepia(10%) saturate(500%) hue-rotate(170deg) brightness(95%) contrast(85%);
+                    transition: filter 0.2s;
+                }
+                .quote-cart-preview__clear:hover img {
+                    filter: brightness(0) saturate(100%) invert(15%) sepia(90%) saturate(5000%) hue-rotate(350deg) brightness(90%) contrast(95%);
                 }
                 .quote-cart-preview__list {
                     margin: 0;
@@ -211,6 +222,20 @@
                 .quote-fields-physical.active {
                     display: block;
                 }
+                .quote-attach-hint {
+                    font-size: 0.85em;
+                    color: #888;
+                    margin: 0 0 15px;
+                    line-height: 1.4;
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 6px;
+                }
+                .quote-attach-hint img {
+                    flex-shrink: 0;
+                    margin-top: 2px;
+                    display: block;
+                }
             </style>
             <div class="quote-modal-content" onclick="event.stopPropagation()">
                 <span class="quote-close" role="button" tabindex="0" aria-label="Закрыть окно" onclick="closeQuoteModal()">&times;</span>
@@ -249,9 +274,10 @@
                     <label for="quoteMessage" class="visually-hidden">Комментарий к запросу</label>
                     <textarea id="quoteMessage" placeholder="Что нужно: тип лестниц, длина, количество" rows="3" maxlength="500"></textarea>
 
-                    <p style="font-size: 0.85em; color: #888; margin: 0 0 15px; line-height: 1.4;">
-                        📎 Чертёж, фото или ТЗ пришлите на почту
-                        <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color); font-weight: 500;">stremyanki-dlya-kolodcev@mail.ru</a>
+                    <p class="quote-attach-hint">
+                        <img src="images/icons/paperclip.svg" alt="" width="14" height="14">
+                        <span>Чертёж, фото или ТЗ пришлите на почту
+                        <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color); font-weight: 500;">stremyanki-dlya-kolodcev@mail.ru</a></span>
                     </p>
                     <button type="submit">Отправить запрос</button>
                 </form>
@@ -324,7 +350,7 @@
         preview.innerHTML = `
             <div class="quote-cart-preview__header">
                 <h4 class="quote-cart-preview__title">Товары из корзины</h4>
-                <button type="button" class="quote-cart-preview__clear" id="quoteCartClear">🧹 Очистить</button>
+                <button type="button" class="quote-cart-preview__clear" id="quoteCartClear"><img src="images/icons/broom.svg" alt="" width="12" height="12"> Очистить</button>
             </div>
             ${listHtml}
             <div class="quote-cart-preview__total">
@@ -500,7 +526,7 @@
 
             await Promise.allSettled([telegramPromise, mailPromise]);
 
-            showToast('✅ Запрос отправлен! Пришлём счёт в течение рабочего дня.', 'success');
+            showToast('Запрос отправлен! Пришлём счёт в течение рабочего дня.', 'success');
             this.reset();
             cartForQuote = {};
             submitBtn.textContent = originalText;
