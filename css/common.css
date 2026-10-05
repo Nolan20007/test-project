@@ -323,3 +323,20 @@ textarea[aria-invalid="true"]:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
+
+/* === SVG-ИКОНКИ В NAV И FOOTER === */
+.nav-icon,
+.footer-icon {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+/* Иконки на тёмном фоне (nav-кнопки, cart-link, footer) — белые */
+.nav-icon--light,
+.footer-icon {
+    filter: brightness(0) invert(1);
+}
