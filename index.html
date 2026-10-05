@@ -249,6 +249,12 @@
             margin-bottom: 15px;
             color: var(--primary-color);
         }
+        .advantage-icon img {
+            display: block;
+            margin: 0 auto;
+            width: 48px;
+            height: 48px;
+        }
         .advantage-title {
             font-size: 1.15em;
             font-weight: 500;
@@ -341,7 +347,20 @@
             border-radius: var(--inputs-buttons-border-radius);
             min-width: 0;
         }
-        .contact-icon { font-size: 2.4em; flex-shrink: 0; line-height: 1; }
+        .contact-icon {
+            font-size: 2.4em;
+            flex-shrink: 0;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .contact-icon img {
+            display: block;
+            width: 32px;
+            height: 32px;
+            filter: brightness(0) invert(1);
+        }
         .contact-info { min-width: 0; flex: 1; }
         .contact-info h3 {
             margin: 0 0 12px;
@@ -639,7 +658,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->2 076 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->2 076 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ss1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -693,7 +712,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="tmp-902.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -720,7 +739,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="l-16-dlya-teplovyh-setej.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -743,7 +762,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ssg1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -766,7 +785,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:vdl-products.csv -->2 465 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:vdl-products.csv -->2 465 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="vl-2-l-19-vodoprovodnaya.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -789,7 +808,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv -->3 570 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv -->3 570 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -850,27 +869,27 @@
         <h2>Почему выбирают наше производство</h2>
         <div class="advantages-grid">
             <div class="advantage-card">
-                <div class="advantage-icon">🛡️</div>
+                <div class="advantage-icon"><img src="images/icons/shield.svg" alt="" width="48" height="48"></div>
                 <div class="advantage-title">Гарантия качества</div>
                 <div class="advantage-description">Вся продукция производится по типовым альбомам и сериям: 901-09-11.84, 902-09-22.84, 902-09-46.88 и др. Изготавливаем из металлопроката по ГОСТ 8509 и ГОСТ 2590, изделия соответствуют СП 31.13330.2012 и СП 32.13330.2012.</div>
             </div>
             <div class="advantage-card">
-                <div class="advantage-icon">🏭</div>
+                <div class="advantage-icon"><img src="images/icons/factory.svg" alt="" width="48" height="48"></div>
                 <div class="advantage-title">Собственное производство</div>
                 <div class="advantage-description">Изготавливаем лестницы на собственном производстве — полный контроль от сырья до готового изделия. Работаем без посредников, поэтому цены напрямую от производителя. При постоянном сотрудничестве — индивидуальные условия.</div>
             </div>
             <a href="dostavka-i-oplata.html" class="advantage-card" style="text-decoration:none; color:inherit; display:block; cursor:pointer;">
-                <div class="advantage-icon">🚚</div>
+                <div class="advantage-icon"><img src="images/icons/truck.svg" alt="" width="48" height="48"></div>
                 <div class="advantage-title">Доставка по России</div>
                 <div class="advantage-description">Осуществляем доставку в любой регион России. Собственный автопарк и надежные транспортные компании.</div>
             </a>
             <div class="advantage-card">
-                <div class="advantage-icon">📅</div>
+                <div class="advantage-icon"><img src="images/icons/calendar.svg" alt="" width="48" height="48"></div>
                 <div class="advantage-title">Опыт в производстве с 2006 года</div>
                 <div class="advantage-description">Почти 20 лет мы делаем металлоконструкции для инженерных сетей. С 2023 года продаём напрямую — без посредников, с гарантией от производителя.</div>
             </div>
             <div class="advantage-card">
-                <div class="advantage-icon">📐</div>
+                <div class="advantage-icon"><img src="images/icons/ruler.svg" alt="" width="48" height="48"></div>
                 <div class="advantage-title">Индивидуальный подход</div>
                 <div class="advantage-description">Типовое решение не подходит? Изготовим по вашим чертежам и ТЗ. Одни из немногих берёмся за нестандартные проекты, работаем даже по фотографиям.</div>
             </div>
@@ -911,7 +930,10 @@
 
         <div class="contact-grid">
             <div class="contact-item">
-                <div class="contact-icon">📞✉️</div>
+                <div class="contact-icon">
+                    <img src="images/icons/phone.svg" alt="" width="32" height="32">
+                    <img src="images/icons/mail.svg" alt="" width="32" height="32">
+                </div>
                 <div class="contact-info">
                     <h3>Контакты для связи</h3>
                     <a href="mailto:stremyanki-dlya-kolodcev@mail.ru">stremyanki-dlya-kolodcev@mail.ru</a>
@@ -919,7 +941,7 @@
                 </div>
             </div>
             <div class="contact-item">
-                <div class="contact-icon">🕒</div>
+                <div class="contact-icon"><img src="images/icons/clock.svg" alt="" width="32" height="32"></div>
                 <div class="contact-info">
                     <h3>Время работы</h3>
                     <p>Пн-Пт: 9:00-18:00</p>
@@ -928,7 +950,7 @@
                 </div>
             </div>
             <div class="contact-item">
-                <div class="contact-icon">📍</div>
+                <div class="contact-icon"><img src="images/icons/pin.svg" alt="" width="32" height="32"></div>
                 <div class="contact-info">
                     <h3>Адрес</h3>
                     <p>г. Пермь, ул. Василия Васильева, д. 33</p>
@@ -1243,7 +1265,7 @@
 
         await Promise.allSettled([telegramPromise, mailPromise]);
 
-        showToast('✅ Заявка отправлена! Менеджер свяжется с вами.', 'success', 4000);
+        showToast('Заявка отправлена! Менеджер свяжется с вами.', 'success', 4000);
         this.reset();
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
