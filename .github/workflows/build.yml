@@ -8,6 +8,12 @@ on:
       - 'includes/**.html'
   workflow_dispatch:
 
+# Защита от параллельных запусков: если workflow уже выполняется,
+# новый запуск встанет в очередь (или будет отменён — см. ниже).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,6 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -30,6 +37,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add '*.html' 'yandex-feed.xml'
-          git diff --staged --quiet || git commit -m "auto: rebuild from CSV [skip ci]"
-          git pull --rebase origin main
-          git push
+          if git diff --staged --quiet; then
+            echo "Нет изменений — коммит не нужен"
+          else
+            git commit -m "auto: rebuild from CSV [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
