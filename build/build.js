@@ -173,12 +173,12 @@ function buildTable(products, enableCollapse) {
 
   let html = `<table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
-    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th><th>Наличие</th>
+    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
-          weight = esc(p.weight), unit = esc(p.unit), available = esc(p.available),
+          weight = esc(p.weight), unit = esc(p.unit),
           img = esc(p.image || 'images/default-product.png'),
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
@@ -189,7 +189,6 @@ function buildTable(products, enableCollapse) {
       <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>${name}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
       <td>от ${fmtPrice(price)} руб.</td><td>${unit}</td>
-      <td><span class="availability-icon">${available}</span></td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
         <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
