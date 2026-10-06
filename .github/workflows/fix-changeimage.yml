@@ -1,0 +1,47 @@
+name: fix-changeimage
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove broken line
+        run: |
+          FILES="ss1.html ss2.html tmp-902.html l-16-dlya-teplovyh-setej.html kl-1-dlya-kanalizacionnyh-kolodcev.html vl-2-l-19-vodoprovodnaya.html ssg1.html skoba-mn.html"
+          CHANGED=0
+          for f in $FILES; do
+            if [ ! -f "$f" ]; then echo "skip $f (not found)"; continue; fi
+            COUNT=$(grep -c 'mainImage\.src = src;' "$f" || true)
+            if [ "$COUNT" = "1" ]; then
+              sed -i '/mainImage\.src = src;/d' "$f"
+              echo "fixed $f"
+              CHANGED=1
+            elif [ "$COUNT" = "0" ]; then
+              echo "skip $f (no line)"
+            else
+              echo "WARN $f has $COUNT matches, skipped"
+            fi
+          done
+          echo "CHANGED=$CHANGED" >> $GITHUB_ENV
+
+      - name: Commit
+        if: env.CHANGED == '1'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add ss1.html ss2.html tmp-902.html l-16-dlya-teplovyh-setej.html kl-1-dlya-kanalizacionnyh-kolodcev.html vl-2-l-19-vodoprovodnaya.html ssg1.html skoba-mn.html
+          git commit -m "fix: удалить битую строку в changeImage"
+          git push
+
+      - name: Self delete
+        run: |
+          git rm .github/workflows/fix-changeimage.yml
+          git commit -m "chore: удалить одноразовый workflow"
+          git push
