@@ -766,7 +766,6 @@
         const source = document.getElementById('mainSource');
         if (source) source.srcset = webpSrc;
         mainImage.src = pngSrc;
-        mainImage.src = src;
         mainImageWrapper.classList.remove('image-placeholder');
         mainImage.style.display = '';
         mainImage.onerror = function() {

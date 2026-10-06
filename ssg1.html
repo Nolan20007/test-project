@@ -1042,7 +1042,6 @@
         const source = document.getElementById('mainSource');
         if (source) source.srcset = webpSrc;
         mainImage.src = pngSrc;
-        mainImage.src = src;
         const btns = document.querySelectorAll('.image-toggle__btn, .image-tabs button');
         btns.forEach(b => b.classList.remove('active'));
         if (btns[index]) btns[index].classList.add('active');
