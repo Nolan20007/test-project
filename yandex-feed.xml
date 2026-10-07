@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-06 19:28">
+<yml_catalog date="2026-10-07 02:48">
   <shop>
     <name>Производство лестниц и стремянок для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -353,11 +353,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ22</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-22</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-22</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ22. Длина 220 см, ширина 70 см, масса 39.2 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-22. Длина 220 см, ширина 70 см, масса 39.2 кг.</description>
     </offer>
     <offer id="SG-28" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-28</url>
@@ -365,11 +365,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ28</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-28</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-28</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ28. Длина 280 см, ширина 70 см, масса 50 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-28. Длина 280 см, ширина 70 см, масса 50 кг.</description>
     </offer>
     <offer id="SG-34" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-34</url>
@@ -377,11 +377,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ34</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-34</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-34</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ34. Длина 340 см, ширина 70 см, масса 61 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-34. Длина 340 см, ширина 70 см, масса 61 кг.</description>
     </offer>
     <offer id="SG-40" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-40</url>
@@ -389,11 +389,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ40</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-40</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-40</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ40. Длина 400 см, ширина 70 см, масса 71.8 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-40. Длина 400 см, ширина 70 см, масса 71.8 кг.</description>
     </offer>
     <offer id="SG-46" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-46</url>
@@ -401,11 +401,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ46</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-46</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-46</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ46. Длина 460 см, ширина 70 см, масса 82.8 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-46. Длина 460 см, ширина 70 см, масса 82.8 кг.</description>
     </offer>
     <offer id="SG-52" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-52</url>
@@ -413,11 +413,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ52</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-52</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-52</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ52. Длина 520 см, ширина 70 см, масса 94 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-52. Длина 520 см, ширина 70 см, масса 94 кг.</description>
     </offer>
     <offer id="SG-58" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-58</url>
@@ -425,11 +425,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ58</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-58</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-58</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ58. Длина 580 см, ширина 70 см, масса 104.4 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-58. Длина 580 см, ширина 70 см, масса 104.4 кг.</description>
     </offer>
     <offer id="SG-64" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-64</url>
@@ -437,11 +437,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ64</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-64</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-64</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ64. Длина 640 см, ширина 70 см, масса 115.4 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-64. Длина 640 см, ширина 70 см, масса 115.4 кг.</description>
     </offer>
     <offer id="SG-70" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-70</url>
@@ -449,11 +449,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ70</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-70</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-70</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ70. Длина 700 см, ширина 70 см, масса 126.2 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-70. Длина 700 см, ширина 70 см, масса 126.2 кг.</description>
     </offer>
     <offer id="SG-82" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-82</url>
@@ -461,11 +461,11 @@
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/ssg1/ssg1-large.png</picture>
-      <name>Пожарная стремянка серия 1.450.3-7.94 СГ82</name>
+      <name>Пожарная стремянка серия 1.450.3-7.94 СГ-82</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-82</model>
-      <description>Пожарная стремянка серия 1.450.3-7.94 СГ82. Длина 820 см, ширина 70 см, масса 148 кг.</description>
+      <description>Пожарная стремянка серия 1.450.3-7.94 СГ-82. Длина 820 см, ширина 70 см, масса 148 кг.</description>
     </offer>
     <offer id="TS-50-1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/l-16-dlya-teplovyh-setej.html#item-TS-50-1</url>
