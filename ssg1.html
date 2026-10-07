@@ -64,6 +64,7 @@
             grid-template-columns: 1fr 2fr;
             gap: 40px;
             margin-top: 10px;
+            align-items: start;
         }
 
         /* ===== УБРАН белый фон, чтобы не было полосы под фото ===== */
@@ -71,6 +72,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            position: relative;
         }
 
         .main-image-wrapper {
@@ -87,6 +90,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .main-image {
@@ -97,6 +101,88 @@
             object-fit: contain;
             display: block;
             background: #ffffff;
+        }
+
+        /* ===== Блок с картинкой альбома слева (десктоп) ===== */
+        .album-sidebar {
+            display: none;
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--inputs-buttons-border-radius);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-top: 0;
+            padding: 16px 0 20px;
+            overflow: hidden;
+            border: 1px solid #eef2f6;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            transition: box-shadow 0.2s;
+        }
+        .album-sidebar:hover {
+            box-shadow: 0 6px 16px rgba(14, 92, 128, 0.12);
+        }
+        .album-sidebar.is-visible {
+            display: flex;
+        }
+        .album-sidebar__caption {
+            font-size: 12.5px;
+            color: #7a8a9a;
+            text-align: center;
+            line-height: 1.45;
+            margin-bottom: 12px;
+            padding: 0 16px;
+        }
+        .album-sidebar__image-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .album-sidebar__image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background: #ffffff;
+        }
+
+        /* ===== Встроенная картинка альбома (мобильная) ===== */
+        .album-inline {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .album-inline__caption {
+            font-size: 12px;
+            color: #7a8a9a;
+            margin-bottom: 10px;
+            line-height: 1.45;
+        }
+        .album-inline img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
+        }
+
+        /* ===== Ссылка на альбом в тексте (как product-link) ===== */
+        .product-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .product-link:hover {
+            color: var(--primary-color-hover);
+            border-bottom-color: var(--primary-color-hover);
+            border-bottom-style: solid;
         }
 
         .image-toggle {
@@ -389,6 +475,10 @@
             .characteristics-list li .description { grid-column: 1 / 3; margin-top: 5px; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .cta-button { width: 90%; max-width: 280px; margin: 0; }
+
+            /* Скрываем десктопный блок с альбомом — на мобильном показываем встроенный */
+            .album-sidebar { display: none !important; }
+            .album-inline { display: block; }
         }
         @media (max-width: 600px) {
             .product-details { padding-left: 16px; padding-right: 16px; }
@@ -742,6 +832,17 @@
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-drawing.png','images/ssg1/ssg1-drawing.webp', 1)">Чертёж</button>
                 </div>
             </div>
+
+            <!-- Десктопный блок с картинкой альбома. Показывается через JS, когда открыт info-details -->
+            <div class="album-sidebar" id="albumSidebar" aria-hidden="true">
+                <div class="album-sidebar__caption">
+                    Типовые конструкции, изделия и узлы зданий и сооружений.<br>
+                    Серия 1.450.3-7.94. Выпуск 2
+                </div>
+                <div class="album-sidebar__image-wrapper">
+                    <picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.webp" alt="Серия 1.450.3-7.94. Выпуск 2" class="album-sidebar__image"></picture>
+                </div>
+            </div>
         </div>
 
         <div class="text-section">
@@ -759,7 +860,7 @@
                 <li><strong>Антикоррозионная защита:</strong><span class="description"> Защитное покрытие</span></li>
             </ul>
 
-            <details class="info-details">
+            <details class="info-details" id="infoDetails">
                 <summary>
                     <span>Подробнее: материалы, ГОСТы, условия эксплуатации</span>
                 </summary>
@@ -779,6 +880,15 @@
                     <h3>Материалы и производство</h3>
                     <p>В производстве используется сертифицированный горячекатаный металлопрокат (вертикальные Г-образные стойки стремянок выполнены из стальных горячекатаных уголков сечением 75×75×6 мм по ГОСТ 8509) из углеродистых сталей марок <strong>Ст3кп</strong> (С235 по ГОСТ 27772), <strong>Ст3пс</strong> (С245) и <strong>Ст3сп5</strong> (С255). Ступени лестниц-стремянок диаметром 18 мм из круглого стального прутка по ГОСТ 2590. Лестницы свариваются по типовым чертежам <strong>1.450.3-7.94.2-КМ4</strong>.</p>
 
+                    <!-- Мобильный блок с картинкой альбома. Показывается только на мобильных -->
+                    <div class="album-inline">
+                        <div class="album-inline__caption">
+                            Типовые конструкции, изделия и узлы зданий и сооружений.<br>
+                            Серия 1.450.3-7.94. Выпуск 2
+                        </div>
+                        <picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.webp" alt="Серия 1.450.3-7.94. Выпуск 2"></picture>
+                    </div>
+
                 </div>
             </details>
         </div>
@@ -794,7 +904,7 @@
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-SG-22">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ22" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ22</td><td>220</td><td>70</td><td>39.2</td>
-      <td>от 8 625 руб.</td><td>1 шт</td>
+      <td>от 8 625 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-22', -1)">−</button>
         <input type="number" id="SG-22-qty" value="1" min="1" max="99" data-price="8625">
@@ -806,7 +916,7 @@
     </tr><tr id="item-SG-28">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ28" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ28</td><td>280</td><td>70</td><td>50</td>
-      <td>от 11 000 руб.</td><td>1 шт</td>
+      <td>от 11 000 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-28', -1)">−</button>
         <input type="number" id="SG-28-qty" value="1" min="1" max="99" data-price="11000">
@@ -818,7 +928,7 @@
     </tr><tr id="item-SG-34">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ34" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ34</td><td>340</td><td>70</td><td>61</td>
-      <td>от 13 420 руб.</td><td>1 шт</td>
+      <td>от 13 420 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-34', -1)">−</button>
         <input type="number" id="SG-34-qty" value="1" min="1" max="99" data-price="13420">
@@ -830,7 +940,7 @@
     </tr><tr id="item-SG-40">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ40" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ40</td><td>400</td><td>70</td><td>71.8</td>
-      <td>от 15 795 руб.</td><td>1 шт</td>
+      <td>от 15 795 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-40', -1)">−</button>
         <input type="number" id="SG-40-qty" value="1" min="1" max="99" data-price="15795">
@@ -842,7 +952,7 @@
     </tr><tr id="item-SG-46">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ46" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ46</td><td>460</td><td>70</td><td>82.8</td>
-      <td>от 18 215 руб.</td><td>1 шт</td>
+      <td>от 18 215 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-46', -1)">−</button>
         <input type="number" id="SG-46-qty" value="1" min="1" max="99" data-price="18215">
@@ -854,7 +964,7 @@
     </tr><tr id="item-SG-52">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ52" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ52</td><td>520</td><td>70</td><td>94</td>
-      <td>от 20 680 руб.</td><td>1 шт</td>
+      <td>от 20 680 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-52', -1)">−</button>
         <input type="number" id="SG-52-qty" value="1" min="1" max="99" data-price="20680">
@@ -866,7 +976,7 @@
     </tr><tr id="item-SG-58">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ58" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ58</td><td>580</td><td>70</td><td>104.4</td>
-      <td>от 22 970 руб.</td><td>1 шт</td>
+      <td>от 22 970 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-58', -1)">−</button>
         <input type="number" id="SG-58-qty" value="1" min="1" max="99" data-price="22970">
@@ -878,7 +988,7 @@
     </tr><tr id="item-SG-64">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ64" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ64</td><td>640</td><td>70</td><td>115.4</td>
-      <td>от 25 390 руб.</td><td>1 шт</td>
+      <td>от 25 390 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-64', -1)">−</button>
         <input type="number" id="SG-64-qty" value="1" min="1" max="99" data-price="25390">
@@ -890,7 +1000,7 @@
     </tr><tr id="item-SG-70">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ70" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ70</td><td>700</td><td>70</td><td>126.2</td>
-      <td>от 27 765 руб.</td><td>1 шт</td>
+      <td>от 27 765 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-70', -1)">−</button>
         <input type="number" id="SG-70-qty" value="1" min="1" max="99" data-price="27765">
@@ -902,7 +1012,7 @@
     </tr><tr id="item-SG-82">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ82" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ82</td><td>820</td><td>70</td><td>148</td>
-      <td>от 32 560 руб.</td><td>1 шт</td>
+      <td>от 32 560 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-82', -1)">−</button>
         <input type="number" id="SG-82-qty" value="1" min="1" max="99" data-price="32560">
@@ -1063,6 +1173,72 @@
 
     function scrollToSlide(index) {
         galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
+    }
+
+    /* ===== Блок "Подробнее + картинка альбома слева" ===== */
+    const infoDetails = document.getElementById('infoDetails');
+    const albumSidebar = document.getElementById('albumSidebar');
+
+    function syncAlbumSidebar() {
+        if (!infoDetails || !albumSidebar) return;
+        if (infoDetails.open) {
+            albumSidebar.classList.add('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'false');
+        } else {
+            albumSidebar.classList.remove('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', syncAlbumSidebar);
+        syncAlbumSidebar();
+    }
+
+    /* ===== Синхронизация ВЕРХА альбома с ВЕРХОМ info-details ===== */
+    function syncAlbumTopWithDetails() {
+        if (!infoDetails || !albumSidebar) return;
+        if (!infoDetails.open) {
+            albumSidebar.style.marginTop = '0px';
+            return;
+        }
+        /* Сбрасываем margin, чтобы измерить «естественное» положение */
+        albumSidebar.style.marginTop = '0px';
+
+        /* Если ширина окна <= 900px, альбом скрыт — ничего не делаем */
+        if (window.innerWidth <= 900) return;
+
+        const detailsRect = infoDetails.getBoundingClientRect();
+        const albumRect = albumSidebar.getBoundingClientRect();
+
+        /* Насколько верх альбома должен опуститься, чтобы совпасть с верхом details. */
+        const desiredDelta = detailsRect.top - albumRect.top;
+
+        /* Текущий margin-top, который мы уже выставили (в px) */
+        const currentMargin = parseFloat(getComputedStyle(albumSidebar).marginTop) || 0;
+
+        /* Новый margin-top: текущий + дельта. */
+        let newMargin = currentMargin + desiredDelta;
+        if (newMargin < 0) newMargin = 0;
+
+        albumSidebar.style.marginTop = newMargin + 'px';
+    }
+
+    /* Синхронизация при загрузке, ресайзе и toggle */
+    window.addEventListener('load', syncAlbumTopWithDetails);
+    window.addEventListener('resize', syncAlbumTopWithDetails);
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', function () {
+            setTimeout(syncAlbumTopWithDetails, 0);
+        });
+    }
+
+    /* Клик по блоку с альбомом открывает модалку на слайде "Альбом" (индекс 5) */
+    if (albumSidebar) {
+        albumSidebar.addEventListener('click', function (e) {
+            e.stopPropagation();
+            openModal(5);
+        });
     }
 
     window.changeImage = changeImage;
