@@ -6,7 +6,13 @@ const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 const PAGES = [
   { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
   { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
-  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/kl1-products.csv' }] },
+
+  // <-- НОВОЕ: две таблицы для КЛ-1 (Ø25 и Ø28)
+  { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
+      { id: 'nomenclature-kl1-25', csv: 'data/kl1-products.csv' },
+      { id: 'nomenclature-kl1-28', csv: 'data/kl1-products-28.csv' }
+  ]},
+
   { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
@@ -19,6 +25,8 @@ const PAGES = [
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
   ]},
   { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
+
+  // <-- НОВОЕ: в прайсе тоже две таблицы для КЛ-1
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
@@ -29,7 +37,8 @@ const PAGES = [
       { id: 'nomenclature-tl-63',                 csv: 'data/tl-63-products.csv' },
       { id: 'nomenclature-ssg1',                  csv: 'data/ssg1-products.csv' },
       { id: 'nomenclature-vdl',                   csv: 'data/vdl-products.csv' },
-      { id: 'nomenclature-kl1',                   csv: 'data/kl1-products.csv' },
+      { id: 'nomenclature-kl1-25',                csv: 'data/kl1-products.csv' },
+      { id: 'nomenclature-kl1-28',                csv: 'data/kl1-products-28.csv' },
       { id: 'nomenclature-scoba-nm',              csv: 'data/scoba-nm-products.csv' }
   ]},
 ];
@@ -40,6 +49,7 @@ const FEED_SOURCES = [
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/ssg1-large.png', limit: 20, typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
   { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
+  // В фид добавляем только Ø25, чтобы не было дублей. Ø28 — опционально.
   { csv: 'data/kl1-products.csv',             page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/kl1-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products.csv',             page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
@@ -405,7 +415,6 @@ function insertOgTags(html, file) {
 <meta property="og:url" content="${url}">
 ${OG_END}`;
 
-  // Если маркеры уже есть — заменяем блок между ними
   const re = new RegExp(
     OG_START.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +
     '[\\s\\S]*?' +
@@ -416,14 +425,12 @@ ${OG_END}`;
     return { html: newHtml, replaced: newHtml !== html };
   }
 
-  // Если маркеров нет — вставляем после <link rel="canonical" ...>
   const canonRe = /(<link\s+rel=["']canonical["'][^>]*>)/i;
   if (canonRe.test(html)) {
     const newHtml = html.replace(canonRe, `$1\n${block}`);
     return { html: newHtml, replaced: newHtml !== html };
   }
 
-  // На всякий случай — вставляем перед </head>
   if (html.includes('</head>')) {
     const newHtml = html.replace('</head>', `${block}\n</head>`);
     return { html: newHtml, replaced: newHtml !== html };
@@ -456,14 +463,12 @@ function processMarkers(file, navContent, footerContent) {
     console.log(`  ✓ ${file} → цены обновлены из CSV`);
   }
 
-  // ===== ANALYTICS: вставить подключение, если его нет =====
   if (!ANALYTICS_RE.test(html) && html.includes('</head>')) {
     html = html.replace('</head>', `    ${ANALYTICS_TAG}\n</head>`);
     changed = true;
     console.log(`  ✓ ${file} → добавлен analytics.js`);
   }
 
-  // ===== OG: вставить/обновить og-теги =====
   const ogResult = insertOgTags(html, file);
   if (ogResult.replaced) {
     html = ogResult.html;
