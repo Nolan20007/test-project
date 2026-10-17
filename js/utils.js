@@ -1,110 +1,57 @@
-// Общие утилиты для всего сайта
+/* ============================================================
+   УТИЛИТЫ: общие функции для всего сайта
+   ============================================================ */
 
-// Toast-уведомления (a11y: role="status" + aria-live="polite")
-function showToast(message, type = 'success', duration = 3000) {
-    let container = document.querySelector('.toast-container');
-    if (!container) {
-        container = document.createElement('div');
-        container.className = 'toast-container';
-        // === A11Y: озвучивание через скринридер ===
-        container.setAttribute('role', 'status');
-        container.setAttribute('aria-live', 'polite');
-        container.setAttribute('aria-atomic', 'false');
-        document.body.appendChild(container);
-    }
-    const toast = document.createElement('div');
-    toast.className = 'toast ' + type;
-    toast.textContent = message;
-    container.appendChild(toast);
-    setTimeout(() => toast.classList.add('show'), 10);
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, duration);
+/* === Санитайзер ввода === */
+function sanitizeInput(str) {
+    if (typeof str !== 'string') return '';
+    return str
+        .replace(/[<>]/g, '')          // убираем угловые скобки (XSS)
+        .replace(/\s+/g, ' ')          // множественные пробелы → один
+        .trim()
+        .slice(0, 500);                // ограничиваем длину
 }
 
-/**
- * A11Y: скрытое озвучивание текста для скринридеров.
- * Полезно, когда нет визуального тоста, но нужно объявить статус.
- */
-function announceToScreenReader(text, politeness = 'polite') {
-    const region = document.createElement('div');
-    region.setAttribute('role', politeness === 'assertive' ? 'alert' : 'status');
-    region.setAttribute('aria-live', politeness);
-    region.setAttribute('aria-atomic', 'true');
-    region.style.cssText = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
-    region.textContent = text;
-    document.body.appendChild(region);
-    setTimeout(() => region.remove(), 1500);
+/* === Валидация телефона / email / telegram === */
+function validatePhone(value) {
+    if (!value) return false;
+    const v = String(value).trim();
+    // Разрешаем:
+    //  - телефон:  +7..., 8..., скобки, пробелы, дефисы
+    //  - email:    name@domain.tld
+    //  - telegram: @username
+    const phoneRe = /^[\+]?[\d\s\-\(\)]{7,20}$/;
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const tgRe    = /^@[A-Za-z0-9_]{3,32}$/;
+    return phoneRe.test(v) || emailRe.test(v) || tgRe.test(v);
 }
 
-// Очистка ввода
-function sanitizeInput(text) {
-    if (typeof text !== 'string') return '';
-    return text.replace(/[<>&"'\/\\]/g, '');
+function validateEmail(value) {
+    if (!value) return false;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim());
 }
 
-// Валидация телефона/контакта
-function validatePhone(phone) {
-    return /^[\d\s\-\+\(\)@\.a-zA-Z]{5,50}$/.test(phone);
-}
-
-// Валидация email
-function validateEmail(email) {
-    if (!email) return true;
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// Работа с корзиной
-function getCart() {
-    try {
-        const cartData = localStorage.getItem(window.CONFIG.CART_STORAGE_KEY);
-        return JSON.parse(cartData) || {};
-    } catch (e) { return {}; }
-}
-
-function updateCartCountDisplay() {
-    const cart = getCart();
-    let totalCount = 0;
-    for (const itemId in cart) {
-        if (cart.hasOwnProperty(itemId) && cart[itemId] && typeof cart[itemId].quantity === 'number') {
-            totalCount += parseInt(cart[itemId].quantity) || 0;
-        }
-    }
-    const countElement = document.getElementById('cart-count-page');
-    if (countElement) countElement.textContent = totalCount;
-}
-
-// Автозапуск счётчика
-document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
-window.addEventListener('storage', updateCartCountDisplay);
-
-
-/* === A11Y: aria-invalid helpers === */
-
-function setFieldInvalid(fieldOrId, isInvalid) {
-    const el = typeof fieldOrId === 'string'
-        ? document.getElementById(fieldOrId)
-        : fieldOrId;
+/* === Подсветка невалидных полей === */
+function setFieldInvalid(el, invalid) {
     if (!el) return;
-
-    if (isInvalid) {
+    if (invalid) {
         el.setAttribute('aria-invalid', 'true');
     } else {
         el.removeAttribute('aria-invalid');
     }
 }
 
-function clearFormInvalid(formEl) {
-    if (!formEl) return;
-    formEl.querySelectorAll('[aria-invalid]').forEach(el => {
+function clearFormInvalid(form) {
+    if (!form) return;
+    form.querySelectorAll('[aria-invalid="true"]').forEach(el => {
         el.removeAttribute('aria-invalid');
     });
 }
 
-function bindAutoClearInvalid(formEl) {
-    if (!formEl) return;
-    formEl.querySelectorAll('input, textarea').forEach(el => {
+/* Авто-сброс aria-invalid при вводе */
+function bindAutoClearInvalid(form) {
+    if (!form) return;
+    form.querySelectorAll('input, textarea').forEach(el => {
         el.addEventListener('input', () => {
             if (el.getAttribute('aria-invalid') === 'true') {
                 el.removeAttribute('aria-invalid');
@@ -113,53 +60,84 @@ function bindAutoClearInvalid(formEl) {
     });
 }
 
+/* === Корзина: чтение / запись (единые для всех страниц) === */
+function getCart() {
+    try {
+        const raw = localStorage.getItem(window.CONFIG && window.CONFIG.CART_STORAGE_KEY
+            ? window.CONFIG.CART_STORAGE_KEY
+            : 'cart');
+        return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+        console.warn('Ошибка чтения корзины:', e);
+        return {};
+    }
+}
+
+function saveCart(cart) {
+    try {
+        const key = window.CONFIG && window.CONFIG.CART_STORAGE_KEY
+            ? window.CONFIG.CART_STORAGE_KEY
+            : 'cart';
+        localStorage.setItem(key, JSON.stringify(cart));
+        return true;
+    } catch (e) {
+        console.error('Ошибка сохранения корзины:', e);
+        if (typeof showToast === 'function') {
+            showToast('Ошибка сохранения корзины', 'error');
+        }
+        return false;
+    }
+}
+
+/* === Счётчик корзины в шапке === */
+function updateCartCountDisplay() {
+    const cart = getCart();
+    let totalCount = 0;
+    for (const id in cart) {
+        if (cart.hasOwnProperty(id) && cart[id] && typeof cart[id].quantity === 'number') {
+            totalCount += parseInt(cart[id].quantity) || 0;
+        }
+    }
+    const countEl = document.getElementById('cart-count-page');
+    if (countEl) countEl.textContent = totalCount;
+}
+
+document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
+window.addEventListener('storage', updateCartCountDisplay);
 
 /* === A11Y: focus-trap для модальных окон === */
-
-function initModalA11y(modalEl, options = {}) {
-    if (!modalEl) {
-        return { open: () => {}, close: () => {} };
-    }
-
-    const backgroundSelectors = options.backgroundSelectors || [];
+function initModalA11y(modalEl, options) {
+    options = options || {};
+    const backgroundSelectors = options.backgroundSelectors || ['header', 'nav', 'main', 'footer'];
     const initialFocusSelector = options.initialFocus || null;
 
-    const FOCUSABLE_SELECTOR = [
-        'a[href]',
-        'button:not([disabled])',
-        'input:not([disabled]):not([type="hidden"])',
-        'select:not([disabled])',
-        'textarea:not([disabled])',
+    let lastFocused = null;
+    let isOpen = false;
+
+    const focusableSelectors = [
+        'a[href]', 'button:not([disabled])', 'input:not([disabled])',
+        'select:not([disabled])', 'textarea:not([disabled])',
         '[tabindex]:not([tabindex="-1"])'
     ].join(',');
 
-    let lastFocusedEl = null;
-    let isOpen = false;
-
     function getFocusable() {
-        return Array.from(modalEl.querySelectorAll(FOCUSABLE_SELECTOR))
+        if (!modalEl) return [];
+        return Array.from(modalEl.querySelectorAll(focusableSelectors))
             .filter(el => el.offsetParent !== null || el === document.activeElement);
     }
 
     function handleKeydown(e) {
         if (!isOpen) return;
-
         if (e.key === 'Escape') {
-            e.preventDefault();
-            api.close();
+            // Закрываем — вызываем ту же функцию, что и клик по фону
+            if (typeof window.closeModal === 'function') window.closeModal();
             return;
         }
-
         if (e.key === 'Tab') {
             const focusable = getFocusable();
-            if (focusable.length === 0) {
-                e.preventDefault();
-                return;
-            }
-
+            if (focusable.length === 0) return;
             const first = focusable[0];
-            const last = focusable[focusable.length - 1];
-
+            const last  = focusable[focusable.length - 1];
             if (e.shiftKey && document.activeElement === first) {
                 e.preventDefault();
                 last.focus();
@@ -170,68 +148,66 @@ function initModalA11y(modalEl, options = {}) {
         }
     }
 
-    function hideBackground() {
-        backgroundSelectors.forEach(sel => {
-            document.querySelectorAll(sel).forEach(el => {
-                if (!el.hasAttribute('data-a11y-prev-hidden')) {
-                    el.setAttribute('data-a11y-prev-hidden',
-                        el.getAttribute('aria-hidden') || '');
-                }
-                el.setAttribute('aria-hidden', 'true');
-            });
-        });
-    }
-
-    function restoreBackground() {
-        document.querySelectorAll('[data-a11y-prev-hidden]').forEach(el => {
-            const prev = el.getAttribute('data-a11y-prev-hidden');
-            if (prev) {
-                el.setAttribute('aria-hidden', prev);
-            } else {
-                el.removeAttribute('aria-hidden');
-            }
-            el.removeAttribute('data-a11y-prev-hidden');
-        });
-    }
-
-    const api = {
+    return {
         open() {
             if (isOpen) return;
             isOpen = true;
+            lastFocused = document.activeElement;
+            document.addEventListener('keydown', handleKeydown, true);
 
-            lastFocusedEl = document.activeElement;
+            // Скрываем фон для скринридеров
+            backgroundSelectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => {
+                    el.setAttribute('aria-hidden', 'true');
+                });
+            });
 
-            hideBackground();
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('keydown', handleKeydown);
-
+            // Фокус на первый элемент
             setTimeout(() => {
-                const target = initialFocusSelector
-                    ? modalEl.querySelector(initialFocusSelector)
-                    : null;
-                if (target && typeof target.focus === 'function') {
-                    target.focus();
-                } else {
-                    const focusable = getFocusable();
-                    if (focusable.length > 0) focusable[0].focus();
+                let target = null;
+                if (initialFocusSelector) {
+                    target = modalEl.querySelector(initialFocusSelector);
                 }
-            }, 30);
+                if (!target) {
+                    const focusable = getFocusable();
+                    target = focusable[0];
+                }
+                if (target && typeof target.focus === 'function') target.focus();
+            }, 50);
         },
-
         close() {
             if (!isOpen) return;
             isOpen = false;
+            document.removeEventListener('keydown', handleKeydown, true);
 
-            restoreBackground();
-            document.body.style.overflow = '';
-            document.removeEventListener('keydown', handleKeydown);
+            backgroundSelectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => {
+                    el.removeAttribute('aria-hidden');
+                });
+            });
 
-            if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
-                try { lastFocusedEl.focus(); } catch (e) {}
+            if (lastFocused && typeof lastFocused.focus === 'function') {
+                lastFocused.focus();
             }
-            lastFocusedEl = null;
         }
     };
-
-    return api;
 }
+
+/* === ПЕРЕКЛЮЧАТЕЛЬ ДИАМЕТРА АРМАТУРЫ (Ø25 / Ø28) === */
+/* Используется на страницах КЛ-1 (kl-1-... и price-list).
+   Переключает видимость блоков #nomenclature-kl1-25 / #nomenclature-kl1-28
+   и подсвечивает активную кнопку в .diameter-switch. */
+function switchDiameter(containerId, btn) {
+    // Скрываем все блоки с префиксом nomenclature-kl1-
+    document.querySelectorAll('[id^="nomenclature-kl1-"]').forEach(el => {
+        el.style.display = 'none';
+    });
+    // Показываем нужный
+    const target = document.getElementById(containerId);
+    if (target) target.style.display = '';
+    // Переключаем активную кнопку
+    document.querySelectorAll('.diameter-switch__btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+}
+
+window.switchDiameter = switchDiameter;
