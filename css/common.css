@@ -65,25 +65,25 @@ picture { display: contents; }
 }
 .header .back-link:hover { text-decoration: underline; }
 
-/* === НАВИГАЦИЯ (ИСПРАВЛЕННАЯ) === */
+/* === НАВИГАЦИЯ === */
 .nav {
     background-color: var(--accent-color);
     padding: 12px 0;
 }
 
-/* Делаем контейнер гибким и растягиваем на всю ширину */
+/* Выравниваем всё по центру с одинаковыми отступами */
 .nav .container {
     display: flex;
-    justify-content: space-between; /* Разносим меню и действия по краям */
+    justify-content: center; 
     align-items: center;
-    flex-wrap: wrap; /* Разрешаем перенос только если реально не влезает */
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 25px; 
 }
 
 .nav-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px; 
     align-items: center;
 }
 
@@ -91,10 +91,10 @@ picture { display: contents; }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 15px;
+    gap: 15px; 
 }
 
-/* Убираем старые маргины у ссылок внутри меню */
+/* Убираем старые кривые маргины */
 .nav a {
     color: rgba(255,255,255,0.85);
     text-decoration: none;
@@ -103,7 +103,8 @@ picture { display: contents; }
     transition: color 0.2s;
     display: inline-flex;
     align-items: center;
-    white-space: nowrap; /* Запрещаем перенос текста внутри ссылки */
+    white-space: nowrap;
+    margin: 0; 
 }
 .nav a:hover { color: #ffffff; }
 
@@ -121,6 +122,7 @@ picture { display: contents; }
     align-items: center;
     gap: 5px;
     white-space: nowrap;
+    margin: 0;
 }
 .cart-link:hover { background-color: var(--accent-color); }
 
@@ -140,6 +142,7 @@ picture { display: contents; }
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
     white-space: nowrap;
+    margin: 0;
 }
 .btn-get-quote:hover {
     background: var(--quote-color-hover);
@@ -151,7 +154,8 @@ picture { display: contents; }
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    white-space: nowrap; /* Почта на ПК в одну строку */
+    white-space: nowrap;
+    margin: 0;
 }
 
 .nav-email-link {
@@ -175,22 +179,19 @@ picture { display: contents; }
     padding: 4px;
     border-radius: 4px;
     transition: background 0.2s, transform 0.1s;
+    margin: 0;
 }
 .btn-copy-email:hover { background: rgba(255, 255, 255, 0.15); }
 .btn-copy-email:active { transform: scale(0.9); }
 
 /* Мобильная адаптация навигации */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .nav .container {
         flex-direction: column;
-        align-items: flex-start;
-    }
-    .nav-actions {
-        width: 100%;
-        justify-content: flex-start;
+        gap: 15px;
     }
     .nav-email-wrapper {
-        white-space: normal; /* На планшетах/мобилках разрешаем перенос */
+        white-space: normal; 
         word-break: break-all;
     }
 }
@@ -285,7 +286,7 @@ picture { display: contents; }
     background: var(--quote-color-hover);
 }
 
-/* === ПОДВАЛ (ИСПРАВЛЕННЫЙ) === */
+/* === ПОДВАЛ === */
 .footer {
     background: #333;
     color: #ffffff;
@@ -305,13 +306,12 @@ picture { display: contents; }
     font-weight: 500;
 }
 
-/* Важно: убираем display: block для ссылок футера, чтобы они не растягивались */
 .footer-section a {
     color: #ffffff;
     text-decoration: none;
     font-size: 13.5px;
     transition: opacity 0.2s;
-    display: inline-flex; /* Меняем block на inline-flex */
+    display: inline-flex; 
     align-items: center;
     margin-bottom: 6px;
 }
@@ -341,7 +341,6 @@ picture { display: contents; }
     gap: 6px;
     margin: 0;
     max-width: 100%;
-    /* Защита от вылезания длинного email */
     word-break: break-all; 
 }
 
