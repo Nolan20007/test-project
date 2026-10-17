@@ -1,0 +1,66 @@
+name: One-time fix CSS dupes (.contact-summary + .close-btn color)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Почистить .contact-summary и дубли color в .close-btn
+        run: |
+          set -e
+          changed=0
+          for f in *.html; do
+            [ -e "$f" ] || continue
+            before=$(wc -c < "$f")
+
+            # 1) удалить правила .contact-summary { ... } из <style>
+            perl -0pi -e 's/\.contact-summary\s*\{[^}]*\}\s*//g' "$f"
+
+            # 2) схлопнуть повторные CTA_START / CTA_END (на всякий случай)
+            perl -0pi -e 's/(<!--\s*CTA_START\s*-->)(?:\s*<!--\s*CTA_START\s*-->)+/$1/g' "$f"
+            perl -0pi -e 's/(<!--\s*CTA_END\s*-->)(?:\s*<!--\s*CTA_END\s*-->)+/$1/g' "$f"
+
+            # 3) внутри блока .close-btn { ... } оставить только ПЕРВОЕ объявление color
+            perl -0pi -e '
+              s{
+                (\.close-btn\s*\{)([^}]*)(\})
+              }{
+                my ($open, $body, $close) = ($1, $2, $3);
+                my $seen = 0;
+                $body =~ s{(color\s*:\s*[^;]+;)}{ $seen++ ? "" : $1 }ge;
+                $open . $body . $close;
+              }gse;
+            ' "$f"
+
+            after=$(wc -c < "$f")
+            if [ "$before" != "$after" ]; then
+              echo "  ✓ $f — изменено $((before - after)) символов"
+              changed=$((changed + 1))
+            fi
+          done
+          echo "Изменено файлов: $changed"
+
+      - name: Удалить сам workflow
+        run: |
+          git rm .github/workflows/fix-css-dupes.yml || true
+          rm -f .github/workflows/fix-css-dupes.yml
+
+      - name: Commit & push
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Нечего коммитить"; exit 0
+          fi
+          git commit -m "chore: удалены .contact-summary и дубли color в .close-btn + удалён одноразовый workflow [skip ci]"
+          git push
