@@ -16,10 +16,6 @@ function sanitizeInput(str) {
 function validatePhone(value) {
     if (!value) return false;
     const v = String(value).trim();
-    // Разрешаем:
-    //  - телефон:  +7..., 8..., скобки, пробелы, дефисы
-    //  - email:    name@domain.tld
-    //  - telegram: @username
     const phoneRe = /^[\+]?[\d\s\-\(\)]{7,20}$/;
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const tgRe    = /^@[A-Za-z0-9_]{3,32}$/;
@@ -129,7 +125,6 @@ function initModalA11y(modalEl, options) {
     function handleKeydown(e) {
         if (!isOpen) return;
         if (e.key === 'Escape') {
-            // Закрываем — вызываем ту же функцию, что и клик по фону
             if (typeof window.closeModal === 'function') window.closeModal();
             return;
         }
@@ -155,14 +150,12 @@ function initModalA11y(modalEl, options) {
             lastFocused = document.activeElement;
             document.addEventListener('keydown', handleKeydown, true);
 
-            // Скрываем фон для скринридеров
             backgroundSelectors.forEach(sel => {
                 document.querySelectorAll(sel).forEach(el => {
                     el.setAttribute('aria-hidden', 'true');
                 });
             });
 
-            // Фокус на первый элемент
             setTimeout(() => {
                 let target = null;
                 if (initialFocusSelector) {
@@ -193,20 +186,36 @@ function initModalA11y(modalEl, options) {
     };
 }
 
-/* === ПЕРЕКЛЮЧАТЕЛЬ ДИАМЕТРА АРМАТУРЫ (Ø25 / Ø28) === */
-/* Используется на страницах КЛ-1 (kl-1-... и price-list).
-   Переключает видимость блоков #nomenclature-kl1-25 / #nomenclature-kl1-28
-   и подсвечивает активную кнопку в .diameter-switch. */
+/* ============================================================
+   УНИВЕРСАЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ИСПОЛНЕНИЙ
+   (работает для КЛ-1, ВЛ-2 и любых других товаров)
+   ============================================================ */
 function switchDiameter(containerId, btn) {
-    // Скрываем все блоки с префиксом nomenclature-kl1-
-    document.querySelectorAll('[id^="nomenclature-kl1-"]').forEach(el => {
-        el.style.display = 'none';
+    // 1. Находим блок, в котором лежат кнопки (diameter-switch-wrap)
+    const wrap = btn.closest('.diameter-switch-wrap');
+    if (!wrap) return;
+
+    // 2. Находим родителя этого блока (обычно это container или content-area)
+    const parent = wrap.parentElement;
+
+    // 3. Ищем все таблицы внутри этого родителя
+    // Мы ищем div'ы, у которых id начинается с "nomenclature-" и внутри есть тег <table>
+    const tables = parent.querySelectorAll('div[id^="nomenclature-"]');
+    
+    tables.forEach(el => {
+        // Проверяем, что это реально таблица (а не просто пустой блок)
+        if (el.querySelector('table') || el.innerHTML.includes('loading')) {
+            el.style.display = 'none';
+        }
     });
-    // Показываем нужный
+
+    // 4. Показываем выбранную таблицу
     const target = document.getElementById(containerId);
     if (target) target.style.display = '';
-    // Переключаем активную кнопку
-    document.querySelectorAll('.diameter-switch__btn').forEach(b => b.classList.remove('active'));
+
+    // 5. Переключаем активный класс на кнопках
+    const buttons = wrap.querySelectorAll('.diameter-switch__btn');
+    buttons.forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
 }
 
