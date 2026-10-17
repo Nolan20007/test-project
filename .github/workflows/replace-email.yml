@@ -1,0 +1,52 @@
+name: One-time replace email
+
+on:
+  workflow_dispatch:  # запуск только вручную
+
+jobs:
+  replace-email:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Замена email во всех файлах
+        run: |
+          OLD_EMAIL="stremyanki-dlya-kolodcev@mail.ru"
+          NEW_EMAIL="sales@stremyanki-dlya-kolodcev.ru"
+          echo "Заменяем $OLD_EMAIL на $NEW_EMAIL"
+
+          # Ищем все файлы (html, txt, xml, js, json), содержащие старую почту
+          grep -rl "$OLD_EMAIL" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=.github \
+            | while read file; do
+              echo "Обрабатываем: $file"
+              sed -i "s|$OLD_EMAIL|$NEW_EMAIL|g" "$file"
+            done
+
+          echo "---"
+          echo "Проверка: остались ли файлы со старой почтой?"
+          if grep -rl "$OLD_EMAIL" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.github; then
+            echo "⚠️ Внимание: остались файлы со старой почтой (см. выше)"
+          else
+            echo "✅ Все вхождения заменены"
+          fi
+
+      - name: Коммит и пуш, если что-то изменилось
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Нет изменений — коммит не нужен"
+          else
+            git commit -m "chore: replace email stremyanki-dlya-kolodcev@mail.ru -> sales@stremyanki-dlya-kolodcev.ru [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
