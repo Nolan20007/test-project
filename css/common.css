@@ -123,6 +123,42 @@ picture { display: contents; }
     transform: translateY(-1px);
 }
 
+/* ===== НОВЫЕ СТИЛИ ДЛЯ КНОПКИ КОПИРОВАНИЯ EMAIL ===== */
+.nav-email-wrapper {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 15px;
+    vertical-align: middle;
+}
+
+.nav-email-wrapper a {
+    margin: 0;
+    padding-right: 2px;
+}
+
+.btn-copy-email {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.1s;
+    vertical-align: middle;
+}
+
+.btn-copy-email:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-copy-email:active {
+    transform: scale(0.9);
+}
+
+/* ==================================================== */
+
 /* === ХЛЕБНЫЕ КРОШКИ === */
 .breadcrumbs {
     margin: 20px 0;
@@ -265,6 +301,10 @@ picture { display: contents; }
     .nav a { margin: 2px 8px; font-size: 13.5px; }
     .cart-link { margin-left: 0; font-size: 13.5px; padding: 7px 14px; }
     .btn-get-quote { margin-left: 0; font-size: 13.5px; padding: 8px 16px; }
+    
+    /* Мобильная адаптация кнопки копирования */
+    .nav-email-wrapper { margin: 2px 8px; }
+    
     .footer { padding: 30px 0 15px; }
     .footer-content { grid-template-columns: 1fr; gap: 22px; }
     .footer-section { text-align: center; }
