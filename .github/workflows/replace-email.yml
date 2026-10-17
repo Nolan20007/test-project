@@ -9,39 +9,128 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: Предварительная проверка — какие файлы будут затронуты
+        id: precheck
+        run: |
+          OLD_EMAIL="stremyanki-dlya-kolodcev@mail.ru"
+          echo "=== Файлы, содержащие старую почту ==="
+          FILES=$(grep -rlF "$OLD_EMAIL" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=.github \
+            --exclude-dir=images \
+            --exclude-dir=css \
+            || true)
+
+          if [ -z "$FILES" ]; then
+            echo "✅ Старая почта не найдена. Замена не требуется."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          TOTAL=0
+          for f in $FILES; do
+            COUNT=$(grep -cF "$OLD_EMAIL" "$f" || true)
+            echo "  - $f : $COUNT вхождений"
+            TOTAL=$((TOTAL + COUNT))
+          done
+          echo "----------------------------------------"
+          echo "Всего файлов: $(echo "$FILES" | wc -l), всего вхождений: $TOTAL"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Резервная копия затронутых файлов
+        if: steps.precheck.outputs.skip == 'false'
+        run: |
+          OLD_EMAIL="stremyanki-dlya-kolodcev@mail.ru"
+          mkdir -p backup
+          grep -rlF "$OLD_EMAIL" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=.github \
+            --exclude-dir=images \
+            --exclude-dir=css \
+            | while read file; do
+              mkdir -p "backup/$(dirname "$file")"
+              cp "$file" "backup/$file"
+            done
+          echo "Резервная копия создана в папке backup/"
+
+      - name: Загрузка резервной копии как артефакта
+        if: steps.precheck.outputs.skip == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: backup-before-email-replace
+          path: backup/
+          retention-days: 30
+
       - name: Замена email во всех файлах
+        if: steps.precheck.outputs.skip == 'false'
         run: |
           OLD_EMAIL="stremyanki-dlya-kolodcev@mail.ru"
           NEW_EMAIL="sales@stremyanki-dlya-kolodcev.ru"
           echo "Заменяем $OLD_EMAIL на $NEW_EMAIL"
 
-          # Ищем все файлы (html, txt, xml, js, json), содержащие старую почту
-          grep -rl "$OLD_EMAIL" . \
+          grep -rlF "$OLD_EMAIL" . \
             --exclude-dir=.git \
             --exclude-dir=node_modules \
             --exclude-dir=.github \
+            --exclude-dir=images \
+            --exclude-dir=css \
             | while read file; do
               echo "Обрабатываем: $file"
               sed -i "s|$OLD_EMAIL|$NEW_EMAIL|g" "$file"
             done
 
-          echo "---"
-          echo "Проверка: остались ли файлы со старой почтой?"
-          if grep -rl "$OLD_EMAIL" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.github; then
+      - name: Финальная проверка
+        if: steps.precheck.outputs.skip == 'false'
+        run: |
+          OLD_EMAIL="stremyanki-dlya-kolodcev@mail.ru"
+          NEW_EMAIL="sales@stremyanki-dlya-kolodcev.ru"
+
+          echo "=== Проверка: осталась ли старая почта? ==="
+          if grep -rlF "$OLD_EMAIL" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=.github \
+            --exclude-dir=backup \
+            --exclude-dir=images \
+            --exclude-dir=css; then
             echo "⚠️ Внимание: остались файлы со старой почтой (см. выше)"
+            exit 1
           else
-            echo "✅ Все вхождения заменены"
+            echo "✅ Старой почты не найдено"
+          fi
+
+          echo "=== Проверка: появилась ли новая почта? ==="
+          COUNT_NEW=$(grep -rlF "$NEW_EMAIL" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=.github \
+            --exclude-dir=backup \
+            --exclude-dir=images \
+            --exclude-dir=css \
+            | wc -l)
+          echo "Файлов с новой почтой: $COUNT_NEW"
+          if [ "$COUNT_NEW" -eq 0 ]; then
+            echo "⚠️ Внимание: новая почта нигде не найдена — что-то пошло не так"
+            exit 1
           fi
 
       - name: Коммит и пуш, если что-то изменилось
+        if: steps.precheck.outputs.skip == 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Удаляем папку backup из рабочего дерева, чтобы она не попала в коммит
+          rm -rf backup
+
           git add -A
           if git diff --staged --quiet; then
             echo "Нет изменений — коммит не нужен"
@@ -49,4 +138,5 @@ jobs:
             git commit -m "chore: replace email stremyanki-dlya-kolodcev@mail.ru -> sales@stremyanki-dlya-kolodcev.ru [skip ci]"
             git pull --rebase origin main
             git push
+            echo "✅ Изменения закоммичены и запушены"
           fi
