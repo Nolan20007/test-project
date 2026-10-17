@@ -390,6 +390,7 @@ const ALL_HTML_FILES = [
   'tmp-902.html',
   'vl-2-l-19-vodoprovodnaya.html',
   'skoba-mn.html',
+  'sitemap.html',
 ];
 
 function insertOgTags(html, file) {
