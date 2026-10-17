@@ -65,29 +65,49 @@ picture { display: contents; }
 }
 .header .back-link:hover { text-decoration: underline; }
 
-/* === НАВИГАЦИЯ === */
+/* === НАВИГАЦИЯ (ИСПРАВЛЕННАЯ) === */
 .nav {
     background-color: var(--accent-color);
     padding: 12px 0;
-    text-align: center;
 }
+
+/* Делаем контейнер гибким и растягиваем на всю ширину */
 .nav .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Разносим меню и действия по краям */
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Разрешаем перенос только если реально не влезает */
+    gap: 10px;
 }
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Убираем старые маргины у ссылок внутри меню */
 .nav a {
     color: rgba(255,255,255,0.85);
     text-decoration: none;
-    margin: 0 15px;
     font-weight: 500;
     font-size: 14px;
     transition: color 0.2s;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Запрещаем перенос текста внутри ссылки */
 }
 .nav a:hover { color: #ffffff; }
 
+/* Кнопка корзины */
 .cart-link {
     color: white;
     text-decoration: none;
@@ -97,14 +117,18 @@ picture { display: contents; }
     background-color: var(--primary-color-hover);
     border-radius: var(--inputs-buttons-border-radius);
     transition: background-color 0.2s;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
 }
 .cart-link:hover { background-color: var(--accent-color); }
 
+/* Кнопка расчета */
 .btn-get-quote {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     background: var(--quote-color);
     color: white;
     border: none;
@@ -115,27 +139,32 @@ picture { display: contents; }
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
-    margin-left: 15px;
-    vertical-align: middle;
+    white-space: nowrap;
 }
 .btn-get-quote:hover {
     background: var(--quote-color-hover);
     transform: translateY(-1px);
 }
 
-/* ===== НОВЫЕ СТИЛИ ДЛЯ КНОПКИ КОПИРОВАНИЯ EMAIL ===== */
+/* Обертка почты */
 .nav-email-wrapper {
     display: inline-flex;
     align-items: center;
-    margin: 0 15px;
-    vertical-align: middle;
+    gap: 5px;
+    white-space: nowrap; /* Почта на ПК в одну строку */
 }
 
-.nav-email-wrapper a {
-    margin: 0;
-    padding-right: 2px;
+.nav-email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 14px;
 }
+.nav-email-link:hover { color: #ffffff; }
 
+/* Кнопка копирования */
 .btn-copy-email {
     background: transparent;
     border: none;
@@ -146,18 +175,25 @@ picture { display: contents; }
     padding: 4px;
     border-radius: 4px;
     transition: background 0.2s, transform 0.1s;
-    vertical-align: middle;
 }
+.btn-copy-email:hover { background: rgba(255, 255, 255, 0.15); }
+.btn-copy-email:active { transform: scale(0.9); }
 
-.btn-copy-email:hover {
-    background: rgba(255, 255, 255, 0.15);
+/* Мобильная адаптация навигации */
+@media (max-width: 1024px) {
+    .nav .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .nav-email-wrapper {
+        white-space: normal; /* На планшетах/мобилках разрешаем перенос */
+        word-break: break-all;
+    }
 }
-
-.btn-copy-email:active {
-    transform: scale(0.9);
-}
-
-/* ==================================================== */
 
 /* === ХЛЕБНЫЕ КРОШКИ === */
 .breadcrumbs {
@@ -249,7 +285,7 @@ picture { display: contents; }
     background: var(--quote-color-hover);
 }
 
-/* === ПОДВАЛ === */
+/* === ПОДВАЛ (ИСПРАВЛЕННЫЙ) === */
 .footer {
     background: #333;
     color: #ffffff;
@@ -268,20 +304,52 @@ picture { display: contents; }
     font-size: 14px;
     font-weight: 500;
 }
+
+/* Важно: убираем display: block для ссылок футера, чтобы они не растягивались */
 .footer-section a {
     color: #ffffff;
     text-decoration: none;
-    display: block;
-    margin-bottom: 6px;
     font-size: 13.5px;
     transition: opacity 0.2s;
+    display: inline-flex; /* Меняем block на inline-flex */
+    align-items: center;
+    margin-bottom: 6px;
 }
 .footer-section a:hover { opacity: 0.5; }
+
 .footer-section p {
     margin: 0 0 6px;
     color: #ffffff;
     font-size: 13.5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
 }
+
+/* Обертка почты в футере */
+.footer-email-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 8px;
+    max-width: 100%;
+}
+
+.footer-email-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin: 0;
+    max-width: 100%;
+    /* Защита от вылезания длинного email */
+    word-break: break-all; 
+}
+
+.footer-email-link img {
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
 .footer-bottom {
     text-align: center;
     padding: 20px 0 0;
@@ -297,18 +365,20 @@ picture { display: contents; }
     .header { padding: 18px 0; }
     .header h1 { font-size: 1.5em; padding: 0 10px; }
     .header p { font-size: 0.95em; padding: 0 10px; }
-    .nav .container { flex-direction: column; gap: 10px; }
-    .nav a { margin: 2px 8px; font-size: 13.5px; }
-    .cart-link { margin-left: 0; font-size: 13.5px; padding: 7px 14px; }
-    .btn-get-quote { margin-left: 0; font-size: 13.5px; padding: 8px 16px; }
-    
-    /* Мобильная адаптация кнопки копирования */
-    .nav-email-wrapper { margin: 2px 8px; }
     
     .footer { padding: 30px 0 15px; }
     .footer-content { grid-template-columns: 1fr; gap: 22px; }
     .footer-section { text-align: center; }
     .quote-modal-content { padding: 24px; }
+    
+    /* Центрируем футер на мобильных */
+    .footer-section p, 
+    .footer-section a {
+        justify-content: center;
+    }
+    .footer-email-wrapper {
+        justify-content: center;
+    }
 }
 
 /* === A11Y: VISUALLY HIDDEN === */
