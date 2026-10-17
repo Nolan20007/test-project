@@ -81,9 +81,6 @@ const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
 
-const PRICE_START_RE = /<!--\s*PRICE_START:min:([^>]+?)\s*-->/;
-const PRICE_END = '<!-- PRICE_END -->';
-
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
@@ -376,6 +373,57 @@ ${offers.join('\n')}
   console.log(`  ✓ yandex-feed.xml создан (${offers.length} товаров)`);
 }
 
+function buildGoogleFeed() {
+  const items = [];
+
+  FEED_SOURCES.forEach(src => {
+    const csvPath = path.resolve(__dirname, '..', src.csv);
+    if (!fs.existsSync(csvPath)) return;
+    const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
+    let products = parseCSV(csv);
+    if (src.limit) products = products.slice(0, src.limit);
+
+    products.forEach(p => {
+      const price = parseFloat(p.price) || 0;
+      if (price <= 0) return;
+
+      const anchor = safeAnchor(p.id);
+      const url = `${SITE_URL}/${src.page}#${anchor}`;
+      const picture = `${SITE_URL}/${src.bigImage}`;
+      // Google требует цену с копейками
+      const formattedPrice = price.toFixed(2) + ' RUB';
+
+      items.push(`    <item>
+      <g:id>${esc(p.id)}</g:id>
+      <g:title>${esc(p.name)}</g:title>
+      <g:description>${esc(p.name)}. Длина ${esc(p.length)} см, ширина ${esc(p.width)} см, масса ${esc(p.weight)} кг.</g:description>
+      <g:link>${esc(url)}</g:link>
+      <g:image_link>${esc(picture)}</g:image_link>
+      <g:price>${formattedPrice}</g:price>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Производство лестниц для колодцев</g:brand>
+      <g:mpn>${esc(p.id)}</g:mpn>
+    </item>`);
+    });
+  });
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <title>Производство лестниц и стремянок для колодцев</title>
+    <link>${SITE_URL}</link>
+    <description>Каталог лестниц и стремянок для колодцев</description>
+${items.join('\n')}
+  </channel>
+</rss>
+`;
+
+  const outPath = path.resolve(__dirname, '..', 'google-feed.xml');
+  fs.writeFileSync(outPath, xml, 'utf8');
+  console.log(`  ✓ google-feed.xml создан (${items.length} товаров)`);
+}
+
 const ALL_HTML_FILES = [
   'index.html',
   '404.html',
@@ -562,6 +610,9 @@ function build() {
 
   console.log('\nГенерация yandex-feed.xml...');
   buildYandexFeed();
+
+  console.log('\nГенерация google-feed.xml...');
+  buildGoogleFeed();
 
   console.log(`\nГотово. Обновлено файлов: ${changed}`);
 }
