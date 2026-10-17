@@ -80,6 +80,8 @@ const NAV_START = '<!-- NAV_START -->';
 const NAV_END = '<!-- NAV_END -->';
 const FOOTER_START = '<!-- FOOTER_START -->';
 const FOOTER_END = '<!-- FOOTER_END -->';
+const CTA_START = '<!-- CTA_START -->';
+const CTA_END = '<!-- CTA_END -->';
 
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
@@ -521,7 +523,7 @@ ${OG_END}`;
   return { html, replaced: false };
 }
 
-function processMarkers(file, navContent, footerContent) {
+function processMarkers(file, navContent, footerContent, ctaContent) {
   const filePath = path.resolve(__dirname, '..', file);
   if (!fs.existsSync(filePath)) return false;
 
@@ -536,6 +538,12 @@ function processMarkers(file, navContent, footerContent) {
   if (footerContent) {
     const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, footerContent);
     if (footerResult.replaced) { html = footerResult.html; changed = true; }
+  }
+
+  // Вставка CTA (кроме index.html)
+  if (ctaContent && file !== 'index.html') {
+    const ctaResult = replaceBetweenMarkers(html, CTA_START, CTA_END, ctaContent);
+    if (ctaResult.replaced) { html = ctaResult.html; changed = true; }
   }
 
   const priceResult = replacePrices(html);
@@ -560,7 +568,7 @@ function processMarkers(file, navContent, footerContent) {
 
   if (changed) {
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log(`  ✓ ${file} → NAV/FOOTER/PRICE/ANALYTICS/OG обновлены`);
+    console.log(`  ✓ ${file} → NAV/FOOTER/CTA/PRICE/ANALYTICS/OG обновлены`);
     return true;
   }
   return false;
@@ -572,12 +580,15 @@ function build() {
   console.log('Чтение includes/...');
   const navContent = loadInclude('nav.html');
   const footerContent = loadInclude('footer.html');
+  const ctaContent = loadInclude('cta.html');
+
   if (navContent)    console.log('  ✓ includes/nav.html');
   if (footerContent) console.log('  ✓ includes/footer.html');
+  if (ctaContent)    console.log('  ✓ includes/cta.html');
 
-  console.log('\nОбработка NAV, FOOTER, PRICE, ANALYTICS, OG...');
+  console.log('\nОбработка NAV, FOOTER, CTA, PRICE, ANALYTICS, OG...');
   ALL_HTML_FILES.forEach(file => {
-    if (processMarkers(file, navContent, footerContent)) changed++;
+    if (processMarkers(file, navContent, footerContent, ctaContent)) changed++;
   });
 
   console.log('\nОбработка таблиц и JSON-LD...');
