@@ -38,38 +38,43 @@
 <style>
     .nav-container {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Разрешаем перенос только если совсем не влезет */
         align-items: center;
         justify-content: space-between;
-        gap: 15px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        gap: 10px; /* Уменьшили отступ между блоками */
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .nav-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 12px; /* Сжали отступы между ссылками меню */
         align-items: center;
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Чуть уменьшили шрифт меню */
     }
 
     .nav-actions {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 15px;
+        gap: 12px; /* Сжали отступы между почтой, корзиной и кнопкой */
     }
 
     .nav-email-wrapper {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
     }
 
     .nav-email-link {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
+        font-size: 14px; /* Уменьшили шрифт почты */
     }
 
     .btn-copy-email {
@@ -88,30 +93,33 @@
     }
 
     /* Медиа-запрос для мобильных устройств */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         .nav-container {
             flex-direction: column;
             align-items: flex-start;
+            gap: 10px;
         }
         
         .nav-actions {
             width: 100%;
-            justify-content: space-between; /* Распределяем элементы по ширине */
+            justify-content: space-between; 
         }
 
-        /* На очень узких экранах прячем email, оставляя только иконку */
-        @media (max-width: 480px) {
-            .nav-email-link span {
-                display: none; /* Скрываем текст email */
-            }
-            .nav-email-link {
-                padding: 8px;
-                background: rgba(255,255,255,0.1);
-                border-radius: 4px;
-            }
-            .nav-actions {
-                gap: 10px;
-            }
+        /* На узких экранах разрешаем почте переноситься */
+        .nav-email-wrapper {
+            flex-wrap: wrap;
+        }
+        
+        .nav-email-link span {
+            word-break: break-all; /* Чтобы длинный адрес не вылезал */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-actions {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
         }
     }
 </style>
