@@ -275,7 +275,7 @@ function buildProductListJsonLd(products, pageUrl) {
       "mpn": p.id,
       "image": SITE_URL + '/' + (p.image || 'images/default-product.png'),
       "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
-      "brand": { "@type": "Brand", "name": "Производство лестниц и стремянок для колодцев" },
+      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" },
       "offers": {
         "@type": "Offer",
         "url": pageUrl + '#' + anchor,
@@ -341,7 +341,7 @@ function buildYandexFeed() {
       <categoryId>1</categoryId>
       <picture>${esc(picture)}</picture>
       <name>${esc(p.name)}</name>
-      <vendor>Производство лестниц для колодцев</vendor>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>${esc(typePrefix)}</typePrefix>
       <model>${esc(p.id)}</model>
       <description>${esc(p.name)}. Длина ${esc(p.length)} см, ширина ${esc(p.width)} см, масса ${esc(p.weight)} кг.</description>
@@ -352,7 +352,7 @@ function buildYandexFeed() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <yml_catalog date="${new Date().toISOString().slice(0,16).replace('T',' ')}">
   <shop>
-    <name>Производство лестниц и стремянок для колодцев</name>
+    <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
     <url>${SITE_URL}</url>
     <currencies>
@@ -389,7 +389,8 @@ function buildGoogleFeed() {
 
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${anchor}`;
-      const picture = `${SITE_URL}/${src.bigImage}`;
+      // Уникальный URL картинки для каждого варианта (разная длина = разный URL)
+      const picture = `${SITE_URL}/${src.bigImage}?v=${encodeURIComponent(p.id)}`;
       // Google требует цену с копейками
       const formattedPrice = price.toFixed(2) + ' RUB';
 
@@ -402,8 +403,11 @@ function buildGoogleFeed() {
       <g:price>${formattedPrice}</g:price>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
-      <g:brand>Производство лестниц для колодцев</g:brand>
+      <g:brand>Лестницы и стремянки для колодцев</g:brand>
       <g:mpn>${esc(p.id)}</g:mpn>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Hardware &gt; Ladders</g:google_product_category>
+      <g:product_type>Стремянки и лестницы для колодцев</g:product_type>
     </item>`);
     });
   });
@@ -411,7 +415,7 @@ function buildGoogleFeed() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>Производство лестниц и стремянок для колодцев</title>
+    <title>Лестницы и стремянки для колодцев</title>
     <link>${SITE_URL}</link>
     <description>Каталог лестниц и стремянок для колодцев</description>
 ${items.join('\n')}
