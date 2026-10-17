@@ -56,9 +56,16 @@ const FEED_SOURCES = [
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/ssg1-large.png', limit: 20, typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
   { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
-  // В фид добавляем только Ø25, чтобы не было дублей
+  
+  // ВЛ-2: все три исполнения (Ø22, Ø25, Ø28)
+  { csv: 'data/vdl-products-22.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products-25.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
+  { csv: 'data/vdl-products-28.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
+
+  // КЛ-1: оба исполнения (Ø25, Ø28)
   { csv: 'data/kl1-products.csv',             page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/kl1-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
+  { csv: 'data/kl1-products-28.csv',          page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/kl1-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
+
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
