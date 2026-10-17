@@ -28,17 +28,26 @@ jobs:
             perl -0pi -e 's/(<!--\s*CTA_START\s*-->)(?:\s*<!--\s*CTA_START\s*-->)+/$1/g' "$f"
             perl -0pi -e 's/(<!--\s*CTA_END\s*-->)(?:\s*<!--\s*CTA_END\s*-->)+/$1/g' "$f"
 
-            # 3) внутри блока .close-btn { ... } оставить только ПЕРВОЕ объявление color
-            perl -0pi -e '
-              s{
-                (\.close-btn\s*\{)([^}]*)(\})
-              }{
-                my ($open, $body, $close) = ($1, $2, $3);
-                my $seen = 0;
-                $body =~ s{(color\s*:\s*[^;]+;)}{ $seen++ ? "" : $1 }ge;
-                $open . $body . $close;
-              }gse;
-            ' "$f"
+            # 3) внутри .close-btn { ... } оставить только первое объявление color
+            #    (делаем на Python — надёжнее с фигурными скобками)
+            python3 - "$f" <<'PY'
+import re, sys
+p = sys.argv[1]
+src = open(p, encoding='utf-8').read()
+
+def fix_close_btn(m):
+    open_brace, body, close_brace = m.group(1), m.group(2), m.group(3)
+    seen = {'n': 0}
+    def repl(mm):
+        seen['n'] += 1
+        return mm.group(0) if seen['n'] == 1 else ''
+    body = re.sub(r'color\s*:\s*[^;]+;', repl, body)
+    return open_brace + body + close_brace
+
+new = re.sub(r'(\.close-btn\s*\{)([^}]*)(\})', fix_close_btn, src)
+if new != src:
+    open(p, 'w', encoding='utf-8').write(new)
+PY
 
             after=$(wc -c < "$f")
             if [ "$before" != "$after" ]; then
