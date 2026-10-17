@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-13 23:45">
+<yml_catalog date="2026-10-17 00:55">
   <shop>
     <name>Производство лестниц и стремянок для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -949,243 +949,243 @@
     </offer>
     <offer id="KL-1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1</url>
-      <price>3570</price>
+      <price>100</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1</model>
-      <description>КЛ-1. Длина 100 см, ширина 41 см, масса 20 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1 см, ширина Ø25 мм см, масса длина 100 см кг.</description>
     </offer>
     <offer id="KL-1.1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.1</url>
-      <price>3910</price>
+      <price>110</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.1</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.1</model>
-      <description>КЛ-1.1. Длина 110 см, ширина 41 см, масса 22 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.1 см, ширина Ø25 мм см, масса длина 110 см кг.</description>
     </offer>
     <offer id="KL-1.2" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.2</url>
-      <price>4290</price>
+      <price>120</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.2</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.2</model>
-      <description>КЛ-1.2. Длина 120 см, ширина 41 см, масса 24 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.2 см, ширина Ø25 мм см, масса длина 120 см кг.</description>
     </offer>
     <offer id="KL-1.3" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.3</url>
-      <price>4625</price>
+      <price>130</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.3</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.3</model>
-      <description>КЛ-1.3. Длина 130 см, ширина 41 см, масса 26 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.3 см, ширина Ø25 мм см, масса длина 130 см кг.</description>
     </offer>
     <offer id="KL-1.4" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.4</url>
-      <price>4990</price>
+      <price>140</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.4</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.4</model>
-      <description>КЛ-1.4. Длина 140 см, ширина 41 см, масса 28 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.4 см, ширина Ø25 мм см, масса длина 140 см кг.</description>
     </offer>
     <offer id="KL-1.5" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.5</url>
-      <price>5330</price>
+      <price>150</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.5</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.5</model>
-      <description>КЛ-1.5. Длина 150 см, ширина 41 см, масса 30 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.5 см, ширина Ø25 мм см, масса длина 150 см кг.</description>
     </offer>
     <offer id="KL-1.6" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.6</url>
-      <price>5695</price>
+      <price>160</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.6</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.6</model>
-      <description>КЛ-1.6. Длина 160 см, ширина 41 см, масса 32 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.6 см, ширина Ø25 мм см, масса длина 160 см кг.</description>
     </offer>
     <offer id="KL-1.7" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.7</url>
-      <price>6050</price>
+      <price>170</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.7</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.7</model>
-      <description>КЛ-1.7. Длина 170 см, ширина 41 см, масса 34 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.7 см, ширина Ø25 мм см, масса длина 170 см кг.</description>
     </offer>
     <offer id="KL-1.8" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.8</url>
-      <price>6410</price>
+      <price>180</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.8</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.8</model>
-      <description>КЛ-1.8. Длина 180 см, ширина 41 см, масса 36 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.8 см, ширина Ø25 мм см, масса длина 180 см кг.</description>
     </offer>
     <offer id="KL-1.9" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-1.9</url>
-      <price>6735</price>
+      <price>190</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-1.9</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.9</model>
-      <description>КЛ-1.9. Длина 190 см, ширина 41 см, масса 38 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 1.9 см, ширина Ø25 мм см, масса длина 190 см кг.</description>
     </offer>
     <offer id="KL-2" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2</url>
-      <price>7105</price>
+      <price>200</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2</model>
-      <description>КЛ-2. Длина 200 см, ширина 41 см, масса 40 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2 см, ширина Ø25 мм см, масса длина 200 см кг.</description>
     </offer>
     <offer id="KL-2.1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.1</url>
-      <price>7455</price>
+      <price>210</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.1</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.1</model>
-      <description>КЛ-2.1. Длина 210 см, ширина 41 см, масса 42 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.1 см, ширина Ø25 мм см, масса длина 210 см кг.</description>
     </offer>
     <offer id="KL-2.2" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.2</url>
-      <price>7815</price>
+      <price>220</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.2</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.2</model>
-      <description>КЛ-2.2. Длина 220 см, ширина 41 см, масса 44 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.2 см, ширина Ø25 мм см, масса длина 220 см кг.</description>
     </offer>
     <offer id="KL-2.3" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.3</url>
-      <price>8160</price>
+      <price>230</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.3</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.3</model>
-      <description>КЛ-2.3. Длина 230 см, ширина 41 см, масса 46 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.3 см, ширина Ø25 мм см, масса длина 230 см кг.</description>
     </offer>
     <offer id="KL-2.4" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.4</url>
-      <price>8505</price>
+      <price>240</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.4</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.4</model>
-      <description>КЛ-2.4. Длина 240 см, ширина 41 см, масса 48 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.4 см, ширина Ø25 мм см, масса длина 240 см кг.</description>
     </offer>
     <offer id="KL-2.5" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.5</url>
-      <price>8870</price>
+      <price>250</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.5</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.5</model>
-      <description>КЛ-2.5. Длина 250 см, ширина 41 см, масса 50 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.5 см, ширина Ø25 мм см, масса длина 250 см кг.</description>
     </offer>
     <offer id="KL-2.6" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.6</url>
-      <price>9225</price>
+      <price>260</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.6</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.6</model>
-      <description>КЛ-2.6. Длина 260 см, ширина 41 см, масса 52 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.6 см, ширина Ø25 мм см, масса длина 260 см кг.</description>
     </offer>
     <offer id="KL-2.7" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.7</url>
-      <price>9570</price>
+      <price>270</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.7</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.7</model>
-      <description>КЛ-2.7. Длина 270 см, ширина 41 см, масса 54 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.7 см, ширина Ø25 мм см, масса длина 270 см кг.</description>
     </offer>
     <offer id="KL-2.8" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.8</url>
-      <price>9920</price>
+      <price>280</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.8</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.8</model>
-      <description>КЛ-2.8. Длина 280 см, ширина 41 см, масса 56 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.8 см, ширина Ø25 мм см, масса длина 280 см кг.</description>
     </offer>
     <offer id="KL-2.9" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/kl-1-dlya-kanalizacionnyh-kolodcev.html#item-KL-2.9</url>
-      <price>10265</price>
+      <price>290</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/kl1/kl1-large.png</picture>
-      <name>КЛ-2.9</name>
+      <name>Канализационная лестница КЛ-1 (Л-1</name>
       <vendor>Производство лестниц для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.9</model>
-      <description>КЛ-2.9. Длина 290 см, ширина 41 см, масса 58 кг.</description>
+      <description>Канализационная лестница КЛ-1 (Л-1. Длина Л-18) - 2.9 см, ширина Ø25 мм см, масса длина 290 см кг.</description>
     </offer>
     <offer id="VL-1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/vl-2-l-19-vodoprovodnaya.html#item-VL-1</url>
