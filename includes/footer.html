@@ -3,11 +3,14 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Контакты</h4>
-                <a href="tel:+79655559966"><img src="images/icons/phone.svg" alt="" class="footer-icon" width="14" height="14"> +7 (965) 555-99-66</a>
+                <a href="tel:+79655559966" class="footer-phone-link">
+                    <img src="images/icons/phone.svg" alt="" class="footer-icon" width="14" height="14"> 
+                    +7 (965) 555-99-66
+                </a>
                 
                 <!-- Почта с кнопкой копирования -->
                 <div class="footer-email-wrapper">
-                    <a href="mailto:sales@stremyanki-dlya-kolodcev.ru">
+                    <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="footer-email-link">
                         <img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> 
                         <span>sales@stremyanki-dlya-kolodcev.ru</span>
                     </a>
@@ -16,7 +19,10 @@
                     </button>
                 </div>
 
-                <p><img src="images/icons/pin.svg" alt="" class="footer-icon" width="14" height="14"> г. Пермь, ул. Василия Васильева, д. 33</p>
+                <p class="footer-address">
+                    <img src="images/icons/pin.svg" alt="" class="footer-icon" width="14" height="14"> 
+                    г. Пермь, ул. Василия Васильева, д. 33
+                </p>
             </div>
             
             <div class="footer-section">
@@ -60,24 +66,47 @@
     </div>
 </footer>
 
-<!-- CSS для футера (добавьте, если этих стилей еще нет) -->
+<!-- CSS для футера -->
 <style>
+    .footer-phone-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        color: inherit;
+        margin-bottom: 8px;
+    }
+
     .footer-email-wrapper {
         display: flex;
         align-items: center;
         gap: 6px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
-    .footer-email-wrapper a {
+    .footer-email-link {
         display: flex;
         align-items: center;
-        margin: 0;
         gap: 6px;
+        margin: 0;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Защита от вылезания длинного email */
+    .footer-email-link span {
+        word-break: break-all; 
+    }
+
+    .footer-address {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        margin: 0;
     }
 </style>
 
-<!-- Скрипт для года -->
+<!-- Скрипты (год и копирование) -->
 <script>
     (function () {
         var yearEl = document.getElementById('footer-year');
@@ -87,7 +116,6 @@
     })();
 </script>
 
-<!-- Скрипт для копирования Email -->
 <script>
 function copyEmailToClipboard(btn) {
     const email = 'sales@stremyanki-dlya-kolodcev.ru';
