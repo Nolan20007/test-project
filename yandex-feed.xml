@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-17 03:54">
+<yml_catalog date="2026-10-17 04:05">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -21,6 +21,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1</model>
+      <weight>13.84</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-1. Длина 120 см, ширина 50 см, масса 13.84 кг.</description>
     </offer>
     <offer id="C-2" available="true">
@@ -33,6 +34,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-2</model>
+      <weight>17.08</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-2. Длина 150 см, ширина 50 см, масса 17.08 кг.</description>
     </offer>
     <offer id="C-3" available="true">
@@ -45,6 +47,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-3</model>
+      <weight>20.3</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-3. Длина 180 см, ширина 50 см, масса 20.30 кг.</description>
     </offer>
     <offer id="C-4" available="true">
@@ -57,6 +60,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-4</model>
+      <weight>23.68</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-4. Длина 225 см, ширина 50 см, масса 23.68 кг.</description>
     </offer>
     <offer id="C-5" available="true">
@@ -69,6 +73,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-5</model>
+      <weight>26.74</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-5. Длина 240 см, ширина 50 см, масса 26.74 кг.</description>
     </offer>
     <offer id="C-6" available="true">
@@ -81,6 +86,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-6</model>
+      <weight>23.52</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-6. Длина 210 см, ширина 50 см, масса 23.52 кг.</description>
     </offer>
     <offer id="C-7" available="true">
@@ -93,6 +99,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-7</model>
+      <weight>30</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-7. Длина 270 см, ширина 50 см, масса 30.00 кг.</description>
     </offer>
     <offer id="C-8" available="true">
@@ -105,6 +112,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-8</model>
+      <weight>46.06</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-8. Длина 420 см, ширина 50 см, масса 46.06 кг.</description>
     </offer>
     <offer id="C-9" available="true">
@@ -117,6 +125,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-9</model>
+      <weight>49.36</weight>
       <description>Стремянка для колодцев ТПР 901-09-11.84 С-9. Длина 450 см, ширина 50 см, масса 49.36 кг.</description>
     </offer>
     <offer id="C-1-00" available="true">
@@ -129,6 +138,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-00</model>
+      <weight>6.5</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-00. Длина 60 см, ширина 50 см, масса 6.5 кг.</description>
     </offer>
     <offer id="C-1-01" available="true">
@@ -141,6 +151,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-01</model>
+      <weight>9.8</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-01. Длина 90 см, ширина 50 см, масса 9.8 кг.</description>
     </offer>
     <offer id="C-1-02" available="true">
@@ -153,6 +164,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-02</model>
+      <weight>13</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-02. Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
     </offer>
     <offer id="C-1-03" available="true">
@@ -165,6 +177,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-03</model>
+      <weight>16.3</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-03. Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="C-1-04" available="true">
@@ -177,6 +190,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-04</model>
+      <weight>19.6</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-04. Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
     <offer id="C-1-05" available="true">
@@ -189,6 +203,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-05</model>
+      <weight>22.8</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-05. Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
     <offer id="C-1-06" available="true">
@@ -201,6 +216,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-06</model>
+      <weight>26.1</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-06. Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
     <offer id="C-1-07" available="true">
@@ -213,6 +229,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-07</model>
+      <weight>29.3</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-07. Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
     </offer>
     <offer id="C-1-08" available="true">
@@ -225,6 +242,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-08</model>
+      <weight>32.6</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-08. Длина 300 см, ширина 50 см, масса 32.6 кг.</description>
     </offer>
     <offer id="C-1-09" available="true">
@@ -237,6 +255,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-09</model>
+      <weight>35.9</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-09. Длина 330 см, ширина 50 см, масса 35.9 кг.</description>
     </offer>
     <offer id="C-1-10" available="true">
@@ -249,6 +268,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-10</model>
+      <weight>39.1</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-10. Длина 360 см, ширина 50 см, масса 39.1 кг.</description>
     </offer>
     <offer id="C-1-11" available="true">
@@ -261,6 +281,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-11</model>
+      <weight>42.4</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-11. Длина 390 см, ширина 50 см, масса 42.4 кг.</description>
     </offer>
     <offer id="C-1-12" available="true">
@@ -273,6 +294,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-12</model>
+      <weight>45.7</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-12. Длина 420 см, ширина 50 см, масса 45.7 кг.</description>
     </offer>
     <offer id="C-1-13" available="true">
@@ -285,6 +307,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-13</model>
+      <weight>48.9</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-13. Длина 450 см, ширина 50 см, масса 48.9 кг.</description>
     </offer>
     <offer id="C-1-14" available="true">
@@ -297,6 +320,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-14</model>
+      <weight>52.2</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-14. Длина 480 см, ширина 50 см, масса 52.2 кг.</description>
     </offer>
     <offer id="C-1-15" available="true">
@@ -309,6 +333,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-15</model>
+      <weight>55.4</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-15. Длина 510 см, ширина 50 см, масса 55.4 кг.</description>
     </offer>
     <offer id="C-1-16" available="true">
@@ -321,6 +346,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-16</model>
+      <weight>58.7</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-16. Длина 540 см, ширина 50 см, масса 58.7 кг.</description>
     </offer>
     <offer id="C-1-17" available="true">
@@ -333,6 +359,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-17</model>
+      <weight>62</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-17. Длина 570 см, ширина 50 см, масса 62.0 кг.</description>
     </offer>
     <offer id="C-1-18" available="true">
@@ -345,6 +372,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>C-1-18</model>
+      <weight>65.2</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-18. Длина 600 см, ширина 50 см, масса 65.2 кг.</description>
     </offer>
     <offer id="SG-22" available="true">
@@ -357,6 +385,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-22</model>
+      <weight>39.2</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-22. Длина 220 см, ширина 70 см, масса 39.2 кг.</description>
     </offer>
     <offer id="SG-28" available="true">
@@ -369,6 +398,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-28</model>
+      <weight>50</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-28. Длина 280 см, ширина 70 см, масса 50 кг.</description>
     </offer>
     <offer id="SG-34" available="true">
@@ -381,6 +411,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-34</model>
+      <weight>61</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-34. Длина 340 см, ширина 70 см, масса 61 кг.</description>
     </offer>
     <offer id="SG-40" available="true">
@@ -393,6 +424,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-40</model>
+      <weight>71.8</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-40. Длина 400 см, ширина 70 см, масса 71.8 кг.</description>
     </offer>
     <offer id="SG-46" available="true">
@@ -405,6 +437,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-46</model>
+      <weight>82.8</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-46. Длина 460 см, ширина 70 см, масса 82.8 кг.</description>
     </offer>
     <offer id="SG-52" available="true">
@@ -417,6 +450,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-52</model>
+      <weight>94</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-52. Длина 520 см, ширина 70 см, масса 94 кг.</description>
     </offer>
     <offer id="SG-58" available="true">
@@ -429,6 +463,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-58</model>
+      <weight>104.4</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-58. Длина 580 см, ширина 70 см, масса 104.4 кг.</description>
     </offer>
     <offer id="SG-64" available="true">
@@ -441,6 +476,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-64</model>
+      <weight>115.4</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-64. Длина 640 см, ширина 70 см, масса 115.4 кг.</description>
     </offer>
     <offer id="SG-70" available="true">
@@ -453,6 +489,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-70</model>
+      <weight>126.2</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-70. Длина 700 см, ширина 70 см, масса 126.2 кг.</description>
     </offer>
     <offer id="SG-82" available="true">
@@ -465,6 +502,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Пожарная стремянка</typePrefix>
       <model>SG-82</model>
+      <weight>148</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-82. Длина 820 см, ширина 70 см, масса 148 кг.</description>
     </offer>
     <offer id="TS-50-1" available="true">
@@ -477,6 +515,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1</model>
+      <weight>10.9</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1). Длина 100 см, ширина 50 см, масса 10.9 кг.</description>
     </offer>
     <offer id="TS-50-1.1" available="true">
@@ -489,6 +528,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.1</model>
+      <weight>12</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.1). Длина 110 см, ширина 50 см, масса 12.0 кг.</description>
     </offer>
     <offer id="TS-50-1.2" available="true">
@@ -501,6 +541,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.2</model>
+      <weight>13</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.2). Длина 120 см, ширина 50 см, масса 13.0 кг.</description>
     </offer>
     <offer id="TS-50-1.3" available="true">
@@ -513,6 +554,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.3</model>
+      <weight>14.1</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.3). Длина 130 см, ширина 50 см, масса 14.1 кг.</description>
     </offer>
     <offer id="TS-50-1.4" available="true">
@@ -525,6 +567,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.4</model>
+      <weight>15.2</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.4). Длина 140 см, ширина 50 см, масса 15.2 кг.</description>
     </offer>
     <offer id="TS-50-1.5" available="true">
@@ -537,6 +580,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.5</model>
+      <weight>16.3</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.5). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="TS-50-1.6" available="true">
@@ -549,6 +593,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.6</model>
+      <weight>17.4</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.6). Длина 160 см, ширина 50 см, масса 17.4 кг.</description>
     </offer>
     <offer id="TS-50-1.7" available="true">
@@ -561,6 +606,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.7</model>
+      <weight>18.5</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.7). Длина 170 см, ширина 50 см, масса 18.5 кг.</description>
     </offer>
     <offer id="TS-50-1.8" available="true">
@@ -573,6 +619,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.8</model>
+      <weight>19.6</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.8). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
     <offer id="TS-50-1.9" available="true">
@@ -585,6 +632,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-1.9</model>
+      <weight>20.7</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-1.9). Длина 190 см, ширина 50 см, масса 20.7 кг.</description>
     </offer>
     <offer id="TS-50-2" available="true">
@@ -597,6 +645,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2</model>
+      <weight>21.7</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2). Длина 200 см, ширина 50 см, масса 21.7 кг.</description>
     </offer>
     <offer id="TS-50-2.1" available="true">
@@ -609,6 +658,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.1</model>
+      <weight>22.8</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.1). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
     <offer id="TS-50-2.2" available="true">
@@ -621,6 +671,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.2</model>
+      <weight>23.9</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.2). Длина 220 см, ширина 50 см, масса 23.9 кг.</description>
     </offer>
     <offer id="TS-50-2.3" available="true">
@@ -633,6 +684,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.3</model>
+      <weight>25</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.3). Длина 230 см, ширина 50 см, масса 25.0 кг.</description>
     </offer>
     <offer id="TS-50-2.4" available="true">
@@ -645,6 +697,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.4</model>
+      <weight>26.1</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.4). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
     <offer id="TS-50-2.5" available="true">
@@ -657,6 +710,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.5</model>
+      <weight>27.2</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.5). Длина 250 см, ширина 50 см, масса 27.2 кг.</description>
     </offer>
     <offer id="TS-50-2.6" available="true">
@@ -669,6 +723,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.6</model>
+      <weight>28.3</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.6). Длина 260 см, ширина 50 см, масса 28.3 кг.</description>
     </offer>
     <offer id="TS-50-2.7" available="true">
@@ -681,6 +736,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.7</model>
+      <weight>29.3</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.7). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
     </offer>
     <offer id="TS-50-2.8" available="true">
@@ -693,6 +749,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.8</model>
+      <weight>30.4</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.8). Длина 280 см, ширина 50 см, масса 30.4 кг.</description>
     </offer>
     <offer id="TS-50-2.9" available="true">
@@ -705,6 +762,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-50-2.9</model>
+      <weight>31.5</weight>
       <description>Лестница тепловых сетей Л-16 (50 ТС-2.9). Длина 290 см, ширина 50 см, масса 31.5 кг.</description>
     </offer>
     <offer id="TS-63-1" available="true">
@@ -717,6 +775,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1</model>
+      <weight>13.8</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1). Длина 100 см, ширина 63 см, масса 13.8 кг.</description>
     </offer>
     <offer id="TS-63-1.1" available="true">
@@ -729,6 +788,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.1</model>
+      <weight>15.2</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.1). Длина 110 см, ширина 63 см, масса 15.2 кг.</description>
     </offer>
     <offer id="TS-63-1.2" available="true">
@@ -741,6 +801,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.2</model>
+      <weight>16.6</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.2). Длина 120 см, ширина 63 см, масса 16.6 кг.</description>
     </offer>
     <offer id="TS-63-1.3" available="true">
@@ -753,6 +814,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.3</model>
+      <weight>18</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.3). Длина 130 см, ширина 63 см, масса 18.0 кг.</description>
     </offer>
     <offer id="TS-63-1.4" available="true">
@@ -765,6 +827,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.4</model>
+      <weight>19.3</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.4). Длина 140 см, ширина 63 см, масса 19.3 кг.</description>
     </offer>
     <offer id="TS-63-1.5" available="true">
@@ -777,6 +840,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.5</model>
+      <weight>20.7</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.5). Длина 150 см, ширина 63 см, масса 20.7 кг.</description>
     </offer>
     <offer id="TS-63-1.6" available="true">
@@ -789,6 +853,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.6</model>
+      <weight>22.1</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.6). Длина 160 см, ширина 63 см, масса 22.1 кг.</description>
     </offer>
     <offer id="TS-63-1.7" available="true">
@@ -801,6 +866,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.7</model>
+      <weight>23.5</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.7). Длина 170 см, ширина 63 см, масса 23.5 кг.</description>
     </offer>
     <offer id="TS-63-1.8" available="true">
@@ -813,6 +879,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.8</model>
+      <weight>24.9</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.8). Длина 180 см, ширина 63 см, масса 24.9 кг.</description>
     </offer>
     <offer id="TS-63-1.9" available="true">
@@ -825,6 +892,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-1.9</model>
+      <weight>26.2</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-1.9). Длина 190 см, ширина 63 см, масса 26.2 кг.</description>
     </offer>
     <offer id="TS-63-2" available="true">
@@ -837,6 +905,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2</model>
+      <weight>27.6</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2). Длина 200 см, ширина 63 см, масса 27.6 кг.</description>
     </offer>
     <offer id="TS-63-2.1" available="true">
@@ -849,6 +918,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.1</model>
+      <weight>29</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.1). Длина 210 см, ширина 63 см, масса 29.0 кг.</description>
     </offer>
     <offer id="TS-63-2.2" available="true">
@@ -861,6 +931,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.2</model>
+      <weight>30.4</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.2). Длина 220 см, ширина 63 см, масса 30.4 кг.</description>
     </offer>
     <offer id="TS-63-2.3" available="true">
@@ -873,6 +944,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.3</model>
+      <weight>31.8</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.3). Длина 230 см, ширина 63 см, масса 31.8 кг.</description>
     </offer>
     <offer id="TS-63-2.4" available="true">
@@ -885,6 +957,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.4</model>
+      <weight>33.1</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.4). Длина 240 см, ширина 63 см, масса 33.1 кг.</description>
     </offer>
     <offer id="TS-63-2.5" available="true">
@@ -897,6 +970,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.5</model>
+      <weight>34.5</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.5). Длина 250 см, ширина 63 см, масса 34.5 кг.</description>
     </offer>
     <offer id="TS-63-2.6" available="true">
@@ -909,6 +983,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.6</model>
+      <weight>35.9</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.6). Длина 260 см, ширина 63 см, масса 35.9 кг.</description>
     </offer>
     <offer id="TS-63-2.7" available="true">
@@ -921,6 +996,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.7</model>
+      <weight>37.3</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.7). Длина 270 см, ширина 63 см, масса 37.3 кг.</description>
     </offer>
     <offer id="TS-63-2.8" available="true">
@@ -933,6 +1009,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.8</model>
+      <weight>38.7</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.8). Длина 280 см, ширина 63 см, масса 38.7 кг.</description>
     </offer>
     <offer id="TS-63-2.9" available="true">
@@ -945,6 +1022,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница тепловых сетей</typePrefix>
       <model>TS-63-2.9</model>
+      <weight>40.1</weight>
       <description>Лестница тепловых сетей Л-16 (63 ТС-2.9). Длина 290 см, ширина 63 см, масса 40.1 кг.</description>
     </offer>
     <offer id="VL-1" available="true">
@@ -957,6 +1035,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1</model>
+      <weight>14</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1 Ø22 мм. Длина 100 см, ширина 42.4 см, масса 14 кг.</description>
     </offer>
     <offer id="VL-1.1" available="true">
@@ -969,6 +1048,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.1</model>
+      <weight>15</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.1 Ø22 мм. Длина 110 см, ширина 42.4 см, масса 15 кг.</description>
     </offer>
     <offer id="VL-1.2" available="true">
@@ -981,6 +1061,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.2</model>
+      <weight>16</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.2 Ø22 мм. Длина 120 см, ширина 42.4 см, масса 16 кг.</description>
     </offer>
     <offer id="VL-1.3" available="true">
@@ -993,6 +1074,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.3</model>
+      <weight>17</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.3 Ø22 мм. Длина 130 см, ширина 42.4 см, масса 17 кг.</description>
     </offer>
     <offer id="VL-1.4" available="true">
@@ -1005,6 +1087,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.4</model>
+      <weight>18</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.4 Ø22 мм. Длина 140 см, ширина 42.4 см, масса 18 кг.</description>
     </offer>
     <offer id="VL-1.5" available="true">
@@ -1017,6 +1100,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.5</model>
+      <weight>19</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.5 Ø22 мм. Длина 150 см, ширина 42.4 см, масса 19 кг.</description>
     </offer>
     <offer id="VL-1.6" available="true">
@@ -1029,6 +1113,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.6</model>
+      <weight>20</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.6 Ø22 мм. Длина 160 см, ширина 42.4 см, масса 20 кг.</description>
     </offer>
     <offer id="VL-1.7" available="true">
@@ -1041,6 +1126,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.7</model>
+      <weight>21</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.7 Ø22 мм. Длина 170 см, ширина 42.4 см, масса 21 кг.</description>
     </offer>
     <offer id="VL-1.8" available="true">
@@ -1053,6 +1139,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.8</model>
+      <weight>22</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.8 Ø22 мм. Длина 180 см, ширина 42.4 см, масса 22 кг.</description>
     </offer>
     <offer id="VL-1.9" available="true">
@@ -1065,6 +1152,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.9</model>
+      <weight>23</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.9 Ø22 мм. Длина 190 см, ширина 42.4 см, масса 23 кг.</description>
     </offer>
     <offer id="VL-2" available="true">
@@ -1077,6 +1165,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2</model>
+      <weight>27</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2 Ø22 мм. Длина 200 см, ширина 42.4 см, масса 27 кг.</description>
     </offer>
     <offer id="VL-2.1" available="true">
@@ -1089,6 +1178,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.1</model>
+      <weight>28</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.1 Ø22 мм. Длина 210 см, ширина 42.4 см, масса 28 кг.</description>
     </offer>
     <offer id="VL-2.2" available="true">
@@ -1101,6 +1191,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.2</model>
+      <weight>29</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.2 Ø22 мм. Длина 220 см, ширина 42.4 см, масса 29 кг.</description>
     </offer>
     <offer id="VL-2.3" available="true">
@@ -1113,6 +1204,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.3</model>
+      <weight>30</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.3 Ø22 мм. Длина 230 см, ширина 42.4 см, масса 30 кг.</description>
     </offer>
     <offer id="VL-2.4" available="true">
@@ -1125,6 +1217,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.4</model>
+      <weight>31</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.4 Ø22 мм. Длина 240 см, ширина 42.4 см, масса 31 кг.</description>
     </offer>
     <offer id="VL-2.5" available="true">
@@ -1137,6 +1230,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.5</model>
+      <weight>34</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.5 Ø22 мм. Длина 250 см, ширина 42.4 см, масса 34 кг.</description>
     </offer>
     <offer id="VL-2.6" available="true">
@@ -1149,6 +1243,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.6</model>
+      <weight>35</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.6 Ø22 мм. Длина 260 см, ширина 42.4 см, масса 35 кг.</description>
     </offer>
     <offer id="VL-2.7" available="true">
@@ -1161,6 +1256,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.7</model>
+      <weight>36</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.7 Ø22 мм. Длина 270 см, ширина 42.4 см, масса 36 кг.</description>
     </offer>
     <offer id="VL-2.8" available="true">
@@ -1173,6 +1269,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.8</model>
+      <weight>37</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.8 Ø22 мм. Длина 280 см, ширина 42.4 см, масса 37 кг.</description>
     </offer>
     <offer id="VL-2.9" available="true">
@@ -1185,6 +1282,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.9</model>
+      <weight>38</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.9 Ø22 мм. Длина 290 см, ширина 42.4 см, масса 38 кг.</description>
     </offer>
     <offer id="VL-1-25" available="true">
@@ -1197,6 +1295,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1-25</model>
+      <weight>18.1</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1 Ø25 мм. Длина 100 см, ширина 42.4 см, масса 18.1 кг.</description>
     </offer>
     <offer id="VL-1.1-25" available="true">
@@ -1209,6 +1308,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.1-25</model>
+      <weight>19.4</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.1 Ø25 мм. Длина 110 см, ширина 42.4 см, масса 19.4 кг.</description>
     </offer>
     <offer id="VL-1.2-25" available="true">
@@ -1221,6 +1321,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.2-25</model>
+      <weight>20.6</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.2 Ø25 мм. Длина 120 см, ширина 42.4 см, масса 20.6 кг.</description>
     </offer>
     <offer id="VL-1.3-25" available="true">
@@ -1233,6 +1334,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.3-25</model>
+      <weight>21.9</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.3 Ø25 мм. Длина 130 см, ширина 42.4 см, масса 21.9 кг.</description>
     </offer>
     <offer id="VL-1.4-25" available="true">
@@ -1245,6 +1347,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.4-25</model>
+      <weight>23.2</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.4 Ø25 мм. Длина 140 см, ширина 42.4 см, масса 23.2 кг.</description>
     </offer>
     <offer id="VL-1.5-25" available="true">
@@ -1257,6 +1360,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.5-25</model>
+      <weight>24.5</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.5 Ø25 мм. Длина 150 см, ширина 42.4 см, масса 24.5 кг.</description>
     </offer>
     <offer id="VL-1.6-25" available="true">
@@ -1269,6 +1373,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.6-25</model>
+      <weight>25.8</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.6 Ø25 мм. Длина 160 см, ширина 42.4 см, масса 25.8 кг.</description>
     </offer>
     <offer id="VL-1.7-25" available="true">
@@ -1281,6 +1386,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.7-25</model>
+      <weight>27.1</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.7 Ø25 мм. Длина 170 см, ширина 42.4 см, масса 27.1 кг.</description>
     </offer>
     <offer id="VL-1.8-25" available="true">
@@ -1293,6 +1399,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.8-25</model>
+      <weight>28.4</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.8 Ø25 мм. Длина 180 см, ширина 42.4 см, масса 28.4 кг.</description>
     </offer>
     <offer id="VL-1.9-25" available="true">
@@ -1305,6 +1412,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.9-25</model>
+      <weight>29.7</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.9 Ø25 мм. Длина 190 см, ширина 42.4 см, масса 29.7 кг.</description>
     </offer>
     <offer id="VL-2-25" available="true">
@@ -1317,6 +1425,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2-25</model>
+      <weight>34.8</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2 Ø25 мм. Длина 200 см, ширина 42.4 см, масса 34.8 кг.</description>
     </offer>
     <offer id="VL-2.1-25" available="true">
@@ -1329,6 +1438,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.1-25</model>
+      <weight>36.1</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.1 Ø25 мм. Длина 210 см, ширина 42.4 см, масса 36.1 кг.</description>
     </offer>
     <offer id="VL-2.2-25" available="true">
@@ -1341,6 +1451,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.2-25</model>
+      <weight>37.4</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.2 Ø25 мм. Длина 220 см, ширина 42.4 см, масса 37.4 кг.</description>
     </offer>
     <offer id="VL-2.3-25" available="true">
@@ -1353,6 +1464,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.3-25</model>
+      <weight>38.7</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.3 Ø25 мм. Длина 230 см, ширина 42.4 см, масса 38.7 кг.</description>
     </offer>
     <offer id="VL-2.4-25" available="true">
@@ -1365,6 +1477,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.4-25</model>
+      <weight>40</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.4 Ø25 мм. Длина 240 см, ширина 42.4 см, масса 40.0 кг.</description>
     </offer>
     <offer id="VL-2.5-25" available="true">
@@ -1377,6 +1490,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.5-25</model>
+      <weight>43.9</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.5 Ø25 мм. Длина 250 см, ширина 42.4 см, масса 43.9 кг.</description>
     </offer>
     <offer id="VL-2.6-25" available="true">
@@ -1389,6 +1503,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.6-25</model>
+      <weight>45.2</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.6 Ø25 мм. Длина 260 см, ширина 42.4 см, масса 45.2 кг.</description>
     </offer>
     <offer id="VL-2.7-25" available="true">
@@ -1401,6 +1516,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.7-25</model>
+      <weight>46.4</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.7 Ø25 мм. Длина 270 см, ширина 42.4 см, масса 46.4 кг.</description>
     </offer>
     <offer id="VL-2.8-25" available="true">
@@ -1413,6 +1529,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.8-25</model>
+      <weight>47.7</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.8 Ø25 мм. Длина 280 см, ширина 42.4 см, масса 47.7 кг.</description>
     </offer>
     <offer id="VL-2.9-25" available="true">
@@ -1425,6 +1542,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.9-25</model>
+      <weight>49</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.9 Ø25 мм. Длина 290 см, ширина 42.4 см, масса 49.0 кг.</description>
     </offer>
     <offer id="VL-1-28" available="true">
@@ -1437,6 +1555,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1-28</model>
+      <weight>22.7</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1 Ø28 мм. Длина 100 см, ширина 42.4 см, масса 22.7 кг.</description>
     </offer>
     <offer id="VL-1.1-28" available="true">
@@ -1449,6 +1568,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.1-28</model>
+      <weight>24.3</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.1 Ø28 мм. Длина 110 см, ширина 42.4 см, масса 24.3 кг.</description>
     </offer>
     <offer id="VL-1.2-28" available="true">
@@ -1461,6 +1581,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.2-28</model>
+      <weight>25.9</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.2 Ø28 мм. Длина 120 см, ширина 42.4 см, масса 25.9 кг.</description>
     </offer>
     <offer id="VL-1.3-28" available="true">
@@ -1473,6 +1594,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.3-28</model>
+      <weight>27.5</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.3 Ø28 мм. Длина 130 см, ширина 42.4 см, масса 27.5 кг.</description>
     </offer>
     <offer id="VL-1.4-28" available="true">
@@ -1485,6 +1607,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.4-28</model>
+      <weight>29.1</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.4 Ø28 мм. Длина 140 см, ширина 42.4 см, масса 29.1 кг.</description>
     </offer>
     <offer id="VL-1.5-28" available="true">
@@ -1497,6 +1620,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.5-28</model>
+      <weight>30.8</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.5 Ø28 мм. Длина 150 см, ширина 42.4 см, масса 30.8 кг.</description>
     </offer>
     <offer id="VL-1.6-28" available="true">
@@ -1509,6 +1633,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.6-28</model>
+      <weight>32.4</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.6 Ø28 мм. Длина 160 см, ширина 42.4 см, масса 32.4 кг.</description>
     </offer>
     <offer id="VL-1.7-28" available="true">
@@ -1521,6 +1646,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.7-28</model>
+      <weight>34</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.7 Ø28 мм. Длина 170 см, ширина 42.4 см, масса 34.0 кг.</description>
     </offer>
     <offer id="VL-1.8-28" available="true">
@@ -1533,6 +1659,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.8-28</model>
+      <weight>35.6</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.8 Ø28 мм. Длина 180 см, ширина 42.4 см, масса 35.6 кг.</description>
     </offer>
     <offer id="VL-1.9-28" available="true">
@@ -1545,6 +1672,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-1.9-28</model>
+      <weight>37.2</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 1.9 Ø28 мм. Длина 190 см, ширина 42.4 см, масса 37.2 кг.</description>
     </offer>
     <offer id="VL-2-28" available="true">
@@ -1557,6 +1685,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2-28</model>
+      <weight>43.7</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2 Ø28 мм. Длина 200 см, ширина 42.4 см, масса 43.7 кг.</description>
     </offer>
     <offer id="VL-2.1-28" available="true">
@@ -1569,6 +1698,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.1-28</model>
+      <weight>45.3</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.1 Ø28 мм. Длина 210 см, ширина 42.4 см, масса 45.3 кг.</description>
     </offer>
     <offer id="VL-2.2-28" available="true">
@@ -1581,6 +1711,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.2-28</model>
+      <weight>46.9</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.2 Ø28 мм. Длина 220 см, ширина 42.4 см, масса 46.9 кг.</description>
     </offer>
     <offer id="VL-2.3-28" available="true">
@@ -1593,6 +1724,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.3-28</model>
+      <weight>48.6</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.3 Ø28 мм. Длина 230 см, ширина 42.4 см, масса 48.6 кг.</description>
     </offer>
     <offer id="VL-2.4-28" available="true">
@@ -1605,6 +1737,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.4-28</model>
+      <weight>50.2</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.4 Ø28 мм. Длина 240 см, ширина 42.4 см, масса 50.2 кг.</description>
     </offer>
     <offer id="VL-2.5-28" available="true">
@@ -1617,6 +1750,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.5-28</model>
+      <weight>55</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.5 Ø28 мм. Длина 250 см, ширина 42.4 см, масса 55.0 кг.</description>
     </offer>
     <offer id="VL-2.6-28" available="true">
@@ -1629,6 +1763,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.6-28</model>
+      <weight>56.7</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.6 Ø28 мм. Длина 260 см, ширина 42.4 см, масса 56.7 кг.</description>
     </offer>
     <offer id="VL-2.7-28" available="true">
@@ -1641,6 +1776,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.7-28</model>
+      <weight>58.3</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.7 Ø28 мм. Длина 270 см, ширина 42.4 см, масса 58.3 кг.</description>
     </offer>
     <offer id="VL-2.8-28" available="true">
@@ -1653,6 +1789,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.8-28</model>
+      <weight>59.9</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.8 Ø28 мм. Длина 280 см, ширина 42.4 см, масса 59.9 кг.</description>
     </offer>
     <offer id="VL-2.9-28" available="true">
@@ -1665,6 +1802,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>VL-2.9-28</model>
+      <weight>61.5</weight>
       <description>Водопроводная лестница ВЛ-2 (Л-2 Л-19) 2.9 Ø28 мм. Длина 290 см, ширина 42.4 см, масса 61.5 кг.</description>
     </offer>
     <offer id="KL-1" available="true">
@@ -1677,6 +1815,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1</model>
+      <weight>20</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1 Ø25 мм. Длина 100 см, ширина 41 см, масса 20.0 кг.</description>
     </offer>
     <offer id="KL-1.1" available="true">
@@ -1689,6 +1828,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.1</model>
+      <weight>22</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.1 Ø25 мм. Длина 110 см, ширина 41 см, масса 22.0 кг.</description>
     </offer>
     <offer id="KL-1.2" available="true">
@@ -1701,6 +1841,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.2</model>
+      <weight>24</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.2 Ø25 мм. Длина 120 см, ширина 41 см, масса 24.0 кг.</description>
     </offer>
     <offer id="KL-1.3" available="true">
@@ -1713,6 +1854,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.3</model>
+      <weight>26</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.3 Ø25 мм. Длина 130 см, ширина 41 см, масса 26.0 кг.</description>
     </offer>
     <offer id="KL-1.4" available="true">
@@ -1725,6 +1867,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.4</model>
+      <weight>28</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.4 Ø25 мм. Длина 140 см, ширина 41 см, масса 28.0 кг.</description>
     </offer>
     <offer id="KL-1.5" available="true">
@@ -1737,6 +1880,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.5</model>
+      <weight>30</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.5 Ø25 мм. Длина 150 см, ширина 41 см, масса 30.0 кг.</description>
     </offer>
     <offer id="KL-1.6" available="true">
@@ -1749,6 +1893,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.6</model>
+      <weight>32</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.6 Ø25 мм. Длина 160 см, ширина 41 см, масса 32.0 кг.</description>
     </offer>
     <offer id="KL-1.7" available="true">
@@ -1761,6 +1906,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.7</model>
+      <weight>34</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.7 Ø25 мм. Длина 170 см, ширина 41 см, масса 34.0 кг.</description>
     </offer>
     <offer id="KL-1.8" available="true">
@@ -1773,6 +1919,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.8</model>
+      <weight>36</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.8 Ø25 мм. Длина 180 см, ширина 41 см, масса 36.0 кг.</description>
     </offer>
     <offer id="KL-1.9" available="true">
@@ -1785,6 +1932,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.9</model>
+      <weight>38</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.9 Ø25 мм. Длина 190 см, ширина 41 см, масса 38.0 кг.</description>
     </offer>
     <offer id="KL-2" available="true">
@@ -1797,6 +1945,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2</model>
+      <weight>40</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2 Ø25 мм. Длина 200 см, ширина 41 см, масса 40.0 кг.</description>
     </offer>
     <offer id="KL-2.1" available="true">
@@ -1809,6 +1958,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.1</model>
+      <weight>42</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.1 Ø25 мм. Длина 210 см, ширина 41 см, масса 42.0 кг.</description>
     </offer>
     <offer id="KL-2.2" available="true">
@@ -1821,6 +1971,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.2</model>
+      <weight>44</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.2 Ø25 мм. Длина 220 см, ширина 41 см, масса 44.0 кг.</description>
     </offer>
     <offer id="KL-2.3" available="true">
@@ -1833,6 +1984,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.3</model>
+      <weight>46</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.3 Ø25 мм. Длина 230 см, ширина 41 см, масса 46.0 кг.</description>
     </offer>
     <offer id="KL-2.4" available="true">
@@ -1845,6 +1997,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.4</model>
+      <weight>48</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.4 Ø25 мм. Длина 240 см, ширина 41 см, масса 48.0 кг.</description>
     </offer>
     <offer id="KL-2.5" available="true">
@@ -1857,6 +2010,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.5</model>
+      <weight>50</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.5 Ø25 мм. Длина 250 см, ширина 41 см, масса 50.0 кг.</description>
     </offer>
     <offer id="KL-2.6" available="true">
@@ -1869,6 +2023,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.6</model>
+      <weight>52</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.6 Ø25 мм. Длина 260 см, ширина 41 см, масса 52.0 кг.</description>
     </offer>
     <offer id="KL-2.7" available="true">
@@ -1881,6 +2036,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.7</model>
+      <weight>54</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.7 Ø25 мм. Длина 270 см, ширина 41 см, масса 54.0 кг.</description>
     </offer>
     <offer id="KL-2.8" available="true">
@@ -1893,6 +2049,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.8</model>
+      <weight>56</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.8 Ø25 мм. Длина 280 см, ширина 41 см, масса 56.0 кг.</description>
     </offer>
     <offer id="KL-2.9" available="true">
@@ -1905,6 +2062,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.9</model>
+      <weight>58</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.9 Ø25 мм. Длина 290 см, ширина 41 см, масса 58.0 кг.</description>
     </offer>
     <offer id="KL-1-28" available="true">
@@ -1917,6 +2075,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1-28</model>
+      <weight>25.1</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1 Ø28 мм. Длина 100 см, ширина 41 см, масса 25.1 кг.</description>
     </offer>
     <offer id="KL-1.1-28" available="true">
@@ -1929,6 +2088,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.1-28</model>
+      <weight>27.6</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.1 Ø28 мм. Длина 110 см, ширина 41 см, масса 27.6 кг.</description>
     </offer>
     <offer id="KL-1.2-28" available="true">
@@ -1941,6 +2101,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.2-28</model>
+      <weight>30.1</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.2 Ø28 мм. Длина 120 см, ширина 41 см, масса 30.1 кг.</description>
     </offer>
     <offer id="KL-1.3-28" available="true">
@@ -1953,6 +2114,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.3-28</model>
+      <weight>32.6</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.3 Ø28 мм. Длина 130 см, ширина 41 см, масса 32.6 кг.</description>
     </offer>
     <offer id="KL-1.4-28" available="true">
@@ -1965,6 +2127,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.4-28</model>
+      <weight>35.1</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.4 Ø28 мм. Длина 140 см, ширина 41 см, масса 35.1 кг.</description>
     </offer>
     <offer id="KL-1.5-28" available="true">
@@ -1977,6 +2140,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.5-28</model>
+      <weight>37.6</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.5 Ø28 мм. Длина 150 см, ширина 41 см, масса 37.6 кг.</description>
     </offer>
     <offer id="KL-1.6-28" available="true">
@@ -1989,6 +2153,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.6-28</model>
+      <weight>40.1</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.6 Ø28 мм. Длина 160 см, ширина 41 см, масса 40.1 кг.</description>
     </offer>
     <offer id="KL-1.7-28" available="true">
@@ -2001,6 +2166,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.7-28</model>
+      <weight>42.7</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.7 Ø28 мм. Длина 170 см, ширина 41 см, масса 42.7 кг.</description>
     </offer>
     <offer id="KL-1.8-28" available="true">
@@ -2013,6 +2179,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.8-28</model>
+      <weight>45.2</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.8 Ø28 мм. Длина 180 см, ширина 41 см, масса 45.2 кг.</description>
     </offer>
     <offer id="KL-1.9-28" available="true">
@@ -2025,6 +2192,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-1.9-28</model>
+      <weight>47.7</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.9 Ø28 мм. Длина 190 см, ширина 41 см, масса 47.7 кг.</description>
     </offer>
     <offer id="KL-2-28" available="true">
@@ -2037,6 +2205,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2-28</model>
+      <weight>50.2</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2 Ø28 мм. Длина 200 см, ширина 41 см, масса 50.2 кг.</description>
     </offer>
     <offer id="KL-2.1-28" available="true">
@@ -2049,6 +2218,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.1-28</model>
+      <weight>52.7</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.1 Ø28 мм. Длина 210 см, ширина 41 см, масса 52.7 кг.</description>
     </offer>
     <offer id="KL-2.2-28" available="true">
@@ -2061,6 +2231,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.2-28</model>
+      <weight>55.2</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.2 Ø28 мм. Длина 220 см, ширина 41 см, масса 55.2 кг.</description>
     </offer>
     <offer id="KL-2.3-28" available="true">
@@ -2073,6 +2244,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.3-28</model>
+      <weight>57.7</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.3 Ø28 мм. Длина 230 см, ширина 41 см, масса 57.7 кг.</description>
     </offer>
     <offer id="KL-2.4-28" available="true">
@@ -2085,6 +2257,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.4-28</model>
+      <weight>60.2</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.4 Ø28 мм. Длина 240 см, ширина 41 см, масса 60.2 кг.</description>
     </offer>
     <offer id="KL-2.5-28" available="true">
@@ -2097,6 +2270,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.5-28</model>
+      <weight>62.7</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.5 Ø28 мм. Длина 250 см, ширина 41 см, масса 62.7 кг.</description>
     </offer>
     <offer id="KL-2.6-28" available="true">
@@ -2109,6 +2283,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.6-28</model>
+      <weight>65.2</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.6 Ø28 мм. Длина 260 см, ширина 41 см, масса 65.2 кг.</description>
     </offer>
     <offer id="KL-2.7-28" available="true">
@@ -2121,6 +2296,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.7-28</model>
+      <weight>67.7</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.7 Ø28 мм. Длина 270 см, ширина 41 см, масса 67.7 кг.</description>
     </offer>
     <offer id="KL-2.8-28" available="true">
@@ -2133,6 +2309,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.8-28</model>
+      <weight>70.3</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.8 Ø28 мм. Длина 280 см, ширина 41 см, масса 70.3 кг.</description>
     </offer>
     <offer id="KL-2.9-28" available="true">
@@ -2145,6 +2322,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница для колодцев</typePrefix>
       <model>KL-2.9-28</model>
+      <weight>72.8</weight>
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.9 Ø28 мм. Длина 290 см, ширина 41 см, масса 72.8 кг.</description>
     </offer>
     <offer id="Ст.1.КЖ.И.1" available="true">
@@ -2157,6 +2335,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.1.КЖ.И.1</model>
+      <weight>16.3</weight>
       <description>Стремянка для круглых колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.1). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="Ст.1.КЖ.И.7" available="true">
@@ -2169,6 +2348,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.1.КЖ.И.7</model>
+      <weight>16.3</weight>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.7). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="Ст.2.КЖ.И.7" available="true">
@@ -2181,6 +2361,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.2.КЖ.И.7</model>
+      <weight>17.9</weight>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.2 - КЖ.И.7). Длина 165 см, ширина 50 см, масса 17.9 кг.</description>
     </offer>
     <offer id="Ст.3.КЖ.И.7" available="true">
@@ -2193,6 +2374,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.3.КЖ.И.7</model>
+      <weight>18.5</weight>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.3 - КЖ.И.7). Длина 170 см, ширина 50 см, масса 18.5 кг.</description>
     </offer>
     <offer id="Ст.4.КЖ.И.7" available="true">
@@ -2205,6 +2387,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.4.КЖ.И.7</model>
+      <weight>19.6</weight>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.4 - КЖ.И.7). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
     <offer id="Ст.5.КЖ.И.7" available="true">
@@ -2217,6 +2400,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.5.КЖ.И.7</model>
+      <weight>20.7</weight>
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.5 - КЖ.И.7). Длина 190 см, ширина 50 см, масса 20.7 кг.</description>
     </offer>
     <offer id="Ст.1.КЖ.И.15" available="true">
@@ -2229,6 +2413,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.1.КЖ.И.15</model>
+      <weight>16.3</weight>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.1 - КЖ.И.15). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="Ст.2.КЖ.И.15" available="true">
@@ -2241,6 +2426,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.2.КЖ.И.15</model>
+      <weight>19.6</weight>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.2 - КЖ.И.15). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
     <offer id="Ст.3.КЖ.И.15" available="true">
@@ -2253,6 +2439,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.3.КЖ.И.15</model>
+      <weight>22.8</weight>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.3 - КЖ.И.15). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
     <offer id="Ст.4.КЖ.И.15" available="true">
@@ -2265,6 +2452,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.4.КЖ.И.15</model>
+      <weight>26.1</weight>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.4 - КЖ.И.15). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
     <offer id="Ст.5.КЖ.И.15" available="true">
@@ -2277,6 +2465,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Стремянка, лестница для колодцев</typePrefix>
       <model>Ст.5.КЖ.И.15</model>
+      <weight>29.3</weight>
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.5 - КЖ.И.15). Длина 270 см, ширина 50 см, масса 29.3 кг.</description>
     </offer>
     <offer id="MN-1" available="true">
@@ -2289,6 +2478,7 @@
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Скоба ходовая</typePrefix>
       <model>MN-1</model>
+      <weight>1.36</weight>
       <description>Скоба ходовая ТПР 901-09-11.84 МН-1. Длина 370 см, ширина 240 см, масса 1.36 кг.</description>
     </offer>
     </offers>
