@@ -9,10 +9,10 @@ Crawl-delay: 1
 
 Sitemap: https://stremyanki-dlya-kolodcev.ru/sitemap.xml
 
-# Яндекс
-User-agent: Yandex
-Crawl-delay: 2
-
 # Google
 User-agent: Googlebot
 Allow: /
+
+# Яндекс
+User-agent: Yandex
+Crawl-delay: 2
