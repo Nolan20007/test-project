@@ -305,7 +305,7 @@ picture { display: contents; }
     text-decoration: none;
     font-size: 13.5px;
     transition: opacity 0.2s;
-    display: inline-flex; 
+    display: flex; /* ИСПРАВЛЕНО: было inline-flex, стало flex */
     align-items: center;
     margin-bottom: 6px;
 }
@@ -365,7 +365,7 @@ picture { display: contents; }
     
     .footer-section p, 
     .footer-section a {
-        justify-content: center;
+        justify-content: center; /* На мобильных ссылки центрируются */
     }
     .footer-email-wrapper {
         justify-content: center;
@@ -432,7 +432,7 @@ textarea[aria-invalid="true"]:focus {
     vertical-align: middle;
     position: relative;
     top: -1px;
-    margin-right: 4px;
+    margin-right: 6px; /* Отступ от иконки до текста */
     flex-shrink: 0;
 }
 
