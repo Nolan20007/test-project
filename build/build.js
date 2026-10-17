@@ -56,7 +56,7 @@ const FEED_SOURCES = [
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/ssg1-large.png', limit: 20, typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
   { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
-  
+
   // ВЛ-2: все три исполнения (Ø22, Ø25, Ø28)
   { csv: 'data/vdl-products-22.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products-25.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
@@ -142,6 +142,25 @@ function esc(s) {
 function fmtPrice(p) {
   const n = parseFloat(p); return isNaN(n) ? '—' : n.toLocaleString('ru-RU');
 }
+
+function formatWeight(w) {
+  const n = parseFloat(String(w || '').replace(',', '.').replace(/[^\d.\-]/g, ''));
+  if (isNaN(n) || n <= 0) return '1';
+  if (n < 0.001) return '0.001';
+  if (n > 2000) return '2000';
+  return String(Math.round(n * 1000) / 1000);
+}
+
+function warnMissingWeights(csvName, products) {
+  const bad = products.filter(p => {
+    const n = parseFloat(String(p.weight || '').replace(',', '.').replace(/[^\d.\-]/g, ''));
+    return isNaN(n) || n <= 0;
+  });
+  if (bad.length) {
+    console.warn(`  ⚠ ${csvName}: ${bad.length} товаров без валидного веса → ${bad.map(p => p.id).slice(0, 5).join(', ')}${bad.length > 5 ? '…' : ''}`);
+  }
+}
+
 function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
@@ -324,6 +343,7 @@ function buildYandexFeed() {
     const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
     let products = parseCSV(csv);
     if (src.limit) products = products.slice(0, src.limit);
+    warnMissingWeights(src.csv, products);
 
     products.forEach(p => {
       const price = parseFloat(p.price) || 0;
@@ -344,6 +364,7 @@ function buildYandexFeed() {
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>${esc(typePrefix)}</typePrefix>
       <model>${esc(p.id)}</model>
+      <weight>${formatWeight(p.weight)}</weight>
       <description>${esc(p.name)}. Длина ${esc(p.length)} см, ширина ${esc(p.width)} см, масса ${esc(p.weight)} кг.</description>
     </offer>`);
     });
@@ -382,6 +403,7 @@ function buildGoogleFeed() {
     const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
     let products = parseCSV(csv);
     if (src.limit) products = products.slice(0, src.limit);
+    warnMissingWeights(src.csv, products);
 
     products.forEach(p => {
       const price = parseFloat(p.price) || 0;
@@ -389,9 +411,7 @@ function buildGoogleFeed() {
 
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${anchor}`;
-      // Уникальный URL картинки для каждого варианта (разная длина = разный URL)
       const picture = `${SITE_URL}/${src.bigImage}?v=${encodeURIComponent(p.id)}`;
-      // Google требует цену с копейками
       const formattedPrice = price.toFixed(2) + ' RUB';
 
       items.push(`    <item>
@@ -406,6 +426,7 @@ function buildGoogleFeed() {
       <g:brand>Лестницы и стремянки для колодцев</g:brand>
       <g:mpn>${esc(p.id)}</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping_weight>${formatWeight(p.weight)} kg</g:shipping_weight>
       <g:google_product_category>Hardware &gt; Ladders</g:google_product_category>
       <g:product_type>Стремянки и лестницы для колодцев</g:product_type>
     </item>`);
