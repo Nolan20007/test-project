@@ -253,15 +253,28 @@
             <div class="footer-section">
                 <h4>Контакты</h4>
                 <a href="tel:+79655559966"><img src="images/icons/phone.svg" alt="" class="footer-icon" width="14" height="14"> +7 (965) 555-99-66</a>
-                <a href="mailto:sales@stremyanki-dlya-kolodcev.ru"><img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> sales@stremyanki-dlya-kolodcev.ru</a>
+                
+                <!-- Почта с кнопкой копирования -->
+                <div class="footer-email-wrapper">
+                    <a href="mailto:sales@stremyanki-dlya-kolodcev.ru">
+                        <img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> 
+                        sales@stremyanki-dlya-kolodcev.ru
+                    </a>
+                    <button type="button" class="btn-copy-email" title="Скопировать email" onclick="copyEmailToClipboard(this)">
+                        <img src="images/icons/copy.svg" alt="Копировать" class="footer-icon" width="14" height="14">
+                    </button>
+                </div>
+
                 <p><img src="images/icons/pin.svg" alt="" class="footer-icon" width="14" height="14"> г. Пермь, ул. Василия Васильева, д. 33</p>
             </div>
+            
             <div class="footer-section">
                 <h4>Время работы</h4>
                 <p>Пн-Пт: 9:00-18:00</p>
                 <p>Сб: 10:00-15:00</p>
                 <p>Вс: выходной</p>
             </div>
+            
             <div class="footer-section">
                 <h4>Продукция</h4>
                 <a href="ss1.html">Стремянки ТПР 901-09-11.84</a>
@@ -273,6 +286,7 @@
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
                 <a href="ssg1.html">Пожарные стремянки СГ</a>
             </div>
+            
             <div class="footer-section">
                 <h4>Полезные материалы</h4>
                 <a href="kak-vybrat-stremyanku.html">Как выбрать стремянку</a>
@@ -295,6 +309,23 @@
     </div>
 </footer>
 
+<!-- CSS для футера (добавьте к остальным стилям футера) -->
+<style>
+    .footer-email-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .footer-email-wrapper a {
+        display: flex;
+        align-items: center;
+        margin: 0; /* Убираем стандартный отступ ссылки в футере */
+    }
+</style>
+
+<!-- Скрипт для года -->
 <script>
     (function () {
         var yearEl = document.getElementById('footer-year');
@@ -304,7 +335,7 @@
     })();
 </script>
 
-<!-- Скрипт для копирования Email -->
+<!-- Скрипт для копирования Email (работает и в шапке, и в футере) -->
 <script>
 function copyEmailToClipboard(btn) {
     const email = 'sales@stremyanki-dlya-kolodcev.ru';
@@ -320,7 +351,7 @@ function copyEmailToClipboard(btn) {
             showToast('Email скопирован!', 'success', 2000);
         }
         
-        // Возвращаем белый цвет через 2 секунды
+        // Возвращаем исходный цвет через 2 секунды
         setTimeout(() => {
             img.style.filter = '';
         }, 2000);
