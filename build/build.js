@@ -13,7 +13,7 @@ const PAGES = [
       { id: 'nomenclature-kl1-28', csv: 'data/kl1-products-28.csv' }
   ]},
 
-  // ВЛ-2: три таблицы (Ø22, Ø25, Ø28)
+  // ВЛ-2: три исполнения (Ø22, Ø25, Ø28)
   { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [
       { id: 'nomenclature-vl2-22', csv: 'data/vdl-products-22.csv' },
       { id: 'nomenclature-vl2-25', csv: 'data/vdl-products-25.csv' },
@@ -471,6 +471,7 @@ const ALL_HTML_FILES = [
   'vl-2-l-19-vodoprovodnaya.html',
   'skoba-mn.html',
   'sitemap.html',
+  'vozvrat.html', // <--- ДОБАВЛЕНО ЗДЕСЬ
 ];
 
 function insertOgTags(html, file) {
