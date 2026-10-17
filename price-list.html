@@ -292,9 +292,27 @@
         <a href="index.html#articles">Полезные статьи</a>
         <a href="dostavka-i-oplata.html">Доставка и оплата</a>
         <a href="index.html#contacts">Контакты и Заказ</a>
-        <a href="mailto:sales@stremyanki-dlya-kolodcev.ru"><img src="images/icons/mail.svg" alt="" class="nav-icon nav-icon--light" width="14" height="14"> sales@stremyanki-dlya-kolodcev.ru</a>
-        <a href="cart.html" class="cart-link"><img src="images/icons/cart.svg" alt="" class="nav-icon nav-icon--light" width="14" height="14"> Корзина (<span id="cart-count-page">0</span>)</a>
-        <button class="btn-get-quote" onclick="openQuoteModal()"><img src="images/icons/document.svg" alt="" class="nav-icon nav-icon--light" width="14" height="14"> Получить расчет/КП</button>
+        
+        <!-- Блок с почтой и кнопкой копирования -->
+        <div class="nav-email-wrapper">
+            <a href="mailto:sales@stremyanki-dlya-kolodcev.ru">
+                <img src="images/icons/mail.svg" alt="" class="nav-icon nav-icon--light" width="14" height="14"> 
+                sales@stremyanki-dlya-kolodcev.ru
+            </a>
+            <button type="button" class="btn-copy-email" title="Скопировать email" onclick="copyEmailToClipboard(this)">
+                <img src="images/icons/copy.svg" alt="Копировать" class="nav-icon nav-icon--light" width="14" height="14">
+            </button>
+        </div>
+
+        <a href="cart.html" class="cart-link">
+            <img src="images/icons/cart.svg" alt="" class="nav-icon nav-icon--light" width="14" height="14"> 
+            Корзина (<span id="cart-count-page">0</span>)
+        </a>
+        
+        <button class="btn-get-quote" onclick="openQuoteModal()">
+            <img src="images/icons/document.svg" alt="" class="nav-icon nav-icon--light" width="14" height="14"> 
+            Получить расчет/КП
+        </button>
     </div>
 </nav>
 <!-- NAV_END -->
@@ -458,7 +476,7 @@
         </div>
         <div id="nomenclature-ss2">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-k0bqfx" class="nomenclature-table"><thead><tr>
+<table id="tbl-gzt1un" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-C-1-00">
@@ -690,7 +708,7 @@
             data-item-id="C-1-18" data-item-name="Стремянка для колодцев ТПР 902-09-22.84 С1-18"
             data-item-length="600" data-item-weight="65.2">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-k0bqfx" data-total="19" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-gzt1un" data-total="19" onclick="toggleTableRows(this)">
         Показать все (19) ▾
       </button>
     </div>
@@ -902,7 +920,7 @@
         </div>
         <div id="nomenclature-tl-50">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-hba7kz" class="nomenclature-table"><thead><tr>
+<table id="tbl-li4nje" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-TS-50-1">
@@ -2202,7 +2220,7 @@
             data-item-id="TS-50-11.7" data-item-name="Лестница тепловых сетей Л-16 (50 ТС-11.7)"
             data-item-length="1170" data-item-weight="127.2">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-hba7kz" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-li4nje" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
@@ -2222,7 +2240,7 @@
         </div>
         <div id="nomenclature-tl-63">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-y2kjpv" class="nomenclature-table"><thead><tr>
+<table id="tbl-k2arow" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-TS-63-1">
@@ -3522,7 +3540,7 @@
             data-item-id="TS-63-11.7" data-item-name="Лестница тепловых сетей Л-16 (63 ТС-11.7)"
             data-item-length="1170" data-item-weight="161.6">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-y2kjpv" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-k2arow" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
@@ -3693,7 +3711,7 @@
 
         <div id="nomenclature-vl2-22">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-tb7qwo" class="nomenclature-table"><thead><tr>
+<table id="tbl-r8b1wt" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-VL-1">
@@ -4993,7 +5011,7 @@
             data-item-id="VL-11.7" data-item-name="Водопроводная лестница ВЛ-2 (Л-2 Л-19) 11.7 Ø22 мм"
             data-item-length="1170" data-item-weight="142">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-tb7qwo" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-r8b1wt" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
@@ -5002,7 +5020,7 @@
 
         <div id="nomenclature-vl2-25" style="display:none;">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-xeky0d" class="nomenclature-table"><thead><tr>
+<table id="tbl-h7xsto" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-VL-1-25">
@@ -6302,7 +6320,7 @@
             data-item-id="VL-11.7-25" data-item-name="Водопроводная лестница ВЛ-2 (Л-2 Л-19) 11.7 Ø25 мм"
             data-item-length="1170" data-item-weight="183.4">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-xeky0d" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-h7xsto" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
@@ -6311,7 +6329,7 @@
 
         <div id="nomenclature-vl2-28" style="display:none;">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-s1lxkj" class="nomenclature-table"><thead><tr>
+<table id="tbl-cc91rb" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-VL-1-28">
@@ -7611,7 +7629,7 @@
             data-item-id="VL-11.7-28" data-item-name="Водопроводная лестница ВЛ-2 (Л-2 Л-19) 11.7 Ø28 мм"
             data-item-length="1170" data-item-weight="229.9">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-s1lxkj" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-cc91rb" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
@@ -7641,7 +7659,7 @@
 
         <div id="nomenclature-kl1-25">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-ru4s16" class="nomenclature-table"><thead><tr>
+<table id="tbl-7ehlyc" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-KL-1">
@@ -8941,7 +8959,7 @@
             data-item-id="KL-11.7" data-item-name="Канализационная лестница КЛ-1 (Л-1 Л-18) - 11.7 Ø25 мм"
             data-item-length="1170" data-item-weight="234.0">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-ru4s16" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-7ehlyc" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
@@ -8950,7 +8968,7 @@
 
         <div id="nomenclature-kl1-28" style="display:none;">
 <!-- NOMENCLATURE_START -->
-<table id="tbl-j5rqd5" class="nomenclature-table"><thead><tr>
+<table id="tbl-28i3ra" class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-KL-1-28">
@@ -10250,7 +10268,7 @@
             data-item-id="KL-11.7-28" data-item-name="Канализационная лестница КЛ-1 (Л-1 Л-18) - 11.7 Ø28 мм"
             data-item-length="1170" data-item-weight="293.6">В корзину</button></td>
     </tr></tbody></table><div class="table-toggle-wrap">
-      <button type="button" class="table-toggle-btn" data-target="tbl-j5rqd5" data-total="108" onclick="toggleTableRows(this)">
+      <button type="button" class="table-toggle-btn" data-target="tbl-28i3ra" data-total="108" onclick="toggleTableRows(this)">
         Показать все (108) ▾
       </button>
     </div>
