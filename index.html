@@ -676,7 +676,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->2 076 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->2 076 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ss1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -732,7 +732,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="tmp-902.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -760,7 +760,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="l-16-dlya-teplovyh-setej.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -769,9 +769,12 @@
             <div class="product-card">
                 <div class="product-image-wrapper"
                     data-title="Стремянки СГ пожарные"
-                    data-image="images/sg-large.png"
-                    data-drawing="images/sg-drawing.png">
-                    <picture><source srcset="images/sg.webp" type="image/webp"><img src="images/sg.png" alt="Пожарные стремянки СГ серия 1.450.3-7.94" class="product-image"></picture>
+                    data-vid-1="images/ssg1/vid-1.png"
+                    data-foto-1="images/ssg1/foto-1.png"
+                    data-foto-2="images/ssg1/foto-2.png"
+                    data-album="images/ssg1/album.png"
+                    data-chertezh="images/ssg1/chertezh.png">
+                    <picture><source srcset="images/ssg1/vid-1.webp" type="image/webp"><img src="images/ssg1/vid-1.png" alt="Пожарные стремянки СГ серия 1.450.3-7.94" class="product-image" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture>
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Стремянки СГ серия 1.450.3-7.94 (пожарная стремянка)</h3>
@@ -784,7 +787,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ssg1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -808,7 +811,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:vdl-products-22.csv,vdl-products-25.csv,vdl-products-28.csv -->2 520 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:vdl-products-22.csv,vdl-products-25.csv,vdl-products-28.csv -->2 520 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="vl-2-l-19-vodoprovodnaya.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -832,7 +835,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv,kl1-products-28.csv -->3 600 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv,kl1-products-28.csv -->3 600 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -855,7 +858,7 @@
                         <p class="product-album-link"><a href="tipovye-proekty.html#album-901-v">Типовые проектные решения 901-09-11.84 Альбом V</a></p>
                         <p><strong>Назначение:</strong> Для спуска в водопроводные колодцы</p>
                         <p><strong>Маркировки:</strong> МН-1</p>
-                        <p><strong>Размер:</strong> 370 × 240 мм</p>
+                        <p><strong>Размер:</strong> 370 × 24 мм</p>
                         <p><strong>Материал:</strong> Сталь Ст3, пруток ∅18 мм</p>
                     </div>
                     <div class="product-price">
@@ -1138,6 +1141,7 @@
         const vid3 = wrapper.getAttribute('data-vid-3');
         const foto1 = wrapper.getAttribute('data-foto-1');
         const foto2 = wrapper.getAttribute('data-foto-2');
+        const album = wrapper.getAttribute('data-album');
         const chertezh = wrapper.getAttribute('data-chertezh');
 
         const img = wrapper.getAttribute('data-image');
@@ -1149,6 +1153,7 @@
         if (vid3) slides.push({ src: vid3, label: 'Вид 3' });
         if (foto1) slides.push({ src: foto1, label: 'Фото 1' });
         if (foto2) slides.push({ src: foto2, label: 'Фото 2' });
+        if (album) slides.push({ src: album, label: 'Альбом' });
         if (chertezh) slides.push({ src: chertezh, label: 'Чертёж' });
         if (img) slides.push({ src: img, label: 'Фото' });
         if (draw) slides.push({ src: draw, label: 'Чертёж' });
