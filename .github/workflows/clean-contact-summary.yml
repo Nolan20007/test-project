@@ -1,0 +1,52 @@
+name: One-time clean .contact-summary
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Удалить .contact-summary из всех HTML
+        run: |
+          set -e
+          changed=0
+          for f in *.html; do
+            [ -e "$f" ] || continue
+            before=$(wc -c < "$f")
+            # удаляем все блоки .contact-summary { ... } (CSS плоский, вложенных скобок нет)
+            perl -0pi -e 's/\.contact-summary\s*\{[^}]*\}\s*//g' "$f"
+            after=$(wc -c < "$f")
+            if [ "$before" != "$after" ]; then
+              echo "  ✓ $f — удалено $((before - after)) символов"
+              changed=$((changed + 1))
+            fi
+          done
+          echo "Изменено файлов: $changed"
+          echo "CHANGED=$changed" >> "$GITHUB_ENV"
+
+      - name: Удалить сам workflow
+        run: |
+          set -e
+          git rm .github/workflows/clean-contact-summary.yml || true
+          # на случай, если git rm не сработал (файл уже удалён) — дочистим
+          rm -f .github/workflows/clean-contact-summary.yml
+
+      - name: Commit & push
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Нечего коммитить"
+            exit 0
+          fi
+          git commit -m "chore: удалены неиспользуемые стили .contact-summary + удалён одноразовый workflow [skip ci]"
+          git push
