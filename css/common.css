@@ -128,13 +128,13 @@ picture { display: contents; }
     align-items: center;
     gap: 5px;
     background: var(--quote-color);
-    color: white;
+    color: #1b1b1b; /* ИЗМЕНЕНО: текст кнопки теперь черный */
     border: none;
     padding: 10px 20px;
     border-radius: var(--inputs-buttons-border-radius);
     font-family: inherit;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600; /* Сделаем шрифт чуть жирнее для читаемости */
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
     white-space: nowrap;
@@ -143,6 +143,10 @@ picture { display: contents; }
 .btn-get-quote:hover {
     background: var(--quote-color-hover);
     transform: translateY(-1px);
+}
+/* Иконка внутри кнопки тоже должна быть темной */
+.btn-get-quote .nav-icon {
+    filter: brightness(0); 
 }
 
 .nav-email-wrapper {
@@ -265,7 +269,7 @@ picture { display: contents; }
 }
 .quote-modal-content button[type="submit"] {
     background: var(--quote-color);
-    color: white;
+    color: #1b1b1b; /* ИЗМЕНЕНО: текст кнопки теперь черный */
     border: none;
     padding: 14px;
     border-radius: var(--inputs-buttons-border-radius);
@@ -305,7 +309,7 @@ picture { display: contents; }
     text-decoration: none;
     font-size: 13.5px;
     transition: opacity 0.2s;
-    display: flex; /* ИСПРАВЛЕНО: было inline-flex, стало flex */
+    display: flex; /* ИСПРАВЛЕНО: было inline-flex, стало flex для вертикального списка */
     align-items: center;
     margin-bottom: 6px;
 }
