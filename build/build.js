@@ -7,13 +7,19 @@ const PAGES = [
   { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
   { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
 
-  // <-- НОВОЕ: две таблицы для КЛ-1 (Ø25 и Ø28)
+  // КЛ-1: две таблицы (Ø25 и Ø28)
   { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
       { id: 'nomenclature-kl1-25', csv: 'data/kl1-products.csv' },
       { id: 'nomenclature-kl1-28', csv: 'data/kl1-products-28.csv' }
   ]},
 
-  { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [{ id: 'nomenclature-container', csv: 'data/vdl-products.csv' }] },
+  // ВЛ-2: три таблицы (Ø22, Ø25, Ø28)
+  { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [
+      { id: 'nomenclature-vl2-22', csv: 'data/vdl-products-22.csv' },
+      { id: 'nomenclature-vl2-25', csv: 'data/vdl-products-25.csv' },
+      { id: 'nomenclature-vl2-28', csv: 'data/vdl-products-28.csv' }
+  ]},
+
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
       { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
@@ -26,7 +32,6 @@ const PAGES = [
   ]},
   { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
 
-  // <-- НОВОЕ: в прайсе тоже две таблицы для КЛ-1
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
@@ -36,7 +41,9 @@ const PAGES = [
       { id: 'nomenclature-tl-50',                 csv: 'data/tl-products.csv' },
       { id: 'nomenclature-tl-63',                 csv: 'data/tl-63-products.csv' },
       { id: 'nomenclature-ssg1',                  csv: 'data/ssg1-products.csv' },
-      { id: 'nomenclature-vdl',                   csv: 'data/vdl-products.csv' },
+      { id: 'nomenclature-vl2-22',                csv: 'data/vdl-products-22.csv' },
+      { id: 'nomenclature-vl2-25',                csv: 'data/vdl-products-25.csv' },
+      { id: 'nomenclature-vl2-28',                csv: 'data/vdl-products-28.csv' },
       { id: 'nomenclature-kl1-25',                csv: 'data/kl1-products.csv' },
       { id: 'nomenclature-kl1-28',                csv: 'data/kl1-products-28.csv' },
       { id: 'nomenclature-scoba-nm',              csv: 'data/scoba-nm-products.csv' }
@@ -49,9 +56,9 @@ const FEED_SOURCES = [
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/ssg1-large.png', limit: 20, typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
   { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница тепловых сетей' },
-  // В фид добавляем только Ø25, чтобы не было дублей. Ø28 — опционально.
+  // В фид добавляем только Ø25, чтобы не было дублей
+  { csv: 'data/vdl-products-25.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
   { csv: 'data/kl1-products.csv',             page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/kl1-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
-  { csv: 'data/vdl-products.csv',             page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vl2-large.png', limit: 20, typePrefix: 'Лестница для колодцев' },
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', limit: 20, typePrefix: 'Стремянка, лестница для колодцев' },
@@ -73,11 +80,9 @@ const PRICE_END = '<!-- PRICE_END -->';
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
-// ===== Analytics: во все страницы, где его нет =====
 const ANALYTICS_TAG = '<script src="js/analytics.js"></script>';
 const ANALYTICS_RE = /<script\s+src=["']js\/analytics\.js["'][^>]*>\s*<\/script>/i;
 
-// ===== OG-теги из data/og.json =====
 const OG_START = '<!-- OG_START -->';
 const OG_END   = '<!-- OG_END -->';
 
@@ -137,7 +142,6 @@ function safeAnchor(id) {
   return 'item-' + String(id).replace(/[^a-zA-Z0-9а-яА-ЯёЁ\-_.]/g, '_');
 }
 
-// ===== Подстановка минимальных цен по маркерам PRICE_START/PRICE_END =====
 function replacePrices(html) {
   if (!html.includes('PRICE_START')) return { html, replaced: false };
 
@@ -174,7 +178,6 @@ function replacePrices(html) {
   return { html: result, replaced };
 }
 
-// ===== Таблица =====
 function buildTable(products, enableCollapse) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
 
