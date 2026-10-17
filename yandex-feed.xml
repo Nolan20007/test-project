@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-17 06:23">
+<yml_catalog date="2026-10-17 06:27">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -2326,7 +2326,7 @@
       <description>Канализационная лестница КЛ-1 (Л-1 Л-18) - 2.9 Ø28 мм. Длина 290 см, ширина 41 см, масса 72.8 кг.</description>
     </offer>
     <offer id="Ст.1.КЖ.И.1" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.1.КЖ.И.1</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.1.%D0%9A%D0%96.%D0%98.1</url>
       <price>2445</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2339,7 +2339,7 @@
       <description>Стремянка для круглых колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.1). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="Ст.1.КЖ.И.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.1.КЖ.И.7</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.1.%D0%9A%D0%96.%D0%98.7</url>
       <price>2445</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2352,7 +2352,7 @@
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.1 - КЖ.И.7). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="Ст.2.КЖ.И.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.2.КЖ.И.7</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.2.%D0%9A%D0%96.%D0%98.7</url>
       <price>2685</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2365,7 +2365,7 @@
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.2 - КЖ.И.7). Длина 165 см, ширина 50 см, масса 17.9 кг.</description>
     </offer>
     <offer id="Ст.3.КЖ.И.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.3.КЖ.И.7</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.3.%D0%9A%D0%96.%D0%98.7</url>
       <price>2775</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2378,7 +2378,7 @@
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.3 - КЖ.И.7). Длина 170 см, ширина 50 см, масса 18.5 кг.</description>
     </offer>
     <offer id="Ст.4.КЖ.И.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.4.КЖ.И.7</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.4.%D0%9A%D0%96.%D0%98.7</url>
       <price>2940</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2391,7 +2391,7 @@
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.4 - КЖ.И.7). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
     <offer id="Ст.5.КЖ.И.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.5.КЖ.И.7</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.5.%D0%9A%D0%96.%D0%98.7</url>
       <price>3105</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2404,7 +2404,7 @@
       <description>Стремянка для прямоугольных колодцев ТМП 902-09-46.88 (Ст.5 - КЖ.И.7). Длина 190 см, ширина 50 см, масса 20.7 кг.</description>
     </offer>
     <offer id="Ст.1.КЖ.И.15" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.1.КЖ.И.15</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.1.%D0%9A%D0%96.%D0%98.15</url>
       <price>2445</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2417,7 +2417,7 @@
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.1 - КЖ.И.15). Длина 150 см, ширина 50 см, масса 16.3 кг.</description>
     </offer>
     <offer id="Ст.2.КЖ.И.15" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.2.КЖ.И.15</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.2.%D0%9A%D0%96.%D0%98.15</url>
       <price>2940</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2430,7 +2430,7 @@
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.2 - КЖ.И.15). Длина 180 см, ширина 50 см, масса 19.6 кг.</description>
     </offer>
     <offer id="Ст.3.КЖ.И.15" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.3.КЖ.И.15</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.3.%D0%9A%D0%96.%D0%98.15</url>
       <price>3420</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2443,7 +2443,7 @@
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.3 - КЖ.И.15). Длина 210 см, ширина 50 см, масса 22.8 кг.</description>
     </offer>
     <offer id="Ст.4.КЖ.И.15" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.4.КЖ.И.15</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.4.%D0%9A%D0%96.%D0%98.15</url>
       <price>3915</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
@@ -2456,7 +2456,7 @@
       <description>Стремянка для перепадных камер ТМП 902-09-46.88 (Ст.4 - КЖ.И.15). Длина 240 см, ширина 50 см, масса 26.1 кг.</description>
     </offer>
     <offer id="Ст.5.КЖ.И.15" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-Ст.5.КЖ.И.15</url>
+      <url>https://stremyanki-dlya-kolodcev.ru/tmp-902.html#item-%D0%A1%D1%82.5.%D0%9A%D0%96.%D0%98.15</url>
       <price>4395</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
