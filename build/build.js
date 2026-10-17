@@ -350,7 +350,7 @@ function buildYandexFeed() {
       if (price <= 0) return;
 
       const anchor = safeAnchor(p.id);
-      const url = `${SITE_URL}/${src.page}#${anchor}`;
+      const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       const picture = `${SITE_URL}/${src.bigImage}`;
       const typePrefix = src.typePrefix || 'Стремянка для колодцев';
 
@@ -410,9 +410,9 @@ function buildGoogleFeed() {
       if (price <= 0) return;
 
       const anchor = safeAnchor(p.id);
-      const url = `${SITE_URL}/${src.page}#${anchor}`;
+      const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       const picture = `${SITE_URL}/${src.bigImage}?v=${encodeURIComponent(p.id)}`;
-      const formattedPrice = price.toFixed(2) + ' RUB';
+      const formattedPrice = price.toFixed(2);
 
       items.push(`    <item>
       <g:id>${esc(p.id)}</g:id>
@@ -425,7 +425,6 @@ function buildGoogleFeed() {
       <g:condition>new</g:condition>
       <g:brand>Лестницы и стремянки для колодцев</g:brand>
       <g:mpn>${esc(p.id)}</g:mpn>
-      <g:identifier_exists>no</g:identifier_exists>
       <g:shipping_weight>${formatWeight(p.weight)} kg</g:shipping_weight>
       <g:google_product_category>Hardware &gt; Ladders</g:google_product_category>
       <g:product_type>Стремянки и лестницы для колодцев</g:product_type>
