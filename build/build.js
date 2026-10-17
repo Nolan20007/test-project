@@ -410,7 +410,8 @@ function buildGoogleFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       const picture = `${SITE_URL}/${src.bigImage}?v=${encodeURIComponent(p.id)}`;
-      const formattedPrice = price.toFixed(2);
+      // ИЗМЕНЕНИЕ: добавлен код валюты для Google Merchant Center
+      const formattedPrice = price.toFixed(2) + ' RUB';
 
       items.push(`    <item>
       <g:id>${esc(p.id)}</g:id>
