@@ -67,7 +67,7 @@
             align-items: start;
         }
 
-        /* ===== УБРАН белый фон, чтобы не было полосы под фото ===== */
+        /* Левая колонка: верхняя картинка сверху, альбом — снизу */
         .image-section {
             display: flex;
             flex-direction: column;
@@ -114,18 +114,45 @@
             padding: 16px 0 20px;
             overflow: hidden;
             border: 1px solid #eef2f6;
-            cursor: pointer;
             flex-direction: column;
             align-items: center;
             flex-shrink: 0;
             transition: box-shadow 0.2s;
         }
-        .album-sidebar:hover {
-            box-shadow: 0 6px 16px rgba(14, 92, 128, 0.12);
-        }
         .album-sidebar.is-visible {
             display: flex;
         }
+
+        /* Табы выбора альбома */
+        .album-sidebar__tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            padding: 0 16px;
+            margin-bottom: 12px;
+        }
+        .album-sidebar__tab {
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .album-sidebar__tab:hover {
+            background: var(--light-color);
+        }
+        .album-sidebar__tab.active {
+            background: var(--primary-color);
+            color: #ffffff;
+        }
+
         .album-sidebar__caption {
             font-size: 12.5px;
             color: #7a8a9a;
@@ -139,6 +166,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
         .album-sidebar__image {
             max-width: 100%;
@@ -195,9 +223,11 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            border-radius: 999px;
-            padding: 4px;
+            border-radius: 24px;
+            padding: 5px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: calc(100% - 24px);
+            overflow-y: auto;
         }
         .image-toggle__btn {
             border: none;
@@ -220,7 +250,7 @@
             background: #eef2f6;
         }
 
-        .characteristics-list { list-style: none; padding: 0; }
+        .characteristics-list { list-style: none; padding: 0; margin: 0; }
         .characteristics-list li {
             margin-bottom: 10px;
             padding-left: 20px;
@@ -351,10 +381,11 @@
             margin: auto;
             display: block;
             width: 95%;
-            max-width: 1000px;
+            max-width: 1300px;
             background-color: white;
             border-radius: var(--inputs-buttons-border-radius);
             overflow: hidden;
+            position: relative;
         }
         .close-btn {
             position: absolute;
@@ -364,7 +395,7 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-        
+
             /* a11y:button-reset */
             background: transparent;
             border: none;
@@ -381,22 +412,54 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 85vh;
+            max-height: 900px;
         }
-        .gallery-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .modal-nav { text-align: center; padding: 10px; background-color: #fafafa; }
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .modal-nav {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 1002;
+            max-height: calc(100% - 40px);
+            overflow-y: auto;
+        }
         .modal-nav button {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: transparent;
+            color: #444;
             border: none;
-            padding: 8px 15px;
-            margin: 0 5px;
-            border-radius: var(--inputs-buttons-border-radius);
+            padding: 8px 16px;
+            border-radius: 999px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            margin: 0;
         }
-        .modal-nav button:hover { background-color: var(--primary-color-hover); }
+        .modal-nav button:hover { background-color: #eef2f6; }
+        .modal-nav button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
         .nomenclature-table {
             width: 100%;
@@ -467,6 +530,7 @@
 
         @media (max-width: 900px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .image-section { justify-content: flex-start; }
             .product-details h2 { font-size: 1.3em; }
             .nomenclature-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
             .nomenclature-table th, .nomenclature-table td { padding: 6px 4px; font-size: 11px; }
@@ -491,11 +555,13 @@
             .advantages-compact__list { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
-            .gallery-item { height: 50vh; }
+            .gallery-item { height: 60vh; max-height: 500px; }
             .cta-button { padding: 10px 20px; font-size: 14px; }
-            .image-toggle { bottom: 8px; right: 8px; padding: 3px; }
+            .image-toggle { bottom: 8px; right: 8px; padding: 4px; border-radius: 18px; }
             .image-toggle__btn { padding: 5px 10px; font-size: 12px; }
             .main-image-wrapper { height: 380px; }
+            .modal-nav { bottom: 10px; right: 10px; padding: 5px; border-radius: 18px; }
+            .modal-nav button { padding: 6px 12px; font-size: 12px; }
         }
     </style>
     <script src="js/analytics.js"></script>
@@ -826,10 +892,12 @@
     <div class="content-grid">
         <div class="image-section">
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
-                <picture><source id="mainSource" srcset="images/ssg1/ssg1-large.webp" type="image/webp"><img id="mainImage" src="images/ssg1/ssg1-large.png" alt="Пожарная стремянка СГ" class="main-image"></picture>
+                <picture><source id="mainSource" srcset="images/ssg1/vid-1.webp" type="image/webp"><img id="mainImage" src="images/ssg1/vid-1.png" alt="Пожарная стремянка СГ" class="main-image"></picture>
                 <div class="image-toggle">
-                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-large.png','images/ssg1/ssg1-large.webp', 0)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/ssg1-drawing.png','images/ssg1/ssg1-drawing.webp', 1)">Чертёж</button>
+                    <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/ssg1/vid-1.png','images/ssg1/vid-1.webp', 0)">Вид 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/foto-1.png','images/ssg1/foto-1.webp', 1)">Фото 1</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/foto-2.png','images/ssg1/foto-2.webp', 2)">Фото 2</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/ssg1/chertezh.png','images/ssg1/chertezh.webp', 3)">Чертёж</button>
                 </div>
             </div>
 
@@ -839,8 +907,8 @@
                     Типовые конструкции, изделия и узлы зданий и сооружений.<br>
                     Серия 1.450.3-7.94. Выпуск 2
                 </div>
-                <div class="album-sidebar__image-wrapper">
-                    <picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.webp" alt="Серия 1.450.3-7.94. Выпуск 2" class="album-sidebar__image"></picture>
+                <div class="album-sidebar__image-wrapper" id="albumImageWrapper">
+                    <picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.png" alt="Серия 1.450.3-7.94. Выпуск 2" class="album-sidebar__image" id="albumImage"></picture>
                 </div>
             </div>
         </div>
@@ -886,7 +954,7 @@
                             Типовые конструкции, изделия и узлы зданий и сооружений.<br>
                             Серия 1.450.3-7.94. Выпуск 2
                         </div>
-                        <picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.webp" alt="Серия 1.450.3-7.94. Выпуск 2"></picture>
+                        <picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.png" alt="Серия 1.450.3-7.94. Выпуск 2"></picture>
                     </div>
 
                 </div>
@@ -904,7 +972,7 @@
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-SG-22">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-22" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-22</td><td>220</td><td>70</td><td>39.2</td>
-      <td>от 8 625 руб.</td><td>1 шт</td>
+      <td>от 8 625 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-22', -1)">−</button>
         <input type="number" id="SG-22-qty" value="1" min="1" max="99" data-price="8625">
@@ -916,7 +984,7 @@
     </tr><tr id="item-SG-28">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-28" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-28</td><td>280</td><td>70</td><td>50</td>
-      <td>от 11 000 руб.</td><td>1 шт</td>
+      <td>от 11 000 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-28', -1)">−</button>
         <input type="number" id="SG-28-qty" value="1" min="1" max="99" data-price="11000">
@@ -928,7 +996,7 @@
     </tr><tr id="item-SG-34">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-34" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-34</td><td>340</td><td>70</td><td>61</td>
-      <td>от 13 420 руб.</td><td>1 шт</td>
+      <td>от 13 420 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-34', -1)">−</button>
         <input type="number" id="SG-34-qty" value="1" min="1" max="99" data-price="13420">
@@ -940,7 +1008,7 @@
     </tr><tr id="item-SG-40">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-40" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-40</td><td>400</td><td>70</td><td>71.8</td>
-      <td>от 15 795 руб.</td><td>1 шт</td>
+      <td>от 15 795 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-40', -1)">−</button>
         <input type="number" id="SG-40-qty" value="1" min="1" max="99" data-price="15795">
@@ -952,7 +1020,7 @@
     </tr><tr id="item-SG-46">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-46" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-46</td><td>460</td><td>70</td><td>82.8</td>
-      <td>от 18 215 руб.</td><td>1 шт</td>
+      <td>от 18 215 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-46', -1)">−</button>
         <input type="number" id="SG-46-qty" value="1" min="1" max="99" data-price="18215">
@@ -964,7 +1032,7 @@
     </tr><tr id="item-SG-52">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-52" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-52</td><td>520</td><td>70</td><td>94</td>
-      <td>от 20 680 руб.</td><td>1 шт</td>
+      <td>от 20 680 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-52', -1)">−</button>
         <input type="number" id="SG-52-qty" value="1" min="1" max="99" data-price="20680">
@@ -976,7 +1044,7 @@
     </tr><tr id="item-SG-58">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-58" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-58</td><td>580</td><td>70</td><td>104.4</td>
-      <td>от 22 970 руб.</td><td>1 шт</td>
+      <td>от 22 970 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-58', -1)">−</button>
         <input type="number" id="SG-58-qty" value="1" min="1" max="99" data-price="22970">
@@ -988,7 +1056,7 @@
     </tr><tr id="item-SG-64">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-64" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-64</td><td>640</td><td>70</td><td>115.4</td>
-      <td>от 25 390 руб.</td><td>1 шт</td>
+      <td>от 25 390 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-64', -1)">−</button>
         <input type="number" id="SG-64-qty" value="1" min="1" max="99" data-price="25390">
@@ -1000,7 +1068,7 @@
     </tr><tr id="item-SG-70">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-70" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-70</td><td>700</td><td>70</td><td>126.2</td>
-      <td>от 27 765 руб.</td><td>1 шт</td>
+      <td>от 27 765 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-70', -1)">−</button>
         <input type="number" id="SG-70-qty" value="1" min="1" max="99" data-price="27765">
@@ -1012,7 +1080,7 @@
     </tr><tr id="item-SG-82">
       <td><img src="images/ssg1/ssg1-mini.webp" alt="Пожарная стремянка серия 1.450.3-7.94 СГ-82" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
       <td>Пожарная стремянка серия 1.450.3-7.94 СГ-82</td><td>820</td><td>70</td><td>148</td>
-      <td>от 32 560 руб.</td><td>1 шт</td>
+      <td>от 32 560 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('SG-82', -1)">−</button>
         <input type="number" id="SG-82-qty" value="1" min="1" max="99" data-price="32560">
@@ -1085,7 +1153,7 @@
                 <a href="skoba-mn.html">Скобы ходовые ТПР 901-09-11.84</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
-                <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
+                <a href="l-16-dlya-teplovyh-setej.html">Л-16 тепловых сетей</a>
                 <a href="ssg1.html">Пожарные стремянки СГ</a>
             </div>
             <div class="footer-section">
@@ -1125,12 +1193,18 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><picture><source srcset="images/ssg1/ssg1-large.webp" type="image/webp"><img src="images/ssg1/ssg1-large.png" alt="Основное фото"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/ssg1/ssg1-drawing.webp" type="image/webp"><img src="images/ssg1/ssg1-drawing.png" alt="Чертеж"></picture></div>
+            <div class="gallery-item"><picture><source srcset="images/ssg1/vid-1.webp" type="image/webp"><img src="images/ssg1/vid-1.png" alt="Вид 1"></picture></div>
+            <div class="gallery-item"><picture><source srcset="images/ssg1/foto-1.webp" type="image/webp"><img src="images/ssg1/foto-1.png" alt="Фото 1"></picture></div>
+            <div class="gallery-item"><picture><source srcset="images/ssg1/foto-2.webp" type="image/webp"><img src="images/ssg1/foto-2.png" alt="Фото 2"></picture></div>
+            <div class="gallery-item"><picture><source srcset="images/ssg1/album.webp" type="image/webp"><img src="images/ssg1/album.png" alt="Альбом"></picture></div>
+            <div class="gallery-item"><picture><source srcset="images/ssg1/chertezh.webp" type="image/webp"><img src="images/ssg1/chertezh.png" alt="Чертеж"></picture></div>
         </div>
-        <div class="modal-nav">
-            <button onclick="scrollToSlide(0)">Основное фото</button>
-            <button onclick="scrollToSlide(1)">Чертеж</button>
+        <div class="modal-nav" id="modalNav">
+            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
+            <button data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
+            <button data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
+            <button data-slide="3" onclick="scrollToSlide(3)">Альбом</button>
+            <button data-slide="4" onclick="scrollToSlide(4)">Чертеж</button>
         </div>
     </div>
 </div>
@@ -1149,11 +1223,13 @@
     });
 
     const galleryContainer = document.getElementById("galleryContainer");
+    const modalNav = document.getElementById("modalNav");
+
     function changeImage(pngSrc, webpSrc, index) {
         const source = document.getElementById('mainSource');
         if (source) source.srcset = webpSrc;
         mainImage.src = pngSrc;
-        const btns = document.querySelectorAll('.image-toggle__btn, .image-tabs button');
+        const btns = document.querySelectorAll('.image-toggle__btn');
         btns.forEach(b => b.classList.remove('active'));
         if (btns[index]) btns[index].classList.add('active');
         mainImageWrapper.setAttribute('data-current-slide', index);
@@ -1161,11 +1237,14 @@
     mainImageWrapper.onclick = () => openModal();
     function openModal() {
         modal.style.display = "block";
-        setTimeout(() => scrollToSlide(parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0)), 50);
+        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        setTimeout(() => scrollToSlide(slide), 50);
         modalA11y.open();
     }
-    function closeModal() { modalA11y.close();
-        modal.style.display = "none"; }
+    function closeModal() {
+        modalA11y.close();
+        modal.style.display = "none";
+    }
 
     /* a11y:escape */
     document.addEventListener('keydown', function (e) {
@@ -1174,7 +1253,21 @@
 
     function scrollToSlide(index) {
         galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
+        setActiveModalButton(index);
     }
+    function setActiveModalButton(index) {
+        const buttons = modalNav.querySelectorAll('button');
+        buttons.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+    galleryContainer.addEventListener('scroll', () => {
+        const itemWidth = galleryContainer.clientWidth;
+        if (itemWidth === 0) return;
+        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
+        setActiveModalButton(newIndex);
+    });
 
     /* ===== Блок "Подробнее + картинка альбома слева" ===== */
     const infoDetails = document.getElementById('infoDetails');
@@ -1203,29 +1296,18 @@
             albumSidebar.style.marginTop = '0px';
             return;
         }
-        /* Сбрасываем margin, чтобы измерить «естественное» положение */
         albumSidebar.style.marginTop = '0px';
-
-        /* Если ширина окна <= 900px, альбом скрыт — ничего не делаем */
         if (window.innerWidth <= 900) return;
 
         const detailsRect = infoDetails.getBoundingClientRect();
         const albumRect = albumSidebar.getBoundingClientRect();
-
-        /* Насколько верх альбома должен опуститься, чтобы совпасть с верхом details. */
         const desiredDelta = detailsRect.top - albumRect.top;
-
-        /* Текущий margin-top, который мы уже выставили (в px) */
         const currentMargin = parseFloat(getComputedStyle(albumSidebar).marginTop) || 0;
-
-        /* Новый margin-top: текущий + дельта. */
         let newMargin = currentMargin + desiredDelta;
         if (newMargin < 0) newMargin = 0;
-
         albumSidebar.style.marginTop = newMargin + 'px';
     }
 
-    /* Синхронизация при загрузке, ресайзе и toggle */
     window.addEventListener('load', syncAlbumTopWithDetails);
     window.addEventListener('resize', syncAlbumTopWithDetails);
     if (infoDetails) {
@@ -1234,12 +1316,17 @@
         });
     }
 
-    /* Клик по блоку с альбомом открывает модалку на слайде "Альбом" (индекс 5) */
+    /* Клик по картинке альбома открывает модалку на слайде "Альбом" (индекс 3) */
     if (albumSidebar) {
-        albumSidebar.addEventListener('click', function (e) {
-            e.stopPropagation();
-            openModal(5);
-        });
+        const albumImageWrapper = albumSidebar.querySelector('.album-sidebar__image-wrapper');
+        if (albumImageWrapper) {
+            albumImageWrapper.addEventListener('click', function (e) {
+                e.stopPropagation();
+                modal.style.display = "block";
+                setTimeout(() => scrollToSlide(3), 50);
+                modalA11y.open();
+            });
+        }
     }
 
     window.changeImage = changeImage;
