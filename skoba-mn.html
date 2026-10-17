@@ -546,38 +546,43 @@
 <style>
     .nav-container {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Разрешаем перенос только если совсем не влезет */
         align-items: center;
         justify-content: space-between;
-        gap: 15px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        gap: 10px; /* Уменьшили отступ между блоками */
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .nav-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 12px; /* Сжали отступы между ссылками меню */
         align-items: center;
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Чуть уменьшили шрифт меню */
     }
 
     .nav-actions {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 15px;
+        gap: 12px; /* Сжали отступы между почтой, корзиной и кнопкой */
     }
 
     .nav-email-wrapper {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
     }
 
     .nav-email-link {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
+        font-size: 14px; /* Уменьшили шрифт почты */
     }
 
     .btn-copy-email {
@@ -596,30 +601,33 @@
     }
 
     /* Медиа-запрос для мобильных устройств */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         .nav-container {
             flex-direction: column;
             align-items: flex-start;
+            gap: 10px;
         }
         
         .nav-actions {
             width: 100%;
-            justify-content: space-between; /* Распределяем элементы по ширине */
+            justify-content: space-between; 
         }
 
-        /* На очень узких экранах прячем email, оставляя только иконку */
-        @media (max-width: 480px) {
-            .nav-email-link span {
-                display: none; /* Скрываем текст email */
-            }
-            .nav-email-link {
-                padding: 8px;
-                background: rgba(255,255,255,0.1);
-                border-radius: 4px;
-            }
-            .nav-actions {
-                gap: 10px;
-            }
+        /* На узких экранах разрешаем почте переноситься */
+        .nav-email-wrapper {
+            flex-wrap: wrap;
+        }
+        
+        .nav-email-link span {
+            word-break: break-all; /* Чтобы длинный адрес не вылезал */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-actions {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
         }
     }
 </style>
@@ -780,11 +788,14 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Контакты</h4>
-                <a href="tel:+79655559966"><img src="images/icons/phone.svg" alt="" class="footer-icon" width="14" height="14"> +7 (965) 555-99-66</a>
+                <a href="tel:+79655559966" class="footer-phone-link">
+                    <img src="images/icons/phone.svg" alt="" class="footer-icon" width="14" height="14"> 
+                    +7 (965) 555-99-66
+                </a>
                 
                 <!-- Почта с кнопкой копирования -->
                 <div class="footer-email-wrapper">
-                    <a href="mailto:sales@stremyanki-dlya-kolodcev.ru">
+                    <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="footer-email-link">
                         <img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> 
                         <span>sales@stremyanki-dlya-kolodcev.ru</span>
                     </a>
@@ -793,7 +804,10 @@
                     </button>
                 </div>
 
-                <p><img src="images/icons/pin.svg" alt="" class="footer-icon" width="14" height="14"> г. Пермь, ул. Василия Васильева, д. 33</p>
+                <p class="footer-address">
+                    <img src="images/icons/pin.svg" alt="" class="footer-icon" width="14" height="14"> 
+                    г. Пермь, ул. Василия Васильева, д. 33
+                </p>
             </div>
             
             <div class="footer-section">
@@ -837,24 +851,47 @@
     </div>
 </footer>
 
-<!-- CSS для футера (добавьте, если этих стилей еще нет) -->
+<!-- CSS для футера -->
 <style>
+    .footer-phone-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        color: inherit;
+        margin-bottom: 8px;
+    }
+
     .footer-email-wrapper {
         display: flex;
         align-items: center;
         gap: 6px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
-    .footer-email-wrapper a {
+    .footer-email-link {
         display: flex;
         align-items: center;
-        margin: 0;
         gap: 6px;
+        margin: 0;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Защита от вылезания длинного email */
+    .footer-email-link span {
+        word-break: break-all; 
+    }
+
+    .footer-address {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        margin: 0;
     }
 </style>
 
-<!-- Скрипт для года -->
+<!-- Скрипты (год и копирование) -->
 <script>
     (function () {
         var yearEl = document.getElementById('footer-year');
@@ -864,7 +901,6 @@
     })();
 </script>
 
-<!-- Скрипт для копирования Email -->
 <script>
 function copyEmailToClipboard(btn) {
     const email = 'sales@stremyanki-dlya-kolodcev.ru';
