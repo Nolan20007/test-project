@@ -128,13 +128,13 @@ picture { display: contents; }
     align-items: center;
     gap: 5px;
     background: var(--quote-color);
-    color: #1b1b1b; /* ИЗМЕНЕНО: текст кнопки теперь черный */
+    color: #1b1b1b;
     border: none;
     padding: 10px 20px;
     border-radius: var(--inputs-buttons-border-radius);
     font-family: inherit;
     font-size: 14px;
-    font-weight: 600; /* Сделаем шрифт чуть жирнее для читаемости */
+    font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
     white-space: nowrap;
@@ -144,7 +144,6 @@ picture { display: contents; }
     background: var(--quote-color-hover);
     transform: translateY(-1px);
 }
-/* Иконка внутри кнопки тоже должна быть темной */
 .btn-get-quote .nav-icon {
     filter: brightness(0); 
 }
@@ -191,6 +190,12 @@ picture { display: contents; }
     .nav-email-wrapper {
         white-space: normal; 
         word-break: break-all;
+    }
+    /* ДОБАВЛЕНО: Центрирование элементов в мобильной навигации */
+    .nav-links,
+    .nav-actions {
+        justify-content: center;
+        text-align: center;
     }
 }
 
@@ -269,7 +274,7 @@ picture { display: contents; }
 }
 .quote-modal-content button[type="submit"] {
     background: var(--quote-color);
-    color: #1b1b1b; /* ИЗМЕНЕНО: текст кнопки теперь черный */
+    color: #1b1b1b;
     border: none;
     padding: 14px;
     border-radius: var(--inputs-buttons-border-radius);
@@ -309,7 +314,7 @@ picture { display: contents; }
     text-decoration: none;
     font-size: 13.5px;
     transition: opacity 0.2s;
-    display: flex; /* ИСПРАВЛЕНО: было inline-flex, стало flex для вертикального списка */
+    display: flex;
     align-items: center;
     margin-bottom: 6px;
 }
@@ -369,7 +374,7 @@ picture { display: contents; }
     
     .footer-section p, 
     .footer-section a {
-        justify-content: center; /* На мобильных ссылки центрируются */
+        justify-content: center;
     }
     .footer-email-wrapper {
         justify-content: center;
@@ -436,7 +441,7 @@ textarea[aria-invalid="true"]:focus {
     vertical-align: middle;
     position: relative;
     top: -1px;
-    margin-right: 6px; /* Отступ от иконки до текста */
+    margin-right: 6px;
     flex-shrink: 0;
 }
 
@@ -505,12 +510,12 @@ textarea[aria-invalid="true"]:focus {
 /* ==================================================== */
 
 .cta-section {
-    padding: 20px 0; /* ИЗМЕНЕНО: было 40px 0 */
-    background-color: #fafafa; /* Такой же фон, как у body */
+    padding: 20px 0; 
+    background-color: #fafafa; 
     border-top: 1px solid #eef2f6;
 }
 .cta-section .container {
-    max-width: 1400px; /* ИЗМЕНЕНО: было 900px */
+    max-width: 1400px; 
 }
 .cta-box {
     background-color: var(--light-color); 
@@ -559,7 +564,6 @@ textarea[aria-invalid="true"]:focus {
     color: var(--primary-color-hover);
 }
 
-/* ИЗМЕНЕНО: убрали фон, добавили padding: 0 */
 .cta-contacts .btn-copy-email {
     background: transparent;
     border: none;
@@ -578,7 +582,6 @@ textarea[aria-invalid="true"]:focus {
     filter: brightness(0) saturate(100%) invert(23%) sepia(41%) saturate(1881%) hue-rotate(175deg) brightness(94%) contrast(94%);
 }
 
-/* Кнопки внутри CTA (если их нет в общем файле) */
 .cta-box .buttons-row { 
     display: flex; 
     justify-content: center; 
@@ -587,7 +590,6 @@ textarea[aria-invalid="true"]:focus {
     flex-wrap: wrap; 
 }
 
-/* ИЗМЕНЕНО: добавили font-family и font-weight для единообразия */
 .cta-box .cta-button {
     display: inline-block;
     text-align: center;
