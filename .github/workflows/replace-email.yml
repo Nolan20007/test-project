@@ -1,0 +1,61 @@
+name: Replace Email
+
+on:
+  workflow_dispatch: # Запуск вручную из вкладки Actions
+    inputs:
+      direction:
+        description: 'Направление замены (to_mail или to_site)'
+        required: true
+        default: 'to_mail'
+        type: choice
+        options:
+          - to_mail
+          - to_site
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Важно! Дает право коммитить изменения обратно в репозиторий
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up emails based on direction
+        id: set-vars
+        run: |
+          if [ "${{ github.event.inputs.direction }}" == "to_mail" ]; then
+            echo "OLD_EMAIL=sales@stremyanki-dlya-kolodcev.ru" >> $GITHUB_ENV
+            echo "NEW_EMAIL=stremyanki-dlya-kolodcev@mail.ru" >> $GITHUB_ENV
+          else
+            echo "OLD_EMAIL=stremyanki-dlya-kolodcev@mail.ru" >> $GITHUB_ENV
+            echo "NEW_EMAIL=sales@stremyanki-dlya-kolodcev.ru" >> $GITHUB_ENV
+          fi
+
+      - name: Update replace-email.js with selected emails
+        run: |
+          # Заменяем переменные в скрипте на выбранные
+          sed -i "s|const OLD_EMAIL = '.*';|const OLD_EMAIL = '${{ env.OLD_EMAIL }}';|" build/replace-email.js
+          sed -i "s|const NEW_EMAIL = '.*';|const NEW_EMAIL = '${{ env.NEW_EMAIL }}';|" build/replace-email.js
+
+      - name: Run email replacement script
+        run: node build/replace-email.js
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add -A
+          # Проверяем, есть ли изменения, чтобы не делать пустой коммит
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-replace email: ${{ env.OLD_EMAIL }} -> ${{ env.NEW_EMAIL }}"
+            git push
+          else
+            echo "Нет изменений для коммита."
+          fi
