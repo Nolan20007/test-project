@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // МЕНЯЙ ЗДЕСЬ: старый и новый email
-const OLD_EMAIL = 'stremyanki-dlya-kolodcev@mail.ru';
+const OLD_EMAIL = 'sales@stremyanki-dlya-kolodcev.ru';
 const NEW_EMAIL = 'sales@stremyanki-dlya-kolodcev.ru';
 
 const searchRegex = new RegExp(OLD_EMAIL.replace(/\./g, '\\.'), 'g');
