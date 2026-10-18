@@ -505,12 +505,12 @@ textarea[aria-invalid="true"]:focus {
 /* ==================================================== */
 
 .cta-section {
-    padding: 40px 0;
+    padding: 20px 0; /* ИЗМЕНЕНО: было 40px 0 */
     background-color: #fafafa; /* Такой же фон, как у body */
     border-top: 1px solid #eef2f6;
 }
 .cta-section .container {
-    max-width: 900px; /* Ограничиваем ширину, чтобы блок не растягивался */
+    max-width: 1400px; /* ИЗМЕНЕНО: было 900px */
 }
 .cta-box {
     background-color: var(--light-color); 
