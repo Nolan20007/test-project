@@ -3,7 +3,7 @@ const path = require('path');
 
 // Сюда вписываем старый и новый адреса
 const OLD_EMAIL = 'stremyanki-dlya-kolodcev@mail.ru';
-const NEW_EMAIL = 'sales@stremyanki-dlya-kolodcev.ru';
+const NEW_EMAIL = 'stremyanki-dlya-kolodcev@mail.ru';
 
 // Регулярное выражение для поиска старого email (экранируем точки)
 const searchRegex = new RegExp(OLD_EMAIL.replace(/\./g, '\\.'), 'g');
