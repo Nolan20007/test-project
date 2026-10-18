@@ -72,7 +72,7 @@
                     <p style="font-size: 0.85em; color: #888; margin: 0 0 15px; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px;">
                         <img src="images/icons/paperclip.svg" alt="" width="14" height="14" style="flex-shrink: 0; margin-top: 2px;">
                         <span>Чертёж, фото или ТЗ пришлите на почту
-                        <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" style="color: var(--primary-color); font-weight: 500;">sales@stremyanki-dlya-kolodcev.ru</a></span>
+                        <a href="mailto:stremyanki-dlya-kolodcev@mail.ru" style="color: var(--primary-color); font-weight: 500;">stremyanki-dlya-kolodcev@mail.ru</a></span>
                     </p>
                     <button type="submit">Отправить запрос</button>
                 </form>

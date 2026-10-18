@@ -1,5 +1,5 @@
 function copyEmailToClipboard(btn) {
-    const email = 'sales@stremyanki-dlya-kolodcev.ru';
+    const email = 'stremyanki-dlya-kolodcev@mail.ru';
     const img = btn.querySelector('img');
     
     // Копируем в буфер обмена
