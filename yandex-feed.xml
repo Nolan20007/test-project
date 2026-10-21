@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-21 09:15">
+<yml_catalog date="2026-10-21 09:21">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -10488,6 +10488,19 @@
       <model>MN-1</model>
       <weight>1.36</weight>
       <description>Скоба ходовая ТПР 901-09-11.84 МН-1. Длина 37 см, ширина 24 см, масса 1.36 кг.</description>
+    </offer>
+    <offer id="MN-1-3900" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoba-nm1-3-900-3.html#item-MN-1-3900</url>
+      <price>340</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/scoba-nm1-3900/vid-1.png</picture>
+      <name>Скоба ходовая серии 3.900-3 МН-1 П-образная</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба ходовая</typePrefix>
+      <model>MN-1-3900</model>
+      <weight>0.82</weight>
+      <description>Скоба ходовая серии 3.900-3 МН-1 П-образная. Длина  см, ширина 18.6 см, масса 0.82 кг.</description>
     </offer>
     </offers>
   </shop>
