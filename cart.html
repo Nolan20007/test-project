@@ -804,7 +804,7 @@ function copyEmailToClipboard(btn) {
         fullMessage += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
         fullMessage += `🛒 Состав заказа:\n`;
 
-        // 2. Формируем сообщение только с товарами для Telegram
+        // 2. Формируем сообщение только с товарами и итогами для Telegram
         let cartOnlyText = ``;
 
         for (const itemId in currentCart) {
@@ -820,6 +820,13 @@ function copyEmailToClipboard(btn) {
             cartOnlyText += itemLine;
         }
 
+        // --- ДОБАВЛЯЕМ ИТОГИ В ТЕЛЕГРАМ ---
+        cartOnlyText += `\n📊 ИТОГИ ЗАКАЗА:\n`;
+        cartOnlyText += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
+        cartOnlyText += `📏 Общая длина: ${totalLengthStr}\n`;
+        cartOnlyText += `⚖️ Общий вес: ${totalWeightRounded} кг`;
+
+        // --- ИТОГИ ДЛЯ ПОЧТЫ ---
         fullMessage += `\n📊 ИТОГИ ЗАКАЗА:\n`;
         fullMessage += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
         fullMessage += `📏 Общая длина: ${totalLengthStr}\n`;
@@ -831,7 +838,7 @@ function copyEmailToClipboard(btn) {
         submitBtn.disabled = true;
 
         try {
-            // Отправка в Telegram (используем cartOnlyText)
+            // Отправка в Telegram (используем cartOnlyText с итогами)
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST', mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
@@ -840,7 +847,7 @@ function copyEmailToClipboard(btn) {
                     email: email || '',
                     comments: comments || '',
                     orderNumber: orderNumber,
-                    cartText: cartOnlyText, // <-- ТОЛЬКО ТОВАРЫ
+                    cartText: cartOnlyText,
                     total: total.toLocaleString('ru-RU'),
                     totalLength: totalLengthStr,
                     totalWeight: totalWeightRounded
@@ -852,7 +859,7 @@ function copyEmailToClipboard(btn) {
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', `НОВЫЙ ЗАКАЗ № ${orderNumber} с сайта stremyanki-dlya-kolodcev.ru`);
             mailData.append('from_name', 'Сайт лестниц для колодцев');
-            mailData.append('form_data', fullMessage); // <-- ПОЛНОЕ СООБЩЕНИЕ
+            mailData.append('form_data', fullMessage);
 
             const mailPromise = fetch('https://api.web3forms.com/submit', {
                 method: 'POST', body: mailData
