@@ -347,6 +347,7 @@
 <!-- NAV_START -->
 <nav class="nav">
     <div class="container">
+        <!-- Левая часть: Меню -->
         <div class="nav-links">
             <a href="index.html#catalog">Каталог</a>
             <a href="index.html#advantages">Преимущества</a>
@@ -355,6 +356,7 @@
             <a href="index.html#contacts">Контакты и Заказ</a>
         </div>
 
+        <!-- Правая часть: Почта, Корзина, Кнопка -->
         <div class="nav-actions">
             <div class="nav-email-wrapper">
                 <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="nav-email-link">
@@ -446,6 +448,7 @@
 </main>
 
 <!-- CTA_START -->
+<!-- CTA_START -->
 <section class="cta-section">
     <div class="container">
         <div class="cta-box">
@@ -472,11 +475,12 @@
             <div class="buttons-row">
                 <a href="cart.html" class="cta-button">Перейти в корзину</a>
                 <button class="cta-button" onclick="openQuoteModal()">Получить расчет/КП</button>
-                <a href="index.html#contacts" class="cta-button">Оставить заявку на звонок</a>
+<button class="cta-button" onclick="openCallbackModal()">Оставить заявку на звонок</button>
             </div>
         </div>
     </div>
 </section>
+<!-- CTA_END -->
 <!-- CTA_END -->
 
 <!-- FOOTER_START -->
@@ -490,6 +494,7 @@
                     +7 (965) 555-99-66
                 </a>
                 
+                <!-- Почта с кнопкой копирования -->
                 <div class="footer-email-wrapper">
                     <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="footer-email-link">
                         <img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> 
@@ -519,6 +524,7 @@
                 <a href="ss2.html">Стремянки ТПР 902-09-22.84</a>
                 <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="skoba-mn.html">Скобы ходовые ТПР 901-09-11.84</a>
+                <a href="skoba-nm1-3-900-3.html">Скобы ходовые серии 3.900-3</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
@@ -547,6 +553,37 @@
     </div>
 </footer>
 
+<!-- Скрипты (год и копирование) -->
+<script>
+    (function () {
+        var yearEl = document.getElementById('footer-year');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
+    })();
+</script>
+
+<script>
+function copyEmailToClipboard(btn) {
+    const email = 'sales@stremyanki-dlya-kolodcev.ru';
+    const img = btn.querySelector('img');
+    
+    navigator.clipboard.writeText(email).then(() => {
+        img.style.filter = 'brightness(0) saturate(100%) invert(52%) sepia(88%) saturate(425%) hue-rotate(83deg) brightness(96%) contrast(91%)';
+        
+        if (typeof showToast === 'function') {
+            showToast('Email скопирован!', 'success', 2000);
+        }
+        
+        setTimeout(() => {
+            img.style.filter = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Ошибка копирования: ', err);
+        alert('Не удалось скопировать. Пожалуйста, выделите адрес вручную.');
+    });
+}
+</script>
 <!-- FOOTER_END -->
 
 <script>
