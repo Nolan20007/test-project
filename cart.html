@@ -347,7 +347,6 @@
 <!-- NAV_START -->
 <nav class="nav">
     <div class="container">
-        <!-- Левая часть: Меню -->
         <div class="nav-links">
             <a href="index.html#catalog">Каталог</a>
             <a href="index.html#advantages">Преимущества</a>
@@ -356,7 +355,6 @@
             <a href="index.html#contacts">Контакты и Заказ</a>
         </div>
 
-        <!-- Правая часть: Почта, Корзина, Кнопка -->
         <div class="nav-actions">
             <div class="nav-email-wrapper">
                 <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="nav-email-link">
@@ -447,8 +445,6 @@
 
 </main>
 
-
-<!-- CTA_START -->
 <!-- CTA_START -->
 <section class="cta-section">
     <div class="container">
@@ -482,16 +478,6 @@
     </div>
 </section>
 <!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
 
 <!-- FOOTER_START -->
 <footer class="footer">
@@ -504,7 +490,6 @@
                     +7 (965) 555-99-66
                 </a>
                 
-                <!-- Почта с кнопкой копирования -->
                 <div class="footer-email-wrapper">
                     <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="footer-email-link">
                         <img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> 
@@ -534,7 +519,6 @@
                 <a href="ss2.html">Стремянки ТПР 902-09-22.84</a>
                 <a href="tmp-902.html">Стремянки ТМП 902-09-46.88</a>
                 <a href="skoba-mn.html">Скобы ходовые ТПР 901-09-11.84</a>
-                <a href="skoba-nm1-3-900-3.html">Скобы ходовые серии 3.900-3</a>
                 <a href="vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a>
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
@@ -563,7 +547,8 @@
     </div>
 </footer>
 
-<!-- Скрипты (год и копирование) -->
+<!-- FOOTER_END -->
+
 <script>
     (function () {
         var yearEl = document.getElementById('footer-year');
@@ -594,7 +579,6 @@ function copyEmailToClipboard(btn) {
     });
 }
 </script>
-<!-- FOOTER_END -->
 
 <script src="js/quote-modal.js"></script>
 <script>
@@ -714,7 +698,6 @@ function copyEmailToClipboard(btn) {
         }
     }
 
-    // ===== Генерация номера заказа =====
     function generateOrderNumber() {
         const now = new Date();
         const yyyy = now.getFullYear();
@@ -724,7 +707,6 @@ function copyEmailToClipboard(btn) {
         return `ORD-${yyyy}${mm}${dd}-${rand}`;
     }
 
-    // ===== Показ блока благодарности =====
     function showOrderSuccess(orderNumber) {
         document.getElementById('cart-content').style.display = 'none';
         document.getElementById('checkout-section').style.display = 'none';
@@ -753,7 +735,6 @@ function copyEmailToClipboard(btn) {
         }, 5000);
     }
 
-    // ==== ОБРАБОТЧИК #orderForm ====
     document.getElementById('orderForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -815,12 +796,16 @@ function copyEmailToClipboard(btn) {
         const totalWeightRounded = Math.round(totalWeightKg);
         const totalLengthStr = formatTotalLength(totalLengthCm);
 
-        let message = `🎉 НОВЫЙ ЗАКАЗ № ${orderNumber}!\n\n`;
-        message += `👤 Имя: ${name}\n`;
-        message += `📞 Телефон: ${phone}\n`;
-        message += `📧 Email: ${email || 'Не указан'}\n`;
-        message += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
-        message += `🛒 Состав заказа:\n`;
+        // 1. Формируем полное сообщение для почты
+        let fullMessage = `🎉 НОВЫЙ ЗАКАЗ № ${orderNumber}!\n\n`;
+        fullMessage += `👤 Имя: ${name}\n`;
+        fullMessage += `📞 Телефон: ${phone}\n`;
+        fullMessage += `📧 Email: ${email || 'Не указан'}\n`;
+        fullMessage += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
+        fullMessage += `🛒 Состав заказа:\n`;
+
+        // 2. Формируем сообщение только с товарами для Telegram
+        let cartOnlyText = ``;
 
         for (const itemId in currentCart) {
             const item = currentCart[itemId];
@@ -828,13 +813,17 @@ function copyEmailToClipboard(btn) {
             const itemQuantity = parseInt(item.quantity) || 0;
             const itemTotal = itemPrice * itemQuantity;
             const lengthStr = item.length ? ` (${formatLength(item.length)})` : '';
-            message += `• ${sanitizeInput(item.name)}${lengthStr} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
+            
+            const itemLine = `• ${sanitizeInput(item.name)}${lengthStr} - ${itemQuantity} шт. × ${itemPrice.toLocaleString('ru-RU')} руб. = ${itemTotal.toLocaleString('ru-RU')} руб.\n`;
+            
+            fullMessage += itemLine;
+            cartOnlyText += itemLine;
         }
 
-        message += `\n📊 ИТОГИ ЗАКАЗА:\n`;
-        message += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
-        message += `📏 Общая длина: ${totalLengthStr}\n`;
-        message += `⚖️ Общий вес: ${totalWeightRounded} кг`;
+        fullMessage += `\n📊 ИТОГИ ЗАКАЗА:\n`;
+        fullMessage += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
+        fullMessage += `📏 Общая длина: ${totalLengthStr}\n`;
+        fullMessage += `⚖️ Общий вес: ${totalWeightRounded} кг`;
 
         const submitBtn = document.querySelector('#orderForm button[type="submit"]');
         const originalText = submitBtn.textContent;
@@ -842,6 +831,7 @@ function copyEmailToClipboard(btn) {
         submitBtn.disabled = true;
 
         try {
+            // Отправка в Telegram (используем cartOnlyText)
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST', mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
@@ -850,18 +840,19 @@ function copyEmailToClipboard(btn) {
                     email: email || '',
                     comments: comments || '',
                     orderNumber: orderNumber,
-                    cartText: message,
+                    cartText: cartOnlyText, // <-- ТОЛЬКО ТОВАРЫ
                     total: total.toLocaleString('ru-RU'),
                     totalLength: totalLengthStr,
                     totalWeight: totalWeightRounded
                 })
             }).catch(err => console.warn('Google Script ошибка:', err));
 
+            // Отправка на почту (используем fullMessage)
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', `НОВЫЙ ЗАКАЗ № ${orderNumber} с сайта stremyanki-dlya-kolodcev.ru`);
             mailData.append('from_name', 'Сайт лестниц для колодцев');
-            mailData.append('form_data', message);
+            mailData.append('form_data', fullMessage); // <-- ПОЛНОЕ СООБЩЕНИЕ
 
             const mailPromise = fetch('https://api.web3forms.com/submit', {
                 method: 'POST', body: mailData
@@ -888,7 +879,6 @@ function copyEmailToClipboard(btn) {
     window.removeItem = removeItem;
     window.clearCart = clearCart;
 
-    // ==== Авто-сброс aria-invalid при вводе ====
     bindAutoClearInvalid(document.getElementById('orderForm'));
 </script>
 
