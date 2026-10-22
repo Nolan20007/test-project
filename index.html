@@ -1398,12 +1398,17 @@ function copyEmailToClipboard(btn) {
             method: 'POST', body: mailData
         }).catch(err => console.warn('Mail ошибка:', err));
 
-        await Promise.allSettled([telegramPromise, mailPromise]);
-
-        showToast('Заявка отправлена! Менеджер свяжется с вами.', 'success', 4000);
-        this.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+        try {
+            await Promise.allSettled([telegramPromise, mailPromise]);
+            showToast('Заявка отправлена! Менеджер свяжется с вами.', 'success', 4000);
+            this.reset();
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            showToast('❌ Ошибка отправки. Позвоните нам: +7 (965) 555-99-66', 'error', 5000);
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
 
     bindAutoClearInvalid(document.getElementById('mainContactForm'));
