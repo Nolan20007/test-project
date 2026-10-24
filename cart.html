@@ -24,18 +24,18 @@
     <script src="js/utils.js"></script>
 
     <style>
-        .cart-page { padding: 20px 0 20px; } /* уменьшили нижний отступ */
+        .cart-page { padding: 10px 0 20px; } /* Уменьшили верхний отступ */
         .cart-page h1 {
             text-align: center;
             color: var(--dark-color);
-            margin-bottom: 20px; /* уменьшили */
+            margin-bottom: 10px; /* Уменьшили */
             font-size: 1.9em;
             font-weight: 600;
         }
         .cart-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px; /* уменьшили */
+            margin-top: 10px; /* Уменьшили */
             background-color: white;
             border-radius: var(--inputs-buttons-border-radius);
             overflow: hidden;
@@ -43,7 +43,7 @@
         }
         .cart-table th, .cart-table td {
             border-bottom: 1px solid #eef2f6;
-            padding: 10px; /* уменьшили */
+            padding: 10px;
             text-align: left;
             vertical-align: middle;
         }
@@ -59,29 +59,39 @@
             color: #cc0000;
             white-space: nowrap;
         }
+        
+        /* Аккуратный блок с суммой */
         .cart-summary-block {
             display: flex;
             justify-content: flex-end;
-            margin-top: 15px; /* уменьшили */
-            padding: 15px; /* уменьшили */
-            background-color: var(--light-color);
-            border-radius: var(--inputs-buttons-border-radius);
+            align-items: center;
+            margin-top: 15px; /* Уменьшили */
+            padding: 15px 0;
+            border-top: 2px solid #eef2f6;
+            background: transparent;
         }
         .total-price {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: var(--dark-color);
+            font-size: 1.3em;
+            font-weight: 400;
+            color: #686868;
+            margin: 0;
         }
-        .total-price span { color: #cc0000; }
+        .total-price span { 
+            color: #cc0000; 
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
         .cart-actions {
             display: flex;
             justify-content: space-between;
-            margin-top: 15px; /* уменьшили */
+            margin-top: 15px;
             flex-wrap: wrap;
             gap: 10px;
         }
         .cart-actions button {
-            padding: 10px 20px; /* уменьшили */
+            padding: 10px 20px;
             font-weight: 500;
             border: none;
             border-radius: var(--inputs-buttons-border-radius);
@@ -115,8 +125,8 @@
         .delete-item-btn:hover { background-color: #e0a800; }
 
         .order-form-section {
-            margin-top: 20px; /* было 40px */
-            padding: 20px;    /* было 30px */
+            margin-top: 20px;
+            padding: 20px;
             background-color: white;
             border-radius: var(--inputs-buttons-border-radius);
             border: 1px solid #eef2f6;
@@ -125,7 +135,7 @@
             color: var(--primary-color);
             border-bottom: 2px solid var(--light-color);
             padding-bottom: 8px;
-            margin-bottom: 15px; /* было 20px */
+            margin-bottom: 15px;
             font-size: 1.4em;
             font-weight: 600;
         }
@@ -134,8 +144,8 @@
         .order-form input[type="email"],
         .order-form textarea {
             width: 100%;
-            padding: 10px 14px;  /* было 12px 14px */
-            margin-bottom: 10px; /* было 15px */
+            padding: 10px 14px;
+            margin-bottom: 10px;
             border: 1px solid #d0d8e0;
             border-radius: var(--inputs-buttons-border-radius);
             box-sizing: border-box;
@@ -151,7 +161,7 @@
             background-color: #4CAF50;
             color: white;
             width: 100%;
-            padding: 12px; /* было 15px */
+            padding: 12px;
             border: none;
             border-radius: var(--inputs-buttons-border-radius);
             font-weight: 600;
@@ -169,7 +179,7 @@
         .quote-toggle {
             display: flex;
             gap: 0;
-            margin: 0 0 15px; /* было 20px */
+            margin: 0 0 15px;
             border-radius: var(--inputs-buttons-border-radius, 8px);
             overflow: hidden;
             border: 2px solid var(--primary-color, #0e5c80);
@@ -193,10 +203,10 @@
 
         .empty-cart-message {
             text-align: center;
-            padding: 40px; /* уменьшили */
+            padding: 40px;
             background-color: var(--light-color);
             border-radius: var(--inputs-buttons-border-radius);
-            margin-top: 20px; /* уменьшили */
+            margin-top: 20px;
             font-size: 1.2em;
             color: #333;
         }
@@ -214,7 +224,7 @@
         .form-consent {
             font-size: 0.85em;
             color: #888;
-            margin-top: 10px; /* было 15px */
+            margin-top: 10px;
             text-align: center;
         }
         .form-consent a { color: var(--primary-color); text-decoration: none; }
@@ -222,8 +232,8 @@
 
         .order-success {
             max-width: 720px;
-            margin: 20px auto 20px; /* уменьшили */
-            padding: 30px 40px;     /* уменьшили */
+            margin: 20px auto 20px;
+            padding: 30px 40px;
             background: linear-gradient(180deg, #f0fbf3 0%, #ffffff 100%);
             border: 2px solid #4CAF50;
             border-radius: var(--inputs-buttons-border-radius);
@@ -336,7 +346,7 @@
             .cart-summary-block { justify-content: center; }
             .cart-actions { flex-direction: column-reverse; }
             .cart-actions button, .cart-actions .continue-shopping-btn { width: 100%; text-align: center; }
-            .order-form-section { padding: 15px; } /* уменьшили для мобилок */
+            .order-form-section { padding: 15px; }
             .cart-page h1 { font-size: 1.5em; }
 
             .order-success { padding: 20px 15px; margin: 15px auto; }
@@ -665,7 +675,7 @@ function copyEmailToClipboard(btn) {
         }
 
         let tableHtml = `
-            <h2 style="color: var(--dark-color); margin-bottom: 10px;">Ваш заказ</h2>
+            <h2 style="color: var(--dark-color); margin-bottom: 5px;">Ваш заказ</h2>
             <table class="cart-table">
                 <thead>
                     <tr>
