@@ -878,18 +878,28 @@ function copyEmailToClipboard(btn) {
         const totalLengthStr = formatTotalLength(totalLengthCm);
 
         let fullMessage = `🎉 НОВЫЙ ЗАКАЗ № ${orderNumber}!\n\n`;
+        let cartOnlyText = ``; // Для Telegram
+
         if (orderType === 'legal') {
             fullMessage += `🏢 Компания: ${company}\n`;
             fullMessage += `🆔 ИНН: ${inn}\n`;
             fullMessage += `👤 Контактное лицо: ${name}\n`;
+            
+            cartOnlyText += `🏢 Компания: ${company}\n`;
+            cartOnlyText += `🆔 ИНН: ${inn}\n`;
+            cartOnlyText += `👤 Контактное лицо: ${name}\n`;
         } else {
             fullMessage += `👤 Имя: ${name}\n`;
+            cartOnlyText += `👤 Имя: ${name}\n`;
         }
+        
         fullMessage += `📞 Телефон/Email: ${phone}\n`;
         fullMessage += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
         fullMessage += `🛒 Состав заказа:\n`;
 
-        let cartOnlyText = ``;
+        cartOnlyText += `📞 Телефон/Email: ${phone}\n`;
+        cartOnlyText += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
+        cartOnlyText += `🛒 Состав заказа:\n`;
 
         for (const itemId in currentCart) {
             const item = currentCart[itemId];
@@ -930,7 +940,6 @@ function copyEmailToClipboard(btn) {
                 total: total.toLocaleString('ru-RU'),
                 totalLength: totalLengthStr,
                 totalWeight: totalWeightRounded,
-                // Дополнительные поля для юрлица (на будущее)
                 company: company,
                 inn: inn
             };
