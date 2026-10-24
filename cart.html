@@ -918,17 +918,23 @@ function copyEmailToClipboard(btn) {
         submitBtn.disabled = true;
 
         try {
+            // --- ВОЗВРАЩАЕМ ТИП 'order' ДЛЯ TELEGRAM ---
             const telegramData = {
-                type: orderType === 'legal' ? 'quote_legal' : 'quote_physical',
+                type: 'order',
                 name: name,
                 phone: phone,
-                company: company,
-                inn: inn,
-                message: comments || '',
+                email: '',
+                comments: comments || '',
+                orderNumber: orderNumber,
                 cartText: cartOnlyText,
-                hasCartItems: true,
-                source: 'Корзина: ' + window.location.pathname
+                total: total.toLocaleString('ru-RU'),
+                totalLength: totalLengthStr,
+                totalWeight: totalWeightRounded,
+                // Дополнительные поля для юрлица (на будущее)
+                company: company,
+                inn: inn
             };
+            // ------------------------------------------
 
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST', mode: 'no-cors',
