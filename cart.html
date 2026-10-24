@@ -100,6 +100,7 @@
             color: white;
             text-decoration: none;
             display: inline-block;
+            border-radius: var(--inputs-buttons-border-radius);
         }
         .continue-shopping-btn:hover { background-color: var(--primary-color-hover); }
         .delete-item-btn {
@@ -164,6 +165,32 @@
             background-color: #cccccc;
             cursor: not-allowed;
         }
+
+        /* Стили для переключателя (как в модалке) */
+        .quote-toggle {
+            display: flex;
+            gap: 0;
+            margin: 0 0 20px;
+            border-radius: var(--inputs-buttons-border-radius, 8px);
+            overflow: hidden;
+            border: 2px solid var(--primary-color, #0e5c80);
+        }
+        .quote-toggle__btn {
+            flex: 1;
+            padding: 10px 12px;
+            border: none;
+            background: transparent;
+            color: var(--primary-color, #0e5c80);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .quote-toggle__btn:hover:not(.active) { background: #f0f7fb; }
+        .quote-toggle__btn.active { background: var(--primary-color, #0e5c80); color: #fff; }
+        .quote-fields-legal, .quote-fields-physical { display: none; }
+        .quote-fields-legal.active, .quote-fields-physical.active { display: block; }
 
         .empty-cart-message {
             text-align: center;
@@ -347,7 +374,6 @@
 <!-- NAV_START -->
 <nav class="nav">
     <div class="container">
-        <!-- Левая часть: Меню -->
         <div class="nav-links">
             <a href="index.html#catalog">Каталог</a>
             <a href="index.html#advantages">Преимущества</a>
@@ -356,7 +382,6 @@
             <a href="index.html#contacts">Контакты и Заказ</a>
         </div>
 
-        <!-- Правая часть: Почта, Корзина, Кнопка -->
         <div class="nav-actions">
             <div class="nav-email-wrapper">
                 <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="nav-email-link">
@@ -398,14 +423,35 @@
     <div id="checkout-section" class="order-form-section" style="display: none;">
         <h2>Оформление заказа</h2>
         <form id="orderForm" class="order-form">
-            <label for="name" class="visually-hidden">Ваше Имя или название компании</label>
-            <input type="text" id="name" placeholder="Ваше Имя / Название Компании" required maxlength="100" aria-required="true">
-            <label for="phone" class="visually-hidden">Контактный телефон</label>
-            <input type="tel" id="phone" placeholder="Контактный Телефон (для уточнения деталей)" required maxlength="20" aria-required="true">
-            <label for="email" class="visually-hidden">Email (необязательно)</label>
-            <input type="email" id="email" placeholder="Email (необязательно)" maxlength="100">
-            <label for="comments" class="visually-hidden">Комментарии к заказу</label>
-            <textarea id="comments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
+            <div class="quote-toggle" role="tablist" aria-label="Тип лица">
+                <button type="button" class="quote-toggle__btn active" data-type="legal" onclick="setOrderType('legal')" role="tab" aria-selected="true">Юридическое лицо</button>
+                <button type="button" class="quote-toggle__btn" data-type="physical" onclick="setOrderType('physical')" role="tab" aria-selected="false">Физическое лицо</button>
+            </div>
+
+            <div class="quote-fields-legal active" data-fields="legal">
+                <label for="orderCompany" class="visually-hidden">Название компании</label>
+                <input type="text" id="orderCompany" placeholder="Название компании" maxlength="100" aria-required="true">
+
+                <label for="orderINN" class="visually-hidden">ИНН</label>
+                <input type="text" id="orderINN" placeholder="ИНН (10 или 12 цифр)" maxlength="12" pattern="[0-9]{10,12}" aria-required="true">
+
+                <label for="orderName" class="visually-hidden">Контактное лицо</label>
+                <input type="text" id="orderName" placeholder="Контактное лицо" maxlength="100" aria-required="true">
+
+                <label for="orderPhone" class="visually-hidden">Телефон или Email</label>
+                <input type="text" id="orderPhone" placeholder="Телефон или Email" maxlength="100" aria-required="true">
+            </div>
+
+            <div class="quote-fields-physical" data-fields="physical">
+                <label for="orderPhysName" class="visually-hidden">Ваше имя</label>
+                <input type="text" id="orderPhysName" placeholder="Ваше имя" maxlength="100" aria-required="true">
+
+                <label for="orderPhysContact" class="visually-hidden">Телефон или Email</label>
+                <input type="text" id="orderPhysContact" placeholder="Телефон или Email" maxlength="100" aria-required="true">
+            </div>
+
+            <label for="orderComments" class="visually-hidden">Комментарии к заказу</label>
+            <textarea id="orderComments" placeholder="Комментарии к заказу (адрес доставки, пожелания и т.д.)" rows="4" maxlength="500"></textarea>
 
             <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">
                 Чертёж или фото пришлите на почту <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" style="color: var(--primary-color);">sales@stremyanki-dlya-kolodcev.ru</a>
@@ -448,7 +494,6 @@
 </main>
 
 <!-- CTA_START -->
-<!-- CTA_START -->
 <section class="cta-section">
     <div class="container">
         <div class="cta-box">
@@ -481,10 +526,6 @@
     </div>
 </section>
 <!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
-<!-- CTA_END -->
 
 <!-- FOOTER_START -->
 <footer class="footer">
@@ -497,7 +538,6 @@
                     +7 (965) 555-99-66
                 </a>
                 
-                <!-- Почта с кнопкой копирования -->
                 <div class="footer-email-wrapper">
                     <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" class="footer-email-link">
                         <img src="images/icons/mail.svg" alt="" class="footer-icon" width="14" height="14"> 
@@ -555,7 +595,6 @@
     </div>
 </footer>
 
-<!-- Скрипты (год и копирование) -->
 <script>
     (function () {
         var yearEl = document.getElementById('footer-year');
@@ -587,40 +626,8 @@ function copyEmailToClipboard(btn) {
 }
 </script>
 
-<!-- Подключаем скрипт для окна "Заказать звонок" -->
 <script src="js/callback-modal.js"></script>
 <!-- FOOTER_END -->
-
-<script>
-    (function () {
-        var yearEl = document.getElementById('footer-year');
-        if (yearEl) {
-            yearEl.textContent = new Date().getFullYear();
-        }
-    })();
-</script>
-
-<script>
-function copyEmailToClipboard(btn) {
-    const email = 'sales@stremyanki-dlya-kolodcev.ru';
-    const img = btn.querySelector('img');
-    
-    navigator.clipboard.writeText(email).then(() => {
-        img.style.filter = 'brightness(0) saturate(100%) invert(52%) sepia(88%) saturate(425%) hue-rotate(83deg) brightness(96%) contrast(91%)';
-        
-        if (typeof showToast === 'function') {
-            showToast('Email скопирован!', 'success', 2000);
-        }
-        
-        setTimeout(() => {
-            img.style.filter = '';
-        }, 2000);
-    }).catch(err => {
-        console.error('Ошибка копирования: ', err);
-        alert('Не удалось скопировать. Пожалуйста, выделите адрес вручную.');
-    });
-}
-</script>
 
 <script src="js/quote-modal.js"></script>
 <script>
@@ -777,38 +784,70 @@ function copyEmailToClipboard(btn) {
         }, 5000);
     }
 
+    let orderType = 'legal';
+
+    window.setOrderType = function(type) {
+        orderType = type;
+        const form = document.getElementById('orderForm');
+        
+        form.querySelectorAll('.quote-toggle__btn').forEach(btn => {
+            const isActive = btn.getAttribute('data-type') === type;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        form.querySelectorAll('[data-fields]').forEach(block => {
+            block.classList.toggle('active', block.getAttribute('data-fields') === type);
+        });
+
+        form.querySelectorAll('.quote-fields-legal input, .quote-fields-physical input').forEach(inp => {
+            if (inp.closest('.quote-fields-legal.active, .quote-fields-physical.active')) {
+                inp.setAttribute('required', 'required');
+            } else {
+                inp.removeAttribute('required');
+            }
+        });
+    };
+
     document.getElementById('orderForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        const nameEl = document.getElementById('name');
-        const phoneEl = document.getElementById('phone');
-        const emailEl = document.getElementById('email');
-        const commentsEl = document.getElementById('comments');
+        const form = this;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        let name = '';
+        let phone = '';
+        let company = '';
+        let inn = '';
+        let comments = sanitizeInput(document.getElementById('orderComments').value);
 
-        const name = sanitizeInput(nameEl.value);
-        const phone = sanitizeInput(phoneEl.value);
-        const comments = sanitizeInput(commentsEl.value);
-        const email = sanitizeInput(emailEl.value);
+        clearFormInvalid(form);
 
-        clearFormInvalid(this);
+        if (orderType === 'legal') {
+            const companyEl = document.getElementById('orderCompany');
+            const innEl = document.getElementById('orderINN');
+            const nameEl = document.getElementById('orderName');
+            const phoneEl = document.getElementById('orderPhone');
 
-        if (!name || name.length < 2) {
-            setFieldInvalid(nameEl, true);
-            showToast('Введите корректное имя', 'error');
-            nameEl.focus();
-            return;
-        }
-        if (!validatePhone(phone)) {
-            setFieldInvalid(phoneEl, true);
-            showToast('Введите корректный телефон', 'error');
-            phoneEl.focus();
-            return;
-        }
-        if (email && !validateEmail(email)) {
-            setFieldInvalid(emailEl, true);
-            showToast('Введите корректный email', 'error');
-            emailEl.focus();
-            return;
+            company = sanitizeInput(companyEl.value);
+            inn = sanitizeInput(innEl.value);
+            name = sanitizeInput(nameEl.value);
+            phone = sanitizeInput(phoneEl.value);
+
+            if (!company) { setFieldInvalid(companyEl, true); showToast('Укажите название компании', 'error'); companyEl.focus(); return; }
+            if (!/^\d{10,12}$/.test(inn)) { setFieldInvalid(innEl, true); showToast('ИНН должен содержать 10 или 12 цифр', 'error'); innEl.focus(); return; }
+            if (!name) { setFieldInvalid(nameEl, true); showToast('Укажите контактное лицо', 'error'); nameEl.focus(); return; }
+            if (!phone) { setFieldInvalid(phoneEl, true); showToast('Укажите телефон или email', 'error'); phoneEl.focus(); return; }
+        } else {
+            const physNameEl = document.getElementById('orderPhysName');
+            const physContactEl = document.getElementById('orderPhysContact');
+
+            name = sanitizeInput(physNameEl.value);
+            phone = sanitizeInput(physContactEl.value);
+
+            if (!name || name.length < 2) { setFieldInvalid(physNameEl, true); showToast('Введите корректное имя', 'error'); physNameEl.focus(); return; }
+            if (!validatePhone(phone)) { setFieldInvalid(physContactEl, true); showToast('Введите корректный контакт', 'error'); physContactEl.focus(); return; }
         }
 
         const currentCart = getCart();
@@ -838,15 +877,18 @@ function copyEmailToClipboard(btn) {
         const totalWeightRounded = Math.round(totalWeightKg);
         const totalLengthStr = formatTotalLength(totalLengthCm);
 
-        // 1. Формируем полное сообщение для почты
         let fullMessage = `🎉 НОВЫЙ ЗАКАЗ № ${orderNumber}!\n\n`;
-        fullMessage += `👤 Имя: ${name}\n`;
-        fullMessage += `📞 Телефон: ${phone}\n`;
-        fullMessage += `📧 Email: ${email || 'Не указан'}\n`;
+        if (orderType === 'legal') {
+            fullMessage += `🏢 Компания: ${company}\n`;
+            fullMessage += `🆔 ИНН: ${inn}\n`;
+            fullMessage += `👤 Контактное лицо: ${name}\n`;
+        } else {
+            fullMessage += `👤 Имя: ${name}\n`;
+        }
+        fullMessage += `📞 Телефон/Email: ${phone}\n`;
         fullMessage += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
         fullMessage += `🛒 Состав заказа:\n`;
 
-        // 2. Формируем сообщение только с товарами и итогами для Telegram
         let cartOnlyText = ``;
 
         for (const itemId in currentCart) {
@@ -862,41 +904,38 @@ function copyEmailToClipboard(btn) {
             cartOnlyText += itemLine;
         }
 
-        // --- ДОБАВЛЯЕМ ИТОГИ В ТЕЛЕГРАМ ---
         cartOnlyText += `\n📊 ИТОГИ ЗАКАЗА:\n`;
         cartOnlyText += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
         cartOnlyText += `📏 Общая длина: ${totalLengthStr}\n`;
         cartOnlyText += `⚖️ Общий вес: ${totalWeightRounded} кг`;
 
-        // --- ИТОГИ ДЛЯ ПОЧТЫ ---
         fullMessage += `\n📊 ИТОГИ ЗАКАЗА:\n`;
         fullMessage += `💰 Общая сумма: ${total.toLocaleString('ru-RU')} руб.\n`;
         fullMessage += `📏 Общая длина: ${totalLengthStr}\n`;
         fullMessage += `⚖️ Общий вес: ${totalWeightRounded} кг`;
 
-        const submitBtn = document.querySelector('#orderForm button[type="submit"]');
-        const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Отправка...';
         submitBtn.disabled = true;
 
         try {
-            // Отправка в Telegram (используем cartOnlyText с итогами)
+            const telegramData = {
+                type: orderType === 'legal' ? 'quote_legal' : 'quote_physical',
+                name: name,
+                phone: phone,
+                company: company,
+                inn: inn,
+                message: comments || '',
+                cartText: cartOnlyText,
+                hasCartItems: true,
+                source: 'Корзина: ' + window.location.pathname
+            };
+
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST', mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: 'order', name, phone,
-                    email: email || '',
-                    comments: comments || '',
-                    orderNumber: orderNumber,
-                    cartText: cartOnlyText,
-                    total: total.toLocaleString('ru-RU'),
-                    totalLength: totalLengthStr,
-                    totalWeight: totalWeightRounded
-                })
+                body: JSON.stringify(telegramData)
             }).catch(err => console.warn('Google Script ошибка:', err));
 
-            // Отправка на почту (используем fullMessage)
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
             mailData.append('subject', `НОВЫЙ ЗАКАЗ № ${orderNumber} с сайта stremyanki-dlya-kolodcev.ru`);
@@ -912,7 +951,7 @@ function copyEmailToClipboard(btn) {
             showOrderSuccess(orderNumber);
             showToast('🎉 Заказ успешно отправлен!', 'success', 4000);
 
-            document.getElementById('orderForm').reset();
+            form.reset();
         } catch (error) {
             console.error('Ошибка отправки:', error);
             showToast('❌ Ошибка отправки. Позвоните нам: +7 (965) 555-99-66', 'error', 5000);
