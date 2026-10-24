@@ -166,7 +166,6 @@
             cursor: not-allowed;
         }
 
-        /* Стили для переключателя (как в модалке) */
         .quote-toggle {
             display: flex;
             gap: 0;
@@ -221,7 +220,6 @@
         .form-consent a { color: var(--primary-color); text-decoration: none; }
         .form-consent a:hover { text-decoration: underline; }
 
-        /* ===== Блок благодарности ===== */
         .order-success {
             max-width: 720px;
             margin: 40px auto 20px;
@@ -371,7 +369,6 @@
     </div>
 </header>
 
-<!-- NAV_START -->
 <nav class="nav">
     <div class="container">
         <div class="nav-links">
@@ -405,7 +402,6 @@
         </div>
     </div>
 </nav>
-<!-- NAV_END -->
 
 <main>
 
@@ -493,7 +489,6 @@
 
 </main>
 
-<!-- CTA_START -->
 <section class="cta-section">
     <div class="container">
         <div class="cta-box">
@@ -525,9 +520,7 @@
         </div>
     </div>
 </section>
-<!-- CTA_END -->
 
-<!-- FOOTER_START -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -627,7 +620,6 @@ function copyEmailToClipboard(btn) {
 </script>
 
 <script src="js/callback-modal.js"></script>
-<!-- FOOTER_END -->
 
 <script src="js/quote-modal.js"></script>
 <script>
@@ -878,28 +870,19 @@ function copyEmailToClipboard(btn) {
         const totalLengthStr = formatTotalLength(totalLengthCm);
 
         let fullMessage = `🎉 НОВЫЙ ЗАКАЗ № ${orderNumber}!\n\n`;
-        let cartOnlyText = ``; // Для Telegram
+        let cartOnlyText = ``;
 
         if (orderType === 'legal') {
             fullMessage += `🏢 Компания: ${company}\n`;
             fullMessage += `🆔 ИНН: ${inn}\n`;
             fullMessage += `👤 Контактное лицо: ${name}\n`;
-            
-            cartOnlyText += `🏢 Компания: ${company}\n`;
-            cartOnlyText += `🆔 ИНН: ${inn}\n`;
-            cartOnlyText += `👤 Контактное лицо: ${name}\n`;
         } else {
             fullMessage += `👤 Имя: ${name}\n`;
-            cartOnlyText += `👤 Имя: ${name}\n`;
         }
         
         fullMessage += `📞 Телефон/Email: ${phone}\n`;
         fullMessage += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
         fullMessage += `🛒 Состав заказа:\n`;
-
-        cartOnlyText += `📞 Телефон/Email: ${phone}\n`;
-        cartOnlyText += `💬 Комментарий: ${comments || 'Нет'}\n\n`;
-        cartOnlyText += `🛒 Состав заказа:\n`;
 
         for (const itemId in currentCart) {
             const item = currentCart[itemId];
@@ -928,7 +911,6 @@ function copyEmailToClipboard(btn) {
         submitBtn.disabled = true;
 
         try {
-            // --- ВОЗВРАЩАЕМ ТИП 'order' ДЛЯ TELEGRAM ---
             const telegramData = {
                 type: 'order',
                 name: name,
@@ -943,7 +925,6 @@ function copyEmailToClipboard(btn) {
                 company: company,
                 inn: inn
             };
-            // ------------------------------------------
 
             const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                 method: 'POST', mode: 'no-cors',
