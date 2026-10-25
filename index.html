@@ -700,7 +700,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->2 076 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ss1-products.csv -->2 076 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ss1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -758,7 +758,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tmp-902-kruglye.csv,tmp-902-pryamougolnye.csv,tmp-902-perepadnye.csv -->2 445 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="tmp-902.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -787,7 +787,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:tl-products.csv,tl-63-products.csv -->1 635 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="l-16-dlya-teplovyh-setej.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -815,7 +815,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:ssg1-products.csv -->8 625 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="ssg1.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -842,7 +842,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:vdl-products-22.csv,vdl-products-25.csv,vdl-products-28.csv -->2 520 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:vdl-products-22.csv,vdl-products-25.csv,vdl-products-28.csv -->2 520 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="vl-2-l-19-vodoprovodnaya.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -869,7 +869,7 @@
                     </div>
                     <div class="product-price">
                         <span class="price-label">Цена от:</span>
-                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv,kl1-products-28.csv -->3 600 ₽<!-- PRICE_END --></span>
+                        <span class="price-value"><!-- PRICE_START:min:kl1-products.csv,kl1-products-28.csv -->3 600 ₽<!-- PRICE_END --></span>
                     </div>
                     <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html" class="cta-button">Перейти к выбору</a>
                 </div>
@@ -879,11 +879,11 @@
             <div class="product-card">
                 <div class="product-image-wrapper"
                     data-title="Лестница подвесная Л-17 для гидранта"
-                    data-vid-1="images/l-17/vid-1.webp"
-                    data-foto-1="images/l-17/foto-1.webp"
-                    data-chertezh="images/l-17/chertezh.webp"
-                    data-album="images/l-17/album.webp">
-                    <img src="images/l-17/vid-1.webp" alt="Лестница подвесная Л-17 для гидранта" class="product-image" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');">
+                    data-vid-1="images/l-17-000SB/vid-1.webp"
+                    data-foto-1="images/l-17-000SB/foto-1.webp"
+                    data-chertezh="images/l-17-000SB/chertezh.webp"
+                    data-album="images/l-17-000SB/album.webp">
+                    <img src="images/l-17-000SB/vid-1.webp" alt="Лестница подвесная Л-17 для гидранта" class="product-image" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');">
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Лестница подвесная Л-17 для гидранта</h3>
@@ -1284,169 +1284,4 @@ function copyEmailToClipboard(btn) {
 
         const slides = [];
         if (vid1) slides.push({ src: vid1, label: 'Вид 1' });
-        if (vid2) slides.push({ src: vid2, label: 'Вид 2' });
-        if (vid3) slides.push({ src: vid3, label: 'Вид 3' });
-        if (foto1) slides.push({ src: foto1, label: 'Фото 1' });
-        if (foto2) slides.push({ src: foto2, label: 'Фото 2' });
-        if (album) slides.push({ src: album, label: 'Альбом' });
-        if (chertezh) slides.push({ src: chertezh, label: 'Чертёж' });
-        if (img) slides.push({ src: img, label: 'Фото' });
-        if (draw) slides.push({ src: draw, label: 'Чертёж' });
-
-        modalImgs.forEach((im, i) => {
-            if (slides[i]) {
-                im.src = slides[i].src;
-                im.alt = slides[i].label;
-                im.style.display = '';
-                im.parentElement.classList.remove('image-placeholder');
-                im.onerror = function() {
-                    this.style.display = 'none';
-                    this.parentElement.classList.add('image-placeholder');
-                };
-            } else {
-                im.src = '';
-                im.alt = '';
-                im.style.display = 'none';
-                im.parentElement.classList.remove('image-placeholder');
-            }
-        });
-
-        const galleryItems = galleryContainer.querySelectorAll('.gallery-item');
-        galleryItems.forEach((item, i) => {
-            item.style.display = slides[i] ? '' : 'none';
-        });
-
-        galleryNav.innerHTML = slides.map((s, i) =>
-            `<button data-slide="${i}" onclick="scrollToSlide(${i})">${s.label}</button>`
-        ).join('');
-
-        totalSlides = slides.length;
-        currentSlide = 0;
-        modal.style.display = "block";
-        modalA11y.open();
-
-        setTimeout(() => {
-            scrollToSlide(0);
-            setActiveButton(0);
-        }, 50);
-    }
-
-    function closeModal() {
-        modalA11y.close();
-        modal.style.display = "none";
-    }
-
-    function scrollToSlide(index) {
-        if (index < 0 || index >= totalSlides) return;
-        currentSlide = index;
-        const itemWidth = galleryContainer.clientWidth;
-        galleryContainer.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
-        setActiveButton(index);
-    }
-
-    function setActiveButton(index) {
-        const buttons = galleryNav.querySelectorAll('button');
-        buttons.forEach((btn, i) => {
-            if (i === index) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-    }
-
-    galleryContainer.addEventListener('scroll', () => {
-        const itemWidth = galleryContainer.clientWidth;
-        if (itemWidth === 0) return;
-        const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
-        if (newIndex !== currentSlide && newIndex >= 0 && newIndex < totalSlides) {
-            currentSlide = newIndex;
-            setActiveButton(newIndex);
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        imageWrappers.forEach(wrapper => {
-            wrapper.addEventListener('click', function() {
-                openModal(this);
-            });
-        });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeModal();
-        });
-    });
-
-    window.closeModal = closeModal;
-    window.scrollToSlide = scrollToSlide;
-
-    document.getElementById('mainContactForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        const nameEl = document.getElementById('mainName');
-        const phoneEl = document.getElementById('mainPhone');
-        const name = sanitizeInput(nameEl.value);
-        const phone = sanitizeInput(phoneEl.value);
-        const message = sanitizeInput(document.getElementById('mainMessage').value);
-
-        clearFormInvalid(this);
-
-        if (!name || name.length < 2) {
-            setFieldInvalid(nameEl, true);
-            showToast('Пожалуйста, введите корректное имя', 'error');
-            nameEl.focus();
-            return;
-        }
-        if (!validatePhone(phone)) {
-            setFieldInvalid(phoneEl, true);
-            showToast('Пожалуйста, введите корректный контакт', 'error');
-            phoneEl.focus();
-            return;
-        }
-
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Отправка...';
-        submitBtn.disabled = true;
-
-        const telegramPromise = fetch(CONFIG.GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                type: 'contact', name, phone,
-                message: message || '',
-                source: 'Главная страница'
-            })
-        }).catch(err => console.warn('TG ошибка:', err));
-
-        // Собираем красивый текст заявки
-        let prettyMessage = `📞 НОВАЯ ЗАЯВКА С ГЛАВНОЙ СТРАНИЦЫ\n\n`;
-        prettyMessage += `👤 Имя: ${name}\n`;
-        prettyMessage += `📞 Контакт: ${phone}\n`;
-        prettyMessage += `💬 Сообщение: ${message || 'Нет'}\n`;
-
-        const mailData = new FormData();
-        mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
-        mailData.append('subject', 'Заявка с главной страницы — stremyanki-dlya-kolodcev.ru');
-        mailData.append('from_name', 'Сайт лестниц для колодцев');
-        mailData.append('form_data', prettyMessage); // <-- Отправляем готовый текст с эмодзи
-
-        const mailPromise = fetch('https://api.web3forms.com/submit', {
-            method: 'POST', body: mailData
-        }).catch(err => console.warn('Mail ошибка:', err));
-
-        try {
-            await Promise.allSettled([telegramPromise, mailPromise]);
-            showToast('Заявка отправлена! Менеджер свяжется с вами.', 'success', 4000);
-            this.reset();
-        } catch (error) {
-            console.error('Ошибка отправки:', error);
-            showToast('❌ Ошибка отправки. Позвоните нам: +7 (965) 555-99-66', 'error', 5000);
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-
-    bindAutoClearInvalid(document.getElementById('mainContactForm'));
-</script>
-
-</body>
-</html>
+        if (vid2)
