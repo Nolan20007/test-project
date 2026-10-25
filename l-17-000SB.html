@@ -497,6 +497,35 @@
         }
     </style>
     <script src="js/analytics.js"></script>
+<!-- JSONLD_PRODUCTS_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Лестница подвесная Л-17 для гидранта",
+  "sku": "L-17",
+  "mpn": "L-17",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/l-17/vid-mini.webp",
+  "description": "Лестница подвесная Л-17 для гидранта. Длина 1820 см, ширина 480 см, масса 17.86 кг.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://stremyanki-dlya-kolodcev.ru/l-17-000SB.html#item-L-17",
+    "priceCurrency": "RUB",
+    "price": "2800",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "ИП Гневашева Кристина Дмитриевна"
+    }
+  }
+}
+</script>
+<!-- JSONLD_PRODUCTS_END -->
 </head>
 <body>
 
@@ -619,8 +648,24 @@
 
     <div id="nomenclature-container">
 <!-- NOMENCLATURE_START -->
+<table class="nomenclature-table"><thead><tr>
+    <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
+    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
+    <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-L-17">
+      <td><img src="images/l-17/vid-mini.webp" alt="Лестница подвесная Л-17 для гидранта" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Лестница подвесная Л-17 для гидранта</td><td>1820</td><td>480</td><td>17.86</td>
+      <td>от 2 800 руб.</td><td>1 шт</td>
+      <td class="cart-cell"><div class="quantity-control">
+        <button type="button" onclick="changeQuantity('L-17', -1)">−</button>
+        <input type="number" id="L-17-qty" value="1" min="1" max="99" data-price="2800">
+        <button type="button" onclick="changeQuantity('L-17', 1)">+</button>
+      </div></td>
+      <td><button type="button" class="cart-button"
+            data-item-id="L-17" data-item-name="Лестница подвесная Л-17 для гидранта"
+            data-item-length="1820" data-item-weight="17.86">В корзину</button></td>
+    </tr></tbody></table>
 <!-- NOMENCLATURE_END -->
-    </div>
+</div>
 
     <div class="price-description">
         <p>В нашей компании вы можете приобрести подвесные лестницы Л-17 по доступной цене. Изделия изготавливаются из высококачественной стали в строгом соответствии с ГОСТом и проектной документацией.</p>
@@ -678,6 +723,7 @@
         </div>
     </div>
 </section>
+<!-- CTA_END -->
 <!-- CTA_END -->
 <!-- CTA_END -->
 <!-- CTA_END -->

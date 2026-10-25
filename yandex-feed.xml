@@ -375,6 +375,19 @@
       <weight>65.2</weight>
       <description>Стремянка для колодцев ТПР 902-09-22.84 С1-18. Длина 600 см, ширина 50 см, масса 65.2 кг.</description>
     </offer>
+    <offer id="L-17" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-17-000SB.html#item-L-17</url>
+      <price>2800</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-17/vid-1.png</picture>
+      <name>Лестница подвесная Л-17 для гидранта</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница подвесная Л-17 для гидранта</typePrefix>
+      <model>L-17</model>
+      <weight>17.86</weight>
+      <description>Лестница подвесная Л-17 для гидранта. Длина 1820 см, ширина 480 см, масса 17.86 кг.</description>
+    </offer>
     <offer id="SG-22" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-22</url>
       <price>8625</price>
