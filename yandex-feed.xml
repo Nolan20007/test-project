@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-25 13:32">
+<yml_catalog date="2026-10-25 13:33">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -380,13 +380,26 @@
       <price>2800</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-17/vid-1.png</picture>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-17-000SB/vid-1.png</picture>
       <name>Лестница подвесная Л-17 для гидранта</name>
       <vendor>Лестницы и стремянки для колодцев</vendor>
       <typePrefix>Лестница подвесная Л-17 для гидранта</typePrefix>
       <model>L-17</model>
       <weight>17.86</weight>
       <description>Лестница подвесная Л-17 для гидранта. Длина 1820 см, ширина 480 см, масса 17.86 кг.</description>
+    </offer>
+    <offer id="L-3" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-3-sk-2201-88.html#item-L-3</url>
+      <price>2800</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-3-sk-2201-88/vid-1.png</picture>
+      <name>Лестница Л-3 СК 2201-88-36</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница Л-3 СК 2201-88-36</typePrefix>
+      <model>L-3</model>
+      <weight>17.86</weight>
+      <description>Лестница Л-3 СК 2201-88-36. Длина 1820 см, ширина 480 см, масса 17.86 кг.</description>
     </offer>
     <offer id="SG-22" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-22</url>
