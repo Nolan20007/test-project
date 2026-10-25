@@ -6,6 +6,9 @@ const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 const PAGES = [
   { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
   { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
+  
+  // Новый товар Л-17
+  { html: 'l-17-000SB.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-17-000SB-products.csv' }] },
 
   // КЛ-1: две таблицы (Ø25 и Ø28)
   { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
@@ -36,6 +39,7 @@ const PAGES = [
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
+      { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' }, // Новый товар в прайсе
       { id: 'nomenclature-tmp-902-kruglye',       csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-tmp-902-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-tmp-902-perepadnye',    csv: 'data/tmp-902-perepadnye.csv' },
@@ -55,6 +59,10 @@ const PAGES = [
 const FEED_SOURCES = [
   { csv: 'data/ss1-products.csv',             page: 'ss1.html',             bigImage: 'images/ss1/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/ss2-products.csv',             page: 'ss2.html',             bigImage: 'images/ss2/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
+  
+  // Новый товар Л-17 (исправлено на полное название)
+  { csv: 'data/l-17-000SB-products.csv',      page: 'l-17-000SB.html',      bigImage: 'images/l-17/vid-1.png', typePrefix: 'Лестница подвесная Л-17 для гидранта' },
+
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
   { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
@@ -415,7 +423,6 @@ function buildGoogleFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       const picture = `${SITE_URL}/${src.bigImage}?v=${encodeURIComponent(p.id)}`;
-      // ИЗМЕНЕНИЕ: добавлен код валюты для Google Merchant Center
       const formattedPrice = price.toFixed(2) + ' RUB';
 
       items.push(`    <item>
@@ -461,6 +468,7 @@ const ALL_HTML_FILES = [
   'kak-vybrat-stremyanku.html',
   'kl-1-dlya-kanalizacionnyh-kolodcev.html',
   'l-16-dlya-teplovyh-setej.html',
+  'l-17-000SB.html', // Добавлен новый файл
   'montazh-stremyanok-v-kolodcy.html',
   'o-kompanii.html',
   'politika-konfidencialnosti.html',
