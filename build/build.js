@@ -9,6 +9,9 @@ const PAGES = [
   
   // Новый товар Л-17
   { html: 'l-17-000SB.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-17-000SB-products.csv' }] },
+  
+  // Новый товар Л-3
+  { html: 'l-3-sk-2201-88.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-3-sk-2201-88-products.csv' }] },
 
   // КЛ-1: две таблицы (Ø25 и Ø28)
   { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
@@ -39,7 +42,8 @@ const PAGES = [
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
-      { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' }, // Новый товар в прайсе
+      { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' }, // Л-17
+      { id: 'nomenclature-l-3',                  csv: 'data/l-3-sk-2201-88-products.csv' }, // Л-3
       { id: 'nomenclature-tmp-902-kruglye',       csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-tmp-902-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-tmp-902-perepadnye',    csv: 'data/tmp-902-perepadnye.csv' },
@@ -60,8 +64,11 @@ const FEED_SOURCES = [
   { csv: 'data/ss1-products.csv',             page: 'ss1.html',             bigImage: 'images/ss1/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/ss2-products.csv',             page: 'ss2.html',             bigImage: 'images/ss2/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
   
-  // Новый товар Л-17 (исправлено на полное название)
-  { csv: 'data/l-17-000SB-products.csv',      page: 'l-17-000SB.html',      bigImage: 'images/l-17/vid-1.png', typePrefix: 'Лестница подвесная Л-17 для гидранта' },
+  // Новый товар Л-17
+  { csv: 'data/l-17-000SB-products.csv',      page: 'l-17-000SB.html',      bigImage: 'images/l-17-000SB/vid-1.png', typePrefix: 'Лестница подвесная Л-17 для гидранта' },
+  
+  // Новый товар Л-3
+  { csv: 'data/l-3-sk-2201-88-products.csv',  page: 'l-3-sk-2201-88.html',  bigImage: 'images/l-3-sk-2201-88/vid-1.png', typePrefix: 'Лестница Л-3 СК 2201-88-36' },
 
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
@@ -468,7 +475,8 @@ const ALL_HTML_FILES = [
   'kak-vybrat-stremyanku.html',
   'kl-1-dlya-kanalizacionnyh-kolodcev.html',
   'l-16-dlya-teplovyh-setej.html',
-  'l-17-000SB.html', // Добавлен новый файл
+  'l-17-000SB.html', // Добавлен
+  'l-3-sk-2201-88.html', // Добавлен
   'montazh-stremyanok-v-kolodcy.html',
   'o-kompanii.html',
   'politika-konfidencialnosti.html',
