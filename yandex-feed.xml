@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-26 13:46">
+<yml_catalog date="2026-10-26 13:54">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -377,7 +377,7 @@
     </offer>
     <offer id="L-17" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/l-17-000SB.html#item-L-17</url>
-      <price>2800</price>
+      <price>3200</price>
       <currencyId>RUB</currencyId>
       <categoryId>1</categoryId>
       <picture>https://stremyanki-dlya-kolodcev.ru/images/l-17-000SB/vid-1.png</picture>
