@@ -126,7 +126,12 @@ function replaceBetweenMarkers(html, startMarker, endMarker, newContent) {
   if (endIdx < startIdx) return { html, replaced: false };
 
   const before = html.slice(0, startIdx + startMarker.length);
-  const after = html.slice(endIdx);
+  let after = html.slice(endIdx);
+
+  // Убираем все подряд идущие дубликаты endMarker (например, CTA_END)
+  const endEsc = endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const dupRe = new RegExp(`(\\s*${endEsc}\\s*)+`, 'g');
+  after = after.replace(dupRe, `\n${endMarker}`);
 
   const newHtml = `${before}\n${newContent}\n${after}`;
   return { html: newHtml, replaced: newHtml !== html };
