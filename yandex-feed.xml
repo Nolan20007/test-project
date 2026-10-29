@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-29 11:10">
+<yml_catalog date="2026-10-29 11:16">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -400,6 +400,110 @@
       <model>L-3</model>
       <weight>17.86</weight>
       <description>Лестница Л-3 СК 2201-88-36. Длина 1820 см, ширина 480 см, масса 17.86 кг.</description>
+    </offer>
+    <offer id="L-19-1.5" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-1.5</url>
+      <price>3132</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 1.5 (3650.Л-19-000СБ)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-1.5</model>
+      <weight>17.4</weight>
+      <description>Лестница Л-19 - 1.5 (3650.Л-19-000СБ). Длина 150 см, ширина 40.5 см, масса 17.4 кг.</description>
+    </offer>
+    <offer id="L-19-2.0" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-2.0</url>
+      <price>4284</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 2.0 (3650.Л-19-000СБ-01)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-2.0</model>
+      <weight>23.8</weight>
+      <description>Лестница Л-19 - 2.0 (3650.Л-19-000СБ-01). Длина 200 см, ширина 40.5 см, масса 23.8 кг.</description>
+    </offer>
+    <offer id="L-19-2.5" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-2.5</url>
+      <price>5436</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 2.5 (3650.Л-19-000СБ-02)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-2.5</model>
+      <weight>30.2</weight>
+      <description>Лестница Л-19 - 2.5 (3650.Л-19-000СБ-02). Длина 250 см, ширина 40.5 см, масса 30.2 кг.</description>
+    </offer>
+    <offer id="L-19-3.0" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-3.0</url>
+      <price>6372</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 3.0 (3650.Л-19-000СБ-03)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-3.0</model>
+      <weight>35.4</weight>
+      <description>Лестница Л-19 - 3.0 (3650.Л-19-000СБ-03). Длина 300 см, ширина 40.5 см, масса 35.4 кг.</description>
+    </offer>
+    <offer id="L-19-3.5" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-3.5</url>
+      <price>7776</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 3.5 (3650.Л-19-000СБ-04)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-3.5</model>
+      <weight>43.2</weight>
+      <description>Лестница Л-19 - 3.5 (3650.Л-19-000СБ-04). Длина 350 см, ширина 40.5 см, масса 43.2 кг.</description>
+    </offer>
+    <offer id="L-19-4.0" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-4.0</url>
+      <price>8694</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 4.0 (3650.Л-19-000СБ-05)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-4.0</model>
+      <weight>48.3</weight>
+      <description>Лестница Л-19 - 4.0 (3650.Л-19-000СБ-05). Длина 400 см, ширина 40.5 см, масса 48.3 кг.</description>
+    </offer>
+    <offer id="L-19-4.5" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-4.5</url>
+      <price>9630</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 4.5 (3650.Л-19-000СБ-06)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-4.5</model>
+      <weight>53.5</weight>
+      <description>Лестница Л-19 - 4.5 (3650.Л-19-000СБ-06). Длина 450 см, ширина 40.5 см, масса 53.5 кг.</description>
+    </offer>
+    <offer id="L-19-5.0" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/l-19.html#item-L-19-5.0</url>
+      <price>10800</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/l-19/vid-1.png</picture>
+      <name>Лестница Л-19 - 5.0 (3650.Л-19-000СБ-07)</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница для колодцев</typePrefix>
+      <model>L-19-5.0</model>
+      <weight>60</weight>
+      <description>Лестница Л-19 - 5.0 (3650.Л-19-000СБ-07). Длина 500 см, ширина 40.5 см, масса 60.0 кг.</description>
     </offer>
     <offer id="SG-22" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/ssg1.html#item-SG-22</url>
