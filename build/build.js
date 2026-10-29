@@ -318,13 +318,20 @@ function buildProductListJsonLd(products, pageUrl) {
   const items = products.map(p => {
     const price = parseFloat(p.price) || 0;
     const anchor = safeAnchor(p.id);
+    
+    // ЗАМЕНА: Берем картинку из CSV и меняем vid-mini на vid-search для поисковиков
+    let searchImage = p.image || 'images/default-product.png';
+    if (searchImage.includes('vid-mini')) {
+      searchImage = searchImage.replace('vid-mini.webp', 'vid-search.webp').replace('vid-mini.png', 'vid-search.png');
+    }
+
     const obj = {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": p.name,
       "sku": p.id,
       "mpn": p.id,
-      "image": SITE_URL + '/' + (p.image || 'images/default-product.png'),
+      "image": SITE_URL + '/' + searchImage,
       "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
       "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" },
       "offers": {
@@ -382,7 +389,14 @@ function buildYandexFeed() {
 
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
-      const picture = `${SITE_URL}/${src.bigImage}`;
+      
+      // ЗАМЕНА: Берем bigImage и меняем vid-1 на vid-search для Яндекса
+      let searchImage = src.bigImage;
+      if (searchImage.includes('vid-1')) {
+        searchImage = searchImage.replace('vid-1.png', 'vid-search.png').replace('vid-1.webp', 'vid-search.webp');
+      }
+      const picture = `${SITE_URL}/${searchImage}`;
+      
       const typePrefix = src.typePrefix || 'Стремянка для колодцев';
 
       offers.push(`    <offer id="${esc(p.id)}" available="true">
@@ -441,7 +455,14 @@ function buildGoogleFeed() {
 
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
-      const picture = `${SITE_URL}/${src.bigImage}?v=${encodeURIComponent(p.id)}`;
+      
+      // Для Google тоже используем большую картинку
+      let searchImage = src.bigImage;
+      if (searchImage.includes('vid-1')) {
+        searchImage = searchImage.replace('vid-1.png', 'vid-search.png').replace('vid-1.webp', 'vid-search.webp');
+      }
+      const picture = `${SITE_URL}/${searchImage}?v=${encodeURIComponent(p.id)}`;
+      
       const formattedPrice = price.toFixed(2) + ' RUB';
 
       items.push(`    <item>
