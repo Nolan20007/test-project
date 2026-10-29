@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-29 13:10">
+<yml_catalog date="2026-10-29 13:13">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -386,7 +386,7 @@
       <typePrefix>Лестница подвесная Л-17 для гидранта</typePrefix>
       <model>L-17</model>
       <weight>17.86</weight>
-      <description>Лестница подвесная Л-17 для гидранта. Длина 1820 см, ширина 480 см, масса 17.86 кг.</description>
+      <description>Лестница подвесная Л-17 для гидранта. Длина 182 см, ширина 48 см, масса 17.86 кг.</description>
     </offer>
     <offer id="L-3" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/l-3-sk-2201-88.html#item-L-3</url>
