@@ -13,6 +13,9 @@ const PAGES = [
   // Новый товар Л-3
   { html: 'l-3-sk-2201-88.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-3-sk-2201-88-products.csv' }] },
 
+  // Новый товар Л-19
+  { html: 'l-19.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-19-products.csv' }] },
+
   // КЛ-1: две таблицы (Ø25 и Ø28)
   { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
       { id: 'nomenclature-kl1-25', csv: 'data/kl1-products.csv' },
@@ -44,6 +47,7 @@ const PAGES = [
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
       { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' }, // Л-17
       { id: 'nomenclature-l-3',                  csv: 'data/l-3-sk-2201-88-products.csv' }, // Л-3
+      { id: 'nomenclature-l-19',                 csv: 'data/l-19-products.csv' }, // Л-19
       { id: 'nomenclature-tmp-902-kruglye',       csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-tmp-902-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-tmp-902-perepadnye',    csv: 'data/tmp-902-perepadnye.csv' },
@@ -69,6 +73,9 @@ const FEED_SOURCES = [
   
   // Новый товар Л-3
   { csv: 'data/l-3-sk-2201-88-products.csv',  page: 'l-3-sk-2201-88.html',  bigImage: 'images/l-3-sk-2201-88/vid-1.png', typePrefix: 'Лестница Л-3 СК 2201-88-36' },
+
+  // Новый товар Л-19
+  { csv: 'data/l-19-products.csv',            page: 'l-19.html',            bigImage: 'images/l-19/vid-1.png', typePrefix: 'Лестница для колодцев' },
 
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
@@ -482,6 +489,7 @@ const ALL_HTML_FILES = [
   'l-16-dlya-teplovyh-setej.html',
   'l-17-000SB.html', // Добавлен
   'l-3-sk-2201-88.html', // Добавлен
+  'l-19.html', // Добавлен
   'montazh-stremyanok-v-kolodcy.html',
   'o-kompanii.html',
   'politika-konfidencialnosti.html',
