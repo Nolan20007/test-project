@@ -159,10 +159,12 @@
                 <li><a href="ssg1.html">Пожарные стремянки СГ</a></li>
                 <li><a href="skoba-mn.html">Скобы ходовые ТПР 901-09-11.84</a></li>
                 <li><a href="skoba-nm1-3-900-3.html">Скобы ходовые серии 3.900-3</a></li>
-                <!-- НОВЫЕ СТРАНИЦЫ -->
+                
                 <li><a href="l-17-000SB.html">Лестница подвесная Л-17 для гидранта</a></li>
                 <li><a href="l-3-sk-2201-88.html">Лестница Л-3 СК 2201-88-36</a></li>
-                <!-- КОНЕЦ НОВЫХ СТРАНИЦ -->
+                <!-- ДОБАВЛЕНА ЛЕСТНИЦА Л-19 -->
+                <li><a href="l-19.html">Лестница Л-19</a></li>
+                
                 <li><a href="price-list.html">Прайс-лист (все цены)</a></li>
             </ul>
         </div>
@@ -195,7 +197,6 @@
 
 
 <!-- CTA_START -->
-<!-- CTA_START -->
 <section class="cta-section">
     <div class="container">
         <div class="cta-box">
@@ -222,14 +223,14 @@
             <div class="buttons-row">
                 <a href="cart.html" class="cta-button">Перейти в корзину</a>
                 <button class="cta-button" onclick="openQuoteModal()">Получить расчет/КП</button>
-<button class="cta-button" onclick="openCallbackModal()">Оставить заявку на звонок</button>
+                <button class="cta-button" onclick="openCallbackModal()">Оставить заявку на звонок</button>
             </div>
         </div>
     </div>
 </section>
 <!-- CTA_END -->
 
-<!-- CTA_END --><!-- FOOTER_START -->
+<!-- FOOTER_START -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -274,8 +275,8 @@
                 <a href="kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a>
                 <a href="l-16-dlya-teplovyh-setej.html">Лестницы тепловых сетей Л-16</a>
                 <a href="l-17-000SB.html">Лестница подвесная Л-17 для гидранта</a>
-                <a href="l-3-sk-2201-88.html">Лестница Л-3 СК 2201-88-36</a> <!-- ДОБАВЛЕНО -->
-                <a href="l-19.html">Лестница Л-19</a> <!-- ДОБАВЛЕНО -->
+                <a href="l-3-sk-2201-88.html">Лестница Л-3 СК 2201-88-36</a> 
+                <a href="l-19.html">Лестница Л-19</a> 
                 <a href="ssg1.html">Пожарные стремянки СГ</a>
             </div>
             
@@ -335,16 +336,7 @@ function copyEmailToClipboard(btn) {
 
 <!-- Подключаем скрипт для окна "Заказать звонок" -->
 <script src="js/callback-modal.js"></script>
-
-<!-- FOOTER_END --><script src="js/quote-modal.js"></script>
-<script>
-    (function () {
-        var yearEl = document.getElementById('footer-year');
-        if (yearEl) {
-            yearEl.textContent = new Date().getFullYear();
-        }
-    })();
-</script>
+<script src="js/quote-modal.js"></script>
 
 </body>
 </html>
