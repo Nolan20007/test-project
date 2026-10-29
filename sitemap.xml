@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
     Sitemap для stremyanki-dlya-kolodcev.ru
-    Последнее обновление: 2026-10-17
+    Последнее обновление: 2026-10-29
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
@@ -79,7 +79,7 @@
         <priority>0.9</priority>
     </url>
 
-    <!-- НОВЫЕ СТРАНИЦЫ -->
+    <!-- Новые товарные страницы -->
     <url>
         <loc>https://stremyanki-dlya-kolodcev.ru/l-17-000SB.html</loc>
         <lastmod>2026-10-17</lastmod>
@@ -93,7 +93,15 @@
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
-    
+
+    <!-- НОВАЯ СТРАНИЦА Л-19 -->
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/l-19.html</loc>
+        <lastmod>2026-10-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- Полезные статьи -->
     <url>
         <loc>https://stremyanki-dlya-kolodcev.ru/kak-vybrat-stremyanku.html</loc>
