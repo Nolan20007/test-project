@@ -390,10 +390,10 @@ function buildYandexFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      // ЗАМЕНА: Берем bigImage и меняем vid-1 на vid-search для Яндекса
+      // FIX: webp — для Яндекса всегда vid-search.webp
       let searchImage = src.bigImage;
       if (searchImage.includes('vid-1')) {
-        searchImage = searchImage.replace('vid-1.png', 'vid-search.png').replace('vid-1.webp', 'vid-search.webp');
+        searchImage = searchImage.replace('vid-1.png', 'vid-search.webp').replace('vid-1.webp', 'vid-search.webp');
       }
       const picture = `${SITE_URL}/${searchImage}`;
       
@@ -456,10 +456,10 @@ function buildGoogleFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      // Для Google тоже используем большую картинку
+      // FIX: webp — для Google тоже всегда vid-search.webp
       let searchImage = src.bigImage;
       if (searchImage.includes('vid-1')) {
-        searchImage = searchImage.replace('vid-1.png', 'vid-search.png').replace('vid-1.webp', 'vid-search.webp');
+        searchImage = searchImage.replace('vid-1.png', 'vid-search.webp').replace('vid-1.webp', 'vid-search.webp');
       }
       const picture = `${SITE_URL}/${searchImage}?v=${encodeURIComponent(p.id)}`;
       
