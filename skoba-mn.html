@@ -9,14 +9,14 @@
     <link rel="dns-prefetch" href="https://mc.yandex.ru">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    <title>Скобы ходовые ТПР 901-09-11.84 для колодцев</title>
-    <meta name="description" content="Купить скобы ходовые ТПР 901-09-11.84 для колодцев по цене от производителя. Сталь Ст3, пруток ∅18 мм. Доставка по России. +7 (965) 555-99-66">
-    <meta name="keywords" content="скобы ходовые ТПР 901-09-11.84, скоба ходовая МН-1, скоба для колодца, монтаж колодцев, купить скобы ходовые">
+    <title>Скоба ходовая ТПР 901-09-11.84 КЖИ МН1 для колодцев</title>
+    <meta name="description" content="Купить скобы ходовые ТПР 901-09-11.84 КЖИ МН1 для колодцев по цене от производителя. Сталь Ст3, пруток ∅18 мм. Доставка по России.">
+    <meta name="keywords" content="скобы ходовые ТПР 901-09-11.84 КЖИ МН1, скоба ходовая МН1, скоба для колодца, монтаж колодцев, купить скобы ходовые">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/skoba-mn.html" />
 <!-- OG_START -->
 <meta property="og:type" content="product">
-<meta property="og:title" content="Скобы ходовые ТПР 901-09-11.84 МН-1">
+<meta property="og:title" content="Скоба ходовая ТПР 901-09-11.84 КЖИ МН1">
 <meta property="og:description" content="Ходовые скобы МН-1 из арматуры Ø18 мм. Соответствие СП 31.13330.2012 и ГОСТ 8020-2016.">
 <meta property="og:image" content="https://stremyanki-dlya-kolodcev.ru/images/scoba-nm/vid-1.webp">
 <meta property="og:url" content="https://stremyanki-dlya-kolodcev.ru/skoba-mn.html">
@@ -62,12 +62,15 @@
             grid-template-columns: 1fr 2fr;
             gap: 40px;
             margin-top: 10px;
+            align-items: start;
         }
 
         .image-section {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            position: relative;
         }
 
         .main-image-wrapper {
@@ -84,6 +87,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .main-image {
@@ -94,6 +98,68 @@
             object-fit: contain;
             display: block;
             background: #ffffff;
+        }
+
+        .album-sidebar {
+            display: none;
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--inputs-buttons-border-radius);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-top: 0;
+            padding: 16px 0 20px;
+            overflow: hidden;
+            border: 1px solid #eef2f6;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            transition: box-shadow 0.2s;
+        }
+        .album-sidebar:hover { box-shadow: 0 6px 16px rgba(14, 92, 128, 0.12); }
+        .album-sidebar.is-visible { display: flex; }
+        .album-sidebar__caption {
+            font-size: 12.5px;
+            color: #7a8a9a;
+            text-align: center;
+            line-height: 1.45;
+            margin-bottom: 12px;
+            padding: 0 16px;
+        }
+        .album-sidebar__image-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .album-sidebar__image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background: #ffffff;
+        }
+
+        .album-inline {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .album-inline__caption {
+            font-size: 12px;
+            color: #7a8a9a;
+            margin-bottom: 10px;
+            line-height: 1.45;
+        }
+        .album-inline img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--inputs-buttons-border-radius);
+            border: 1px solid #eef2f6;
         }
 
         .image-placeholder {
@@ -127,9 +193,11 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            border-radius: 999px;
-            padding: 4px;
+            border-radius: 24px;
+            padding: 5px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: calc(100% - 24px);
+            overflow-y: auto;
         }
         .image-toggle__btn {
             border: none;
@@ -416,6 +484,7 @@
 
         @media (max-width: 900px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .image-section { justify-content: flex-start; }
             .product-details h2 { font-size: 1.3em; }
             .nomenclature-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
             .nomenclature-table th, .nomenclature-table td { padding: 6px 4px; font-size: 11px; }
@@ -424,6 +493,9 @@
             .characteristics-list li .description { grid-column: 1 / 3; margin-top: 5px; }
             .buttons-row { flex-direction: column; align-items: center; gap: 12px; }
             .cta-button { width: 90%; max-width: 280px; margin: 0; }
+
+            .album-sidebar { display: none !important; }
+            .album-inline { display: block; }
         }
         @media (max-width: 600px) {
             .product-details { padding-left: 16px; padding-right: 16px; }
@@ -452,11 +524,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Скоба ходовая ТПР 901-09-11.84 МН-1",
+  "name": "Скоба ходовая ТПР 901-09-11.84 КЖИ МН1",
   "sku": "MN-1",
   "mpn": "MN-1",
   "image": "https://stremyanki-dlya-kolodcev.ru/images/scoba-nm/vid-search.webp",
-  "description": "Скоба ходовая ТПР 901-09-11.84 МН-1. Длина 37 см, ширина 25.8 см, масса 1.36 кг.",
+  "description": "Скоба ходовая ТПР 901-09-11.84 КЖИ МН1. Длина 37 см, ширина 25.8 см, масса 1.36 кг.",
   "brand": {
     "@type": "Brand",
     "name": "Лестницы и стремянки для колодцев"
@@ -486,14 +558,14 @@
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stremyanki-dlya-kolodcev.ru/"},
     {"@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://stremyanki-dlya-kolodcev.ru/#catalog"},
-    {"@type": "ListItem", "position": 3, "name": "Скобы ходовые ТПР 901-09-11.84", "item": "https://stremyanki-dlya-kolodcev.ru/skoba-mn.html"}
+    {"@type": "ListItem", "position": 3, "name": "Скоба ходовая ТПР 901-09-11.84 КЖИ МН1", "item": "https://stremyanki-dlya-kolodcev.ru/skoba-mn.html"}
   ]
 }
 </script>
 
 <header class="header">
     <div class="container">
-        <h1>Скобы ходовые ТПР 901-09-11.84</h1>
+        <h1>Скоба ходовая ТПР 901-09-11.84 КЖИ МН1</h1>
         <p>Соединительные элементы для повышения устойчивости колодцев</p>
     </div>
 </header>
@@ -541,7 +613,7 @@
     <div class="breadcrumbs">
         <a href="index.html">Главная</a> ›
         <a href="index.html#catalog">Каталог</a> ›
-        <span>Скобы ходовые ТПР 901-09-11.84</span>
+        <span>Скоба ходовая ТПР 901-09-11.84 КЖИ МН1</span>
     </div>
 </div>
 
@@ -550,13 +622,22 @@
     <div class="content-grid">
         <div class="image-section">
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
-                <picture><source id="mainSource" srcset="images/scoba-nm/vid-1.webp" type="image/webp"><img id="mainImage" src="images/scoba-nm/vid-1.png" alt="Скоба ходовая МН-1 ТПР 901-09-11.84" class="main-image"
+                <picture><source id="mainSource" srcset="images/scoba-nm/vid-1.webp" type="image/webp"><img id="mainImage" src="images/scoba-nm/vid-1.png" alt="Скоба ходовая ТПР 901-09-11.84 КЖИ МН1" class="main-image"
                      onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture>
                 <div class="image-toggle">
                     <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/scoba-nm/vid-1.png','images/scoba-nm/vid-1.webp', 0)">Вид 1</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-1.png','images/scoba-nm/foto-1.webp', 1)">Фото 1</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/foto-2.png','images/scoba-nm/foto-2.webp', 2)">Фото 2</button>
                     <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/scoba-nm/chertezh.png','images/scoba-nm/chertezh.webp', 3)">Чертёж</button>
+                </div>
+            </div>
+
+            <div class="album-sidebar" id="albumSidebar" aria-hidden="true">
+                <div class="album-sidebar__caption">
+                    Типовые проектные решения 901-09-11.84.<br>Альбом V. Строительные изделия.
+                </div>
+                <div class="album-sidebar__image-wrapper">
+                    <picture><source srcset="images/scoba-nm/album.webp" type="image/webp"><img src="images/scoba-nm/album.png" alt="Альбом ТПР 901-09-11.84" class="album-sidebar__image"></picture>
                 </div>
             </div>
         </div>
@@ -578,7 +659,7 @@
                 <li><strong>Вес:</strong><span class="description"> 1,36 кг</span></li>
             </ul>
 
-            <details class="info-details">
+            <details class="info-details" id="infoDetails">
                 <summary>
                     <span>Подробнее: конструкция, материалы, стандарты</span>
                 </summary>
@@ -615,12 +696,19 @@
                         <li><strong>ГОСТ 8020-2016:</strong><span class="description"> конструкции бетонные и железобетонные для колодцев</span></li>
                     </ul>
 
+                    <div class="album-inline">
+                        <div class="album-inline__caption">
+                            Типовые проектные решения 901-09-11.84.<br>Альбом V. Строительные изделия.
+                        </div>
+                        <picture><source srcset="images/scoba-nm/album.webp" type="image/webp"><img src="images/scoba-nm/album.png" alt="Альбом ТПР 901-09-11.84"></picture>
+                    </div>
+
                 </div>
             </details>
         </div>
     </div>
 
-    <h2>Стоимость скоб ходовых ТПР 901-09-11.84</h2>
+    <h2>Стоимость скобы ходовой ТПР 901-09-11.84 КЖИ МН1</h2>
 
     <div id="nomenclature-container">
 <!-- NOMENCLATURE_START -->
@@ -628,8 +716,8 @@
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
     <th>Количество</th><th>Корзина</th></tr></thead><tbody><tr id="item-MN-1">
-      <td><img src="images/scoba-nm/vid-mini.webp" alt="Скоба ходовая ТПР 901-09-11.84 МН-1" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>Скоба ходовая ТПР 901-09-11.84 МН-1</td><td>37</td><td>25.8</td><td>1.36</td>
+      <td><img src="images/scoba-nm/vid-mini.webp" alt="Скоба ходовая ТПР 901-09-11.84 КЖИ МН1" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td>Скоба ходовая ТПР 901-09-11.84 КЖИ МН1</td><td>37</td><td>25.8</td><td>1.36</td>
       <td>от 430 руб.</td><td>1 шт</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('MN-1', -1)">−</button>
@@ -637,21 +725,21 @@
         <button type="button" onclick="changeQuantity('MN-1', 1)">+</button>
       </div></td>
       <td><button type="button" class="cart-button"
-            data-item-id="MN-1" data-item-name="Скоба ходовая ТПР 901-09-11.84 МН-1"
+            data-item-id="MN-1" data-item-name="Скоба ходовая ТПР 901-09-11.84 КЖИ МН1"
             data-item-length="37" data-item-weight="1.36">В корзину</button></td>
     </tr></tbody></table>
 <!-- NOMENCLATURE_END -->
 </div>
 
     <div class="price-description">
-        <p>В нашей компании вы можете приобрести скобы ходовые ТПР 901-09-11.84 по доступной цене. Изделия изготавливаются из конструкционной стали Ст3 методом гибки в строгом соответствии с типовыми проектными решениями.</p>
+        <p>В нашей компании вы можете приобрести скобы ходовые ТПР 901-09-11.84 КЖИ МН1 по доступной цене. Изделия изготавливаются из конструкционной стали Ст3 методом гибки в строгом соответствии с типовыми проектными решениями.</p>
         <p>Цена на скобу ходовую указана за одно изделие. При больших объёмах заказа возможны скидки — уточняйте у менеджера.</p>
     </div>
 
     <p style="font-size: 0.85em; margin-top: 15px;">*Цены указаны от минимальной стоимости и не являются публичной офертой. Финальная цена зависит от объема заказа и условий поставки.</p>
 
     <section class="advantages-compact">
-        <h3 class="advantages-compact__title">Преимущества скоб ходовых ТПР 901-09-11.84</h3>
+        <h3 class="advantages-compact__title">Преимущества скоб ходовых ТПР 901-09-11.84 КЖИ МН1</h3>
         <ul class="advantages-compact__list">
             <li>Изготовлены по типовому проекту 901-09-11.84-КЖИ.МН-1</li>
             <li>Соответствие СП 31.13330.2012 и ГОСТ 8020-2016</li>
@@ -818,12 +906,14 @@ function copyEmailToClipboard(btn) {
             <div class="gallery-item"><picture><source srcset="images/scoba-nm/foto-1.webp" type="image/webp"><img src="images/scoba-nm/foto-1.png" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture></div>
             <div class="gallery-item"><picture><source srcset="images/scoba-nm/foto-2.webp" type="image/webp"><img src="images/scoba-nm/foto-2.png" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture></div>
             <div class="gallery-item"><picture><source srcset="images/scoba-nm/chertezh.webp" type="image/webp"><img src="images/scoba-nm/chertezh.png" alt="Чертеж" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture></div>
+            <div class="gallery-item"><picture><source srcset="images/scoba-nm/album.webp" type="image/webp"><img src="images/scoba-nm/album.png" alt="Альбом ТПР 901-09-11.84"></picture></div>
         </div>
         <div class="modal-nav" id="modalNav">
             <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
             <button data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
             <button data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
             <button data-slide="3" onclick="scrollToSlide(3)">Чертёж</button>
+            <button data-slide="4" onclick="scrollToSlide(4)">Альбом</button>
         </div>
     </div>
 </div>
@@ -858,10 +948,13 @@ function copyEmailToClipboard(btn) {
         if (btns[index]) btns[index].classList.add('active');
         mainImageWrapper.setAttribute('data-current-slide', index);
     }
-    mainImageWrapper.onclick = () => openModal();
-    function openModal() {
+    mainImageWrapper.onclick = () => openModal(0);
+    
+    function openModal(startSlide) {
         modal.style.display = "block";
-        const slide = parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
+        const slide = (typeof startSlide === 'number')
+            ? startSlide
+            : parseInt(mainImageWrapper.getAttribute('data-current-slide') || 0);
         setTimeout(() => scrollToSlide(slide), 50);
         modalA11y.open();
     }
@@ -891,6 +984,61 @@ function copyEmailToClipboard(btn) {
         const newIndex = Math.round(galleryContainer.scrollLeft / itemWidth);
         setActiveModalButton(newIndex);
     });
+
+    /* ===== Блок "Подробнее + картинка альбома слева" ===== */
+    const infoDetails = document.getElementById('infoDetails');
+    const albumSidebar = document.getElementById('albumSidebar');
+
+    function syncAlbumSidebar() {
+        if (!infoDetails || !albumSidebar) return;
+        if (infoDetails.open) {
+            albumSidebar.classList.add('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'false');
+        } else {
+            albumSidebar.classList.remove('is-visible');
+            albumSidebar.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', syncAlbumSidebar);
+        syncAlbumSidebar();
+    }
+
+    /* ===== Синхронизация ВЕРХА альбома с ВЕРХОМ info-details ===== */
+    function syncAlbumTopWithDetails() {
+        if (!infoDetails || !albumSidebar) return;
+        if (!infoDetails.open) {
+            albumSidebar.style.marginTop = '0px';
+            return;
+        }
+        albumSidebar.style.marginTop = '0px';
+        if (window.innerWidth <= 900) return;
+
+        const detailsRect = infoDetails.getBoundingClientRect();
+        const albumRect = albumSidebar.getBoundingClientRect();
+        const desiredDelta = detailsRect.top - albumRect.top;
+        const currentMargin = parseFloat(getComputedStyle(albumSidebar).marginTop) || 0;
+        let newMargin = currentMargin + desiredDelta;
+        if (newMargin < 0) newMargin = 0;
+
+        albumSidebar.style.marginTop = newMargin + 'px';
+    }
+
+    window.addEventListener('load', syncAlbumTopWithDetails);
+    window.addEventListener('resize', syncAlbumTopWithDetails);
+    if (infoDetails) {
+        infoDetails.addEventListener('toggle', function () {
+            setTimeout(syncAlbumTopWithDetails, 0);
+        });
+    }
+
+    if (albumSidebar) {
+        albumSidebar.addEventListener('click', function (e) {
+            e.stopPropagation();
+            openModal(4); // Индекс слайда альбома в модалке (4-й индекс, т.к. 0-Вид, 1-Фото1, 2-Фото2, 3-Чертёж, 4-Альбом)
+        });
+    }
 
     window.changeImage = changeImage;
     window.openModal = openModal;
