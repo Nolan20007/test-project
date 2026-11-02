@@ -30,9 +30,25 @@ const CATEGORIES_TO_GENERATE = [
     title: 'Стремянки ТПР 902-09-22.84',
     catalog_link: '../../ss2.html',
     items: [
-      { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, price: 1365, weight: 8.00, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
-      { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, price: 2058, weight: 10.00, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
-      { id: 'C1-02', model: 'С1-02', length_mm: 1200, length_cm: 120, price: 2730, weight: 12.00, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-02' },
+      { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, price: 975, weight: 6.5, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
+      { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, price: 1470, weight: 9.8, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
+      { id: 'C1-02', model: 'С1-02', length_mm: 1200, length_cm: 120, price: 1950, weight: 13.0, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-02' },
+      { id: 'C1-03', model: 'С1-03', length_mm: 1500, length_cm: 150, price: 2445, weight: 16.3, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-03' },
+      { id: 'C1-04', model: 'С1-04', length_mm: 1800, length_cm: 180, price: 2940, weight: 19.6, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-04' },
+      { id: 'C1-05', model: 'С1-05', length_mm: 2100, length_cm: 210, price: 3420, weight: 22.8, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-05' },
+      { id: 'C1-06', model: 'С1-06', length_mm: 2400, length_cm: 240, price: 3915, weight: 26.1, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-06' },
+      { id: 'C1-07', model: 'С1-07', length_mm: 2700, length_cm: 270, price: 4395, weight: 29.3, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-07' },
+      { id: 'C1-08', model: 'С1-08', length_mm: 3000, length_cm: 300, price: 4890, weight: 32.6, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-08' },
+      { id: 'C1-09', model: 'С1-09', length_mm: 3300, length_cm: 330, price: 5385, weight: 35.9, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-09' },
+      { id: 'C1-10', model: 'С1-10', length_mm: 3600, length_cm: 360, price: 5865, weight: 39.1, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-10' },
+      { id: 'C1-11', model: 'С1-11', length_mm: 3900, length_cm: 390, price: 6360, weight: 42.4, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-11' },
+      { id: 'C1-12', model: 'С1-12', length_mm: 4200, length_cm: 420, price: 6855, weight: 45.7, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-12' },
+      { id: 'C1-13', model: 'С1-13', length_mm: 4500, length_cm: 450, price: 7335, weight: 48.9, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-13' },
+      { id: 'C1-14', model: 'С1-14', length_mm: 4800, length_cm: 480, price: 7830, weight: 52.2, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-14' },
+      { id: 'C1-15', model: 'С1-15', length_mm: 5100, length_cm: 510, price: 8310, weight: 55.4, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-15' },
+      { id: 'C1-16', model: 'С1-16', length_mm: 5400, length_cm: 540, price: 8805, weight: 58.7, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-16' },
+      { id: 'C1-17', model: 'С1-17', length_mm: 5700, length_cm: 570, price: 9300, weight: 62.0, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-17' },
+      { id: 'C1-18', model: 'С1-18', length_mm: 6000, length_cm: 600, price: 9780, weight: 65.2, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-18' },
     ]
   }
 ];
@@ -265,18 +281,14 @@ function buildTable(products, enableCollapse) {
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
 
-    // ============================================================
-    //  ЛОГИКА ГЕНЕРАЦИИ ССЫЛКИ НА КАРТОЧКУ ТОВАРА
-    // ============================================================
+    // Логика генерации ссылки на карточку товара
     let itemUrl = '#';
     let modelSlug = '';
     
-    // Если ID начинается на C- (например C-1), это 901-я серия
     if (id.startsWith('C-')) {
         modelSlug = id.toLowerCase().replace('c-', 's-');
         itemUrl = `products/stremyanki-tpr-901-09-11-84/stremyanka-${modelSlug}.html`;
     } 
-    // Если ID начинается на C1- (например C1-00), это 902-я серия
     else if (id.startsWith('C1-')) {
         modelSlug = id.toLowerCase().replace('c1-', 's1-');
         itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
@@ -284,7 +296,6 @@ function buildTable(products, enableCollapse) {
 
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
 
-    // Оборачиваем название в ссылку
     const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${name}</a>` : name;
 
     html += `<tr id="${anchor}"${hiddenStyle}>
@@ -663,6 +674,8 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 //  НОВАЯ ФУНКЦИЯ ДЛЯ ГЕНЕРАЦИИ СТРАНИЦ ТОВАРОВ
 // ============================================================
 function buildProductPages() {
+  const createdPages = []; // <--- Собираем пути созданных файлов
+
   CATEGORIES_TO_GENERATE.forEach(cat => {
     const templatePath = path.resolve(__dirname, '..', 'templates', cat.template);
     if (!fs.existsSync(templatePath)) {
@@ -713,8 +726,12 @@ function buildProductPages() {
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log(`  ✓ products/${cat.folder}/${p.slug}.html создан`);
+      
+      createdPages.push(`products/${cat.folder}/${p.slug}.html`);
     });
   });
+
+  return createdPages; // <--- Возвращаем список
 }
 
 function build() {
@@ -729,8 +746,16 @@ function build() {
   if (footerContent) console.log('  ✓ includes/footer.html');
   if (ctaContent)    console.log('  ✓ includes/cta.html');
 
+  // 1. Сначала генерируем новые страницы товаров
+  console.log('\nГенерация страниц товаров...');
+  const newProductPages = buildProductPages();
+
+  // 2. Формируем ПОЛНЫЙ список страниц для обработки
+  const allPagesToProcess = [...ALL_HTML_FILES, ...newProductPages];
+
+  // 3. Прогоняем ВСЕ страницы через processMarkers (NAV/FOOTER/CTA)
   console.log('\nОбработка NAV, FOOTER, CTA, PRICE, ANALYTICS, OG...');
-  ALL_HTML_FILES.forEach(file => {
+  allPagesToProcess.forEach(file => {
     if (processMarkers(file, navContent, footerContent, ctaContent)) changed++;
   });
 
@@ -784,9 +809,6 @@ function build() {
       changed++;
     }
   });
-
-  console.log('\nГенерация страниц товаров...');
-  buildProductPages();
 
   console.log('\nГенерация yandex-feed.xml...');
   buildYandexFeed();
