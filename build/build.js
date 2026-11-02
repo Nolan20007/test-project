@@ -11,7 +11,7 @@ const CATEGORIES_TO_GENERATE = [
     template: 'stremyanki-tpr-901-09-11-84.html',
     folder: 'stremyanki-tpr-901-09-11-84',
     title: 'Стремянки ТПР 901-09-11.84',
-    catalog_link: '../../stremjanki-tpr-901-09-11-84.html',
+    catalog_link: 'ss1.html', 
     items: [
       { id: 'C-1', model: 'С-1', length_mm: 1200, length_cm: 120, price: 2076, weight: 13.84, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-1' },
       { id: 'C-2', model: 'С-2', length_mm: 1500, length_cm: 150, price: 2562, weight: 17.08, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-2' },
@@ -28,7 +28,7 @@ const CATEGORIES_TO_GENERATE = [
     template: 'stremyanki-tpr-902-09-22-84.html',
     folder: 'stremyanki-tpr-902-09-22-84',
     title: 'Стремянки ТПР 902-09-22.84',
-    catalog_link: '../../ss2.html',
+    catalog_link: 'ss2.html',
     items: [
       { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, price: 975, weight: 6.5, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
       { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, price: 1470, weight: 9.8, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
