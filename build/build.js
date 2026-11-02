@@ -479,7 +479,7 @@ ${offers.join('\n')}
 
   const outPath = path.resolve(__dirname, '..', 'yandex-feed.xml');
   fs.writeFileSync(outPath, xml, 'utf8');
-  console.log(`  ✓ yandex-feed.xml создан (${offers.length} товаров)`);
+  console.log(`  ✅ yandex-feed.xml создан (${offers.length} товаров)`);
 }
 
 function buildGoogleFeed() {
@@ -538,7 +538,7 @@ ${items.join('\n')}
 
   const outPath = path.resolve(__dirname, '..', 'google-feed.xml');
   fs.writeFileSync(outPath, xml, 'utf8');
-  console.log(`  ✓ google-feed.xml создан (${items.length} товаров)`);
+  console.log(`  ✅ google-feed.xml создан (${items.length} товаров)`);
 }
 
 const ALL_HTML_FILES = [
@@ -632,7 +632,49 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 
   const fixLinks = (content) => {
     if (!isProductPage) return content;
-    return content.replace(/href="(?!http|mailto|tel|#|\.\.\/)([^"]+)"/g, `href="${prefix}$1"`);
+
+    const isRelative = (url) => {
+      if (!url) return false;
+      const u = url.trim();
+      if (u.startsWith('../') || u.startsWith('/')) return false;
+      if (u.startsWith('#')) return false;
+      if (/^(https?:|data:|mailto:|tel:|javascript:|\/\/)/i.test(u)) return false;
+      return true;
+    };
+
+    let out = content;
+
+    // href — как было
+    out = out.replace(/href="([^"]+)"/g, (m, url) => {
+      if (!isRelative(url)) return m;
+      return `href="${prefix}${url}"`;
+    });
+
+    // src (img, source, script)
+    out = out.replace(/\ssrc="([^"]+)"/g, (m, url) => {
+      if (!isRelative(url)) return m;
+      return ` src="${prefix}${url}"`;
+    });
+
+    // srcset (picture/source) — если появится
+    out = out.replace(/\ssrcset="([^"]+)"/g, (m, val) => {
+      const fixed = val.split(',').map(part => {
+        const trimmed = part.trim();
+        if (!trimmed) return part;
+        const [url, ...rest] = trimmed.split(/\s+/);
+        if (!isRelative(url)) return part;
+        return [`${prefix}${url}`, ...rest].join(' ');
+      }).join(', ');
+      return ` srcset="${fixed}"`;
+    });
+
+    // xlink:href (inline SVG)
+    out = out.replace(/\sxlink:href="([^"]+)"/g, (m, url) => {
+      if (!isRelative(url)) return m;
+      return ` xlink:href="${prefix}${url}"`;
+    });
+
+    return out;
   };
 
   if (navContent) {
@@ -654,25 +696,25 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   if (priceResult.replaced) {
     html = priceResult.html;
     changed = true;
-    console.log(`  ✓ ${file} → цены обновлены из CSV`);
+    console.log(`  ✅ ${file} → цены обновлены из CSV`);
   }
 
   if (!ANALYTICS_RE.test(html) && html.includes('</head>')) {
     html = html.replace('</head>', `    ${ANALYTICS_TAG}\n</head>`);
     changed = true;
-    console.log(`  ✓ ${file} → добавлен analytics.js`);
+    console.log(`  ✅ ${file} → добавлен analytics.js`);
   }
 
   const ogResult = insertOgTags(html, file);
   if (ogResult.replaced) {
     html = ogResult.html;
     changed = true;
-    console.log(`  ✓ ${file} → OG-теги обновлены`);
+    console.log(`  ✅ ${file} → OG-теги обновлены`);
   }
 
   if (changed) {
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log(`  ✓ ${file} → NAV/FOOTER/CTA/PRICE/ANALYTICS/OG обновлены`);
+    console.log(`  ✅ ${file} → NAV/FOOTER/CTA/PRICE/ANALYTICS/OG обновлены`);
     return true;
   }
   return false;
@@ -726,7 +768,7 @@ function buildProductPages() {
 
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
-      console.log(`  ✓ products/${cat.folder}/${p.slug}.html создан`);
+      console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
       
       createdPages.push(`products/${cat.folder}/${p.slug}.html`);
     });
@@ -743,9 +785,9 @@ function build() {
   const footerContent = loadInclude('footer.html');
   const ctaContent = loadInclude('cta.html');
 
-  if (navContent)    console.log('  ✓ includes/nav.html');
-  if (footerContent) console.log('  ✓ includes/footer.html');
-  if (ctaContent)    console.log('  ✓ includes/cta.html');
+  if (navContent)    console.log('  ✅ includes/nav.html');
+  if (footerContent) console.log('  ✅ includes/footer.html');
+  if (ctaContent)    console.log('  ✅ includes/cta.html');
 
   console.log('\nГенерация страниц товаров...');
   const newProductPages = buildProductPages();
@@ -778,7 +820,7 @@ function build() {
       const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList));
       if (newHtml !== html) {
         html = newHtml; changedThisPage = true;
-        console.log(`  ✓ ${page.html} → #${t.id} (${products.length} строк)`);
+        console.log(`  ✅ ${page.html} → #${t.id} (${products.length} строк)`);
       } else {
         console.log(`  · ${page.html} → #${t.id} без изменений`);
       }
@@ -788,7 +830,7 @@ function build() {
       const cleanedHtml = stripOldProductJsonLd(html);
       if (cleanedHtml !== html) {
         html = cleanedHtml; changedThisPage = true;
-        console.log(`  ✓ ${page.html} → удалены старые Product JSON-LD`);
+        console.log(`  ✅ ${page.html} → удалены старые Product JSON-LD`);
       }
 
       const pageUrl = SITE_URL + '/' + page.html;
@@ -797,7 +839,7 @@ function build() {
         const newHtml = replaceJsonLd(html, jsonLd);
         if (newHtml !== html) {
           html = newHtml; changedThisPage = true;
-          console.log(`  ✓ ${page.html} → JSON-LD: ${allProducts.length} товаров`);
+          console.log(`  ✅ ${page.html} → JSON-LD: ${allProducts.length} товаров`);
         }
       }
     }
