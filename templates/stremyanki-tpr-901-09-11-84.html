@@ -281,18 +281,6 @@
     }
 </script>
 
-<script>
-function copyEmailToClipboard(btn) {
-    const email = 'sales@stremyanki-dlya-kolodcev.ru';
-    const img = btn.querySelector('img');
-    navigator.clipboard.writeText(email).then(() => {
-        img.style.filter = 'brightness(0) saturate(100%) invert(52%) sepia(88%) saturate(425%) hue-rotate(83deg) brightness(96%) contrast(91%)';
-        if (typeof showToast === 'function') { showToast('Email скопирован!', 'success', 2000); }
-        setTimeout(() => { img.style.filter = ''; }, 2000);
-    }).catch(err => { alert('Не удалось скопировать.'); });
-}
-</script>
-
 <!-- Оставляем ТОЛЬКО эти три скрипта. callback-modal.js придет из FOOTER -->
 <script src="../../js/cart.js"></script>
 <script src="../../js/quote-modal.js"></script>
