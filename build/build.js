@@ -3,26 +3,53 @@ const path = require('path');
 
 const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 
+// ============================================================
+//  НОВЫЙ КОНФИГ ДЛЯ ГЕНЕРАЦИИ КАРТОЧЕК ТОВАРОВ
+// ============================================================
+const CATEGORIES_TO_GENERATE = [
+  {
+    template: 'stremyanki-tpr-901-09-11-84.html',
+    folder: 'stremyanki-tpr-901-09-11-84',
+    title: 'Стремянки ТПР 901-09-11.84',
+    catalog_link: '../../stremjanki-tpr-901-09-11-84.html',
+    items: [
+      { id: 'C-1', model: 'С-1', length_mm: 1200, length_cm: 120, price: 2076, weight: 13.84, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-1' },
+      { id: 'C-2', model: 'С-2', length_mm: 1500, length_cm: 150, price: 2562, weight: 17.08, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-2' },
+      { id: 'C-3', model: 'С-3', length_mm: 1800, length_cm: 180, price: 3045, weight: 20.30, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-3' },
+      { id: 'C-4', model: 'С-4', length_mm: 2250, length_cm: 225, price: 3552, weight: 23.68, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-4' },
+      { id: 'C-5', model: 'С-5', length_mm: 2400, length_cm: 240, price: 4011, weight: 26.74, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-5' },
+      { id: 'C-6', model: 'С-6', length_mm: 2100, length_cm: 210, price: 3528, weight: 23.52, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-6' },
+      { id: 'C-7', model: 'С-7', length_mm: 2700, length_cm: 270, price: 4500, weight: 30.00, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-7' },
+      { id: 'C-8', model: 'С-8', length_mm: 4200, length_cm: 420, price: 6909, weight: 46.06, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-8' },
+      { id: 'C-9', model: 'С-9', length_mm: 4500, length_cm: 450, price: 7404, weight: 49.36, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-9' },
+    ]
+  },
+  {
+    template: 'stremyanki-tpr-902-09-22-84.html',
+    folder: 'stremyanki-tpr-902-09-22-84',
+    title: 'Стремянки ТПР 902-09-22.84',
+    catalog_link: '../../ss2.html',
+    items: [
+      { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, price: 1365, weight: 8.00, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
+      { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, price: 2058, weight: 10.00, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
+      { id: 'C1-02', model: 'С1-02', length_mm: 1200, length_cm: 120, price: 2730, weight: 12.00, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-02' },
+    ]
+  }
+];
+
 const PAGES = [
   { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
   { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
   
-  // Новый товар Л-17
   { html: 'l-17-000SB.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-17-000SB-products.csv' }] },
-  
-  // Новый товар Л-3
   { html: 'l-3-sk-2201-88.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-3-sk-2201-88-products.csv' }] },
-
-  // Новый товар Л-19
   { html: 'l-19.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-19-products.csv' }] },
 
-  // КЛ-1: две таблицы (Ø25 и Ø28)
   { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
       { id: 'nomenclature-kl1-25', csv: 'data/kl1-products.csv' },
       { id: 'nomenclature-kl1-28', csv: 'data/kl1-products-28.csv' }
   ]},
 
-  // ВЛ-2: три исполнения (Ø22, Ø25, Ø28)
   { html: 'vl-2-l-19-vodoprovodnaya.html', tables: [
       { id: 'nomenclature-vl2-22', csv: 'data/vdl-products-22.csv' },
       { id: 'nomenclature-vl2-25', csv: 'data/vdl-products-25.csv' },
@@ -45,9 +72,9 @@ const PAGES = [
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
-      { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' }, // Л-17
-      { id: 'nomenclature-l-3',                  csv: 'data/l-3-sk-2201-88-products.csv' }, // Л-3
-      { id: 'nomenclature-l-19',                 csv: 'data/l-19-products.csv' }, // Л-19
+      { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' },
+      { id: 'nomenclature-l-3',                  csv: 'data/l-3-sk-2201-88-products.csv' },
+      { id: 'nomenclature-l-19',                 csv: 'data/l-19-products.csv' },
       { id: 'nomenclature-tmp-902-kruglye',       csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-tmp-902-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-tmp-902-perepadnye',    csv: 'data/tmp-902-perepadnye.csv' },
@@ -67,29 +94,17 @@ const PAGES = [
 const FEED_SOURCES = [
   { csv: 'data/ss1-products.csv',             page: 'ss1.html',             bigImage: 'images/ss1/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/ss2-products.csv',             page: 'ss2.html',             bigImage: 'images/ss2/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
-  
-  // Новый товар Л-17
   { csv: 'data/l-17-000SB-products.csv',      page: 'l-17-000SB.html',      bigImage: 'images/l-17-000SB/vid-1.png', typePrefix: 'Лестница подвесная Л-17 для гидранта' },
-  
-  // Новый товар Л-3
   { csv: 'data/l-3-sk-2201-88-products.csv',  page: 'l-3-sk-2201-88.html',  bigImage: 'images/l-3-sk-2201-88/vid-1.png', typePrefix: 'Лестница Л-3 СК 2201-88-36' },
-
-  // Новый товар Л-19
   { csv: 'data/l-19-products.csv',            page: 'l-19.html',            bigImage: 'images/l-19/vid-1.png', typePrefix: 'Лестница для колодцев' },
-
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
   { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
   { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
-
-  // ВЛ-2: все три исполнения (Ø22, Ø25, Ø28)
   { csv: 'data/vdl-products-22.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products-25.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products-28.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
-
-  // КЛ-1: оба исполнения (Ø25, Ø28)
   { csv: 'data/kl1-products.csv',             page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/kl1-products-28.csv',          page: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', bigImage: 'images/kl1/vid-1.png', typePrefix: 'Лестница для колодцев' },
-
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
@@ -135,7 +150,6 @@ function replaceBetweenMarkers(html, startMarker, endMarker, newContent) {
   const before = html.slice(0, startIdx + startMarker.length);
   let after = html.slice(endIdx);
 
-  // Убираем все подряд идущие дубликаты endMarker (например, CTA_END)
   const endEsc = endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const dupRe = new RegExp(`(\\s*${endEsc}\\s*)+`, 'g');
   after = after.replace(dupRe, `\n${endMarker}`);
@@ -319,7 +333,6 @@ function buildProductListJsonLd(products, pageUrl) {
     const price = parseFloat(p.price) || 0;
     const anchor = safeAnchor(p.id);
     
-    // ЗАМЕНА: Берем картинку из CSV и меняем vid-mini на vid-search для поисковиков
     let searchImage = p.image || 'images/default-product.png';
     if (searchImage.includes('vid-mini')) {
       searchImage = searchImage.replace('vid-mini.webp', 'vid-search.webp').replace('vid-mini.png', 'vid-search.png');
@@ -390,7 +403,6 @@ function buildYandexFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      // FIX: webp — для Яндекса всегда vid-search.webp
       let searchImage = src.bigImage;
       if (searchImage.includes('vid-1')) {
         searchImage = searchImage.replace('vid-1.png', 'vid-search.webp').replace('vid-1.webp', 'vid-search.webp');
@@ -456,7 +468,6 @@ function buildGoogleFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      // FIX: webp — для Google тоже всегда vid-search.webp
       let searchImage = src.bigImage;
       if (searchImage.includes('vid-1')) {
         searchImage = searchImage.replace('vid-1.png', 'vid-search.webp').replace('vid-1.webp', 'vid-search.webp');
@@ -508,9 +519,9 @@ const ALL_HTML_FILES = [
   'kak-vybrat-stremyanku.html',
   'kl-1-dlya-kanalizacionnyh-kolodcev.html',
   'l-16-dlya-teplovyh-setej.html',
-  'l-17-000SB.html', // Добавлен
-  'l-3-sk-2201-88.html', // Добавлен
-  'l-19.html', // Добавлен
+  'l-17-000SB.html',
+  'l-3-sk-2201-88.html',
+  'l-19.html',
   'montazh-stremyanok-v-kolodcy.html',
   'o-kompanii.html',
   'politika-konfidencialnosti.html',
@@ -595,7 +606,6 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
     if (footerResult.replaced) { html = footerResult.html; changed = true; }
   }
 
-  // Вставка CTA (кроме index.html)
   if (ctaContent && file !== 'index.html') {
     const ctaResult = replaceBetweenMarkers(html, CTA_START, CTA_END, ctaContent);
     if (ctaResult.replaced) { html = ctaResult.html; changed = true; }
@@ -627,6 +637,64 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
     return true;
   }
   return false;
+}
+
+// ============================================================
+//  НОВАЯ ФУНКЦИЯ ДЛЯ ГЕНЕРАЦИИ СТРАНИЦ ТОВАРОВ
+// ============================================================
+function buildProductPages() {
+  CATEGORIES_TO_GENERATE.forEach(cat => {
+    const templatePath = path.resolve(__dirname, '..', 'templates', cat.template);
+    if (!fs.existsSync(templatePath)) {
+      console.warn(`  ⚠ Шаблон templates/${cat.template} не найден.`);
+      return;
+    }
+    
+    const template = fs.readFileSync(templatePath, 'utf8');
+    
+    // Создаем папку для категории, если ее нет
+    const outDir = path.resolve(__dirname, '..', 'products', cat.folder);
+    if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+
+    cat.items.forEach(p => {
+      let html = template;
+      
+      // Данные товара
+      html = html.replace(/\{\{ID\}\}/g, p.id);
+      html = html.replace(/\{\{MODEL\}\}/g, p.model);
+      html = html.replace(/\{\{LENGTH_MM\}\}/g, p.length_mm);
+      html = html.replace(/\{\{LENGTH_CM\}\}/g, p.length_cm);
+      html = html.replace(/\{\{PRICE\}\}/g, p.price.toLocaleString('ru-RU'));
+      html = html.replace(/\{\{PRICE_RAW\}\}/g, p.price);
+      html = html.replace(/\{\{WEIGHT\}\}/g, String(p.weight).replace('.', ','));
+      html = html.replace(/\{\{PROJECT\}\}/g, p.project);
+      html = html.replace(/\{\{SLUG\}\}/g, p.slug);
+      
+      // SEO
+      const title = `Стремянка ${p.project} ${p.model}, длина ${p.length_cm} см — купить`;
+      const desc = `Стальная стремянка для колодцев ${p.project} ${p.model}. Длина ${p.length_cm} см, вес ${p.weight} кг. Цена от производителя, ГОСТ.`;
+      html = html.replace(/\{\{SEO_TITLE\}\}/g, title);
+      html = html.replace(/\{\{SEO_DESC\}\}/g, desc);
+      
+      // Каталог
+      html = html.replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link);
+      html = html.replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
+      
+      // Другие размеры
+      let otherLinks = '';
+      cat.items.forEach(other => {
+        if (other.id !== p.id) {
+          otherLinks += `<a href="${other.slug}.html">${other.model} (${other.length_cm} см)</a>\n`;
+        }
+      });
+      html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
+
+      // Сохраняем
+      const outPath = path.join(outDir, `${p.slug}.html`);
+      fs.writeFileSync(outPath, html, 'utf8');
+      console.log(`  ✓ products/${cat.folder}/${p.slug}.html создан`);
+    });
+  });
 }
 
 function build() {
@@ -696,6 +764,9 @@ function build() {
       changed++;
     }
   });
+
+  console.log('\nГенерация страниц товаров...');
+  buildProductPages();
 
   console.log('\nГенерация yandex-feed.xml...');
   buildYandexFeed();
