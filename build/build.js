@@ -143,7 +143,8 @@ const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
 const ANALYTICS_TAG = '<script src="js/analytics.js"></script>';
-const ANALYTICS_RE = /<script\s+src=["']js\/analytics\.js["'][^>]*>\s*<\/script>/i;
+const ANALYTICS_TAG_PRODUCT = '<script src="../../js/analytics.js"></script>';
+const ANALYTICS_RE = /<script\s+src=["'](\.\.\/)?js\/analytics\.js["'][^>]*>\s*<\/script>/i;
 
 const OG_START = '<!-- OG_START -->';
 const OG_END   = '<!-- OG_END -->';
@@ -700,7 +701,8 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   }
 
   if (!ANALYTICS_RE.test(html) && html.includes('</head>')) {
-    html = html.replace('</head>', `    ${ANALYTICS_TAG}\n</head>`);
+    const analyticsTag = isProductPage ? ANALYTICS_TAG_PRODUCT : ANALYTICS_TAG;
+    html = html.replace('</head>', `    ${analyticsTag}\n</head>`);
     changed = true;
     console.log(`  ✅ ${file} → добавлен analytics.js`);
   }
