@@ -265,11 +265,31 @@ function buildTable(products, enableCollapse) {
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
 
+    // ============================================================
+    //  ЛОГИКА ГЕНЕРАЦИИ ССЫЛКИ НА КАРТОЧКУ ТОВАРА
+    // ============================================================
+    let itemUrl = '#';
+    let modelSlug = '';
+    
+    // Если ID начинается на C- (например C-1), это 901-я серия
+    if (id.startsWith('C-')) {
+        modelSlug = id.toLowerCase().replace('c-', 's-');
+        itemUrl = `products/stremyanki-tpr-901-09-11-84/stremyanka-${modelSlug}.html`;
+    } 
+    // Если ID начинается на C1- (например C1-00), это 902-я серия
+    else if (id.startsWith('C1-')) {
+        modelSlug = id.toLowerCase().replace('c1-', 's1-');
+        itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
+    }
+
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
+
+    // Оборачиваем название в ссылку
+    const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${name}</a>` : name;
 
     html += `<tr id="${anchor}"${hiddenStyle}>
       <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
-      <td>${name}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
+      <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
       <td>от ${fmtPrice(price)} руб.</td><td>${unit}</td>
       <td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
