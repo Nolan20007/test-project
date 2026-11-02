@@ -627,18 +627,26 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   let html = fs.readFileSync(filePath, 'utf8');
   let changed = false;
 
+  const isProductPage = file.startsWith('products/');
+  const prefix = isProductPage ? '../../' : '';
+
+  const fixLinks = (content) => {
+    if (!isProductPage) return content;
+    return content.replace(/href="(?!http|mailto|tel|#)([^"]+)"/g, `href="${prefix}$1"`);
+  };
+
   if (navContent) {
-    const navResult = replaceBetweenMarkers(html, NAV_START, NAV_END, navContent);
+    const navResult = replaceBetweenMarkers(html, NAV_START, NAV_END, fixLinks(navContent));
     if (navResult.replaced) { html = navResult.html; changed = true; }
   }
 
   if (footerContent) {
-    const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, footerContent);
+    const footerResult = replaceBetweenMarkers(html, FOOTER_START, FOOTER_END, fixLinks(footerContent));
     if (footerResult.replaced) { html = footerResult.html; changed = true; }
   }
 
   if (ctaContent && file !== 'index.html') {
-    const ctaResult = replaceBetweenMarkers(html, CTA_START, CTA_END, ctaContent);
+    const ctaResult = replaceBetweenMarkers(html, CTA_START, CTA_END, fixLinks(ctaContent));
     if (ctaResult.replaced) { html = ctaResult.html; changed = true; }
   }
 
@@ -674,7 +682,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 //  НОВАЯ ФУНКЦИЯ ДЛЯ ГЕНЕРАЦИИ СТРАНИЦ ТОВАРОВ
 // ============================================================
 function buildProductPages() {
-  const createdPages = []; // <--- Собираем пути созданных файлов
+  const createdPages = [];
 
   CATEGORIES_TO_GENERATE.forEach(cat => {
     const templatePath = path.resolve(__dirname, '..', 'templates', cat.template);
@@ -684,15 +692,12 @@ function buildProductPages() {
     }
     
     const template = fs.readFileSync(templatePath, 'utf8');
-    
-    // Создаем папку для категории, если ее нет
     const outDir = path.resolve(__dirname, '..', 'products', cat.folder);
     if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 
     cat.items.forEach(p => {
       let html = template;
       
-      // Данные товара
       html = html.replace(/\{\{ID\}\}/g, p.id);
       html = html.replace(/\{\{MODEL\}\}/g, p.model);
       html = html.replace(/\{\{LENGTH_MM\}\}/g, p.length_mm);
@@ -703,17 +708,14 @@ function buildProductPages() {
       html = html.replace(/\{\{PROJECT\}\}/g, p.project);
       html = html.replace(/\{\{SLUG\}\}/g, p.slug);
       
-      // SEO
       const title = `Стремянка ${p.project} ${p.model}, длина ${p.length_cm} см — купить`;
       const desc = `Стальная стремянка для колодцев ${p.project} ${p.model}. Длина ${p.length_cm} см, вес ${p.weight} кг. Цена от производителя, ГОСТ.`;
       html = html.replace(/\{\{SEO_TITLE\}\}/g, title);
       html = html.replace(/\{\{SEO_DESC\}\}/g, desc);
       
-      // Каталог
       html = html.replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link);
       html = html.replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
       
-      // Другие размеры
       let otherLinks = '';
       cat.items.forEach(other => {
         if (other.id !== p.id) {
@@ -722,7 +724,6 @@ function buildProductPages() {
       });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
 
-      // Сохраняем
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log(`  ✓ products/${cat.folder}/${p.slug}.html создан`);
@@ -731,7 +732,7 @@ function buildProductPages() {
     });
   });
 
-  return createdPages; // <--- Возвращаем список
+  return createdPages;
 }
 
 function build() {
@@ -746,14 +747,11 @@ function build() {
   if (footerContent) console.log('  ✓ includes/footer.html');
   if (ctaContent)    console.log('  ✓ includes/cta.html');
 
-  // 1. Сначала генерируем новые страницы товаров
   console.log('\nГенерация страниц товаров...');
   const newProductPages = buildProductPages();
 
-  // 2. Формируем ПОЛНЫЙ список страниц для обработки
   const allPagesToProcess = [...ALL_HTML_FILES, ...newProductPages];
 
-  // 3. Прогоняем ВСЕ страницы через processMarkers (NAV/FOOTER/CTA)
   console.log('\nОбработка NAV, FOOTER, CTA, PRICE, ANALYTICS, OG...');
   allPagesToProcess.forEach(file => {
     if (processMarkers(file, navContent, footerContent, ctaContent)) changed++;
