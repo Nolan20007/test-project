@@ -632,7 +632,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 
   const fixLinks = (content) => {
     if (!isProductPage) return content;
-    return content.replace(/href="(?!http|mailto|tel|#)([^"]+)"/g, `href="${prefix}$1"`);
+    return content.replace(/href="(?!http|mailto|tel|#|\.\.\/)([^"]+)"/g, `href="${prefix}$1"`);
   };
 
   if (navContent) {
