@@ -94,6 +94,10 @@
         .other-sizes__list { display: flex; flex-wrap: wrap; gap: 10px; }
         .other-sizes__list a { display: inline-block; padding: 8px 15px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; color: #333; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 14px; }
         .other-sizes__list a:hover { border-color: var(--primary-color); color: var(--primary-color); background: #fff; }
+        .other-series { margin-top: 14px; padding: 18px 24px; background: #f4f7fb; border: 1px solid #dce5f0; border-radius: 12px; }
+        .other-series p { margin: 0; color: #333; line-height: 1.5; }
+        .other-series a { display: inline-block; margin-top: 8px; color: var(--primary-color); font-weight: 600; text-decoration: underline; }
+
         .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); padding-top: 60px; }
         .lightbox-content { margin: auto; display: block; width: 90%; max-width: 1000px; position: relative; text-align: center; }
         .lightbox-content img { max-width: 100%; max-height: 80vh; border-radius: 8px; display: inline-block; }
@@ -173,15 +177,15 @@
             <div class="mp-top">
                 <div class="mp-gallery">
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
-                        <img id="mainImage" src="../../images/ss2/vid-1.png" alt="Стремянка ТПР 902-09-22.84 С1-08" class="mp-main-img">
+                        <img id="mainImage" src="../../images/ss2/vid-1.webp" alt="Стремянка ТПР 902-09-22.84 С1-08 — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
                         <div class="image-toggle">
-                            <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/ss2/vid-1.png', 0)">Вид 1</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/vid-2.png', 1)">Вид 2</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/vid-3.png', 2)">Вид 3</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/foto-1.png', 3)">Фото 1</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/foto-2.png', 4)">Фото 2</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/album.png', 5)">Альбом</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/chertezh.png', 6)">Чертёж</button>
+                            <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/ss2/vid-1.webp', 0)">Вид 1</button>
+                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/vid-2.webp', 1)">Вид 2</button>
+                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/vid-3.webp', 2)">Вид 3</button>
+                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/foto-1.webp', 3)">Фото 1</button>
+                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/foto-2.webp', 4)">Фото 2</button>
+                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/album.webp', 5)">Альбом</button>
+                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss2/chertezh.webp', 6)">Чертёж</button>
                         </div>
                     </div>
                 </div>
@@ -274,6 +278,11 @@
 <a href="stremyanka-s1-18.html">С1-18 (600 см)</a>
 
             </div>
+        </div>
+
+        <div class="other-series">
+            <p>Ищете стремянку другой серии? В каталоге представлены модели по проекту ТПР 901-09-11.84.</p>
+            <a href="/ss1.html">Каталог стремянок ТПР 901-09-11.84 — посмотреть все модели</a>
         </div>
     </div>
 </main>
@@ -437,12 +446,24 @@ function copyEmailToClipboard(btn) {
 
 <script>
     const imgSources = [
-        '../../images/ss2/vid-1.png', '../../images/ss2/vid-2.png', '../../images/ss2/vid-3.png',
-        '../../images/ss2/foto-1.png', '../../images/ss2/foto-2.png', '../../images/ss2/album.png', '../../images/ss2/chertezh.png'
+        '../../images/ss2/vid-1.webp', '../../images/ss2/vid-2.webp', '../../images/ss2/vid-3.webp',
+        '../../images/ss2/foto-1.webp', '../../images/ss2/foto-2.webp', '../../images/ss2/album.webp', '../../images/ss2/chertezh.webp'
+    ];
+
+    const imageAltTexts = [
+        'Стремянка ТПР 902-09-22.84 С1-08 — общий вид',
+        'Стремянка ТПР 902-09-22.84 С1-08 — второй вид',
+        'Стремянка ТПР 902-09-22.84 С1-08 — третий вид',
+        'Стремянка ТПР 902-09-22.84 С1-08 — фотография изделия',
+        'Стремянка ТПР 902-09-22.84 С1-08 — дополнительная фотография',
+        'Стремянка ТПР 902-09-22.84 С1-08 — страница типового альбома',
+        'Чертёж стремянки ТПР 902-09-22.84 С1-08'
     ];
 
     function changeImage(src, index) {
-        document.getElementById('mainImage').src = src;
+        const mainImage = document.getElementById('mainImage');
+        mainImage.src = src;
+        mainImage.alt = imageAltTexts[index] || 'Стремянка ТПР 902-09-22.84 С1-08';
         document.querySelectorAll('.image-toggle__btn').forEach((b, i) => {
             if (i === index) b.classList.add('active'); else b.classList.remove('active');
         });
@@ -458,7 +479,9 @@ function copyEmailToClipboard(btn) {
     }
 
     function changeLightboxImage(index) {
-        document.getElementById('lightbox-img').src = imgSources[index];
+        const lightboxImage = document.getElementById('lightbox-img');
+        lightboxImage.src = imgSources[index];
+        lightboxImage.alt = imageAltTexts[index] || 'Изображение стремянки ТПР 902-09-22.84 С1-08';
         document.querySelectorAll('#lightbox-nav button').forEach((b, i) => {
             if (i === index) b.classList.add('active'); else b.classList.remove('active');
         });
