@@ -111,13 +111,14 @@
             .image-toggle { bottom: 8px; right: 8px; padding: 4px; }
             .image-toggle__btn { padding: 5px 10px; font-size: 11px; }
         }
+    .header .header-title { margin: 0; font-size: 2.2em; line-height: 1.2; font-weight: 600; color: #fff; }
     </style>
 </head>
 <body>
 
 <header class="header">
     <div class="container">
-        <h1>Стремянка водопроводная {{PROJECT}} {{MODEL}} ({{LENGTH_CM}} см)</h1>
+        <p class="header-title">Стремянка водопроводная {{PROJECT}} {{MODEL}} ({{LENGTH_CM}} см)</p>
         <p>Стальная стремянка для безопасного спуска и подъема персонала в колодцах</p>
     </div>
 </header>
@@ -151,7 +152,7 @@
                 </div>
 
                 <div class="mp-info">
-                    <h1>Стремянка {{MODEL}} ({{LENGTH_CM}} см)</h1>
+                    <h1>Стремянка {{MODEL}} для колодцев, {{LENGTH_CM}} см</h1>
                     <div class="mp-sku">Артикул: {{ID}} | Длина: {{LENGTH_MM}} мм</div>
                     <div class="mp-stock">✓ В наличии на складе</div>
                     
@@ -167,7 +168,7 @@
                         </div>
                         <button type="button" class="mp-btn-buy cart-button" 
                                 data-item-id="{{ID}}" data-item-name="Стремянка для колодцев {{PROJECT}} {{MODEL}}"
-                                data-item-length="{{LENGTH_CM}}" data-item-weight="{{WEIGHT}}">Добавить в корзину</button>
+                                data-item-length="{{LENGTH_CM}}" data-item-weight="{{WEIGHT_RAW}}">Добавить в корзину</button>
                     </div>
 
                     <div class="mp-usp-list">
@@ -177,7 +178,7 @@
                     </div>
 
                     <p class="mp-short-desc">
-                        <strong>Стальная стремянка {{MODEL}}</strong> используется для безопасного спуска и подъема персонала при проведении плановых работ в канализационных колодцах. Изготовлена из уголка 50х50 мм и прута 18 мм в строгом соответствии с проектом.
+                        <strong>Стальная стремянка {{MODEL}}</strong> используется для безопасного спуска и подъема персонала при проведении плановых работ в канализационных колодцах. Изготовлена из уголка 50×50×5 мм и прутка Ø18 мм в строгом соответствии с проектом.
                     </p>
                 </div>
             </div>
@@ -195,8 +196,10 @@
                     <tr><td>Длина (высота)</td><td>{{LENGTH_MM}} мм ({{LENGTH_CM}} см)</td></tr>
                     <tr><td>Ширина лестницы</td><td>500 мм</td></tr>
                     <tr><td>Масса изделия</td><td>{{WEIGHT}} кг</td></tr>
-                    <tr><td>Вертикальные стойки</td><td>Уголок 50×50×5 мм по ГОСТ 8509</td></tr>
-                    <tr><td>Ступени (шаг 300 мм)</td><td>Пруток ∅ 18 мм по ГОСТ 2590</td></tr>
+                    <tr><td>Количество ступеней</td><td>{{STEP_COUNT}}</td></tr>
+                    <tr><td>Шаг ступеней</td><td>300 мм</td></tr>
+<tr><td>Вертикальные стойки</td><td>Уголок 50×50×5 мм по ГОСТ 8509</td></tr>
+                    <tr><td>Ступени</td><td>Пруток Ø18 мм по ГОСТ 2590</td></tr>
                     <tr><td>Антикоррозийное покрытие</td><td>Масляная краска (сурик МА-15)</td></tr>
                 </table>
             </div>
