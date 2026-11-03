@@ -12,6 +12,7 @@ const CATEGORIES_TO_GENERATE = [
     folder: 'stremyanki-tpr-901-09-11-84',
     title: 'Стремянки ТПР 901-09-11.84',
     catalog_link: 'ss1.html',
+    csv: 'data/ss1-products.csv',
     csv: 'data/ss1-products.csv', 
     items: [
       { id: 'C-1', model: 'С-1', length_mm: 1200, length_cm: 120, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-1' },
@@ -30,6 +31,7 @@ const CATEGORIES_TO_GENERATE = [
     folder: 'stremyanki-tpr-902-09-22-84',
     title: 'Стремянки ТПР 902-09-22.84',
     catalog_link: 'ss2.html',
+    csv: 'data/ss2-products.csv',
     csv: 'data/ss2-products.csv',
     items: [
       { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
