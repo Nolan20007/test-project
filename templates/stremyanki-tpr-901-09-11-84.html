@@ -138,7 +138,7 @@
             <div class="mp-top">
                 <div class="mp-gallery">
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
-                        <img id="mainImage" src="../../images/ss1/vid-1.png" alt="Стремянка {{PROJECT}} {{MODEL}}" class="mp-main-img">
+                        <img id="mainImage" src="../../images/ss1/vid-1.png" alt="Стремянка {{PROJECT}} {{MODEL}} — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
                         <div class="image-toggle">
                             <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/ss1/vid-1.png', 0)">Вид 1</button>
                             <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ss1/vid-2.png', 1)">Вид 2</button>
@@ -253,8 +253,20 @@
         '../../images/ss1/foto-1.png', '../../images/ss1/foto-2.png', '../../images/ss1/album.png', '../../images/ss1/chertezh.png'
     ];
 
+    const imageAltTexts = [
+        'Стремянка {{PROJECT}} {{MODEL}} — общий вид',
+        'Стремянка {{PROJECT}} {{MODEL}} — второй вид',
+        'Стремянка {{PROJECT}} {{MODEL}} — третий вид',
+        'Стремянка {{PROJECT}} {{MODEL}} — фотография изделия',
+        'Стремянка {{PROJECT}} {{MODEL}} — дополнительная фотография',
+        'Стремянка {{PROJECT}} {{MODEL}} — страница типового альбома',
+        'Чертёж стремянки {{PROJECT}} {{MODEL}}'
+    ];
+
     function changeImage(src, index) {
-        document.getElementById('mainImage').src = src;
+        const mainImage = document.getElementById('mainImage');
+        mainImage.src = src;
+        mainImage.alt = imageAltTexts[index] || 'Стремянка {{PROJECT}} {{MODEL}}';
         document.querySelectorAll('.image-toggle__btn').forEach((b, i) => {
             if (i === index) b.classList.add('active'); else b.classList.remove('active');
         });
@@ -270,7 +282,9 @@
     }
 
     function changeLightboxImage(index) {
-        document.getElementById('lightbox-img').src = imgSources[index];
+        const lightboxImage = document.getElementById('lightbox-img');
+        lightboxImage.src = imgSources[index];
+        lightboxImage.alt = imageAltTexts[index] || 'Изображение стремянки {{PROJECT}} {{MODEL}}';
         document.querySelectorAll('#lightbox-nav button').forEach((b, i) => {
             if (i === index) b.classList.add('active'); else b.classList.remove('active');
         });
