@@ -11,17 +11,19 @@ const CATEGORIES_TO_GENERATE = [
     template: 'stremyanki-tpr-901-09-11-84.html',
     folder: 'stremyanki-tpr-901-09-11-84',
     title: 'Стремянки ТПР 901-09-11.84',
-    catalog_link: 'ss1.html', 
+    catalog_link: 'ss1.html',
+    csv: 'data/ss1-products.csv',
+    csv: 'data/ss1-products.csv', 
     items: [
-      { id: 'C-1', model: 'С-1', length_mm: 1200, length_cm: 120, price: 2076, weight: 13.84, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-1' },
-      { id: 'C-2', model: 'С-2', length_mm: 1500, length_cm: 150, price: 2562, weight: 17.08, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-2' },
-      { id: 'C-3', model: 'С-3', length_mm: 1800, length_cm: 180, price: 3045, weight: 20.30, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-3' },
-      { id: 'C-4', model: 'С-4', length_mm: 2250, length_cm: 225, price: 3552, weight: 23.68, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-4' },
-      { id: 'C-5', model: 'С-5', length_mm: 2400, length_cm: 240, price: 4011, weight: 26.74, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-5' },
-      { id: 'C-6', model: 'С-6', length_mm: 2100, length_cm: 210, price: 3528, weight: 23.52, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-6' },
-      { id: 'C-7', model: 'С-7', length_mm: 2700, length_cm: 270, price: 4500, weight: 30.00, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-7' },
-      { id: 'C-8', model: 'С-8', length_mm: 4200, length_cm: 420, price: 6909, weight: 46.06, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-8' },
-      { id: 'C-9', model: 'С-9', length_mm: 4500, length_cm: 450, price: 7404, weight: 49.36, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-9' },
+      { id: 'C-1', model: 'С-1', length_mm: 1200, length_cm: 120, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-1' },
+      { id: 'C-2', model: 'С-2', length_mm: 1500, length_cm: 150, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-2' },
+      { id: 'C-3', model: 'С-3', length_mm: 1800, length_cm: 180, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-3' },
+      { id: 'C-4', model: 'С-4', length_mm: 2250, length_cm: 225, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-4' },
+      { id: 'C-5', model: 'С-5', length_mm: 2400, length_cm: 240, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-5' },
+      { id: 'C-6', model: 'С-6', length_mm: 2100, length_cm: 210, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-6' },
+      { id: 'C-7', model: 'С-7', length_mm: 2700, length_cm: 270, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-7' },
+      { id: 'C-8', model: 'С-8', length_mm: 4200, length_cm: 420, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-8' },
+      { id: 'C-9', model: 'С-9', length_mm: 4500, length_cm: 450, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-9' },
     ]
   },
   {
@@ -29,26 +31,28 @@ const CATEGORIES_TO_GENERATE = [
     folder: 'stremyanki-tpr-902-09-22-84',
     title: 'Стремянки ТПР 902-09-22.84',
     catalog_link: 'ss2.html',
+    csv: 'data/ss2-products.csv',
+    csv: 'data/ss2-products.csv',
     items: [
-      { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, price: 975, weight: 6.5, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
-      { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, price: 1470, weight: 9.8, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
-      { id: 'C1-02', model: 'С1-02', length_mm: 1200, length_cm: 120, price: 1950, weight: 13.0, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-02' },
-      { id: 'C1-03', model: 'С1-03', length_mm: 1500, length_cm: 150, price: 2445, weight: 16.3, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-03' },
-      { id: 'C1-04', model: 'С1-04', length_mm: 1800, length_cm: 180, price: 2940, weight: 19.6, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-04' },
-      { id: 'C1-05', model: 'С1-05', length_mm: 2100, length_cm: 210, price: 3420, weight: 22.8, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-05' },
-      { id: 'C1-06', model: 'С1-06', length_mm: 2400, length_cm: 240, price: 3915, weight: 26.1, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-06' },
-      { id: 'C1-07', model: 'С1-07', length_mm: 2700, length_cm: 270, price: 4395, weight: 29.3, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-07' },
-      { id: 'C1-08', model: 'С1-08', length_mm: 3000, length_cm: 300, price: 4890, weight: 32.6, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-08' },
-      { id: 'C1-09', model: 'С1-09', length_mm: 3300, length_cm: 330, price: 5385, weight: 35.9, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-09' },
-      { id: 'C1-10', model: 'С1-10', length_mm: 3600, length_cm: 360, price: 5865, weight: 39.1, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-10' },
-      { id: 'C1-11', model: 'С1-11', length_mm: 3900, length_cm: 390, price: 6360, weight: 42.4, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-11' },
-      { id: 'C1-12', model: 'С1-12', length_mm: 4200, length_cm: 420, price: 6855, weight: 45.7, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-12' },
-      { id: 'C1-13', model: 'С1-13', length_mm: 4500, length_cm: 450, price: 7335, weight: 48.9, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-13' },
-      { id: 'C1-14', model: 'С1-14', length_mm: 4800, length_cm: 480, price: 7830, weight: 52.2, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-14' },
-      { id: 'C1-15', model: 'С1-15', length_mm: 5100, length_cm: 510, price: 8310, weight: 55.4, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-15' },
-      { id: 'C1-16', model: 'С1-16', length_mm: 5400, length_cm: 540, price: 8805, weight: 58.7, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-16' },
-      { id: 'C1-17', model: 'С1-17', length_mm: 5700, length_cm: 570, price: 9300, weight: 62.0, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-17' },
-      { id: 'C1-18', model: 'С1-18', length_mm: 6000, length_cm: 600, price: 9780, weight: 65.2, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-18' },
+      { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
+      { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
+      { id: 'C1-02', model: 'С1-02', length_mm: 1200, length_cm: 120, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-02' },
+      { id: 'C1-03', model: 'С1-03', length_mm: 1500, length_cm: 150, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-03' },
+      { id: 'C1-04', model: 'С1-04', length_mm: 1800, length_cm: 180, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-04' },
+      { id: 'C1-05', model: 'С1-05', length_mm: 2100, length_cm: 210, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-05' },
+      { id: 'C1-06', model: 'С1-06', length_mm: 2400, length_cm: 240, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-06' },
+      { id: 'C1-07', model: 'С1-07', length_mm: 2700, length_cm: 270, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-07' },
+      { id: 'C1-08', model: 'С1-08', length_mm: 3000, length_cm: 300, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-08' },
+      { id: 'C1-09', model: 'С1-09', length_mm: 3300, length_cm: 330, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-09' },
+      { id: 'C1-10', model: 'С1-10', length_mm: 3600, length_cm: 360, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-10' },
+      { id: 'C1-11', model: 'С1-11', length_mm: 3900, length_cm: 390, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-11' },
+      { id: 'C1-12', model: 'С1-12', length_mm: 4200, length_cm: 420, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-12' },
+      { id: 'C1-13', model: 'С1-13', length_mm: 4500, length_cm: 450, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-13' },
+      { id: 'C1-14', model: 'С1-14', length_mm: 4800, length_cm: 480, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-14' },
+      { id: 'C1-15', model: 'С1-15', length_mm: 5100, length_cm: 510, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-15' },
+      { id: 'C1-16', model: 'С1-16', length_mm: 5400, length_cm: 540, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-16' },
+      { id: 'C1-17', model: 'С1-17', length_mm: 5700, length_cm: 570, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-17' },
+      { id: 'C1-18', model: 'С1-18', length_mm: 6000, length_cm: 600, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-18' },
     ]
   }
 ];
@@ -727,55 +731,47 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 // ============================================================
 function buildProductPages() {
   const createdPages = [];
-
   CATEGORIES_TO_GENERATE.forEach(cat => {
     const templatePath = path.resolve(__dirname, '..', 'templates', cat.template);
-    if (!fs.existsSync(templatePath)) {
-      console.warn(`  ⚠ Шаблон templates/${cat.template} не найден.`);
-      return;
-    }
-    
+    if (!fs.existsSync(templatePath)) throw new Error(`[product pages] Не найден шаблон templates/${cat.template}`);
+    const csvPath = path.resolve(__dirname, '..', cat.csv);
+    if (!fs.existsSync(csvPath)) throw new Error(`[product pages] Не найден CSV ${cat.csv} (шаблон ${cat.template})`);
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, ''));
+    const byId = new Map(rows.map(row => [row.id, row]));
     const template = fs.readFileSync(templatePath, 'utf8');
     const outDir = path.resolve(__dirname, '..', 'products', cat.folder);
     if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-
     cat.items.forEach(p => {
+      const row = byId.get(p.id);
+      if (!row) throw new Error(`[product pages] ${cat.template} / ${cat.csv}: не найден ID "${p.id}"`);
+      const numeric = field => {
+        const n = Number(row[field]);
+        if (!row[field] || !Number.isFinite(n) || n <= 0 || (field === 'step_count' && !Number.isInteger(n)))
+          throw new Error(`[product pages] ${cat.template} / ${cat.csv}, ID "${p.id}": некорректное поле "${field}" = "${row[field]}"`);
+        return n;
+      };
+      const price = numeric('price'), weight = numeric('weight'), stepCount = numeric('step_count');
       let html = template;
-      
-      html = html.replace(/\{\{ID\}\}/g, p.id);
-      html = html.replace(/\{\{MODEL\}\}/g, p.model);
-      html = html.replace(/\{\{LENGTH_MM\}\}/g, p.length_mm);
-      html = html.replace(/\{\{LENGTH_CM\}\}/g, p.length_cm);
-      html = html.replace(/\{\{PRICE\}\}/g, p.price.toLocaleString('ru-RU'));
-      html = html.replace(/\{\{PRICE_RAW\}\}/g, p.price);
-      html = html.replace(/\{\{WEIGHT\}\}/g, String(p.weight).replace('.', ','));
-      html = html.replace(/\{\{PROJECT\}\}/g, p.project);
-      html = html.replace(/\{\{SLUG\}\}/g, p.slug);
-      
-      const title = `Стремянка ${p.project} ${p.model}, длина ${p.length_cm} см — купить`;
-      const desc = `Стальная стремянка для колодцев ${p.project} ${p.model}. Длина ${p.length_cm} см, вес ${p.weight} кг. Цена от производителя, ГОСТ.`;
-      html = html.replace(/\{\{SEO_TITLE\}\}/g, title);
-      html = html.replace(/\{\{SEO_DESC\}\}/g, desc);
-      
-      html = html.replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link);
-      html = html.replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
-      
+      html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, p.model)
+        .replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{LENGTH_CM\}\}/g, p.length_cm)
+        .replace(/\{\{PRICE\}\}/g, price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, String(price))
+        .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
+        .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, String(stepCount))
+        .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug);
+      const title = `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
+      const album = cat.csv.includes('ss1-') ? 'Альбом V' : 'Альбом VII';
+      const desc = `Купить стремянку ${p.model} для колодцев по ${p.project}, ${album}. Длина ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`;
+      html = html.replace(/\{\{SEO_TITLE\}\}/g, title).replace(/\{\{SEO_DESC\}\}/g, desc)
+        .replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link).replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
       let otherLinks = '';
-      cat.items.forEach(other => {
-        if (other.id !== p.id) {
-          otherLinks += `<a href="${other.slug}.html">${other.model} (${other.length_cm} см)</a>\n`;
-        }
-      });
+      cat.items.forEach(other => { if (other.id !== p.id) otherLinks += `<a href="${other.slug}.html">${other.model} (${other.length_cm} см)</a>\n`; });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
-
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
-      
       createdPages.push(`products/${cat.folder}/${p.slug}.html`);
     });
   });
-
   return createdPages;
 }
 
