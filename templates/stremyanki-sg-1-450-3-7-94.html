@@ -36,12 +36,12 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": "Пожарная пожарная стремянка {{PROJECT}} {{MODEL}}",
+      "name": "Пожарная стремянка {{PROJECT}} {{MODEL}}",
       "sku": "{{ID}}",
       "mpn": "{{ID}}",
       "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/vid-search.webp",
-      "description": "Пожарная пожарная стремянка {{PROJECT}} {{MODEL}}. Длина {{LENGTH_CM}} см, ширина 70 см, масса {{WEIGHT}} кг.",
-      "brand": { "@type": "Brand", "name": "Лестницы и стремянки " },
+      "description": "Пожарная стремянка {{PROJECT}} {{MODEL}}. Длина {{LENGTH_CM}} см, ширина 70 см, масса {{WEIGHT}} кг.",
+      "brand": { "@type": "Brand", "name": "Лестницы и стремянки" },
       "offers": {
         "@type": "Offer",
         "url": "https://stremyanki-dlya-kolodcev.ru/products/stremyanki-sg-1-450-3-7-94/{{SLUG}}.html",
@@ -122,7 +122,7 @@
 
 <header class="header">
     <div class="container">
-        <p class="header-title">Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} ({{LENGTH_CM}} см)</p>
+        <p class="header-title">Пожарная стремянка {{PROJECT}} {{MODEL}} ({{LENGTH_CM}} см)</p>
         <p>Стальная пожарная стремянка для безопасного спуска и подъема персонала в колодцах</p>
     </div>
 </header>
@@ -135,14 +135,14 @@
         <div class="breadcrumbs">
             <a href="../../index.html">Главная</a> ›
             <a href="../../{{CATALOG_LINK}}">{{CATALOG_TITLE}}</a> ›
-            <span>Пожарная пожарная стремянка {{MODEL}}</span>
+            <span>Пожарная стремянка {{MODEL}}</span>
         </div>
 
         <div class="mp-card">
             <div class="mp-top">
                 <div class="mp-gallery">
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
-                        <img id="mainImage" src="../../images/ssg1/vid-1.webp" alt="Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
+                        <img id="mainImage" src="../../images/ssg1/vid-1.webp" alt="Пожарная стремянка {{PROJECT}} {{MODEL}} — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
                         <div class="image-toggle">
                             <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/ssg1/vid-1.webp', 0)">Общий вид</button>
                             <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ssg1/vid-2.webp', 1)">Фото 1</button>
@@ -156,7 +156,7 @@
                 </div>
 
                 <div class="mp-info">
-                    <h1>Пожарная пожарная стремянка {{MODEL}} , {{LENGTH_CM}} см</h1>
+                    <h1>Пожарная стремянка {{MODEL}} , {{LENGTH_CM}} см</h1>
                     <div class="mp-sku">Артикул: {{ID}} | Длина: {{LENGTH_MM}} мм</div>
                     <div class="mp-stock">✓ В наличии на складе</div>
                     
@@ -171,7 +171,7 @@
                             <button type="button" onclick="changeQuantity('{{ID}}', 1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">+</button>
                         </div>
                         <button type="button" class="mp-btn-buy cart-button" 
-                                data-item-id="{{ID}}" data-item-name="Пожарная пожарная стремянка {{PROJECT}} {{MODEL}}"
+                                data-item-id="{{ID}}" data-item-name="Пожарная стремянка {{PROJECT}} {{MODEL}}"
                                 data-item-length="{{LENGTH_CM}}" data-item-weight="{{WEIGHT_RAW}}">Добавить в корзину</button>
                     </div>
 
@@ -252,19 +252,19 @@
     ];
 
     const imageAltTexts = [
-        'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — общий вид',
-        'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — второй вид',
-        'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — третий вид',
-        'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — фотография изделия',
-        'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — дополнительная фотография',
-        'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}} — страница типового альбома',
+        'Пожарная стремянка {{PROJECT}} {{MODEL}} — общий вид',
+        'Пожарная стремянка {{PROJECT}} {{MODEL}} — второй вид',
+        'Пожарная стремянка {{PROJECT}} {{MODEL}} — третий вид',
+        'Пожарная стремянка {{PROJECT}} {{MODEL}} — фотография изделия',
+        'Пожарная стремянка {{PROJECT}} {{MODEL}} — дополнительная фотография',
+        'Пожарная стремянка {{PROJECT}} {{MODEL}} — страница типового альбома',
         'Чертёж стремянки {{PROJECT}} {{MODEL}}'
     ];
 
     function changeImage(src, index) {
         const mainImage = document.getElementById('mainImage');
         mainImage.src = src;
-        mainImage.alt = imageAltTexts[index] || 'Пожарная пожарная стремянка {{PROJECT}} {{MODEL}}';
+        mainImage.alt = imageAltTexts[index] || 'Пожарная стремянка {{PROJECT}} {{MODEL}}';
         document.querySelectorAll('.image-toggle__btn').forEach((b, i) => {
             if (i === index) b.classList.add('active'); else b.classList.remove('active');
         });
