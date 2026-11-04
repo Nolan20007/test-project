@@ -52,7 +52,7 @@ const CATEGORIES_TO_GENERATE = [
       { id: 'C1-17', model: 'С1-17', length_mm: 5700, length_cm: 570, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-17' },
       { id: 'C1-18', model: 'С1-18', length_mm: 6000, length_cm: 600, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-18' },
     ]
-  }
+  },
   {
     template: 'stremyanki-sg-1-450-3-7-94.html',
     folder: 'stremyanki-sg-1-450-3-7-94',
