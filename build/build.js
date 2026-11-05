@@ -723,6 +723,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
     if (ctaResult.replaced) { html = ctaResult.html; changed = true; }
   }
 
+  // Shared page-level font and media optimizations are applied during every rebuild.
   // Use the self-hosted Rubik font on every page. Keep the relative path
   // correct for both root pages and generated pages under /products/.
   const fontPrefix = isProductPage ? '../../' : '';
