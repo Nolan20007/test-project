@@ -134,6 +134,7 @@ const PAGES = [
   { html: 'skoba-nm1-3-900-3.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm1-3900-products.csv' }] },
 
   { html: 'price-list.html', tables: [
+      { id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' },
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
       { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' },
