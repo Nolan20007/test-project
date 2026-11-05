@@ -947,7 +947,7 @@ function build() {
       }
     });
 
-    if (!isPriceList) {
+    if (!isPriceList && !page.skipJsonLd) {
       const cleanedHtml = stripOldProductJsonLd(html);
       if (cleanedHtml !== html) {
         html = cleanedHtml; changedThisPage = true;
