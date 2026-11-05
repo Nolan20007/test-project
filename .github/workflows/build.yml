@@ -50,7 +50,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add '*.html' '*.xml' 'css/rubik-local.css' 'fonts/rubik/*.woff2' 'fonts/rubik/OFL.txt'
+          git add -- '*.html' '*.xml' 'css/rubik-local.css' 'fonts/rubik/*.woff2' 'fonts/rubik/OFL.txt' ':!node_modules/**'
           git add 'images/*/vid-card.webp' 'images/nestandart/nestandart-card.webp'
           if git diff --staged --quiet; then
             echo "Нет изменений — коммит не нужен"
