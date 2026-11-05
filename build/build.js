@@ -751,6 +751,24 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
     console.log(`  ✅ ${file} → цены обновлены из CSV`);
   }
 
+  // На главной первая карточка может стать LCP — оставляем её eager.
+  // Остальные карточные изображения загружаем только при приближении к viewport.
+  if (file === 'index.html') {
+    let cardIndex = 0;
+    const lazyHtml = html.replace(/<img\\b(?=[^>]*\\bclass=["'][^"']*\\bproduct-image\\b)[^>]*>/gi, (tag) => {
+      cardIndex += 1;
+      if (cardIndex === 1 || /\\bloading=["']lazy["']/i.test(tag)) return tag;
+      let updated = tag.replace(/>$/, ' loading="lazy">');
+      if (!/\\bdecoding=/i.test(updated)) updated = updated.replace(/>$/, ' decoding="async">');
+      return updated;
+    });
+    if (lazyHtml !== html) {
+      html = lazyHtml;
+      changed = true;
+      console.log('  ✅ index.html → отложенная загрузка изображений карточек, кроме первой');
+    }
+  }
+
   const analyticsTag = isProductPage ? ANALYTICS_TAG_PRODUCT : ANALYTICS_TAG;
   if (ANALYTICS_RE.test(html)) {
     const deferredHtml = html.replace(ANALYTICS_RE, analyticsTag);
