@@ -527,7 +527,12 @@
             const [telegramResult, mailResult] = await Promise.allSettled([telegramPromise, mailPromise]);
             const telegramSent = telegramResult.status === 'fulfilled' && telegramResult.value === true;
             const emailSent = mailResult.status === 'fulfilled' && mailResult.value === true;
-            if (!telegramSent && !emailSent) throw new Error('Сервисы отправки не подтвердили заявку');
+            if (!telegramSent && !emailSent) {
+                showToast('Не удалось подтвердить отправку. Позвоните нам: +7 (965) 555-99-66', 'error');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
             if (typeof window.trackLeadSuccess === 'function') {
                 window.trackLeadSuccess(this, emailSent ? 'web3forms' : 'google_apps_script');
             }
