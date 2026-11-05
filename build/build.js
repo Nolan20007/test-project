@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
+// Individual product pages are generated from templates, including the SSG series.
 
 // ============================================================
 //  НОВЫЙ КОНФИГ ДЛЯ ГЕНЕРАЦИИ КАРТОЧЕК ТОВАРОВ
