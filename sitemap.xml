@@ -384,4 +384,77 @@
         <priority>0.8</priority>
     </url>
 
+
+    <!-- Индивидуальные страницы пожарных стремянок СГ -->
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-22.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-28.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-34.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-40.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-46.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-52.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-58.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-64.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-70.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://stremyanki-dlya-kolodcev.ru/products/stremyanki-ssg1/stremyanka-sg-82.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
 </urlset>
