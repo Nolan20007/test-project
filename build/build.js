@@ -318,7 +318,7 @@ function buildTable(products, enableCollapse) {
     } 
     else if (id.startsWith('SG-')) {
         modelSlug = id.toLowerCase();
-        itemUrl = `products/stremyanki-ssg1/stremyanka-${modelSlug}.html`;
+        itemUrl = `products/pozharnye-stremyanki-seriya-14503-794/pozharnaya-stremyanka-${modelSlug}.html`;
     }
     else if (id.startsWith('C1-')) {
         modelSlug = id.toLowerCase().replace('c1-', 's1-');
