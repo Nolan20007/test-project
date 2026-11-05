@@ -888,7 +888,7 @@ function buildProductPages() {
       html = html.replace(/\{\{SEO_TITLE\}\}/g, title).replace(/\{\{SEO_DESC\}\}/g, desc)
         .replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link).replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
       let otherLinks = '';
-      cat.items.forEach(other => { if (other.id !== p.id) otherLinks += `<a href="${other.slug}.html">${other.model} (${other.length_cm} см)</a>\n`; });
+      cat.items.forEach(other => { if (other.id !== p.id) otherLinks += `<a href="${other.slug}.html">${cat.product_title_prefix ? `${cat.product_title_prefix} ${other.model} по ${cat.project_phrase || other.project}, длина ${other.length_mm} мм` : `${other.model} (${other.length_cm} см)`}</a>\n`; });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
