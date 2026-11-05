@@ -56,7 +56,7 @@ const CATEGORIES_TO_GENERATE = [
   },
   {
     template: 'stremyanki-ssg1.html',
-    folder: 'stremyanki-ssg1',
+    folder: 'pozharnye-stremyanki-seriya-14503-794',
     title: 'Пожарные стремянки СГ серия 1.450.3-7.94',
     catalog_link: 'ssg1.html',
     csv: 'data/ssg1-products.csv',
@@ -65,16 +65,16 @@ const CATEGORIES_TO_GENERATE = [
     product_title_prefix: 'Пожарная стремянка',
     product_title_accusative: 'пожарную стремянку',
     items: [
-      { id: 'SG-22', model: 'СГ-22', length_mm: 2200, length_cm: 220, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-22' },
-      { id: 'SG-28', model: 'СГ-28', length_mm: 2800, length_cm: 280, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-28' },
-      { id: 'SG-34', model: 'СГ-34', length_mm: 3400, length_cm: 340, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-34' },
-      { id: 'SG-40', model: 'СГ-40', length_mm: 4000, length_cm: 400, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-40' },
-      { id: 'SG-46', model: 'СГ-46', length_mm: 4600, length_cm: 460, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-46' },
-      { id: 'SG-52', model: 'СГ-52', length_mm: 5200, length_cm: 520, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-52' },
-      { id: 'SG-58', model: 'СГ-58', length_mm: 5800, length_cm: 580, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-58' },
-      { id: 'SG-64', model: 'СГ-64', length_mm: 6400, length_cm: 640, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-64' },
-      { id: 'SG-70', model: 'СГ-70', length_mm: 7000, length_cm: 700, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-70' },
-      { id: 'SG-82', model: 'СГ-82', length_mm: 8200, length_cm: 820, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-82' }
+      { id: 'SG-22', model: 'СГ-22', length_mm: 2200, length_cm: 220, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-22' },
+      { id: 'SG-28', model: 'СГ-28', length_mm: 2800, length_cm: 280, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-28' },
+      { id: 'SG-34', model: 'СГ-34', length_mm: 3400, length_cm: 340, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-34' },
+      { id: 'SG-40', model: 'СГ-40', length_mm: 4000, length_cm: 400, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-40' },
+      { id: 'SG-46', model: 'СГ-46', length_mm: 4600, length_cm: 460, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-46' },
+      { id: 'SG-52', model: 'СГ-52', length_mm: 5200, length_cm: 520, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-52' },
+      { id: 'SG-58', model: 'СГ-58', length_mm: 5800, length_cm: 580, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-58' },
+      { id: 'SG-64', model: 'СГ-64', length_mm: 6400, length_cm: 640, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-64' },
+      { id: 'SG-70', model: 'СГ-70', length_mm: 7000, length_cm: 700, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-70' },
+      { id: 'SG-82', model: 'СГ-82', length_mm: 8200, length_cm: 820, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-82' }
     ]
   }
 ];
