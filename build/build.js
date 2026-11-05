@@ -166,6 +166,7 @@ const PAGES = [
 
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' },
+      { id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' },
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
       { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' },
