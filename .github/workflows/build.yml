@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Запуск сборщика
+      - name: Загрузка локальных шрифтов Rubik
         run: node build/download-fonts.js
 
       - name: Запуск сборщика
