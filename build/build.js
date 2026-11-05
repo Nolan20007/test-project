@@ -785,17 +785,19 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   }
 
   const analyticsTag = isProductPage ? ANALYTICS_TAG_PRODUCT : ANALYTICS_TAG;
-  if (ANALYTICS_RE.test(html)) {
-    const deferredHtml = html.replace(ANALYTICS_RE, analyticsTag);
-    if (deferredHtml !== html) {
-      html = deferredHtml;
-      changed = true;
-      console.log(`  ✅ ${file} → analytics.js переведён на defer`);
-    }
-  } else if (html.includes('</head>')) {
-    html = html.replace('</head>', `    ${analyticsTag}\n</head>`);
+  let analyticsTagCount = 0;
+  const normalizedAnalyticsHtml = html.replace(/<script\b(?=[^>]*\bsrc=["'](?:\.\.\/)?js\/analytics\.js["'])[^>]*>\s*<\/script>/gi, () => {
+    analyticsTagCount += 1;
+    return analyticsTagCount === 1 ? analyticsTag : '';
+  });
+  if (normalizedAnalyticsHtml !== html) {
+    html = normalizedAnalyticsHtml;
     changed = true;
-    console.log(`  ✅ ${file} → добавлен analytics.js с defer`);
+    console.log(\`  ✅ \${file} → дубли analytics.js удалены, подключение нормализовано\`);
+  } else if (html.includes('</head>')) {
+    html = html.replace('</head>', \`    \${analyticsTag}\n</head>\`);
+    changed = true;
+    console.log(\`  ✅ \${file} → добавлен analytics.js с defer\`);
   }
 
   const ogResult = insertOgTags(html, file);
