@@ -786,7 +786,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 
   const analyticsTag = isProductPage ? ANALYTICS_TAG_PRODUCT : ANALYTICS_TAG;
   let analyticsTagCount = 0;
-  const normalizedAnalyticsHtml = html.replace(/<script\b(?=[^>]*\bsrc=["'](?:\.\.\/)?js\/analytics\.js["'])[^>]*>\s*<\/script>/gi, () => {
+  const normalizedAnalyticsHtml = html.replace(/<script\b[^>]*\bsrc=["'][^"']*analytics\.js["'][^>]*>\s*<\/script>/gi, () => {
     analyticsTagCount += 1;
     return analyticsTagCount === 1 ? analyticsTag : '';
   });
