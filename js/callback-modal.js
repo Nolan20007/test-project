@@ -116,7 +116,7 @@
                     type: 'callback', name, phone, message,
                     source: 'Модальное окно звонка'
                 })
-            }).catch(err => console.warn('TG ошибка:', err));
+            }).then(() => true).catch(err => { console.warn('Google Apps Script ошибка:', err); return false; });
 
             // Отправка на почту
             let prettyMessage = `📞 ЗАКАЗ ЗВОНКА\n\n👤 Имя: ${name}\n📞 Контакт: ${phone}\n💬 Сообщение: ${message || 'Нет'}`;
@@ -128,10 +128,16 @@
 
             const mailPromise = fetch('https://api.web3forms.com/submit', {
                 method: 'POST', body: mailData
-            }).catch(err => console.warn('Mail ошибка:', err));
+            }).then(async response => { const result = await response.json(); if (!response.ok || !result.success) throw new Error(result.message || 'Web3Forms не подтвердил отправку'); return true; }).catch(err => { console.warn('Web3Forms ошибка:', err); return false; });
 
             try {
-                await Promise.allSettled([telegramPromise, mailPromise]);
+                const [telegramResult, mailResult] = await Promise.allSettled([telegramPromise, mailPromise]);
+            const telegramSent = telegramResult.status === 'fulfilled' && telegramResult.value === true;
+            const emailSent = mailResult.status === 'fulfilled' && mailResult.value === true;
+            if (!telegramSent && !emailSent) throw new Error('Сервисы отправки не подтвердили заявку');
+            if (typeof window.trackLeadSuccess === 'function') {
+                window.trackLeadSuccess(this, emailSent ? 'web3forms' : 'google_apps_script');
+            }
                 showToast('Спасибо! Мы скоро перезвоним.', 'success', 4000);
                 this.reset();
                 window.closeCallbackModal();
