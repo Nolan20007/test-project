@@ -653,3 +653,12 @@ textarea[aria-invalid="true"]:focus {
     text-decoration: underline;
     text-underline-offset: 2px;
 }
+
+/* Подписи альбомов и заглушки изображений в каталогах */
+.album-sidebar__caption,
+.album-inline__caption {
+    color: #596674 !important;
+}
+.image-placeholder::before {
+    color: #596674 !important;
+}
