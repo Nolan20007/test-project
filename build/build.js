@@ -727,7 +727,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   // correct for both root pages and generated pages under /products/.
   const fontPrefix = isProductPage ? '../../' : '';
   const googleFontLinks = /<link\\s+[^>]*href=["'][^"']*fonts\\.googleapis\\.com[^"']*["'][^>]*>\\s*/gi;
-  const googleFontPreconnects = /<link\\s+[^>]*href=["']https:\\/\\/fonts\\.gstatic\\.com[^"']*["'][^>]*>\\s*/gi;
+  const googleFontPreconnects = /<link\s+[^>]*href=["'][^"']*fonts\.gstatic\.com[^"']*["'][^>]*>\s*/gi;
   const usesLocalRubik = html.includes(fontPrefix + 'css/rubik-local.css');
   const cleanedFontHtml = html.replace(googleFontLinks, '').replace(googleFontPreconnects, '');
   if (cleanedFontHtml !== html) { html = cleanedFontHtml; changed = true; }
