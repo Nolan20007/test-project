@@ -4,7 +4,10 @@ on:
   push:
     paths:
       - 'data/**.csv'
-      - 'build/build.js'\n      - 'build/download-fonts.js'\n      - 'css/**'
+      - 'build/build.js'
+      - 'build/download-fonts.js'
+      - 'css/**'
+      - 'index.html'
       - 'templates/**.html'
       - 'includes/**.html'
   workflow_dispatch:
