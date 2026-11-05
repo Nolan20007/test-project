@@ -359,7 +359,7 @@ function buildTable(products, enableCollapse) {
   products.forEach((p, idx) => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
           weight = esc(p.weight), unit = esc(p.unit),
-          img = esc(p.image || 'images/default-product.png'),
+          img = esc(p.image || 'images/default-product.svg'),
           price = parseFloat(p.price) || 0,
           anchor = safeAnchor(p.id);
 
@@ -401,7 +401,7 @@ function buildTable(products, enableCollapse) {
       <td><button type="button" class="cart-button" data-item-id="${id}" data-item-name="${name}"
             data-item-length="${length}" data-item-weight="${weight}">В корзину</button></td>` : '<td>—</td><td>—</td>') : '';
     html += `<tr id="${anchor}"${hiddenStyle}>
-      <td><img src="${img}" alt="${name}" width="40" height="40" style="width:40px;height:40px;max-height:40px;object-fit:contain;" loading="lazy" decoding="async" onerror="this.src='images/default-product.png'"></td>
+      <td><img src="${img}" alt="${name}" width="40" height="40" style="width:40px;height:40px;max-height:40px;object-fit:contain;" loading="lazy" decoding="async" onerror="this.src='images/default-product.svg'"></td>
       <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
       <td>${priceCell}</td><td>${unit}</td>${orderCells}
     </tr>`;
@@ -458,7 +458,7 @@ function buildProductListJsonLd(products, pageUrl) {
     const price = parseFloat(p.price) || 0;
     const anchor = safeAnchor(p.id);
     
-    let searchImage = p.image || 'images/default-product.png';
+    let searchImage = p.image || 'images/default-product.svg';
     if (searchImage.includes('vid-mini')) {
       searchImage = searchImage.replace('vid-mini.webp', 'vid-search.webp').replace('vid-mini.png', 'vid-search.png');
     }
