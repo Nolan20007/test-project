@@ -34,6 +34,9 @@ jobs:
           node-version: '20'
 
       - name: Запуск сборщика
+        run: node build/download-fonts.js
+
+      - name: Запуск сборщика
         run: node build/build.js
 
       - name: Коммит и пуш, если что-то изменилось
