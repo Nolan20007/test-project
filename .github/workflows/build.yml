@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'data/**.csv'
-      - 'build/build.js'
+      - 'build/build.js'\n      - 'build/download-fonts.js'\n      - 'css/**'
       - 'templates/**.html'
       - 'includes/**.html'
   workflow_dispatch:
@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add '*.html' '*.xml'
+          git add '*.html' '*.xml' 'css/rubik-local.css' 'fonts/rubik/*.woff2' 'fonts/rubik/OFL.txt'
           if git diff --staged --quiet; then
             echo "Нет изменений — коммит не нужен"
           else
