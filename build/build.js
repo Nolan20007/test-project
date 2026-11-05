@@ -390,9 +390,10 @@ function buildTable(products, enableCollapse) {
 
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
 
-    const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${name}</a>` : name;
+    const tableName = (id.startsWith('NTSS-') || id.startsWith('NTSB-')) ? name.replace(/,\s*длина\s+\d+\s*мм$/i, '') : name;
+    const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${tableName}</a>` : tableName;
 
-    const priceCell = price > 0 ? `${(id.startsWith('NTSB-') || id.startsWith('NTSS-')) ? '' : 'от '}${fmtPrice(price)} руб.` : 'по запросу';
+    const priceCell = price > 0 ? `от ${fmtPrice(price)} руб.` : 'по запросу';
     const orderCells = hasPricedProducts ? (price > 0 ? `<td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
         <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
