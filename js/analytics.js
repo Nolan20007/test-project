@@ -1,85 +1,84 @@
 // js/analytics.js
+// Инициализация аналитики и событий сайта. Защита от повторного запуска нужна,
+// поскольку старые сборки могли подключать этот файл дважды.
 function loadAnalytics() {
-    // Яндекс.Метрика — инициализация
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    if (window.__siteAnalyticsInitialized) return;
+    window.__siteAnalyticsInitialized = true;
+
+    // Яндекс.Метрика
+    (function(m, e, t, r, i, k, a) {
+        m[i] = m[i] || function() { (m[i].a = m[i].a || []).push(arguments); };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) return;
+        }
+        k = e.createElement(t);
+        a = e.getElementsByTagName(t)[0];
+        k.async = 1;
+        k.src = r;
+        a.parentNode.insertBefore(k, a);
     })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-    // ВАЖНО: без ssr:true — иначе Метрика не считает визиты
-    ym(105333281, 'init', {
-        webvisor: true,
-        clickmap: true,
-        ecommerce: "dataLayer",
-        accurateTrackBounce: true,
-        trackLinks: true
-    });
-
-    // Google Analytics
-    const gtagScript1 = document.createElement('script');
-    gtagScript1.async = true;
-    gtagScript1.src = 'https://www.googletagmanager.com/gtag/js?id=G-33M762M7CX';
-    document.head.appendChild(gtagScript1);
-
-    const gtagScript2 = document.createElement('script');
-    gtagScript2.text = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-33M762M7CX');
-    `;
-    document.head.appendChild(gtagScript2);
-
-    // Noscript для Яндекс.Метрики
-    const noscript = document.createElement('noscript');
-    noscript.innerHTML = '<div><img src="https://mc.yandex.ru/watch/105333281" style="position:absolute; left:-9999px;" alt="" /></div>';
-    document.body.appendChild(noscript);
-
-    // === ОТСЛЕЖИВАНИЕ ЦЕЛЕЙ ===
-    document.addEventListener('DOMContentLoaded', function() {
-        // Отслеживание отправки форм
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            form.addEventListener('submit', function() {
-                ym(105333281, 'reachGoal', 'contact_form_submit');
-                gtag('event', 'form_submit');
-            });
+    if (typeof window.ym === 'function') {
+        window.ym(105333281, 'init', {
+            webvisor: true,
+            clickmap: true,
+            ecommerce: 'dataLayer',
+            accurateTrackBounce: true,
+            trackLinks: true
         });
-        
-        // Клики по телефону
-        const phones = document.querySelectorAll('a[href^="tel:"]');
-        phones.forEach(phone => {
-            phone.addEventListener('click', function() {
-                ym(105333281, 'reachGoal', 'phone_click');
-                gtag('event', 'phone_click');
-            });
+    }
+
+    // Google Analytics 4
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-33M762M7CX');
+
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-33M762M7CX"]')) {
+        const gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-33M762M7CX';
+        document.head.appendChild(gtagScript);
+    }
+
+    // Вызывается обработчиком формы только после ответа сервиса отправки.
+    window.trackLeadSuccess = function(form, method) {
+        const formId = form && form.id ? form.id : 'unknown_form';
+        window.gtag('event', 'generate_lead', {
+            form_id: formId,
+            method: method || 'website'
         });
-        
-        // Добавление в корзину
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('cart-button') || 
-                e.target.closest('.cart-button')) {
-                ym(105333281, 'reachGoal', 'add_to_cart');
-                gtag('event', 'add_to_cart');
-            }
-        });
-        
-        // Просмотр товара
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.product-card') || 
-                e.target.closest('.product-image-wrapper')) {
-                ym(105333281, 'reachGoal', 'product_view');
-                gtag('event', 'view_item');
-            }
-        });
+        if (typeof window.ym === 'function') {
+            window.ym(105333281, 'reachGoal', 'contact_form_submit');
+        }
+    };
+
+    // Клики по телефону, email и добавление товара в корзину.
+    document.addEventListener('click', function(event) {
+        const target = event.target;
+        if (!target || typeof target.closest !== 'function') return;
+
+        const phone = target.closest('a[href^="tel:"]');
+        if (phone) {
+            window.gtag('event', 'phone_click', { link_url: phone.href });
+            if (typeof window.ym === 'function') window.ym(105333281, 'reachGoal', 'phone_click');
+        }
+
+        const email = target.closest('a[href^="mailto:"]');
+        if (email) {
+            window.gtag('event', 'email_click', { link_url: email.href });
+            if (typeof window.ym === 'function') window.ym(105333281, 'reachGoal', 'email_click');
+        }
+
+        const cartButton = target.closest('.cart-button');
+        if (cartButton) {
+            window.gtag('event', 'add_to_cart');
+            if (typeof window.ym === 'function') window.ym(105333281, 'reachGoal', 'add_to_cart');
+        }
     });
 }
 
-// Загружаем после полной загрузки страницы
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadAnalytics);
-} else {
-    loadAnalytics();
-}
+// Файл подключается через defer, поэтому DOM уже разобран.
+// Не используем вложенный DOMContentLoaded: такой обработчик мог регистрироваться слишком поздно.
+loadAnalytics();
