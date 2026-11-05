@@ -116,7 +116,9 @@
             .image-toggle__btn { padding: 5px 10px; font-size: 11px; }
         }
     .header .header-title { margin: 0; font-size: 2.2em; line-height: 1.2; font-weight: 600; color: #fff; }
-      .image-toggle,.mp-usp-list {display:none!important;}
+      .image-toggle,.mp-usp-list,.modal-nav {display:none!important;}
+    .mp-main-img-wrapper:after{content:"Изображение в работе";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#7a8a9a;font-size:15px;font-style:italic;}
+    .mp-main-img{display:none!important;}
     .mp-main-img-wrapper {background:#f0f4f8;}
     .mp-main-img {max-width:70%;max-height:70%;}
     </style>
@@ -144,7 +146,7 @@
         <div class="mp-card">
             <div class="mp-top">
                 <div class="mp-gallery">
-                    <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
+                    <div class="mp-main-img-wrapper" id="mainImageWrapper">
                         <img id="mainImage" src="../../images/default-product.png" alt="Лестница {{PROJECT}} {{MODEL}} — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
                         <div class="image-toggle">
                             <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/default-product.png', 0)">Вид 1</button>
