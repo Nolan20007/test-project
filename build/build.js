@@ -64,6 +64,12 @@ const CATEGORIES_TO_GENERATE = [
     product_title_accusative: 'лестницу тепловых сетей с перилами',
     project_phrase: 'НТС 62-91-111Б',
     album: 'нормалям тепловых сетей',
+    width_mm: 626,
+    construction: 'перила',
+    construction_spec: 'Стальные перила по конструкции НТС 62-91-111Б',
+    step_spec: 'Ступени и несущие элементы — сталь Ст3',
+    installation_text: 'Перед установкой необходимо сверить длину лестницы, положение опор и способ крепления с проектом тепловой камеры. Монтаж выполняют с учетом конструкции стен и условий эксплуатации.',
+    product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина 626 мм, материал — сталь Ст3.',
     items: [
       { id: 'NTSB-L2000', model: 'Л-2000', length_mm: 2000, length_cm: 200, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2000' },
       { id: 'NTSB-L2250', model: 'Л-2250', length_mm: 2250, length_cm: 225, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2250' },
@@ -74,6 +80,29 @@ const CATEGORIES_TO_GENERATE = [
       { id: 'NTSB-L3500', model: 'Л-3500', length_mm: 3500, length_cm: 350, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3500' },
       { id: 'NTSB-L3750', model: 'Л-3750', length_mm: 3750, length_cm: 375, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3750' },
       { id: 'NTSB-L4000', model: 'Л-4000', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111Б', slug: 'lestnica-l-4000' }
+    ]
+  },
+  {
+    template: 'lestnicy-nts-62-91-111.html',
+    folder: 'lestnicy-nts-62-91-111',
+    title: 'Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг',
+    catalog_link: 'nts-62-91-111.html',
+    csv: 'data/nts-62-91-111-products.csv',
+    product_title_prefix: 'Лестница с ограждением из дуг',
+    product_title_accusative: 'лестницу с ограждением из дуг',
+    project_phrase: 'НТС 62-91-111',
+    album: 'нормалям тепловых сетей',
+    width_mm: 600,
+    construction: 'ограждение из дуг',
+    construction_spec: 'Ограждение из дуг; уголок 75×75×5 мм',
+    step_spec: 'Стальной пруток Ø18 мм',
+    installation_text: 'Лестница опирается на приваренные опорные пятаки и крепится к стене тягами. В конструкции предусмотрены отверстия Ø16 мм для установки тяг. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
+    product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина 600 мм, материал — сталь Ст3.',
+    items: [
+      { id: 'NTSS-S1', model: 'С1', length_mm: 3400, length_cm: 340, project: 'НТС 62-91-111', slug: 'lestnica-s1-3400' },
+      { id: 'NTSS-S2', model: 'С2', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111', slug: 'lestnica-s2-4000' },
+      { id: 'NTSS-S3', model: 'С3', length_mm: 4600, length_cm: 460, project: 'НТС 62-91-111', slug: 'lestnica-s3-4600' },
+      { id: 'NTSS-S4', model: 'С4', length_mm: 5200, length_cm: 520, project: 'НТС 62-91-111', slug: 'lestnica-s4-5200' }
     ]
   },
   {
@@ -122,6 +151,7 @@ const PAGES = [
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
   { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
+  { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
       { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
       { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
@@ -347,6 +377,10 @@ function buildTable(products, enableCollapse) {
     else if (id.startsWith('C1-')) {
         modelSlug = id.toLowerCase().replace('c1-', 's1-');
         itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
+    }
+    else if (id.startsWith('NTSS-')) {
+        const ntsSlugs = { 'NTSS-S1': 's1-3400', 'NTSS-S2': 's2-4000', 'NTSS-S3': 's3-4600', 'NTSS-S4': 's4-5200' };
+        itemUrl = `products/lestnicy-nts-62-91-111/lestnica-${ntsSlugs[id]}.html`;
     }
     else if (id.startsWith('NTSB-')) {
         modelSlug = id.toLowerCase().replace('ntsb-', '').replace('l', 'l-');
@@ -877,7 +911,14 @@ function buildProductPages() {
         .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
         .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug)
-        .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder);
+        .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder)
+        .replace(/\{\{WIDTH_MM\}\}/g, cat.width_mm || 500)
+        .replace(/\{\{CONSTRUCTION\}\}/g, cat.construction || 'стальная конструкция')
+        .replace(/\{\{CONSTRUCTION_SPEC\}\}/g, cat.construction_spec || 'Сталь Ст3')
+        .replace(/\{\{STEP_SPEC\}\}/g, cat.step_spec || 'Сталь Ст3')
+        .replace(/\{\{INSTALLATION_TEXT\}\}/g, cat.installation_text || 'Способ установки согласовывается с проектной документацией.')
+        .replace(/\{\{PRODUCT_TITLE\}\}/g, `${cat.product_title_prefix || 'Лестница'} ${p.model} по ${cat.project_phrase || p.project}, длина ${p.length_mm} мм`)
+        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, p.model).replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{LENGTH_MM\}\}/g, p.length_mm));
       const title = cat.product_title_prefix
         ? `${cat.product_title_prefix} ${p.model} по ${cat.project_phrase || p.project}, ${p.length_cm} см — купить`
         : `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
