@@ -823,7 +823,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
     html = normalizedAnalyticsHtml;
     changed = true;
     console.log('  ✅ ' + file + ' → дубли analytics.js удалены, подключение нормализовано');
-  } else if (html.includes('</head>')) {
+  } else if (analyticsTagCount === 0 && html.includes('</head>')) {
     html = html.replace('</head>', '    ' + analyticsTag + '\n</head>');
     changed = true;
     console.log('  ✅ ' + file + ' → добавлен analytics.js с defer');
