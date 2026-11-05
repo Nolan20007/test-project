@@ -63,6 +63,7 @@ const CATEGORIES_TO_GENERATE = [
     product_title_prefix: 'Лестница тепловых сетей с перилами',
     product_title_accusative: 'лестницу тепловых сетей с перилами',
     project_phrase: 'НТС 62-91-111Б',
+    album: 'нормалям тепловых сетей',
     items: [
       { id: 'NTSB-L2000', model: 'Л-2000', length_mm: 2000, length_cm: 200, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2000' },
       { id: 'NTSB-L2250', model: 'Л-2250', length_mm: 2250, length_cm: 225, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2250' },
