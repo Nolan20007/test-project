@@ -728,12 +728,16 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   const fontPrefix = isProductPage ? '../../' : '';
   const googleFontLinks = /<link\s+[^>]*href=["'][^"']*fonts\.googleapis\.com[^"']*["'][^>]*>\s*/gi;
   const googleFontPreconnects = /<link\s+[^>]*href=["'][^"']*fonts\.gstatic\.com[^"']*["'][^>]*>\s*/gi;
+  const literalBreak = String.fromCharCode(92) + 'n';
+  const brokenFontLinks = 'crossorigin>' + literalBreak + '    <link rel="stylesheet" href="' + fontPrefix + 'css/rubik-local.css">' + literalBreak;
+  const fixedFontLinks = 'crossorigin>' + String.fromCharCode(10) + '    <link rel="stylesheet" href="' + fontPrefix + 'css/rubik-local.css">' + String.fromCharCode(10);
+  if (html.includes(brokenFontLinks)) { html = html.replace(brokenFontLinks, fixedFontLinks); changed = true; }
   const usesLocalRubik = html.includes(fontPrefix + 'css/rubik-local.css');
   const cleanedFontHtml = html.replace(googleFontLinks, '').replace(googleFontPreconnects, '');
   if (cleanedFontHtml !== html) { html = cleanedFontHtml; changed = true; }
   if (!usesLocalRubik && html.includes('</head>')) {
-    const localFontLinks = '    <link rel="preload" href="' + fontPrefix + 'fonts/rubik/rubik-3.woff2" as="font" type="font/woff2" crossorigin>\n' +
-      '    <link rel="stylesheet" href="' + fontPrefix + 'css/rubik-local.css">\n';
+    const localFontLinks = '    <link rel="preload" href="' + fontPrefix + 'fonts/rubik/rubik-3.woff2" as="font" type="font/woff2" crossorigin>' + String.fromCharCode(10) +
+      '    <link rel="stylesheet" href="' + fontPrefix + 'css/rubik-local.css">' + String.fromCharCode(10);
     html = html.replace('</head>', localFontLinks + '</head>');
     changed = true;
     console.log('  ✅ ' + file + ' → Rubik подключён локально');
