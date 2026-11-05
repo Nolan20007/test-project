@@ -793,11 +793,11 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   if (normalizedAnalyticsHtml !== html) {
     html = normalizedAnalyticsHtml;
     changed = true;
-    console.log(\`  ✅ \${file} → дубли analytics.js удалены, подключение нормализовано\`);
+    console.log('  ✅ ' + file + ' → дубли analytics.js удалены, подключение нормализовано');
   } else if (html.includes('</head>')) {
-    html = html.replace('</head>', \`    \${analyticsTag}\n</head>\`);
+    html = html.replace('</head>', '    ' + analyticsTag + '\n</head>');
     changed = true;
-    console.log(\`  ✅ \${file} → добавлен analytics.js с defer\`);
+    console.log('  ✅ ' + file + ' → добавлен analytics.js с defer');
   }
 
   const ogResult = insertOgTags(html, file);
