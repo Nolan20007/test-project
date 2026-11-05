@@ -177,7 +177,7 @@
                     message: desc,
                     source: 'Нестандартное изделие'
                 })
-            }).catch(err => console.warn('TG ошибка:', err));
+            }).then(() => true).catch(err => { console.warn('Google Apps Script ошибка:', err); return false; });
 
             const mailData = new FormData();
             mailData.append('access_key', CONFIG.WEB3FORMS_KEY);
@@ -191,9 +191,15 @@
             const mailPromise = fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 body: mailData
-            }).catch(err => console.warn('Mail ошибка:', err));
+            }).then(async response => { const result = await response.json(); if (!response.ok || !result.success) throw new Error(result.message || 'Web3Forms не подтвердил отправку'); return true; }).catch(err => { console.warn('Web3Forms ошибка:', err); return false; });
 
-            await Promise.allSettled([telegramPromise, mailPromise]);
+            const [telegramResult, mailResult] = await Promise.allSettled([telegramPromise, mailPromise]);
+            const telegramSent = telegramResult.status === 'fulfilled' && telegramResult.value === true;
+            const emailSent = mailResult.status === 'fulfilled' && mailResult.value === true;
+            if (!telegramSent && !emailSent) throw new Error('Сервисы отправки не подтвердили заявку');
+            if (typeof window.trackLeadSuccess === 'function') {
+                window.trackLeadSuccess(this, emailSent ? 'web3forms' : 'google_apps_script');
+            }
 
             showToast('Заявка отправлена! Менеджер свяжется с вами.', 'success');
             this.reset();
