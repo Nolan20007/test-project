@@ -600,7 +600,6 @@
         }
     </style>
     <script defer src="js/analytics.js"></script>
-    <script defer src="js/analytics.js"></script>
 </head>
 <body>
 
@@ -1477,7 +1476,10 @@ function copyEmailToClipboard(btn) {
                 message: message || '',
                 source: 'Главная страница'
             })
-        }).catch(err => console.warn('TG ошибка:', err));
+        }).then(() => true).catch(err => {
+            console.warn('Ошибка отправки в Google Apps Script:', err);
+            return false;
+        });
 
         // Собираем красивый текст заявки
         let prettyMessage = `📞 НОВАЯ ЗАЯВКА С ГЛАВНОЙ СТРАНИЦЫ\n\n`;
@@ -1493,15 +1495,31 @@ function copyEmailToClipboard(btn) {
 
         const mailPromise = fetch('https://api.web3forms.com/submit', {
             method: 'POST', body: mailData
-        }).catch(err => console.warn('Mail ошибка:', err));
+        }).then(async response => {
+            const result = await response.json();
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || 'Сервис отправки не подтвердил заявку');
+            }
+            return true;
+        });
 
         try {
-            await Promise.allSettled([telegramPromise, mailPromise]);
+            const [telegramResult, mailResult] = await Promise.allSettled([telegramPromise, mailPromise]);
+            const telegramSent = telegramResult.status === 'fulfilled' && telegramResult.value === true;
+            const emailSent = mailResult.status === 'fulfilled' && mailResult.value === true;
+
+            if (!telegramSent && !emailSent) {
+                throw new Error('Оба сервиса отправки не подтвердили доставку заявки');
+            }
+
+            if (typeof window.trackLeadSuccess === 'function') {
+                window.trackLeadSuccess(this, emailSent ? 'web3forms' : 'google_apps_script');
+            }
             showToast('Заявка отправлена! Менеджер свяжется с вами.', 'success', 4000);
             this.reset();
         } catch (error) {
             console.error('Ошибка отправки:', error);
-            showToast('❌ Ошибка отправки. Позвоните нам: +7 (965) 555-99-66', 'error', 5000);
+            showToast('❌ Не удалось подтвердить отправку. Позвоните нам: +7 (965) 555-99-66', 'error', 5000);
         } finally {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
