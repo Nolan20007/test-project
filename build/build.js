@@ -52,6 +52,27 @@ const CATEGORIES_TO_GENERATE = [
       { id: 'C1-17', model: 'С1-17', length_mm: 5700, length_cm: 570, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-17' },
       { id: 'C1-18', model: 'С1-18', length_mm: 6000, length_cm: 600, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-18' },
     ]
+  },
+  {
+    template: 'stremyanki-ssg1.html',
+    folder: 'stremyanki-ssg1',
+    title: 'Пожарные стремянки СГ серия 1.450.3-7.94',
+    catalog_link: 'ssg1.html',
+    csv: 'data/ssg1-products.csv',
+    album: 'Серия 1.450.3-7.94. Выпуск 2',
+    product_title_prefix: 'Пожарная стремянка',
+    items: [
+      { id: 'SG-22', model: 'СГ-22', length_mm: 2200, length_cm: 220, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-22' },
+      { id: 'SG-28', model: 'СГ-28', length_mm: 2800, length_cm: 280, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-28' },
+      { id: 'SG-34', model: 'СГ-34', length_mm: 3400, length_cm: 340, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-34' },
+      { id: 'SG-40', model: 'СГ-40', length_mm: 4000, length_cm: 400, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-40' },
+      { id: 'SG-46', model: 'СГ-46', length_mm: 4600, length_cm: 460, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-46' },
+      { id: 'SG-52', model: 'СГ-52', length_mm: 5200, length_cm: 520, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-52' },
+      { id: 'SG-58', model: 'СГ-58', length_mm: 5800, length_cm: 580, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-58' },
+      { id: 'SG-64', model: 'СГ-64', length_mm: 6400, length_cm: 640, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-64' },
+      { id: 'SG-70', model: 'СГ-70', length_mm: 7000, length_cm: 700, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-70' },
+      { id: 'SG-82', model: 'СГ-82', length_mm: 8200, length_cm: 820, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-82' }
+    ]
   }
 ];
 
@@ -292,6 +313,10 @@ function buildTable(products, enableCollapse) {
         modelSlug = id.toLowerCase().replace('c-', 's-');
         itemUrl = `products/stremyanki-tpr-901-09-11-84/stremyanka-${modelSlug}.html`;
     } 
+    else if (id.startsWith('SG-')) {
+        modelSlug = id.toLowerCase();
+        itemUrl = `products/stremyanki-ssg1/stremyanka-${modelSlug}.html`;
+    }
     else if (id.startsWith('C1-')) {
         modelSlug = id.toLowerCase().replace('c1-', 's1-');
         itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
@@ -748,17 +773,22 @@ function buildProductPages() {
           throw new Error(`[product pages] ${cat.template} / ${cat.csv}, ID "${p.id}": некорректное поле "${field}" = "${row[field]}"`);
         return n;
       };
-      const price = numeric('price'), weight = numeric('weight'), stepCount = numeric('step_count');
+      const price = numeric('price'), weight = numeric('weight');
+      const stepCount = row.step_count ? numeric('step_count') : null;
       let html = template;
       html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, p.model)
         .replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{LENGTH_CM\}\}/g, p.length_cm)
         .replace(/\{\{PRICE\}\}/g, price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, String(price))
         .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
-        .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, String(stepCount))
+        .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
         .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug);
-      const title = `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
-      const album = cat.csv.includes('ss1-') ? 'Альбом V' : 'Альбом VII';
-      const desc = `Купить стремянку ${p.model} для колодцев по ${p.project}, ${album}. Длина ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`;
+      const title = cat.product_title_prefix
+        ? `${cat.product_title_prefix} ${p.model} ${p.project}, ${p.length_cm} см — купить`
+        : `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
+      const album = cat.album || (cat.csv.includes('ss1-') ? 'Альбом V' : 'Альбом VII');
+      const desc = cat.product_title_prefix
+        ? `Купить ${cat.product_title_prefix.toLowerCase()} ${p.model} по ${p.project}, ${album}. Высота ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`
+        : `Купить стремянку ${p.model} для колодцев по ${p.project}, ${album}. Длина ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`;
       html = html.replace(/\{\{SEO_TITLE\}\}/g, title).replace(/\{\{SEO_DESC\}\}/g, desc)
         .replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link).replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
       let otherLinks = '';
