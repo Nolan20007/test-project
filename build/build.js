@@ -645,6 +645,7 @@ const ALL_HTML_FILES = [
   'kl-1-dlya-kanalizacionnyh-kolodcev.html',
   'l-16-dlya-teplovyh-setej.html',
   'nts-62-91-111b.html',
+  'nts-62-91-111.html',
   'l-17-000SB.html',
   'l-3-sk-2201-88.html',
   'l-19.html',
