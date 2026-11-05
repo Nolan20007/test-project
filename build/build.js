@@ -755,11 +755,11 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   // Остальные карточные изображения загружаем только при приближении к viewport.
   if (file === 'index.html') {
     let cardIndex = 0;
-    const lazyHtml = html.replace(/<img\\b(?=[^>]*\\bclass=["'][^"']*\\bproduct-image\\b)[^>]*>/gi, (tag) => {
+    const lazyHtml = html.replace(/<img\b(?=[^>]*\bclass=["'][^"']*\bproduct-image\b)[^>]*>/gi, (tag) => {
       cardIndex += 1;
-      if (cardIndex === 1 || /\\bloading=["']lazy["']/i.test(tag)) return tag;
+      if (cardIndex === 1 || /\bloading=["']lazy["']/i.test(tag)) return tag;
       let updated = tag.replace(/>$/, ' loading="lazy">');
-      if (!/\\bdecoding=/i.test(updated)) updated = updated.replace(/>$/, ' decoding="async">');
+      if (!/\bdecoding=/i.test(updated)) updated = updated.replace(/>$/, ' decoding="async">');
       return updated;
     });
     if (lazyHtml !== html) {
