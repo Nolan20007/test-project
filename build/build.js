@@ -60,8 +60,10 @@ const CATEGORIES_TO_GENERATE = [
     title: 'Пожарные стремянки СГ серия 1.450.3-7.94',
     catalog_link: 'ssg1.html',
     csv: 'data/ssg1-products.csv',
-    album: 'Серия 1.450.3-7.94. Выпуск 2',
+    album: 'Выпуск 2',
+    project_phrase: 'серии 1.450.3-7.94',
     product_title_prefix: 'Пожарная стремянка',
+    product_title_accusative: 'пожарную стремянку',
     items: [
       { id: 'SG-22', model: 'СГ-22', length_mm: 2200, length_cm: 220, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-22' },
       { id: 'SG-28', model: 'СГ-28', length_mm: 2800, length_cm: 280, project: 'Серия 1.450.3-7.94', slug: 'stremyanka-sg-28' },
@@ -782,13 +784,14 @@ function buildProductPages() {
         .replace(/\{\{PRICE\}\}/g, price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, String(price))
         .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
-        .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug);
+        .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug)
+        .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder);
       const title = cat.product_title_prefix
-        ? `${cat.product_title_prefix} ${p.model} ${p.project}, ${p.length_cm} см — купить`
+        ? `${cat.product_title_prefix} ${p.model} по ${cat.project_phrase || p.project}, ${p.length_cm} см — купить`
         : `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
       const album = cat.album || (cat.csv.includes('ss1-') ? 'Альбом V' : 'Альбом VII');
       const desc = cat.product_title_prefix
-        ? `Купить ${cat.product_title_prefix.toLowerCase()} ${p.model} по ${p.project}, ${album}. Высота ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`
+        ? `Купить ${cat.product_title_accusative || cat.product_title_prefix.toLowerCase()} ${p.model} по ${cat.project_phrase || p.project}, ${album}. Высота ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`
         : `Купить стремянку ${p.model} для колодцев по ${p.project}, ${album}. Длина ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`;
       html = html.replace(/\{\{SEO_TITLE\}\}/g, title).replace(/\{\{SEO_DESC\}\}/g, desc)
         .replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link).replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
