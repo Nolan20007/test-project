@@ -6,6 +6,7 @@ on:
       - 'data/**.csv'
       - 'build/build.js'
       - 'build/download-fonts.js'
+      - 'build/optimize-card-images.js'
       - 'css/**'
       - 'index.html'
       - 'templates/**.html'
@@ -36,6 +37,12 @@ jobs:
       - name: Загрузка локальных шрифтов Rubik
         run: node build/download-fonts.js
 
+      - name: Установка sharp для миниатюр карточек
+        run: npm install sharp --no-save
+
+      - name: Генерация облегчённых изображений карточек
+        run: node build/optimize-card-images.js
+
       - name: Запуск сборщика
         run: node build/build.js
 
@@ -44,6 +51,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add '*.html' '*.xml' 'css/rubik-local.css' 'fonts/rubik/*.woff2' 'fonts/rubik/OFL.txt'
+          git add 'images/*/vid-card.webp' 'images/nestandart/nestandart-card.webp'
           if git diff --staged --quiet; then
             echo "Нет изменений — коммит не нужен"
           else
