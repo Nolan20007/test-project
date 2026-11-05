@@ -756,7 +756,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   if (deferredSharedScripts !== html) {
     html = deferredSharedScripts;
     changed = true;
-    console.log(\`  ✅ \${file} → config.js и utils.js переведены на defer\`);
+    console.log('  ✅ ' + file + ' → config.js и utils.js переведены на defer');
   }
 
   const priceResult = replacePrices(html);
