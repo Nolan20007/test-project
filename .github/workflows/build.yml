@@ -5,6 +5,7 @@ on:
     paths:
       - 'data/**.csv'
       - 'build/build.js'
+      - 'templates/**.html'
       - 'includes/**.html'
   workflow_dispatch:
 
