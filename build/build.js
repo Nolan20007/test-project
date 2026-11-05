@@ -746,9 +746,9 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 
   // Общие config.js и utils.js переводим на defer для всех страниц.
   // Порядок подключения сохраняется; DOMContentLoaded сработает после defer-скриптов.
-  const deferredSharedScripts = html.replace(/<script\\b[^>]*>/gi, (tag) => {
-    const srcMatch = tag.match(/\\bsrc=["']([^"']+)["']/i);
-    if (!srcMatch || !/(?:^|\\/)(?:config|utils)\\.js$/i.test(srcMatch[1]) || /\\bdefer\\b/i.test(tag)) {
+  const deferredSharedScripts = html.replace(/<script\b[^>]*>/gi, (tag) => {
+    const srcMatch = tag.match(/\bsrc=["']([^"']+)["']/i);
+    if (!srcMatch || !/(?:^|\/)(?:config|utils)\.js$/i.test(srcMatch[1]) || /\bdefer\b/i.test(tag)) {
       return tag;
     }
     return tag.replace(/>$/, ' defer>');
@@ -756,7 +756,7 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
   if (deferredSharedScripts !== html) {
     html = deferredSharedScripts;
     changed = true;
-    console.log(`  ✅ ${file} → config.js и utils.js переведены на defer`);
+    console.log(\`  ✅ \${file} → config.js и utils.js переведены на defer\`);
   }
 
   const priceResult = replacePrices(html);
