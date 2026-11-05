@@ -629,3 +629,27 @@ textarea[aria-invalid="true"]:focus {
 .contact-info p { color: #ffffff; }
 .form-consent { color: #596674; }
 .image-placeholder::before { color: #596674; }
+
+
+/* Доступность: единый контраст второстепенного текста на всех страницах */
+[style*="color: #7a8a9a"],
+[style*="color:#7a8a9a"],
+[style*="color: #7A8A9A"],
+[style*="color:#7A8A9A"] {
+    color: #596674 !important;
+}
+.form-consent,
+.form-hint,
+.contact-item,
+.contact-item a,
+.opening-hours,
+.address-text {
+    color: #596674;
+}
+.form-consent a,
+.form-hint a,
+.contact-item a {
+    color: #245b88;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
