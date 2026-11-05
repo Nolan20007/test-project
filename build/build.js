@@ -168,8 +168,8 @@ const CTA_END = '<!-- CTA_END -->';
 const COLLAPSE_THRESHOLD = 11;
 const COLLAPSE_SHOW = 10;
 
-const ANALYTICS_TAG = '<script src="js/analytics.js"></script>';
-const ANALYTICS_TAG_PRODUCT = '<script src="../../js/analytics.js"></script>';
+const ANALYTICS_TAG = '<script defer src="js/analytics.js"></script>';
+const ANALYTICS_TAG_PRODUCT = '<script defer src="../../js/analytics.js"></script>';
 const ANALYTICS_RE = /<script\s+src=["'](\.\.\/)?js\/analytics\.js["'][^>]*>\s*<\/script>/i;
 
 const OG_START = '<!-- OG_START -->';
@@ -751,11 +751,18 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
     console.log(`  ✅ ${file} → цены обновлены из CSV`);
   }
 
-  if (!ANALYTICS_RE.test(html) && html.includes('</head>')) {
-    const analyticsTag = isProductPage ? ANALYTICS_TAG_PRODUCT : ANALYTICS_TAG;
+  const analyticsTag = isProductPage ? ANALYTICS_TAG_PRODUCT : ANALYTICS_TAG;
+  if (ANALYTICS_RE.test(html)) {
+    const deferredHtml = html.replace(ANALYTICS_RE, analyticsTag);
+    if (deferredHtml !== html) {
+      html = deferredHtml;
+      changed = true;
+      console.log(`  ✅ ${file} → analytics.js переведён на defer`);
+    }
+  } else if (html.includes('</head>')) {
     html = html.replace('</head>', `    ${analyticsTag}\n</head>`);
     changed = true;
-    console.log(`  ✅ ${file} → добавлен analytics.js`);
+    console.log(`  ✅ ${file} → добавлен analytics.js с defer`);
   }
 
   const ogResult = insertOgTags(html, file);
