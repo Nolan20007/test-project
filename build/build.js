@@ -170,7 +170,7 @@ const COLLAPSE_SHOW = 10;
 
 const ANALYTICS_TAG = '<script defer src="js/analytics.js"></script>';
 const ANALYTICS_TAG_PRODUCT = '<script defer src="../../js/analytics.js"></script>';
-const ANALYTICS_RE = /<script\s+src=["'](\.\.\/)?js\/analytics\.js["'][^>]*>\s*<\/script>/i;
+const ANALYTICS_RE = /<script\b(?=[^>]*\bsrc=["'](\.\.\/)?js\/analytics\.js["'])[^>]*>\s*<\/script>/i;
 
 const OG_START = '<!-- OG_START -->';
 const OG_END   = '<!-- OG_END -->';
