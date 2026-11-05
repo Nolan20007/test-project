@@ -330,7 +330,7 @@ function buildTable(products, enableCollapse) {
     const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${name}</a>` : name;
 
     html += `<tr id="${anchor}"${hiddenStyle}>
-      <td><img src="${img}" alt="${name}" style="max-height:40px;" loading="lazy" onerror="this.src='images/default-product.png'"></td>
+      <td><img src="${img}" alt="${name}" width="40" height="40" style="width:40px;height:40px;max-height:40px;object-fit:contain;" loading="lazy" decoding="async" onerror="this.src='images/default-product.png'"></td>
       <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
       <td>от ${fmtPrice(price)} руб.</td><td>${unit}</td>
       <td class="cart-cell"><div class="quantity-control">
