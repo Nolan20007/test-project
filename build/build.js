@@ -55,6 +55,27 @@ const CATEGORIES_TO_GENERATE = [
     ]
   },
   {
+    template: 'lestnicy-nts-62-91-111b.html',
+    folder: 'lestnicy-nts-62-91-111b',
+    title: 'Лестницы тепловых сетей НТС 62-91-111Б',
+    catalog_link: 'nts-62-91-111b.html',
+    csv: 'data/nts-62-91-111b-products.csv',
+    product_title_prefix: 'Лестница тепловых сетей с перилами',
+    product_title_accusative: 'лестницу тепловых сетей с перилами',
+    project_phrase: 'НТС 62-91-111Б',
+    items: [
+      { id: 'NTSB-L2000', model: 'Л-2000', length_mm: 2000, length_cm: 200, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2000' },
+      { id: 'NTSB-L2250', model: 'Л-2250', length_mm: 2250, length_cm: 225, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2250' },
+      { id: 'NTSB-L2500', model: 'Л-2500', length_mm: 2500, length_cm: 250, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2500' },
+      { id: 'NTSB-L2750', model: 'Л-2750', length_mm: 2750, length_cm: 275, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2750' },
+      { id: 'NTSB-L3000', model: 'Л-3000', length_mm: 3000, length_cm: 300, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3000' },
+      { id: 'NTSB-L3250', model: 'Л-3250', length_mm: 3250, length_cm: 325, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3250' },
+      { id: 'NTSB-L3500', model: 'Л-3500', length_mm: 3500, length_cm: 350, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3500' },
+      { id: 'NTSB-L3750', model: 'Л-3750', length_mm: 3750, length_cm: 375, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3750' },
+      { id: 'NTSB-L4000', model: 'Л-4000', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111Б', slug: 'lestnica-l-4000' }
+    ]
+  },
+  {
     template: 'stremyanki-ssg1.html',
     folder: 'pozharnye-stremyanki-seriya-14503-794',
     title: 'Пожарные стремянки СГ серия 1.450.3-7.94',
@@ -99,6 +120,7 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
+  { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
       { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
       { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
@@ -296,10 +318,10 @@ function buildTable(products, enableCollapse) {
   const total = products.length;
   const needCollapse = enableCollapse && total > COLLAPSE_THRESHOLD;
 
+  const hasPricedProducts = products.some(p => Number(p.price) > 0);
   let html = `<table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
-    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>
-    <th>Количество</th><th>Корзина</th></tr></thead><tbody>`;
+    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
@@ -324,23 +346,27 @@ function buildTable(products, enableCollapse) {
         modelSlug = id.toLowerCase().replace('c1-', 's1-');
         itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
     }
+    else if (id.startsWith('NTSB-')) {
+        modelSlug = id.toLowerCase().replace('ntsb-', '').replace('l', 'l-');
+        itemUrl = `products/lestnicy-nts-62-91-111b/lestnica-${modelSlug}.html`;
+    }
 
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
 
     const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${name}</a>` : name;
 
-    html += `<tr id="${anchor}"${hiddenStyle}>
-      <td><img src="${img}" alt="${name}" width="40" height="40" style="width:40px;height:40px;max-height:40px;object-fit:contain;" loading="lazy" decoding="async" onerror="this.src='images/default-product.png'"></td>
-      <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
-      <td>от ${fmtPrice(price)} руб.</td><td>${unit}</td>
-      <td class="cart-cell"><div class="quantity-control">
+    const priceCell = price > 0 ? `от ${fmtPrice(price)} руб.` : 'по запросу';
+    const orderCells = hasPricedProducts ? (price > 0 ? `<td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
         <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
         <button type="button" onclick="changeQuantity('${id}', 1)">+</button>
       </div></td>
-      <td><button type="button" class="cart-button"
-            data-item-id="${id}" data-item-name="${name}"
-            data-item-length="${length}" data-item-weight="${weight}">В корзину</button></td>
+      <td><button type="button" class="cart-button" data-item-id="${id}" data-item-name="${name}"
+            data-item-length="${length}" data-item-weight="${weight}">В корзину</button></td>` : '<td>—</td><td>—</td>') : '';
+    html += `<tr id="${anchor}"${hiddenStyle}>
+      <td><img src="${img}" alt="${name}" width="40" height="40" style="width:40px;height:40px;max-height:40px;object-fit:contain;" loading="lazy" decoding="async" onerror="this.src='images/default-product.png'"></td>
+      <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
+      <td>${priceCell}</td><td>${unit}</td>${orderCells}
     </tr>`;
   });
 
@@ -581,6 +607,7 @@ const ALL_HTML_FILES = [
   'kak-vybrat-stremyanku.html',
   'kl-1-dlya-kanalizacionnyh-kolodcev.html',
   'l-16-dlya-teplovyh-setej.html',
+  'nts-62-91-111b.html',
   'l-17-000SB.html',
   'l-3-sk-2201-88.html',
   'l-19.html',
@@ -839,12 +866,12 @@ function buildProductPages() {
           throw new Error(`[product pages] ${cat.template} / ${cat.csv}, ID "${p.id}": некорректное поле "${field}" = "${row[field]}"`);
         return n;
       };
-      const price = numeric('price'), weight = numeric('weight');
+      const price = row.price && Number(row.price) > 0 ? numeric('price') : null, weight = numeric('weight');
       const stepCount = row.step_count ? numeric('step_count') : null;
       let html = template;
       html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, p.model)
         .replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{LENGTH_CM\}\}/g, p.length_cm)
-        .replace(/\{\{PRICE\}\}/g, price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, String(price))
+        .replace(/\{\{PRICE\}\}/g, price === null ? 'по запросу' : price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, price === null ? '' : String(price))
         .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
         .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug)
