@@ -1573,7 +1573,9 @@ function copyEmailToClipboard(btn) {
         }
     });
 
-    bindAutoClearInvalid(document.getElementById('mainContactForm'));
+    document.addEventListener('DOMContentLoaded', () => {
+      bindAutoClearInvalid(document.getElementById('mainContactForm'));
+    });
 </script>
 
 </body>
