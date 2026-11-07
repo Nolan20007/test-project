@@ -477,6 +477,14 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
         modelSlug = id.toLowerCase().replace('ntsb-', '').replace('l', 'l-');
         itemUrl = `products/lestnicy-nts-62-91-111b/lestnica-${modelSlug}.html`;
     }
+    else if (id.startsWith('GS-') || id.startsWith('MN-') || id.startsWith('SK-')) {
+        const slug = p.slug || ('skoba-' + id.toLowerCase().replace(/[^a-z0-9-]/g, '-'));
+        itemUrl = `products/skoby-dlya-kolodcev/${slug}.html`;
+    }
+    else if (id.startsWith('MS-')) {
+        const slug = p.slug || ('soedinitelny-element-' + id.toLowerCase());
+        itemUrl = `products/soedinitelnye-elementy/${slug}.html`;
+    }
 
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
 
