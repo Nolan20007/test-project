@@ -133,11 +133,16 @@ function assertCsvProducts() {
       assert(Number.isFinite(widthMm) && widthMm > 0, csvFile + '/' + row.id + ': invalid CSV width');
       assert(Number.isFinite(Number(row.weight)) && Number(row.weight) > 0, csvFile + '/' + row.id + ': invalid CSV weight');
       const isConnector = csvFile === 'data/soedinitelnye-elementy-products.csv';
-      const firstDimensionLabel = isConnector ? 'Ширина ' : 'Длина ';
+      const isSkoby = csvFile === 'data/skoby-dlya-kolodcev-products.csv';
       const secondDimensionLabel = isConnector ? 'высота ' : 'ширина ';
-      assert(object.description.includes(firstDimensionLabel + lengthCm + ' см'), csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
+      const firstDimensionMatches = isConnector
+        ? object.description.includes('Ширина ' + lengthCm + ' см')
+        : isSkoby
+          ? object.description.includes('Длина ' + lengthCm + ' см')
+          : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
+      assert(firstDimensionMatches, csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
       assert(object.description.includes(secondDimensionLabel + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
-      if (csvFile === 'data/skoby-dlya-kolodcev-products.csv' || isConnector) {
+      if (isSkoby || isConnector) {
         assert(html.includes('<td>' + (isConnector ? 'Ширина' : 'Длина') + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
         assert(html.includes('<td>' + (isConnector ? 'Высота' : 'Ширина') + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
       }
