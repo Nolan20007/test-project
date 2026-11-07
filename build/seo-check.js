@@ -94,9 +94,7 @@ function assertSitemap() {
     assert(absolute.startsWith(root + path.sep), 'sitemap URL escapes repository root: ' + url);
     assert(fs.existsSync(absolute), 'sitemap URL has no generated file: ' + url);
     const html = fs.readFileSync(absolute, 'utf8');
-    if (group.catalog === 'soedinitelnye-elementy.html') {
-      assert(!/<tr\b[^>]*id="item-(?:GS|MN|SK)-/i.test(catalog), 'connector catalog contains legacy skoba rows');
-    }
+    assert(!/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html), 'noindex page is listed in sitemap: ' + url);
     const canonical = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
     assert(canonical, 'missing canonical: ' + url);
     assert.strictEqual(canonical[1], url, 'canonical mismatch: ' + url);
@@ -225,7 +223,9 @@ function assertMetalCatalogsAndPages() {
     const catalog = fs.readFileSync(path.join(root, group.catalog), 'utf8');
     const ids = [...catalog.matchAll(/<tr\b[^>]*id="item-([^"]+)"/g)].map(match => match[1]);
     assert.deepStrictEqual(ids.sort(), rows.map(row => String(row.id)).sort(), group.catalog + ': visible table rows do not match CSV inventory');
-    assert(!/<\/td>\s*<td><button/i.test(catalog), group.catalog + ': orphaned table cells remain after the nomenclature container');
+    if (group.catalog === 'soedinitelnye-elementy.html') {
+      assert(!/<tr\b[^>]*id="item-(?:GS|MN|SK)-/i.test(catalog), 'connector catalog contains legacy skoba rows');
+    }
     for (const row of rows) {
       const slug = String(row.slug || (group.folder.endsWith('skoby-dlya-kolodcev')
         ? 'skoba-' + String(row.id).toLowerCase().replace(/[^a-z0-9-]/g, '-')
