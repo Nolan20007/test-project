@@ -1198,7 +1198,7 @@ function updateLlmsProductLinks() {
   ];
   simpleProductGroups.forEach(group => {
     const csvPath = path.resolve(__dirname, '..', group.csv);
-    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\\uFEFF/, ''));
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, ''));
     lines.push('### ' + group.title);
     rows.forEach(row => {
       const slug = String(row.slug || (group.prefix + String(row.id).toLowerCase()));
