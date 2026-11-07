@@ -9,10 +9,81 @@ Crawl-delay: 1
 
 Sitemap: https://stremyanki-dlya-kolodcev.ru/sitemap.xml
 
-# Google
+# Google Search
 User-agent: Googlebot
 Allow: /
 
-# Яндекс
+# Google AI model training and Gemini grounding: opt out.
+# This does not block Google Search or AI Overviews in Google Search.
+User-agent: Google-Extended
+Disallow: /
+
+# Yandex Search
 User-agent: Yandex
 Crawl-delay: 2
+
+# Yandex AI answers (Alice / YandexGPT).
+# Yandex documents these agents as controls for AI answer usage, not model training.
+User-agent: YandexAdditionalBot
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 2
+
+User-agent: YandexAdditional
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 2
+
+# OpenAI: allow ChatGPT Search, opt out of foundation-model training.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: GPTBot
+Disallow: /
+
+# Anthropic: allow Claude Search and user-directed retrieval, opt out of model training.
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: ClaudeBot
+Disallow: /
+
+# Perplexity: allow search crawler and user-directed retrieval.
+User-agent: PerplexityBot
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+# Common Crawl: opt out of its public web archive dataset.
+User-agent: CCBot
+Disallow: /
