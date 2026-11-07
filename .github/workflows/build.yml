@@ -50,8 +50,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -- '*.html' '*.xml' 'css/rubik-local.css' 'fonts/rubik/*.woff2' 'fonts/rubik/OFL.txt' ':!node_modules/**'
-          git add 'images/*/vid-card.webp' 'images/nestandart/nestandart-card.webp'
+          # Stage tracked changes, then add only non-ignored untracked files.
+          # This avoids wildcard pathspecs traversing ignored node_modules.
+          git add -u
+          git ls-files --others --exclude-standard -z | xargs -0 -r git add --
           if git diff --staged --quiet; then
             echo "Нет изменений — коммит не нужен"
           else
