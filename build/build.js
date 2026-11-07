@@ -975,6 +975,41 @@ function buildProductPages() {
   return createdPages;
 }
 
+function updateLlmsProductLinks() {
+  const llmsPath = path.resolve(__dirname, '..', 'llms.txt');
+  if (!fs.existsSync(llmsPath)) {
+    console.warn('  ⚠ llms.txt не найден — пропускаю обновление ссылок на товары.');
+    return false;
+  }
+
+  const startMarker = '<!-- PRODUCT_PAGES_START -->';
+  const endMarker = '<!-- PRODUCT_PAGES_END -->';
+  let content = fs.readFileSync(llmsPath, 'utf8');
+  const start = content.indexOf(startMarker);
+  const end = content.indexOf(endMarker);
+  if (start === -1 || end === -1 || end < start) {
+    throw new Error('В llms.txt отсутствуют корректные маркеры PRODUCT_PAGES.');
+  }
+
+  const lines = [];
+  CATEGORIES_TO_GENERATE.forEach(cat => {
+    lines.push('### ' + cat.title);
+    cat.items.forEach(product => {
+      const url = SITE_URL + '/products/' + cat.folder + '/' + product.slug + '.html';
+      lines.push('- [' + product.model + '](' + url + ')');
+    });
+    lines.push('');
+  });
+
+  const replacement = startMarker + '\\n' + lines.join('\\n').trimEnd() + '\\n' + endMarker;
+  const updated = content.slice(0, start) + replacement + content.slice(end + endMarker.length);
+  if (updated === content) return false;
+
+  fs.writeFileSync(llmsPath, updated, 'utf8');
+  console.log('  ✅ llms.txt → ссылки на ' + CATEGORIES_TO_GENERATE.reduce((n, cat) => n + cat.items.length, 0) + ' карточек товаров обновлены');
+  return true;
+}
+
 function build() {
   let changed = 0;
 
@@ -989,6 +1024,7 @@ function build() {
 
   console.log('\nГенерация страниц товаров...');
   const newProductPages = buildProductPages();
+  if (updateLlmsProductLinks()) changed++;
 
   const allPagesToProcess = [...ALL_HTML_FILES, ...newProductPages];
 
