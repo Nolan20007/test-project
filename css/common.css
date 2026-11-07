@@ -662,3 +662,24 @@ textarea[aria-invalid="true"]:focus {
 .image-placeholder::before {
     color: #596674 !important;
 }
+
+
+/* Нейтральные заглушки для позиций без подтверждённых фотографий */
+.product-thumb-cell { vertical-align: middle; }
+.product-thumb-placeholder {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: 1px dashed #cbd6df;
+    border-radius: 8px;
+    background: #f7f9fb;
+    color: #617487;
+    line-height: 1.1;
+    text-align: center;
+}
+.product-thumb-placeholder span { font-size: 11px; font-weight: 600; }
+.product-thumb-placeholder small { font-size: 8px; }

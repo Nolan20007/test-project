@@ -132,8 +132,19 @@ function assertCsvProducts() {
       assert(Number.isFinite(lengthCm) && lengthCm > 0, csvFile + '/' + row.id + ': invalid CSV length');
       assert(Number.isFinite(widthMm) && widthMm > 0, csvFile + '/' + row.id + ': invalid CSV width');
       assert(Number.isFinite(Number(row.weight)) && Number(row.weight) > 0, csvFile + '/' + row.id + ': invalid CSV weight');
-      assert(object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см'), csvFile + '/' + row.id + ': JSON-LD length/height differs from CSV');
-      assert(object.description.includes('ширина ' + widthMm + ' мм'), csvFile + '/' + row.id + ': JSON-LD width differs from CSV');
+      const isConnector = csvFile === 'data/soedinitelnye-elementy-products.csv';
+      const isSkoby = csvFile === 'data/skoby-dlya-kolodcev-products.csv';
+      const firstLabel = String(row.dimension1_label || (isConnector ? 'Ширина' : 'Длина'));
+      const secondLabel = String(row.dimension2_label || (isConnector ? 'Высота' : 'Ширина'));
+      const firstDimensionMatches = (isConnector || isSkoby)
+        ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
+        : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
+      assert(firstDimensionMatches, csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
+      assert(object.description.includes(secondLabel.toLowerCase() + ' ' + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
+      if (isSkoby || isConnector) {
+        assert(html.includes('<td>' + firstLabel + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
+        assert(html.includes('<td>' + secondLabel + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
+      }
       assert(object.description.includes('масса ' + weight + ' кг'), csvFile + '/' + row.id + ': JSON-LD weight differs from CSV');
 
       const price = String(row.price || '').trim();
@@ -208,10 +219,56 @@ function assertNtsFeedCoverage() {
   return groups.reduce((sum, group) => sum + readCsv(group.csv).filter(row => Number(row.price) > 0).length, 0);
 }
 
+function assertMetalCatalogsAndPages() {
+  const groups = [
+    { csv: 'data/skoby-dlya-kolodcev-products.csv', catalog: 'skoby-dlya-kolodcev.html', folder: 'products/skoby-dlya-kolodcev' },
+    { csv: 'data/soedinitelnye-elementy-products.csv', catalog: 'soedinitelnye-elementy.html', folder: 'products/soedinitelnye-elementy' }
+  ];
+  for (const group of groups) {
+    const rows = readCsv(group.csv);
+    const catalog = fs.readFileSync(path.join(root, group.catalog), 'utf8');
+    const ids = [...catalog.matchAll(/<tr\b[^>]*id="item-([^"]+)"/g)].map(match => match[1]);
+    assert.deepStrictEqual(ids.sort(), rows.map(row => String(row.id)).sort(), group.catalog + ': visible table rows do not match CSV inventory');
+    if (group.catalog === 'soedinitelnye-elementy.html') {
+      assert(!/<tr\b[^>]*id="item-(?:GS|MN|SK)-/i.test(catalog), 'connector catalog contains legacy skoba rows');
+    }
+    for (const row of rows) {
+      const slug = String(row.slug || (group.folder.endsWith('skoby-dlya-kolodcev')
+        ? 'skoba-' + String(row.id).toLowerCase().replace(/[^a-z0-9-]/g, '-')
+        : 'soedinitelny-element-' + String(row.id).toLowerCase()));
+      const file = path.join(root, group.folder, slug + '.html');
+      assert(fs.existsSync(file), group.csv + ': missing individual page for ' + row.id);
+      const html = fs.readFileSync(file, 'utf8');
+      assert(html.includes('<h1>' + row.name + '</h1>'), group.csv + ': missing product heading for ' + row.id);
+      assert(html.includes('Характеристики изделия'), group.csv + ': missing structured specifications for ' + row.id);
+      assert(html.includes('Другие типоразмеры'), group.csv + ': missing related product navigation for ' + row.id);
+      assert(html.includes('class="nav"') && html.includes('class="footer"'), group.csv + ': shared site navigation/footer missing for ' + row.id);
+      const images = String(row.images || row.image || '').split(';').map(value => value.trim()).filter(value => value && !value.endsWith('default-product.svg'));
+      for (const image of images) {
+        assert(fs.existsSync(path.join(root, image)), group.csv + '/' + row.id + ': missing product image ' + image);
+        assert(html.includes('../../' + image), group.csv + '/' + row.id + ': product image not used on detail page ' + image);
+      }
+    }
+  }
+  const priceList = fs.readFileSync(path.join(root, 'price-list.html'), 'utf8');
+  assert(priceList.includes('<div id="nomenclature-skoby">') && priceList.includes('<div id="nomenclature-ms">'), 'price-list must include skoba and MS sections');
+  for (const group of groups) {
+    const rows = readCsv(group.csv);
+    for (const row of rows) {
+      assert(priceList.includes('id="item-' + row.id + '"'), 'price-list is missing ' + row.id);
+    }
+  }
+  const connectorCatalog = fs.readFileSync(path.join(root, 'soedinitelnye-elementy.html'), 'utf8');
+  assert(connectorCatalog.includes('<th>Ширина, см</th><th>Высота, см</th>'), 'connector catalog must show width/height headings');
+  const skobyCatalog = fs.readFileSync(path.join(root, 'skoby-dlya-kolodcev.html'), 'utf8');
+  assert(skobyCatalog.includes('<th>Габарит 1, см</th><th>Габарит 2, см</th>'), 'skoby catalog must use neutral dimension headings for mixed product shapes');
+  assert(skobyCatalog.includes('images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp'), 'skoby catalog must use a real representative product image');
+}
 assertRobotsPolicy();
 assertLlmsProductLinks();
 const ntsFeedProducts = assertNtsFeedCoverage();
 const sitemapCount = assertSitemap();
 const productCount = assertCsvProducts();
+assertMetalCatalogsAndPages();
 assert(!/<link\b[^>]*rel=["']canonical["']/i.test(fs.readFileSync(path.join(root, '404.html'), 'utf8')), '404.html must not declare a canonical URL');
 console.log('SEO checks passed: ' + sitemapCount + ' sitemap URLs, ' + productCount + ' CSV-backed Product pages, ' + ntsFeedProducts + ' NTS feed products, robots policy and JSON-LD validated.');
