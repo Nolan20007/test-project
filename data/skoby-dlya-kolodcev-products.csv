@@ -1,0 +1,13 @@
+id,name,length,width,weight,price,unit,available,image
+GS-1,"Скоба для колодца ГС-1",20,7,2,600,1 шт,,images/default-product.svg
+GS-2,"Скоба для колодца ГС-2",20,8,2,600,1 шт,,images/default-product.svg
+GS-3,"Скоба для колодца ГС-3",20,9,2,600,1 шт,,images/default-product.svg
+GS-4,"Скоба для колодца ГС-4",20,10,2,600,1 шт,,images/default-product.svg
+MN-1,"Скоба для колодца МН-1",20,17,2,600,1 шт,,images/default-product.svg
+SK-1,"Скоба для колодца СК-1",20,23,2.08,624,1 шт,,images/default-product.svg
+SK-1-K,"Скоба для колодца СК-1 с креплением",25,20.5,4.4,1320,1 шт,,images/default-product.svg
+SK-2,"Скоба для колодца СК-2",24.5,20.5,5.3,1590,1 шт,,images/default-product.svg
+SK-3,"Скоба для колодца СК-3",41,25.5,7,2100,1 шт,,images/default-product.svg
+SK-4,"Скоба для колодца СК-4",75.2,25.5,11.3,3390,1 шт,,images/default-product.svg
+SK-5,"Скоба для колодца СК-5",34.2,25.5,5.5,1650,1 шт,,images/default-product.svg
+SK-6,"Скоба для колодца СК-6",36.5,25,5.3,1590,1 шт,,images/default-product.svg

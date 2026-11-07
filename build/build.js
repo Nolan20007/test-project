@@ -228,6 +228,7 @@ const PAGES = [
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
   { html: 'nts-62-91-111a.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
+  { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv' }] },
   { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
@@ -286,6 +287,7 @@ const FEED_SOURCES = [
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/scoba-nm-products.csv',        page: 'skoba-mn.html',        bigImage: 'images/scoba-nm/vid-1.png', typePrefix: 'Скоба ходовая' },
   { csv: 'data/scoba-nm1-3900-products.csv',  page: 'skoba-nm1-3-900-3.html', bigImage: 'images/scoba-nm1-3900/vid-1.png', typePrefix: 'Скоба ходовая' },
+  { csv: 'data/skoby-dlya-kolodcev-products.csv', page: 'skoby-dlya-kolodcev.html', bigImage: 'images/default-product.svg', typePrefix: 'Скоба для колодцев' },
   { csv: 'data/nts-62-91-111-products.csv',     page: 'nts-62-91-111.html',   bigImage: 'images/nts-62-91-111/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
   { csv: 'data/nts-62-91-111b-products.csv',    page: 'nts-62-91-111b.html',  bigImage: 'images/nts-62-91-111b/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
 ];
@@ -746,6 +748,7 @@ const ALL_HTML_FILES = [
   'vl-2-l-19-vodoprovodnaya.html',
   'skoba-mn.html',
   'skoba-nm1-3-900-3.html',
+  'skoby-dlya-kolodcev.html',
   'sitemap.html',
   'vozvrat.html',
 ];
