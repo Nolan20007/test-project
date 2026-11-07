@@ -1148,6 +1148,7 @@ function buildSimpleMetalProductPages() {
 <main class="simple-product"><nav aria-label="Хлебные крошки"><a href="../../index.html">Главная</a> / <a href="../../${cat.catalog}">${cat.title}</a> / ${name}</nav>
 <section class="simple-card"><div class="simple-grid"><img src="../../${esc(p.image || 'images/default-product.svg')}" alt="${name}" width="500" height="500"><div><h1>${name}</h1><p>Артикул: <strong>${id}</strong></p><p class="price">${price === null ? 'Цена по запросу' : 'от '+price.toLocaleString('ru-RU')+' ₽'}</p>${buy}</div></div>
 <h2>Характеристики</h2><table class="specs"><tr><td>Артикул</td><td>${id}</td></tr><tr><td>Длина</td><td>${esc(p.length)} см</td></tr><tr><td>Ширина</td><td>${esc(p.width)} см</td></tr><tr><td>Масса</td><td>${esc(p.weight)} кг</td></tr><tr><td>Единица измерения</td><td>${esc(p.unit || '1 шт')}</td></tr><tr><td>Альбом чертежей</td><td>${esc(album)}</td></tr></table>
+${galleryHtml}
 <p>Наличие, комплектацию, срок изготовления и условия поставки уточняйте при оформлении заказа.</p><p><a href="../../${cat.catalog}">Вернуться в каталог</a></p></section></main>
 <!-- FOOTER_START --><!-- FOOTER_END --></body></html>`;
       fs.writeFileSync(path.join(outDir, slug + '.html'), html, 'utf8');
