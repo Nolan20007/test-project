@@ -1,4 +1,4 @@
-id,name,length,width,weight,price,unit,available,image
+id,name,length,width,weight,price,unit,available,image,slug,drawing_album
 MS-1,"Соединительный элемент МС-1",16,9,1.94,582,1 шт,,images/default-product.svg
 MS-2,"Соединительный элемент МС-2",16,10,1.98,594,1 шт,,images/default-product.svg
 MS-3,"Соединительный элемент МС-3",16,11,2.01,603,1 шт,,images/default-product.svg

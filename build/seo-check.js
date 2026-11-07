@@ -9,7 +9,9 @@ const PRODUCT_CSV_FILES = [
   'data/nts-62-91-111b-products.csv',
   'data/nts-62-91-111-products.csv',
   'data/nts-62-91-111a-products.csv',
-  'data/ssg1-products.csv'
+  'data/ssg1-products.csv',
+  'data/skoby-dlya-kolodcev-products.csv',
+  'data/soedinitelnye-elementy-products.csv'
 ];
 
 function parseCsvLine(line) {
@@ -141,11 +143,11 @@ function assertCsvProducts() {
       } else {
         assert(!object.offers, csvFile + '/' + row.id + ': CSV has no price but Product JSON-LD has an Offer');
       }
-      assert(html.includes('Артикул: ' + row.id) || html.includes('sku": "' + row.id), csvFile + '/' + row.id + ': product ID is not visible or structured');
+      assert(html.includes('Артикул: ' + row.id) || html.includes('<strong>' + row.id + '</strong>') || html.includes('sku": "' + row.id), csvFile + '/' + row.id + ': product ID is not visible or structured');
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 112, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 134, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -161,8 +163,8 @@ function assertLlmsProductLinks() {
   const section = content.slice(start + startMarker.length, end);
   assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
   const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
-  assert.strictEqual(links.length, 112, 'llms.txt: expected exactly 112 product links');
-  assert.strictEqual(new Set(links.map(match => match[2])).size, 112, 'llms.txt: duplicate product URLs');
+  assert.strictEqual(links.length, 134, 'llms.txt: expected exactly 112 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 134, 'llms.txt: duplicate product URLs');
   const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
@@ -171,7 +173,7 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 112, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 134, 'llms.txt: unexpected CSV product inventory');
 }
 
 
