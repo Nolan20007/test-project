@@ -54,3 +54,7 @@
 - [Политика конфиденциальности](https://stremyanki-dlya-kolodcev.ru/politika-konfidencialnosti.html)
 - [Возврат и обмен](https://stremyanki-dlya-kolodcev.ru/vozvrat.html)
 
+## Индивидуальные страницы товаров
+
+<!-- PRODUCT_PAGES_START -->
+<!-- PRODUCT_PAGES_END -->
