@@ -7,6 +7,7 @@ on:
       - 'build/build.js'
       - 'build/download-fonts.js'
       - 'build/optimize-card-images.js'
+      - '.github/workflows/**'
       - 'css/**'
       - 'index.html'
       - 'templates/**.html'
