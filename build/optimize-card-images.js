@@ -16,6 +16,8 @@ const CARD_IMAGES = [
   ['images/l-19/vid-1.webp', 'images/l-19/vid-card.webp'],
   ['images/nestandart/nestandart-mini.webp', 'images/nestandart/nestandart-card.webp'],
   ['images/scoba-nm/vid-1.webp', 'images/scoba-nm/vid-card.webp'],
+  ['images/nts-62-91-111/vid-1.webp', 'images/nts-62-91-111/vid-card.webp'],
+  ['images/nts-62-91-111b/vid-1.webp', 'images/nts-62-91-111b/vid-card.webp'],
   ['images/scoba-nm1-3900/vid-1.webp', 'images/scoba-nm1-3900/vid-card.webp'],
 ];
 

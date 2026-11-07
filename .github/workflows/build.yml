@@ -10,6 +10,7 @@ on:
       - 'build/optimize-card-images.js'
       - '.github/workflows/**'
       - 'css/**'
+      - 'images/**'
       - 'index.html'
       - 'templates/**.html'
       - 'includes/**.html'
@@ -58,8 +59,11 @@ jobs:
       - name: Загрузка локальных шрифтов Rubik
         run: node build/download-fonts.js
 
-      - name: Установка sharp для миниатюр карточек
+      - name: Установка sharp для обработки изображений
         run: npm install sharp --no-save
+
+      - name: Конвертация PNG в WebP
+        run: node build/convert-images.js
 
       - name: Генерация облегчённых изображений карточек
         run: node build/optimize-card-images.js
