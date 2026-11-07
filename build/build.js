@@ -64,12 +64,11 @@ const CATEGORIES_TO_GENERATE = [
     product_title_accusative: 'лестницу тепловых сетей с перилами',
     project_phrase: 'НТС 62-91-111Б',
     album: 'нормалям тепловых сетей',
-    width_mm: 626,
     construction: 'перила',
     construction_spec: 'Стальные перила по конструкции НТС 62-91-111Б',
     step_spec: 'Ступени и несущие элементы — сталь Ст3',
     installation_text: 'Перед установкой необходимо сверить длину лестницы, положение опор и способ крепления с проектом тепловой камеры. Монтаж выполняют с учетом конструкции стен и условий эксплуатации.',
-    product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина 626 мм, материал — сталь Ст3.',
+    product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
       { id: 'NTSB-L2000', model: 'Л-2000', length_mm: 2000, length_cm: 200, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2000' },
       { id: 'NTSB-L2250', model: 'Л-2250', length_mm: 2250, length_cm: 225, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2250' },
@@ -92,12 +91,11 @@ const CATEGORIES_TO_GENERATE = [
     product_title_accusative: 'лестницу с ограждением из дуг',
     project_phrase: 'НТС 62-91-111',
     album: 'нормалям тепловых сетей',
-    width_mm: 600,
     construction: 'ограждение из дуг',
     construction_spec: 'Ограждение из дуг; уголок 75×75×5 мм',
     step_spec: 'Стальной пруток Ø18 мм',
     installation_text: 'Лестница опирается на приваренные опорные пятаки и крепится к стене тягами. В конструкции предусмотрены отверстия Ø16 мм для установки тяг. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
-    product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина 600 мм, материал — сталь Ст3.',
+    product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
       { id: 'NTSS-S1', model: 'С1', length_mm: 3400, length_cm: 340, project: 'НТС 62-91-111', slug: 'lestnica-s1-3400' },
       { id: 'NTSS-S2', model: 'С2', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111', slug: 'lestnica-s2-4000' },
@@ -455,44 +453,28 @@ function replaceContainer(html, containerId, innerHtml) {
 
 function buildProductListJsonLd(products, pageUrl) {
   if (!products.length) return '';
-  const items = products.map(p => {
-    const rawPrice = String(p.price || '').trim();
-    const price = Number(rawPrice.replace(',', '.'));
-    const hasPrice = rawPrice !== '' && Number.isFinite(price) && price > 0;
-    const anchor = safeAnchor(p.id);
 
-    let searchImage = p.image || 'images/default-product.svg';
-    if (searchImage.includes('vid-mini')) {
-      searchImage = searchImage.replace('vid-mini.webp', 'vid-search.webp').replace('vid-mini.png', 'vid-search.png');
+  // Category pages describe a collection, not a single purchasable product.
+  const collection = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "url": pageUrl,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": products.length,
+      "itemListElement": products.map((p, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": p.name,
+        "url": pageUrl + '#' + safeAnchor(p.id)
+      }))
     }
+  };
 
-    const obj = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": p.name,
-      "sku": p.id,
-      "mpn": p.id,
-      "image": SITE_URL + '/' + searchImage,
-      "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
-      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" }
-    };
-
-    // Не публикуем Offer без достоверной положительной цены.
-    if (hasPrice) {
-      obj.offers = {
-        "@type": "Offer",
-        "url": pageUrl + '#' + anchor,
-        "priceCurrency": "RUB",
-        "price": String(price),
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "seller": { "@type": "Organization", "name": "ИП Гневашева Кристина Дмитриевна" }
-      };
-    }
-
-    return JSON.stringify(obj, null, 2);
-  });
-  return items.map(json => '<script type="application/ld+json">\n' + json + '\n</script>').join('\n');
+  return '<script type="application/ld+json">\n' +
+    JSON.stringify(collection, null, 2) +
+    '\n</script>';
 }
 
 function stripOldProductJsonLd(html) {
@@ -914,6 +896,8 @@ function buildProductPages() {
       };
       const rawPrice = String(row.price || '').trim();
       const price = rawPrice ? numeric('price') : null, weight = numeric('weight');
+      // CSV stores width in centimetres; product templates and JSON-LD use millimetres.
+      const widthMm = numeric('width') * 10;
       const stepCount = row.step_count ? numeric('step_count') : null;
       const buyControls = price === null ? '' : `<div class="mp-buy-controls">
                         <div class="quantity-control" style="display:flex; align-items:center; border: 1px solid #c8d9ea; border-radius: 12px; overflow: hidden;">
@@ -947,13 +931,13 @@ function buildProductPages() {
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
         .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug)
         .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder)
-        .replace(/\{\{WIDTH_MM\}\}/g, cat.width_mm || 500)
+        .replace(/\{\{WIDTH_MM\}\}/g, String(widthMm))
         .replace(/\{\{CONSTRUCTION\}\}/g, cat.construction || 'стальная конструкция')
         .replace(/\{\{CONSTRUCTION_SPEC\}\}/g, cat.construction_spec || 'Сталь Ст3')
         .replace(/\{\{STEP_SPEC\}\}/g, cat.step_spec || 'Сталь Ст3')
         .replace(/\{\{INSTALLATION_TEXT\}\}/g, cat.installation_text || 'Способ установки согласовывается с проектной документацией.')
         .replace(/\{\{PRODUCT_TITLE\}\}/g, `${cat.product_title_prefix || 'Лестница'} ${p.model} по ${cat.project_phrase || p.project}, длина ${p.length_mm} мм`)
-        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, p.model).replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{LENGTH_MM\}\}/g, p.length_mm));
+        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, p.model).replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{WIDTH_MM\}\}/g, String(widthMm)));
       const title = cat.product_title_prefix
         ? `${cat.product_title_prefix} ${p.model} по ${cat.project_phrase || p.project}, ${p.length_cm} см — купить`
         : `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
@@ -966,6 +950,22 @@ function buildProductPages() {
       let otherLinks = '';
       cat.items.forEach(other => { if (other.id !== p.id) otherLinks += `<a href="${other.slug}.html">${cat.product_title_prefix ? `${cat.product_title_prefix} ${other.model} по ${cat.project_phrase || other.project}, длина ${other.length_mm} мм` : `${other.model} (${other.length_cm} см)`}</a>\n`; });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
+      // Machine-readable breadcrumbs for every generated product detail page.
+      const productUrl = `${SITE_URL}/products/${cat.folder}/${p.slug}.html`;
+      const breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": SITE_URL + "/" },
+          { "@type": "ListItem", "position": 2, "name": cat.title, "item": SITE_URL + "/" + cat.catalog_link },
+          { "@type": "ListItem", "position": 3, "name": p.model, "item": productUrl }
+        ]
+      };
+      html = html.replace('</head>',
+        '<script type="application/ld+json">\n' +
+        JSON.stringify(breadcrumb, null, 2) +
+        '\n</script>\n</head>');
+
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
@@ -973,6 +973,41 @@ function buildProductPages() {
     });
   });
   return createdPages;
+}
+
+function updateLlmsProductLinks() {
+  const llmsPath = path.resolve(__dirname, '..', 'llms.txt');
+  if (!fs.existsSync(llmsPath)) {
+    console.warn('  ⚠ llms.txt не найден — пропускаю обновление ссылок на товары.');
+    return false;
+  }
+
+  const startMarker = '<!-- PRODUCT_PAGES_START -->';
+  const endMarker = '<!-- PRODUCT_PAGES_END -->';
+  let content = fs.readFileSync(llmsPath, 'utf8');
+  const start = content.indexOf(startMarker);
+  const end = content.indexOf(endMarker);
+  if (start === -1 || end === -1 || end < start) {
+    throw new Error('В llms.txt отсутствуют корректные маркеры PRODUCT_PAGES.');
+  }
+
+  const lines = [];
+  CATEGORIES_TO_GENERATE.forEach(cat => {
+    lines.push('### ' + cat.title);
+    cat.items.forEach(product => {
+      const url = SITE_URL + '/products/' + cat.folder + '/' + product.slug + '.html';
+      lines.push('- [' + product.model + '](' + url + ')');
+    });
+    lines.push('');
+  });
+
+  const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
+  const updated = content.slice(0, start) + replacement + content.slice(end + endMarker.length);
+  if (updated === content) return false;
+
+  fs.writeFileSync(llmsPath, updated, 'utf8');
+  console.log('  ✅ llms.txt → ссылки на ' + CATEGORIES_TO_GENERATE.reduce((n, cat) => n + cat.items.length, 0) + ' карточек товаров обновлены');
+  return true;
 }
 
 function build() {
@@ -989,6 +1024,7 @@ function build() {
 
   console.log('\nГенерация страниц товаров...');
   const newProductPages = buildProductPages();
+  if (updateLlmsProductLinks()) changed++;
 
   const allPagesToProcess = [...ALL_HTML_FILES, ...newProductPages];
 
