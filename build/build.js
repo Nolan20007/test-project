@@ -15,15 +15,15 @@ const CATEGORIES_TO_GENERATE = [
     catalog_link: 'ss1.html',
     csv: 'data/ss1-products.csv',
     items: [
-      { id: 'C-1', model: 'С-1', length_mm: 1200, length_cm: 120, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-1' },
-      { id: 'C-2', model: 'С-2', length_mm: 1500, length_cm: 150, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-2' },
-      { id: 'C-3', model: 'С-3', length_mm: 1800, length_cm: 180, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-3' },
-      { id: 'C-4', model: 'С-4', length_mm: 2250, length_cm: 225, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-4' },
-      { id: 'C-5', model: 'С-5', length_mm: 2400, length_cm: 240, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-5' },
-      { id: 'C-6', model: 'С-6', length_mm: 2100, length_cm: 210, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-6' },
-      { id: 'C-7', model: 'С-7', length_mm: 2700, length_cm: 270, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-7' },
-      { id: 'C-8', model: 'С-8', length_mm: 4200, length_cm: 420, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-8' },
-      { id: 'C-9', model: 'С-9', length_mm: 4500, length_cm: 450, project: 'ТПР 901-09-11.84', slug: 'stremyanka-s-9' },
+      { id: 'C-1', slug: 'stremyanka-s-1' },
+      { id: 'C-2', slug: 'stremyanka-s-2' },
+      { id: 'C-3', slug: 'stremyanka-s-3' },
+      { id: 'C-4', slug: 'stremyanka-s-4' },
+      { id: 'C-5', slug: 'stremyanka-s-5' },
+      { id: 'C-6', slug: 'stremyanka-s-6' },
+      { id: 'C-7', slug: 'stremyanka-s-7' },
+      { id: 'C-8', slug: 'stremyanka-s-8' },
+      { id: 'C-9', slug: 'stremyanka-s-9' },
     ]
   },
   {
@@ -33,25 +33,25 @@ const CATEGORIES_TO_GENERATE = [
     catalog_link: 'ss2.html',
     csv: 'data/ss2-products.csv',
     items: [
-      { id: 'C1-00', model: 'С1-00', length_mm: 600, length_cm: 60, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-00' },
-      { id: 'C1-01', model: 'С1-01', length_mm: 900, length_cm: 90, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-01' },
-      { id: 'C1-02', model: 'С1-02', length_mm: 1200, length_cm: 120, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-02' },
-      { id: 'C1-03', model: 'С1-03', length_mm: 1500, length_cm: 150, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-03' },
-      { id: 'C1-04', model: 'С1-04', length_mm: 1800, length_cm: 180, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-04' },
-      { id: 'C1-05', model: 'С1-05', length_mm: 2100, length_cm: 210, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-05' },
-      { id: 'C1-06', model: 'С1-06', length_mm: 2400, length_cm: 240, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-06' },
-      { id: 'C1-07', model: 'С1-07', length_mm: 2700, length_cm: 270, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-07' },
-      { id: 'C1-08', model: 'С1-08', length_mm: 3000, length_cm: 300, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-08' },
-      { id: 'C1-09', model: 'С1-09', length_mm: 3300, length_cm: 330, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-09' },
-      { id: 'C1-10', model: 'С1-10', length_mm: 3600, length_cm: 360, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-10' },
-      { id: 'C1-11', model: 'С1-11', length_mm: 3900, length_cm: 390, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-11' },
-      { id: 'C1-12', model: 'С1-12', length_mm: 4200, length_cm: 420, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-12' },
-      { id: 'C1-13', model: 'С1-13', length_mm: 4500, length_cm: 450, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-13' },
-      { id: 'C1-14', model: 'С1-14', length_mm: 4800, length_cm: 480, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-14' },
-      { id: 'C1-15', model: 'С1-15', length_mm: 5100, length_cm: 510, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-15' },
-      { id: 'C1-16', model: 'С1-16', length_mm: 5400, length_cm: 540, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-16' },
-      { id: 'C1-17', model: 'С1-17', length_mm: 5700, length_cm: 570, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-17' },
-      { id: 'C1-18', model: 'С1-18', length_mm: 6000, length_cm: 600, project: 'ТПР 902-09-22.84', slug: 'stremyanka-s1-18' },
+      { id: 'C1-00', slug: 'stremyanka-s1-00' },
+      { id: 'C1-01', slug: 'stremyanka-s1-01' },
+      { id: 'C1-02', slug: 'stremyanka-s1-02' },
+      { id: 'C1-03', slug: 'stremyanka-s1-03' },
+      { id: 'C1-04', slug: 'stremyanka-s1-04' },
+      { id: 'C1-05', slug: 'stremyanka-s1-05' },
+      { id: 'C1-06', slug: 'stremyanka-s1-06' },
+      { id: 'C1-07', slug: 'stremyanka-s1-07' },
+      { id: 'C1-08', slug: 'stremyanka-s1-08' },
+      { id: 'C1-09', slug: 'stremyanka-s1-09' },
+      { id: 'C1-10', slug: 'stremyanka-s1-10' },
+      { id: 'C1-11', slug: 'stremyanka-s1-11' },
+      { id: 'C1-12', slug: 'stremyanka-s1-12' },
+      { id: 'C1-13', slug: 'stremyanka-s1-13' },
+      { id: 'C1-14', slug: 'stremyanka-s1-14' },
+      { id: 'C1-15', slug: 'stremyanka-s1-15' },
+      { id: 'C1-16', slug: 'stremyanka-s1-16' },
+      { id: 'C1-17', slug: 'stremyanka-s1-17' },
+      { id: 'C1-18', slug: 'stremyanka-s1-18' },
     ]
   },
   {
@@ -70,15 +70,15 @@ const CATEGORIES_TO_GENERATE = [
     installation_text: 'Перед установкой необходимо сверить длину лестницы, положение опор и способ крепления с проектом тепловой камеры. Монтаж выполняют с учетом конструкции стен и условий эксплуатации.',
     product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
-      { id: 'NTSB-L2000', model: 'Л-2000', length_mm: 2000, length_cm: 200, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2000' },
-      { id: 'NTSB-L2250', model: 'Л-2250', length_mm: 2250, length_cm: 225, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2250' },
-      { id: 'NTSB-L2500', model: 'Л-2500', length_mm: 2500, length_cm: 250, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2500' },
-      { id: 'NTSB-L2750', model: 'Л-2750', length_mm: 2750, length_cm: 275, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2750' },
-      { id: 'NTSB-L3000', model: 'Л-3000', length_mm: 3000, length_cm: 300, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3000' },
-      { id: 'NTSB-L3250', model: 'Л-3250', length_mm: 3250, length_cm: 325, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3250' },
-      { id: 'NTSB-L3500', model: 'Л-3500', length_mm: 3500, length_cm: 350, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3500' },
-      { id: 'NTSB-L3750', model: 'Л-3750', length_mm: 3750, length_cm: 375, project: 'НТС 62-91-111Б', slug: 'lestnica-l-3750' },
-      { id: 'NTSB-L4000', model: 'Л-4000', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111Б', slug: 'lestnica-l-4000' }
+      { id: 'NTSB-L2000', slug: 'lestnica-l-2000' },
+      { id: 'NTSB-L2250', slug: 'lestnica-l-2250' },
+      { id: 'NTSB-L2500', slug: 'lestnica-l-2500' },
+      { id: 'NTSB-L2750', slug: 'lestnica-l-2750' },
+      { id: 'NTSB-L3000', slug: 'lestnica-l-3000' },
+      { id: 'NTSB-L3250', slug: 'lestnica-l-3250' },
+      { id: 'NTSB-L3500', slug: 'lestnica-l-3500' },
+      { id: 'NTSB-L3750', slug: 'lestnica-l-3750' },
+      { id: 'NTSB-L4000', slug: 'lestnica-l-4000' }
     ]
   },
   {
@@ -97,10 +97,10 @@ const CATEGORIES_TO_GENERATE = [
     installation_text: 'Лестница опирается на приваренные опорные пятаки и крепится к стене тягами. В конструкции предусмотрены отверстия Ø16 мм для установки тяг. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
     product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
-      { id: 'NTSS-S1', model: 'С1', length_mm: 3400, length_cm: 340, project: 'НТС 62-91-111', slug: 'lestnica-s1-3400' },
-      { id: 'NTSS-S2', model: 'С2', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111', slug: 'lestnica-s2-4000' },
-      { id: 'NTSS-S3', model: 'С3', length_mm: 4600, length_cm: 460, project: 'НТС 62-91-111', slug: 'lestnica-s3-4600' },
-      { id: 'NTSS-S4', model: 'С4', length_mm: 5200, length_cm: 520, project: 'НТС 62-91-111', slug: 'lestnica-s4-5200' }
+      { id: 'NTSS-S1', slug: 'lestnica-s1-3400' },
+      { id: 'NTSS-S2', slug: 'lestnica-s2-4000' },
+      { id: 'NTSS-S3', slug: 'lestnica-s3-4600' },
+      { id: 'NTSS-S4', slug: 'lestnica-s4-5200' }
     ]
   },
   {
@@ -114,16 +114,16 @@ const CATEGORIES_TO_GENERATE = [
     product_title_prefix: 'Пожарная стремянка',
     product_title_accusative: 'пожарную стремянку',
     items: [
-      { id: 'SG-22', model: 'СГ-22', length_mm: 2200, length_cm: 220, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-22' },
-      { id: 'SG-28', model: 'СГ-28', length_mm: 2800, length_cm: 280, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-28' },
-      { id: 'SG-34', model: 'СГ-34', length_mm: 3400, length_cm: 340, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-34' },
-      { id: 'SG-40', model: 'СГ-40', length_mm: 4000, length_cm: 400, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-40' },
-      { id: 'SG-46', model: 'СГ-46', length_mm: 4600, length_cm: 460, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-46' },
-      { id: 'SG-52', model: 'СГ-52', length_mm: 5200, length_cm: 520, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-52' },
-      { id: 'SG-58', model: 'СГ-58', length_mm: 5800, length_cm: 580, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-58' },
-      { id: 'SG-64', model: 'СГ-64', length_mm: 6400, length_cm: 640, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-64' },
-      { id: 'SG-70', model: 'СГ-70', length_mm: 7000, length_cm: 700, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-70' },
-      { id: 'SG-82', model: 'СГ-82', length_mm: 8200, length_cm: 820, project: 'Серия 1.450.3-7.94', slug: 'pozharnaya-stremyanka-sg-82' }
+      { id: 'SG-22', slug: 'pozharnaya-stremyanka-sg-22' },
+      { id: 'SG-28', slug: 'pozharnaya-stremyanka-sg-28' },
+      { id: 'SG-34', slug: 'pozharnaya-stremyanka-sg-34' },
+      { id: 'SG-40', slug: 'pozharnaya-stremyanka-sg-40' },
+      { id: 'SG-46', slug: 'pozharnaya-stremyanka-sg-46' },
+      { id: 'SG-52', slug: 'pozharnaya-stremyanka-sg-52' },
+      { id: 'SG-58', slug: 'pozharnaya-stremyanka-sg-58' },
+      { id: 'SG-64', slug: 'pozharnaya-stremyanka-sg-64' },
+      { id: 'SG-70', slug: 'pozharnaya-stremyanka-sg-70' },
+      { id: 'SG-82', slug: 'pozharnaya-stremyanka-sg-82' }
     ]
   }
 ];
@@ -894,6 +894,23 @@ function buildProductPages() {
           throw new Error(`[product pages] ${cat.template} / ${cat.csv}, ID "${p.id}": некорректное поле "${field}" = "${row[field]}"`);
         return n;
       };
+      const getProductData = item => {
+        const sourceRow = byId.get(item.id);
+        if (!sourceRow) throw new Error(`[product pages] ${cat.template} / ${cat.csv}: не найден ID "${item.id}"`);
+        const sourceName = String(sourceRow.name || '').trim();
+        const modelMatch = sourceName.match(/(СГ-\d+|С\d+(?:-\d+)?|С-\d+|Л-\d+)/u);
+        if (!sourceName || !modelMatch)
+          throw new Error(`[product pages] ${cat.csv}, ID "${item.id}": не удалось определить название/модель из CSV name "${sourceRow.name}"`);
+        const lengthCm = Number(sourceRow.length);
+        if (!sourceRow.length || !Number.isFinite(lengthCm) || lengthCm <= 0)
+          throw new Error(`[product pages] ${cat.csv}, ID "${item.id}": некорректное поле "length" = "${sourceRow.length}"`);
+        const projectMatch = sourceName.match(/(ТПР \d{3}-\d{2}-\d{2}\.\d{2}|НТС 62-91-111Б?|серия 1\.450\.3-7\.94)/iu);
+        const project = projectMatch ? projectMatch[0].replace(/^серия/i, 'Серия') : cat.project_phrase;
+        if (!project)
+          throw new Error(`[product pages] ${cat.csv}, ID "${item.id}": не удалось определить норматив/проект из CSV name`);
+        return { model: modelMatch[0], lengthCm, lengthMm: lengthCm * 10, project };
+      };
+      const { model, lengthCm, lengthMm, project } = getProductData(p);
       const rawPrice = String(row.price || '').trim();
       const price = rawPrice ? numeric('price') : null, weight = numeric('weight');
       // CSV stores width in centimetres; product templates and JSON-LD use millimetres.
@@ -924,31 +941,38 @@ function buildProductPages() {
       html = html.replace(/\{\{BUY_CONTROLS\}\}/g, buyControls)
         .replace(/\{\{OFFER_JSONLD\}\}/g, offerJsonLd)
         .replace(/\{\{PRICE_DISPLAY\}\}/g, priceDisplay);
-      html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, p.model)
-        .replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{LENGTH_CM\}\}/g, p.length_cm)
+      html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, model)
+        .replace(/\{\{LENGTH_MM\}\}/g, lengthMm).replace(/\{\{LENGTH_CM\}\}/g, lengthCm)
         .replace(/\{\{PRICE\}\}/g, price === null ? 'по запросу' : price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, price === null ? '' : String(price))
         .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
-        .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug)
+        .replace(/\{\{PROJECT\}\}/g, project).replace(/\{\{SLUG\}\}/g, p.slug)
         .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder)
         .replace(/\{\{WIDTH_MM\}\}/g, String(widthMm))
         .replace(/\{\{CONSTRUCTION\}\}/g, cat.construction || 'стальная конструкция')
         .replace(/\{\{CONSTRUCTION_SPEC\}\}/g, cat.construction_spec || 'Сталь Ст3')
         .replace(/\{\{STEP_SPEC\}\}/g, cat.step_spec || 'Сталь Ст3')
         .replace(/\{\{INSTALLATION_TEXT\}\}/g, cat.installation_text || 'Способ установки согласовывается с проектной документацией.')
-        .replace(/\{\{PRODUCT_TITLE\}\}/g, `${cat.product_title_prefix || 'Лестница'} ${p.model} по ${cat.project_phrase || p.project}, длина ${p.length_mm} мм`)
-        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, p.model).replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{WIDTH_MM\}\}/g, String(widthMm)));
+        .replace(/\{\{PRODUCT_TITLE\}\}/g, `${cat.product_title_prefix || 'Лестница'} ${model} по ${cat.project_phrase || project}, длина ${lengthMm} мм`)
+        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, model).replace(/\{\{PROJECT\}\}/g, project).replace(/\{\{LENGTH_MM\}\}/g, lengthMm).replace(/\{\{WIDTH_MM\}\}/g, String(widthMm)));
       const title = cat.product_title_prefix
-        ? `${cat.product_title_prefix} ${p.model} по ${cat.project_phrase || p.project}, ${p.length_cm} см — купить`
-        : `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
+        ? `${cat.product_title_prefix} ${model} по ${cat.project_phrase || project}, ${lengthCm} см — купить`
+        : `Стремянка ${model} ${project} для колодцев, ${lengthCm} см — купить`;
       const album = cat.album || (cat.csv.includes('ss1-') ? 'Альбом V' : 'Альбом VII');
       const desc = cat.product_title_prefix
-        ? `Купить ${cat.product_title_accusative || cat.product_title_prefix.toLowerCase()} ${p.model} по ${cat.project_phrase || p.project}, ${album}. Высота ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`
-        : `Купить стремянку ${p.model} для колодцев по ${p.project}, ${album}. Длина ${p.length_cm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`;
+        ? `Купить ${cat.product_title_accusative || cat.product_title_prefix.toLowerCase()} ${model} по ${cat.project_phrase || project}, ${album}. Высота ${lengthCm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`
+        : `Купить стремянку ${model} для колодцев по ${project}, ${album}. Длина ${lengthCm} см, масса ${weight.toFixed(2).replace('.', ',')} кг. От производителя, доставка по России.`;
       html = html.replace(/\{\{SEO_TITLE\}\}/g, title).replace(/\{\{SEO_DESC\}\}/g, desc)
         .replace(/\{\{CATALOG_LINK\}\}/g, cat.catalog_link).replace(/\{\{CATALOG_TITLE\}\}/g, cat.title);
       let otherLinks = '';
-      cat.items.forEach(other => { if (other.id !== p.id) otherLinks += `<a href="${other.slug}.html">${cat.product_title_prefix ? `${cat.product_title_prefix} ${other.model} по ${cat.project_phrase || other.project}, длина ${other.length_mm} мм` : `${other.model} (${other.length_cm} см)`}</a>\n`; });
+      cat.items.forEach(other => {
+        if (other.id === p.id) return;
+        const otherData = getProductData(other);
+        const linkTitle = cat.product_title_prefix
+          ? `${cat.product_title_prefix} ${otherData.model} по ${cat.project_phrase || otherData.project}, длина ${otherData.lengthMm} мм`
+          : `${otherData.model} (${otherData.lengthCm} см)`;
+        otherLinks += `<a href="${other.slug}.html">${linkTitle}</a>\n`;
+      });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
       // Machine-readable breadcrumbs for every generated product detail page.
       const productUrl = `${SITE_URL}/products/${cat.folder}/${p.slug}.html`;
@@ -958,7 +982,7 @@ function buildProductPages() {
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Главная", "item": SITE_URL + "/" },
           { "@type": "ListItem", "position": 2, "name": cat.title, "item": SITE_URL + "/" + cat.catalog_link },
-          { "@type": "ListItem", "position": 3, "name": p.model, "item": productUrl }
+          { "@type": "ListItem", "position": 3, "name": model, "item": productUrl }
         ]
       };
       html = html.replace('</head>',
