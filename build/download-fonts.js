@@ -1,4 +1,5 @@
 // Downloads official Rubik variable WOFF2 files and their SIL Open Font License.
+// Rebuild trigger after workflow staging fix.
 const fs = require('fs');
 const path = require('path');
 
