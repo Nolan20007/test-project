@@ -149,7 +149,32 @@ function assertCsvProducts() {
   return expectedProducts;
 }
 
+
+function assertLlmsProductLinks() {
+  const content = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
+  const startMarker = '<!-- PRODUCT_PAGES_START -->';
+  const endMarker = '<!-- PRODUCT_PAGES_END -->';
+  const start = content.indexOf(startMarker);
+  const end = content.indexOf(endMarker);
+  assert(start !== -1 && end > start, 'llms.txt: product section markers are missing or invalid');
+  const section = content.slice(start + startMarker.length, end);
+  assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
+  const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
+  assert.strictEqual(links.length, 51, 'llms.txt: expected exactly 51 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 51, 'llms.txt: duplicate product URLs');
+  const labels = new Set(links.map(match => match[1]));
+  let expected = 0;
+  for (const csvFile of PRODUCT_CSV_FILES) {
+    for (const row of readCsv(csvFile)) {
+      expected += 1;
+      assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
+    }
+  }
+  assert.strictEqual(expected, 51, 'llms.txt: unexpected CSV product inventory');
+}
+
 assertRobotsPolicy();
+assertLlmsProductLinks();
 const sitemapCount = assertSitemap();
 const productCount = assertCsvProducts();
 assert(!/<link\b[^>]*rel=["']canonical["']/i.test(fs.readFileSync(path.join(root, '404.html'), 'utf8')), '404.html must not declare a canonical URL');
