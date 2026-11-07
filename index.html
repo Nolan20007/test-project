@@ -599,7 +599,12 @@
             .gallery-nav { bottom: 10px; right: 10px; padding: 5px; border-radius: 18px; }
             .gallery-nav button { padding: 6px 12px; font-size: 12px; }
         }
-    </style>
+    /* Карточки новых каталогов: корректный перенос подписей на узких экранах */
+.product-card--catalog-extra .product-description-block strong{display:block;width:auto;max-width:100%}
+.product-card--catalog-extra .product-description-block p{overflow-wrap:anywhere}
+.catalog-card-placeholder{width:100%;height:100%;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--primary-color);background:#f4f7fa;text-align:center}
+.catalog-card-placeholder strong{font-size:48px;line-height:1}.catalog-card-placeholder span{color:#7a8a9a;font-size:12px}
+</style>
     <script defer src="js/analytics.js"></script>
     
     
@@ -1041,9 +1046,9 @@
                     <a href="nts-62-91-111a.html" class="cta-button">Выбрать лестницы НТС 62-91-111А</a>
                 </div>
             <!-- Каталог скоб для колодцев -->
-            <div class="product-card">
+            <div class="product-card product-card--catalog-extra">
                 <div class="product-image-wrapper-static">
-                    <img src="images/default-product.svg" alt="Скобы для колодцев" class="product-image" width="800" height="600" loading="lazy" decoding="async">
+                    <img src="images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp" alt="Омега-образная скоба МН-1 для колодцев" class="product-image" width="800" height="600" loading="lazy" decoding="async">
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Скобы для колодцев</h3>
@@ -1061,9 +1066,9 @@
             </div>
 
             <!-- Каталог соединительных элементов МС -->
-            <div class="product-card">
+            <div class="product-card product-card--catalog-extra">
                 <div class="product-image-wrapper-static">
-                    <img src="images/default-product.svg" alt="Соединительные элементы МС для колодцев" class="product-image" width="800" height="600" loading="lazy" decoding="async">
+                    <div class="catalog-card-placeholder" role="img" aria-label="Фото соединительных элементов МС уточняется"><strong>МС</strong><span>Фото уточняется</span></div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">Соединительные элементы МС</h3>
