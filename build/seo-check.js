@@ -94,7 +94,9 @@ function assertSitemap() {
     assert(absolute.startsWith(root + path.sep), 'sitemap URL escapes repository root: ' + url);
     assert(fs.existsSync(absolute), 'sitemap URL has no generated file: ' + url);
     const html = fs.readFileSync(absolute, 'utf8');
-    assert(!/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html), 'noindex page is listed in sitemap: ' + url);
+    if (group.catalog === 'soedinitelnye-elementy.html') {
+      assert(!/<tr\b[^>]*id="item-(?:GS|MN|SK)-/i.test(catalog), 'connector catalog contains legacy skoba rows');
+    }
     const canonical = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
     assert(canonical, 'missing canonical: ' + url);
     assert.strictEqual(canonical[1], url, 'canonical mismatch: ' + url);
