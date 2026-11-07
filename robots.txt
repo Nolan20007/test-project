@@ -18,8 +18,7 @@ Disallow: /data/
 Disallow: /admin/
 Disallow: /private/
 
-# Google-Extended controls Gemini model training AND Gemini grounding.
-# Keep blocked unless the site owner explicitly chooses to allow both uses.
+# Explicitly allow Google-Extended for Gemini grounding and model training.
 User-agent: Google-Extended
 Allow: /
 
