@@ -143,7 +143,7 @@ function assertCsvProducts() {
       } else {
         assert(!object.offers, csvFile + '/' + row.id + ': CSV has no price but Product JSON-LD has an Offer');
       }
-      assert(new RegExp('Артикул:[\\s\\S]{0,120}?' + String(row.id).replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\assert(html.includes('Артикул: ' + row.id) || html.includes('sku": "' + row.id), csvFile + '/' + row.id + ': product ID is not visible or structured');')).test(html) || html.includes('sku": "' + row.id), csvFile + '/' + row.id + ': product ID is not visible or structured');
+      assert(html.includes('Артикул: ' + row.id) || html.includes('<strong>' + row.id + '</strong>') || html.includes('sku": "' + row.id), csvFile + '/' + row.id + ': product ID is not visible or structured');
       productsBySku.delete(String(row.id));
     }
   }
