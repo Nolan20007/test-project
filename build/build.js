@@ -1010,6 +1010,54 @@ function updateLlmsProductLinks() {
   return true;
 }
 
+function buildSitemap(productPages) {
+  const excludedPages = new Set(['404.html', 'cart.html']);
+  const pages = [...new Set([
+    ...ALL_HTML_FILES.filter(file => !excludedPages.has(file)),
+    ...productPages
+  ])];
+
+  const missingPages = pages.filter(file =>
+    !fs.existsSync(path.resolve(__dirname, '..', file))
+  );
+  if (missingPages.length) {
+    throw new Error('[sitemap] Не найдены страницы: ' + missingPages.join(', '));
+  }
+
+  const urls = pages.map(file =>
+    file === 'index.html' ? SITE_URL + '/' : SITE_URL + '/' + file.replace(/\\/g, '/')
+  );
+  if (new Set(urls).size !== urls.length) {
+    throw new Error('[sitemap] Обнаружены повторяющиеся URL.');
+  }
+
+  const xmlEscape = value => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...urls.map(url => '  <url>\\n    <loc>' + xmlEscape(url) + '</loc>\\n  </url>'),
+    '</urlset>',
+    ''
+  ].join('\\n');
+
+  const sitemapPath = path.resolve(__dirname, '..', 'sitemap.xml');
+  const current = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : '';
+  if (current === xml) {
+    console.log('  · sitemap.xml без изменений (' + urls.length + ' URL)');
+    return false;
+  }
+
+  fs.writeFileSync(sitemapPath, xml, 'utf8');
+  console.log('  ✅ sitemap.xml создан автоматически (' + urls.length + ' URL)');
+  return true;
+}
+
 function build() {
   let changed = 0;
 
@@ -1025,6 +1073,7 @@ function build() {
   console.log('\nГенерация страниц товаров...');
   const newProductPages = buildProductPages();
   if (updateLlmsProductLinks()) changed++;
+  if (buildSitemap(newProductPages)) changed++;
 
   const allPagesToProcess = [...ALL_HTML_FILES, ...newProductPages];
 
