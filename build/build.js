@@ -472,9 +472,9 @@ function buildProductListJsonLd(products, pageUrl) {
     }
   };
 
-  return '<script type="application/ld+json">\\n' +
+  return '<script type="application/ld+json">\n' +
     JSON.stringify(collection, null, 2) +
-    '\\n</script>';
+    '\n</script>';
 }
 
 function stripOldProductJsonLd(html) {
@@ -962,9 +962,9 @@ function buildProductPages() {
         ]
       };
       html = html.replace('</head>',
-        '<script type="application/ld+json">\\n' +
+        '<script type="application/ld+json">\n' +
         JSON.stringify(breadcrumb, null, 2) +
-        '\\n</script>\\n</head>');
+        '\n</script>\n</head>');
 
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
