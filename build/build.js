@@ -453,44 +453,28 @@ function replaceContainer(html, containerId, innerHtml) {
 
 function buildProductListJsonLd(products, pageUrl) {
   if (!products.length) return '';
-  const items = products.map(p => {
-    const rawPrice = String(p.price || '').trim();
-    const price = Number(rawPrice.replace(',', '.'));
-    const hasPrice = rawPrice !== '' && Number.isFinite(price) && price > 0;
-    const anchor = safeAnchor(p.id);
 
-    let searchImage = p.image || 'images/default-product.svg';
-    if (searchImage.includes('vid-mini')) {
-      searchImage = searchImage.replace('vid-mini.webp', 'vid-search.webp').replace('vid-mini.png', 'vid-search.png');
+  // Category pages describe a collection, not a single purchasable product.
+  const collection = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "url": pageUrl,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": products.length,
+      "itemListElement": products.map((p, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": p.name,
+        "url": pageUrl + '#' + safeAnchor(p.id)
+      }))
     }
+  };
 
-    const obj = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": p.name,
-      "sku": p.id,
-      "mpn": p.id,
-      "image": SITE_URL + '/' + searchImage,
-      "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
-      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" }
-    };
-
-    // Не публикуем Offer без достоверной положительной цены.
-    if (hasPrice) {
-      obj.offers = {
-        "@type": "Offer",
-        "url": pageUrl + '#' + anchor,
-        "priceCurrency": "RUB",
-        "price": String(price),
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "seller": { "@type": "Organization", "name": "ИП Гневашева Кристина Дмитриевна" }
-      };
-    }
-
-    return JSON.stringify(obj, null, 2);
-  });
-  return items.map(json => '<script type="application/ld+json">\n' + json + '\n</script>').join('\n');
+  return '<script type="application/ld+json">\\n' +
+    JSON.stringify(collection, null, 2) +
+    '\\n</script>';
 }
 
 function stripOldProductJsonLd(html) {
@@ -966,6 +950,22 @@ function buildProductPages() {
       let otherLinks = '';
       cat.items.forEach(other => { if (other.id !== p.id) otherLinks += `<a href="${other.slug}.html">${cat.product_title_prefix ? `${cat.product_title_prefix} ${other.model} по ${cat.project_phrase || other.project}, длина ${other.length_mm} мм` : `${other.model} (${other.length_cm} см)`}</a>\n`; });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
+      // Machine-readable breadcrumbs for every generated product detail page.
+      const productUrl = `${SITE_URL}/products/${cat.folder}/${p.slug}.html`;
+      const breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": SITE_URL + "/" },
+          { "@type": "ListItem", "position": 2, "name": cat.title, "item": SITE_URL + "/" + cat.catalog_link },
+          { "@type": "ListItem", "position": 3, "name": p.model, "item": productUrl }
+        ]
+      };
+      html = html.replace('</head>',
+        '<script type="application/ld+json">\\n' +
+        JSON.stringify(breadcrumb, null, 2) +
+        '\\n</script>\\n</head>');
+
       const outPath = path.join(outDir, `${p.slug}.html`);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
