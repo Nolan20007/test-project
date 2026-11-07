@@ -250,6 +250,14 @@ function assertMetalCatalogsAndPages() {
       }
     }
   }
+  const priceList = fs.readFileSync(path.join(root, 'price-list.html'), 'utf8');
+  assert(priceList.includes('<div id="nomenclature-skoby">') && priceList.includes('<div id="nomenclature-ms">'), 'price-list must include skoba and MS sections');
+  for (const group of groups) {
+    const rows = readCsv(group.csv);
+    for (const row of rows) {
+      assert(priceList.includes('id="item-' + row.id + '"'), 'price-list is missing ' + row.id);
+    }
+  }
   const connectorCatalog = fs.readFileSync(path.join(root, 'soedinitelnye-elementy.html'), 'utf8');
   assert(connectorCatalog.includes('<th>Ширина, см</th><th>Высота, см</th>'), 'connector catalog must show width/height headings');
   const skobyCatalog = fs.readFileSync(path.join(root, 'skoby-dlya-kolodcev.html'), 'utf8');
