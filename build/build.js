@@ -229,6 +229,7 @@ const PAGES = [
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
   { html: 'nts-62-91-111a.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv' }] },
+  { html: 'soedinitelnye-elementy.html', tables: [{ id: 'nomenclature-container', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }] },
   { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
@@ -288,6 +289,7 @@ const FEED_SOURCES = [
   { csv: 'data/scoba-nm-products.csv',        page: 'skoba-mn.html',        bigImage: 'images/scoba-nm/vid-1.png', typePrefix: 'Скоба ходовая' },
   { csv: 'data/scoba-nm1-3900-products.csv',  page: 'skoba-nm1-3-900-3.html', bigImage: 'images/scoba-nm1-3900/vid-1.png', typePrefix: 'Скоба ходовая' },
   { csv: 'data/skoby-dlya-kolodcev-products.csv', page: 'skoby-dlya-kolodcev.html', bigImage: 'images/default-product.svg', typePrefix: 'Скоба для колодцев' },
+  { csv: 'data/soedinitelnye-elementy-products.csv', page: 'soedinitelnye-elementy.html', bigImage: 'images/default-product.svg', typePrefix: 'Соединительный элемент МС' },
   { csv: 'data/nts-62-91-111-products.csv',     page: 'nts-62-91-111.html',   bigImage: 'images/nts-62-91-111/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
   { csv: 'data/nts-62-91-111b-products.csv',    page: 'nts-62-91-111b.html',  bigImage: 'images/nts-62-91-111b/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
 ];
@@ -428,7 +430,7 @@ function replacePrices(html) {
   return { html: result, replaced };
 }
 
-function buildTable(products, enableCollapse) {
+function buildTable(products, enableCollapse, dimensionHeaders) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
 
   const total = products.length;
@@ -1235,7 +1237,7 @@ function build() {
 
       if (!isPriceList) allProducts.push(...products);
 
-      const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList));
+      const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList, t.dimensionHeaders));
       if (newHtml !== html) {
         html = newHtml; changedThisPage = true;
         console.log(`  ✅ ${page.html} → #${t.id} (${products.length} строк)`);
