@@ -1100,6 +1100,56 @@ function buildProductPages() {
   return createdPages;
 }
 
+
+function buildSimpleMetalProductPages() {
+  const configs = [
+    { csv: 'data/skoby-dlya-kolodcev-products.csv', folder: 'skoby-dlya-kolodcev', catalog: 'skoby-dlya-kolodcev.html', title: 'Скобы для колодцев' },
+    { csv: 'data/soedinitelnye-elementy-products.csv', folder: 'soedinitelnye-elementy', catalog: 'soedinitelnye-elementy.html', title: 'Соединительные элементы МС' }
+  ];
+  const created = [];
+  configs.forEach(cat => {
+    const csvPath = path.resolve(__dirname, '..', cat.csv);
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\\uFEFF/, ''));
+    const outDir = path.resolve(__dirname, '..', 'products', cat.folder);
+    if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+    rows.forEach(p => {
+      const slug = p.slug || (cat.folder === 'skoby-dlya-kolodcev'
+        ? 'skoba-' + p.id.toLowerCase().replace(/[^a-z0-9-]/g, '-')
+        : 'soedinitelny-element-' + p.id.toLowerCase());
+      const url = SITE_URL + '/products/' + cat.folder + '/' + slug + '.html';
+      const name = esc(p.name), id = esc(p.id);
+      const price = Number(p.price) > 0 ? Number(p.price) : null;
+      const album = String(p.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
+      const buy = price === null ? '<p>Стоимость уточняйте при заказе.</p>' : `
+        <div class="buy-row"><div class="quantity-control">
+          <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
+          <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
+          <button type="button" onclick="changeQuantity('${id}', 1)">+</button>
+        </div><button type="button" class="cart-button buy-button" data-item-id="${id}" data-item-name="${name}" data-item-length="${esc(p.length)}" data-item-weight="${esc(p.weight)}">Добавить в корзину</button></div>`;
+      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, image:SITE_URL+'/'+(p.image || 'images/default-product.svg'), description:p.name+'. Длина '+p.length+' см, ширина '+p.width+' см, масса '+p.weight+' кг. Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
+      if (price !== null) schema.offers = {"@type":"Offer",url,priceCurrency:"RUB",price:String(price),availability:"https://schema.org/InStock"};
+      const html = `<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${name} — характеристики и цена</title><meta name="description" content="${name}. Размеры, масса, альбом чертежей и цена. Изготовление и доставка по России.">
+<link rel="canonical" href="${url}"><link rel="stylesheet" href="../../css/common.css"><link rel="stylesheet" href="../../css/toast.css">
+<script src="../../js/config.js" defer><\/script><script src="../../js/utils.js" defer><\/script>
+<script type="application/ld+json">${JSON.stringify(schema)}<\/script>
+<style>.simple-product{max-width:1000px;margin:35px auto;padding:0 16px 50px}.simple-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 5px 24px #0000000d}.simple-grid{display:grid;grid-template-columns:240px 1fr;gap:30px}.simple-grid img{width:100%;max-height:240px;object-fit:contain}.simple-product h1{font-size:28px}.specs{border-collapse:collapse;width:100%;margin:22px 0}.specs td{padding:10px;border-bottom:1px solid #eee}.specs td:first-child{color:#666;width:45%}.buy-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.quantity-control{display:flex;align-items:center;gap:10px}.quantity-control button{padding:8px 14px}.quantity-control input{width:60px;padding:9px;text-align:center}.buy-button{padding:13px 24px}@media(max-width:650px){.simple-grid{grid-template-columns:1fr}.simple-grid img{max-width:220px;margin:auto}.simple-product h1{font-size:23px}}</style>
+</head><body>
+<!-- NAV_START --><!-- NAV_END -->
+<main class="simple-product"><nav aria-label="Хлебные крошки"><a href="../../index.html">Главная</a> / <a href="../../${cat.catalog}">${cat.title}</a> / ${name}</nav>
+<section class="simple-card"><div class="simple-grid"><img src="../../${esc(p.image || 'images/default-product.svg')}" alt="${name}" width="500" height="500"><div><h1>${name}</h1><p>Артикул: <strong>${id}</strong></p><p class="price">${price === null ? 'Цена по запросу' : 'от '+price.toLocaleString('ru-RU')+' ₽'}</p>${buy}</div></div>
+<h2>Характеристики</h2><table class="specs"><tr><td>Артикул</td><td>${id}</td></tr><tr><td>Длина</td><td>${esc(p.length)} см</td></tr><tr><td>Ширина</td><td>${esc(p.width)} см</td></tr><tr><td>Масса</td><td>${esc(p.weight)} кг</td></tr><tr><td>Единица измерения</td><td>${esc(p.unit || '1 шт')}</td></tr><tr><td>Альбом чертежей</td><td>${esc(album)}</td></tr></table>
+<p>Наличие, комплектацию, срок изготовления и условия поставки уточняйте при оформлении заказа.</p><p><a href="../../${cat.catalog}">Вернуться в каталог</a></p></section></main>
+<!-- FOOTER_START --><!-- FOOTER_END --></body></html>`;
+      fs.writeFileSync(path.join(outDir, slug + '.html'), html, 'utf8');
+      created.push('products/' + cat.folder + '/' + slug + '.html');
+    });
+  });
+  console.log('  ✓ Индивидуальные страницы скоб и соединительных элементов: ' + created.length);
+  return created;
+}
+
 function updateLlmsProductLinks() {
   const llmsPath = path.resolve(__dirname, '..', 'llms.txt');
   if (!fs.existsSync(llmsPath)) {
@@ -1210,7 +1260,7 @@ function build() {
   if (ctaContent)    console.log('  ✅ includes/cta.html');
 
   console.log('\nГенерация страниц товаров...');
-  const newProductPages = buildProductPages();
+  const newProductPages = [...buildProductPages(), ...buildSimpleMetalProductPages()];
   if (updateLlmsProductLinks()) changed++;
   if (buildSitemap(newProductPages)) changed++;
 
