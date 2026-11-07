@@ -1131,7 +1131,7 @@ function buildSimpleMetalProductPages() {
           <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
           <button type="button" onclick="changeQuantity('${id}', 1)">+</button>
         </div><button type="button" class="cart-button buy-button" data-item-id="${id}" data-item-name="${name}" data-item-length="${esc(p.length)}" data-item-weight="${esc(p.weight)}">Добавить в корзину</button></div>`;
-      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, image:SITE_URL+'/'+(p.image || 'images/default-product.svg'), description:p.name+'. Длина '+p.length+' см, ширина '+p.width+' см, масса '+p.weight+' кг. Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
+      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, image:SITE_URL+'/'+(p.image || 'images/default-product.svg'), description:p.name+'. Длина '+p.length+' см, ширина '+(Number(p.width)*10)+' мм, масса '+Number(p.weight).toFixed(2).replace('.', ',')+' кг. Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
       if (price !== null) schema.offers = {"@type":"Offer",url,priceCurrency:"RUB",price:String(price),availability:"https://schema.org/InStock"};
       const html = `<!DOCTYPE html>
 <html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1192,8 +1192,8 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
-  if (productLinkCount !== 112) {
-    throw new Error('[llms.txt] Ожидалось 112 товарных ссылок, сформировано: ' + productLinkCount);
+  if (productLinkCount !== 134) {
+    throw new Error('[llms.txt] Ожидалось 134 товарных ссылок, сформировано: ' + productLinkCount);
   }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
