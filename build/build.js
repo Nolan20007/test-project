@@ -262,8 +262,7 @@ const PAGES = [
       { id: 'nomenclature-vl2-28',                csv: 'data/vdl-products-28.csv' },
       { id: 'nomenclature-kl1-25',                csv: 'data/kl1-products.csv' },
       { id: 'nomenclature-kl1-28',                csv: 'data/kl1-products-28.csv' },
-      { id: 'nomenclature-scoba-nm',              csv: 'data/scoba-nm-products.csv' },
-      { id: 'nomenclature-scoba-nm1-3900',        csv: 'data/scoba-nm1-3900-products.csv' },
+      { id: 'nomenclature-skoby',                 csv: 'data/skoby-dlya-kolodcev-products.csv' },
       { id: 'nomenclature-ms', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }
   ]},
 ];
@@ -285,8 +284,6 @@ const FEED_SOURCES = [
   { csv: 'data/tmp-902-kruglye.csv',          page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
-  { csv: 'data/scoba-nm-products.csv',        page: 'skoba-mn.html',        bigImage: 'images/scoba-nm/vid-1.png', typePrefix: 'Скоба ходовая' },
-  { csv: 'data/scoba-nm1-3900-products.csv',  page: 'skoba-nm1-3-900-3.html', bigImage: 'images/scoba-nm1-3900/vid-1.png', typePrefix: 'Скоба ходовая' },
   { csv: 'data/skoby-dlya-kolodcev-products.csv', page: 'skoby-dlya-kolodcev.html', bigImage: 'images/default-product.svg', typePrefix: 'Скоба для колодцев' },
   { csv: 'data/soedinitelnye-elementy-products.csv', page: 'soedinitelnye-elementy.html', bigImage: 'images/default-product.svg', typePrefix: 'Соединительный элемент МС' },
   { csv: 'data/nts-62-91-111-products.csv',     page: 'nts-62-91-111.html',   bigImage: 'images/nts-62-91-111/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
