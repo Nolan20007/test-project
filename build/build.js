@@ -492,7 +492,7 @@ function buildProductListJsonLd(products, pageUrl) {
 
     return JSON.stringify(obj, null, 2);
   });
-  return items.map(json => '<script type="application/ld+json">\\n' + json + '\\n</script>').join('\\n');
+  return items.map(json => '<script type="application/ld+json">\n' + json + '\n</script>').join('\n');
 }
 
 function stripOldProductJsonLd(html) {
@@ -937,9 +937,9 @@ function buildProductPages() {
       })}`;
       const priceDisplay = price === null ? 'Цена по запросу' : `от ${price.toLocaleString('ru-RU')} ₽`;
       let html = template;
-      html = html.replace(/\\{\\{BUY_CONTROLS\\}\\}/g, buyControls)
-        .replace(/\\{\\{OFFER_JSONLD\\}\\}/g, offerJsonLd)
-        .replace(/\\{\\{PRICE_DISPLAY\\}\\}/g, priceDisplay);
+      html = html.replace(/\{\{BUY_CONTROLS\}\}/g, buyControls)
+        .replace(/\{\{OFFER_JSONLD\}\}/g, offerJsonLd)
+        .replace(/\{\{PRICE_DISPLAY\}\}/g, priceDisplay);
       html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, p.model)
         .replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{LENGTH_CM\}\}/g, p.length_cm)
         .replace(/\{\{PRICE\}\}/g, price === null ? 'по запросу' : price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, price === null ? '' : String(price))
