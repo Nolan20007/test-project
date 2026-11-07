@@ -221,9 +221,9 @@ function assertMetalCatalogsAndPages() {
   for (const group of groups) {
     const rows = readCsv(group.csv);
     const catalog = fs.readFileSync(path.join(root, group.catalog), 'utf8');
-    const ids = [...catalog.matchAll(/<tr\\b[^>]*id="item-([^"]+)"/g)].map(match => match[1]);
+    const ids = [...catalog.matchAll(/<tr\b[^>]*id="item-([^"]+)"/g)].map(match => match[1]);
     assert.deepStrictEqual(ids.sort(), rows.map(row => String(row.id)).sort(), group.catalog + ': visible table rows do not match CSV inventory');
-    assert(!/<\\/td>\\s*<td><button/i.test(catalog), group.catalog + ': orphaned table cells remain after the nomenclature container');
+    assert(!/<\/td>\s*<td><button/i.test(catalog), group.catalog + ': orphaned table cells remain after the nomenclature container');
     for (const row of rows) {
       const slug = String(row.slug || (group.folder.endsWith('skoby-dlya-kolodcev')
         ? 'skoba-' + String(row.id).toLowerCase().replace(/[^a-z0-9-]/g, '-')
