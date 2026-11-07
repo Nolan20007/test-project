@@ -158,11 +158,11 @@ function assertLlmsProductLinks() {
   const end = content.indexOf(endMarker);
   assert(start !== -1 && end > start, 'llms.txt: product section markers are missing or invalid');
   const section = content.slice(start + startMarker.length, end);
-  assert(!/\\bundefined\\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
-  const links = [...section.matchAll(/^- \\[([^\\]]+)\\]\\((https?:\\/\\/[^)]+)\\)$/gm)];
+  assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
+  const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
   assert.strictEqual(links.length, 51, 'llms.txt: expected exactly 51 product links');
   assert.strictEqual(new Set(links.map(match => match[2])).size, 51, 'llms.txt: duplicate product URLs');
-  const labels = new Set(links.map(match => match[1].replace(/\\\\([\\\\[\\]\\\\])/g, '$1')));
+  const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
     for (const row of readCsv(csvFile)) {
