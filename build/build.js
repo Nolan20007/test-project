@@ -1041,10 +1041,10 @@ function buildSitemap(productPages) {
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map(url => '  <url>\\n    <loc>' + xmlEscape(url) + '</loc>\\n  </url>'),
+    ...urls.map(url => '  <url>\n    <loc>' + xmlEscape(url) + '</loc>\n  </url>'),
     '</urlset>',
     ''
-  ].join('\\n');
+  ].join('\n');
 
   const sitemapPath = path.resolve(__dirname, '..', 'sitemap.xml');
   const current = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : '';
