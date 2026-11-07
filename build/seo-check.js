@@ -176,8 +176,8 @@ function assertLlmsProductLinks() {
 
 function assertNtsFeedCoverage() {
   const groups = [
-    { csv: 'data/nts-62-91-111-products.csv', image: 'images/nts-62-91-111/vid-1.webp' },
-    { csv: 'data/nts-62-91-111b-products.csv', image: 'images/nts-62-91-111b/vid-1.webp' }
+    { csv: 'data/nts-62-91-111-products.csv', image: 'images/nts-62-91-111/vid-search.webp' },
+    { csv: 'data/nts-62-91-111b-products.csv', image: 'images/nts-62-91-111b/vid-search.webp' }
   ];
   const feeds = [
     { file: 'google-feed.xml', idTag: 'g:id', imageTag: 'g:image_link' },
