@@ -192,14 +192,11 @@ function assertNtsFeedCoverage() {
     for (const feed of feeds) {
       const xml = fs.readFileSync(path.join(root, feed.file), 'utf8');
       for (const row of rows) {
-        const escapedId = String(row.id);');
-        if (feed.idTag) {
-          assert(new RegExp('<' + feed.idTag + '>' + escapedId + '<\\/' + feed.idTag + '>').test(xml),
-            feed.file + ': missing NTS product ' + row.id);
-        } else {
-          assert(new RegExp('<offer\\s+id=["\\']' + escapedId + '["\\']').test(xml),
-            feed.file + ': missing NTS product ' + row.id);
-        }
+        const escapedId = String(row.id);
+        const present = feed.idTag
+          ? xml.includes('<' + feed.idTag + '>' + escapedId + '</' + feed.idTag + '>')
+          : xml.includes('<offer id="' + escapedId + '"');
+        assert(present, feed.file + ': missing NTS product ' + row.id);
       }
       const expectedImageUrl = 'https://stremyanki-dlya-kolodcev.ru/' + group.image;
       assert(xml.includes(expectedImageUrl), feed.file + ': missing NTS feed image ' + expectedImageUrl);
