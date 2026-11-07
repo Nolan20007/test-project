@@ -228,7 +228,7 @@ const PAGES = [
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
   { html: 'nts-62-91-111a.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
-  { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv' }] },
+  { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] }] },
   { html: 'soedinitelnye-elementy.html', tables: [{ id: 'nomenclature-container', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }] },
   { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
@@ -262,7 +262,7 @@ const PAGES = [
       { id: 'nomenclature-vl2-28',                csv: 'data/vdl-products-28.csv' },
       { id: 'nomenclature-kl1-25',                csv: 'data/kl1-products.csv' },
       { id: 'nomenclature-kl1-28',                csv: 'data/kl1-products-28.csv' },
-      { id: 'nomenclature-skoby',                 csv: 'data/skoby-dlya-kolodcev-products.csv' },
+      { id: 'nomenclature-skoby',                 csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] },
       { id: 'nomenclature-ms', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }
   ]},
 ];
@@ -1130,8 +1130,9 @@ function buildSimpleMetalProductPages() {
       const price = Number(p.price) > 0 ? Number(p.price) : null;
       const album = String(p.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
       const isConnector = cat.folder === 'soedinitelnye-elementy';
-      const dimensionOneLabel = isConnector ? 'Ширина' : 'Длина';
-      const dimensionTwoLabel = isConnector ? 'Высота' : 'Ширина';
+      const dimensionOneLabel = String(p.dimension1_label || (isConnector ? 'Ширина' : 'Длина')).trim();
+      const dimensionTwoLabel = String(p.dimension2_label || (isConnector ? 'Высота' : 'Ширина')).trim();
+      const productDescription = String(p.description || '').trim() || name;
       const dimensionOne = String(p.length || '').trim();
       const dimensionTwo = String(p.width || '').trim();
       const dimensionTwoMm = Number(dimensionTwo) * 10;
@@ -1154,7 +1155,7 @@ function buildSimpleMetalProductPages() {
           <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
           <button type="button" onclick="changeQuantity('${id}', 1)">+</button>
         </div><button type="button" class="cart-button buy-button" data-item-id="${id}" data-item-name="${name}" data-item-length="${esc(p.length)}" data-item-weight="${esc(p.weight)}">Добавить в корзину</button></div>`;
-      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, description:p.name+'. '+dimensionOneLabel+' '+dimensionOne+' см, '+dimensionTwoLabel.toLowerCase()+' '+dimensionTwoMm+' мм, масса '+Number(p.weight).toFixed(2).replace('.', ',')+' кг. Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
+      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, description:productDescription+'. '+dimensionOneLabel+' '+dimensionOne+' см, '+dimensionTwoLabel.toLowerCase()+' '+dimensionTwoMm+' мм, масса '+Number(p.weight).toFixed(2).replace('.', ',')+' кг.'+(p.material ? ' Материал: '+p.material+'.' : '')+(p.rod_diameter ? ' Диаметр прутка: '+p.rod_diameter+'.' : '')+' Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
       if (p.image && p.image !== 'images/default-product.svg') schema.image = SITE_URL + '/' + p.image;
       if (price !== null) schema.offers = {"@type":"Offer",url,priceCurrency:"RUB",price:String(price),availability:"https://schema.org/InStock"};
       const html = `<!DOCTYPE html>
@@ -1179,8 +1180,8 @@ function buildSimpleMetalProductPages() {
 </head><body>
 <!-- NAV_START --><!-- NAV_END -->
 <main class="simple-product"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="../../index.html">Главная</a> / <a href="../../${cat.catalog}">${cat.title}</a> / ${name}</nav>
-<section class="simple-card"><div class="simple-grid">${mainImageHtml}<div class="product-summary"><h1>${name}</h1><p class="product-sku">Артикул: <strong>${id}</strong></p><p class="product-price">${price === null ? 'Цена по запросу' : 'от '+price.toLocaleString('ru-RU')+' ₽'}</p><p class="product-intro">${name}. ${dimensionOneLabel} — ${dimensionOne} см, ${dimensionTwoLabel.toLowerCase()} — ${dimensionTwo} см, масса — ${esc(p.weight)} кг. ${album !== 'Не указан в исходных данных каталога' ? 'Изделие приведено в альбоме: '+esc(album)+'.' : ''}</p>${buy}</div></div>
-<h2>Характеристики изделия</h2><table class="specs"><tr><td>Артикул</td><td>${id}</td></tr><tr><td>${dimensionOneLabel}</td><td>${esc(dimensionOne)} см</td></tr><tr><td>${dimensionTwoLabel}</td><td>${esc(dimensionTwo)} см</td></tr><tr><td>Масса</td><td>${esc(p.weight)} кг</td></tr><tr><td>Единица измерения</td><td>${esc(p.unit || '1 шт')}</td></tr><tr><td>Альбом чертежей</td><td>${esc(album)}</td></tr></table>
+<section class="simple-card"><div class="simple-grid">${mainImageHtml}<div class="product-summary"><h1>${name}</h1><p class="product-sku">Артикул: <strong>${id}</strong></p><p class="product-price">${price === null ? 'Цена по запросу' : 'от '+price.toLocaleString('ru-RU')+' ₽'}</p><p class="product-intro">${esc(productDescription)} ${dimensionOneLabel} — ${dimensionOne} см, ${dimensionTwoLabel.toLowerCase()} — ${dimensionTwo} см, масса — ${esc(p.weight)} кг.${p.material ? ' Материал: '+esc(p.material)+'.' : ''}${p.rod_diameter ? ' Диаметр прутка: '+esc(p.rod_diameter)+'.' : ''} ${album !== 'Не указан в исходных данных каталога' ? 'Изделие приведено в альбоме: '+esc(album)+'.' : ''}</p>${buy}</div></div>
+<h2>Характеристики изделия</h2><table class="specs"><tr><td>Артикул</td><td>${id}</td></tr><tr><td>${dimensionOneLabel}</td><td>${esc(dimensionOne)} см</td></tr><tr><td>${dimensionTwoLabel}</td><td>${esc(dimensionTwo)} см</td></tr><tr><td>Масса</td><td>${esc(p.weight)} кг</td></tr><tr><td>Единица измерения</td><td>${esc(p.unit || '1 шт')}</td></tr><tr><td>Альбом чертежей</td><td>${esc(album)}</td></tr>${p.material ? '<tr><td>Материал</td><td>'+esc(p.material)+'</td></tr>' : ''}${p.rod_diameter ? '<tr><td>Диаметр прутка</td><td>'+esc(p.rod_diameter)+'</td></tr>' : ''}${p.blank_length_mm ? '<tr><td>Длина заготовки</td><td>'+esc(p.blank_length_mm)+' мм</td></tr>' : ''}</table>
 <div class="product-note">Перед заказом сверьте размеры изделия с проектом колодца и условиями монтажа. Наличие, комплектацию, срок изготовления и доставку уточняйте у менеджера.</div>
 ${galleryHtml}
 <h2>Другие типоразмеры</h2><div class="related-products">${relatedProducts}</div>

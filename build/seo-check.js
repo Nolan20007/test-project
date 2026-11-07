@@ -134,17 +134,16 @@ function assertCsvProducts() {
       assert(Number.isFinite(Number(row.weight)) && Number(row.weight) > 0, csvFile + '/' + row.id + ': invalid CSV weight');
       const isConnector = csvFile === 'data/soedinitelnye-elementy-products.csv';
       const isSkoby = csvFile === 'data/skoby-dlya-kolodcev-products.csv';
-      const secondDimensionLabel = isConnector ? 'высота ' : 'ширина ';
-      const firstDimensionMatches = isConnector
-        ? object.description.includes('Ширина ' + lengthCm + ' см')
-        : isSkoby
-          ? object.description.includes('Длина ' + lengthCm + ' см')
-          : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
+      const firstLabel = String(row.dimension1_label || (isConnector ? 'Ширина' : 'Длина'));
+      const secondLabel = String(row.dimension2_label || (isConnector ? 'Высота' : 'Ширина'));
+      const firstDimensionMatches = (isConnector || isSkoby)
+        ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
+        : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
       assert(firstDimensionMatches, csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
-      assert(object.description.includes(secondDimensionLabel + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
+      assert(object.description.includes(secondLabel.toLowerCase() + ' ' + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
       if (isSkoby || isConnector) {
-        assert(html.includes('<td>' + (isConnector ? 'Ширина' : 'Длина') + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
-        assert(html.includes('<td>' + (isConnector ? 'Высота' : 'Ширина') + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
+        assert(html.includes('<td>' + firstLabel + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
+        assert(html.includes('<td>' + secondLabel + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
       }
       assert(object.description.includes('масса ' + weight + ' кг'), csvFile + '/' + row.id + ': JSON-LD weight differs from CSV');
 
@@ -254,6 +253,7 @@ function assertMetalCatalogsAndPages() {
   const connectorCatalog = fs.readFileSync(path.join(root, 'soedinitelnye-elementy.html'), 'utf8');
   assert(connectorCatalog.includes('<th>Ширина, см</th><th>Высота, см</th>'), 'connector catalog must show width/height headings');
   const skobyCatalog = fs.readFileSync(path.join(root, 'skoby-dlya-kolodcev.html'), 'utf8');
+  assert(skobyCatalog.includes('<th>Габарит 1, см</th><th>Габарит 2, см</th>'), 'skoby catalog must use neutral dimension headings for mixed product shapes');
   assert(skobyCatalog.includes('images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp'), 'skoby catalog must use a real representative product image');
 }
 assertRobotsPolicy();
