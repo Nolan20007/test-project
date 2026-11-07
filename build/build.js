@@ -502,11 +502,11 @@ function replaceJsonLd(html, jsonLd) {
 
 function getFeedImagePath(src) {
   const original = src.bigImage;
-  const searchImage = original.replace(/vid-1\\.(?:png|webp)$/i, 'vid-search.webp');
+  const searchImage = original.replace(/vid-1\.(?:png|webp)$/i, 'vid-search.webp');
   if (searchImage !== original && fs.existsSync(path.resolve(__dirname, '..', searchImage))) {
     return searchImage;
   }
-  const webpImage = original.replace(/\\.png$/i, '.webp');
+  const webpImage = original.replace(/\.png$/i, '.webp');
   if (webpImage !== original && fs.existsSync(path.resolve(__dirname, '..', webpImage))) {
     return webpImage;
   }
