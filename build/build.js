@@ -241,8 +241,6 @@ const PAGES = [
       { id: 'nomenclature-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-perepadnye', csv: 'data/tmp-902-perepadnye.csv' }
   ]},
-  { html: 'skoba-mn.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm-products.csv' }] },
-  { html: 'skoba-nm1-3-900-3.html', tables: [{ id: 'nomenclature-container', csv: 'data/scoba-nm1-3900-products.csv' }] },
 
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' },
@@ -1128,6 +1126,8 @@ function buildSimpleMetalProductPages() {
       const name = esc(p.name), id = esc(p.id);
       const price = Number(p.price) > 0 ? Number(p.price) : null;
       const album = String(p.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
+      const gallery = String(p.images || p.image || '').split(';').map(x => x.trim()).filter(Boolean);
+      const galleryHtml = gallery.length > 1 ? '<div class="product-gallery">' + gallery.map((src, i) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + name + ' — изображение ' + (i + 1) + '" loading="lazy"></a>').join('') + '</div>' : '';
       const buy = price === null ? '<p>Стоимость уточняйте при заказе.</p>' : `
         <div class="buy-row"><div class="quantity-control">
           <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
@@ -1142,7 +1142,7 @@ function buildSimpleMetalProductPages() {
 <link rel="canonical" href="${url}"><link rel="stylesheet" href="../../css/common.css"><link rel="stylesheet" href="../../css/toast.css">
 <script src="../../js/config.js" defer><\/script><script src="../../js/utils.js" defer><\/script>
 <script type="application/ld+json">${JSON.stringify(schema)}<\/script>
-<style>.simple-product{max-width:1000px;margin:35px auto;padding:0 16px 50px}.simple-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 5px 24px #0000000d}.simple-grid{display:grid;grid-template-columns:240px 1fr;gap:30px}.simple-grid img{width:100%;max-height:240px;object-fit:contain}.simple-product h1{font-size:28px}.specs{border-collapse:collapse;width:100%;margin:22px 0}.specs td{padding:10px;border-bottom:1px solid #eee}.specs td:first-child{color:#666;width:45%}.buy-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.quantity-control{display:flex;align-items:center;gap:10px}.quantity-control button{padding:8px 14px}.quantity-control input{width:60px;padding:9px;text-align:center}.buy-button{padding:13px 24px}@media(max-width:650px){.simple-grid{grid-template-columns:1fr}.simple-grid img{max-width:220px;margin:auto}.simple-product h1{font-size:23px}}</style>
+<style>.simple-product{max-width:1000px;margin:35px auto;padding:0 16px 50px}.simple-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 5px 24px #0000000d}.simple-grid{display:grid;grid-template-columns:240px 1fr;gap:30px}.simple-grid>img{width:100%;max-height:240px;object-fit:contain}.product-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:22px 0}.product-gallery img{width:100%;height:120px;object-fit:contain;border:1px solid #e5eaf0;border-radius:8px;background:#fff;padding:5px}.simple-product h1{font-size:28px}.specs{border-collapse:collapse;width:100%;margin:22px 0}.specs td{padding:10px;border-bottom:1px solid #eee}.specs td:first-child{color:#666;width:45%}.buy-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.quantity-control{display:flex;align-items:center;gap:10px}.quantity-control button{padding:8px 14px}.quantity-control input{width:60px;padding:9px;text-align:center}.buy-button{padding:13px 24px}@media(max-width:650px){.simple-grid{grid-template-columns:1fr}.simple-grid img{max-width:220px;margin:auto}.simple-product h1{font-size:23px}}</style>
 </head><body>
 <!-- NAV_START --><!-- NAV_END -->
 <main class="simple-product"><nav aria-label="Хлебные крошки"><a href="../../index.html">Главная</a> / <a href="../../${cat.catalog}">${cat.title}</a> / ${name}</nav>
