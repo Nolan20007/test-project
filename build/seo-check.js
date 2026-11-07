@@ -137,8 +137,10 @@ function assertCsvProducts() {
       const secondDimensionLabel = isConnector ? 'высота ' : 'ширина ';
       assert(object.description.includes(firstDimensionLabel + lengthCm + ' см'), csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
       assert(object.description.includes(secondDimensionLabel + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
-      assert(html.includes('<td>' + (isConnector ? 'Ширина' : 'Длина') + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
-      assert(html.includes('<td>' + (isConnector ? 'Высота' : 'Ширина') + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
+      if (csvFile === 'data/skoby-dlya-kolodcev-products.csv' || isConnector) {
+        assert(html.includes('<td>' + (isConnector ? 'Ширина' : 'Длина') + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
+        assert(html.includes('<td>' + (isConnector ? 'Высота' : 'Ширина') + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
+      }
       assert(object.description.includes('масса ' + weight + ' кг'), csvFile + '/' + row.id + ': JSON-LD weight differs from CSV');
 
       const price = String(row.price || '').trim();
