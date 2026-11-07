@@ -55,6 +55,85 @@ const CATEGORIES_TO_GENERATE = [
     ]
   },
   {
+    template: 'lestnicy-nts-62-91-111a.html',
+    folder: 'lestnicy-nts-62-91-111a',
+    title: 'Лестницы-стремянки тепловых сетей НТС 62-91-111А',
+    catalog_link: 'nts-62-91-111a.html',
+    csv: 'data/nts-62-91-111a-products.csv',
+    product_title_prefix: 'Лестница-стремянка для тепловых сетей',
+    product_title_accusative: 'лестницу-стремянку для тепловых сетей',
+    project_phrase: 'НТС 62-91-111А',
+    album: 'нормалям тепловых сетей',
+    construction: 'лестница-стремянка',
+    construction_spec: 'Уголок 75×75×5 мм',
+    step_spec: 'Стальной пруток Ø18 мм',
+    installation_text: 'Лестница опирается на приваренные пятаки и крепится к стене тягами. Для тяг в лестнице предусмотрены отверстия диаметром 16 мм. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
+    product_description: 'Стальная теплосетевая лестница-стремянка {{MODEL}} по нормалям тепловых сетей НТС 62-91-111А. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
+    items: [
+      { id: 'NTSA-L2000', slug: 'lestnica-l-2000' },
+      { id: 'NTSA-L2100', slug: 'lestnica-l-2100' },
+      { id: 'NTSA-L2200', slug: 'lestnica-l-2200' },
+      { id: 'NTSA-L2300', slug: 'lestnica-l-2300' },
+      { id: 'NTSA-L2400', slug: 'lestnica-l-2400' },
+      { id: 'NTSA-L2500', slug: 'lestnica-l-2500' },
+      { id: 'NTSA-L2600', slug: 'lestnica-l-2600' },
+      { id: 'NTSA-L2700', slug: 'lestnica-l-2700' },
+      { id: 'NTSA-L2800', slug: 'lestnica-l-2800' },
+      { id: 'NTSA-L2900', slug: 'lestnica-l-2900' },
+      { id: 'NTSA-L3000', slug: 'lestnica-l-3000' },
+      { id: 'NTSA-L3100', slug: 'lestnica-l-3100' },
+      { id: 'NTSA-L3200', slug: 'lestnica-l-3200' },
+      { id: 'NTSA-L3300', slug: 'lestnica-l-3300' },
+      { id: 'NTSA-L3400', slug: 'lestnica-l-3400' },
+      { id: 'NTSA-L3500', slug: 'lestnica-l-3500' },
+      { id: 'NTSA-L3600', slug: 'lestnica-l-3600' },
+      { id: 'NTSA-L3700', slug: 'lestnica-l-3700' },
+      { id: 'NTSA-L3800', slug: 'lestnica-l-3800' },
+      { id: 'NTSA-L3900', slug: 'lestnica-l-3900' },
+      { id: 'NTSA-L4000', slug: 'lestnica-l-4000' },
+      { id: 'NTSA-L4100', slug: 'lestnica-l-4100' },
+      { id: 'NTSA-L4200', slug: 'lestnica-l-4200' },
+      { id: 'NTSA-L4300', slug: 'lestnica-l-4300' },
+      { id: 'NTSA-L4400', slug: 'lestnica-l-4400' },
+      { id: 'NTSA-L4500', slug: 'lestnica-l-4500' },
+      { id: 'NTSA-L4600', slug: 'lestnica-l-4600' },
+      { id: 'NTSA-L4700', slug: 'lestnica-l-4700' },
+      { id: 'NTSA-L4800', slug: 'lestnica-l-4800' },
+      { id: 'NTSA-L4900', slug: 'lestnica-l-4900' },
+      { id: 'NTSA-L5000', slug: 'lestnica-l-5000' },
+      { id: 'NTSA-L5100', slug: 'lestnica-l-5100' },
+      { id: 'NTSA-L5200', slug: 'lestnica-l-5200' },
+      { id: 'NTSA-L5300', slug: 'lestnica-l-5300' },
+      { id: 'NTSA-L5400', slug: 'lestnica-l-5400' },
+      { id: 'NTSA-L5500', slug: 'lestnica-l-5500' },
+      { id: 'NTSA-L5600', slug: 'lestnica-l-5600' },
+      { id: 'NTSA-L5700', slug: 'lestnica-l-5700' },
+      { id: 'NTSA-L5800', slug: 'lestnica-l-5800' },
+      { id: 'NTSA-L5900', slug: 'lestnica-l-5900' },
+      { id: 'NTSA-L6000', slug: 'lestnica-l-6000' },
+      { id: 'NTSA-L6100', slug: 'lestnica-l-6100' },
+      { id: 'NTSA-L6200', slug: 'lestnica-l-6200' },
+      { id: 'NTSA-L6300', slug: 'lestnica-l-6300' },
+      { id: 'NTSA-L6400', slug: 'lestnica-l-6400' },
+      { id: 'NTSA-L6500', slug: 'lestnica-l-6500' },
+      { id: 'NTSA-L6600', slug: 'lestnica-l-6600' },
+      { id: 'NTSA-L6700', slug: 'lestnica-l-6700' },
+      { id: 'NTSA-L6800', slug: 'lestnica-l-6800' },
+      { id: 'NTSA-L6900', slug: 'lestnica-l-6900' },
+      { id: 'NTSA-L7000', slug: 'lestnica-l-7000' },
+      { id: 'NTSA-L7100', slug: 'lestnica-l-7100' },
+      { id: 'NTSA-L7200', slug: 'lestnica-l-7200' },
+      { id: 'NTSA-L7300', slug: 'lestnica-l-7300' },
+      { id: 'NTSA-L7400', slug: 'lestnica-l-7400' },
+      { id: 'NTSA-L7500', slug: 'lestnica-l-7500' },
+      { id: 'NTSA-L7600', slug: 'lestnica-l-7600' },
+      { id: 'NTSA-L7700', slug: 'lestnica-l-7700' },
+      { id: 'NTSA-L7800', slug: 'lestnica-l-7800' },
+      { id: 'NTSA-L7900', slug: 'lestnica-l-7900' },
+      { id: 'NTSA-L8000', slug: 'lestnica-l-8000' }
+    ]
+  },
+  {
     template: 'lestnicy-nts-62-91-111b.html',
     folder: 'lestnicy-nts-62-91-111b',
     title: 'Лестницы тепловых сетей НТС 62-91-111Б',
@@ -148,6 +227,7 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
+  { html: 'nts-62-91-111a.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
   { html: 'l-16-dlya-teplovyh-setej.html', tables: [
@@ -165,6 +245,7 @@ const PAGES = [
   { html: 'price-list.html', tables: [
       { id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' },
       { id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' },
+      { id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' },
       { id: 'nomenclature-ss1',                  csv: 'data/ss1-products.csv' },
       { id: 'nomenclature-ss2',                  csv: 'data/ss2-products.csv' },
       { id: 'nomenclature-l-17',                 csv: 'data/l-17-000SB-products.csv' },
@@ -383,6 +464,10 @@ function buildTable(products, enableCollapse) {
         const ntsSlugs = { 'NTSS-S1': 's1-3400', 'NTSS-S2': 's2-4000', 'NTSS-S3': 's3-4600', 'NTSS-S4': 's4-5200' };
         itemUrl = `products/lestnicy-nts-62-91-111/lestnica-${ntsSlugs[id]}.html`;
     }
+    else if (id.startsWith('NTSA-')) {
+        modelSlug = id.toLowerCase().replace('ntsa-', '').replace('l', 'l-');
+        itemUrl = `products/lestnicy-nts-62-91-111a/lestnica-${modelSlug}.html`;
+    }
     else if (id.startsWith('NTSB-')) {
         modelSlug = id.toLowerCase().replace('ntsb-', '').replace('l', 'l-');
         itemUrl = `products/lestnicy-nts-62-91-111b/lestnica-${modelSlug}.html`;
@@ -390,7 +475,7 @@ function buildTable(products, enableCollapse) {
 
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
 
-    const tableName = (id.startsWith('NTSS-') || id.startsWith('NTSB-')) ? name.replace(/,\s*длина\s+\d+\s*мм$/i, '') : name;
+    const tableName = (id.startsWith('NTSS-') || id.startsWith('NTSB-') || id.startsWith('NTSA-')) ? name.replace(/,\s*длина\s+\d+\s*мм$/i, '') : name;
     const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${tableName}</a>` : tableName;
 
     const priceCell = price > 0 ? `от ${fmtPrice(price)} руб.` : 'по запросу';
@@ -644,6 +729,7 @@ const ALL_HTML_FILES = [
   'l-16-dlya-teplovyh-setej.html',
   'nts-62-91-111b.html',
   'nts-62-91-111.html',
+  'nts-62-91-111a.html',
   'l-17-000SB.html',
   'l-3-sk-2201-88.html',
   'l-19.html',
@@ -912,7 +998,7 @@ function buildProductPages() {
         const lengthCm = Number(sourceRow.length);
         if (!sourceRow.length || !Number.isFinite(lengthCm) || lengthCm <= 0)
           throw new Error(`[product pages] ${cat.csv}, ID "${item.id}": некорректное поле "length" = "${sourceRow.length}"`);
-        const projectMatch = sourceName.match(/(ТПР \d{3}-\d{2}-\d{2}\.\d{2}|НТС 62-91-111Б?|серия 1\.450\.3-7\.94)/iu);
+        const projectMatch = sourceName.match(/(ТПР \d{3}-\d{2}-\d{2}\.\d{2}|НТС 62-91-111[АБ]?|серия 1\.450\.3-7\.94)/iu);
         const project = projectMatch ? projectMatch[0].replace(/^серия/i, 'Серия') : cat.project_phrase;
         if (!project)
           throw new Error(`[product pages] ${cat.csv}, ID "${item.id}": не удалось определить норматив/проект из CSV name`);
@@ -1043,8 +1129,8 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
-  if (productLinkCount !== 51) {
-    throw new Error('[llms.txt] Ожидалось 51 товарная ссылка, сформировано: ' + productLinkCount);
+  if (productLinkCount !== 112) {
+    throw new Error('[llms.txt] Ожидалось 112 товарных ссылок, сформировано: ' + productLinkCount);
   }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
