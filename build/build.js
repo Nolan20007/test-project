@@ -1192,6 +1192,24 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
+  const simpleProductGroups = [
+    { csv: 'data/skoby-dlya-kolodcev-products.csv', title: 'Скобы для колодцев', folder: 'skoby-dlya-kolodcev', prefix: 'skoba-' },
+    { csv: 'data/soedinitelnye-elementy-products.csv', title: 'Соединительные элементы МС', folder: 'soedinitelnye-elementy', prefix: 'soedinitelny-element-' }
+  ];
+  simpleProductGroups.forEach(group => {
+    const csvPath = path.resolve(__dirname, '..', group.csv);
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\\uFEFF/, ''));
+    lines.push('### ' + group.title);
+    rows.forEach(row => {
+      const slug = String(row.slug || (group.prefix + String(row.id).toLowerCase()));
+      const name = String(row.name || '').trim();
+      if (!name) throw new Error('[llms.txt] Не найдено название товара в CSV ' + group.csv + ' для ID "' + row.id + '"');
+      const url = SITE_URL + '/products/' + group.folder + '/' + slug + '.html';
+      lines.push('- [' + name + '](' + url + ')');
+      productLinkCount += 1;
+    });
+    lines.push('');
+  });
   if (productLinkCount !== 134) {
     throw new Error('[llms.txt] Ожидалось 134 товарных ссылок, сформировано: ' + productLinkCount);
   }
@@ -1201,7 +1219,7 @@ function updateLlmsProductLinks() {
   if (updated === content) return false;
 
   fs.writeFileSync(llmsPath, updated, 'utf8');
-  console.log('  ✅ llms.txt → ссылки на ' + CATEGORIES_TO_GENERATE.reduce((n, cat) => n + cat.items.length, 0) + ' карточек товаров обновлены');
+  console.log('  ✅ llms.txt → ссылки на ' + productLinkCount + ' карточек товаров обновлены');
   return true;
 }
 
