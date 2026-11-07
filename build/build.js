@@ -1001,7 +1001,7 @@ function updateLlmsProductLinks() {
     lines.push('');
   });
 
-  const replacement = startMarker + '\\n' + lines.join('\\n').trimEnd() + '\\n' + endMarker;
+  const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
   const updated = content.slice(0, start) + replacement + content.slice(end + endMarker.length);
   if (updated === content) return false;
 
