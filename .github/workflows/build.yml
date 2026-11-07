@@ -51,6 +51,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # npm may remove tracked files under node_modules; restore them from main.
+          git restore --source=origin/main --worktree --staged -- node_modules/ || true
           # Stage tracked changes, then add only non-ignored untracked files.
           # This avoids wildcard pathspecs traversing ignored node_modules.
           git add -u
