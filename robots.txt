@@ -84,6 +84,17 @@ Disallow: /data/
 Disallow: /admin/
 Disallow: /private/
 
+# Apple: keep Applebot search access, opt out of foundation-model training.
+User-agent: Applebot
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Applebot-Extended
+Disallow: /
+
 # Common Crawl: opt out of its public web archive dataset.
 User-agent: CCBot
 Disallow: /
