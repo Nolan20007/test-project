@@ -173,9 +173,45 @@ function assertLlmsProductLinks() {
   assert.strictEqual(expected, 51, 'llms.txt: unexpected CSV product inventory');
 }
 
+
+function assertNtsFeedCoverage() {
+  const groups = [
+    { csv: 'data/nts-62-91-111-products.csv', image: 'images/nts-62-91-111/vid-1.webp' },
+    { csv: 'data/nts-62-91-111b-products.csv', image: 'images/nts-62-91-111b/vid-1.webp' }
+  ];
+  const feeds = [
+    { file: 'google-feed.xml', idTag: 'g:id', imageTag: 'g:image_link' },
+    { file: 'yandex-feed.xml', idTag: null, imageTag: 'picture' }
+  ];
+
+  for (const group of groups) {
+    const rows = readCsv(group.csv).filter(row => Number(row.price) > 0);
+    assert(rows.length > 0, group.csv + ': expected priced NTS products');
+    assert(fs.existsSync(path.join(root, group.image)), group.csv + ': feed image is missing: ' + group.image);
+
+    for (const feed of feeds) {
+      const xml = fs.readFileSync(path.join(root, feed.file), 'utf8');
+      for (const row of rows) {
+        const escapedId = String(row.id).replace(/[.*+?^${}()|[\\]\\\\]/g, '\\assertRobotsPolicy();');
+        if (feed.idTag) {
+          assert(new RegExp('<' + feed.idTag + '>' + escapedId + '<\\/' + feed.idTag + '>').test(xml),
+            feed.file + ': missing NTS product ' + row.id);
+        } else {
+          assert(new RegExp('<offer\\s+id=["\\']' + escapedId + '["\\']').test(xml),
+            feed.file + ': missing NTS product ' + row.id);
+        }
+      }
+      const expectedImageUrl = 'https://stremyanki-dlya-kolodcev.ru/' + group.image;
+      assert(xml.includes(expectedImageUrl), feed.file + ': missing NTS feed image ' + expectedImageUrl);
+    }
+  }
+  return groups.reduce((sum, group) => sum + readCsv(group.csv).filter(row => Number(row.price) > 0).length, 0);
+}
+
 assertRobotsPolicy();
 assertLlmsProductLinks();
+const ntsFeedProducts = assertNtsFeedCoverage();
 const sitemapCount = assertSitemap();
 const productCount = assertCsvProducts();
 assert(!/<link\b[^>]*rel=["']canonical["']/i.test(fs.readFileSync(path.join(root, '404.html'), 'utf8')), '404.html must not declare a canonical URL');
-console.log('SEO checks passed: ' + sitemapCount + ' sitemap URLs, ' + productCount + ' CSV-backed Product pages, robots policy and JSON-LD validated.');
+console.log('SEO checks passed: ' + sitemapCount + ' sitemap URLs, ' + productCount + ' CSV-backed Product pages, ' + ntsFeedProducts + ' NTS feed products, robots policy and JSON-LD validated.');
