@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-07 21:14">
+<yml_catalog date="2026-11-07 21:58">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -10631,6 +10631,162 @@
       <model>MN-1-3900</model>
       <weight>0.82</weight>
       <description>Скоба ходовая серии 3.900-3 МН-1 П-образная. Длина 20 см, ширина 18.6 см, масса 0.82 кг.</description>
+    </offer>
+    <offer id="GS-1" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-GS-1</url>
+      <price>600</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца ГС-1</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>GS-1</model>
+      <weight>2</weight>
+      <description>Скоба для колодца ГС-1. Длина 20 см, ширина 7 см, масса 2 кг.</description>
+    </offer>
+    <offer id="GS-2" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-GS-2</url>
+      <price>600</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца ГС-2</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>GS-2</model>
+      <weight>2</weight>
+      <description>Скоба для колодца ГС-2. Длина 20 см, ширина 8 см, масса 2 кг.</description>
+    </offer>
+    <offer id="GS-3" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-GS-3</url>
+      <price>600</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца ГС-3</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>GS-3</model>
+      <weight>2</weight>
+      <description>Скоба для колодца ГС-3. Длина 20 см, ширина 9 см, масса 2 кг.</description>
+    </offer>
+    <offer id="GS-4" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-GS-4</url>
+      <price>600</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца ГС-4</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>GS-4</model>
+      <weight>2</weight>
+      <description>Скоба для колодца ГС-4. Длина 20 см, ширина 10 см, масса 2 кг.</description>
+    </offer>
+    <offer id="MN-1" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-MN-1</url>
+      <price>600</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца МН-1</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>MN-1</model>
+      <weight>2</weight>
+      <description>Скоба для колодца МН-1. Длина 20 см, ширина 17 см, масса 2 кг.</description>
+    </offer>
+    <offer id="SK-1" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-1</url>
+      <price>624</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-1</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-1</model>
+      <weight>2.08</weight>
+      <description>Скоба для колодца СК-1. Длина 20 см, ширина 23 см, масса 2.08 кг.</description>
+    </offer>
+    <offer id="SK-1-K" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-1-K</url>
+      <price>1320</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-1 с креплением</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-1-K</model>
+      <weight>4.4</weight>
+      <description>Скоба для колодца СК-1 с креплением. Длина 25 см, ширина 20.5 см, масса 4.4 кг.</description>
+    </offer>
+    <offer id="SK-2" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-2</url>
+      <price>1590</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-2</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-2</model>
+      <weight>5.3</weight>
+      <description>Скоба для колодца СК-2. Длина 24.5 см, ширина 20.5 см, масса 5.3 кг.</description>
+    </offer>
+    <offer id="SK-3" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-3</url>
+      <price>2100</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-3</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-3</model>
+      <weight>7</weight>
+      <description>Скоба для колодца СК-3. Длина 41 см, ширина 25.5 см, масса 7 кг.</description>
+    </offer>
+    <offer id="SK-4" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-4</url>
+      <price>3390</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-4</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-4</model>
+      <weight>11.3</weight>
+      <description>Скоба для колодца СК-4. Длина 75.2 см, ширина 25.5 см, масса 11.3 кг.</description>
+    </offer>
+    <offer id="SK-5" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-5</url>
+      <price>1650</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-5</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-5</model>
+      <weight>5.5</weight>
+      <description>Скоба для колодца СК-5. Длина 34.2 см, ширина 25.5 см, масса 5.5 кг.</description>
+    </offer>
+    <offer id="SK-6" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/skoby-dlya-kolodcev.html#item-SK-6</url>
+      <price>1590</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Скоба для колодца СК-6</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Скоба для колодцев</typePrefix>
+      <model>SK-6</model>
+      <weight>5.3</weight>
+      <description>Скоба для колодца СК-6. Длина 36.5 см, ширина 25 см, масса 5.3 кг.</description>
     </offer>
     <offer id="NTSS-S1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/nts-62-91-111.html#item-NTSS-S1</url>
