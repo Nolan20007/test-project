@@ -112,6 +112,7 @@ const CATEGORIES_TO_GENERATE = [
     catalog_link: 'ssg1.html',
     csv: 'data/ssg1-products.csv',
     album: 'Выпуск 2',
+    width_mm: 700,
     project_phrase: 'серии 1.450.3-7.94',
     product_title_prefix: 'Пожарная стремянка',
     product_title_accusative: 'пожарную стремянку',
