@@ -1,29 +1,38 @@
+# Sitemap is declared globally so it applies to all crawlers.
+Sitemap: https://stremyanki-dlya-kolodcev.ru/sitemap.xml
+
+# Default policy for crawlers without a dedicated group.
 User-agent: *
 Allow: /
 Disallow: /cart.html
 Disallow: /data/
 Disallow: /admin/
 Disallow: /private/
-
 Crawl-delay: 1
 
-Sitemap: https://stremyanki-dlya-kolodcev.ru/sitemap.xml
-
-# Google Search
+# Google Search and Google AI features in Search use Googlebot.
 User-agent: Googlebot
 Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
 
-# Google AI model training and Gemini grounding: opt out.
-# This does not block Google Search or AI Overviews in Google Search.
+# Explicitly allow Google-Extended for Gemini grounding and model training.
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
-# Yandex Search
+# Yandex main search crawler and other Yandex crawlers without a more specific group.
 User-agent: Yandex
+Allow: /
+Disallow: /cart.html
+Disallow: /data/
+Disallow: /admin/
+Disallow: /private/
 Crawl-delay: 2
 
-# Yandex AI answers (Alice / YandexGPT).
-# Yandex documents these agents as controls for AI answer usage, not model training.
+# Yandex AI answers (Search with Alice / YandexGPT).
+# These agents control use of already indexed pages in AI answers; they do not index pages.
 User-agent: YandexAdditionalBot
 Allow: /
 Disallow: /cart.html
@@ -40,7 +49,7 @@ Disallow: /admin/
 Disallow: /private/
 Crawl-delay: 2
 
-# OpenAI: allow ChatGPT Search, opt out of foundation-model training.
+# OpenAI: allow ChatGPT Search; keep GPTBot training crawler blocked.
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /cart.html
@@ -51,7 +60,7 @@ Disallow: /private/
 User-agent: GPTBot
 Disallow: /
 
-# Anthropic: allow Claude Search and user-directed retrieval, opt out of model training.
+# Anthropic: allow search and user-directed retrieval; block training crawler.
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /cart.html
@@ -69,7 +78,7 @@ Disallow: /private/
 User-agent: ClaudeBot
 Disallow: /
 
-# Perplexity: allow search crawler and user-directed retrieval.
+# Perplexity: allow search and user-requested retrieval.
 User-agent: PerplexityBot
 Allow: /
 Disallow: /cart.html
@@ -84,7 +93,7 @@ Disallow: /data/
 Disallow: /admin/
 Disallow: /private/
 
-# Apple: keep Applebot search access, opt out of foundation-model training.
+# Apple: allow Applebot search and Siri/Safari discovery; block Apple foundation-model training use.
 User-agent: Applebot
 Allow: /
 Disallow: /cart.html
@@ -95,6 +104,6 @@ Disallow: /private/
 User-agent: Applebot-Extended
 Disallow: /
 
-# Common Crawl: opt out of its public web archive dataset.
+# Common Crawl dataset crawler.
 User-agent: CCBot
 Disallow: /
