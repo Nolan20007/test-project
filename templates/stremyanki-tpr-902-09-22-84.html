@@ -41,16 +41,8 @@
       "mpn": "{{ID}}",
       "image": "https://stremyanki-dlya-kolodcev.ru/images/ss2/vid-search.webp",
       "description": "Стремянка для колодцев {{PROJECT}} {{MODEL}}. Длина {{LENGTH_CM}} см, ширина 50 см, масса {{WEIGHT}} кг.",
-      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-902-09-22-84/{{SLUG}}.html",
-        "priceCurrency": "RUB",
-        "price": "{{PRICE_RAW}}",
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "seller": { "@type": "Organization", "name": "ИП Гневашева Кристина Дмитриевна" }
-      }
+      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" }
+      {{OFFER_JSONLD}}
     }
     </script>
 
@@ -161,19 +153,10 @@
                     <div class="mp-stock">✓ В наличии на складе</div>
                     
                     <div class="mp-price-block">
-                        <div class="mp-price">от {{PRICE}} ₽</div>
+                        <div class="mp-price">{{PRICE_DISPLAY}}</div>
                     </div>
 
-                    <div class="mp-buy-controls">
-                        <div class="quantity-control" style="display:flex; align-items:center; border: 1px solid #c8d9ea; border-radius: 12px; overflow: hidden;">
-                            <button type="button" onclick="changeQuantity('{{ID}}', -1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">−</button>
-                            <input type="number" id="{{ID}}-qty" value="1" min="1" max="99" data-price="{{PRICE_RAW}}" style="width:50px; border:none; text-align:center; font-size:18px; font-weight:bold; padding:10px 0;">
-                            <button type="button" onclick="changeQuantity('{{ID}}', 1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">+</button>
-                        </div>
-                        <button type="button" class="mp-btn-buy cart-button" 
-                                data-item-id="{{ID}}" data-item-name="Стремянка для колодцев {{PROJECT}} {{MODEL}}"
-                                data-item-length="{{LENGTH_CM}}" data-item-weight="{{WEIGHT_RAW}}">Добавить в корзину</button>
-                    </div>
+                    {{BUY_CONTROLS}}
 
                     <div class="mp-usp-list">
                         <div class="mp-usp-item"><b>Доставка</b>По всей России</div>
