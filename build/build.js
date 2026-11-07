@@ -456,9 +456,11 @@ function replaceContainer(html, containerId, innerHtml) {
 function buildProductListJsonLd(products, pageUrl) {
   if (!products.length) return '';
   const items = products.map(p => {
-    const price = parseFloat(p.price) || 0;
+    const rawPrice = String(p.price || '').trim();
+    const price = Number(rawPrice.replace(',', '.'));
+    const hasPrice = rawPrice !== '' && Number.isFinite(price) && price > 0;
     const anchor = safeAnchor(p.id);
-    
+
     let searchImage = p.image || 'images/default-product.svg';
     if (searchImage.includes('vid-mini')) {
       searchImage = searchImage.replace('vid-mini.webp', 'vid-search.webp').replace('vid-mini.png', 'vid-search.png');
@@ -472,8 +474,12 @@ function buildProductListJsonLd(products, pageUrl) {
       "mpn": p.id,
       "image": SITE_URL + '/' + searchImage,
       "description": p.name + '. Длина ' + p.length + ' см, ширина ' + p.width + ' см, масса ' + p.weight + ' кг.',
-      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" },
-      "offers": {
+      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" }
+    };
+
+    // Не публикуем Offer без достоверной положительной цены.
+    if (hasPrice) {
+      obj.offers = {
         "@type": "Offer",
         "url": pageUrl + '#' + anchor,
         "priceCurrency": "RUB",
@@ -481,11 +487,12 @@ function buildProductListJsonLd(products, pageUrl) {
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": { "@type": "Organization", "name": "ИП Гневашева Кристина Дмитриевна" }
-      }
-    };
+      };
+    }
+
     return JSON.stringify(obj, null, 2);
   });
-  return items.map(json => `<script type="application/ld+json">\n${json}\n</script>`).join('\n');
+  return items.map(json => '<script type="application/ld+json">\\n' + json + '\\n</script>').join('\\n');
 }
 
 function stripOldProductJsonLd(html) {
@@ -905,9 +912,34 @@ function buildProductPages() {
           throw new Error(`[product pages] ${cat.template} / ${cat.csv}, ID "${p.id}": некорректное поле "${field}" = "${row[field]}"`);
         return n;
       };
-      const price = row.price && Number(row.price) > 0 ? numeric('price') : null, weight = numeric('weight');
+      const rawPrice = String(row.price || '').trim();
+      const price = rawPrice ? numeric('price') : null, weight = numeric('weight');
       const stepCount = row.step_count ? numeric('step_count') : null;
+      const buyControls = price === null ? '' : `<div class="mp-buy-controls">
+                        <div class="quantity-control" style="display:flex; align-items:center; border: 1px solid #c8d9ea; border-radius: 12px; overflow: hidden;">
+                            <button type="button" onclick="changeQuantity('{{ID}}', -1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">−</button>
+                            <input type="number" id="{{ID}}-qty" value="1" min="1" max="99" data-price="{{PRICE_RAW}}" style="width:50px; border:none; text-align:center; font-size:18px; font-weight:bold; padding:10px 0;">
+                            <button type="button" onclick="changeQuantity('{{ID}}', 1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">+</button>
+                        </div>
+                        <button type="button" class="mp-btn-buy cart-button"
+                                data-item-id="{{ID}}" data-item-name="{{PRODUCT_TITLE}}"
+                                data-item-length="{{LENGTH_CM}}" data-item-weight="{{WEIGHT_RAW}}">Добавить в корзину</button>
+                    </div>`;
+      const offerJsonLd = price === null ? '' : `,
+      "offers": ${JSON.stringify({
+        "@type": "Offer",
+        "url": `https://stremyanki-dlya-kolodcev.ru/products/${cat.folder}/${p.slug}.html`,
+        "priceCurrency": "RUB",
+        "price": String(price),
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": { "@type": "Organization", "name": "ИП Гневашева Кристина Дмитриевна" }
+      })}`;
+      const priceDisplay = price === null ? 'Цена по запросу' : `от ${price.toLocaleString('ru-RU')} ₽`;
       let html = template;
+      html = html.replace(/\\{\\{BUY_CONTROLS\\}\\}/g, buyControls)
+        .replace(/\\{\\{OFFER_JSONLD\\}\\}/g, offerJsonLd)
+        .replace(/\\{\\{PRICE_DISPLAY\\}\\}/g, priceDisplay);
       html = html.replace(/\{\{ID\}\}/g, p.id).replace(/\{\{MODEL\}\}/g, p.model)
         .replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{LENGTH_CM\}\}/g, p.length_cm)
         .replace(/\{\{PRICE\}\}/g, price === null ? 'по запросу' : price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, price === null ? '' : String(price))
