@@ -129,7 +129,7 @@ function assertCsvProducts() {
       assert(Number.isFinite(lengthCm) && lengthCm > 0, csvFile + '/' + row.id + ': invalid CSV length');
       assert(Number.isFinite(widthMm) && widthMm > 0, csvFile + '/' + row.id + ': invalid CSV width');
       assert(Number.isFinite(Number(row.weight)) && Number(row.weight) > 0, csvFile + '/' + row.id + ': invalid CSV weight');
-      assert(object.description.includes('Длина ' + lengthCm + ' см'), csvFile + '/' + row.id + ': JSON-LD length differs from CSV');
+      assert(object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см'), csvFile + '/' + row.id + ': JSON-LD length/height differs from CSV');
       assert(object.description.includes('ширина ' + widthMm + ' мм'), csvFile + '/' + row.id + ': JSON-LD width differs from CSV');
       assert(object.description.includes('масса ' + weight + ' кг'), csvFile + '/' + row.id + ': JSON-LD weight differs from CSV');
 
