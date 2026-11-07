@@ -433,8 +433,11 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
   const needCollapse = enableCollapse && total > COLLAPSE_THRESHOLD;
 
   const hasPricedProducts = products.some(p => Number(p.price) > 0);
+  const headers = Array.isArray(dimensionHeaders) && dimensionHeaders.length === 2
+    ? dimensionHeaders
+    : ['Длина, см', 'Ширина, см'];
   let html = `<table class="nomenclature-table"><thead><tr>
-    <th>Фото</th><th>Изделие</th><th>Длина, см</th><th>Ширина, см</th>
+    <th>Фото</th><th>Изделие</th><th>${esc(headers[0])}</th><th>${esc(headers[1])}</th>
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
@@ -1123,15 +1126,29 @@ function buildSimpleMetalProductPages() {
       const name = esc(p.name), id = esc(p.id);
       const price = Number(p.price) > 0 ? Number(p.price) : null;
       const album = String(p.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
-      const gallery = String(p.images || p.image || '').split(';').map(x => x.trim()).filter(Boolean);
-      const galleryHtml = gallery.length > 1 ? '<div class="product-gallery">' + gallery.map((src, i) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + name + ' — изображение ' + (i + 1) + '" loading="lazy"></a>').join('') + '</div>' : '';
+      const isConnector = cat.folder === 'soedinitelnye-elementy';
+      const dimensionOneLabel = isConnector ? 'Ширина' : 'Длина';
+      const dimensionTwoLabel = isConnector ? 'Высота' : 'Ширина';
+      const dimensionOne = String(p.length || '').trim();
+      const dimensionTwo = String(p.width || '').trim();
+      const dimensionTwoMm = Number(dimensionTwo) * 10;
+      const gallery = String(p.images || p.image || '').split(';').map(x => x.trim()).filter(Boolean).filter(x => x !== 'images/default-product.svg');
+      const galleryHtml = gallery.length
+        ? '<section class="product-gallery-section"><h2>Фотографии и чертежи</h2><div class="product-gallery">' + gallery.map((src, i) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + name + ' — изображение ' + (i + 1) + '" loading="lazy"><span>' + (/(chertezh|drawing)/i.test(src) ? 'Чертёж' : /(album)/i.test(src) ? 'Альбом' : 'Фото') + '</span></a>').join('') + '</div></section>'
+        : '<p class="media-note">Фотографии и чертёж для этой позиции пока не добавлены в каталог.</p>';
+      const relatedProducts = rows.filter(row => row.id !== p.id).map(row => {
+        const relatedSlug = row.slug || (cat.folder === 'skoby-dlya-kolodcev'
+          ? 'skoba-' + String(row.id).toLowerCase().replace(/[^a-z0-9-]/g, '-')
+          : 'soedinitelny-element-' + String(row.id).toLowerCase());
+        return '<a class="related-product" href="' + esc(relatedSlug) + '.html">' + esc(row.name) + '</a>';
+      }).join('');
       const buy = price === null ? '<p>Стоимость уточняйте при заказе.</p>' : `
         <div class="buy-row"><div class="quantity-control">
           <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
           <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
           <button type="button" onclick="changeQuantity('${id}', 1)">+</button>
         </div><button type="button" class="cart-button buy-button" data-item-id="${id}" data-item-name="${name}" data-item-length="${esc(p.length)}" data-item-weight="${esc(p.weight)}">Добавить в корзину</button></div>`;
-      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, image:SITE_URL+'/'+(p.image || 'images/default-product.svg'), description:p.name+'. Длина '+p.length+' см, ширина '+(Number(p.width)*10)+' мм, масса '+Number(p.weight).toFixed(2).replace('.', ',')+' кг. Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
+      const schema = { "@context":"https://schema.org", "@type":"Product", name:p.name, sku:p.id, image:SITE_URL+'/'+(p.image || 'images/default-product.svg'), description:p.name+'. '+dimensionOneLabel+' '+dimensionOne+' см, '+dimensionTwoLabel.toLowerCase()+' '+dimensionTwoMm+' мм, масса '+Number(p.weight).toFixed(2).replace('.', ',')+' кг. Альбом чертежей: '+album, brand:{"@type":"Brand",name:"Лестницы и стремянки для колодцев"} };
       if (price !== null) schema.offers = {"@type":"Offer",url,priceCurrency:"RUB",price:String(price),availability:"https://schema.org/InStock"};
       const html = `<!DOCTYPE html>
 <html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1139,14 +1156,28 @@ function buildSimpleMetalProductPages() {
 <link rel="canonical" href="${url}"><link rel="stylesheet" href="../../css/common.css"><link rel="stylesheet" href="../../css/toast.css">
 <script src="../../js/config.js" defer><\/script><script src="../../js/utils.js" defer><\/script>
 <script type="application/ld+json">${JSON.stringify(schema)}<\/script>
-<style>.simple-product{max-width:1000px;margin:35px auto;padding:0 16px 50px}.simple-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 5px 24px #0000000d}.simple-grid{display:grid;grid-template-columns:240px 1fr;gap:30px}.simple-grid>img{width:100%;max-height:240px;object-fit:contain}.product-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:22px 0}.product-gallery img{width:100%;height:120px;object-fit:contain;border:1px solid #e5eaf0;border-radius:8px;background:#fff;padding:5px}.simple-product h1{font-size:28px}.specs{border-collapse:collapse;width:100%;margin:22px 0}.specs td{padding:10px;border-bottom:1px solid #eee}.specs td:first-child{color:#666;width:45%}.buy-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.quantity-control{display:flex;align-items:center;gap:10px}.quantity-control button{padding:8px 14px}.quantity-control input{width:60px;padding:9px;text-align:center}.buy-button{padding:13px 24px}@media(max-width:650px){.simple-grid{grid-template-columns:1fr}.simple-grid img{max-width:220px;margin:auto}.simple-product h1{font-size:23px}}</style>
+<style>
+.simple-product{max-width:1180px;margin:28px auto 56px;padding:0 18px}.simple-product .breadcrumbs{margin:0 0 20px;color:#687787;font-size:14px}.simple-product .breadcrumbs a{color:var(--primary-color);text-decoration:none}.simple-product .breadcrumbs a:hover{text-decoration:underline}
+.simple-card{background:#fff;border:1px solid #e7edf2;border-radius:18px;padding:30px;box-shadow:0 8px 28px rgba(24,52,75,.07)}
+.simple-product h1{font-size:clamp(25px,3vw,34px);line-height:1.2;margin:0 0 12px;color:#243746}.simple-product h2{font-size:22px;margin:30px 0 14px;color:#263b4c}
+.simple-grid{display:grid;grid-template-columns:minmax(260px,390px) minmax(0,1fr);gap:34px;align-items:start}.product-main-image{width:100%;height:320px;object-fit:contain;background:#f7f9fb;border:1px solid #e7edf2;border-radius:14px;padding:18px}.product-summary{min-width:0}.product-sku{color:#667788;margin:0 0 8px}.product-price{font-size:27px;font-weight:600;color:var(--primary-color);margin:16px 0}.product-intro{color:#4e5e6d;line-height:1.7;margin:16px 0}
+.specs{border-collapse:separate;border-spacing:0;width:100%;margin:16px 0;border:1px solid #e7edf2;border-radius:12px;overflow:hidden}.specs td{padding:12px 14px;border-bottom:1px solid #edf1f4}.specs tr:last-child td{border-bottom:0}.specs td:first-child{color:#667788;width:42%;background:#f8fafc}
+.buy-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px}.quantity-control{display:flex;align-items:center;gap:8px}.quantity-control button{padding:9px 14px;border:1px solid #d8e1e8;border-radius:8px;background:#f7f9fb;cursor:pointer}.quantity-control input{width:64px;padding:10px;text-align:center;border:1px solid #d8e1e8;border-radius:8px}.buy-button{padding:13px 24px;font-size:15px}
+.product-gallery-section{margin-top:24px}.product-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px;margin:14px 0}.product-gallery a{display:flex;flex-direction:column;gap:8px;padding:10px;border:1px solid #e5ebf0;border-radius:12px;background:#fff;text-decoration:none;color:#526474}.product-gallery img{width:100%;height:150px;object-fit:contain}.product-gallery span{font-size:13px;text-align:center}.media-note{padding:14px 16px;border:1px dashed #cbd6df;border-radius:10px;color:#667788;background:#f8fafc}
+.product-note{padding:16px 18px;background:#f4f8fb;border-left:4px solid var(--primary-color);border-radius:8px;color:#4e5e6d;line-height:1.65;margin:22px 0}
+.related-products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.related-product{display:block;padding:12px 14px;border:1px solid #e5ebf0;border-radius:10px;color:var(--primary-color);text-decoration:none;background:#fff}.related-product:hover{border-color:var(--primary-color);background:#f7fbfd}
+.product-back-link{display:inline-block;margin-top:20px;color:var(--primary-color);font-weight:500}
+@media(max-width:760px){.simple-product{margin:18px auto 36px;padding:0 12px}.simple-card{padding:18px}.simple-grid{grid-template-columns:1fr;gap:20px}.product-main-image{height:250px;max-width:100%}.product-price{font-size:24px}.simple-product h2{font-size:20px}.product-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.product-gallery img{height:120px}}
+</style>
 </head><body>
 <!-- NAV_START --><!-- NAV_END -->
-<main class="simple-product"><nav aria-label="Хлебные крошки"><a href="../../index.html">Главная</a> / <a href="../../${cat.catalog}">${cat.title}</a> / ${name}</nav>
-<section class="simple-card"><div class="simple-grid"><img src="../../${esc(p.image || 'images/default-product.svg')}" alt="${name}" width="500" height="500"><div><h1>${name}</h1><p>Артикул: <strong>${id}</strong></p><p class="price">${price === null ? 'Цена по запросу' : 'от '+price.toLocaleString('ru-RU')+' ₽'}</p>${buy}</div></div>
-<h2>Характеристики</h2><table class="specs"><tr><td>Артикул</td><td>${id}</td></tr><tr><td>Длина</td><td>${esc(p.length)} см</td></tr><tr><td>Ширина</td><td>${esc(p.width)} см</td></tr><tr><td>Масса</td><td>${esc(p.weight)} кг</td></tr><tr><td>Единица измерения</td><td>${esc(p.unit || '1 шт')}</td></tr><tr><td>Альбом чертежей</td><td>${esc(album)}</td></tr></table>
+<main class="simple-product"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="../../index.html">Главная</a> / <a href="../../${cat.catalog}">${cat.title}</a> / ${name}</nav>
+<section class="simple-card"><div class="simple-grid"><img class="product-main-image" src="../../${esc(p.image || 'images/default-product.svg')}" alt="${name}" width="500" height="500"><div class="product-summary"><h1>${name}</h1><p class="product-sku">Артикул: <strong>${id}</strong></p><p class="product-price">${price === null ? 'Цена по запросу' : 'от '+price.toLocaleString('ru-RU')+' ₽'}</p><p class="product-intro">${name}. ${dimensionOneLabel} — ${dimensionOne} см, ${dimensionTwoLabel.toLowerCase()} — ${dimensionTwo} см, масса — ${esc(p.weight)} кг. ${album !== 'Не указан в исходных данных каталога' ? 'Изделие приведено в альбоме: '+esc(album)+'.' : ''}</p>${buy}</div></div>
+<h2>Характеристики изделия</h2><table class="specs"><tr><td>Артикул</td><td>${id}</td></tr><tr><td>${dimensionOneLabel}</td><td>${esc(dimensionOne)} см</td></tr><tr><td>${dimensionTwoLabel}</td><td>${esc(dimensionTwo)} см</td></tr><tr><td>Масса</td><td>${esc(p.weight)} кг</td></tr><tr><td>Единица измерения</td><td>${esc(p.unit || '1 шт')}</td></tr><tr><td>Альбом чертежей</td><td>${esc(album)}</td></tr></table>
+<div class="product-note">Перед заказом сверьте размеры изделия с проектом колодца и условиями монтажа. Наличие, комплектацию, срок изготовления и доставку уточняйте у менеджера.</div>
 ${galleryHtml}
-<p>Наличие, комплектацию, срок изготовления и условия поставки уточняйте при оформлении заказа.</p><p><a href="../../${cat.catalog}">Вернуться в каталог</a></p></section></main>
+<h2>Другие типоразмеры</h2><div class="related-products">${relatedProducts}</div>
+<p><a class="product-back-link" href="../../${cat.catalog}">← Вернуться в каталог ${cat.title.toLowerCase()}</a></p></section></main>
 <!-- FOOTER_START --><!-- FOOTER_END --></body></html>`;
       fs.writeFileSync(path.join(outDir, slug + '.html'), html, 'utf8');
       created.push('products/' + cat.folder + '/' + slug + '.html');
