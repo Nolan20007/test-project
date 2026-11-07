@@ -205,6 +205,8 @@ const FEED_SOURCES = [
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/scoba-nm-products.csv',        page: 'skoba-mn.html',        bigImage: 'images/scoba-nm/vid-1.png', typePrefix: 'Скоба ходовая' },
   { csv: 'data/scoba-nm1-3900-products.csv',  page: 'skoba-nm1-3-900-3.html', bigImage: 'images/scoba-nm1-3900/vid-1.png', typePrefix: 'Скоба ходовая' },
+  { csv: 'data/nts-62-91-111-products.csv',     page: 'nts-62-91-111.html',   bigImage: 'images/nts-62-91-111/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
+  { csv: 'data/nts-62-91-111b-products.csv',    page: 'nts-62-91-111b.html',  bigImage: 'images/nts-62-91-111b/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
 ];
 
 const M_START = '<!-- NOMENCLATURE_START -->';
@@ -498,6 +500,20 @@ function replaceJsonLd(html, jsonLd) {
   return html.replace('</head>', `${block}\n</head>`);
 }
 
+function getFeedImagePath(src) {
+  const original = src.bigImage;
+  const searchImage = original.replace(/vid-1\\.(?:png|webp)$/i, 'vid-search.webp');
+  if (searchImage !== original && fs.existsSync(path.resolve(__dirname, '..', searchImage))) {
+    return searchImage;
+  }
+  const webpImage = original.replace(/\\.png$/i, '.webp');
+  if (webpImage !== original && fs.existsSync(path.resolve(__dirname, '..', webpImage))) {
+    return webpImage;
+  }
+  if (fs.existsSync(path.resolve(__dirname, '..', original))) return original;
+  throw new Error('[feed] Не найдено изображение товара: ' + original);
+}
+
 function buildYandexFeed() {
   const offers = [];
 
@@ -518,11 +534,7 @@ function buildYandexFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      let searchImage = src.bigImage;
-      if (searchImage.includes('vid-1')) {
-        searchImage = searchImage.replace('vid-1.png', 'vid-search.webp').replace('vid-1.webp', 'vid-search.webp');
-      }
-      const picture = `${SITE_URL}/${searchImage}`;
+      const picture = `${SITE_URL}/${getFeedImagePath(src)}`;
       
       const typePrefix = src.typePrefix || 'Стремянка для колодцев';
 
@@ -583,11 +595,7 @@ function buildGoogleFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      let searchImage = src.bigImage;
-      if (searchImage.includes('vid-1')) {
-        searchImage = searchImage.replace('vid-1.png', 'vid-search.webp').replace('vid-1.webp', 'vid-search.webp');
-      }
-      const picture = `${SITE_URL}/${searchImage}?v=${encodeURIComponent(p.id)}`;
+      const picture = `${SITE_URL}/${getFeedImagePath(src)}?v=${encodeURIComponent(p.id)}`;
       
       const formattedPrice = price.toFixed(2) + ' RUB';
 
