@@ -44,13 +44,27 @@ async function run() {
       .webp({ quality: 80, effort: 5 })
       .toFile(outputPath);
 
+    // Поисковое изображение всегда создаётся из основного vid-1.webp.
+    // Оно используется в товарных фидах Google и Яндекса.
+    const searchPath = path.join(path.dirname(inputPath), 'vid-search.webp');
+    await sharp(inputPath)
+      .rotate()
+      .resize({
+        width: 1200,
+        height: 1200,
+        fit: 'inside',
+        withoutEnlargement: true
+      })
+      .webp({ quality: 85, effort: 5 })
+      .toFile(searchPath);
+
     const inputSize = fs.statSync(inputPath).size;
     const outputSize = fs.statSync(outputPath).size;
     totalInput += inputSize;
     totalOutput += outputSize;
 
     console.log(
-      source + ' → ' + destination + ': ' +
+      source + ' → ' + destination + ' + vid-search.webp: ' +
       Math.round(inputSize / 1024) + ' KB → ' +
       Math.round(outputSize / 1024) + ' KB'
     );
