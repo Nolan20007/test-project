@@ -64,12 +64,11 @@ const CATEGORIES_TO_GENERATE = [
     product_title_accusative: 'лестницу тепловых сетей с перилами',
     project_phrase: 'НТС 62-91-111Б',
     album: 'нормалям тепловых сетей',
-    width_mm: 626,
     construction: 'перила',
     construction_spec: 'Стальные перила по конструкции НТС 62-91-111Б',
     step_spec: 'Ступени и несущие элементы — сталь Ст3',
     installation_text: 'Перед установкой необходимо сверить длину лестницы, положение опор и способ крепления с проектом тепловой камеры. Монтаж выполняют с учетом конструкции стен и условий эксплуатации.',
-    product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина 626 мм, материал — сталь Ст3.',
+    product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
       { id: 'NTSB-L2000', model: 'Л-2000', length_mm: 2000, length_cm: 200, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2000' },
       { id: 'NTSB-L2250', model: 'Л-2250', length_mm: 2250, length_cm: 225, project: 'НТС 62-91-111Б', slug: 'lestnica-l-2250' },
@@ -92,12 +91,11 @@ const CATEGORIES_TO_GENERATE = [
     product_title_accusative: 'лестницу с ограждением из дуг',
     project_phrase: 'НТС 62-91-111',
     album: 'нормалям тепловых сетей',
-    width_mm: 600,
     construction: 'ограждение из дуг',
     construction_spec: 'Ограждение из дуг; уголок 75×75×5 мм',
     step_spec: 'Стальной пруток Ø18 мм',
     installation_text: 'Лестница опирается на приваренные опорные пятаки и крепится к стене тягами. В конструкции предусмотрены отверстия Ø16 мм для установки тяг. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
-    product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина 600 мм, материал — сталь Ст3.',
+    product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
       { id: 'NTSS-S1', model: 'С1', length_mm: 3400, length_cm: 340, project: 'НТС 62-91-111', slug: 'lestnica-s1-3400' },
       { id: 'NTSS-S2', model: 'С2', length_mm: 4000, length_cm: 400, project: 'НТС 62-91-111', slug: 'lestnica-s2-4000' },
@@ -112,7 +110,6 @@ const CATEGORIES_TO_GENERATE = [
     catalog_link: 'ssg1.html',
     csv: 'data/ssg1-products.csv',
     album: 'Выпуск 2',
-    width_mm: 700,
     project_phrase: 'серии 1.450.3-7.94',
     product_title_prefix: 'Пожарная стремянка',
     product_title_accusative: 'пожарную стремянку',
@@ -915,6 +912,8 @@ function buildProductPages() {
       };
       const rawPrice = String(row.price || '').trim();
       const price = rawPrice ? numeric('price') : null, weight = numeric('weight');
+      // CSV stores width in centimetres; product templates and JSON-LD use millimetres.
+      const widthMm = numeric('width') * 10;
       const stepCount = row.step_count ? numeric('step_count') : null;
       const buyControls = price === null ? '' : `<div class="mp-buy-controls">
                         <div class="quantity-control" style="display:flex; align-items:center; border: 1px solid #c8d9ea; border-radius: 12px; overflow: hidden;">
@@ -948,13 +947,13 @@ function buildProductPages() {
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
         .replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{SLUG\}\}/g, p.slug)
         .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder)
-        .replace(/\{\{WIDTH_MM\}\}/g, cat.width_mm || 500)
+        .replace(/\{\{WIDTH_MM\}\}/g, String(widthMm))
         .replace(/\{\{CONSTRUCTION\}\}/g, cat.construction || 'стальная конструкция')
         .replace(/\{\{CONSTRUCTION_SPEC\}\}/g, cat.construction_spec || 'Сталь Ст3')
         .replace(/\{\{STEP_SPEC\}\}/g, cat.step_spec || 'Сталь Ст3')
         .replace(/\{\{INSTALLATION_TEXT\}\}/g, cat.installation_text || 'Способ установки согласовывается с проектной документацией.')
         .replace(/\{\{PRODUCT_TITLE\}\}/g, `${cat.product_title_prefix || 'Лестница'} ${p.model} по ${cat.project_phrase || p.project}, длина ${p.length_mm} мм`)
-        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, p.model).replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{LENGTH_MM\}\}/g, p.length_mm));
+        .replace(/\{\{PRODUCT_DESCRIPTION\}\}/g, (cat.product_description || 'Стальная лестница {{MODEL}} по {{PROJECT}}, длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм.').replace(/\{\{MODEL\}\}/g, p.model).replace(/\{\{PROJECT\}\}/g, p.project).replace(/\{\{LENGTH_MM\}\}/g, p.length_mm).replace(/\{\{WIDTH_MM\}\}/g, String(widthMm)));
       const title = cat.product_title_prefix
         ? `${cat.product_title_prefix} ${p.model} по ${cat.project_phrase || p.project}, ${p.length_cm} см — купить`
         : `Стремянка ${p.model} ${p.project} для колодцев, ${p.length_cm} см — купить`;
