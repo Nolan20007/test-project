@@ -265,7 +265,8 @@ const PAGES = [
       { id: 'nomenclature-kl1-25',                csv: 'data/kl1-products.csv' },
       { id: 'nomenclature-kl1-28',                csv: 'data/kl1-products-28.csv' },
       { id: 'nomenclature-scoba-nm',              csv: 'data/scoba-nm-products.csv' },
-      { id: 'nomenclature-scoba-nm1-3900',        csv: 'data/scoba-nm1-3900-products.csv' }
+      { id: 'nomenclature-scoba-nm1-3900',        csv: 'data/scoba-nm1-3900-products.csv' },
+      { id: 'nomenclature-ms', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }
   ]},
 ];
 
@@ -751,6 +752,7 @@ const ALL_HTML_FILES = [
   'skoba-mn.html',
   'skoba-nm1-3-900-3.html',
   'skoby-dlya-kolodcev.html',
+  'soedinitelnye-elementy.html',
   'sitemap.html',
   'vozvrat.html',
 ];
