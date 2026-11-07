@@ -5,6 +5,7 @@ on:
     paths:
       - 'data/**.csv'
       - 'build/build.js'
+      - 'build/seo-check.js'
       - 'build/download-fonts.js'
       - 'build/optimize-card-images.js'
       - '.github/workflows/**'
@@ -57,6 +58,9 @@ jobs:
 
       - name: Запуск сборщика
         run: node build/build.js
+
+      - name: Проверка SEO, sitemap, robots и Product JSON-LD
+        run: node build/seo-check.js
 
       - name: Коммит и пуш, если что-то изменилось
         if: github.ref == 'refs/heads/main'
