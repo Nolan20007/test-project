@@ -1117,7 +1117,7 @@ function buildSimpleMetalProductPages() {
   const created = [];
   configs.forEach(cat => {
     const csvPath = path.resolve(__dirname, '..', cat.csv);
-    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\\uFEFF/, ''));
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, ''));
     const outDir = path.resolve(__dirname, '..', 'products', cat.folder);
     if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
     rows.forEach(p => {
