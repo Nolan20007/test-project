@@ -1016,14 +1016,28 @@ function updateLlmsProductLinks() {
   }
 
   const lines = [];
+  let productLinkCount = 0;
   CATEGORIES_TO_GENERATE.forEach(cat => {
+    const csvPath = path.resolve(__dirname, '..', cat.csv);
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8').replace(/^\\uFEFF/, ''));
+    const rowsById = new Map(rows.map(row => [String(row.id), row]));
     lines.push('### ' + cat.title);
     cat.items.forEach(product => {
+      const row = rowsById.get(String(product.id));
+      const productName = String(row && row.name || '').trim();
+      if (!productName) {
+        throw new Error('[llms.txt] Не найдено название товара в CSV ' + cat.csv + ' для ID "' + product.id + '"');
+      }
+      const safeName = productName.replace(/\\\\/g, '\\\\\\\\').replace(/\\[/g, '\\\\[').replace(/\\]/g, '\\\\]');
       const url = SITE_URL + '/products/' + cat.folder + '/' + product.slug + '.html';
-      lines.push('- [' + product.model + '](' + url + ')');
+      lines.push('- [' + safeName + '](' + url + ')');
+      productLinkCount += 1;
     });
     lines.push('');
   });
+  if (productLinkCount !== 51) {
+    throw new Error('[llms.txt] Ожидалось 51 товарная ссылка, сформировано: ' + productLinkCount);
+  }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
   const updated = content.slice(0, start) + replacement + content.slice(end + endMarker.length);
