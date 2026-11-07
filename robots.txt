@@ -21,7 +21,7 @@ Disallow: /private/
 # Google-Extended controls Gemini model training AND Gemini grounding.
 # Keep blocked unless the site owner explicitly chooses to allow both uses.
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
 # Yandex main search crawler and other Yandex crawlers without a more specific group.
 User-agent: Yandex
