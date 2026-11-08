@@ -495,7 +495,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
           anchor = safeAnchor(p.id);
     const imageHtml = img !== 'images/default-product.svg'
       ? `<img src="${img}" alt="${name}" width="56" height="56" style="width:56px;height:56px;max-height:56px;object-fit:contain;" loading="lazy" decoding="async" >`
-      : '<div class="product-thumb-placeholder" role="img" aria-label="Фотография изделия уточняется"><span>Фото</span><small>уточняется</small></div>';
+      : '<img class="product-thumb-placeholder-image" src="images/default-product.svg" alt="Фотография изделия пока не добавлена" width="56" height="56" loading="lazy">';
 
     // Логика генерации ссылки на карточку товара
     let itemUrl = '#';
@@ -1060,7 +1060,7 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     : '<p class="media-note">Фотографии и чертёж для этой позиции пока не добавлены в каталог.</p>';
   const imageHtml = row.image && row.image !== 'images/default-product.svg'
     ? '<img class="mp-main-img" src="../../' + esc(row.image) + '" alt="' + esc(name) + '" width="500" height="500">'
-    : '<div class="mp-main-img product-image-placeholder" role="img" aria-label="Фотография изделия уточняется"><strong>Фото изделия</strong><span>Изображение пока не добавлено</span></div>';
+    : '<img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="Фотография изделия пока не добавлена" width="500" height="500">';
 
   const relatedProducts = rows.filter(other => other.id !== id).map(other => {
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
@@ -1270,7 +1270,7 @@ function buildProductPages() {
     const htmlPath = path.resolve(__dirname, '..', relativePath);
     let html = fs.readFileSync(htmlPath, 'utf8');
     if (!html.includes('js/product-lightbox.js')) {
-      const script = '<script src="../../js/product-lightbox.js" defer></script>\\n';
+      const script = '<script src="../../js/product-lightbox.js" defer></script>\n';
       html = html.includes('</body>')
         ? html.replace('</body>', script + '</body>')
         : html + '\\n' + script;
