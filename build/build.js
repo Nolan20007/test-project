@@ -541,6 +541,9 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
     const nameHtml = itemUrl !== '#' ? `<a href="${itemUrl}" style="color: var(--primary-color); text-decoration: underline;">${tableName}</a>` : tableName;
 
     const priceCell = price > 0 ? `от ${fmtPrice(price)} руб.` : 'по запросу';
+    const availabilityCell = id.startsWith('MS-') && String(p.available || '').trim()
+      ? '✅'
+      : esc(p.available || '—');
     const orderCells = hasPricedProducts ? (price > 0 ? `<td class="cart-cell"><div class="quantity-control">
         <button type="button" onclick="changeQuantity('${id}', -1)">−</button>
         <input type="number" id="${id}-qty" value="1" min="1" max="99" data-price="${price}">
@@ -551,7 +554,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
     html += `<tr id="${anchor}"${hiddenStyle}>
       <td class="product-thumb-cell">${imageHtml}</td>
       <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
-      <td>${priceCell}</td><td>${unit}</td>${hasAvailability ? `<td>${esc(p.available || '—')}</td>` : ''}${orderCells}
+      <td>${priceCell}</td><td>${unit}</td>${hasAvailability ? `<td>${availabilityCell}</td>` : ''}${orderCells}
     </tr>`;
   });
 
@@ -1042,6 +1045,9 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const stockStatus = String(row.available || '').trim();
   const installationText = String(row.installation || '').trim();
   const album = String(row.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
+  const albums = album.split(';').map(value => value.trim()).filter(Boolean);
+  const albumsHtml = albums.map(value => '<div>' + esc(value) + '</div>').join('');
+  const albumsUspHtml = albums.map(value => '<span>' + esc(value) + '</span>').join('') + '<strong>Полное соответствие</strong>';
   const dimensionOneLabel = String(row.dimension1_label || cat.dimension1_label).trim();
   const dimensionTwoLabel = String(row.dimension2_label || cat.dimension2_label).trim();
   const dimensionOne = String(row.length || '').trim();
@@ -1123,7 +1129,7 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     ID: esc(id),
     PRICE_DISPLAY: price === null ? 'Цена по запросу' : 'от ' + price.toLocaleString('ru-RU') + ' ₽',
     IMAGE_HTML: imageHtml,
-    STOCK_STATUS: stockStatus ? '<div class="mp-stock">' + esc(stockStatus) + '</div>' : '',
+    STOCK_STATUS: stockStatus ? '<div class="mp-stock">' + esc(/^в наличии$/i.test(stockStatus) ? '✓ В наличии на складе' : stockStatus) + '</div>' : '',
     INSTALLATION_HTML: installationText ? '<h3>Монтаж</h3><p>' + esc(installationText) + '</p>' : '',
     PRODUCT_DESCRIPTION: esc(productDescription) + ' ' + esc(dimensionOneLabel) + ' — ' + esc(dimensionOne) +
       ' см, ' + esc(dimensionTwoLabel.toLowerCase()) + ' — ' + esc(dimensionTwo) + ' см, масса — ' + esc(weight) + ' кг.' +
@@ -1138,6 +1144,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     WEIGHT: esc(weight),
     UNIT: esc(row.unit || '1 шт'),
     ALBUM: esc(album),
+    ALBUMS_HTML: albumsHtml,
+    ALBUMS_USP_HTML: albumsUspHtml,
     MATERIAL_ROW: material ? '<tr><td>Материал</td><td>' + esc(material) + '</td></tr>' : '',
     ROD_DIAMETER_ROW: rodDiameter ? '<tr><td>Диаметр прутка</td><td>' + esc(rodDiameter) + '</td></tr>' : '',
     BLANK_LENGTH_ROW: blankLength ? '<tr><td>Длина заготовки</td><td>' + esc(blankLength) + ' мм</td></tr>' : '',
