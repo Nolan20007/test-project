@@ -281,6 +281,10 @@ function assertProductImageViewerSources() {
     assert(fs.existsSync(path.join(root, source)), 'index.html: full-size gallery image is missing: ' + source);
   }
 
+  const tprTemplate = fs.readFileSync(path.join(root, 'templates/stremyanki-tpr-901-09-11-84.html'), 'utf8');
+  assert(tprTemplate.includes('const currentIndex = imgSources.findIndex'), 'TPR lightbox must open the currently selected product image');
+  assert(tprTemplate.includes('currentIndex >= 0 ? currentIndex'), 'TPR lightbox must prefer the selected image over the default first slide');
+
   const viewer = fs.readFileSync(path.join(root, 'js/product-lightbox.js'), 'utf8');
   assert(viewer.includes('function fullSizeSource'), 'shared product viewer must resolve full-size image sources');
   assert(viewer.includes('function galleryEntries'), 'shared product viewer must build a gallery for the selected product');
