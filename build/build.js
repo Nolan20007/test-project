@@ -480,12 +480,13 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
   const needCollapse = enableCollapse && total > COLLAPSE_THRESHOLD;
 
   const hasPricedProducts = products.some(p => Number(p.price) > 0);
+  const hasAvailability = products.some(p => String(p.available || '').trim());
   const headers = Array.isArray(dimensionHeaders) && dimensionHeaders.length === 2
     ? dimensionHeaders
     : ['Длина, см', 'Ширина, см'];
   let html = `<table class="nomenclature-table"><thead><tr>
     <th>Фото</th><th>Изделие</th><th>${esc(headers[0])}</th><th>${esc(headers[1])}</th>
-    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
+    <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasAvailability ? '<th>Наличие</th>' : ''}${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
     const id = esc(p.id), name = esc(p.name), length = esc(p.length), width = esc(p.width),
@@ -550,7 +551,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
     html += `<tr id="${anchor}"${hiddenStyle}>
       <td class="product-thumb-cell">${imageHtml}</td>
       <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
-      <td>${priceCell}</td><td>${unit}</td>${orderCells}
+      <td>${priceCell}</td><td>${unit}</td>${hasAvailability ? `<td>${esc(p.available || '—')}</td>` : ''}${orderCells}
     </tr>`;
   });
 
@@ -809,6 +810,7 @@ const ALL_HTML_FILES = [
   'skoba-nm1-3-900-3.html',
   'skoby-dlya-kolodcev.html',
   'soedinitelnye-elementy.html',
+  'soedinitelnye-elementy-ms-kak-vybrat.html',
   'sitemap.html',
   'vozvrat.html',
 ];
@@ -1037,6 +1039,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const name = String(row.name || '').trim();
   const id = String(row.id || '').trim();
   const price = Number(row.price) > 0 ? Number(row.price) : null;
+  const stockStatus = String(row.available || '').trim();
+  const installationText = String(row.installation || '').trim();
   const album = String(row.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
   const dimensionOneLabel = String(row.dimension1_label || cat.dimension1_label).trim();
   const dimensionTwoLabel = String(row.dimension2_label || cat.dimension2_label).trim();
@@ -1119,6 +1123,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     ID: esc(id),
     PRICE_DISPLAY: price === null ? 'Цена по запросу' : 'от ' + price.toLocaleString('ru-RU') + ' ₽',
     IMAGE_HTML: imageHtml,
+    STOCK_STATUS: stockStatus ? '<div class="mp-stock">' + esc(stockStatus) + '</div>' : '',
+    INSTALLATION_HTML: installationText ? '<h3>Монтаж</h3><p>' + esc(installationText) + '</p>' : '',
     PRODUCT_DESCRIPTION: esc(productDescription) + ' ' + esc(dimensionOneLabel) + ' — ' + esc(dimensionOne) +
       ' см, ' + esc(dimensionTwoLabel.toLowerCase()) + ' — ' + esc(dimensionTwo) + ' см, масса — ' + esc(weight) + ' кг.' +
       (material ? ' Материал: ' + esc(material) + '.' : '') +
