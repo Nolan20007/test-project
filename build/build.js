@@ -496,7 +496,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
           anchor = safeAnchor(p.id);
     const imageHtml = img !== 'images/default-product.svg'
       ? `<img src="${img}" alt="${name}" width="56" height="56" style="width:56px;height:56px;max-height:56px;object-fit:contain;" loading="lazy" decoding="async" >`
-      : '<img class="product-thumb-placeholder-image" src="images/default-product.svg" alt="Фотография изделия пока не добавлена" width="56" height="56" loading="lazy">';
+      : '<img class="product-thumb-placeholder-image" src="images/default-product.svg" alt="" aria-hidden="true" width="56" height="56" loading="lazy">';
 
     // Логика генерации ссылки на карточку товара
     let itemUrl = '#';
