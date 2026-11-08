@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  const IMAGE_SELECTOR = '.mp-main-img-wrapper img, .product-gallery img, .product-image-wrapper img, img.mp-main-img';
-  const INVALID_SRC = /default-product\\.svg|placeholder/i;
-  let modal, modalImage, counter, previousButton, nextButton, closeButton;
+  const IMAGE_SELECTOR = '.mp-main-img-wrapper img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img, .product-thumb-cell img:not(.product-thumb-placeholder-image), img.mp-main-img:not(.product-image-placeholder)';
+  const INVALID_SRC = /default-product\.svg|placeholder/i;
+  let modal, title, track, nav, closeButton;
   let images = [];
   let activeIndex = 0;
   let lastFocused = null;
@@ -17,67 +17,60 @@
     if (modal) return;
     const style = document.createElement('style');
     style.textContent = `
-      .product-lightbox { position:fixed; inset:0; z-index:10050; display:none; align-items:center; justify-content:center; padding:56px 64px; background:rgba(0,0,0,.92); }
-      .product-lightbox.is-open { display:flex; }
-      .product-lightbox__image { display:block; max-width:min(100%,1200px); max-height:82vh; object-fit:contain; border-radius:6px; }
-      .product-lightbox__close,.product-lightbox__prev,.product-lightbox__next { position:absolute; border:0; color:#fff; background:rgba(255,255,255,.14); cursor:pointer; border-radius:50%; width:44px; height:44px; font-size:28px; line-height:1; }
-      .product-lightbox__close { top:16px; right:20px; font-size:32px; }
-      .product-lightbox__prev { left:16px; top:50%; transform:translateY(-50%); }
-      .product-lightbox__next { right:16px; top:50%; transform:translateY(-50%); }
-      .product-lightbox__counter { position:absolute; bottom:18px; left:0; right:0; color:#fff; text-align:center; font:14px/1.4 sans-serif; }
-      .product-lightbox__prev[hidden],.product-lightbox__next[hidden],.product-lightbox__counter[hidden] { display:none; }
-      .mp-main-img-wrapper img,.product-gallery img { cursor:zoom-in; }
-      @media(max-width:600px) { .product-lightbox { padding:56px 12px; } .product-lightbox__prev { left:6px; } .product-lightbox__next { right:6px; } }
+      .product-lightbox { display:none; position:fixed; z-index:10050; inset:0; overflow:auto; background:rgba(0,0,0,.9); padding:60px 16px 24px; }
+      .product-lightbox.is-open { display:block; }
+      .product-lightbox__content { position:relative; margin:0 auto; width:95%; max-width:1300px; background:#fff; border-radius:15px; overflow:hidden; }
+      .product-lightbox__title { text-align:center; color:#333; padding:12px 64px; margin:0; font-size:1.1em; font-weight:600; }
+      .product-lightbox__close { position:fixed; top:12px; right:24px; color:#f1f1f1; font-size:40px; font-weight:bold; cursor:pointer; z-index:10051; background:transparent; border:0; padding:0; line-height:1; }
+      .product-lightbox__close:hover { color:#0E5C80; }
+      .product-lightbox__track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+      .product-lightbox__track::-webkit-scrollbar { display:none; }
+      .product-lightbox__slide { flex:0 0 100%; min-width:100%; height:85vh; max-height:900px; display:flex; justify-content:center; align-items:center; background:#f0f4f8; scroll-snap-align:start; }
+      .product-lightbox__slide img { display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
+      .product-lightbox__nav { position:absolute; right:20px; bottom:20px; z-index:2; display:flex; flex-direction:column; gap:6px; max-height:calc(100% - 40px); overflow-y:auto; padding:8px; border-radius:24px; background:rgba(255,255,255,.92); box-shadow:0 2px 10px rgba(0,0,0,.15); }
+      .product-lightbox__nav button { border:0; border-radius:999px; padding:8px 16px; background:transparent; color:#444; cursor:pointer; font:500 13px/1.3 inherit; white-space:nowrap; }
+      .product-lightbox__nav button.active { background:#0E5C80; color:#fff; }
+      @media(max-width:600px) { .product-lightbox { padding:56px 8px 12px; } .product-lightbox__content { width:100%; } .product-lightbox__slide { height:76vh; } .product-lightbox__nav { right:8px; bottom:8px; } }
     `;
     document.head.appendChild(style);
-
     modal = document.createElement('div');
     modal.className = 'product-lightbox';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-label', 'Просмотр фотографий товара');
-    modal.innerHTML = `
-      <button type="button" class="product-lightbox__close" aria-label="Закрыть">&times;</button>
-      <button type="button" class="product-lightbox__prev" aria-label="Предыдущее фото">&#8249;</button>
-      <img class="product-lightbox__image" alt="">
-      <button type="button" class="product-lightbox__next" aria-label="Следующее фото">&#8250;</button>
-      <div class="product-lightbox__counter" aria-live="polite"></div>`;
+    modal.innerHTML = '<button type="button" class="product-lightbox__close" aria-label="Закрыть">&times;</button><div class="product-lightbox__content"><h3 class="product-lightbox__title"></h3><div class="product-lightbox__track"></div><div class="product-lightbox__nav"></div></div>';
     document.body.appendChild(modal);
-    modalImage = modal.querySelector('.product-lightbox__image');
-    counter = modal.querySelector('.product-lightbox__counter');
-    previousButton = modal.querySelector('.product-lightbox__prev');
-    nextButton = modal.querySelector('.product-lightbox__next');
+    title = modal.querySelector('.product-lightbox__title');
+    track = modal.querySelector('.product-lightbox__track');
+    nav = modal.querySelector('.product-lightbox__nav');
     closeButton = modal.querySelector('.product-lightbox__close');
-
     closeButton.addEventListener('click', close);
-    previousButton.addEventListener('click', () => show(activeIndex - 1));
-    nextButton.addEventListener('click', () => show(activeIndex + 1));
     modal.addEventListener('click', event => { if (event.target === modal) close(); });
+    nav.addEventListener('click', event => {
+      const button = event.target.closest('button[data-slide]');
+      if (button) show(Number(button.dataset.slide));
+    });
   }
 
   function show(index) {
     if (!images.length) return;
-    activeIndex = (index + images.length) % images.length;
-    const source = images[activeIndex];
-    modalImage.src = source.currentSrc || source.src;
-    modalImage.alt = source.alt || 'Фотография товара';
-    const multiple = images.length > 1;
-    previousButton.hidden = !multiple;
-    nextButton.hidden = !multiple;
-    counter.hidden = !multiple;
-    counter.textContent = multiple ? (activeIndex + 1) + ' / ' + images.length : '';
+    activeIndex = Math.max(0, Math.min(index, images.length - 1));
+    const slide = track.children[activeIndex];
+    if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+    nav.querySelectorAll('button').forEach((button, i) => button.classList.toggle('active', i === activeIndex));
   }
 
   function open(image) {
-    // Treat all product-photo locations on this detail page as one gallery.
-    // This lets the main photo and additional thumbnails navigate together.
     images = Array.from(document.querySelectorAll(IMAGE_SELECTOR)).filter(usableImage);
     if (!images.includes(image)) images.unshift(image);
-    lastFocused = document.activeElement;
     ensureModal();
-    show(images.indexOf(image));
+    lastFocused = document.activeElement;
+    const wrapper = image.closest('[data-title]');
+    title.textContent = (wrapper && wrapper.getAttribute('data-title')) || image.alt || 'Просмотр изображения';
+    track.innerHTML = images.map((item, i) => '<div class="product-lightbox__slide"><img src="' + (item.currentSrc || item.src) + '" alt="' + (item.alt || 'Фотография товара') + '"></div>').join('');
+    nav.innerHTML = images.length > 1 ? images.map((item, i) => '<button type="button" data-slide="' + i + '">' + (item.closest('.product-gallery') ? 'Фото ' + (i + 1) : (i === 0 ? 'Основное фото' : 'Фото ' + (i + 1))) + '</button>').join('') : '';
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    show(images.indexOf(image));
     closeButton.focus();
   }
 
@@ -85,7 +78,7 @@
     if (!modal || !modal.classList.contains('is-open')) return;
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
-    modalImage.removeAttribute('src');
+    track.innerHTML = '';
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
@@ -99,7 +92,7 @@
   document.addEventListener('keydown', event => {
     if (!modal || !modal.classList.contains('is-open')) return;
     if (event.key === 'Escape') close();
-    else if (event.key === 'ArrowLeft' && images.length > 1) show(activeIndex - 1);
-    else if (event.key === 'ArrowRight' && images.length > 1) show(activeIndex + 1);
+    else if (event.key === 'ArrowLeft') show(activeIndex - 1);
+    else if (event.key === 'ArrowRight') show(activeIndex + 1);
   });
 })();
