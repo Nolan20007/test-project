@@ -283,6 +283,8 @@ function assertProductImageViewerSources() {
 
   const viewer = fs.readFileSync(path.join(root, 'js/product-lightbox.js'), 'utf8');
   assert(viewer.includes('function fullSizeSource'), 'shared product viewer must resolve full-size image sources');
+  assert(viewer.includes('function galleryEntries'), 'shared product viewer must build a gallery for the selected product');
+  assert(!viewer.includes('document.querySelectorAll(IMAGE_SELECTOR)'), 'shared product viewer must not combine images from the whole document');
   assert(!viewer.includes('.product-thumb-cell img'), 'table thumbnails must not open as full-size product photos');
 }
 assertProductImageViewerSources();
