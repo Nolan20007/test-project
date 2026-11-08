@@ -19,13 +19,15 @@ const CARD_IMAGES = [
   ['images/nts-62-91-111/vid-1.webp', 'images/nts-62-91-111/vid-card.webp'],
   ['images/nts-62-91-111b/vid-1.webp', 'images/nts-62-91-111b/vid-card.webp'],
   ['images/scoba-nm1-3900/vid-1.webp', 'images/scoba-nm1-3900/vid-card.webp'],
+  ['images/soedinitelnye-elementy/ms-1-2-3-4.webp', 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', 'ms-1-2-3-4-search.webp'],
+  ['images/soedinitelnye-elementy/ms-5-6-7-8.webp', 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', 'ms-5-6-7-8-search.webp'],
 ];
 
 async function run() {
   let totalInput = 0;
   let totalOutput = 0;
 
-  for (const [source, destination] of CARD_IMAGES) {
+  for (const [source, destination, searchFilename = 'vid-search.webp'] of CARD_IMAGES) {
     const inputPath = path.join(ROOT, source);
     const outputPath = path.join(ROOT, destination);
 
@@ -46,7 +48,7 @@ async function run() {
 
     // Поисковое изображение всегда создаётся из основного vid-1.webp.
     // Оно используется в товарных фидах Google и Яндекса.
-    const searchPath = path.join(path.dirname(inputPath), 'vid-search.webp');
+    const searchPath = path.join(path.dirname(inputPath), searchFilename);
     await sharp(inputPath)
       .rotate()
       .resize({
@@ -64,7 +66,7 @@ async function run() {
     totalOutput += outputSize;
 
     console.log(
-      source + ' → ' + destination + ' + vid-search.webp: ' +
+      source + ' → ' + destination + ' + ' + searchFilename + ':',
       Math.round(inputSize / 1024) + ' KB → ' +
       Math.round(outputSize / 1024) + ' KB'
     );
