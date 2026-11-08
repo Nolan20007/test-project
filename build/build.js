@@ -1077,8 +1077,9 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
       '</div><button type="button" class="cart-button buy-button" data-item-id="' + esc(id) + '" data-item-name="' + esc(name) +
       '" data-item-length="' + esc(dimensionOne) + '" data-item-weight="' + esc(weight) + '">Добавить в корзину</button></div>';
 
+  const weightForSchema = Number(weight).toFixed(2).replace('.', ',');
   const description = productDescription + '. ' + dimensionOneLabel + ' ' + dimensionOne +
-    ' см, ' + dimensionTwoLabel.toLowerCase() + ' ' + dimensionTwoMm + ' мм, масса ' + weight + ' кг.' +
+    ' см, ' + dimensionTwoLabel.toLowerCase() + ' ' + dimensionTwoMm + ' мм, масса ' + weightForSchema + ' кг.' +
     (material ? ' Материал: ' + material + '.' : '') +
     (rodDiameter ? ' Диаметр прутка: ' + rodDiameter + '.' : '') +
     ' Альбом чертежей: ' + album;
