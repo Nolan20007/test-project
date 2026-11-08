@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const IMAGE_SELECTOR = '.mp-main-img-wrapper img, .product-gallery img';
+  const IMAGE_SELECTOR = '.mp-main-img-wrapper img, .product-gallery img, .product-image-wrapper img, img.mp-main-img';
   const INVALID_SRC = /default-product\\.svg|placeholder/i;
   let modal, modalImage, counter, previousButton, nextButton, closeButton;
   let images = [];
