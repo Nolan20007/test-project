@@ -683,3 +683,123 @@ textarea[aria-invalid="true"]:focus {
 }
 .product-thumb-placeholder span { font-size: 11px; font-weight: 600; }
 .product-thumb-placeholder small { font-size: 8px; }
+
+
+/* Единая заглушка фотографий в каталогах и карточках товаров */
+.product-thumb-placeholder-image {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    background: #f2f5f8;
+    border: 1px solid #e1e8ee;
+    border-radius: 6px;
+    padding: 3px;
+}
+.product-image-placeholder,
+.mp-gallery .product-image-placeholder {
+    display: block !important;
+    object-fit: contain;
+    background: #f2f5f8;
+    border: 1px solid #e1e8ee;
+    border-radius: 10px;
+    padding: 18px;
+    cursor: default !important;
+}
+
+
+/* Единый внешний вид просмотрщика фотографий на главной, в каталогах и карточках товаров */
+.lightbox-modal,
+.product-lightbox {
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, .9) !important;
+    padding: 60px 16px 24px !important;
+}
+.lightbox-modal .modal-content,
+.product-lightbox .product-lightbox__content {
+    width: 95% !important;
+    max-width: 1300px !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+    border-radius: 15px !important;
+    background: #fff !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+}
+.lightbox-modal #modalTitle,
+.product-lightbox .product-lightbox__title {
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 12px 64px !important;
+    background: #fff !important;
+    color: #333 !important;
+    text-align: center !important;
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
+    line-height: 1.4;
+}
+.lightbox-modal .gallery-item,
+.product-lightbox .product-lightbox__slide {
+    height: 85vh !important;
+    max-height: 900px !important;
+    background: #f0f4f8 !important;
+}
+.lightbox-modal .gallery-item img,
+.product-lightbox .product-lightbox__slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.lightbox-modal .gallery-nav,
+.lightbox-modal .modal-nav,
+.product-lightbox .product-lightbox__nav {
+    right: 20px !important;
+    bottom: 20px !important;
+    gap: 6px !important;
+    padding: 8px !important;
+    border-radius: 24px !important;
+    background: rgba(255, 255, 255, .92) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15) !important;
+}
+.lightbox-modal .gallery-nav button,
+.lightbox-modal .modal-nav button,
+.product-lightbox .product-lightbox__nav button {
+    padding: 8px 16px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: transparent;
+    color: #444 !important;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+}
+.lightbox-modal .gallery-nav button.active,
+.lightbox-modal .modal-nav button.active,
+.product-lightbox .product-lightbox__nav button.active {
+    background: var(--primary-color, #0e5c80) !important;
+    color: #fff !important;
+}
+.lightbox-modal .close-btn,
+.product-lightbox .product-lightbox__close {
+    position: fixed !important;
+    top: 12px !important;
+    right: 24px !important;
+    z-index: 10051 !important;
+    color: #f1f1f1 !important;
+    font-size: 40px !important;
+    line-height: 1 !important;
+}
+@media (max-width: 600px) {
+    .lightbox-modal,
+    .product-lightbox { padding: 56px 8px 12px !important; }
+    .lightbox-modal .modal-content,
+    .product-lightbox .product-lightbox__content { width: 100% !important; }
+    .lightbox-modal .gallery-item,
+    .product-lightbox .product-lightbox__slide { height: 76vh !important; }
+    .lightbox-modal .gallery-nav,
+    .lightbox-modal .modal-nav,
+    .product-lightbox .product-lightbox__nav {
+        right: 8px !important;
+        bottom: 8px !important;
+    }
+}
