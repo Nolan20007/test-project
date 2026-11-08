@@ -138,11 +138,14 @@
                 <!-- SPECIFICATIONS_START -->
                 <table class="mp-specs-table">
                     <tr><td>Артикул</td><td>{{ID}}</td></tr>
-                    <tr><td>Ширина</td><td>{{DIMENSION1}} см</td></tr>
-                    <tr><td>Высота</td><td>{{DIMENSION2}} см</td></tr>
+                    <tr><td>{{DIMENSION1_LABEL}}</td><td>{{DIMENSION1}} см</td></tr>
+                    <tr><td>{{DIMENSION2_LABEL}}</td><td>{{DIMENSION2}} см</td></tr>
                     <tr><td>Масса изделия</td><td>{{WEIGHT}} кг</td></tr>
                     <tr><td>Единица измерения</td><td>{{UNIT}}</td></tr>
                     <tr><td>Альбом чертежей</td><td>{{ALBUM}}</td></tr>
+                    {{MATERIAL_ROW}}
+                    {{ROD_DIAMETER_ROW}}
+                    {{BLANK_LENGTH_ROW}}
                 </table>
                 <!-- SPECIFICATIONS_END -->
             </div>
