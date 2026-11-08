@@ -1264,6 +1264,19 @@ function buildProductPages() {
       createdPages.push(`products/${cat.folder}/${p.slug}.html`);
     });
   });
+  // Add the shared image viewer to every generated product page so future catalog
+  // pages inherit the same click-to-zoom behavior automatically.
+  createdPages.forEach(relativePath => {
+    const htmlPath = path.resolve(__dirname, '..', relativePath);
+    let html = fs.readFileSync(htmlPath, 'utf8');
+    if (!html.includes('js/product-lightbox.js')) {
+      const script = '<script src="../../js/product-lightbox.js" defer></script>\\n';
+      html = html.includes('</body>')
+        ? html.replace('</body>', script + '</body>')
+        : html + '\\n' + script;
+      fs.writeFileSync(htmlPath, html, 'utf8');
+    }
+  });
   return createdPages;
 }
 
