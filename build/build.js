@@ -1059,8 +1059,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
       '</div></section>'
     : '<p class="media-note">Фотографии и чертёж для этой позиции пока не добавлены в каталог.</p>';
   const imageHtml = row.image && row.image !== 'images/default-product.svg'
-    ? '<img class="product-main-image" src="../../' + esc(row.image) + '" alt="' + esc(name) + '" width="500" height="500">'
-    : '<div class="product-main-image product-image-placeholder" role="img" aria-label="Фотография изделия уточняется"><strong>Фото изделия</strong><span>Изображение пока не добавлено</span></div>';
+    ? '<img class="mp-main-img" src="../../' + esc(row.image) + '" alt="' + esc(name) + '" width="500" height="500">'
+    : '<div class="mp-main-img product-image-placeholder" role="img" aria-label="Фотография изделия уточняется"><strong>Фото изделия</strong><span>Изображение пока не добавлено</span></div>';
 
   const relatedProducts = rows.filter(other => other.id !== id).map(other => {
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
@@ -1070,11 +1070,11 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
 
   const buyControls = price === null
     ? '<p>Стоимость уточняйте при заказе.</p>'
-    : '<div class="buy-row"><div class="quantity-control">' +
+    : '<div class="mp-buy-controls"><div class="quantity-control">' +
       '<button type="button" onclick="changeQuantity(\'' + esc(id) + '\', -1)">−</button>' +
       '<input type="number" id="' + esc(id) + '-qty" value="1" min="1" max="99" data-price="' + price + '">' +
       '<button type="button" onclick="changeQuantity(\'' + esc(id) + '\', 1)">+</button>' +
-      '</div><button type="button" class="cart-button buy-button" data-item-id="' + esc(id) + '" data-item-name="' + esc(name) +
+      '</div><button type="button" class="cart-button mp-btn-buy" data-item-id="' + esc(id) + '" data-item-name="' + esc(name) +
       '" data-item-length="' + esc(dimensionOne) + '" data-item-weight="' + esc(weight) + '">Добавить в корзину</button></div>';
 
   const weightForSchema = Number(weight).toFixed(2).replace('.', ',');
