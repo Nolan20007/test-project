@@ -142,10 +142,13 @@
   }
 
   document.addEventListener('click', event => {
-    const image = event.target.closest(IMAGE_SELECTOR);
+    const image = event.target.closest(IMAGE_SELECTOR) ||
+      event.target.closest('.mp-main-img-wrapper, .main-image-wrapper, .product-image-wrapper')
+        ?.querySelector('img:not(.product-image-placeholder)');
     if (!image || !usableImage(image)) return;
-    const legacyWrapper = image.closest('.main-image-wrapper');
-    if (legacyWrapper && typeof legacyWrapper.onclick === 'function') return;
+    const wrapper = image.closest('.mp-main-img-wrapper, .main-image-wrapper, .product-image-wrapper');
+    // Older product templates open their own lightbox inline; do not open a second viewer.
+    if (wrapper && typeof wrapper.onclick === 'function') return;
     event.preventDefault();
     open(image);
   });
