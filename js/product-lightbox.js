@@ -28,7 +28,7 @@
       .product-lightbox__slide { flex:0 0 100%; min-width:100%; height:85vh; max-height:900px; display:flex; justify-content:center; align-items:center; background:#f0f4f8; scroll-snap-align:start; }
       .product-lightbox__slide img { display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
       .product-lightbox__nav { position:absolute; right:20px; bottom:20px; z-index:2; display:flex; flex-direction:column; gap:6px; max-height:calc(100% - 40px); overflow-y:auto; padding:8px; border-radius:24px; background:rgba(255,255,255,.92); box-shadow:0 2px 10px rgba(0,0,0,.15); }
-      .product-lightbox__nav button { border:0; border-radius:999px; padding:8px 16px; background:transparent; color:#444; cursor:pointer; font:500 13px/1.3 inherit; white-space:nowrap; }
+      .product-lightbox__nav button { border:0; border-radius:999px; padding:8px 16px; background:transparent; color:#444; cursor:pointer; font-family:inherit; font-size:13px; font-weight:500; line-height:1.3; white-space:nowrap; }
       .product-lightbox__nav button.active { background:#0E5C80; color:#fff; }
       @media(max-width:600px) { .product-lightbox { padding:56px 8px 12px; } .product-lightbox__content { width:100%; } .product-lightbox__slide { height:76vh; } .product-lightbox__nav { right:8px; bottom:8px; } }
     `;
@@ -55,7 +55,7 @@
     if (!images.length) return;
     activeIndex = Math.max(0, Math.min(index, images.length - 1));
     const slide = track.children[activeIndex];
-    if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+    if (slide) track.scrollTo({ left: activeIndex * track.clientWidth, behavior: 'smooth' });
     nav.querySelectorAll('button').forEach((button, i) => button.classList.toggle('active', i === activeIndex));
   }
 
