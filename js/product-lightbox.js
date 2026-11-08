@@ -69,9 +69,9 @@
   }
 
   function open(image) {
-    const gallery = image.closest('.mp-gallery, .product-gallery');
-    const scope = gallery || image.closest('.mp-main-img-wrapper') || document;
-    images = Array.from(scope.querySelectorAll('img')).filter(usableImage);
+    // Treat all product-photo locations on this detail page as one gallery.
+    // This lets the main photo and additional thumbnails navigate together.
+    images = Array.from(document.querySelectorAll(IMAGE_SELECTOR)).filter(usableImage);
     if (!images.includes(image)) images.unshift(image);
     lastFocused = document.activeElement;
     ensureModal();
