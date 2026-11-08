@@ -496,7 +496,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
           anchor = safeAnchor(p.id);
     const imageHtml = img !== 'images/default-product.svg'
       ? `<img src="${img}" alt="${name}" width="56" height="56" style="width:56px;height:56px;max-height:56px;object-fit:contain;" loading="lazy" decoding="async" >`
-      : '<img class="product-thumb-placeholder-image" src="images/default-product.svg" alt="Фотография изделия пока не добавлена" width="56" height="56" loading="lazy">';
+      : '<img class="product-thumb-placeholder-image" src="images/default-product.svg" alt="" aria-hidden="true" width="56" height="56" loading="lazy">';
 
     // Логика генерации ссылки на карточку товара
     let itemUrl = '#';
@@ -1071,10 +1071,10 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
       gallery.map((src, index) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + esc(name) + ' — изображение ' + (index + 1) + '" loading="lazy"><span>' +
         (/(chertezh|drawing)/i.test(src) ? 'Чертёж' : /(album)/i.test(src) ? 'Альбом' : 'Фото') + '</span></a>').join('') +
       '</div></section>'
-    : '<p class="media-note">Фотографии и чертёж для этой позиции пока не добавлены в каталог.</p>';
+    : '';
   const imageHtml = fullImage
     ? '<img class="mp-main-img" src="../../' + esc(fullImage) + '" data-full-src="../../' + esc(fullImage) + '" alt="' + esc(name) + '" width="800" height="800">'
-    : '<img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="Фотография изделия пока не добавлена" width="500" height="500">';
+    : '<img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="" aria-hidden="true" width="500" height="500">';
 
   const relatedProducts = rows.filter(other => other.id !== id).map(other => {
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
@@ -1084,10 +1084,10 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
 
   const buyControls = price === null
     ? '<p>Стоимость уточняйте при заказе.</p>'
-    : '<div class="mp-buy-controls"><div class="quantity-control">' +
-      '<button type="button" onclick="changeQuantity(\'' + esc(id) + '\', -1)">−</button>' +
-      '<input type="number" id="' + esc(id) + '-qty" value="1" min="1" max="99" data-price="' + price + '">' +
-      '<button type="button" onclick="changeQuantity(\'' + esc(id) + '\', 1)">+</button>' +
+    : '<div class="mp-buy-controls"><div class="quantity-control" style="display:flex; align-items:center; border: 1px solid #c8d9ea; border-radius: 12px; overflow: hidden;">' +
+      '<button type="button" onclick="changeQuantity(\'' + esc(id) + '\', -1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">−</button>' +
+      '<input type="number" id="' + esc(id) + '-qty" value="1" min="1" max="99" data-price="' + price + '" style="width:50px; border:none; text-align:center; font-size:18px; font-weight:bold; padding:10px 0;">' +
+      '<button type="button" onclick="changeQuantity(\'' + esc(id) + '\', 1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">+</button>' +
       '</div><button type="button" class="cart-button mp-btn-buy" data-item-id="' + esc(id) + '" data-item-name="' + esc(name) +
       '" data-item-length="' + esc(dimensionOne) + '" data-item-weight="' + esc(weight) + '">Добавить в корзину</button></div>';
 
