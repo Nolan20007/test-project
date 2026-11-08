@@ -1079,9 +1079,10 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const fullImage = validSourceImage
     ? (preferredImageExists ? preferredImage : (gallery[0] || validSourceImage))
     : (gallery[0] || '');
-  const galleryHtml = gallery.length
+  const galleryImages = id.startsWith('MS-') ? gallery.filter(src => src !== fullImage) : gallery;
+  const galleryHtml = galleryImages.length
     ? '<section class="product-gallery-section"><h2>Фотографии и чертежи</h2><div class="product-gallery">' +
-      gallery.map((src, index) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + esc(name) + ' — изображение ' + (index + 1) + '" loading="lazy"><span>' +
+      galleryImages.map((src, index) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + esc(name) + ' — изображение ' + (index + 1) + '" loading="lazy"><span>' +
         (/(chertezh|drawing)/i.test(src) ? 'Чертёж' : /(album)/i.test(src) ? 'Альбом' : 'Фото') + '</span></a>').join('') +
       '</div></section>'
     : '';
