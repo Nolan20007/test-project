@@ -87,18 +87,48 @@
     return source;
   }
 
+  function galleryEntries(image) {
+    const card = image.closest('.product-image-wrapper[data-title]');
+    if (card) {
+      const keys = [
+        ['vid-1', 'Основное фото'], ['vid-2', 'Фото 2'], ['vid-3', 'Фото 3'],
+        ['foto-1', 'Фото 4'], ['foto-2', 'Фото 5'],
+        ['album', 'Альбом'], ['chertezh', 'Чертёж']
+      ];
+      const entries = keys
+        .map(([key, label]) => ({ src: card.dataset[key], alt: image.alt || 'Фотография товара', label }))
+        .filter(entry => entry.src && !INVALID_SRC.test(entry.src));
+      if (entries.length) return entries;
+    }
+
+    // Product detail pages keep their main image and gallery inside one page-level container.
+    const page = image.closest('.product-page-wrap, .product-details, .product-details-page');
+    const scopedImages = page
+      ? Array.from(page.querySelectorAll(IMAGE_SELECTOR)).filter(usableImage)
+      : [image];
+    const uniqueImages = scopedImages.includes(image) ? scopedImages : [image, ...scopedImages];
+    return uniqueImages.map((item, index) => ({
+      src: fullSizeSource(item),
+      alt: item.alt || 'Фотография товара',
+      label: item.closest('.product-gallery') ? 'Фото ' + (index + 1) : (index === 0 ? 'Основное фото' : 'Фото ' + (index + 1))
+    }));
+  }
+
   function open(image) {
-    images = Array.from(document.querySelectorAll(IMAGE_SELECTOR)).filter(usableImage);
-    if (!images.includes(image)) images.unshift(image);
+    const entries = galleryEntries(image);
+    images = entries;
+    if (!images.length) return;
     ensureModal();
     lastFocused = document.activeElement;
     const wrapper = image.closest('[data-title]');
-    title.textContent = (wrapper && wrapper.getAttribute('data-title')) || image.alt || 'Просмотр изображения';
-    track.innerHTML = images.map((item, i) => '<div class="product-lightbox__slide"><img src="' + fullSizeSource(item) + '" alt="' + (item.alt || 'Фотография товара') + '"></div>').join('');
-    nav.innerHTML = images.length > 1 ? images.map((item, i) => '<button type="button" data-slide="' + i + '">' + (item.closest('.product-gallery') ? 'Фото ' + (i + 1) : (i === 0 ? 'Основное фото' : 'Фото ' + (i + 1))) + '</button>').join('') : '';
+    const pageTitle = image.closest('.product-page-wrap, .product-details, .product-details-page');
+    const heading = pageTitle && pageTitle.querySelector('h1');
+    title.textContent = (wrapper && wrapper.getAttribute('data-title')) || (heading && heading.textContent.trim()) || image.alt || 'Просмотр изображения';
+    track.innerHTML = images.map(item => '<div class="product-lightbox__slide"><img src="' + item.src + '" alt="' + item.alt + '"></div>').join('');
+    nav.innerHTML = images.length > 1 ? images.map((item, i) => '<button type="button" data-slide="' + i + '">' + item.label + '</button>').join('') : '';
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    show(images.indexOf(image));
+    show(Math.max(0, entries.findIndex(item => item.src === fullSizeSource(image))));
     closeButton.focus();
   }
 
