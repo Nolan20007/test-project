@@ -683,3 +683,24 @@ textarea[aria-invalid="true"]:focus {
 }
 .product-thumb-placeholder span { font-size: 11px; font-weight: 600; }
 .product-thumb-placeholder small { font-size: 8px; }
+
+
+/* Единая заглушка фотографий в каталогах и карточках товаров */
+.product-thumb-placeholder-image {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    background: #f2f5f8;
+    border: 1px solid #e1e8ee;
+    border-radius: 6px;
+    padding: 3px;
+}
+.product-image-placeholder {
+    object-fit: contain;
+    background: #f2f5f8;
+    border: 1px solid #e1e8ee;
+    border-radius: 10px;
+    padding: 18px;
+    cursor: default !important;
+}
