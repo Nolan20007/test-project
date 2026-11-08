@@ -262,7 +262,7 @@ function assertMetalCatalogsAndPages() {
   assert(connectorCatalog.includes('<th>Ширина, см</th><th>Высота, см</th>'), 'connector catalog must show width/height headings');
   const skobyCatalog = fs.readFileSync(path.join(root, 'skoby-dlya-kolodcev.html'), 'utf8');
   assert(skobyCatalog.includes('<th>Габарит 1, см</th><th>Габарит 2, см</th>'), 'skoby catalog must use neutral dimension headings for mixed product shapes');
-  assert(skobyCatalog.includes('images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp'), 'skoby catalog must use a real representative product image');
+  assert(skobyCatalog.includes('images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-1.webp'), 'skoby catalog must use the full-resolution representative product image');
 }
 assertRobotsPolicy();
 assertLlmsProductLinks();
@@ -270,5 +270,21 @@ const ntsFeedProducts = assertNtsFeedCoverage();
 const sitemapCount = assertSitemap();
 const productCount = assertCsvProducts();
 assertMetalCatalogsAndPages();
+
+function assertProductImageViewerSources() {
+  const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const gallerySources = [...home.matchAll(/data-vid-1=["']([^"']+)["']/g)].map(match => match[1]);
+  assert(gallerySources.length > 0, 'index.html: no product image gallery sources found');
+  for (const source of gallerySources) {
+    if (source === 'images/default-product.svg') continue;
+    assert(!/vid-(?:card|mini)\\.webp$/i.test(source), 'index.html: lightbox uses a thumbnail instead of a full-size image: ' + source);
+    assert(fs.existsSync(path.join(root, source)), 'index.html: full-size gallery image is missing: ' + source);
+  }
+
+  const viewer = fs.readFileSync(path.join(root, 'js/product-lightbox.js'), 'utf8');
+  assert(viewer.includes('function fullSizeSource'), 'shared product viewer must resolve full-size image sources');
+  assert(!viewer.includes('.product-thumb-cell img'), 'table thumbnails must not open as full-size product photos');
+}
+assertProductImageViewerSources();
 assert(!/<link\b[^>]*rel=["']canonical["']/i.test(fs.readFileSync(path.join(root, '404.html'), 'utf8')), '404.html must not declare a canonical URL');
 console.log('SEO checks passed: ' + sitemapCount + ' sitemap URLs, ' + productCount + ' CSV-backed Product pages, ' + ntsFeedProducts + ' NTS feed products, robots policy and JSON-LD validated.');
