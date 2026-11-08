@@ -15,7 +15,7 @@
     <meta property="og:type" content="product">
     <meta property="og:title" content="Лестница-стремянка для тепловых сетей Л-7600 по НТС 62-91-111А, 760 см — купить">
     <meta property="og:description" content="Купить лестницу-стремянку для тепловых сетей Л-7600 по НТС 62-91-111А, нормалям тепловых сетей. Высота 760 см, масса 130,00 кг. От производителя, доставка по России.">
-    <meta property="og:image" content="https://stremyanki-dlya-kolodcev.ru/images/default-product.svg">
+    <meta property="og:image" content="https://stremyanki-dlya-kolodcev.ru/images/nts-62-91-111a/vid-1.webp">
     <meta property="og:url" content="https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111a/lestnica-l-7600.html">
 
     <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
@@ -36,7 +36,7 @@
       "name": "Лестница-стремянка для тепловых сетей Л-7600 по НТС 62-91-111А, длина 7600 мм",
       "sku": "NTSA-L7600",
       "mpn": "NTSA-L7600",
-      "image": "https://stremyanki-dlya-kolodcev.ru/images/default-product.svg",
+      "image": "https://stremyanki-dlya-kolodcev.ru/images/nts-62-91-111a/vid-1.webp",
       "description": "Лестница-стремянка для тепловых сетей Л-7600 по НТС 62-91-111А, длина 7600 мм. Длина 760 см, ширина 600 мм, масса 130,00 кг.",
       "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" }
       ,
@@ -106,11 +106,7 @@
             .image-toggle__btn { padding: 5px 10px; font-size: 11px; }
         }
     .header .header-title { margin: 0; font-size: 2.2em; line-height: 1.2; font-weight: 600; color: #fff; }
-      .image-toggle,.mp-usp-list,.modal-nav {display:none!important;}
-    .mp-main-img-wrapper:after{content:"Изображение в работе";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#7a8a9a;font-size:15px;font-style:italic;}
-    .mp-main-img{display:none!important;}
-    .mp-main-img-wrapper {background:#f0f4f8;}
-    .mp-main-img {max-width:70%;max-height:70%;}
+
     </style>
 <script type="application/ld+json">
 {
@@ -199,17 +195,9 @@
         <div class="mp-card">
             <div class="mp-top">
                 <div class="mp-gallery">
-                    <div class="mp-main-img-wrapper" id="mainImageWrapper">
-                        <img id="mainImage" src="../../images/default-product.svg" alt="Лестница НТС 62-91-111А Л-7600 — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
-                        <div class="image-toggle">
-                            <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 0)">Вид 1</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 1)">Вид 2</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 2)">Вид 3</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 3)">Фото 1</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 4)">Фото 2</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 5)">Альбом</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/default-product.svg', 6)">Чертёж</button>
-                        </div>
+                    <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
+                        <img id="mainImage" src="../../images/nts-62-91-111a/vid-1.webp" alt="Лестница НТС 62-91-111А Л-7600 — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
+
                     </div>
                 </div>
 
@@ -493,34 +481,14 @@ function copyEmailToClipboard(btn) {
     <div class="lightbox-content" onclick="event.stopPropagation()">
         <button class="close-btn" onclick="closeLightbox()">&times;</button>
         <img id="lightbox-img" src="" alt="Просмотр">
-        <div class="modal-nav" id="lightbox-nav">
-            <button onclick="changeLightboxImage(0)" class="active">Вид 1</button>
-            <button onclick="changeLightboxImage(1)">Вид 2</button>
-            <button onclick="changeLightboxImage(2)">Вид 3</button>
-            <button onclick="changeLightboxImage(3)">Фото 1</button>
-            <button onclick="changeLightboxImage(4)">Фото 2</button>
-            <button onclick="changeLightboxImage(5)">Альбом</button>
-            <button onclick="changeLightboxImage(6)">Чертёж</button>
-        </div>
+        <div class="modal-nav" id="lightbox-nav"></div>
     </div>
 </div>
 
 <script>
-    const imgSources = [
-        '../../images/default-product.svg', '../../images/default-product.svg', '../../images/default-product.svg',
-        '../../images/default-product.svg', '../../images/default-product.svg', '../../images/default-product.svg', '../../images/default-product.svg'
-    ];
+    const imgSources = ['../../images/nts-62-91-111a/vid-1.webp'];
 
-    const imageAltTexts = [
-        'Лестница НТС 62-91-111А Л-7600 — общий вид',
-        'Лестница НТС 62-91-111А Л-7600 — второй вид',
-        'Лестница НТС 62-91-111А Л-7600 — третий вид',
-        'Лестница НТС 62-91-111А Л-7600 — фотография изделия',
-        'Лестница НТС 62-91-111А Л-7600 — дополнительная фотография',
-        'Лестница НТС 62-91-111А Л-7600 — страница типового альбома',
-        'Чертёж лестницы НТС 62-91-111А Л-7600'
-    ];
-
+    const imageAltTexts = ['Лестница НТС 62-91-111А Л-7600 — общий вид'];
     function changeImage(src, index) {
         const mainImage = document.getElementById('mainImage');
         mainImage.src = src;
