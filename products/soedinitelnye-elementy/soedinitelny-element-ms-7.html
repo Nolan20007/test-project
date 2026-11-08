@@ -30,6 +30,7 @@
         .mp-gallery { background: #fff; border-radius: 16px; padding: 10px; display: flex; flex-direction: column; align-items: center; position: relative; }
         .mp-main-img-wrapper { width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #fff; border-radius: 12px; position: relative; }
         .mp-main-img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s; }
+        .mp-main-img.product-image-placeholder { width: min(100%, 360px); height: 300px; padding: 34px; background: #f2f5f8; border: 1px solid #e1e8ee; border-radius: 12px; cursor: default; }
         .mp-main-img-wrapper:hover .mp-main-img { transform: scale(1.03); }
         .image-toggle { position: absolute; bottom: 15px; right: 15px; display: flex; flex-direction: column; gap: 4px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); border-radius: 20px; padding: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-height: calc(100% - 30px); overflow-y: auto; }
         .image-toggle__btn { border: none; background: transparent; padding: 6px 12px; font-size: 12px; font-weight: 500; border-radius: 999px; cursor: pointer; color: #555; transition: all 0.2s; white-space: nowrap; text-align: left; }
@@ -85,7 +86,7 @@
             .image-toggle__btn { padding: 5px 10px; font-size: 11px; }
         }
     .header .header-title { margin: 0; font-size: 2.2em; line-height: 1.2; font-weight: 600; color: #fff; }
-                .mp-gallery .product-image-placeholder { min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #7a8a9a; text-align: center; }
+                .mp-gallery .product-image-placeholder { display: block; min-height: 0; }
         .product-gallery-section { margin-top: 24px; }
         .product-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
         .product-gallery a { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 10px; background: #fff; border: 1px solid #eee; border-radius: 10px; color: #555; text-decoration: none; }
@@ -154,7 +155,7 @@
         </div>
         <div class="mp-card">
             <div class="mp-top">
-                <div class="mp-gallery"><div class="mp-main-img-wrapper"><div class="mp-main-img product-image-placeholder" role="img" aria-label="Фотография изделия уточняется"><strong>Фото изделия</strong><span>Изображение пока не добавлено</span></div></div></div>
+                <div class="mp-gallery"><div class="mp-main-img-wrapper"><img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="Фотография изделия пока не добавлена" width="500" height="500"></div></div>
                 <div class="mp-info">
                     <h1>Соединительный элемент МС-7</h1>
                     <div class="mp-sku">Артикул: MS-7</div>
