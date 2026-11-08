@@ -88,8 +88,7 @@
             .image-toggle__btn { padding: 5px 10px; font-size: 11px; }
         }
     .header .header-title { margin: 0; font-size: 2.2em; line-height: 1.2; font-weight: 600; color: #fff; }
-        .mp-gallery .product-main-image { max-width: 100%; max-height: 380px; object-fit: contain; }
-        .mp-gallery .product-image-placeholder { min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #7a8a9a; text-align: center; }
+                .mp-gallery .product-image-placeholder { min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #7a8a9a; text-align: center; }
         .product-gallery-section { margin-top: 24px; }
         .product-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
         .product-gallery a { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 10px; background: #fff; border: 1px solid #eee; border-radius: 10px; color: #555; text-decoration: none; }
@@ -106,7 +105,6 @@
 <header class="header">
     <div class="container">
         <p class="header-title">{{PRODUCT_NAME}}</p>
-        <p>{{PRODUCT_DESCRIPTION}}</p>
     </div>
 </header>
 
@@ -122,7 +120,7 @@
         </div>
         <div class="mp-card">
             <div class="mp-top">
-                <div class="mp-gallery">{{IMAGE_HTML}}</div>
+                <div class="mp-gallery"><div class="mp-main-img-wrapper">{{IMAGE_HTML}}</div></div>
                 <div class="mp-info">
                     <h1>{{PRODUCT_NAME}}</h1>
                     <div class="mp-sku">Артикул: {{ID}}</div>
