@@ -284,6 +284,9 @@ function assertProductImageViewerSources() {
   const tprTemplate = fs.readFileSync(path.join(root, 'templates/stremyanki-tpr-901-09-11-84.html'), 'utf8');
   assert(tprTemplate.includes('const currentIndex = imgSources.findIndex'), 'TPR lightbox must open the currently selected product image');
   assert(tprTemplate.includes('currentIndex >= 0 ? currentIndex'), 'TPR lightbox must prefer the selected image over the default first slide');
+  const tpr902Template = fs.readFileSync(path.join(root, 'templates/stremyanki-tpr-902-09-22-84.html'), 'utf8');
+  assert(tpr902Template.includes('const currentIndex = imgSources.findIndex'), 'TPR 902 lightbox must open the currently selected product image');
+  assert(tpr902Template.includes('currentIndex >= 0 ? currentIndex'), 'TPR 902 lightbox must prefer the selected image over the default first slide');
 
   const viewer = fs.readFileSync(path.join(root, 'js/product-lightbox.js'), 'utf8');
   assert(viewer.includes('function fullSizeSource'), 'shared product viewer must resolve full-size image sources');
