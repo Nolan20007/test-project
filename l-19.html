@@ -377,6 +377,7 @@
             gap: 6px;
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 24px;
             padding: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
@@ -627,8 +628,7 @@
                 <picture><source id="mainSource" srcset="images/l-19/vid-1.webp" type="image/webp"><img id="mainImage" src="images/l-19/vid-1.png" alt="Лестница Л-19" class="main-image" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder');"></picture>
                 <div class="image-toggle">
                     <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/l-19/vid-1.png','images/l-19/vid-1.webp', 0)">Вид 1</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/l-19/foto-1.png','images/l-19/foto-1.webp', 1)">Фото</button>
-                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/l-19/chertezh.png','images/l-19/chertezh.webp', 2)">Чертёж</button>
+                    <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/l-19/chertezh.png','images/l-19/chertezh.webp', 1)">Чертёж</button>
                 </div>
             </div>
 
@@ -956,15 +956,13 @@ function copyEmailToClipboard(btn) {
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
             <div class="gallery-item"><picture><source srcset="images/l-19/vid-1.webp" type="image/webp"><img src="images/l-19/vid-1.png" alt="Вид 1"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/l-19/foto-1.webp" type="image/webp"><img src="images/l-19/foto-1.png" alt="Фото 1"></picture></div>
             <div class="gallery-item"><picture><source srcset="images/l-19/chertezh.webp" type="image/webp"><img src="images/l-19/chertezh.png" alt="Чертеж"></picture></div>
             <div class="gallery-item"><picture><source srcset="images/l-19/album.webp" type="image/webp"><img src="images/l-19/album.png" alt="Альбом 6/88"></picture></div>
         </div>
         <div class="modal-nav" id="modalNav">
             <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
-            <button data-slide="1" onclick="scrollToSlide(1)">Фото</button>
-            <button data-slide="2" onclick="scrollToSlide(2)">Чертёж</button>
-            <button data-slide="3" onclick="scrollToSlide(3)">Альбом</button>
+            <button data-slide="1" onclick="scrollToSlide(1)">Чертёж</button>
+            <button data-slide="2" onclick="scrollToSlide(2)">Альбом</button>
         </div>
     </div>
 </div>
@@ -972,6 +970,7 @@ function copyEmailToClipboard(btn) {
 <script src="js/cart.js"></script>
 <script src="js/quote-modal.js"></script>
 <script src="js/callback-modal.js"></script>
+<script src="js/modal-a11y.js"></script>
 <script>
     const mainImage = document.getElementById('mainImage');
     const mainImageWrapper = document.getElementById('mainImageWrapper');
@@ -1076,7 +1075,7 @@ function copyEmailToClipboard(btn) {
     if (albumSidebar) {
         albumSidebar.addEventListener('click', function (e) {
             e.stopPropagation();
-            openModal(3);
+            openModal(2);
         });
     }
 

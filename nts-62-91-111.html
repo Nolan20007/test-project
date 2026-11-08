@@ -534,8 +534,6 @@
             .modal-nav { bottom: 10px; right: 10px; padding: 5px; border-radius: 18px; }
             .modal-nav button { padding: 6px 12px; font-size: 12px; }
         }
-      .image-toggle,.album-sidebar,.album-inline,.modal-nav{display:none!important;}
-    .main-image-wrapper{background:#f0f4f8;position:relative;}
     </style>
     <script defer src="js/analytics.js"></script>
 <!-- JSONLD_PRODUCT_START -->
@@ -1080,28 +1078,17 @@ function copyEmailToClipboard(btn) {
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Вид 1"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Вид 2"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Вид 3"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Фото 1"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Фото 2"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Альбом"></picture></div>
-            <div class="gallery-item"><picture><source srcset="images/default-product.svg" type="image/webp"><img src="images/default-product.svg" alt="Чертеж"></picture></div>
+            <div class="gallery-item"><img src="images/nts-62-91-111/vid-1.webp" alt="Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг"></div>
         </div>
         <div class="modal-nav" id="modalNav">
             <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
-            <button data-slide="1" onclick="scrollToSlide(1)">Вид 2</button>
-            <button data-slide="2" onclick="scrollToSlide(2)">Вид 3</button>
-            <button data-slide="3" onclick="scrollToSlide(3)">Фото 1</button>
-            <button data-slide="4" onclick="scrollToSlide(4)">Фото 2</button>
-            <button data-slide="5" onclick="scrollToSlide(5)">Альбом</button>
-            <button data-slide="6" onclick="scrollToSlide(6)">Чертёж</button>
         </div>
     </div>
 </div>
 
 <script src="js/cart.js"></script>
 <script src="js/quote-modal.js"></script>
+<script src="js/modal-a11y.js"></script>
 <script>
     const mainImage = document.getElementById('mainImage');
     const mainImageWrapper = document.getElementById('mainImageWrapper');
