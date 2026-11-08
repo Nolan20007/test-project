@@ -204,8 +204,7 @@ const CATEGORIES_TO_GENERATE = [
       { id: 'SG-70', slug: 'pozharnaya-stremyanka-sg-70' },
       { id: 'SG-82', slug: 'pozharnaya-stremyanka-sg-82' }
     ]
-  }
-  ,
+  },
   {
     type: 'metal',
     template: 'skoby-dlya-kolodcev.html',
@@ -1098,8 +1097,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   };
 
   const replacements = {
-    SEO_TITLE: name + ' — характеристики и цена',
-    SEO_DESC: name + '. Размеры, масса, альбом чертежей и цена. Изготовление и доставка по России.',
+    SEO_TITLE: esc(name + ' — характеристики и цена'),
+    SEO_DESC: esc(name + '. Размеры, масса, альбом чертежей и цена. Изготовление и доставка по России.'),
     CANONICAL_URL: url,
     PRODUCT_SCHEMA: JSON.stringify(schema),
     CATALOG_LINK: cat.catalog_link,
