@@ -1053,7 +1053,7 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     .map(value => value.trim()).filter(Boolean)
     .filter(value => value !== 'images/default-product.svg');
   const sourceImage = String(row.image || '').trim();
-  const preferredImage = sourceImage.replace(/vid-(?:mini|card)(?=\\.)/i, 'vid-1');
+  const preferredImage = sourceImage.replace(/vid-(?:mini|card)\.webp$/i, 'vid-1.webp');
   const preferredImageExists = preferredImage && preferredImage !== sourceImage &&
     fs.existsSync(path.resolve(__dirname, '..', preferredImage));
   const fullImage = sourceImage && sourceImage !== 'images/default-product.svg'
