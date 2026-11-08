@@ -72,7 +72,8 @@
       const sourcePath = new URL(source, document.baseURI).pathname;
       const directory = sourcePath.slice(0, sourcePath.lastIndexOf('/') + 1);
       const preferredPath = sourcePath.replace(/vid-(?:mini|card)(?=\.)/i, 'vid-1');
-      const galleryLinks = Array.from(document.querySelectorAll('.product-gallery a[href]'));
+      const page = image.closest('.product-page-wrap, .product-details, .product-details-page');
+      const galleryLinks = page ? Array.from(page.querySelectorAll('.product-gallery a[href]')) : [];
       const preferred = galleryLinks.find(link =>
         new URL(link.href, document.baseURI).pathname === preferredPath
       );
@@ -96,7 +97,7 @@
         ['album', 'Альбом'], ['chertezh', 'Чертёж']
       ];
       const entries = keys
-        .map(([key, label]) => ({ src: card.dataset[key], alt: image.alt || 'Фотография товара', label }))
+        .map(([key, label]) => ({ src: card.getAttribute('data-' + key), alt: image.alt || 'Фотография товара', label }))
         .filter(entry => entry.src && !INVALID_SRC.test(entry.src));
       if (entries.length) return entries;
     }
