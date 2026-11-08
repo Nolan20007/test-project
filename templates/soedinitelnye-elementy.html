@@ -130,26 +130,26 @@
                     {{BUY_CONTROLS}}
 <div class="mp-usp-list">
                         <div class="mp-usp-item"><b>Доставка</b>По всей России</div>
-                        <div class="mp-usp-item"><b>Самовывоз</b>Со склада в Перми</div>
-                        <div class="mp-usp-item"><b>Оплата</b>По счёту или онлайн</div>
+                        <div class="mp-usp-item"><b>Гарантия</b>От производителя</div>
+                        <div class="mp-usp-item"><b>Альбомы чертежей</b>{{ALBUMS_USP_HTML}}</div>
                     </div>
                                         <p class="mp-short-desc">{{PRODUCT_DESCRIPTION}}</p>
                 </div>
             </div>
             <div class="mp-tabs">
-                <div class="mp-tab active" onclick="openTab(event, 'specs')">Характеристики изделия</div>
-                <div class="mp-tab" onclick="openTab(event, 'description')">Описание</div>
+                <div class="mp-tab active" onclick="openTab(event, 'specs')">Характеристики</div>
+                <div class="mp-tab" onclick="openTab(event, 'description')">Описание и монтаж</div>
                 <div class="mp-tab" onclick="openTab(event, 'delivery')">Доставка и оплата</div>
             </div>
             <div id="specs" class="mp-tab-content active">
                 <!-- SPECIFICATIONS_START -->
                 <table class="mp-specs-table">
-                    <tr><td>Артикул</td><td>{{ID}}</td></tr>
+                    <tr><td>Марка (модель)</td><td>{{ID}}</td></tr>
                     <tr><td>{{DIMENSION1_LABEL}}</td><td>{{DIMENSION1}} см</td></tr>
                     <tr><td>{{DIMENSION2_LABEL}}</td><td>{{DIMENSION2}} см</td></tr>
                     <tr><td>Масса изделия</td><td>{{WEIGHT}} кг</td></tr>
                     <tr><td>Единица измерения</td><td>{{UNIT}}</td></tr>
-                    <tr><td>Альбом чертежей</td><td>{{ALBUM}}</td></tr>
+                    <tr><td>Альбом чертежей</td><td>{{ALBUMS_HTML}}</td></tr>
                     {{MATERIAL_ROW}}
                     {{ROD_DIAMETER_ROW}}
                     {{BLANK_LENGTH_ROW}}
@@ -167,7 +167,7 @@
             </div>
         </div>
         <div class="other-sizes">
-            <h2>Другие типоразмеры</h2>
+            <h2>Другие типоразмеры соединительных элементов</h2>
             <div class="related-products">{{RELATED_PRODUCTS}}</div>
         </div>
     </div>
