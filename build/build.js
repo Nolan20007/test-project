@@ -1056,9 +1056,12 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const preferredImage = sourceImage.replace(/vid-(?:mini|card)\.webp$/i, 'vid-1.webp');
   const preferredImageExists = preferredImage && preferredImage !== sourceImage &&
     fs.existsSync(path.resolve(__dirname, '..', preferredImage));
-  const fullImage = sourceImage && sourceImage !== 'images/default-product.svg'
-    ? (preferredImageExists ? preferredImage : (gallery[0] || sourceImage))
+  const validSourceImage = sourceImage && sourceImage !== 'images/default-product.svg'
+    ? sourceImage
     : '';
+  const fullImage = validSourceImage
+    ? (preferredImageExists ? preferredImage : (gallery[0] || validSourceImage))
+    : (gallery[0] || '');
   const galleryHtml = gallery.length
     ? '<section class="product-gallery-section"><h2>Фотографии и чертежи</h2><div class="product-gallery">' +
       gallery.map((src, index) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + esc(name) + ' — изображение ' + (index + 1) + '" loading="lazy"><span>' +
