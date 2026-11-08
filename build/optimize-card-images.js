@@ -46,7 +46,7 @@ async function run() {
       .webp({ quality: 80, effort: 5 })
       .toFile(outputPath);
 
-    // Поисковое изображение всегда создаётся из основного vid-1.webp.
+    // Поисковое изображение создаётся из исходного изображения группы/товара.
     // Оно используется в товарных фидах Google и Яндекса.
     const searchPath = path.join(path.dirname(inputPath), searchFilename);
     await sharp(inputPath)
