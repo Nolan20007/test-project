@@ -860,18 +860,6 @@
     </div>
 </footer>
 
-
-<div id="productModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="closeModal()">
-    <button type="button" class="close-btn" title="Закрыть" aria-label="Закрыть окно" onclick="closeModal()">&times;</button>
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
-        <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><picture><source srcset="images/soedinitelnye-elementy/vid-1.webp" type="image/webp"><img src="images/soedinitelnye-elementy/vid-1.png" alt="Соединительные элементы МС"></picture></div>
-        </div>
-        <div class="modal-nav" id="modalNav"><button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button></div>
-    </div>
-</div>
-
 <!-- Скрипты (год и копирование) -->
 <script>
     (function () {
@@ -906,44 +894,6 @@ function copyEmailToClipboard(btn) {
 
 <!-- Подключаем скрипт для окна "Заказать звонок" -->
 <script src="js/callback-modal.js"></script>
-<script src="js/modal-a11y.js"></script>
-<script>
-    const mainImageWrapper = document.getElementById('mainImageWrapper');
-    const modal = document.getElementById('productModal');
-    const modalA11y = initModalA11y(modal, {
-        backgroundSelectors: ['header', 'nav', 'main', 'footer'],
-        initialFocus: '.close-btn'
-    });
-    const galleryContainer = document.getElementById('galleryContainer');
-    const modalNav = document.getElementById('modalNav');
-    mainImageWrapper.onclick = () => openModal(0);
-    function openModal(startSlide) {
-        modal.style.display = 'block';
-        setTimeout(() => scrollToSlide(startSlide || 0), 50);
-        modalA11y.open();
-    }
-    function closeModal() {
-        modalA11y.close();
-        modal.style.display = 'none';
-    }
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeModal();
-    });
-    function scrollToSlide(index) {
-        galleryContainer.scrollTo({ left: galleryContainer.clientWidth * index, behavior: 'smooth' });
-        modalNav.querySelectorAll('button').forEach((button, i) => {
-            button.classList.toggle('active', i === index);
-        });
-    }
-    galleryContainer.addEventListener('scroll', () => {
-        const width = galleryContainer.clientWidth;
-        if (!width) return;
-        const index = Math.round(galleryContainer.scrollLeft / width);
-        modalNav.querySelectorAll('button').forEach((button, i) => {
-            button.classList.toggle('active', i === index);
-        });
-    });
-</script>
 
 <!-- FOOTER_END --></body>
 </html>
