@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const IMAGE_SELECTOR = '.mp-main-img-wrapper:not([onclick*="openLightbox"]) img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img:not(.product-image-placeholder)';
+  const IMAGE_SELECTOR = '.mp-main-img-wrapper:not([onclick*="openLightbox"]) img:not(.product-image-placeholder), .main-image-wrapper img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img:not(.product-image-placeholder)';
   const INVALID_SRC = /default-product\.svg|placeholder/i;
   let modal, title, track, nav, closeButton;
   let images = [];
@@ -113,6 +113,8 @@
   document.addEventListener('click', event => {
     const image = event.target.closest(IMAGE_SELECTOR);
     if (!image || !usableImage(image)) return;
+    const legacyWrapper = image.closest('.main-image-wrapper');
+    if (legacyWrapper && typeof legacyWrapper.onclick === 'function') return;
     event.preventDefault();
     open(image);
   });
