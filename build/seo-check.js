@@ -240,7 +240,8 @@ function assertMetalCatalogsAndPages() {
       assert(fs.existsSync(file), group.csv + ': missing individual page for ' + row.id);
       const html = fs.readFileSync(file, 'utf8');
       assert(html.includes('<h1>' + row.name + '</h1>'), group.csv + ': missing product heading for ' + row.id);
-      assert(html.includes('Характеристики изделия'), group.csv + ': missing structured specifications for ' + row.id);
+      const hasStructuredSpecifications = html.includes('Характеристики изделия') || /<!-- SPECIFICATIONS_START -->[\s\S]*?<table\b[\s\S]*?<\/table>[\s\S]*?<!-- SPECIFICATIONS_END -->/.test(html);
+      assert(hasStructuredSpecifications, group.csv + ': missing structured specifications for ' + row.id);
       assert(html.includes('Другие типоразмеры'), group.csv + ': missing related product navigation for ' + row.id);
       assert(html.includes('class="nav"') && html.includes('class="footer"'), group.csv + ': shared site navigation/footer missing for ' + row.id);
       const images = String(row.images || row.image || '').split(';').map(value => value.trim()).filter(value => value && !value.endsWith('default-product.svg'));
