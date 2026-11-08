@@ -696,7 +696,9 @@ textarea[aria-invalid="true"]:focus {
     border-radius: 6px;
     padding: 3px;
 }
-.product-image-placeholder {
+.product-image-placeholder,
+.mp-gallery .product-image-placeholder {
+    display: block !important;
     object-fit: contain;
     background: #f2f5f8;
     border: 1px solid #e1e8ee;
