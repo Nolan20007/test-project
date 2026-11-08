@@ -332,7 +332,7 @@ const FEED_SOURCES = [
   { csv: 'data/tmp-902-pryamougolnye.csv',    page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/tmp-902-perepadnye.csv',       page: 'tmp-902.html',         bigImage: 'images/tmp-902/vid-1.png', typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/skoby-dlya-kolodcev-products.csv', page: 'skoby-dlya-kolodcev.html', bigImage: 'images/default-product.svg', typePrefix: 'Скоба для колодцев' },
-  { csv: 'data/soedinitelnye-elementy-products.csv', page: 'soedinitelnye-elementy.html', bigImage: 'images/default-product.svg', typePrefix: 'Соединительный элемент МС' },
+  { csv: 'data/soedinitelnye-elementy-products.csv', page: 'soedinitelnye-elementy.html', bigImage: 'images/soedinitelnye-elementy/vid-1.png', typePrefix: 'Соединительный элемент МС' },
   { csv: 'data/nts-62-91-111-products.csv',     page: 'nts-62-91-111.html',   bigImage: 'images/nts-62-91-111/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
   { csv: 'data/nts-62-91-111b-products.csv',    page: 'nts-62-91-111b.html',  bigImage: 'images/nts-62-91-111b/vid-1.webp', typePrefix: 'Лестница тепловых сетей' },
 ];
@@ -650,7 +650,13 @@ function replaceJsonLd(html, jsonLd) {
   return html.replace('</head>', `${block}\n</head>`);
 }
 
-function getFeedImagePath(src) {
+function getFeedImagePath(src, product) {
+  const productId = String(product && product.id || '').trim().toUpperCase();
+  const msGroup = /^MS-[1-4]$/.test(productId) ? 'ms-1-2-3-4' : /^MS-[5-8]$/.test(productId) ? 'ms-5-6-7-8' : '';
+  if (msGroup) {
+    const groupSearchImage = 'images/soedinitelnye-elementy/' + msGroup + '-search.webp';
+    if (fs.existsSync(path.resolve(__dirname, '..', groupSearchImage))) return groupSearchImage;
+  }
   const original = src.bigImage;
   const searchImage = original.replace(/vid-1\.(?:png|webp)$/i, 'vid-search.webp');
   if (searchImage !== original && fs.existsSync(path.resolve(__dirname, '..', searchImage))) {
@@ -684,7 +690,7 @@ function buildYandexFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      const picture = `${SITE_URL}/${getFeedImagePath(src)}`;
+      const picture = `${SITE_URL}/${getFeedImagePath(src, p)}`;
       
       const typePrefix = src.typePrefix || 'Стремянка для колодцев';
 
@@ -745,7 +751,7 @@ function buildGoogleFeed() {
       const anchor = safeAnchor(p.id);
       const url = `${SITE_URL}/${src.page}#${encodeURIComponent(anchor)}`;
       
-      const picture = `${SITE_URL}/${getFeedImagePath(src)}?v=${encodeURIComponent(p.id)}`;
+      const picture = `${SITE_URL}/${getFeedImagePath(src, p)}?v=${encodeURIComponent(p.id)}`;
       
       const formattedPrice = price.toFixed(2) + ' RUB';
 
@@ -1063,6 +1069,7 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     .map(value => value.trim()).filter(Boolean)
     .filter(value => value !== 'images/default-product.svg');
   const sourceImage = String(row.image || '').trim();
+  const cardImage = String(row.card_image || '').trim();
   const preferredImage = sourceImage.replace(/vid-(?:mini|card)\.webp$/i, 'vid-1.webp');
   const preferredImageExists = preferredImage && preferredImage !== sourceImage &&
     fs.existsSync(path.resolve(__dirname, '..', preferredImage));
@@ -1078,8 +1085,9 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
         (/(chertezh|drawing)/i.test(src) ? 'Чертёж' : /(album)/i.test(src) ? 'Альбом' : 'Фото') + '</span></a>').join('') +
       '</div></section>'
     : '';
-  const imageHtml = fullImage
-    ? '<img class="mp-main-img" src="../../' + esc(fullImage) + '" data-full-src="../../' + esc(fullImage) + '" alt="' + esc(name) + '" width="800" height="800">'
+  const displayImage = cardImage || fullImage;
+  const imageHtml = displayImage
+    ? '<img class="mp-main-img" src="../../' + esc(displayImage) + '" data-full-src="../../' + esc(fullImage) + '" alt="' + esc(name) + '" width="400" height="400">'
     : '<img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="" aria-hidden="true" width="500" height="500">';
 
   const relatedProducts = rows.filter(other => other.id !== id).map(other => {
