@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const IMAGE_SELECTOR = '.mp-main-img-wrapper:not([onclick*="openLightbox"]) img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img:not(.product-image-placeholder), img.mp-main-img:not(.product-image-placeholder):not([onclick])';
+  const IMAGE_SELECTOR = '.mp-main-img-wrapper:not([onclick*="openLightbox"]) img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img:not(.product-image-placeholder)';
   const INVALID_SRC = /default-product\.svg|placeholder/i;
   let modal, title, track, nav, closeButton;
   let images = [];
@@ -71,7 +71,7 @@
     if (wrapper && source) {
       const sourcePath = new URL(source, document.baseURI).pathname;
       const directory = sourcePath.slice(0, sourcePath.lastIndexOf('/') + 1);
-      const preferredPath = sourcePath.replace(/vid-(?:mini|card)(?=\\.)/i, 'vid-1');
+      const preferredPath = sourcePath.replace(/vid-(?:mini|card)(?=\.)/i, 'vid-1');
       const galleryLinks = Array.from(document.querySelectorAll('.product-gallery a[href]'));
       const preferred = galleryLinks.find(link =>
         new URL(link.href, document.baseURI).pathname === preferredPath
