@@ -1052,14 +1052,24 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const gallery = String(row.images || row.image || '').split(';')
     .map(value => value.trim()).filter(Boolean)
     .filter(value => value !== 'images/default-product.svg');
+  const sourceImage = String(row.image || '').trim();
+  const preferredImage = sourceImage.replace(/vid-(?:mini|card)\.webp$/i, 'vid-1.webp');
+  const preferredImageExists = preferredImage && preferredImage !== sourceImage &&
+    fs.existsSync(path.resolve(__dirname, '..', preferredImage));
+  const validSourceImage = sourceImage && sourceImage !== 'images/default-product.svg'
+    ? sourceImage
+    : '';
+  const fullImage = validSourceImage
+    ? (preferredImageExists ? preferredImage : (gallery[0] || validSourceImage))
+    : (gallery[0] || '');
   const galleryHtml = gallery.length
     ? '<section class="product-gallery-section"><h2>Фотографии и чертежи</h2><div class="product-gallery">' +
       gallery.map((src, index) => '<a href="../../' + esc(src) + '" target="_blank" rel="noopener"><img src="../../' + esc(src) + '" alt="' + esc(name) + ' — изображение ' + (index + 1) + '" loading="lazy"><span>' +
         (/(chertezh|drawing)/i.test(src) ? 'Чертёж' : /(album)/i.test(src) ? 'Альбом' : 'Фото') + '</span></a>').join('') +
       '</div></section>'
     : '<p class="media-note">Фотографии и чертёж для этой позиции пока не добавлены в каталог.</p>';
-  const imageHtml = row.image && row.image !== 'images/default-product.svg'
-    ? '<img class="mp-main-img" src="../../' + esc(row.image) + '" alt="' + esc(name) + '" width="500" height="500">'
+  const imageHtml = fullImage
+    ? '<img class="mp-main-img" src="../../' + esc(fullImage) + '" data-full-src="../../' + esc(fullImage) + '" alt="' + esc(name) + '" width="800" height="800">'
     : '<img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="Фотография изделия пока не добавлена" width="500" height="500">';
 
   const relatedProducts = rows.filter(other => other.id !== id).map(other => {
@@ -1091,7 +1101,7 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     description,
     brand: { "@type": "Brand", name: "Лестницы и стремянки для колодцев" }
   };
-  if (row.image && row.image !== 'images/default-product.svg') schema.image = SITE_URL + '/' + row.image;
+  if (fullImage) schema.image = SITE_URL + '/' + fullImage;
   if (price !== null) schema.offers = {
     "@type": "Offer", url, priceCurrency: "RUB", price: String(price),
     availability: "https://schema.org/InStock"

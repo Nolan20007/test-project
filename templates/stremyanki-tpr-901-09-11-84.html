@@ -265,8 +265,13 @@
     }
 
     function openLightbox(index) {
+        const mainImage = document.getElementById('mainImage');
+        const currentSource = new URL(mainImage.currentSrc || mainImage.src, document.baseURI).pathname;
+        const currentIndex = imgSources.findIndex(src =>
+            new URL(src, document.baseURI).pathname === currentSource
+        );
         document.getElementById('lightbox').style.display = 'block';
-        changeLightboxImage(index || 0);
+        changeLightboxImage(currentIndex >= 0 ? currentIndex : (Number.isInteger(index) ? index : 0));
     }
 
     function closeLightbox() {

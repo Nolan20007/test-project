@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const IMAGE_SELECTOR = '.mp-main-img-wrapper img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img, .product-thumb-cell img:not(.product-thumb-placeholder-image), img.mp-main-img:not(.product-image-placeholder)';
+  const IMAGE_SELECTOR = '.mp-main-img-wrapper:not([onclick*="openLightbox"]) img:not(.product-image-placeholder), .main-image-wrapper img:not(.product-image-placeholder), .product-gallery img, .product-image-wrapper img:not(.product-image-placeholder)';
   const INVALID_SRC = /default-product\.svg|placeholder/i;
   let modal, title, track, nav, closeButton;
   let images = [];
@@ -59,18 +59,77 @@
     nav.querySelectorAll('button').forEach((button, i) => button.classList.toggle('active', i === activeIndex));
   }
 
+  function fullSizeSource(image) {
+    if (image.dataset.fullSrc) return image.dataset.fullSrc;
+
+    // Gallery thumbnails are links to the original, full-resolution files.
+    const imageLink = image.closest('a[href]');
+    if (imageLink && imageLink.href) return imageLink.href;
+
+    const source = image.currentSrc || image.src || '';
+    const wrapper = image.closest('.mp-main-img-wrapper');
+    if (wrapper && source) {
+      const sourcePath = new URL(source, document.baseURI).pathname;
+      const directory = sourcePath.slice(0, sourcePath.lastIndexOf('/') + 1);
+      const preferredPath = sourcePath.replace(/vid-(?:mini|card)(?=\.)/i, 'vid-1');
+      const page = image.closest('.product-page-wrap, .product-details, .product-details-page');
+      const galleryLinks = page ? Array.from(page.querySelectorAll('.product-gallery a[href]')) : [];
+      const preferred = galleryLinks.find(link =>
+        new URL(link.href, document.baseURI).pathname === preferredPath
+      );
+      if (preferred) return preferred.href;
+
+      const sameDirectory = galleryLinks.find(link =>
+        new URL(link.href, document.baseURI).pathname.startsWith(directory)
+      );
+      if (sameDirectory) return sameDirectory.href;
+    }
+
+    return source;
+  }
+
+  function galleryEntries(image) {
+    const card = image.closest('.product-image-wrapper[data-title]');
+    if (card) {
+      const keys = [
+        ['vid-1', 'Основное фото'], ['vid-2', 'Фото 2'], ['vid-3', 'Фото 3'],
+        ['foto-1', 'Фото 4'], ['foto-2', 'Фото 5'],
+        ['album', 'Альбом'], ['chertezh', 'Чертёж']
+      ];
+      const entries = keys
+        .map(([key, label]) => ({ src: card.getAttribute('data-' + key), alt: image.alt || 'Фотография товара', label }))
+        .filter(entry => entry.src && !INVALID_SRC.test(entry.src));
+      if (entries.length) return entries;
+    }
+
+    // Product detail pages keep their main image and gallery inside one page-level container.
+    const page = image.closest('.product-page-wrap, .product-details, .product-details-page');
+    const scopedImages = page
+      ? Array.from(page.querySelectorAll(IMAGE_SELECTOR)).filter(usableImage)
+      : [image];
+    const uniqueImages = scopedImages.includes(image) ? scopedImages : [image, ...scopedImages];
+    return uniqueImages.map((item, index) => ({
+      src: fullSizeSource(item),
+      alt: item.alt || 'Фотография товара',
+      label: item.closest('.product-gallery') ? 'Фото ' + (index + 1) : (index === 0 ? 'Основное фото' : 'Фото ' + (index + 1))
+    }));
+  }
+
   function open(image) {
-    images = Array.from(document.querySelectorAll(IMAGE_SELECTOR)).filter(usableImage);
-    if (!images.includes(image)) images.unshift(image);
+    const entries = galleryEntries(image);
+    images = entries;
+    if (!images.length) return;
     ensureModal();
     lastFocused = document.activeElement;
     const wrapper = image.closest('[data-title]');
-    title.textContent = (wrapper && wrapper.getAttribute('data-title')) || image.alt || 'Просмотр изображения';
-    track.innerHTML = images.map((item, i) => '<div class="product-lightbox__slide"><img src="' + (item.currentSrc || item.src) + '" alt="' + (item.alt || 'Фотография товара') + '"></div>').join('');
-    nav.innerHTML = images.length > 1 ? images.map((item, i) => '<button type="button" data-slide="' + i + '">' + (item.closest('.product-gallery') ? 'Фото ' + (i + 1) : (i === 0 ? 'Основное фото' : 'Фото ' + (i + 1))) + '</button>').join('') : '';
+    const pageTitle = image.closest('.product-page-wrap, .product-details, .product-details-page');
+    const heading = pageTitle && pageTitle.querySelector('h1');
+    title.textContent = (wrapper && wrapper.getAttribute('data-title')) || (heading && heading.textContent.trim()) || image.alt || 'Просмотр изображения';
+    track.innerHTML = images.map(item => '<div class="product-lightbox__slide"><img src="' + item.src + '" alt="' + item.alt + '"></div>').join('');
+    nav.innerHTML = images.length > 1 ? images.map((item, i) => '<button type="button" data-slide="' + i + '">' + item.label + '</button>').join('') : '';
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    show(images.indexOf(image));
+    show(Math.max(0, entries.findIndex(item => item.src === fullSizeSource(image))));
     closeButton.focus();
   }
 
@@ -85,6 +144,8 @@
   document.addEventListener('click', event => {
     const image = event.target.closest(IMAGE_SELECTOR);
     if (!image || !usableImage(image)) return;
+    const legacyWrapper = image.closest('.main-image-wrapper');
+    if (legacyWrapper && typeof legacyWrapper.onclick === 'function') return;
     event.preventDefault();
     open(image);
   });
