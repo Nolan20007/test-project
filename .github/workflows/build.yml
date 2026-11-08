@@ -14,6 +14,8 @@ on:
       - 'index.html'
       - 'templates/**.html'
       - 'includes/**.html'
+      - 'products/**'
+      - '*.html'
   pull_request:
     paths:
       - 'data/**.csv'
@@ -25,6 +27,10 @@ on:
       - 'index.html'
       - 'templates/**.html'
       - 'includes/**.html'
+      - 'products/**'
+      - '*.html'
+      - 'build/seo-check.js'
+      - 'build/convert-images.js'
   workflow_dispatch:
 
 # Для main важнее всего собрать последнюю версию, а не накапливать устаревшие запуски.
