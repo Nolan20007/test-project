@@ -768,7 +768,10 @@ textarea[aria-invalid="true"]:focus {
     border-radius: 999px !important;
     background: transparent;
     color: #444 !important;
-    font: 500 13px/1.3 inherit;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
 }
 .lightbox-modal .gallery-nav button.active,
 .lightbox-modal .modal-nav button.active,
