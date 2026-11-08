@@ -277,7 +277,7 @@ function assertProductImageViewerSources() {
   assert(gallerySources.length > 0, 'index.html: no product image gallery sources found');
   for (const source of gallerySources) {
     if (source === 'images/default-product.svg') continue;
-    assert(!/vid-(?:card|mini)\\.webp$/i.test(source), 'index.html: lightbox uses a thumbnail instead of a full-size image: ' + source);
+    assert(!/vid-(?:card|mini)\.webp$/i.test(source), 'index.html: lightbox uses a thumbnail instead of a full-size image: ' + source);
     assert(fs.existsSync(path.join(root, source)), 'index.html: full-size gallery image is missing: ' + source);
   }
 
