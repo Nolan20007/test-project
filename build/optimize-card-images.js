@@ -66,7 +66,7 @@ async function run() {
     totalOutput += outputSize;
 
     console.log(
-      source + ' → ' + destination + ' + ' + searchFilename + ':',
+      source + ' → ' + destination + ' + ' + searchFilename + ': ' +
       Math.round(inputSize / 1024) + ' KB → ' +
       Math.round(outputSize / 1024) + ' KB'
     );
