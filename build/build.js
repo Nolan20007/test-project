@@ -241,14 +241,14 @@ const CATEGORIES_TO_GENERATE = [
     dimension1_label: 'Ширина',
     dimension2_label: 'Высота',
     items: [
-      { id: 'MS-1', slug: 'soedinitelny-element-ms-1', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-2', slug: 'soedinitelny-element-ms-2', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-3', slug: 'soedinitelny-element-ms-3', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-4', slug: 'soedinitelny-element-ms-4', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-5', slug: 'soedinitelny-element-ms-5', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-6', slug: 'soedinitelny-element-ms-6', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-7', slug: 'soedinitelny-element-ms-7', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-8', slug: 'soedinitelny-element-ms-8', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-1', slug: 'soedinitelny-element-ms-1-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-1', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-2', slug: 'soedinitelny-element-ms-2-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-2', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-3', slug: 'soedinitelny-element-ms-3-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-3', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-4', slug: 'soedinitelny-element-ms-4-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-4', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-5', slug: 'soedinitelny-element-ms-5-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-5', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-6', slug: 'soedinitelny-element-ms-6-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-6', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-7', slug: 'soedinitelny-element-ms-7-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-7', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-8', slug: 'soedinitelny-element-ms-8-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-8', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
       { id: 'MS-1-902', slug: 'soedinitelny-element-ms-1-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
       { id: 'MS-2-902', slug: 'soedinitelny-element-ms-2-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
       { id: 'MS-3-902', slug: 'soedinitelny-element-ms-3-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
@@ -1205,6 +1205,22 @@ function buildProductPages() {
         fs.writeFileSync(outPath, html, 'utf8');
         console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
         createdPages.push(`products/${cat.folder}/${p.slug}.html`);
+        if (p.legacy_slug && p.legacy_slug !== p.slug) {
+          const legacyPath = path.join(outDir, `${p.legacy_slug}.html`);
+          const legacyUrl = SITE_URL + '/products/' + cat.folder + '/' + p.slug + '.html';
+          const redirectHtml = '<!DOCTYPE html>\\n<html lang="ru">\\n<head>\\n' +
+            '  <meta charset="UTF-8">\\n' +
+            '  <meta http-equiv="refresh" content="0; url=' + legacyUrl + '">\\n' +
+            '  <link rel="canonical" href="' + legacyUrl + '">\\n' +
+            '  <meta name="robots" content="noindex, follow">\\n' +
+            '  <title>Страница товара перемещена</title>\\n' +
+            '</head>\\n<body>\\n' +
+            '  <p>Страница перемещена. <a href="' + legacyUrl + '">Перейти к товару</a>.</p>\\n' +
+            '  <script>window.location.replace(' + JSON.stringify(legacyUrl) + ');</script>\\n' +
+            '</body>\\n</html>\\n';
+          fs.writeFileSync(legacyPath, redirectHtml, 'utf8');
+          console.log(`  ↪ products/${cat.folder}/${p.legacy_slug}.html → ${p.slug}.html`);
+        }
         return;
       }
       const numeric = field => {
