@@ -894,15 +894,15 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 
   // Add the site's existing favicon to pages that do not declare one.
   // Root-relative URLs work for both top-level pages and nested /products/ pages.
-  const hasFavicon = /<link\\b(?=[^>]*\\brel=["'](?:shortcut\\s+)?icon["'])[^>]*>/i.test(html);
+  const hasFavicon = /<link\b(?=[^>]*\brel=["'](?:shortcut\s+)?icon["'])[^>]*>/i.test(html);
   if (!hasFavicon && html.includes('</head>')) {
     const faviconLinks = [
       '<link rel="icon" type="image/x-icon" href="/images/favicon.ico">',
       '<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">',
       '<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">',
       '<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon.png">'
-    ].join('\\n    ');
-    html = html.replace('</head>', '    ' + faviconLinks + '\\n</head>');
+    ].join('\n    ');
+    html = html.replace('</head>', '    ' + faviconLinks + '\n</head>');
     changed = true;
     console.log('  ✅ ' + file + ' → favicon подключён');
   }
