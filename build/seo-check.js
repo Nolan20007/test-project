@@ -234,7 +234,7 @@ function assertMetalCatalogsAndPages() {
     }
     for (const row of rows) {
       const connectorBaseId = String(row.id).replace(/-902$/, '');
-      const connectorNumber = Number(connectorBaseId.match(/\\d+/)?.[0] || 0);
+      const connectorNumber = Number(connectorBaseId.match(/\d+/)?.[0] || 0);
       const connectorSlug = 'soedinitelny-element-' + connectorBaseId.toLowerCase() +
         (String(row.id).endsWith('-902') ? '-tpr-902-09-22-84' : '');
       const slug = String(row.slug || (group.folder.endsWith('skoby-dlya-kolodcev')
