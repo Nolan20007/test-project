@@ -539,7 +539,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
         itemUrl = `products/skoby-dlya-kolodcev/${slug}.html`;
     }
     else if (id.startsWith('MS-')) {
-        const metalCategory = CATEGORIES_TO_GENERATE.find(category => category.type === 'metal');
+        const metalCategory = CATEGORIES_TO_GENERATE.find(category => category.folder === 'soedinitelnye-elementy');
         const configuredItem = metalCategory && metalCategory.items.find(item => item.id === p.id);
         const slug = configuredItem ? configuredItem.slug : ('soedinitelny-element-' + id.toLowerCase());
         itemUrl = `products/soedinitelnye-elementy/${slug}.html`;
@@ -1058,9 +1058,11 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const url = SITE_URL + '/products/' + cat.folder + '/' + slug + '.html';
   const name = String(row.name || '').trim();
   const id = String(row.id || '').trim();
+  const isMsCategory = cat.folder === 'soedinitelnye-elementy';
   const price = Number(row.price) > 0 ? Number(row.price) : null;
   const stockStatus = String(row.available || '').trim();
-  const album = String(item.album || cat.album || '').trim() || 'Не указан в настройках категории';
+  const installationText = isMsCategory ? '' : String(row.installation || '').trim();
+  const album = String(item.album || cat.album || row.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
   const albums = album.split(';').map(value => value.trim()).filter(Boolean);
   const albumsHtml = albums.map(value => '<div>' + esc(value) + '</div>').join('');
   const albumsUspHtml = albums.map(value => '<span>' + esc(value) + '</span>').join('') + '<strong>Полное соответствие</strong>';
@@ -1075,11 +1077,11 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const rodDiameter = String(row.rod_diameter || '').trim();
   const blankLength = String(row.blank_length_mm || '').trim();
 
-  const gallery = String(item.images || row.image || '').split(';')
+  const gallery = String(item.images || row.images || row.image || '').split(';')
     .map(value => value.trim()).filter(Boolean)
     .filter(value => value !== 'images/default-product.svg');
   const sourceImage = String(row.image || '').trim();
-  const cardImage = String(item.card_image || '').trim();
+  const cardImage = String(item.card_image || row.card_image || '').trim();
   const preferredImage = sourceImage.replace(/vid-(?:mini|card)\.webp$/i, 'vid-1.webp');
   const preferredImageExists = preferredImage && preferredImage !== sourceImage &&
     fs.existsSync(path.resolve(__dirname, '..', preferredImage));
@@ -1103,10 +1105,12 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
 
   const relatedProducts = rows.filter(other => {
     if (other.id === id) return false;
+    if (!isMsCategory) return true;
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
     return Boolean(otherItem && otherItem.tpr === item.tpr);
   }).map(other => {
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
+    if (!otherItem) return '';
     return '<a class="related-product" href="' + esc(otherItem.slug) + '.html">' + esc(other.name) + '</a>';
   }).join('');
 
@@ -1120,7 +1124,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
       '" data-item-length="' + esc(dimensionOne) + '" data-item-weight="' + esc(weight) + '">Добавить в корзину</button></div>';
 
   const weightForSchema = Number(weight).toFixed(2).replace('.', ',');
-  const description = name + '. ' + dimensionOneLabel + ' ' + dimensionOne +
+  const productDescription = String(row.description || '').trim() || name;
+  const description = (isMsCategory ? name : productDescription) + '. ' + dimensionOneLabel + ' ' + dimensionOne +
     ' см, ' + dimensionTwoLabel.toLowerCase() + ' ' + dimensionTwoMm + ' мм, масса ' + weightForSchema + ' кг.' +
     (material ? ' Материал: ' + material + '.' : '') +
     (rodDiameter ? ' Диаметр прутка: ' + rodDiameter + '.' : '') +
@@ -1152,6 +1157,12 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     PRICE_DISPLAY: price === null ? 'Цена по запросу' : 'от ' + price.toLocaleString('ru-RU') + ' ₽',
     IMAGE_HTML: imageHtml,
     STOCK_STATUS: stockStatus ? '<div class="mp-stock">' + esc(/^в наличии$/i.test(stockStatus) ? '✓ В наличии на складе' : stockStatus) + '</div>' : '',
+    INSTALLATION_HTML: !isMsCategory && installationText ? '<h3>Монтаж</h3><p>' + esc(installationText) + '</p>' : '',
+    PRODUCT_DESCRIPTION: isMsCategory ? '' : esc(productDescription) + ' ' + esc(dimensionOneLabel) + ' — ' + esc(dimensionOne) +
+      ' см, ' + esc(dimensionTwoLabel.toLowerCase()) + ' — ' + esc(dimensionTwo) + ' см, масса — ' + esc(weight) + ' кг.' +
+      (material ? ' Материал: ' + esc(material) + '.' : '') +
+      (rodDiameter ? ' Диаметр прутка: ' + esc(rodDiameter) + '.' : '') +
+      (album !== 'Не указан в исходных данных каталога' ? ' Изделие приведено в альбоме: ' + esc(album) + '.' : ''),
     BUY_CONTROLS: buyControls,
     DIMENSION1_LABEL: esc(dimensionOneLabel),
     DIMENSION1: esc(dimensionOne),
