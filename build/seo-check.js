@@ -158,7 +158,7 @@ function assertCsvProducts() {
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 134, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 142, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -174,8 +174,8 @@ function assertLlmsProductLinks() {
   const section = content.slice(start + startMarker.length, end);
   assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
   const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
-  assert.strictEqual(links.length, 134, 'llms.txt: expected exactly 112 product links');
-  assert.strictEqual(new Set(links.map(match => match[2])).size, 134, 'llms.txt: duplicate product URLs');
+  assert.strictEqual(links.length, 142, 'llms.txt: expected exactly 142 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 142, 'llms.txt: duplicate product URLs');
   const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
@@ -184,7 +184,7 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 134, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 142, 'llms.txt: unexpected CSV product inventory');
 }
 
 
@@ -233,9 +233,13 @@ function assertMetalCatalogsAndPages() {
       assert(!/<tr\b[^>]*id="item-(?:GS|MN|SK)-/i.test(catalog), 'connector catalog contains legacy skoba rows');
     }
     for (const row of rows) {
+      const connectorBaseId = String(row.id).replace(/-902$/, '');
+      const connectorNumber = Number(connectorBaseId.match(/\d+/)?.[0] || 0);
+      const connectorSlug = 'soedinitelny-element-' + connectorBaseId.toLowerCase() +
+        (String(row.id).endsWith('-902') ? '-tpr-902-09-22-84' : '');
       const slug = String(row.slug || (group.folder.endsWith('skoby-dlya-kolodcev')
         ? 'skoba-' + String(row.id).toLowerCase().replace(/[^a-z0-9-]/g, '-')
-        : 'soedinitelny-element-' + String(row.id).toLowerCase()));
+        : connectorSlug));
       const file = path.join(root, group.folder, slug + '.html');
       assert(fs.existsSync(file), group.csv + ': missing individual page for ' + row.id);
       const html = fs.readFileSync(file, 'utf8');
@@ -244,7 +248,14 @@ function assertMetalCatalogsAndPages() {
       assert(hasStructuredSpecifications, group.csv + ': missing structured specifications for ' + row.id);
       assert(html.includes('Другие типоразмеры'), group.csv + ': missing related product navigation for ' + row.id);
       assert(html.includes('class="nav"') && html.includes('class="footer"'), group.csv + ': shared site navigation/footer missing for ' + row.id);
-      const images = String(row.images || row.image || '').split(';').map(value => value.trim()).filter(value => value && !value.endsWith('default-product.svg'));
+      const connectorImageGroup = connectorNumber >= 1 && connectorNumber <= 4
+        ? 'ms-1-2-3-4' : 'ms-5-6-7-8';
+      const images = group.folder === 'products/soedinitelnye-elementy'
+        ? [
+            'images/soedinitelnye-elementy/' + connectorImageGroup + '-card.webp',
+            'images/soedinitelnye-elementy/' + connectorImageGroup + '.webp'
+          ]
+        : String(row.images || row.image || '').split(';').map(value => value.trim()).filter(value => value && !value.endsWith('default-product.svg'));
       for (const image of images) {
         assert(fs.existsSync(path.join(root, image)), group.csv + '/' + row.id + ': missing product image ' + image);
         assert(html.includes('../../' + image), group.csv + '/' + row.id + ': product image not used on detail page ' + image);

@@ -241,14 +241,22 @@ const CATEGORIES_TO_GENERATE = [
     dimension1_label: 'Ширина',
     dimension2_label: 'Высота',
     items: [
-      { id: 'MS-1', slug: 'soedinitelny-element-ms-1' },
-      { id: 'MS-2', slug: 'soedinitelny-element-ms-2' },
-      { id: 'MS-3', slug: 'soedinitelny-element-ms-3' },
-      { id: 'MS-4', slug: 'soedinitelny-element-ms-4' },
-      { id: 'MS-5', slug: 'soedinitelny-element-ms-5' },
-      { id: 'MS-6', slug: 'soedinitelny-element-ms-6' },
-      { id: 'MS-7', slug: 'soedinitelny-element-ms-7' },
-      { id: 'MS-8', slug: 'soedinitelny-element-ms-8' }
+      { id: 'MS-1', slug: 'soedinitelny-element-ms-1', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-2', slug: 'soedinitelny-element-ms-2', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-3', slug: 'soedinitelny-element-ms-3', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-4', slug: 'soedinitelny-element-ms-4', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-5', slug: 'soedinitelny-element-ms-5', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-6', slug: 'soedinitelny-element-ms-6', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-7', slug: 'soedinitelny-element-ms-7', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-8', slug: 'soedinitelny-element-ms-8', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-1-902', slug: 'soedinitelny-element-ms-1-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-2-902', slug: 'soedinitelny-element-ms-2-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-3-902', slug: 'soedinitelny-element-ms-3-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-4-902', slug: 'soedinitelny-element-ms-4-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-5-902', slug: 'soedinitelny-element-ms-5-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-6-902', slug: 'soedinitelny-element-ms-6-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-7-902', slug: 'soedinitelny-element-ms-7-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-8-902', slug: 'soedinitelny-element-ms-8-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' }
     ]
   }
 
@@ -531,7 +539,9 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
         itemUrl = `products/skoby-dlya-kolodcev/${slug}.html`;
     }
     else if (id.startsWith('MS-')) {
-        const slug = p.slug || ('soedinitelny-element-' + id.toLowerCase());
+        const metalCategory = CATEGORIES_TO_GENERATE.find(category => category.folder === 'soedinitelnye-elementy');
+        const configuredItem = metalCategory && metalCategory.items.find(item => item.id === p.id);
+        const slug = configuredItem ? configuredItem.slug : ('soedinitelny-element-' + id.toLowerCase());
         itemUrl = `products/soedinitelnye-elementy/${slug}.html`;
     }
 
@@ -652,7 +662,8 @@ function replaceJsonLd(html, jsonLd) {
 
 function getFeedImagePath(src, product) {
   const productId = String(product && product.id || '').trim().toUpperCase();
-  const msGroup = /^MS-[1-4]$/.test(productId) ? 'ms-1-2-3-4' : /^MS-[5-8]$/.test(productId) ? 'ms-5-6-7-8' : '';
+  const baseProductId = productId.replace(/-902$/, '');
+  const msGroup = /^MS-[1-4]$/.test(baseProductId) ? 'ms-1-2-3-4' : /^MS-[5-8]$/.test(baseProductId) ? 'ms-5-6-7-8' : '';
   if (msGroup) {
     const groupSearchImage = 'images/soedinitelnye-elementy/' + msGroup + '-search.webp';
     if (fs.existsSync(path.resolve(__dirname, '..', groupSearchImage))) return groupSearchImage;
@@ -1047,10 +1058,11 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const url = SITE_URL + '/products/' + cat.folder + '/' + slug + '.html';
   const name = String(row.name || '').trim();
   const id = String(row.id || '').trim();
+  const isMsCategory = cat.folder === 'soedinitelnye-elementy';
   const price = Number(row.price) > 0 ? Number(row.price) : null;
   const stockStatus = String(row.available || '').trim();
-  const installationText = String(row.installation || '').trim();
-  const album = String(row.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
+  const installationText = isMsCategory ? '' : String(row.installation || '').trim();
+  const album = String(item.album || cat.album || row.drawing_album || '').trim() || 'Не указан в исходных данных каталога';
   const albums = album.split(';').map(value => value.trim()).filter(Boolean);
   const albumsHtml = albums.map(value => '<div>' + esc(value) + '</div>').join('');
   const albumsUspHtml = albums.map(value => '<span>' + esc(value) + '</span>').join('') + '<strong>Полное соответствие</strong>';
@@ -1060,16 +1072,16 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   const dimensionTwo = String(row.width || '').trim();
   const dimensionTwoMm = Number(dimensionTwo) * 10;
   const weight = String(row.weight || '').trim();
-  const productDescription = String(row.description || '').trim() || name;
+
   const material = String(row.material || '').trim();
   const rodDiameter = String(row.rod_diameter || '').trim();
   const blankLength = String(row.blank_length_mm || '').trim();
 
-  const gallery = String(row.images || row.image || '').split(';')
+  const gallery = String(item.images || row.images || row.image || '').split(';')
     .map(value => value.trim()).filter(Boolean)
     .filter(value => value !== 'images/default-product.svg');
   const sourceImage = String(row.image || '').trim();
-  const cardImage = String(row.card_image || '').trim();
+  const cardImage = String(item.card_image || row.card_image || '').trim();
   const preferredImage = sourceImage.replace(/vid-(?:mini|card)\.webp$/i, 'vid-1.webp');
   const preferredImageExists = preferredImage && preferredImage !== sourceImage &&
     fs.existsSync(path.resolve(__dirname, '..', preferredImage));
@@ -1091,7 +1103,12 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     ? '<img class="mp-main-img" src="../../' + esc(displayImage) + '" data-full-src="../../' + esc(fullImage) + '" alt="' + esc(name) + '" width="400" height="400">'
     : '<img class="mp-main-img product-image-placeholder" src="../../images/default-product.svg" alt="" aria-hidden="true" width="500" height="500">';
 
-  const relatedProducts = rows.filter(other => other.id !== id).map(other => {
+  const relatedProducts = rows.filter(other => {
+    if (other.id === id) return false;
+    if (!isMsCategory) return true;
+    const otherItem = cat.items.find(candidate => candidate.id === other.id);
+    return Boolean(otherItem && otherItem.tpr === item.tpr);
+  }).map(other => {
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
     if (!otherItem) return '';
     return '<a class="related-product" href="' + esc(otherItem.slug) + '.html">' + esc(other.name) + '</a>';
@@ -1107,7 +1124,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
       '" data-item-length="' + esc(dimensionOne) + '" data-item-weight="' + esc(weight) + '">Добавить в корзину</button></div>';
 
   const weightForSchema = Number(weight).toFixed(2).replace('.', ',');
-  const description = productDescription + '. ' + dimensionOneLabel + ' ' + dimensionOne +
+  const productDescription = String(row.description || '').trim() || name;
+  const description = (isMsCategory ? name : productDescription) + '. ' + dimensionOneLabel + ' ' + dimensionOne +
     ' см, ' + dimensionTwoLabel.toLowerCase() + ' ' + dimensionTwoMm + ' мм, масса ' + weightForSchema + ' кг.' +
     (material ? ' Материал: ' + material + '.' : '') +
     (rodDiameter ? ' Диаметр прутка: ' + rodDiameter + '.' : '') +
@@ -1139,8 +1157,8 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
     PRICE_DISPLAY: price === null ? 'Цена по запросу' : 'от ' + price.toLocaleString('ru-RU') + ' ₽',
     IMAGE_HTML: imageHtml,
     STOCK_STATUS: stockStatus ? '<div class="mp-stock">' + esc(/^в наличии$/i.test(stockStatus) ? '✓ В наличии на складе' : stockStatus) + '</div>' : '',
-    INSTALLATION_HTML: installationText ? '<h3>Монтаж</h3><p>' + esc(installationText) + '</p>' : '',
-    PRODUCT_DESCRIPTION: esc(productDescription) + ' ' + esc(dimensionOneLabel) + ' — ' + esc(dimensionOne) +
+    INSTALLATION_HTML: !isMsCategory && installationText ? '<h3>Монтаж</h3><p>' + esc(installationText) + '</p>' : '',
+    PRODUCT_DESCRIPTION: isMsCategory ? '' : esc(productDescription) + ' ' + esc(dimensionOneLabel) + ' — ' + esc(dimensionOne) +
       ' см, ' + esc(dimensionTwoLabel.toLowerCase()) + ' — ' + esc(dimensionTwo) + ' см, масса — ' + esc(weight) + ' кг.' +
       (material ? ' Материал: ' + esc(material) + '.' : '') +
       (rodDiameter ? ' Диаметр прутка: ' + esc(rodDiameter) + '.' : '') +
@@ -1350,8 +1368,8 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
-  if (productLinkCount !== 134) {
-    throw new Error('[llms.txt] Ожидалось 134 товарных ссылок, сформировано: ' + productLinkCount);
+  if (productLinkCount !== 142) {
+    throw new Error('[llms.txt] Ожидалось 142 товарные ссылки, сформировано: ' + productLinkCount);
   }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
