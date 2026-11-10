@@ -120,9 +120,14 @@ function renderMasterProduct(template, group, row, rows) {
     '{{PRODUCT_GALLERY_JSON}}': JSON.stringify(gallery).replace(/</g, '\\u003c'),
     '{{PRODUCT_LENGTH_MM}}': String(Math.round(lengthCm * 10)),
     '{{PRODUCT_PRICE}}': price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу',
-    '{{PRODUCT_BUY_CONTROLS}}': '<div class="mp-buy-controls"><button type="button" class="mp-btn-buy" onclick="addItemToCart(' +
-      escapeHtml(JSON.stringify(String(row.id))) + ',' + escapeHtml(JSON.stringify(productName)) + ',1,' + (price > 0 ? price : 0) + ',' +
-      Math.round(lengthCm * 10) + ',' + weight + ')">В корзину</button></div>',
+    '{{PRODUCT_BUY_CONTROLS}}': '<div class="mp-buy-controls"><div class="quantity-control" style="display:flex;align-items:center;border:1px solid #c8d9ea;border-radius:12px;overflow:hidden;">' +
+      '<button type="button" onclick="changeQuantity(\'' + escapeHtml(String(row.id)) + '\',-1)" aria-label="Уменьшить количество">−</button>' +
+      '<input type="number" id="' + escapeHtml(String(row.id)) + '-qty" value="1" min="1" max="99" data-price="' + (price > 0 ? price : 0) + '" style="width:55px;text-align:center;border:0;" aria-label="Количество">' +
+      '<button type="button" onclick="changeQuantity(\'' + escapeHtml(String(row.id)) + '\',1)" aria-label="Увеличить количество">+</button>' +
+      '</div><button type="button" class="mp-btn-buy" onclick="addItemToCart(' +
+      escapeHtml(JSON.stringify(String(row.id))) + ',' + escapeHtml(JSON.stringify(productName)) +
+      ',Math.max(1,Math.min(99,Number(document.getElementById(\'' + escapeHtml(String(row.id)) + '-qty\').value)||1)),' +
+      (price > 0 ? price : 0) + ',' + Math.round(lengthCm * 10) + ',' + weight + ')">В корзину</button></div>',
     '{{GROUP_ALBUM_REFERENCE}}': escapeHtml(group.albumReference),
     '{{GROUP_ALBUM_NOTE}}': escapeHtml(group.albumNote),
     '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml(seoDescription),
