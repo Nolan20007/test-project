@@ -1,5 +1,3 @@
-const path = require('path');
-
 function escapeHtml(value) {
   return String(value == null ? '' : value)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -17,7 +15,7 @@ function productProject(row, group) {
 }
 
 function renderMasterProduct(template, group, row, rows) {
-  if (!group || group.status !== 'draft') throw new Error('Master renderer accepts only a draft product group.');
+  if (!group || typeof group !== 'object') throw new Error('A product group configuration is required.');
   if (!row || !row.id || !row.name) throw new Error('Product row must contain id and name.');
   const widthMm = Math.round(Number(row.width) * 10);
   const lengthCm = Number(row.length);
@@ -67,7 +65,6 @@ function renderMasterProduct(template, group, row, rows) {
   const descriptionHtml = '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) +
     '</p><p>' + escapeHtml(group.installation) + '</p>';
   const otherProducts = rows.filter(item => item.id !== row.id).map(item => {
-    const slug = slugify(item.id);
     return '<a href="../../' + escapeHtml(group.catalogPage) + '#item-' + encodeURIComponent(String(item.id)) + '">' + escapeHtml(item.name) + '</a>';
   }).join('\n');
   const relatedHtml = '<section class="other-sizes"><h3>Другие модели Л-16</h3><div class="other-sizes__list">' +
