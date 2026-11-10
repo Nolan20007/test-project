@@ -24,20 +24,21 @@ function renderMasterProduct(template, group, row, rows) {
   const weight = Number(String(row.weight).replace(',', '.'));
   const price = Number(String(row.price).replace(/[^\d.,-]/g, '').replace(',', '.'));
   const stepCount = Number(row.step_count);
-  if (![widthMm, lengthCm, weight, stepCount].every(Number.isFinite) || widthMm <= 0 || lengthCm <= 0 || weight <= 0 || stepCount <= 0) {
+  if (![widthMm, lengthCm, weight, stepCount].every(Number.isFinite) || widthMm <= 0 || lengthCm <= 0 || weight <= 0 || stepCount <= 0 || !group.construction.availableWidthsMm.includes(widthMm) || lengthCm * 10 < group.construction.lengthRangeMm[0] || lengthCm * 10 > group.construction.lengthRangeMm[1]) {
     throw new Error('Invalid dimensions, weight or step count for ' + row.id);
   }
 
   const productSlug = slugify(row.id);
   const productName = String(row.name).trim();
   const project = productProject(row, group);
-  const mainImage = '../../' + String(row.image || 'images/lestnica-podvesnaya-l-16/vid-mini.webp').replace(/^\/+/, '');
-  const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + String(row.image || 'images/lestnica-podvesnaya-l-16/vid-mini.webp').replace(/^\/+/, '');
   const gallery = group.gallery.map(item => ({
     label: String(item.label),
     src: item.webp,
     alt: String(item.alt || item.label)
   }));
+  if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
+  const mainImage = gallery[0].src;
+  const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^\.\.\//, '');
   const galleryButtons = gallery.map((item, index) =>
     '<button type="button" class="image-toggle__btn' + (index === 0 ? ' active' : '') +
     '" onclick="event.stopPropagation(); changeImage(' + index + ')">' + escapeHtml(item.label) + '</button>'
