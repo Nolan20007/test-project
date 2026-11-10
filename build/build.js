@@ -1355,7 +1355,7 @@ function buildProductPages() {
   const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
   if (fs.existsSync(l16ConfigPath)) {
     const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
-    const groupRows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\\uFEFF/, ''));
+    const groupRows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     const csvIds = groupRows.map(row => row.id);
     const missingIds = group.productIds.filter(id => !csvIds.includes(id));
     const extraIds = csvIds.filter(id => !group.productIds.includes(id));
