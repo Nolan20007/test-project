@@ -1373,8 +1373,16 @@ function buildProductPages() {
   });
   // Generate every configured master-template product family. Each group validates
   // its complete CSV set before writing pages; generated pages feed sitemap and llms.txt.
-  loadMasterTemplateGroups().forEach(({ group }) => {
-    const groupRows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
+  const masterGroups = loadMasterTemplateGroups();
+  const masterGroupData = new Map(masterGroups.map(({ group }) => [group.id, {
+    group,
+    rows: parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''))
+  }]));
+  masterGroups.forEach(({ group }) => {
+    const groupRows = masterGroupData.get(group.id).rows;
+    const relatedVariantGroups = (group.otherSizesVariantGroupIds || [])
+      .map(id => masterGroupData.get(id))
+      .filter(Boolean);
     const csvIds = groupRows.map(row => row.id);
     if (Array.isArray(group.productIds)) {
       const missingIds = group.productIds.filter(id => !csvIds.includes(id));
@@ -1392,7 +1400,7 @@ function buildProductPages() {
     const groupOutDir = path.resolve(__dirname, '..', 'products', group.productFolder);
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
-      const html = renderMasterProduct(groupTemplate, group, row, groupRows);
+      const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups);
       const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
       const relativePath = 'products/' + group.productFolder + '/' + slug + '.html';
       const outPath = path.resolve(__dirname, '..', relativePath);
