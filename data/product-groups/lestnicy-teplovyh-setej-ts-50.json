@@ -66,5 +66,13 @@
       "webp": "../../images/lestnicy-teplovyh-setej-ts/chertezh.webp",
       "alt": "Лестница ТС-50 — чертёж"
     }
-  ]
+  ],
+  "otherSizesSwitcherTitle": "Другие размеры",
+  "otherSizesDisplayLimit": 16,
+  "otherSizesVariantGroupIds": [
+    "lestnicy-teplovyh-setej-ts-50",
+    "lestnicy-teplovyh-setej-ts-63"
+  ],
+  "otherSizesVariantLabel": "ТС",
+  "otherSizesVariantDimensions": "50×50×5 мм"
 }
