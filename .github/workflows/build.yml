@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'data/**.csv'
+      - 'data/product-groups/**.json'
       - 'build/build.js'
       - 'build/master-template-renderer.js'
       - 'build/seo-check.js'
@@ -17,11 +18,14 @@ on:
       - 'templates/**.html'
       - 'includes/**.html'
       - 'products/lestnica-podvesnaya-l-16/**.html'
+      - 'products/lestnicy-teplovyh-setej-ts/**.html'
   pull_request:
     paths:
       - 'data/**.csv'
+      - 'data/product-groups/**.json'
       - 'build/build.js'
       - 'build/master-template-renderer.js'
+      - 'build/seo-check.js'
       - 'build/download-fonts.js'
       - 'build/optimize-card-images.js'
       - '.github/workflows/**'
@@ -30,6 +34,7 @@ on:
       - 'templates/**.html'
       - 'includes/**.html'
       - 'products/lestnica-podvesnaya-l-16/**.html'
+      - 'products/lestnicy-teplovyh-setej-ts/**.html'
   workflow_dispatch:
 
 # Для main важнее всего собрать последнюю версию, а не накапливать устаревшие запуски.

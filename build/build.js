@@ -529,6 +529,10 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
         modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         itemUrl = `products/lestnica-podvesnaya-l-16/${modelSlug}.html`;
     }
+    else if (id.startsWith('TS-50-') || id.startsWith('TS-63-')) {
+        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        itemUrl = `products/lestnicy-teplovyh-setej-ts/${modelSlug}.html`;
+    }
     else if (id.startsWith('NTSS-')) {
         const ntsSlugs = { 'NTSS-S1': 's1-3400', 'NTSS-S2': 's2-4000', 'NTSS-S3': 's3-4600', 'NTSS-S4': 's4-5200' };
         itemUrl = `products/lestnicy-nts-62-91-111/lestnica-${ntsSlugs[id]}.html`;
@@ -1208,6 +1212,18 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   );
 }
 
+function loadMasterTemplateGroups() {
+  const configDir = path.resolve(__dirname, '..', 'data/product-groups');
+  if (!fs.existsSync(configDir)) return [];
+  return fs.readdirSync(configDir)
+    .filter(file => file.endsWith('.json'))
+    .sort()
+    .map(file => ({
+      configPath: path.join(configDir, file),
+      group: JSON.parse(fs.readFileSync(path.join(configDir, file), 'utf8'))
+    }));
+}
+
 function buildProductPages() {
   const createdPages = [];
   CATEGORIES_TO_GENERATE.forEach(cat => {
@@ -1355,30 +1371,36 @@ function buildProductPages() {
       createdPages.push(`products/${cat.folder}/${p.slug}.html`);
     });
   });
-  // Generate the L-16 family from its group config and CSV using the master template.
-  // These detail pages are included in sitemap.xml and llms.txt below.
-  const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
-  if (fs.existsSync(l16ConfigPath)) {
-    const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
+  // Generate every configured master-template product family. Each group validates
+  // its complete CSV set before writing pages; generated pages feed sitemap and llms.txt.
+  loadMasterTemplateGroups().forEach(({ group }) => {
     const groupRows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     const csvIds = groupRows.map(row => row.id);
-    const missingIds = group.productIds.filter(id => !csvIds.includes(id));
-    const extraIds = csvIds.filter(id => !group.productIds.includes(id));
-    if (missingIds.length || extraIds.length) {
-      throw new Error('[product pages] L-16 CSV/config IDs mismatch. Missing: ' + missingIds.join(', ') + '; extra: ' + extraIds.join(', '));
+    if (Array.isArray(group.productIds)) {
+      const missingIds = group.productIds.filter(id => !csvIds.includes(id));
+      const extraIds = csvIds.filter(id => !group.productIds.includes(id));
+      if (missingIds.length || extraIds.length) {
+        throw new Error('[product pages] ' + group.id + ' CSV/config IDs mismatch. Missing: ' + missingIds.join(', ') + '; extra: ' + extraIds.join(', '));
+      }
+    } else {
+      const invalidIds = groupRows.filter(row => !String(row.id).startsWith(group.productIdPrefix || '\u0000')).map(row => row.id);
+      if (!group.productIdPrefix || invalidIds.length || groupRows.length !== group.expectedProductCount) {
+        throw new Error('[product pages] ' + group.id + ' CSV validation failed. Expected ' + group.expectedProductCount + ' rows with prefix ' + group.productIdPrefix + '; received ' + groupRows.length + '. Invalid IDs: ' + invalidIds.join(', '));
+      }
     }
     const groupTemplate = fs.readFileSync(path.resolve(__dirname, '..', group.template), 'utf8');
     const groupOutDir = path.resolve(__dirname, '..', 'products', group.productFolder);
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
       const html = renderMasterProduct(groupTemplate, group, row, groupRows);
-      const relativePath = 'products/' + group.productFolder + '/' + row.id.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.html';
+      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const relativePath = 'products/' + group.productFolder + '/' + slug + '.html';
       const outPath = path.resolve(__dirname, '..', relativePath);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log('  ✅ ' + relativePath + ' создан');
       createdPages.push(relativePath);
     });
-  }
+  });
 
   // Add the shared image viewer to every generated product page so future catalog
   // pages inherit the same click-to-zoom behavior automatically.
@@ -1433,9 +1455,8 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
-  const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
-  if (fs.existsSync(l16ConfigPath)) {
-    const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
+  const masterGroups = loadMasterTemplateGroups();
+  masterGroups.forEach(({ group }) => {
     const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     lines.push('### ' + group.catalogTitle);
     rows.forEach(row => {
@@ -1445,10 +1466,12 @@ function updateLlmsProductLinks() {
       productLinkCount += 1;
     });
     lines.push('');
-  }
+  });
 
-  if (productLinkCount !== 151) {
-    throw new Error('[llms.txt] Ожидалось 151 товарная ссылка, сформировано: ' + productLinkCount);
+  const expectedProductLinks = CATEGORIES_TO_GENERATE.reduce((total, category) => total + category.items.length, 0) +
+    masterGroups.reduce((total, entry) => total + parseCSV(fs.readFileSync(path.resolve(__dirname, '..', entry.group.csv), 'utf8').replace(/^\uFEFF/, '')).length, 0);
+  if (productLinkCount !== expectedProductLinks) {
+    throw new Error('[llms.txt] Ожидалось ' + expectedProductLinks + ' товарных ссылок, сформировано: ' + productLinkCount);
   }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
