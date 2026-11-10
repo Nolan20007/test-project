@@ -133,8 +133,7 @@ function renderMasterProduct(template, group, row, rows) {
     '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml(seoDescription),
     '{{GROUP_AND_PRODUCT_SPECIFICATIONS}}': specsHtml,
     '{{GROUP_DESCRIPTION_AND_INSTALLATION}}': descriptionHtml,
-    '{{GROUP_RELATED_PRODUCTS_AND_SERIES}}': relatedHtml,
-    '{{DOUBLE_BRACES}}': '{{'
+    '{{GROUP_RELATED_PRODUCTS_AND_SERIES}}': relatedHtml
   };
 
   let html = template;
