@@ -68,7 +68,7 @@ function renderMasterProduct(template, group, row, rows) {
     '</p><p>' + escapeHtml(group.installation) + '</p>';
   const otherProducts = rows.filter(item => item.id !== row.id).map(item => {
     const slug = slugify(item.id);
-    return '<a href="' + slug + '.html">' + escapeHtml(item.name) + '</a>';
+    return '<a href="../../' + escapeHtml(group.catalogPage) + '#item-' + encodeURIComponent(String(item.id)) + '">' + escapeHtml(item.name) + '</a>';
   }).join('\n');
   const relatedHtml = '<section class="other-sizes"><h3>Другие модели Л-16</h3><div class="other-sizes__list">' +
     otherProducts + '</div><div class="other-series"><p>Все модели серии представлены в каталоге.</p><a href="../../' +
