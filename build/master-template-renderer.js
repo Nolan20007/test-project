@@ -64,7 +64,7 @@ function renderMasterProduct(template, group, row, rows) {
 
   const descriptionHtml = '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) +
     '</p><p>' + escapeHtml(group.installation) + '</p>';
-  const otherSizesHtml = '<section class="other-sizes" aria-label="Другие размеры стремянок Л-16"><h2 class="other-sizes__title">Другие размеры стремянок Л-16</h2><div class="other-sizes__links">' + rows.filter(item => item.id !== row.id).map(item => {
+  const otherSizesHtml = '<section class="other-sizes" aria-label="Л-16 (размер, см)"><h2 class="other-sizes__title">Л-16 (размер, см)</h2><div class="other-sizes__links">' + rows.filter(item => item.id !== row.id).map(item => {
     const itemLength = Number(item.length);
     const itemWidth = Math.round(Number(item.width) * 10);
     return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">Л-16 (' + itemLength + ' см), ' + itemWidth + ' мм</a>';
