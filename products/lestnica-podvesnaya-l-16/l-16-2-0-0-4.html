@@ -376,17 +376,7 @@
 </footer>
 
 <!-- Скрипты (год и копирование) -->
-<script>function toggleOtherCategories(button) {
-  const grid = document.getElementById("other-categories-extra");
-  if (!grid) return;
-  const expanded = grid.hidden;
-  grid.hidden = !expanded;
-  button.setAttribute("aria-expanded", String(expanded));
-  const label = button.querySelector(".other-categories__action");
-  if (label) label.textContent = expanded ? "Скрыть категории" : "Показать остальные категории";
-}
-
-
+<script>
     (function () {
         var yearEl = document.getElementById('footer-year');
         if (yearEl) {
@@ -433,7 +423,17 @@ function copyEmailToClipboard(btn) {
 
 <script type="application/json" id="product-gallery-data">[{"label":"Вид 1","src":"../../images/lestnica-podvesnaya-l-16/vid-1.webp","alt":"Лестница подвесная Л-16 — общий вид"},{"label":"Альбом","src":"../../images/lestnica-podvesnaya-l-16/album.webp","alt":"Альбом 6/88 — типовой чертёж лестницы Л-16"}]</script>
 
-<script>
+<script>function toggleOtherCategories(button) {
+  const grid = document.getElementById("other-categories-extra");
+  if (!grid) return;
+  const expanded = grid.hidden;
+  grid.hidden = !expanded;
+  button.setAttribute("aria-expanded", String(expanded));
+  const label = button.querySelector(".other-categories__action");
+  if (label) label.textContent = expanded ? "Скрыть категории" : "Показать остальные категории";
+}
+
+
     const productGallery = JSON.parse(document.getElementById('product-gallery-data').textContent);
     const imgSources = productGallery.map(image => image.src);
 
