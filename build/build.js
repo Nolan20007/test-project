@@ -1428,8 +1428,22 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
-  if (productLinkCount !== 142) {
-    throw new Error('[llms.txt] Ожидалось 142 товарные ссылки, сформировано: ' + productLinkCount);
+  const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
+  if (fs.existsSync(l16ConfigPath)) {
+    const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
+    const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\\uFEFF/, ''));
+    lines.push('### ' + group.catalogTitle);
+    rows.forEach(row => {
+      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const url = SITE_URL + '/products/' + group.productFolder + '/' + slug + '.html';
+      lines.push('- [' + String(row.name || '').trim() + '](' + url + ')');
+      productLinkCount += 1;
+    });
+    lines.push('');
+  }
+
+  if (productLinkCount !== 151) {
+    throw new Error('[llms.txt] Ожидалось 151 товарная ссылка, сформировано: ' + productLinkCount);
   }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;
