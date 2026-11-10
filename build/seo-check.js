@@ -14,7 +14,15 @@ const PRODUCT_CSV_FILES = [
   'data/soedinitelnye-elementy-products.csv',
   'data/lestnica-podvesnaya-l-16.csv',
   'data/lestnica-ts-50-products.csv',
-  'data/lestnica-ts-63-products.csv'
+  'data/lestnica-ts-63-products.csv',
+  'data/vdl-products-22.csv',
+  'data/vdl-products-25.csv',
+  'data/vdl-products-28.csv',
+  'data/kl1-products.csv',
+  'data/kl1-products-28.csv',
+  'data/tmp-902-kruglye.csv',
+  'data/tmp-902-perepadnye.csv',
+  'data/tmp-902-pryamougolnye.csv'
 ];
 
 function parseCsvLine(line) {
@@ -161,7 +169,7 @@ function assertCsvProducts() {
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 367, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 918, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -177,8 +185,8 @@ function assertLlmsProductLinks() {
   const section = content.slice(start + startMarker.length, end);
   assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
   const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
-  assert.strictEqual(links.length, 367, 'llms.txt: expected exactly 367 product links');
-  assert.strictEqual(new Set(links.map(match => match[2])).size, 367, 'llms.txt: duplicate product URLs');
+  assert.strictEqual(links.length, 918, 'llms.txt: expected exactly 367 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 918, 'llms.txt: duplicate product URLs');
   const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
@@ -187,7 +195,7 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 367, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 918, 'llms.txt: unexpected CSV product inventory');
 }
 
 
