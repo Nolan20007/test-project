@@ -525,6 +525,10 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
         modelSlug = id.toLowerCase().replace('c1-', 's1-');
         itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
     }
+    else if (id.startsWith('L-16-')) {
+        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        itemUrl = `products/lestnica-podvesnaya-l-16/${modelSlug}.html`;
+    }
     else if (id.startsWith('NTSS-')) {
         const ntsSlugs = { 'NTSS-S1': 's1-3400', 'NTSS-S2': 's2-4000', 'NTSS-S3': 's3-4600', 'NTSS-S4': 's4-5200' };
         itemUrl = `products/lestnicy-nts-62-91-111/lestnica-${ntsSlugs[id]}.html`;
