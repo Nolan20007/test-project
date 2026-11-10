@@ -32,7 +32,7 @@ function renderMasterProduct(template, group, row, rows) {
   const productName = String(row.name).trim();
   const project = productProject(row, group);
   const mainImage = '../../' + String(row.image || 'images/lestnica-podvesnaya-l-16/vid-mini.webp').replace(/^\/+/, '');
-  const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^\.\.\//, '');
+  const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + String(row.image || 'images/lestnica-podvesnaya-l-16/vid-mini.webp').replace(/^\/+/, '');
   const gallery = group.gallery.map(item => ({
     label: String(item.label),
     src: item.webp,
