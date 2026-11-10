@@ -65,7 +65,8 @@ function renderMasterProduct(template, group, row, rows) {
   const descriptionHtml = '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) +
     '</p><p>' + escapeHtml(group.installation) + '</p>';
   const otherProducts = rows.filter(item => item.id !== row.id).map(item => {
-    return '<a href="../../' + escapeHtml(group.catalogPage) + '#item-' + encodeURIComponent(String(item.id)) + '">' + escapeHtml(item.name) + '</a>';
+    const label = 'Л-16 (' + Number(item.length) + ' см)';
+    return '<a href="../../' + escapeHtml(group.catalogPage) + '#item-' + encodeURIComponent(String(item.id)) + '">' + escapeHtml(label) + '</a>';
   }).join('\n');
   const relatedHtml = '<section class="other-sizes"><h3>Другие модели Л-16</h3><div class="other-sizes__list">' +
     otherProducts + '</div><div class="other-series"><p>Все модели серии представлены в каталоге.</p><a href="../../' +
@@ -127,7 +128,7 @@ function renderMasterProduct(template, group, row, rows) {
       (price > 0 ? price : 0) + ',' + Math.round(lengthCm * 10) + ',' + weight + ')">В корзину</button></div>',
     '{{GROUP_ALBUM_REFERENCE}}': escapeHtml(group.albumReference),
     '{{GROUP_ALBUM_NOTE}}': escapeHtml(group.albumNote),
-    '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml(seoDescription),
+    '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml('Л-16 (' + lengthCm + ' см), ширина ' + widthMm + ' мм, масса ' + weight.toLocaleString('ru-RU') + ' кг.'),
     '{{GROUP_AND_PRODUCT_SPECIFICATIONS}}': specsHtml,
     '{{GROUP_DESCRIPTION_AND_INSTALLATION}}': descriptionHtml,
     '{{GROUP_RELATED_PRODUCTS_AND_SERIES}}': relatedHtml
