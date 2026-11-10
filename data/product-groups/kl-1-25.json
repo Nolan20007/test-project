@@ -1,0 +1,60 @@
+{
+  "id": "kl-1-25",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "kl-1-dlya-kanalizacionnyh-kolodcev",
+  "catalogPage": "kl-1-dlya-kanalizacionnyh-kolodcev.html",
+  "catalogTitle": "Канализационные лестницы КЛ-1",
+  "groupTitle": "Канализационная лестница КЛ-1 (Л-1 / Л-18)",
+  "headerSubtitle": "Исполнение Ø25 мм",
+  "project": "Л-1 / Л-18",
+  "projectFromName": true,
+  "schemaProductType": "Лестница для колодцев",
+  "normativeLabel": "Обозначение серии",
+  "csv": "data/kl1-products.csv",
+  "productIdPrefix": "KL-",
+  "expectedProductCount": 108,
+  "construction": {
+    "type": "Канализационная лестница для колодцев",
+    "availableWidthsMm": [
+      410
+    ],
+    "lengthRangeMm": [
+      1000,
+      11700
+    ]
+  },
+  "description": "Канализационная лестница КЛ-1 (обозначения Л-1 и Л-18) предназначена для установки в канализационных колодцах. Длина, ширина и масса конкретного исполнения указаны в характеристиках товара.",
+  "installation": "Перед монтажом необходимо сверить длину изделия, расположение креплений и условия установки с проектной документацией конкретного сооружения.",
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/kl1/vid-1.webp",
+      "alt": "Канализационная лестница КЛ-1 (Л-1 / Л-18) — общий вид"
+    },
+    {
+      "label": "Вид 2",
+      "webp": "../../images/kl1/album.webp",
+      "alt": "Канализационная лестница КЛ-1 (Л-1 / Л-18) — дополнительный вид"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/kl1/chertezh.webp",
+      "alt": "Канализационная лестница КЛ-1 (Л-1 / Л-18) — чертёж"
+    },
+    {
+      "label": "Фото",
+      "webp": "../../images/kl1/foto-1.webp",
+      "alt": "Канализационная лестница КЛ-1 (Л-1 / Л-18) — фотография"
+    }
+  ],
+  "otherSizesSwitcherTitle": "Другие исполнения",
+  "otherSizesVariantGroupIds": [
+    "kl-1-25",
+    "kl-1-28"
+  ],
+  "otherSizesVariantLabel": "КЛ-1",
+  "otherSizesVariantDimensions": "Ø25 мм",
+  "otherSizesDisplayLimit": 16,
+  "otherSizesLabel": "КЛ-1 Ø25 мм"
+}

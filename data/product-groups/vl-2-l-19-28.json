@@ -1,0 +1,61 @@
+{
+  "id": "vl-2-l-19-28",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "vl-2-l-19-vodoprovodnaya",
+  "catalogPage": "vl-2-l-19-vodoprovodnaya.html",
+  "catalogTitle": "Водопроводные лестницы ВЛ-2",
+  "groupTitle": "Водопроводная лестница ВЛ-2 (Л-2 / Л-19)",
+  "headerSubtitle": "Исполнение Ø28 мм",
+  "project": "Л-2 / Л-19",
+  "projectFromName": true,
+  "schemaProductType": "Лестница для колодцев",
+  "normativeLabel": "Обозначение серии",
+  "csv": "data/vdl-products-28.csv",
+  "productIdPrefix": "VL-",
+  "expectedProductCount": 108,
+  "construction": {
+    "type": "Водопроводная лестница для колодцев",
+    "availableWidthsMm": [
+      424
+    ],
+    "lengthRangeMm": [
+      1000,
+      11700
+    ]
+  },
+  "description": "Водопроводная лестница ВЛ-2 (обозначения Л-2 и Л-19) предназначена для установки в водопроводных колодцах. Длина, ширина и масса конкретного исполнения указаны в характеристиках товара.",
+  "installation": "Перед монтажом необходимо сверить длину изделия, расположение креплений и условия установки с проектной документацией конкретного сооружения.",
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/vdl/vid-1.webp",
+      "alt": "Водопроводная лестница ВЛ-2 (Л-2 / Л-19) — общий вид"
+    },
+    {
+      "label": "Вид 2",
+      "webp": "../../images/vdl/vid-2.webp",
+      "alt": "Водопроводная лестница ВЛ-2 (Л-2 / Л-19) — дополнительный вид"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/vdl/chertezh.webp",
+      "alt": "Водопроводная лестница ВЛ-2 (Л-2 / Л-19) — чертёж"
+    },
+    {
+      "label": "Фото",
+      "webp": "../../images/vdl/foto-1.webp",
+      "alt": "Водопроводная лестница ВЛ-2 (Л-2 / Л-19) — фотография"
+    }
+  ],
+  "otherSizesSwitcherTitle": "Другие исполнения",
+  "otherSizesVariantGroupIds": [
+    "vl-2-l-19-22",
+    "vl-2-l-19-25",
+    "vl-2-l-19-28"
+  ],
+  "otherSizesVariantLabel": "ВЛ-2",
+  "otherSizesVariantDimensions": "Ø28 мм",
+  "otherSizesDisplayLimit": 16,
+  "otherSizesLabel": "ВЛ-2 Ø28 мм"
+}

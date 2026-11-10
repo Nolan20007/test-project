@@ -533,6 +533,18 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
         modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         itemUrl = `products/lestnicy-teplovyh-setej-ts/${modelSlug}.html`;
     }
+    else if (id.startsWith('VL-')) {
+        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        itemUrl = `products/vl-2-l-19-vodoprovodnaya/${modelSlug}.html`;
+    }
+    else if (id.startsWith('KL-')) {
+        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        itemUrl = `products/kl-1-dlya-kanalizacionnyh-kolodcev/${modelSlug}.html`;
+    }
+    else if (id.startsWith('Ст.')) {
+        modelSlug = id.toLowerCase().replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
+        itemUrl = `products/tmp-902/${modelSlug}.html`;
+    }
     else if (id.startsWith('NTSS-')) {
         const ntsSlugs = { 'NTSS-S1': 's1-3400', 'NTSS-S2': 's2-4000', 'NTSS-S3': 's3-4600', 'NTSS-S4': 's4-5200' };
         itemUrl = `products/lestnicy-nts-62-91-111/lestnica-${ntsSlugs[id]}.html`;
@@ -1401,7 +1413,7 @@ function buildProductPages() {
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
       const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups);
-      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
       const relativePath = 'products/' + group.productFolder + '/' + slug + '.html';
       const outPath = path.resolve(__dirname, '..', relativePath);
       fs.writeFileSync(outPath, html, 'utf8');
@@ -1468,7 +1480,7 @@ function updateLlmsProductLinks() {
     const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     lines.push('### ' + group.catalogTitle);
     rows.forEach(row => {
-      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
       const url = SITE_URL + '/products/' + group.productFolder + '/' + slug + '.html';
       lines.push('- [' + String(row.name || '').trim() + '](' + url + ')');
       productLinkCount += 1;

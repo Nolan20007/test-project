@@ -1,0 +1,54 @@
+{
+  "id": "tmp-902-kruglye",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "tmp-902",
+  "catalogPage": "tmp-902.html",
+  "catalogTitle": "Стремянки ТМП 902-09-46.88",
+  "groupTitle": "Стремянка для круглых колодцев ТМП 902-09-46.88",
+  "headerSubtitle": "Исполнение для круглых колодцев",
+  "project": "ТМП 902-09-46.88",
+  "projectFromName": false,
+  "schemaProductType": "Стремянка для колодцев",
+  "normativeLabel": "Обозначение серии",
+  "csv": "data/tmp-902-kruglye.csv",
+  "productIdPrefix": "Ст.",
+  "expectedProductCount": 1,
+  "construction": {
+    "type": "Стремянка для круглых колодцев ТМП 902-09-46.88",
+    "availableWidthsMm": [
+      500
+    ],
+    "lengthRangeMm": [
+      1500,
+      1500
+    ]
+  },
+  "description": "Стремянка предназначена для круглых колодцев. Длина, ширина и масса исполнения приведены в характеристиках товара.",
+  "installation": "Перед монтажом необходимо сверить длину изделия, расположение креплений и условия установки с проектной документацией конкретного сооружения.",
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/tmp-902/vid-1.webp",
+      "alt": "Стремянка для круглых колодцев ТМП 902-09-46.88 — общий вид"
+    },
+    {
+      "label": "Вид 2",
+      "webp": "../../images/tmp-902/vid-2.webp",
+      "alt": "Стремянка для круглых колодцев ТМП 902-09-46.88 — дополнительный вид"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/tmp-902/chertezh.webp",
+      "alt": "Стремянка для круглых колодцев ТМП 902-09-46.88 — чертёж"
+    },
+    {
+      "label": "Фото",
+      "webp": "../../images/tmp-902/foto-1.webp",
+      "alt": "Стремянка для круглых колодцев ТМП 902-09-46.88 — фотография"
+    }
+  ],
+  "otherSizesTitle": "Другие размеры",
+  "otherSizesLabel": "ТМП 902",
+  "otherSizesLimit": 16
+}
