@@ -30,9 +30,20 @@ const group = JSON.parse(fs.readFileSync(path.join(root, 'data/product-groups/le
 const template = fs.readFileSync(path.join(root, 'templates/master-template.html'), 'utf8');
 const rows = parseCSV(fs.readFileSync(path.join(root, group.csv), 'utf8').replace(/^\uFEFF/, ''));
 const selected = rows[0];
+const csvIds = rows.map(row => row.id);
+const missingIds = group.productIds.filter(id => !csvIds.includes(id));
+const extraIds = csvIds.filter(id => !group.productIds.includes(id));
+if (missingIds.length || extraIds.length) throw new Error('CSV/config product IDs mismatch.');
+for (const image of group.gallery) {
+  for (const variant of [image.webp, image.png].filter(Boolean)) {
+    const imagePath = path.resolve(root, 'products', group.productFolder, variant);
+    if (!fs.existsSync(imagePath)) throw new Error('Missing gallery image: ' + variant);
+  }
+}
+if (!fs.existsSync(path.resolve(root, selected.image))) throw new Error('Missing product main image: ' + selected.image);
 let html = renderMasterProduct(template, group, selected, rows);
 
-function injectInclude(markup, startMarker, endMarker, includePath) {
+function injectInclude(startMarker, endMarker, includePath) {
   const include = fs.readFileSync(path.join(root, includePath), 'utf8').replace(
     /(href|src)="(?!\/|#|[a-z]+:|\/\/|\.\.\/)([^"]+)"/gi,
     (match, attr, url) => attr + '="../../' + url + '"'
@@ -43,9 +54,9 @@ function injectInclude(markup, startMarker, endMarker, includePath) {
   html = html.slice(0, start + startMarker.length) + '\n' + include + '\n' + html.slice(end);
 }
 
-injectInclude(html, '<!-- NAV_START -->', '<!-- NAV_END -->', 'includes/nav.html');
-injectInclude(html, '<!-- CTA_START -->', '<!-- CTA_END -->', 'includes/cta.html');
-injectInclude(html, '<!-- FOOTER_START -->', '<!-- FOOTER_END -->', 'includes/footer.html');
+injectInclude('<!-- NAV_START -->', '<!-- NAV_END -->', 'includes/nav.html');
+injectInclude('<!-- CTA_START -->', '<!-- CTA_END -->', 'includes/cta.html');
+injectInclude('<!-- FOOTER_START -->', '<!-- FOOTER_END -->', 'includes/footer.html');
 
 if (/\{\{[A-Z0-9_]+\}\}/.test(html)) throw new Error('Preview still contains unresolved template variables.');
 const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'tmp/l16-master-preview.html');
