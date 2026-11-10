@@ -38,7 +38,7 @@ function renderMasterProduct(template, group, row, rows) {
   }));
   if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
   const mainImage = gallery[0].src;
-  const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^\.\.\//, '');
+  const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^(\.\.\/)+/, '');
   const galleryButtons = gallery.map((item, index) =>
     '<button type="button" class="image-toggle__btn' + (index === 0 ? ' active' : '') +
     '" onclick="event.stopPropagation(); changeImage(' + index + ')">' + escapeHtml(item.label) + '</button>'
