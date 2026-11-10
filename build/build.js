@@ -1352,6 +1352,7 @@ function buildProductPages() {
     });
   });
   // Generate the L-16 family from its group config and CSV using the master template.
+  // These detail pages are included in sitemap.xml and llms.txt below.
   const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
   if (fs.existsSync(l16ConfigPath)) {
     const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
