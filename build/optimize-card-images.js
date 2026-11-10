@@ -7,7 +7,7 @@ const CARD_IMAGES = [
   ['images/ss1/vid-1.webp', 'images/ss1/vid-card.webp'],
   ['images/ss2/vid-1.webp', 'images/ss2/vid-card.webp'],
   ['images/tmp-902/vid-1.webp', 'images/tmp-902/vid-card.webp'],
-  ['images/tl/vid-1.webp', 'images/tl/vid-card.webp'],
+  ['images/lestnicy-teplovyh-setej-ts/vid-1.webp', 'images/lestnicy-teplovyh-setej-ts/vid-card.webp'],
   ['images/ssg1/vid-1.webp', 'images/ssg1/vid-card.webp'],
   ['images/l-3-sk-2201-88/vid-1.webp', 'images/l-3-sk-2201-88/vid-card.webp'],
   ['images/vdl/vid-1.webp', 'images/vdl/vid-card.webp'],
