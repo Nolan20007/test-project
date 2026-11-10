@@ -163,7 +163,7 @@
                     <div class="mp-usp-list">
                         <div class="mp-usp-item"><b>Доставка</b>По всей России</div>
                         <div class="mp-usp-item"><b>Гарантия</b>От производителя</div>
-                        <div class="mp-usp-item"><b>{{GROUP_PROJECT}} Альбом V</b>полное соответствие</div>
+                        <div class="mp-usp-item"><b>{{GROUP_ALBUM_REFERENCE}}</b>{{GROUP_ALBUM_NOTE}}</div>
                     </div>
 
                     <p class="mp-short-desc">{{PRODUCT_SHORT_DESCRIPTION}}</p>
@@ -232,9 +232,9 @@
 </div>
 
 <script>
-    const imgSources = {{PRODUCT_IMAGE_SOURCES_JSON}};
+    const imgSources = ["{{PRODUCT_IMAGE_URL_1}}", "{{PRODUCT_IMAGE_URL_2}}", "{{PRODUCT_IMAGE_URL_3}}", "{{PRODUCT_IMAGE_URL_4}}", "{{PRODUCT_IMAGE_URL_5}}", "{{PRODUCT_IMAGE_URL_6}}", "{{PRODUCT_IMAGE_URL_7}}"];
 
-    const imageAltTexts = {{PRODUCT_IMAGE_ALT_TEXTS_JSON}};
+    const imageAltTexts = ["{{PRODUCT_IMAGE_ALT_1}}", "{{PRODUCT_IMAGE_ALT_2}}", "{{PRODUCT_IMAGE_ALT_3}}", "{{PRODUCT_IMAGE_ALT_4}}", "{{PRODUCT_IMAGE_ALT_5}}", "{{PRODUCT_IMAGE_ALT_6}}", "{{PRODUCT_IMAGE_ALT_7}}"];
 
     function changeImage(src, index) {
         const mainImage = document.getElementById('mainImage');
@@ -269,10 +269,15 @@
     }
 
     function openTab(evt, tabName) {
+        const target = document.getElementById(tabName);
+        if (!target) return;
+
         document.querySelectorAll('.mp-tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.mp-tab').forEach(el => el.classList.remove('active'));
-        document.getElementById(tabName).classList.add('active');
-        evt.currentTarget.classList.add('active');
+
+        target.classList.add('active');
+        const trigger = evt && (evt.currentTarget || evt.target);
+        if (trigger) trigger.classList.add('active');
     }
 </script>
 
