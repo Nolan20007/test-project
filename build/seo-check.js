@@ -11,7 +11,8 @@ const PRODUCT_CSV_FILES = [
   'data/nts-62-91-111a-products.csv',
   'data/ssg1-products.csv',
   'data/skoby-dlya-kolodcev-products.csv',
-  'data/soedinitelnye-elementy-products.csv'
+  'data/soedinitelnye-elementy-products.csv',
+  'data/lestnica-podvesnaya-l-16.csv'
 ];
 
 function parseCsvLine(line) {
@@ -158,7 +159,7 @@ function assertCsvProducts() {
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 142, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 151, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -174,8 +175,8 @@ function assertLlmsProductLinks() {
   const section = content.slice(start + startMarker.length, end);
   assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
   const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
-  assert.strictEqual(links.length, 142, 'llms.txt: expected exactly 142 product links');
-  assert.strictEqual(new Set(links.map(match => match[2])).size, 142, 'llms.txt: duplicate product URLs');
+  assert.strictEqual(links.length, 151, 'llms.txt: expected exactly 151 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 151, 'llms.txt: duplicate product URLs');
   const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
@@ -184,7 +185,7 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 142, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 151, 'llms.txt: unexpected CSV product inventory');
 }
 
 

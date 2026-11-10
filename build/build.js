@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { renderMasterProduct } = require('./master-template-renderer');
 
 const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 // Individual product pages are generated from templates, including the SSG series.
@@ -1350,6 +1351,31 @@ function buildProductPages() {
       createdPages.push(`products/${cat.folder}/${p.slug}.html`);
     });
   });
+  // Generate the L-16 family from its group config and CSV using the master template.
+  // These detail pages are included in sitemap.xml and llms.txt below.
+  const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
+  if (fs.existsSync(l16ConfigPath)) {
+    const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
+    const groupRows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
+    const csvIds = groupRows.map(row => row.id);
+    const missingIds = group.productIds.filter(id => !csvIds.includes(id));
+    const extraIds = csvIds.filter(id => !group.productIds.includes(id));
+    if (missingIds.length || extraIds.length) {
+      throw new Error('[product pages] L-16 CSV/config IDs mismatch. Missing: ' + missingIds.join(', ') + '; extra: ' + extraIds.join(', '));
+    }
+    const groupTemplate = fs.readFileSync(path.resolve(__dirname, '..', group.template), 'utf8');
+    const groupOutDir = path.resolve(__dirname, '..', 'products', group.productFolder);
+    if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
+    groupRows.forEach(row => {
+      const html = renderMasterProduct(groupTemplate, group, row, groupRows);
+      const relativePath = 'products/' + group.productFolder + '/' + row.id.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.html';
+      const outPath = path.resolve(__dirname, '..', relativePath);
+      fs.writeFileSync(outPath, html, 'utf8');
+      console.log('  ✅ ' + relativePath + ' создан');
+      createdPages.push(relativePath);
+    });
+  }
+
   // Add the shared image viewer to every generated product page so future catalog
   // pages inherit the same click-to-zoom behavior automatically.
   createdPages.forEach(relativePath => {
@@ -1403,8 +1429,22 @@ function updateLlmsProductLinks() {
     });
     lines.push('');
   });
-  if (productLinkCount !== 142) {
-    throw new Error('[llms.txt] Ожидалось 142 товарные ссылки, сформировано: ' + productLinkCount);
+  const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
+  if (fs.existsSync(l16ConfigPath)) {
+    const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
+    const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
+    lines.push('### ' + group.catalogTitle);
+    rows.forEach(row => {
+      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const url = SITE_URL + '/products/' + group.productFolder + '/' + slug + '.html';
+      lines.push('- [' + String(row.name || '').trim() + '](' + url + ')');
+      productLinkCount += 1;
+    });
+    lines.push('');
+  }
+
+  if (productLinkCount !== 151) {
+    throw new Error('[llms.txt] Ожидалось 151 товарная ссылка, сформировано: ' + productLinkCount);
   }
 
   const replacement = startMarker + '\n' + lines.join('\n').trimEnd() + '\n' + endMarker;

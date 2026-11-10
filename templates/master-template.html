@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <!--
-  MASTER TEMPLATE — DESIGN DRAFT ONLY
-  This file is intentionally not connected to build/build.js or any product-group template.
-  Slots in {{DOUBLE_BRACES}} are documentation placeholders, not active build variables.
-  Shared layout/styles/scripts belong here; group and product content belongs in separate templates/data.
+  MASTER PRODUCT TEMPLATE
+  Shared layout, styles and interactions; group and product data are supplied by the renderer.
 -->
 <html lang="ru">
 <head>
@@ -20,13 +18,13 @@
     <meta name="description" content="{{PRODUCT_SEO_DESCRIPTION}}">
     <meta name="robots" content="index, follow">
     
-    <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/products/tmp-902/{{PRODUCT_SLUG}}.html" />
+    <link rel="canonical" href="https://stremyanki-dlya-kolodcev.ru/products/{{GROUP_PRODUCT_FOLDER}}/{{PRODUCT_SLUG}}.html" />
 
     <meta property="og:type" content="product">
     <meta property="og:title" content="{{PRODUCT_SEO_TITLE}}">
     <meta property="og:description" content="{{PRODUCT_SEO_DESCRIPTION}}">
     <meta property="og:image" content="{{PRODUCT_MAIN_IMAGE_URL}}">
-    <meta property="og:url" content="https://stremyanki-dlya-kolodcev.ru/products/tmp-902/{{PRODUCT_SLUG}}.html">
+    <meta property="og:url" content="https://stremyanki-dlya-kolodcev.ru/products/{{GROUP_PRODUCT_FOLDER}}/{{PRODUCT_SLUG}}.html">
 
     <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
@@ -143,7 +141,7 @@
                 <div class="mp-gallery">
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
                         <img id="mainImage" src="{{PRODUCT_MAIN_IMAGE}}" alt="{{PRODUCT_NAME}} — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
-                        <div class="image-toggle">
+                        <div class="image-toggle" id="product-gallery-controls">
                             {{PRODUCT_GALLERY_CONTROLS}}
                         </div>
                     </div>
@@ -220,37 +218,32 @@
         <button class="close-btn" onclick="closeLightbox()">&times;</button>
         <img id="lightbox-img" src="" alt="Просмотр">
         <div class="modal-nav" id="lightbox-nav">
-            <button onclick="changeLightboxImage(0)" class="active">Вид 1</button>
-            <button onclick="changeLightboxImage(1)">Вид 2</button>
-            <button onclick="changeLightboxImage(2)">Вид 3</button>
-            <button onclick="changeLightboxImage(3)">Фото 1</button>
-            <button onclick="changeLightboxImage(4)">Фото 2</button>
-            <button onclick="changeLightboxImage(5)">Альбом</button>
-            <button onclick="changeLightboxImage(6)">Чертёж</button>
+            {{PRODUCT_LIGHTBOX_CONTROLS}}
         </div>
     </div>
 </div>
 
+<script type="application/json" id="product-gallery-data">{{PRODUCT_GALLERY_JSON}}</script>
+
 <script>
-    const imgSources = ["{{PRODUCT_IMAGE_URL_1}}", "{{PRODUCT_IMAGE_URL_2}}", "{{PRODUCT_IMAGE_URL_3}}", "{{PRODUCT_IMAGE_URL_4}}", "{{PRODUCT_IMAGE_URL_5}}", "{{PRODUCT_IMAGE_URL_6}}", "{{PRODUCT_IMAGE_URL_7}}"];
+    const productGallery = JSON.parse(document.getElementById('product-gallery-data').textContent);
+    const imgSources = productGallery.map(image => image.src);
 
-    const imageAltTexts = ["{{PRODUCT_IMAGE_ALT_1}}", "{{PRODUCT_IMAGE_ALT_2}}", "{{PRODUCT_IMAGE_ALT_3}}", "{{PRODUCT_IMAGE_ALT_4}}", "{{PRODUCT_IMAGE_ALT_5}}", "{{PRODUCT_IMAGE_ALT_6}}", "{{PRODUCT_IMAGE_ALT_7}}"];
-
-    function changeImage(src, index) {
+    function changeImage(index) {
+        const image = productGallery[index];
+        if (!image) return;
         const mainImage = document.getElementById('mainImage');
-        mainImage.src = src;
-        mainImage.alt = imageAltTexts[index] || '{{PRODUCT_NAME}}';
-        document.querySelectorAll('.image-toggle__btn').forEach((b, i) => {
-            if (i === index) b.classList.add('active'); else b.classList.remove('active');
+        mainImage.src = image.src;
+        mainImage.alt = image.alt || '{{PRODUCT_NAME}}';
+        document.querySelectorAll('.image-toggle__btn').forEach((button, buttonIndex) => {
+            button.classList.toggle('active', buttonIndex === index);
         });
     }
 
     function openLightbox(index) {
         const mainImage = document.getElementById('mainImage');
         const currentSource = new URL(mainImage.currentSrc || mainImage.src, document.baseURI).pathname;
-        const currentIndex = imgSources.findIndex(src =>
-            new URL(src, document.baseURI).pathname === currentSource
-        );
+        const currentIndex = imgSources.findIndex(src => new URL(src, document.baseURI).pathname === currentSource);
         document.getElementById('lightbox').style.display = 'block';
         changeLightboxImage(currentIndex >= 0 ? currentIndex : (Number.isInteger(index) ? index : 0));
     }
@@ -260,11 +253,13 @@
     }
 
     function changeLightboxImage(index) {
+        const image = productGallery[index];
+        if (!image) return;
         const lightboxImage = document.getElementById('lightbox-img');
-        lightboxImage.src = imgSources[index];
-        lightboxImage.alt = imageAltTexts[index] || '{{PRODUCT_NAME}}';
-        document.querySelectorAll('#lightbox-nav button').forEach((b, i) => {
-            if (i === index) b.classList.add('active'); else b.classList.remove('active');
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt || '{{PRODUCT_NAME}}';
+        document.querySelectorAll('#lightbox-nav button').forEach((button, buttonIndex) => {
+            button.classList.toggle('active', buttonIndex === index);
         });
     }
 
