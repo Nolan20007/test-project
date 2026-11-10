@@ -16,6 +16,7 @@ on:
       - 'index.html'
       - 'templates/**.html'
       - 'includes/**.html'
+      - 'products/lestnica-podvesnaya-l-16/**.html'
   pull_request:
     paths:
       - 'data/**.csv'
@@ -28,6 +29,7 @@ on:
       - 'index.html'
       - 'templates/**.html'
       - 'includes/**.html'
+      - 'products/lestnica-podvesnaya-l-16/**.html'
   workflow_dispatch:
 
 # Для main важнее всего собрать последнюю версию, а не накапливать устаревшие запуски.
