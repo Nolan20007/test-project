@@ -1431,7 +1431,7 @@ function updateLlmsProductLinks() {
   const l16ConfigPath = path.resolve(__dirname, '..', 'data/product-groups/lestnica-podvesnaya-l-16.json');
   if (fs.existsSync(l16ConfigPath)) {
     const group = JSON.parse(fs.readFileSync(l16ConfigPath, 'utf8'));
-    const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\\uFEFF/, ''));
+    const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     lines.push('### ' + group.catalogTitle);
     rows.forEach(row => {
       const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
