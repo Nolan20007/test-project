@@ -120,7 +120,7 @@ function renderMasterProduct(template, group, row, rows) {
     '{{PRODUCT_LENGTH_MM}}': String(Math.round(lengthCm * 10)),
     '{{PRODUCT_PRICE}}': price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу',
     '{{PRODUCT_BUY_CONTROLS}}': '<div class="mp-buy-controls"><button type="button" class="mp-btn-buy" onclick="addItemToCart(' +
-      JSON.stringify(String(row.id)) + ',' + JSON.stringify(productName) + ',1,' + (price > 0 ? price : 0) + ',' +
+      escapeHtml(JSON.stringify(String(row.id))) + ',' + escapeHtml(JSON.stringify(productName)) + ',1,' + (price > 0 ? price : 0) + ',' +
       Math.round(lengthCm * 10) + ',' + weight + ')">В корзину</button></div>',
     '{{GROUP_ALBUM_REFERENCE}}': escapeHtml(group.albumReference),
     '{{GROUP_ALBUM_NOTE}}': escapeHtml(group.albumNote),
