@@ -20,6 +20,7 @@ on:
     paths:
       - 'data/**.csv'
       - 'build/build.js'
+      - 'build/master-template-renderer.js'
       - 'build/download-fonts.js'
       - 'build/optimize-card-images.js'
       - '.github/workflows/**'
