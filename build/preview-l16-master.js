@@ -30,7 +30,24 @@ const group = JSON.parse(fs.readFileSync(path.join(root, 'data/product-groups/le
 const template = fs.readFileSync(path.join(root, 'templates/master-template.html'), 'utf8');
 const rows = parseCSV(fs.readFileSync(path.join(root, group.csv), 'utf8').replace(/^\uFEFF/, ''));
 const selected = rows[0];
-const html = renderMasterProduct(template, group, selected, rows);
+let html = renderMasterProduct(template, group, selected, rows);
+
+function injectInclude(markup, startMarker, endMarker, includePath) {
+  const include = fs.readFileSync(path.join(root, includePath), 'utf8').replace(
+    /(href|src)="(?!\/|#|[a-z]+:|\/\/|\.\.\/)([^"]+)"/gi,
+    (match, attr, url) => attr + '="../../' + url + '"'
+  );
+  const start = html.indexOf(startMarker);
+  const end = html.indexOf(endMarker);
+  if (start < 0 || end < start) throw new Error('Missing include markers: ' + startMarker);
+  html = html.slice(0, start + startMarker.length) + '\n' + include + '\n' + html.slice(end);
+}
+
+injectInclude(html, '<!-- NAV_START -->', '<!-- NAV_END -->', 'includes/nav.html');
+injectInclude(html, '<!-- CTA_START -->', '<!-- CTA_END -->', 'includes/cta.html');
+injectInclude(html, '<!-- FOOTER_START -->', '<!-- FOOTER_END -->', 'includes/footer.html');
+
+if (/\{\{[A-Z0-9_]+\}\}/.test(html)) throw new Error('Preview still contains unresolved template variables.');
 const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'tmp/l16-master-preview.html');
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, html, 'utf8');
