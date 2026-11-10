@@ -73,7 +73,7 @@ function renderMasterProduct(template, group, row, rows) {
 
   const seoTitle = productName + ' — купить с доставкой по России';
   const seoDescription = productName + '. Подвесная лестница Л-16 по ' + project +
-    '. Ширина ' + widthMm + ' мм, масса ' + weight + ' кг. Цена ' + (price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.';
+    '. Ширина ' + widthMm + ' мм, масса ' + weight.toFixed(2).replace('.', ',') + ' кг. Цена ' + (price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.';
   const offer = price > 0 ? ',\n      "offers": { "@type": "Offer", "priceCurrency": "RUB", "price": ' + price +
     ', "availability": "https://schema.org/InStock", "url": "https://stremyanki-dlya-kolodcev.ru/products/' +
     group.productFolder + '/' + productSlug + '.html" }' : '';
