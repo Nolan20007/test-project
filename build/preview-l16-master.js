@@ -74,7 +74,7 @@ if (!/src=["']\.\.\/\.\.\/js\/analytics\.js["']/i.test(html)) {
 }
 
 if (/\{\{[A-Z0-9_]+\}\}/.test(html)) throw new Error('Preview still contains unresolved template variables.');
-const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'tmp/l16-master-preview.html');
+const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'products/lestnica-podvesnaya-l-16/l-16-2-5-0-3.html');
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, html, 'utf8');
 console.log('Master template preview created: ' + output);
