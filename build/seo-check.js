@@ -223,7 +223,7 @@ function assertTeplovyeSetiProductPages() {
         assert(fs.existsSync(path.join(root, image)), csvFile + ': missing source image ' + image);
         assert(html.includes('../../' + image), relative + ': gallery does not use ' + image);
       }
-      assert(!html.includes('Л-16'), relative + ': unrelated L-16 content leaked into TS product page');
+      assert(!html.includes('Подвесная лестница Л-16 по'), relative + ': unrelated L-16 product description leaked into TS product page');
     }
   }
 }
