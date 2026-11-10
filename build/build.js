@@ -288,9 +288,9 @@ const PAGES = [
   { html: 'soedinitelnye-elementy.html', tables: [{ id: 'nomenclature-container', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }] },
   { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
-  { html: 'l-16-dlya-teplovyh-setej.html', tables: [
-      { id: 'nomenclature-50', csv: 'data/tl-products.csv' },
-      { id: 'nomenclature-63', csv: 'data/tl-63-products.csv' }
+  { html: 'lestnicy-teplovyh-setej-ts.html', tables: [
+      { id: 'nomenclature-50', csv: 'data/lestnica-ts-50-products.csv' },
+      { id: 'nomenclature-63', csv: 'data/lestnica-ts-63-products.csv' }
   ]},
   { html: 'tmp-902.html', tables: [
       { id: 'nomenclature-kruglye', csv: 'data/tmp-902-kruglye.csv' },
@@ -310,8 +310,8 @@ const PAGES = [
       { id: 'nomenclature-tmp-902-kruglye',       csv: 'data/tmp-902-kruglye.csv' },
       { id: 'nomenclature-tmp-902-pryamougolnye', csv: 'data/tmp-902-pryamougolnye.csv' },
       { id: 'nomenclature-tmp-902-perepadnye',    csv: 'data/tmp-902-perepadnye.csv' },
-      { id: 'nomenclature-tl-50',                 csv: 'data/tl-products.csv' },
-      { id: 'nomenclature-tl-63',                 csv: 'data/tl-63-products.csv' },
+      { id: 'nomenclature-tl-50',                 csv: 'data/lestnica-ts-50-products.csv' },
+      { id: 'nomenclature-tl-63',                 csv: 'data/lestnica-ts-63-products.csv' },
       { id: 'nomenclature-ssg1',                  csv: 'data/ssg1-products.csv' },
       { id: 'nomenclature-vl2-22',                csv: 'data/vdl-products-22.csv' },
       { id: 'nomenclature-vl2-25',                csv: 'data/vdl-products-25.csv' },
@@ -330,8 +330,8 @@ const FEED_SOURCES = [
   { csv: 'data/l-3-sk-2201-88-products.csv',  page: 'l-3-sk-2201-88.html',  bigImage: 'images/l-3-sk-2201-88/vid-1.png', typePrefix: 'Лестница Л-3 СК 2201-88-36' },
   { csv: 'data/l-19-products.csv',            page: 'l-19.html',            bigImage: 'images/l-19/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
-  { csv: 'data/tl-products.csv',              page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
-  { csv: 'data/tl-63-products.csv',           page: 'l-16-dlya-teplovyh-setej.html', bigImage: 'images/tl/vid-1.png', typePrefix: 'Стремянка, лестница тепловых сетей' },
+  { csv: 'data/lestnica-ts-50-products.csv',              page: 'lestnicy-teplovyh-setej-ts.html', bigImage: 'images/lestnicy-teplovyh-setej-ts/vid-1.png', typePrefix: 'Лестница тепловых сетей ТС' },
+  { csv: 'data/lestnica-ts-63-products.csv',           page: 'lestnicy-teplovyh-setej-ts.html', bigImage: 'images/lestnicy-teplovyh-setej-ts/vid-1.png', typePrefix: 'Лестница тепловых сетей ТС' },
   { csv: 'data/vdl-products-22.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products-25.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/vdl-products-28.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
@@ -811,7 +811,7 @@ const ALL_HTML_FILES = [
   'gost-trebovaniya-k-lestnicam.html',
   'kak-vybrat-stremyanku.html',
   'kl-1-dlya-kanalizacionnyh-kolodcev.html',
-  'l-16-dlya-teplovyh-setej.html',
+  'lestnicy-teplovyh-setej-ts.html',
   'nts-62-91-111b.html',
   'nts-62-91-111.html',
   'nts-62-91-111a.html',
