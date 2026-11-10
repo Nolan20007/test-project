@@ -264,6 +264,7 @@ const CATEGORIES_TO_GENERATE = [
 
 const PAGES = [
   { html: 'ss1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss1-products.csv' }] },
+  { html: 'lestnica-podvesnaya-l-16.html', tables: [{ id: 'nomenclature-container', csv: 'data/lestnica-podvesnaya-l-16.csv' }] },
   { html: 'ss2.html', tables: [{ id: 'nomenclature-container', csv: 'data/ss2-products.csv' }] },
   
   { html: 'l-17-000SB.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-17-000SB-products.csv' }] },
@@ -489,11 +490,12 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
 
   const hasPricedProducts = products.some(p => Number(p.price) > 0);
   const hasAvailability = products.some(p => String(p.available || '').trim());
+  const hasStepCount = products.some(p => String(p.step_count || '').trim() !== '');
   const headers = Array.isArray(dimensionHeaders) && dimensionHeaders.length === 2
     ? dimensionHeaders
     : ['Длина, см', 'Ширина, см'];
   let html = `<table class="nomenclature-table"><thead><tr>
-    <th>Фото</th><th>Изделие</th><th>${esc(headers[0])}</th><th>${esc(headers[1])}</th>
+    <th>Фото</th><th>Изделие</th><th>${esc(headers[0])}</th><th>${esc(headers[1])}</th>${hasStepCount ? '<th>Ступени, шт</th>' : ''}
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasAvailability ? '<th>Наличие</th>' : ''}${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
@@ -561,9 +563,10 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
       </div></td>
       <td><button type="button" class="cart-button" data-item-id="${id}" data-item-name="${name}"
             data-item-length="${length}" data-item-weight="${weight}">В корзину</button></td>` : '<td>—</td><td>—</td>') : '';
+    const stepsCell = hasStepCount ? `<td>${esc(p.step_count || '—')}</td>` : '';
     html += `<tr id="${anchor}"${hiddenStyle}>
       <td class="product-thumb-cell">${imageHtml}</td>
-      <td>${nameHtml}</td><td>${length}</td><td>${width}</td><td>${weight}</td>
+      <td>${nameHtml}</td><td>${length}</td><td>${width}</td>${stepsCell}<td>${weight}</td>
       <td>${priceCell}</td><td>${unit}</td>${hasAvailability ? `<td>${availabilityCell}</td>` : ''}${orderCells}
     </tr>`;
   });
@@ -812,6 +815,7 @@ const ALL_HTML_FILES = [
   'nts-62-91-111b.html',
   'nts-62-91-111.html',
   'nts-62-91-111a.html',
+  'lestnica-podvesnaya-l-16.html',
   'l-17-000SB.html',
   'l-3-sk-2201-88.html',
   'l-19.html',
