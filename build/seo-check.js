@@ -224,7 +224,7 @@ function assertTeplovyeSetiProductPages() {
         const variantId = 'lestnicy-teplovyh-setej-ts-' + variant;
         const panel = html.match(new RegExp('<div class="other-sizes__variant-panel"[^>]*data-variant-id="' + variantId + '"[\\s\\S]*?<\\/div>'));
         assert(panel, relative + ': missing related-size panel for TS-' + variant);
-        const expectedLinks = variant === '50' ? 107 : 108;
+        const expectedLinks = variant === series ? 107 : 108;
         const panelStart = html.indexOf('data-variant-id="' + variantId + '"');
         const nextPanel = html.indexOf('class="other-sizes__variant-panel"', panelStart + 1);
         const panelHtml = html.slice(panelStart, nextPanel === -1 ? html.indexOf('</section>', panelStart) : nextPanel);
