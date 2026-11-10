@@ -92,28 +92,17 @@
         .mp-specs-table td { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; line-height: 1.4; }
         .mp-specs-table td:first-child { color: #666; width: 45%; }
         .mp-specs-table td:last-child { font-weight: 500; color: #222; }
-        .other-sizes { background: #fff; padding: 20px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .other-sizes h3 { margin-top: 0; color: #222; font-size: 18px; margin-bottom: 15px; }
-        .other-sizes__list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .other-sizes__list a { display: inline-block; padding: 8px 15px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; color: #333; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 14px; }
-        .other-sizes__list a:hover { border-color: var(--primary-color); color: var(--primary-color); background: #fff; }
-        .other-series { margin-top: 14px; padding: 18px 24px; background: #f4f7fb; border: 1px solid #dce5f0; border-radius: 12px; }
-        .other-series p { margin: 0; color: #333; line-height: 1.5; }
-        .other-series a { display: inline-block; margin-top: 8px; color: var(--primary-color); font-weight: 600; text-decoration: underline; }
 
         .other-categories { margin-top: 12px; border: 1px solid #dce5f0; border-radius: 10px; background: #fff; overflow: hidden; }
-        .other-categories__more { border-top: 1px solid #edf1f5; }
-        .other-categories__more summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; color: #222; cursor: pointer; list-style: none; font-size: 15px; font-weight: 600; }
-        .other-categories__more summary::-webkit-details-marker { display: none; }
-        .other-categories__more summary::after { content: "⌄"; color: var(--primary-color); font-size: 18px; line-height: 1; transition: transform .2s; }
-        .other-categories__more[open] summary::after { transform: rotate(180deg); }
-        .other-categories__more summary:hover { background: #f7fafc; }
-        .other-categories__action { margin-left: auto; color: var(--primary-color); font-size: 13px; font-weight: 500; }
-        .other-categories__more[open] .other-categories__action { font-size: 0; }
-        .other-categories__more[open] .other-categories__action::after { content: "Скрыть категории"; font-size: 13px; }
+        .other-categories__heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; border-bottom: 1px solid #edf1f5; color: #222; font-size: 15px; font-weight: 600; }
+        .other-categories__toggle { display: inline-flex; align-items: center; gap: 8px; padding: 4px 0 4px 12px; border: 0; background: transparent; color: var(--primary-color); cursor: pointer; font: inherit; font-size: 13px; font-weight: 500; }
+        .other-categories__toggle:hover { text-decoration: underline; }
+        .other-categories__toggle::after { content: "⌄"; font-size: 18px; line-height: 1; transition: transform .2s; }
+        .other-categories__toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
         .other-categories__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; padding: 16px; }
         .other-categories__grid--featured { padding-bottom: 16px; }
         .other-categories__grid--more { border-top: 1px solid #edf1f5; }
+        .other-categories__grid[hidden] { display: none; }
         .other-categories__card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e6edf3; border-radius: 9px; background: #fff; color: var(--primary-color); text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .2s; }
         .other-categories__card:hover { border-color: var(--primary-color); box-shadow: 0 4px 14px rgba(14,92,128,.10); transform: translateY(-2px); }
         .other-categories__card img { display: block; width: 100%; height: 112px; padding: 8px; object-fit: contain; background: #fff; }
@@ -267,16 +256,8 @@
             </div>
         </div>
 
-        <!-- GROUP_CONTENT_START: related products and series -->
-        <section class="other-sizes"><h3>Другие модели Л-16</h3><div class="other-sizes__list"><a href="../../lestnica-podvesnaya-l-16.html#item-L-16-2.5-0.3">Л-16 (180 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-3.0-0.3">Л-16 (240 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-2.0-0.4">Л-16 (150 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-2.5-0.4">Л-16 (180 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-3.0-0.4">Л-16 (240 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-3.5-0.4">Л-16 (270 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-4.0-0.4">Л-16 (330 см)</a>
-<a href="../../lestnica-podvesnaya-l-16.html#item-L-16-5.0-0.4">Л-16 (420 см)</a></div><div class="other-series"><p>Все модели серии представлены в каталоге.</p><a href="../../lestnica-podvesnaya-l-16.html">Перейти в каталог</a></div></section>
-        <section class="other-categories" aria-label="Другие категории товаров"><nav class="other-categories__grid other-categories__grid--featured" aria-label="Популярные категории"><a class="other-categories__card" href="../../ss1.html"><img src="../../images/ss1/vid-card.webp" alt="Стремянки С-(1–9)" loading="lazy" decoding="async"><span>Стремянки С-(1–9)</span></a><a class="other-categories__card" href="../../ss2.html"><img src="../../images/ss2/vid-card.webp" alt="Стремянки С1-(00–18)" loading="lazy" decoding="async"><span>Стремянки С1-(00–18)</span></a><a class="other-categories__card" href="../../kl-1-dlya-kanalizacionnyh-kolodcev.html"><img src="../../images/kl1/vid-card.webp" alt="Канализационные лестницы КЛ-1" loading="lazy" decoding="async"><span>Канализационные лестницы КЛ-1</span></a><a class="other-categories__card" href="../../ssg1.html"><img src="../../images/ssg1/vid-card.webp" alt="Пожарные стремянки СГ" loading="lazy" decoding="async"><span>Пожарные стремянки СГ</span></a></nav><details class="other-categories__more"><summary><span>Другие категории товаров</span><span class="other-categories__action">Показать остальные категории</span></summary><nav class="other-categories__grid other-categories__grid--more" aria-label="Остальные категории"><a class="other-categories__card" href="../../l-3-sk-2201-88.html"><img src="../../images/l-3-sk-2201-88/vid-card.webp" alt="Лестницы Л-3" loading="lazy" decoding="async"><span>Лестницы Л-3</span></a><a class="other-categories__card" href="../../vl-2-l-19-vodoprovodnaya.html"><img src="../../images/vdl/vid-card.webp" alt="Водопроводные лестницы ВЛ-2" loading="lazy" decoding="async"><span>Водопроводные лестницы ВЛ-2</span></a><a class="other-categories__card" href="../../l-17-000SB.html"><img src="../../images/l-17-000SB/vid-card.webp" alt="Лестницы Л-17" loading="lazy" decoding="async"><span>Лестницы Л-17</span></a><a class="other-categories__card" href="../../l-19.html"><img src="../../images/l-19/vid-card.webp" alt="Лестницы Л-19" loading="lazy" decoding="async"><span>Лестницы Л-19</span></a><a class="other-categories__card" href="../../lestnica-podvesnaya-l-16.html"><img src="../../images/lestnica-podvesnaya-l-16/vid-card.webp" alt="Подвесные лестницы Л-16" loading="lazy" decoding="async"><span>Подвесные лестницы Л-16</span></a><a class="other-categories__card" href="../../lestnicy-teplovyh-setej-ts.html"><img src="../../images/lestnicy-teplovyh-setej-ts/vid-card.webp" alt="Лестницы тепловых сетей ТС" loading="lazy" decoding="async"><span>Лестницы тепловых сетей ТС</span></a><a class="other-categories__card" href="../../nts-62-91-111b.html"><img src="../../images/nts-62-91-111b/vid-card.webp" alt="Лестницы НТС 62-91-111Б" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111Б</span></a><a class="other-categories__card" href="../../nts-62-91-111.html"><img src="../../images/nts-62-91-111/vid-card.webp" alt="Лестницы НТС 62-91-111" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111</span></a><a class="other-categories__card" href="../../nts-62-91-111a.html"><img src="../../images/nts-62-91-111a/vid-1.webp" alt="Лестницы НТС 62-91-111А" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111А</span></a><a class="other-categories__card" href="../../skoby-dlya-kolodcev.html"><img src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp" alt="Скобы для колодцев" loading="lazy" decoding="async"><span>Скобы для колодцев</span></a><a class="other-categories__card" href="../../soedinitelnye-elementy.html"><img src="../../images/soedinitelnye-elementy/vid-1.webp" alt="Соединительные элементы МС" loading="lazy" decoding="async"><span>Соединительные элементы МС</span></a><a class="other-categories__card" href="../../tmp-902.html"><img src="../../images/tmp-902/vid-card.webp" alt="Стремянки ТМП 902" loading="lazy" decoding="async"><span>Стремянки ТМП 902</span></a></nav></details></section>
+        <!-- GROUP_CONTENT_START: other categories -->
+        <section class="other-categories" aria-label="Другие категории товаров"><div class="other-categories__heading"><span>Другие категории товаров</span><button type="button" class="other-categories__toggle" aria-expanded="false" aria-controls="other-categories-extra" onclick="toggleOtherCategories(this)"><span class="other-categories__action">Показать остальные категории</span></button></div><nav class="other-categories__grid other-categories__grid--featured" aria-label="Популярные категории"><a class="other-categories__card" href="../../ss1.html"><img src="../../images/ss1/vid-card.webp" alt="Стремянки С-(1–9)" loading="lazy" decoding="async"><span>Стремянки С-(1–9)</span></a><a class="other-categories__card" href="../../ss2.html"><img src="../../images/ss2/vid-card.webp" alt="Стремянки С1-(00–18)" loading="lazy" decoding="async"><span>Стремянки С1-(00–18)</span></a><a class="other-categories__card" href="../../kl-1-dlya-kanalizacionnyh-kolodcev.html"><img src="../../images/kl1/vid-card.webp" alt="Канализационные лестницы КЛ-1" loading="lazy" decoding="async"><span>Канализационные лестницы КЛ-1</span></a><a class="other-categories__card" href="../../ssg1.html"><img src="../../images/ssg1/vid-card.webp" alt="Пожарные стремянки СГ" loading="lazy" decoding="async"><span>Пожарные стремянки СГ</span></a></nav><nav id="other-categories-extra" class="other-categories__grid other-categories__grid--more" aria-label="Остальные категории" hidden><a class="other-categories__card" href="../../l-3-sk-2201-88.html"><img src="../../images/l-3-sk-2201-88/vid-card.webp" alt="Лестницы Л-3" loading="lazy" decoding="async"><span>Лестницы Л-3</span></a><a class="other-categories__card" href="../../vl-2-l-19-vodoprovodnaya.html"><img src="../../images/vdl/vid-card.webp" alt="Водопроводные лестницы ВЛ-2" loading="lazy" decoding="async"><span>Водопроводные лестницы ВЛ-2</span></a><a class="other-categories__card" href="../../l-17-000SB.html"><img src="../../images/l-17-000SB/vid-card.webp" alt="Лестницы Л-17" loading="lazy" decoding="async"><span>Лестницы Л-17</span></a><a class="other-categories__card" href="../../l-19.html"><img src="../../images/l-19/vid-card.webp" alt="Лестницы Л-19" loading="lazy" decoding="async"><span>Лестницы Л-19</span></a><a class="other-categories__card" href="../../lestnica-podvesnaya-l-16.html"><img src="../../images/lestnica-podvesnaya-l-16/vid-card.webp" alt="Подвесные лестницы Л-16" loading="lazy" decoding="async"><span>Подвесные лестницы Л-16</span></a><a class="other-categories__card" href="../../lestnicy-teplovyh-setej-ts.html"><img src="../../images/lestnicy-teplovyh-setej-ts/vid-card.webp" alt="Лестницы тепловых сетей ТС" loading="lazy" decoding="async"><span>Лестницы тепловых сетей ТС</span></a><a class="other-categories__card" href="../../nts-62-91-111b.html"><img src="../../images/nts-62-91-111b/vid-card.webp" alt="Лестницы НТС 62-91-111Б" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111Б</span></a><a class="other-categories__card" href="../../nts-62-91-111.html"><img src="../../images/nts-62-91-111/vid-card.webp" alt="Лестницы НТС 62-91-111" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111</span></a><a class="other-categories__card" href="../../nts-62-91-111a.html"><img src="../../images/nts-62-91-111a/vid-1.webp" alt="Лестницы НТС 62-91-111А" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111А</span></a><a class="other-categories__card" href="../../skoby-dlya-kolodcev.html"><img src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp" alt="Скобы для колодцев" loading="lazy" decoding="async"><span>Скобы для колодцев</span></a><a class="other-categories__card" href="../../soedinitelnye-elementy.html"><img src="../../images/soedinitelnye-elementy/vid-1.webp" alt="Соединительные элементы МС" loading="lazy" decoding="async"><span>Соединительные элементы МС</span></a><a class="other-categories__card" href="../../tmp-902.html"><img src="../../images/tmp-902/vid-card.webp" alt="Стремянки ТМП 902" loading="lazy" decoding="async"><span>Стремянки ТМП 902</span></a></nav></section>
         <!-- GROUP_CONTENT_END -->
     </div>
 </main>
@@ -395,7 +376,17 @@
 </footer>
 
 <!-- Скрипты (год и копирование) -->
-<script>
+<script>function toggleOtherCategories(button) {
+  const grid = document.getElementById("other-categories-extra");
+  if (!grid) return;
+  const expanded = grid.hidden;
+  grid.hidden = !expanded;
+  button.setAttribute("aria-expanded", String(expanded));
+  const label = button.querySelector(".other-categories__action");
+  if (label) label.textContent = expanded ? "Скрыть категории" : "Показать остальные категории";
+}
+
+
     (function () {
         var yearEl = document.getElementById('footer-year');
         if (yearEl) {
