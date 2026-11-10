@@ -12,7 +12,9 @@ const PRODUCT_CSV_FILES = [
   'data/ssg1-products.csv',
   'data/skoby-dlya-kolodcev-products.csv',
   'data/soedinitelnye-elementy-products.csv',
-  'data/lestnica-podvesnaya-l-16.csv'
+  'data/lestnica-podvesnaya-l-16.csv',
+  'data/lestnica-ts-50-products.csv',
+  'data/lestnica-ts-63-products.csv'
 ];
 
 function parseCsvLine(line) {
@@ -159,7 +161,7 @@ function assertCsvProducts() {
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 151, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 367, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -175,8 +177,8 @@ function assertLlmsProductLinks() {
   const section = content.slice(start + startMarker.length, end);
   assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
   const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
-  assert.strictEqual(links.length, 151, 'llms.txt: expected exactly 151 product links');
-  assert.strictEqual(new Set(links.map(match => match[2])).size, 151, 'llms.txt: duplicate product URLs');
+  assert.strictEqual(links.length, 367, 'llms.txt: expected exactly 367 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 367, 'llms.txt: duplicate product URLs');
   const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
@@ -185,9 +187,46 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 151, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 367, 'llms.txt: unexpected CSV product inventory');
 }
 
+
+function assertTeplovyeSetiProductPages() {
+  const catalog = fs.readFileSync(path.join(root, 'lestnicy-teplovyh-setej-ts.html'), 'utf8');
+  const imagePaths = [
+    'images/lestnicy-teplovyh-setej-ts/vid-1.webp',
+    'images/lestnicy-teplovyh-setej-ts/vid-2.webp',
+    'images/lestnicy-teplovyh-setej-ts/vid-3.webp',
+    'images/lestnicy-teplovyh-setej-ts/foto-1.webp',
+    'images/lestnicy-teplovyh-setej-ts/foto-2.webp',
+    'images/lestnicy-teplovyh-setej-ts/chertezh.webp'
+  ];
+  for (const series of ['50', '63']) {
+    const csvFile = 'data/lestnica-ts-' + series + '-products.csv';
+    const rows = readCsv(csvFile);
+    assert.strictEqual(rows.length, 108, csvFile + ': expected 108 source rows');
+    const expectedWidthCm = series === '50' ? 50 : 63;
+    const expectedWidthMm = expectedWidthCm * 10;
+    for (const row of rows) {
+      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const relative = 'products/lestnicy-teplovyh-setej-ts/' + slug + '.html';
+      const file = path.join(root, relative);
+      assert(fs.existsSync(file), csvFile + ': missing generated product page for ' + row.id);
+      const html = fs.readFileSync(file, 'utf8');
+      assert(html.includes('<h1>' + row.name + '</h1>'), relative + ': missing product heading');
+      assert(html.includes('Артикул: ' + row.id), relative + ': product ID is not visible');
+      assert(html.includes('<td>Ширина</td><td>' + expectedWidthMm + ' мм (' + expectedWidthCm + ' см)</td>'), relative + ': width differs from TS series');
+      assert(html.includes('Другие размеры лестниц ТС-' + series), relative + ': related-size section is missing');
+      assert.strictEqual((html.match(/class="other-sizes__link"/g) || []).length, 12, relative + ': expected 12 nearby size links');
+      assert(catalog.includes('href="' + relative + '"'), csvFile + ': catalog does not link to ' + row.id);
+      for (const image of imagePaths) {
+        assert(fs.existsSync(path.join(root, image)), csvFile + ': missing source image ' + image);
+        assert(html.includes('../../' + image), relative + ': gallery does not use ' + image);
+      }
+      assert(!html.includes('Л-16'), relative + ': unrelated L-16 content leaked into TS product page');
+    }
+  }
+}
 
 function assertNtsFeedCoverage() {
   const groups = [
@@ -284,6 +323,7 @@ assertLlmsProductLinks();
 const ntsFeedProducts = assertNtsFeedCoverage();
 const sitemapCount = assertSitemap();
 const productCount = assertCsvProducts();
+assertTeplovyeSetiProductPages();
 assertMetalCatalogsAndPages();
 
 function assertProductImageViewerSources() {
