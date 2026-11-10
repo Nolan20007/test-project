@@ -58,6 +58,21 @@ injectInclude('<!-- NAV_START -->', '<!-- NAV_END -->', 'includes/nav.html');
 injectInclude('<!-- CTA_START -->', '<!-- CTA_END -->', 'includes/cta.html');
 injectInclude('<!-- FOOTER_START -->', '<!-- FOOTER_END -->', 'includes/footer.html');
 
+// Mirror the shared page optimizations applied by build.js::processMarkers().
+html = html.replace(/<link\s+[^>]*href=["'][^"']*fonts\.googleapis\.com[^"']*["'][^>]*>\s*/gi, '');
+html = html.replace(/<link\s+[^>]*href=["'][^"']*fonts\.gstatic\.com[^"']*["'][^>]*>\s*/gi, '');
+html = html.replace(/<script\b[^>]*>/gi, tag => {
+  const src = tag.match(/\bsrc=["']([^"']+)["']/i);
+  return src && /(?:^|\/)(?:config|utils)\.js$/i.test(src[1]) && !/\bdefer\b/i.test(tag)
+    ? tag.replace(/>$/, ' defer>') : tag;
+});
+if (!html.includes('../../css/rubik-local.css')) {
+  html = html.replace('</head>', '    <link rel="preload" href="../../fonts/rubik/rubik-3.woff2" as="font" type="font/woff2" crossorigin>\n    <link rel="stylesheet" href="../../css/rubik-local.css">\n</head>');
+}
+if (!/src=["']\.\.\/\.\.\/js\/analytics\.js["']/i.test(html)) {
+  html = html.replace('</head>', '    <script defer src="../../js/analytics.js"></script>\n</head>');
+}
+
 if (/\{\{[A-Z0-9_]+\}\}/.test(html)) throw new Error('Preview still contains unresolved template variables.');
 const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, 'tmp/l16-master-preview.html');
 fs.mkdirSync(path.dirname(output), { recursive: true });
