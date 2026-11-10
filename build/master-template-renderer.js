@@ -15,7 +15,7 @@ function productProject(row, group) {
   return match ? match[1].replace(/СБ(?=$|-)/g, 'СБ') : group.project;
 }
 
-function renderMasterProduct(template, group, row, rows) {
+function renderMasterProduct(template, group, row, rows, relatedVariantGroups = []) {
   if (!group || typeof group !== 'object') throw new Error('A product group configuration is required.');
   if (!row || !row.id || !row.name) throw new Error('Product row must contain id and name.');
   const widthCm = Number(row.width);
@@ -70,28 +70,81 @@ function renderMasterProduct(template, group, row, rows) {
 
   const descriptionHtml = '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) +
     '</p><p>' + escapeHtml(group.installation) + '</p>';
-  // В ссылках указываем только параметры, которые различаются внутри группы.
-  const otherSizesLengthVaries = new Set(rows.map(item => Number(item.length))).size > 1;
-  const otherSizesWidthVaries = new Set(rows.map(item => Number(item.width))).size > 1;
-  const otherSizesTitle = group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
+  // Large product families use a compact, expandable related-size navigator.
+  const otherSizesTitle = group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
-  let otherSizeRows = rows.filter(item => item.id !== row.id);
-  if (Number.isInteger(group.otherSizesLimit) && group.otherSizesLimit > 0) {
-    const currentLength = Number(row.length);
-    otherSizeRows = otherSizeRows.slice()
-      .sort((a, b) => Math.abs(Number(a.length) - currentLength) - Math.abs(Number(b.length) - currentLength))
-      .slice(0, group.otherSizesLimit)
-      .sort((a, b) => Number(a.length) - Number(b.length));
+  const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
+    const lengthVaries = new Set(variantRows.map(item => Number(item.length))).size > 1;
+    const widthVaries = new Set(variantRows.map(item => Number(item.width))).size > 1;
+    const allRows = variantRows.filter(item => !(variantGroup.id === group.id && item.id === currentRow.id))
+      .slice().sort((a, b) => Number(a.length) - Number(b.length) || String(a.id).localeCompare(String(b.id)));
+    const limit = Number.isInteger(group.otherSizesDisplayLimit) && group.otherSizesDisplayLimit > 0
+      ? group.otherSizesDisplayLimit : 16;
+    const nearbyRows = allRows.slice().sort((a, b) =>
+      Math.abs(Number(a.length) - Number(currentRow.length)) - Math.abs(Number(b.length) - Number(currentRow.length))
+    ).slice(0, limit).sort((a, b) => Number(a.length) - Number(b.length));
+    const renderLink = item => {
+      const itemLength = Number(item.length);
+      const itemWidth = Number(item.width);
+      let dimensions;
+      if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
+      else if (widthVaries) dimensions = itemWidth + ' см';
+      else dimensions = itemLength + ' см';
+      return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">' +
+        escapeHtml(variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')</a>';
+    };
+    const visibleIds = new Set(nearbyRows.map(item => item.id));
+    const visibleHtml = nearbyRows.map(renderLink).join('');
+    const extraHtml = allRows.filter(item => !visibleIds.has(item.id)).map(renderLink).join('');
+    const panelId = 'other-sizes-panel-' + panelIndex;
+    return '<div class="other-sizes__variant-panel" id="' + panelId + '" data-variant-id="' + escapeHtml(variantGroup.id) + '"' +
+      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links">' + visibleHtml + '</div>' +
+      (extraHtml ? '<div class="other-sizes__extra" hidden><div class="other-sizes__links">' + extraHtml + '</div></div>' +
+        '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
+      '</div>';
+  };
+  const configuredVariantIds = Array.isArray(group.otherSizesVariantGroupIds) ? group.otherSizesVariantGroupIds : [];
+  const relatedVariants = configuredVariantIds.length
+    ? [{ group, rows }, ...relatedVariantGroups.filter(item => item && item.group && item.rows && item.group.id !== group.id)]
+        .filter((item, index, all) => all.findIndex(candidate => candidate.group.id === item.group.id) === index)
+    : [{ group, rows }];
+  let otherSizesHtml;
+  if (rows.length > 20) {
+    const hasVariantSwitcher = relatedVariants.length > 1;
+    const variantButtons = hasVariantSwitcher
+      ? '<div class="other-sizes__variants" role="tablist" aria-label="Выбор исполнения">' +
+        relatedVariants.map((item, index) => '<button type="button" class="other-sizes__variant' +
+          (item.group.id === group.id ? ' active' : '') + '" role="tab" aria-selected="' + (item.group.id === group.id ? 'true' : 'false') +
+          '" aria-controls="other-sizes-panel-' + index + '" onclick="selectOtherSizesVariant(this)">' +
+          escapeHtml(item.group.otherSizesVariantLabel || item.group.otherSizesLabel || item.group.groupTitle) +
+          (item.group.otherSizesVariantDimensions ? '<span>' + escapeHtml(item.group.otherSizesVariantDimensions) + '</span>' : '') +
+          '</button>').join('') + '</div>'
+      : '';
+    const panels = relatedVariants.map((item, index) => renderSizeLinks(item.group, item.rows, row, index)).join('');
+    otherSizesHtml = '<section class="other-sizes other-sizes--large" aria-label="' + escapeHtml(otherSizesTitle) + '">' +
+      '<h2 class="other-sizes__title">' + escapeHtml(otherSizesTitle) + '</h2>' + variantButtons + panels + '</section>';
+  } else {
+    let otherSizeRows = rows.filter(item => item.id !== row.id);
+    if (Number.isInteger(group.otherSizesLimit) && group.otherSizesLimit > 0) {
+      const currentLength = Number(row.length);
+      otherSizeRows = otherSizeRows.slice()
+        .sort((a, b) => Math.abs(Number(a.length) - currentLength) - Math.abs(Number(b.length) - currentLength))
+        .slice(0, group.otherSizesLimit)
+        .sort((a, b) => Number(a.length) - Number(b.length));
+    }
+    const lengthVaries = new Set(rows.map(item => Number(item.length))).size > 1;
+    const widthVaries = new Set(rows.map(item => Number(item.width))).size > 1;
+    otherSizesHtml = '<section class="other-sizes" aria-label="' + escapeHtml(otherSizesTitle) + '"><h2 class="other-sizes__title">' +
+      escapeHtml(otherSizesTitle) + '</h2><div class="other-sizes__links">' + otherSizeRows.map(item => {
+        const itemLength = Number(item.length);
+        const itemWidth = Number(item.width);
+        let dimensions;
+        if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
+        else if (widthVaries) dimensions = itemWidth + ' см';
+        else dimensions = itemLength + ' см';
+        return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">' + escapeHtml(otherSizesLabel) + ' (' + dimensions + ')</a>';
+      }).join('') + '</div></section>';
   }
-  const otherSizesHtml = '<section class="other-sizes" aria-label="' + escapeHtml(otherSizesTitle) + '"><h2 class="other-sizes__title">' + escapeHtml(otherSizesTitle) + '</h2><div class="other-sizes__links">' + otherSizeRows.map(item => {
-    const itemLength = Number(item.length);
-    const itemWidth = Number(item.width);
-    let dimensions;
-    if (otherSizesLengthVaries && otherSizesWidthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
-    else if (otherSizesWidthVaries) dimensions = itemWidth + ' см';
-    else dimensions = itemLength + ' см';
-    return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">' + escapeHtml(otherSizesLabel) + ' (' + dimensions + ')</a>';
-  }).join('') + '</div></section>';
   const categoryCards = [{"href":"../../ss1.html","src":"../../images/ss1/vid-card.webp","alt":"Стремянки С-(1–9)","label":"Стремянки С-(1–9)"},{"href":"../../ss2.html","src":"../../images/ss2/vid-card.webp","alt":"Стремянки С1-(00–18)","label":"Стремянки С1-(00–18)"},{"href":"../../kl-1-dlya-kanalizacionnyh-kolodcev.html","src":"../../images/kl1/vid-card.webp","alt":"Канализационные лестницы КЛ-1","label":"Канализационные лестницы КЛ-1"},{"href":"../../ssg1.html","src":"../../images/ssg1/vid-card.webp","alt":"Пожарные стремянки СГ","label":"Пожарные стремянки СГ"},{"href":"../../l-3-sk-2201-88.html","src":"../../images/l-3-sk-2201-88/vid-card.webp","alt":"Лестницы Л-3","label":"Лестницы Л-3"},{"href":"../../vl-2-l-19-vodoprovodnaya.html","src":"../../images/vdl/vid-card.webp","alt":"Водопроводные лестницы ВЛ-2","label":"Водопроводные лестницы ВЛ-2"},{"href":"../../l-17-000SB.html","src":"../../images/l-17-000SB/vid-card.webp","alt":"Лестницы Л-17","label":"Лестницы Л-17"},{"href":"../../l-19.html","src":"../../images/l-19/vid-card.webp","alt":"Лестницы Л-19","label":"Лестницы Л-19"},{"href":"../../lestnica-podvesnaya-l-16.html","src":"../../images/lestnica-podvesnaya-l-16/vid-card.webp","alt":"Подвесные лестницы Л-16","label":"Подвесные лестницы Л-16"},{"href":"../../lestnicy-teplovyh-setej-ts.html","src":"../../images/lestnicy-teplovyh-setej-ts/vid-card.webp","alt":"Лестницы тепловых сетей ТС","label":"Лестницы тепловых сетей ТС"},{"href":"../../nts-62-91-111b.html","src":"../../images/nts-62-91-111b/vid-card.webp","alt":"Лестницы НТС 62-91-111Б","label":"Лестницы НТС 62-91-111Б"},{"href":"../../nts-62-91-111.html","src":"../../images/nts-62-91-111/vid-card.webp","alt":"Лестницы НТС 62-91-111","label":"Лестницы НТС 62-91-111"},{"href":"../../nts-62-91-111a.html","src":"../../images/nts-62-91-111a/vid-1.webp","alt":"Лестницы НТС 62-91-111А","label":"Лестницы НТС 62-91-111А"},{"href":"../../skoby-dlya-kolodcev.html","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp","alt":"Скобы для колодцев","label":"Скобы для колодцев"},{"href":"../../soedinitelnye-elementy.html","src":"../../images/soedinitelnye-elementy/vid-1.webp","alt":"Соединительные элементы МС","label":"Соединительные элементы МС"},{"href":"../../tmp-902.html","src":"../../images/tmp-902/vid-card.webp","alt":"Стремянки ТМП 902","label":"Стремянки ТМП 902"}];
   const renderCategoryCards = items => items.map(item => '<a class="other-categories__card" href="' + item.href + '"><img src="' + item.src + '" alt="' + item.alt + '" loading="lazy" decoding="async"><span>' + item.label + '</span></a>').join('');
   const categoriesHtml = '<section class="other-categories" aria-label="Другие категории товаров"><div class="other-categories__heading"><span>Другие категории товаров</span><button type="button" class="other-categories__toggle" aria-expanded="false" aria-controls="other-categories-extra" onclick="toggleOtherCategories(this)"><span class="other-categories__action">Показать остальные категории</span></button></div><nav class="other-categories__grid other-categories__grid--featured" aria-label="Популярные категории">' + renderCategoryCards(categoryCards.slice(0, 4)) + '</nav><nav id="other-categories-extra" class="other-categories__grid other-categories__grid--more" aria-label="Остальные категории" hidden>' + renderCategoryCards(categoryCards.slice(4)) + '</nav></section>';
