@@ -283,8 +283,9 @@ function selectOtherSizesVariant(button) {
     tab.classList.toggle('active', active);
     tab.setAttribute('aria-selected', String(active));
   });
+  const targetPanelId = button.getAttribute('aria-controls');
   section.querySelectorAll('.other-sizes__variant-panel').forEach(panel => {
-    panel.hidden = panel.dataset.variantId !== button.getAttribute('aria-controls').replace('other-sizes-panel-', '');
+    panel.hidden = panel.id !== targetPanelId;
   });
 }
 
