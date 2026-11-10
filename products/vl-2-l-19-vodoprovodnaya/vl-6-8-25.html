@@ -140,8 +140,8 @@
     .other-sizes__link { display: inline-block; padding: 8px 15px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; color: #333; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 14px; }
     .other-sizes__link:hover { border-color: var(--primary-color); color: var(--primary-color); background: #fff; }
     .other-sizes--large { padding-top: 22px; padding-bottom: 22px; }
-    .other-sizes__variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0 0 16px; }
-    .other-sizes__variant { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 58px; padding: 9px 12px; border: 1px solid #dce5f0; border-radius: 10px; background: #f7f9fc; color: #333; font: inherit; font-weight: 600; cursor: pointer; transition: .2s; }
+    .other-sizes__variants { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: flex-start; gap: 8px; margin: 0 0 16px; }
+    .other-sizes__variant { display: flex; flex: 0 1 auto; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 112px; min-height: 48px; padding: 6px 14px; border: 1px solid #dce5f0; border-radius: 9px; background: #f7f9fc; color: #333; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; }
     .other-sizes__variant span { font-size: 12px; font-weight: 400; color: #687586; }
     .other-sizes__variant:hover { border-color: var(--primary-color); }
     .other-sizes__variant.active { border-color: var(--primary-color); background: var(--primary-color); color: #fff; }
@@ -155,8 +155,8 @@
     @media (max-width: 700px) {
         .other-sizes { padding: 20px; }
         .other-sizes__links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-        .other-sizes__variants { gap: 8px; }
-        .other-sizes__variant { padding: 8px 5px; font-size: 13px; }
+        .other-sizes__variants { gap: 7px; }
+        .other-sizes__variant { min-width: 104px; min-height: 44px; padding: 6px 10px; font-size: 13px; }
         .other-sizes__link { font-size: 13px; }
     }
 </style>
