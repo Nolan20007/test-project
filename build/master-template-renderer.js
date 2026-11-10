@@ -71,6 +71,7 @@ function renderMasterProduct(template, group, row, rows) {
   const relatedHtml = '<section class="other-sizes"><h3>Другие модели Л-16</h3><div class="other-sizes__list">' +
     otherProducts + '</div><div class="other-series"><p>Все модели серии представлены в каталоге.</p><a href="../../' +
     escapeHtml(group.catalogPage) + '">Перейти в каталог</a></div></section>';
+  const categoriesHtml = '<details class="other-categories"><summary><span>Другие категории товаров</span><span class="other-categories__action">Показать категории</span></summary><nav class="other-categories__grid" aria-label="Другие категории товаров"><a href="../../ss1.html">Стремянки С-(1–9)</a><a href="../../ss2.html">Стремянки С1-(00–18)</a><a href="../../tmp-902.html">Стремянки ТМП 902</a><a href="../../ssg1.html">Пожарные стремянки СГ</a><a href="../../l-3-sk-2201-88.html">Лестницы Л-3</a><a href="../../vl-2-l-19-vodoprovodnaya.html">Водопроводные лестницы ВЛ-2</a><a href="../../kl-1-dlya-kanalizacionnyh-kolodcev.html">Канализационные лестницы КЛ-1</a><a href="../../l-17-000SB.html">Лестницы Л-17</a><a href="../../l-19.html">Лестницы Л-19</a><a href="../../lestnica-podvesnaya-l-16.html">Подвесные лестницы Л-16</a><a href="../../lestnicy-teplovyh-setej-ts.html">Лестницы тепловых сетей ТС</a><a href="../../nts-62-91-111b.html">Лестницы НТС 62-91-111Б</a><a href="../../nts-62-91-111.html">Лестницы НТС 62-91-111</a><a href="../../nts-62-91-111a.html">Лестницы НТС 62-91-111А</a><a href="../../skoby-dlya-kolodcev.html">Скобы для колодцев</a><a href="../../soedinitelnye-elementy.html">Соединительные элементы МС</a></nav></details>';
 
   const seoTitle = productName + ' — купить с доставкой по России';
   const seoDescription = productName + '. Подвесная лестница Л-16 по ' + project +
@@ -131,7 +132,8 @@ function renderMasterProduct(template, group, row, rows) {
     '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml('Л-16 (' + lengthCm + ' см), ширина ' + widthMm + ' мм, масса ' + weight.toLocaleString('ru-RU') + ' кг.'),
     '{{GROUP_AND_PRODUCT_SPECIFICATIONS}}': specsHtml,
     '{{GROUP_DESCRIPTION_AND_INSTALLATION}}': descriptionHtml,
-    '{{GROUP_RELATED_PRODUCTS_AND_SERIES}}': relatedHtml
+    '{{GROUP_RELATED_PRODUCTS_AND_SERIES}}': relatedHtml,
+    '{{GROUP_OTHER_CATEGORIES}}': categoriesHtml
   };
 
   let html = template;
