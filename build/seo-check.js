@@ -216,8 +216,20 @@ function assertTeplovyeSetiProductPages() {
       assert(html.includes('<h1>' + row.name + '</h1>'), relative + ': missing product heading');
       assert(html.includes('Артикул: ' + row.id), relative + ': product ID is not visible');
       assert(html.includes('<td>Ширина</td><td>' + expectedWidthMm + ' мм (' + expectedWidthCm + ' см)</td>'), relative + ': width differs from TS series');
-      assert(html.includes('Другие размеры лестниц ТС-' + series), relative + ': related-size section is missing');
-      assert.strictEqual((html.match(/class="other-sizes__link"/g) || []).length, 12, relative + ': expected 12 nearby size links');
+      assert(html.includes('Другие размеры'), relative + ': related-size section is missing');
+      assert(html.includes('ТС-50') && html.includes('50×50×5 мм'), relative + ': TS-50 execution tab is missing');
+      assert(html.includes('ТС-63') && html.includes('63×63×5 мм'), relative + ': TS-63 execution tab is missing');
+      assert(html.includes('Показать все размеры') && html.includes('other-sizes__extra'), relative + ': expandable related-size list is missing');
+      for (const variant of ['50', '63']) {
+        const variantId = 'lestnicy-teplovyh-setej-ts-' + variant;
+        const panel = html.match(new RegExp('<div class="other-sizes__variant-panel"[^>]*data-variant-id="' + variantId + '"[\\s\\S]*?<\\/div>'));
+        assert(panel, relative + ': missing related-size panel for TS-' + variant);
+        const expectedLinks = variant === '50' ? 107 : 108;
+        const panelStart = html.indexOf('data-variant-id="' + variantId + '"');
+        const nextPanel = html.indexOf('class="other-sizes__variant-panel"', panelStart + 1);
+        const panelHtml = html.slice(panelStart, nextPanel === -1 ? html.indexOf('</section>', panelStart) : nextPanel);
+        assert.strictEqual((panelHtml.match(/class="other-sizes__link"/g) || []).length, expectedLinks, relative + ': incorrect TS-' + variant + ' related-size count');
+      }
       assert(catalog.includes('href="' + relative + '"'), csvFile + ': catalog does not link to ' + row.id);
       for (const image of imagePaths) {
         assert(fs.existsSync(path.join(root, image)), csvFile + ': missing source image ' + image);
