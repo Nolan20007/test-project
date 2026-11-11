@@ -1,0 +1,58 @@
+{
+  "id": "lestnicy-nts-62-91-111",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "lestnicy-nts-62-91-111",
+  "catalogPage": "nts-62-91-111.html",
+  "catalogTitle": "Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг",
+  "groupTitle": "Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг",
+  "headerSubtitle": "Стальные лестницы для тепловых камер по нормалям тепловых сетей НТС 62-91-111",
+  "project": "НТС 62-91-111",
+  "projectFromName": false,
+  "schemaProductType": "Лестница для тепловых сетей",
+  "normativeLabel": "Нормативный документ",
+  "albumReference": "НТС 62-91-111",
+  "albumNote": "Лестницы тепловых сетей с ограждением из дуг",
+  "construction": {
+    "type": "Лестница с ограждением из дуг",
+    "material": "Сталь Ст3",
+    "availableWidthsMm": [
+      600
+    ],
+    "lengthRangeMm": [
+      3400,
+      5200
+    ]
+  },
+  "csv": "data/nts-62-91-111-products.csv",
+  "productIds": [
+    "NTSS-S1",
+    "NTSS-S2",
+    "NTSS-S3",
+    "NTSS-S4"
+  ],
+  "groupContentTemplate": "templates/group-content/lestnicy-nts-62-91-111.html",
+  "productNameTemplate": "Лестница с ограждением из дуг {model} по НТС 62-91-111, длина {lengthMm} мм",
+  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "stockText": "Наличие и срок изготовления уточняйте у производителя",
+  "seoTitleTemplate": "Лестница с ограждением из дуг {model} по НТС 62-91-111, {lengthCm} см — купить",
+  "seoDescriptionTemplate": "Купить лестницу с ограждением из дуг {model} по НТС 62-91-111, нормалям тепловых сетей. Высота {lengthCm} см, масса {weightFormatted} кг. От производителя, доставка по России.",
+  "schemaNameTemplate": "Лестница с ограждением из дуг {model} по НТС 62-91-111, длина {lengthMm} мм",
+  "schemaDescriptionTemplate": "{productName}. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "../../images/nts-62-91-111/vid-1.webp",
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/nts-62-91-111/vid-1.webp",
+      "alt": "Лестница с ограждением из дуг {model} по НТС 62-91-111 — общий вид"
+    }
+  ],
+  "otherSizesLabel": "Лестница с ограждением из дуг",
+  "otherSizesLimit": 4
+}
