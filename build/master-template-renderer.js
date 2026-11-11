@@ -126,7 +126,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     : rowBasedGallery;
   if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
   const mainImage = group.mainImageFromCard && sourceImage
-    ? normalizeProductImagePath(sourceImage.replace(/-mini\\.webp$/i, '-card.webp'))
+    ? normalizeProductImagePath(sourceImage.replace(/-mini\.webp$/i, '-card.webp'))
     : gallery[0].src;
   const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^(\.\.\/)+/, '');
   const galleryButtons = gallery.map((item, index) =>
