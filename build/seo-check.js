@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const { registry: productUrlRegistry, getAllProductPaths } = require('./product-url-registry');
 
 const root = path.resolve(__dirname, '..');
+const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 const PRODUCT_CSV_FILES = [
   'data/ss1-products.csv',
   'data/ss2-products.csv',
@@ -96,6 +98,23 @@ function assertSitemap() {
   const urls = [...xml.matchAll(/<loc>([\s\S]*?)<\/loc>/g)].map(match => match[1].trim());
   assert(urls.length > 0, 'sitemap.xml contains no URLs');
   assert.strictEqual(new Set(urls).size, urls.length, 'sitemap.xml contains duplicate URLs');
+
+  const sitemapProductPaths = urls.filter(url => new URL(url).pathname.startsWith('/products/'))
+    .map(url => decodeURIComponent(new URL(url).pathname)).sort();
+  const registryProductPaths = getAllProductPaths().sort();
+  assert.strictEqual(registryProductPaths.length, new Set(registryProductPaths).size, 'product URL registry contains duplicate paths');
+  assert.deepStrictEqual(registryProductPaths, sitemapProductPaths, 'product URL registry must exactly match product URLs in sitemap.xml');
+  for (const [legacyPath, targetPath] of Object.entries(productUrlRegistry.legacyAliases || {})) {
+    const legacyFile = path.resolve(root, legacyPath.slice(1));
+    const targetFile = path.resolve(root, targetPath.slice(1));
+    assert(fs.existsSync(legacyFile), 'legacy alias source page is missing: ' + legacyPath);
+    assert(fs.existsSync(targetFile), 'legacy alias target page is missing: ' + targetPath);
+    assert(registryProductPaths.includes(targetPath), 'legacy alias target is not registered: ' + targetPath);
+    const legacyHtml = fs.readFileSync(legacyFile, 'utf8');
+    const canonical = legacyHtml.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
+    assert(canonical && canonical[1] === SITE_URL + targetPath, 'legacy alias canonical mismatch: ' + legacyPath);
+    assert(/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(legacyHtml), 'legacy alias must remain noindex: ' + legacyPath);
+  }
 
   for (const url of urls) {
     assert(!url.endsWith('/cart.html') && !url.endsWith('/404.html'), 'sitemap.xml contains excluded URL: ' + url);
