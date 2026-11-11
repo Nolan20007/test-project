@@ -164,12 +164,6 @@
 - [Лестница с перилами Л-3750 по НТС 62-91-111Б, длина 3750 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111b/lestnica-l-3750.html)
 - [Лестница с перилами Л-4000 по НТС 62-91-111Б, длина 4000 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111b/lestnica-l-4000.html)
 
-### Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг
-- [Лестница с ограждением из дуг С1 по НТС 62-91-111, длина 3400 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s1-3400.html)
-- [Лестница с ограждением из дуг С2 по НТС 62-91-111, длина 4000 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s2-4000.html)
-- [Лестница с ограждением из дуг С3 по НТС 62-91-111, длина 4600 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s3-4600.html)
-- [Лестница с ограждением из дуг С4 по НТС 62-91-111, длина 5200 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s4-5200.html)
-
 ### Скобы для колодцев
 - [Скоба для колодца ГС-1](https://stremyanki-dlya-kolodcev.ru/products/skoby-dlya-kolodcev/skoba-gs-1.html)
 - [Скоба для колодца ГС-2](https://stremyanki-dlya-kolodcev.ru/products/skoby-dlya-kolodcev/skoba-gs-2.html)
@@ -444,6 +438,12 @@
 - [Лестница подвесная Л-16-3,5-0,4 (3650.Л-16-000СБ-06)](https://stremyanki-dlya-kolodcev.ru/products/lestnica-podvesnaya-l-16/l-16-3-5-0-4.html)
 - [Лестница подвесная Л-16-4,0-0,4 (3650.Л-16-000СБ-07)](https://stremyanki-dlya-kolodcev.ru/products/lestnica-podvesnaya-l-16/l-16-4-0-0-4.html)
 - [Лестница подвесная Л-16-5,0-0,4 (3650.Л-16-000СБ-08)](https://stremyanki-dlya-kolodcev.ru/products/lestnica-podvesnaya-l-16/l-16-5-0-0-4.html)
+
+### Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг
+- [Лестница с ограждением из дуг С1 по НТС 62-91-111, длина 3400 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s1-3400.html)
+- [Лестница с ограждением из дуг С2 по НТС 62-91-111, длина 4000 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s2-4000.html)
+- [Лестница с ограждением из дуг С3 по НТС 62-91-111, длина 4600 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s3-4600.html)
+- [Лестница с ограждением из дуг С4 по НТС 62-91-111, длина 5200 мм](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-nts-62-91-111/lestnica-s4-5200.html)
 
 ### Лестницы тепловых сетей ТС
 - [Лестница тепловых сетей ТС (50 ТС-1)](https://stremyanki-dlya-kolodcev.ru/products/lestnicy-teplovyh-setej-ts/ts-50-1.html)
