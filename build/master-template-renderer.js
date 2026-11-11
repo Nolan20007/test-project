@@ -125,7 +125,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       }))
     : rowBasedGallery;
   if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
-  const mainImage = gallery[0].src;
+  const mainImage = group.mainImageFromCard && sourceImage
+    ? normalizeProductImagePath(sourceImage.replace(/-mini\\.webp$/i, '-card.webp'))
+    : gallery[0].src;
   const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^(\.\.\/)+/, '');
   const galleryButtons = gallery.map((item, index) =>
     '<button type="button" class="image-toggle__btn' + (index === 0 ? ' active' : '') +
@@ -274,7 +276,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const seoTitle = formatProductTemplate(group.seoTitleTemplate || (productName + ' — купить с доставкой по России'), values);
   const seoDescription = formatProductTemplate(group.seoDescriptionTemplate ||
     (productName + '. ' + group.groupTitle + ' по ' + project + '. Длина ' + lengthCm + ' см, ширина ' + widthMm + ' мм, масса ' + values.weightFormatted + ' кг. Цена ' + (price > 0 ? 'от ' + price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.'), values);
-  const schemaImagePath = group.schemaImage || mainImage;
+  const schemaImagePath = group.schemaImage || gallery[0].src;
   const schemaImage = /^https?:\/\//i.test(schemaImagePath) ? schemaImagePath : 'https://stremyanki-dlya-kolodcev.ru/' + String(schemaImagePath).replace(/^(\.\.\/)+/, '');
   const schemaName = formatProductTemplate(group.schemaNameTemplate || productName, values);
   const schemaDescription = formatProductTemplate(group.schemaDescriptionTemplate || seoDescription, values);
