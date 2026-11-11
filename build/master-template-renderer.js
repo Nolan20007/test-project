@@ -234,10 +234,6 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       { '@type': 'ListItem', position: 3, name: model, item: productUrl }
     ]
   };
-  const deliveryHtml = groupContent ? readGroupHtmlField(groupContent, 'delivery', values) :
-    (Array.isArray(group.deliveryParagraphs)
-      ? group.deliveryParagraphs.map(paragraph => '<p>' + escapeHtml(formatProductTemplate(paragraph, values)) + '</p>').join('')
-      : '<h3>Доставка:</h3><p>Стоимость уточняйте у менеджера.</p>');
   const extraContentHtml = groupContent ? readGroupHtmlField(groupContent, 'extraContent', values) : group.extraContentHtml || '';
   const replacements = {
     '{{PRODUCT_SEO_TITLE}}': escapeHtml(seoTitle),
@@ -260,7 +256,6 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_SKU_LINE}}': escapeHtml(skuLine),
     '{{PRODUCT_STOCK_STATUS}}': escapeHtml(stockText),
     '{{PRODUCT_PRICE_DISPLAY}}': escapeHtml(priceDisplay),
-    '{{GROUP_DELIVERY_CONTENT}}': deliveryHtml,
     '{{GROUP_EXTRA_CONTENT}}': extraContentHtml,
     '{{GROUP_BREADCRUMB_JSONLD}}': '<script type="application/ld+json">\n' + JSON.stringify(breadcrumbJsonLd, null, 2) + '\n</script>',
     '{{GROUP_HEADER_SUBTITLE}}': escapeHtml(group.headerSubtitle),
