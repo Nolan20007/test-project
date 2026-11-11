@@ -78,11 +78,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     const widthVaries = new Set(variantRows.map(item => Number(item.width))).size > 1;
     const allRows = variantRows.filter(item => !(variantGroup.id === group.id && item.id === currentRow.id))
       .slice().sort((a, b) => Number(a.length) - Number(b.length) || String(a.id).localeCompare(String(b.id)));
-    const limit = Number.isInteger(group.otherSizesDisplayLimit) && group.otherSizesDisplayLimit > 0
-      ? group.otherSizesDisplayLimit : 16;
-    const nearbyRows = allRows.slice().sort((a, b) =>
-      Math.abs(Number(a.length) - Number(currentRow.length)) - Math.abs(Number(b.length) - Number(currentRow.length))
-    ).slice(0, limit).sort((a, b) => Number(a.length) - Number(b.length));
+    const orderedRows = allRows;
     const renderLink = item => {
       const itemLength = Number(item.length);
       const itemWidth = Number(item.width);
@@ -90,17 +86,14 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
       else if (widthVaries) dimensions = itemWidth + ' см';
       else dimensions = itemLength + ' см';
-      return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">' +
-        escapeHtml(variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')</a>';
+      return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html"><span>' +
+        escapeHtml(variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')</span></a>';
     };
-    const visibleIds = new Set(nearbyRows.map(item => item.id));
-    const visibleHtml = nearbyRows.map(renderLink).join('');
-    const extraHtml = allRows.filter(item => !visibleIds.has(item.id)).map(renderLink).join('');
+    const linksHtml = orderedRows.map(renderLink).join('');
     const panelId = 'other-sizes-panel-' + panelIndex;
     return '<div class="other-sizes__variant-panel" id="' + panelId + '" data-variant-id="' + escapeHtml(variantGroup.id) + '"' +
-      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links">' + visibleHtml + '</div>' +
-      (extraHtml ? '<div class="other-sizes__extra" hidden><div class="other-sizes__links">' + extraHtml + '</div></div>' +
-        '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
+      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links other-sizes__links--collapsed">' + linksHtml + '</div>' +
+      (orderedRows.length ? '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
       '</div>';
   };
   const configuredVariantIds = Array.isArray(group.otherSizesVariantGroupIds) ? group.otherSizesVariantGroupIds : [];
@@ -142,7 +135,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
         else if (widthVaries) dimensions = itemWidth + ' см';
         else dimensions = itemLength + ' см';
-        return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">' + escapeHtml(otherSizesLabel) + ' (' + dimensions + ')</a>';
+        return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html"><span>' + escapeHtml(otherSizesLabel) + ' (' + dimensions + ')</span></a>';
       }).join('') + '</div></section>';
   }
   const categoryCards = [{"href":"../../ss1.html","src":"../../images/ss1/vid-card.webp","alt":"Стремянки С-(1–9)","label":"Стремянки С-(1–9)"},{"href":"../../ss2.html","src":"../../images/ss2/vid-card.webp","alt":"Стремянки С1-(00–18)","label":"Стремянки С1-(00–18)"},{"href":"../../kl-1-dlya-kanalizacionnyh-kolodcev.html","src":"../../images/kl1/vid-card.webp","alt":"Канализационные лестницы КЛ-1","label":"Канализационные лестницы КЛ-1"},{"href":"../../ssg1.html","src":"../../images/ssg1/vid-card.webp","alt":"Пожарные стремянки СГ","label":"Пожарные стремянки СГ"},{"href":"../../l-3-sk-2201-88.html","src":"../../images/l-3-sk-2201-88/vid-card.webp","alt":"Лестницы Л-3","label":"Лестницы Л-3"},{"href":"../../vl-2-l-19-vodoprovodnaya.html","src":"../../images/vdl/vid-card.webp","alt":"Водопроводные лестницы ВЛ-2","label":"Водопроводные лестницы ВЛ-2"},{"href":"../../l-17-000SB.html","src":"../../images/l-17-000SB/vid-card.webp","alt":"Лестницы Л-17","label":"Лестницы Л-17"},{"href":"../../l-19.html","src":"../../images/l-19/vid-card.webp","alt":"Лестницы Л-19","label":"Лестницы Л-19"},{"href":"../../lestnica-podvesnaya-l-16.html","src":"../../images/lestnica-podvesnaya-l-16/vid-card.webp","alt":"Подвесные лестницы Л-16","label":"Подвесные лестницы Л-16"},{"href":"../../lestnicy-teplovyh-setej-ts.html","src":"../../images/lestnicy-teplovyh-setej-ts/vid-card.webp","alt":"Лестницы тепловых сетей ТС","label":"Лестницы тепловых сетей ТС"},{"href":"../../nts-62-91-111b.html","src":"../../images/nts-62-91-111b/vid-card.webp","alt":"Лестницы НТС 62-91-111Б","label":"Лестницы НТС 62-91-111Б"},{"href":"../../nts-62-91-111.html","src":"../../images/nts-62-91-111/vid-card.webp","alt":"Лестницы НТС 62-91-111","label":"Лестницы НТС 62-91-111"},{"href":"../../nts-62-91-111a.html","src":"../../images/nts-62-91-111a/vid-1.webp","alt":"Лестницы НТС 62-91-111А","label":"Лестницы НТС 62-91-111А"},{"href":"../../skoby-dlya-kolodcev.html","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp","alt":"Скобы для колодцев","label":"Скобы для колодцев"},{"href":"../../soedinitelnye-elementy.html","src":"../../images/soedinitelnye-elementy/vid-1.webp","alt":"Соединительные элементы МС","label":"Соединительные элементы МС"},{"href":"../../tmp-902.html","src":"../../images/tmp-902/vid-card.webp","alt":"Стремянки ТМП 902","label":"Стремянки ТМП 902"}];
