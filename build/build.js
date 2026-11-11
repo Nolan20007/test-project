@@ -163,28 +163,6 @@ const CATEGORIES_TO_GENERATE = [
     ]
   },
   {
-    template: 'lestnicy-nts-62-91-111.html',
-    folder: 'lestnicy-nts-62-91-111',
-    title: 'Лестницы тепловых сетей НТС 62-91-111 с ограждением из дуг',
-    catalog_link: 'nts-62-91-111.html',
-    csv: 'data/nts-62-91-111-products.csv',
-    product_title_prefix: 'Лестница с ограждением из дуг',
-    product_title_accusative: 'лестницу с ограждением из дуг',
-    project_phrase: 'НТС 62-91-111',
-    album: 'нормалям тепловых сетей',
-    construction: 'ограждение из дуг',
-    construction_spec: 'Ограждение из дуг; уголок 75×75×5 мм',
-    step_spec: 'Стальной пруток Ø18 мм',
-    installation_text: 'Лестница опирается на приваренные опорные пятаки и крепится к стене тягами. В конструкции предусмотрены отверстия Ø16 мм для установки тяг. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
-    product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
-    items: [
-      { id: 'NTSS-S1' },
-      { id: 'NTSS-S2' },
-      { id: 'NTSS-S3' },
-      { id: 'NTSS-S4' }
-    ]
-  },
-  {
     type: 'metal',
     template: 'skoby-dlya-kolodcev.html',
     folder: 'skoby-dlya-kolodcev',
