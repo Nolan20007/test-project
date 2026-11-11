@@ -50,6 +50,7 @@
       {{PRODUCT_OFFER_JSONLD}}
     }
     </script>
+    {{GROUP_BREADCRUMB_JSONLD}}
 
     <style>
         .product-page-wrap { padding: 20px 0 40px; background: #fafafa; }
@@ -155,13 +156,16 @@
         .other-sizes__variant { min-width: 104px; min-height: 44px; padding: 6px 10px; font-size: 13px; }
         .other-sizes__link { font-size: 13px; padding: 7px 9px; }
     }
+        .other-series { margin-top: 14px; padding: 18px 24px; background: #f4f7fb; border: 1px solid #dce5f0; border-radius: 12px; }
+        .other-series p { margin: 0; color: #333; line-height: 1.5; }
+        .other-series a { display: inline-block; margin-top: 8px; color: var(--primary-color); font-weight: 600; text-decoration: underline; }
 </style>
 </head>
 <body>
 
 <header class="header">
     <div class="container">
-        <p class="header-title">{{PRODUCT_NAME}}</p>
+        <p class="header-title">{{PRODUCT_HEADER_TITLE}}</p>
         <p>{{GROUP_HEADER_SUBTITLE}}</p>
     </div>
 </header>
@@ -175,14 +179,14 @@
         <div class="breadcrumbs">
             <a href="../../index.html">Главная</a> ›
             <a href="../../{{GROUP_CATALOG_URL}}">{{GROUP_CATALOG_TITLE}}</a> ›
-            <span>{{PRODUCT_NAME}}</span>
+            <span>{{PRODUCT_BREADCRUMB_NAME}}</span>
         </div>
 
         <div class="mp-card">
             <div class="mp-top">
                 <div class="mp-gallery">
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
-                        <img id="mainImage" src="{{PRODUCT_MAIN_IMAGE}}" alt="{{PRODUCT_NAME}} — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
+                        <img id="mainImage" src="{{PRODUCT_MAIN_IMAGE}}" alt="{{PRODUCT_MAIN_IMAGE_ALT}}" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
                         <div class="image-toggle" id="product-gallery-controls">
                             {{PRODUCT_GALLERY_CONTROLS}}
                         </div>
@@ -191,11 +195,11 @@
 
                 <div class="mp-info">
                     <h1>{{PRODUCT_NAME}}</h1>
-                    <div class="mp-sku">Артикул: {{PRODUCT_SKU}} | Длина: {{PRODUCT_LENGTH_MM}} мм</div>
-                    <div class="mp-stock">✓ В наличии на складе</div>
+                    <div class="mp-sku">{{PRODUCT_SKU_LINE}}</div>
+                    <div class="mp-stock">{{PRODUCT_STOCK_STATUS}}</div>
                     
                     <div class="mp-price-block">
-                        <div class="mp-price">От {{PRODUCT_PRICE}}</div>
+                        <div class="mp-price">{{PRODUCT_PRICE_DISPLAY}}</div>
                     </div>
 
                     {{PRODUCT_BUY_CONTROLS}}
@@ -225,23 +229,12 @@
             </div>
 
             <div id="delivery" class="mp-tab-content">
-                <h3>Доставка:</h3>
-                <p>Стоимость уточняйте у менеджера.</p>
-                <ul>
-                    <li>По России — транспортными компаниями (СДЭК, «Деловые линии», ПЭК и др.), до терминала в вашем городе. Срок — 3–14 дней, стоимость по тарифам транспортной компании.</li>
-                </ul>
-                <h3>Оплата:</h3>
-                <ul>
-                    <li>Наличными при самовывозе.</li>
-                    <li>Банковской картой онлайн.</li>
-                    <li>Безналичный расчёт для юридических лиц — по счёту, с договором и закрывающими документами.</li>
-                </ul>
-                <p>Точную стоимость и сроки доставки уточняйте у менеджера.</p>
-                <a href="/dostavka-i-oplata.html" class="mp-btn-buy" style="display:inline-block; flex:none; text-align:center; text-decoration:none;">Подробнее</a>
+                {{GROUP_DELIVERY_CONTENT}}
             </div>
         </div>
 
         {{GROUP_OTHER_SIZES}}
+        {{GROUP_EXTRA_CONTENT}}
         <!-- GROUP_CONTENT_START: other categories -->
         {{GROUP_OTHER_CATEGORIES}}
         <!-- GROUP_CONTENT_END -->

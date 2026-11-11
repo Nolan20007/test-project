@@ -9,6 +9,17 @@ function slugify(value) {
     .replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
 }
 
+function getMasterProductSlug(group, rowOrId) {
+  const id = typeof rowOrId === 'string' ? rowOrId : rowOrId && rowOrId.id;
+  return group && group.productSlugById && group.productSlugById[id] ? String(group.productSlugById[id]) : slugify(id);
+}
+
+function formatProductTemplate(template, values) {
+  return String(template == null ? '' : template).replace(/\{([a-zA-Z0-9_]+)\}/g, (match, key) =>
+    Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match
+  );
+}
+
 function productProject(row, group) {
   if (group.projectFromName === false) return group.project;
   const match = String(row.name || '').match(/\(([^)]+)\)/);
@@ -29,13 +40,29 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     throw new Error('Invalid dimensions or weight for ' + row.id);
   }
 
-  const productSlug = slugify(row.id);
-  const productName = String(row.name).trim();
+  const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
+  const modelMatch = String(row.name || '').match(/СГ-\d+/u) || String(row.id).match(/SG-\d+/i);
+  const model = modelMatch ? modelMatch[0] : String(row.id);
+  const values = {
+    id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
+    widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
+    price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
+    project, albumReference: group.albumReference || ''
+  };
+  const productName = formatProductTemplate(group.productNameTemplate || row.name, values);
+  values.productName = productName;
+  const headerTitle = formatProductTemplate(group.headerTitleTemplate || productName, values);
+  const breadcrumbName = formatProductTemplate(group.breadcrumbNameTemplate || productName, values);
+  const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
+  const stockText = formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
+  const priceDisplay = formatProductTemplate(group.priceDisplayTemplate || '{priceFormatted} ₽', values);
+  const shortDescription = formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
+  const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
   const gallery = group.gallery.map(item => ({
     label: String(item.label),
     src: item.webp,
-    alt: String(item.alt || item.label)
+    alt: formatProductTemplate(item.alt || item.label, values)
   }));
   if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
   const mainImage = gallery[0].src;
@@ -50,26 +77,34 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   ).join('\n            ');
 
   const widthDisplay = group.widthDisplayUnit === 'both' ? widthMm + ' мм (' + widthCm + ' см)' : widthMm + ' мм';
-  const specifications = [
-    ['Модель', row.name],
-    [group.normativeLabel || 'Нормативный документ', project],
-    ['Длина', lengthCm + ' см (' + Math.round(lengthCm * 10) + ' мм)'],
-    ['Ширина', widthDisplay],
-    ['Масса', weight.toLocaleString('ru-RU') + ' кг']
-  ];
-  if (hasStepCount) specifications.push(['Количество ступеней', stepCount + ' шт.']);
-  if (group.construction.type) specifications.push(['Тип конструкции', group.construction.type]);
-  if (group.construction.stringers) specifications.push(['Материал стоек', group.construction.stringers]);
-  if (group.construction.steps) specifications.push(['Материал ступеней', group.construction.steps]);
-  if (group.construction.hangingHook) specifications.push(['Крючок для навешивания', group.construction.hangingHook]);
-  if (group.construction.material) specifications.push(['Материал', group.construction.material]);
-  if (group.construction.finish) specifications.push(['Защитное покрытие', group.construction.finish]);
+  const specifications = Array.isArray(group.specifications)
+    ? group.specifications.map(item => [item.label, formatProductTemplate(item.valueTemplate != null ? item.valueTemplate : item.value, values)])
+    : [
+        ['Модель', row.name],
+        [group.normativeLabel || 'Нормативный документ', project],
+        ['Длина', lengthCm + ' см (' + Math.round(lengthCm * 10) + ' мм)'],
+        ['Ширина', widthDisplay],
+        ['Масса', weight.toLocaleString('ru-RU') + ' кг']
+      ];
+  if (!Array.isArray(group.specifications)) {
+    if (hasStepCount) specifications.push(['Количество ступеней', stepCount + ' шт.']);
+    if (group.construction.type) specifications.push(['Тип конструкции', group.construction.type]);
+    if (group.construction.stringers) specifications.push(['Материал стоек', group.construction.stringers]);
+    if (group.construction.steps) specifications.push(['Материал ступеней', group.construction.steps]);
+    if (group.construction.hangingHook) specifications.push(['Крючок для навешивания', group.construction.hangingHook]);
+    if (group.construction.material) specifications.push(['Материал', group.construction.material]);
+    if (group.construction.finish) specifications.push(['Защитное покрытие', group.construction.finish]);
+  }
   const specsHtml = '<table class="mp-specs-table"><tbody>' + specifications.map(item =>
     '<tr><td>' + escapeHtml(item[0]) + '</td><td>' + escapeHtml(item[1]) + '</td></tr>'
   ).join('') + '</tbody></table>';
 
-  const descriptionHtml = '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) +
-    '</p><p>' + escapeHtml(group.installation) + '</p>';
+  const descriptionHtml = Array.isArray(group.descriptionSections)
+    ? group.descriptionSections.map(section =>
+        (section.heading ? '<h2>' + escapeHtml(section.heading) + '</h2>' : '') +
+        '<p>' + escapeHtml(formatProductTemplate(section.text, values)) + '</p>'
+      ).join('')
+    : '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) + '</p><p>' + escapeHtml(group.installation) + '</p>';
   // Large product families use a compact, expandable related-size navigator.
   const otherSizesTitle = group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
@@ -86,8 +121,17 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
       else if (widthVaries) dimensions = itemWidth + ' см';
       else dimensions = itemLength + ' см';
-      return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html"><span>' +
-        escapeHtml(variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')</span></a>';
+      const linkValues = {
+        id: String(item.id),
+        model: (String(item.name || '').match(/СГ-\d+/u) || [String(item.id)])[0],
+        lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
+        widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
+        weight: Number(String(item.weight).replace(',', '.')),
+        weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
+        project
+      };
+      const linkText = formatProductTemplate(variantGroup.otherSizesLinkTextTemplate || (variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')', linkValues);
+      return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(variantGroup, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
     };
     const linksHtml = orderedRows.map(renderLink).join('');
     const panelId = 'other-sizes-panel-' + panelIndex;
@@ -135,36 +179,56 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
         else if (widthVaries) dimensions = itemWidth + ' см';
         else dimensions = itemLength + ' см';
-        return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html"><span>' + escapeHtml(otherSizesLabel) + ' (' + dimensions + ')</span></a>';
+        const linkValues = {
+          id: String(item.id),
+          model: (String(item.name || '').match(/СГ-\\d+/u) || [String(item.id)])[0],
+          lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
+          widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
+          weight: Number(String(item.weight).replace(',', '.')),
+          weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
+          project
+        };
+        const linkText = formatProductTemplate(group.otherSizesLinkTextTemplate || (otherSizesLabel + ' (' + dimensions + ')'), linkValues);
+        return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(group, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
       }).join('') + '</div></section>';
   }
   const categoryCards = [{"href":"../../ss1.html","src":"../../images/ss1/vid-card.webp","alt":"Стремянки С-(1–9)","label":"Стремянки С-(1–9)"},{"href":"../../ss2.html","src":"../../images/ss2/vid-card.webp","alt":"Стремянки С1-(00–18)","label":"Стремянки С1-(00–18)"},{"href":"../../kl-1-dlya-kanalizacionnyh-kolodcev.html","src":"../../images/kl1/vid-card.webp","alt":"Канализационные лестницы КЛ-1","label":"Канализационные лестницы КЛ-1"},{"href":"../../ssg1.html","src":"../../images/ssg1/vid-card.webp","alt":"Пожарные стремянки СГ","label":"Пожарные стремянки СГ"},{"href":"../../l-3-sk-2201-88.html","src":"../../images/l-3-sk-2201-88/vid-card.webp","alt":"Лестницы Л-3","label":"Лестницы Л-3"},{"href":"../../vl-2-l-19-vodoprovodnaya.html","src":"../../images/vdl/vid-card.webp","alt":"Водопроводные лестницы ВЛ-2","label":"Водопроводные лестницы ВЛ-2"},{"href":"../../l-17-000SB.html","src":"../../images/l-17-000SB/vid-card.webp","alt":"Лестницы Л-17","label":"Лестницы Л-17"},{"href":"../../l-19.html","src":"../../images/l-19/vid-card.webp","alt":"Лестницы Л-19","label":"Лестницы Л-19"},{"href":"../../lestnica-podvesnaya-l-16.html","src":"../../images/lestnica-podvesnaya-l-16/vid-card.webp","alt":"Подвесные лестницы Л-16","label":"Подвесные лестницы Л-16"},{"href":"../../lestnicy-teplovyh-setej-ts.html","src":"../../images/lestnicy-teplovyh-setej-ts/vid-card.webp","alt":"Лестницы тепловых сетей ТС","label":"Лестницы тепловых сетей ТС"},{"href":"../../nts-62-91-111b.html","src":"../../images/nts-62-91-111b/vid-card.webp","alt":"Лестницы НТС 62-91-111Б","label":"Лестницы НТС 62-91-111Б"},{"href":"../../nts-62-91-111.html","src":"../../images/nts-62-91-111/vid-card.webp","alt":"Лестницы НТС 62-91-111","label":"Лестницы НТС 62-91-111"},{"href":"../../nts-62-91-111a.html","src":"../../images/nts-62-91-111a/vid-1.webp","alt":"Лестницы НТС 62-91-111А","label":"Лестницы НТС 62-91-111А"},{"href":"../../skoby-dlya-kolodcev.html","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp","alt":"Скобы для колодцев","label":"Скобы для колодцев"},{"href":"../../soedinitelnye-elementy.html","src":"../../images/soedinitelnye-elementy/vid-1.webp","alt":"Соединительные элементы МС","label":"Соединительные элементы МС"},{"href":"../../tmp-902.html","src":"../../images/tmp-902/vid-card.webp","alt":"Стремянки ТМП 902","label":"Стремянки ТМП 902"}];
   const renderCategoryCards = items => items.map(item => '<a class="other-categories__card" href="' + item.href + '"><img src="' + item.src + '" alt="' + item.alt + '" loading="lazy" decoding="async"><span>' + item.label + '</span></a>').join('');
   const categoriesHtml = '<section class="other-categories" aria-label="Другие категории товаров"><div class="other-categories__heading"><span>Другие категории товаров</span><button type="button" class="other-categories__toggle" aria-expanded="false" aria-controls="other-categories-extra" onclick="toggleOtherCategories(this)"><span class="other-categories__action">Показать остальные категории</span></button></div><nav class="other-categories__grid other-categories__grid--featured" aria-label="Популярные категории">' + renderCategoryCards(categoryCards.slice(0, 4)) + '</nav><nav id="other-categories-extra" class="other-categories__grid other-categories__grid--more" aria-label="Остальные категории" hidden>' + renderCategoryCards(categoryCards.slice(4)) + '</nav></section>';
 
-  const seoTitle = productName + ' — купить с доставкой по России';
-  const seoDescription = productName + '. ' + group.groupTitle + ' по ' + project +
-    '. Длина ' + lengthCm + ' см, ширина ' + widthMm + ' мм, масса ' + weight.toFixed(2).replace('.', ',') + ' кг. Цена ' + (price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.';
-  const modelMatch = productName.match(/Л-16-[\d,]+-[\d,]+/u) || productName.match(/\(([^)]+)\)/u);
-  const productModel = modelMatch ? (modelMatch[1] || modelMatch[0]) : productName;
-  const offer = price > 0 ? ',\n      "offers": { "@type": "Offer", "priceCurrency": "RUB", "price": ' + price +
-    ', "availability": "https://schema.org/InStock", "url": "https://stremyanki-dlya-kolodcev.ru/products/' +
-    group.productFolder + '/' + productSlug + '.html" }' : '';
+  const seoTitle = formatProductTemplate(group.seoTitleTemplate || (productName + ' — купить с доставкой по России'), values);
+  const seoDescription = formatProductTemplate(group.seoDescriptionTemplate ||
+    (productName + '. ' + group.groupTitle + ' по ' + project + '. Длина ' + lengthCm + ' см, ширина ' + widthMm + ' мм, масса ' + values.weightFormatted + ' кг. Цена ' + (price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.'), values);
+  const schemaImagePath = group.schemaImage || mainImage;
+  const schemaImage = /^https?:\/\//i.test(schemaImagePath) ? schemaImagePath : 'https://stremyanki-dlya-kolodcev.ru/' + String(schemaImagePath).replace(/^(\.\.\/)+/, '');
+  const schemaName = formatProductTemplate(group.schemaNameTemplate || productName, values);
+  const schemaDescription = formatProductTemplate(group.schemaDescriptionTemplate || seoDescription, values);
+  const schemaMpn = formatProductTemplate(group.schemaMpnTemplate || project, values);
+  const productUrl = 'https://stremyanki-dlya-kolodcev.ru/products/' + group.productFolder + '/' + productSlug + '.html';
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: productName,
-    sku: row.id,
-    mpn: project,
-    image: absoluteImage,
-    description: seoDescription,
-    brand: { '@type': 'Brand', name: 'Лестницы и стремянки для колодцев' }
+    '@context': 'https://schema.org', '@type': 'Product',
+    name: schemaName, sku: row.id, mpn: schemaMpn, image: schemaImage,
+    description: schemaDescription,
+    brand: group.schemaBrand || { '@type': 'Brand', name: 'Лестницы и стремянки для колодцев' }
   };
   if (price > 0) jsonLd.offers = {
-    '@type': 'Offer', priceCurrency: 'RUB', price,
+    '@type': 'Offer', url: productUrl, priceCurrency: 'RUB', price: String(price),
     availability: 'https://schema.org/InStock',
-    url: 'https://stremyanki-dlya-kolodcev.ru/products/' + group.productFolder + '/' + productSlug + '.html'
+    ...(group.schemaItemCondition ? { itemCondition: group.schemaItemCondition } : {}),
+    ...(group.schemaSeller ? { seller: group.schemaSeller } : {})
   };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://stremyanki-dlya-kolodcev.ru/' },
+      { '@type': 'ListItem', position: 2, name: group.catalogTitle, item: 'https://stremyanki-dlya-kolodcev.ru/' + group.catalogPage },
+      { '@type': 'ListItem', position: 3, name: model, item: productUrl }
+    ]
+  };
+  const deliveryHtml = Array.isArray(group.deliveryParagraphs)
+    ? group.deliveryParagraphs.map(paragraph => '<p>' + escapeHtml(formatProductTemplate(paragraph, values)) + '</p>').join('')
+    : '<h3>Доставка:</h3><p>Стоимость уточняйте у менеджера.</p><ul><li>По России — транспортными компаниями (СДЭК, «Деловые линии», ПЭК и др.), до терминала в вашем городе. Срок — 3–14 дней, стоимость по тарифам транспортной компании.</li></ul><h3>Оплата:</h3><ul><li>Наличными при самовывозе.</li><li>Банковской картой онлайн.</li><li>Безналичный расчёт для юридических лиц — по счёту, с договором и закрывающими документами.</li></ul><p>Точную стоимость и сроки доставки уточняйте у менеджера.</p><a href="/dostavka-i-oplata.html" class="mp-btn-buy" style="display:inline-block; flex:none; text-align:center; text-decoration:none;">Подробнее</a>';
+  const extraContentHtml = group.extraContentHtml || '';
 
   const replacements = {
     '{{PRODUCT_SEO_TITLE}}': escapeHtml(seoTitle),
@@ -173,14 +237,23 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_SLUG}}': productSlug,
     '{{PRODUCT_MAIN_IMAGE_URL}}': absoluteImage,
     '{{GROUP_PROJECT}}': escapeHtml(project),
-    '{{PRODUCT_MODEL}}': escapeHtml(productModel),
+    '{{PRODUCT_MODEL}}': escapeHtml(model),
     '{{PRODUCT_SKU}}': escapeHtml(row.id),
-    '{{PRODUCT_SCHEMA_IMAGE_URL}}': absoluteImage,
+    '{{PRODUCT_SCHEMA_IMAGE_URL}}': schemaImage,
     '{{PRODUCT_LENGTH_CM}}': String(lengthCm),
     '{{PRODUCT_WIDTH_MM}}': String(widthMm),
     '{{PRODUCT_WEIGHT}}': String(weight),
-    '{{PRODUCT_OFFER_JSONLD}}': offer,
+
     '{{PRODUCT_NAME}}': escapeHtml(productName),
+    '{{PRODUCT_HEADER_TITLE}}': escapeHtml(headerTitle),
+    '{{PRODUCT_BREADCRUMB_NAME}}': escapeHtml(breadcrumbName),
+    '{{PRODUCT_MAIN_IMAGE_ALT}}': escapeHtml(gallery[0].alt || productName + ' — общий вид'),
+    '{{PRODUCT_SKU_LINE}}': escapeHtml(skuLine),
+    '{{PRODUCT_STOCK_STATUS}}': escapeHtml(stockText),
+    '{{PRODUCT_PRICE_DISPLAY}}': escapeHtml(priceDisplay),
+    '{{GROUP_DELIVERY_CONTENT}}': deliveryHtml,
+    '{{GROUP_EXTRA_CONTENT}}': extraContentHtml,
+    '{{GROUP_BREADCRUMB_JSONLD}}': '<script type="application/ld+json">\n' + JSON.stringify(breadcrumbJsonLd, null, 2) + '\n</script>',
     '{{GROUP_HEADER_SUBTITLE}}': escapeHtml(group.headerSubtitle),
     '{{GROUP_CATALOG_URL}}': escapeHtml(group.catalogPage),
     '{{GROUP_CATALOG_TITLE}}': escapeHtml(group.catalogTitle),
@@ -195,12 +268,13 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       '<input type="number" id="' + escapeHtml(String(row.id)) + '-qty" value="1" min="1" max="99" data-price="' + (price > 0 ? price : 0) + '" style="width:55px;text-align:center;border:0;" aria-label="Количество">' +
       '<button type="button" onclick="changeQuantity(\'' + escapeHtml(String(row.id)) + '\',1)" aria-label="Увеличить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">+</button>' +
       '</div><button type="button" class="mp-btn-buy" onclick="addItemToCart(' +
-      escapeHtml(JSON.stringify(String(row.id))) + ',' + escapeHtml(JSON.stringify(productName)) +
+      escapeHtml(JSON.stringify(String(row.id))) + ',' + escapeHtml(JSON.stringify(cartItemName)) +
       ',Math.max(1,Math.min(99,Number(document.getElementById(\'' + escapeHtml(String(row.id)) + '-qty\').value)||1)),' +
-      (price > 0 ? price : 0) + ',' + Math.round(lengthCm * 10) + ',' + weight + ')">В корзину</button></div>',
+      (price > 0 ? price : 0) + ',' + (group.cartLengthUnit === 'cm' ? lengthCm : Math.round(lengthCm * 10)) + ',' + weight + ')">' +
+      escapeHtml(group.buyButtonLabel || 'В корзину') + '</button></div>',
     '{{GROUP_ALBUM_REFERENCE}}': escapeHtml(group.albumReference),
     '{{GROUP_ALBUM_NOTE}}': escapeHtml(group.albumNote),
-    '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml(group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'),
+    '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml(shortDescription),
     '{{GROUP_AND_PRODUCT_SPECIFICATIONS}}': specsHtml,
     '{{GROUP_DESCRIPTION_AND_INSTALLATION}}': descriptionHtml,
     '{{GROUP_OTHER_SIZES}}': otherSizesHtml,
@@ -216,4 +290,4 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   return html;
 }
 
-module.exports = { renderMasterProduct };
+module.exports = { renderMasterProduct, getMasterProductSlug };

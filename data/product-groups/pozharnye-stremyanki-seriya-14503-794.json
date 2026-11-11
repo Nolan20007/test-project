@@ -1,0 +1,161 @@
+{
+  "id": "pozharnye-stremyanki-seriya-14503-794",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "pozharnye-stremyanki-seriya-14503-794",
+  "catalogPage": "ssg1.html",
+  "catalogTitle": "Пожарные стремянки СГ серия 1.450.3-7.94",
+  "groupTitle": "Пожарные стремянки СГ серия 1.450.3-7.94",
+  "headerSubtitle": "Пожарная стремянка для эвакуации и проведения аварийно-спасательных работ",
+  "project": "Серия 1.450.3-7.94",
+  "projectFromName": false,
+  "albumReference": "Серия 1.450.3-7.94",
+  "albumNote": "типовой проект, выпуск 2",
+  "csv": "data/ssg1-products.csv",
+  "productIds": [
+    "SG-22",
+    "SG-28",
+    "SG-34",
+    "SG-40",
+    "SG-46",
+    "SG-52",
+    "SG-58",
+    "SG-64",
+    "SG-70",
+    "SG-82"
+  ],
+  "productSlugById": {
+    "SG-22": "pozharnaya-stremyanka-sg-22",
+    "SG-28": "pozharnaya-stremyanka-sg-28",
+    "SG-34": "pozharnaya-stremyanka-sg-34",
+    "SG-40": "pozharnaya-stremyanka-sg-40",
+    "SG-46": "pozharnaya-stremyanka-sg-46",
+    "SG-52": "pozharnaya-stremyanka-sg-52",
+    "SG-58": "pozharnaya-stremyanka-sg-58",
+    "SG-64": "pozharnaya-stremyanka-sg-64",
+    "SG-70": "pozharnaya-stremyanka-sg-70",
+    "SG-82": "pozharnaya-stremyanka-sg-82"
+  },
+  "productNameTemplate": "Пожарная стремянка {model}, высота {lengthCm} см",
+  "headerTitleTemplate": "Пожарная стремянка {model} — серия 1.450.3-7.94 ({lengthCm} см)",
+  "breadcrumbNameTemplate": "Стремянка {model}",
+  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "stockText": "✓ В наличии на складе",
+  "priceDisplayTemplate": "от {priceFormatted} ₽",
+  "shortDescriptionTemplate": "Пожарная стремянка {model} серии 1.450.3-7.94 предназначена для подъёма и спуска при эвакуации и проведении аварийно-спасательных работ. Конструкция шириной {widthMm} мм изготовлена из стальных уголков 75×75×6 мм и круглого прутка Ø18 мм.",
+  "cartItemNameTemplate": "Пожарная стремянка {model} по серии 1.450.3-7.94, длина {lengthMm} мм",
+  "cartLengthUnit": "cm",
+  "buyButtonLabel": "Добавить в корзину",
+  "seoTitleTemplate": "Пожарная стремянка {model} по серии 1.450.3-7.94, {lengthCm} см — купить",
+  "seoDescriptionTemplate": "Купить пожарную стремянку {model} по серии 1.450.3-7.94, Выпуск 2. Высота {lengthCm} см, масса {weightFormatted} кг. От производителя, доставка по России.",
+  "schemaNameTemplate": "Пожарная стремянка Серия 1.450.3-7.94 {model}",
+  "schemaDescriptionTemplate": "Пожарная стремянка Серия 1.450.3-7.94 {model}. Высота {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "images/ssg1/vid-search.webp",
+  "schemaBrand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  },
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "construction": {
+    "type": "Вертикальная стационарная пожарная лестница типа П1",
+    "availableWidthsMm": [
+      700
+    ],
+    "lengthRangeMm": [
+      2200,
+      8200
+    ]
+  },
+  "specifications": [
+    {
+      "label": "Типовой проект",
+      "value": "Серия 1.450.3-7.94"
+    },
+    {
+      "label": "Марка (модель)",
+      "valueTemplate": "{model}"
+    },
+    {
+      "label": "Длина (высота)",
+      "valueTemplate": "{lengthMm} мм ({lengthCm} см)"
+    },
+    {
+      "label": "Ширина лестницы",
+      "valueTemplate": "{widthMm} мм"
+    },
+    {
+      "label": "Масса изделия",
+      "valueTemplate": "{weightFormatted} кг"
+    },
+    {
+      "label": "Шаг ступеней",
+      "value": "300 мм"
+    },
+    {
+      "label": "Вертикальные стойки",
+      "value": "Уголок 75×75×6 мм по ГОСТ 8509"
+    },
+    {
+      "label": "Ступени",
+      "value": "Пруток Ø18 мм по ГОСТ 2590"
+    },
+    {
+      "label": "Антикоррозийное покрытие",
+      "value": "Грунт ГФ-021 по ГОСТ 25129"
+    }
+  ],
+  "descriptionSections": [
+    {
+      "text": "Пожарные стремянки СГ применяются как вертикальные стационарные пожарные лестницы типа П1. Конкретный способ установки и крепления определяется проектом здания и рабочей документацией."
+    },
+    {
+      "heading": "Особенности конструкции:",
+      "text": "Изделия изготавливаются по серии 1.450.3-7.94.2. При высоте более 2,8 м может предусматриваться ограждение ОСГ — комплектацию необходимо согласовать при заказе."
+    }
+  ],
+  "deliveryParagraphs": [
+    "Доставка осуществляется транспортными компаниями по всей России, а также возможен самовывоз со склада в г. Пермь.",
+    "Оплата производится по безналичному расчету (для юридических лиц) или онлайн на сайте (для физических лиц)."
+  ],
+  "otherSizesTitle": "Другие высоты пожарных стремянок Серия 1.450.3-7.94",
+  "otherSizesLinkTextTemplate": "Пожарная стремянка {model} по серии 1.450.3-7.94, длина {lengthMm} мм",
+  "extraContentHtml": "<div class=\"other-series\"><p>Выберите подходящую высоту пожарной стремянки СГ из каталога.</p><a href=\"/ssg1.html\">Каталог пожарных стремянок СГ — все модели</a></div>",
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/ssg1/vid-1.webp",
+      "alt": "Пожарная стремянка Серия 1.450.3-7.94 {model} — общий вид"
+    },
+    {
+      "label": "Фото 1",
+      "webp": "../../images/ssg1/foto-1.webp",
+      "alt": "Пожарная стремянка {model} — фотография 1"
+    },
+    {
+      "label": "Фото 2",
+      "webp": "../../images/ssg1/foto-2.webp",
+      "alt": "Пожарная стремянка {model} — фотография 2"
+    },
+    {
+      "label": "Альбом",
+      "webp": "../../images/ssg1/album.webp",
+      "alt": "Альбом серии 1.450.3-7.94.2"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/ssg1/chertezh.webp",
+      "alt": "Чертёж пожарной стремянки {model}"
+    }
+  ],
+  "notes": [
+    "SEO title, description, canonical URLs and Open Graph values reproduce the existing fire-stair pages.",
+    "Keep the original product slugs from the legacy pages; do not derive URLs from SKU.",
+    "Product JSON-LD uses images/ssg1/vid-search.webp, while Open Graph and the gallery use images/ssg1/vid-1.webp.",
+    "Keep the exact legacy Product and BreadcrumbList structured data, including seller and item condition."
+  ]
+}
