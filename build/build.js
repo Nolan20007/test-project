@@ -14,6 +14,7 @@ const CATEGORIES_TO_GENERATE = [
     template: 'stremyanki-tpr-901-09-11-84.html',
     folder: 'stremyanki-tpr-901-09-11-84',
     title: 'Стремянки ТПР 901-09-11.84',
+    masterTemplate: true,
     catalog_link: 'ss1.html',
     csv: 'data/ss1-products.csv',
     items: [
