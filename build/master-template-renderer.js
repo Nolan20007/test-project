@@ -36,7 +36,15 @@ function productProject(row, group) {
   return match ? match[1].replace(/СБ(?=$|-)/g, 'СБ') : group.project;
 }
 
-function getProductModel(row) {
+function getProductModel(row, groupContent = '') {
+  const hasGroupModelPattern = String(groupContent || '').includes('<!-- GROUP_FIELD:modelPattern:START -->');
+  if (hasGroupModelPattern) {
+    const modelPattern = readGroupHtmlRawField(groupContent, 'modelPattern');
+    if (modelPattern) {
+      const groupModelMatch = String(row && row.name || '').match(new RegExp(modelPattern, 'u'));
+      if (groupModelMatch) return groupModelMatch[0];
+    }
+  }
   const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+|Л-\d+/u);
   const idMatch = String(row && row.id || '').match(/SG-\d+/i);
   return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : String(row && row.id || ''));
@@ -59,7 +67,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const productPath = getProductPath(group.id, row.id);
   const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
-  const model = getProductModel(row);
+  const model = getProductModel(row, groupContent);
   const values = {
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
@@ -197,7 +205,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       else dimensions = itemLength + ' см';
       const linkValues = {
         id: String(item.id),
-        model: getProductModel(item),
+        model: getProductModel(item, variantGroup.id === group.id ? groupContent : ''),
         lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
         widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
         weight: Number(String(item.weight).replace(',', '.')),
@@ -258,7 +266,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         else dimensions = itemLength + ' см';
         const linkValues = {
           id: String(item.id),
-          model: getProductModel(item),
+          model: getProductModel(item, groupContent),
           lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
           widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
           weight: Number(String(item.weight).replace(',', '.')),
