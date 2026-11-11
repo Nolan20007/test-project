@@ -1335,10 +1335,13 @@ function buildProductPages() {
       }
     }
     const groupTemplate = fs.readFileSync(path.resolve(__dirname, '..', group.template), 'utf8');
+    const groupContent = group.groupContentTemplate
+      ? fs.readFileSync(path.resolve(__dirname, '..', group.groupContentTemplate), 'utf8')
+      : '';
     const groupOutDir = path.resolve(__dirname, '..', 'products', group.productFolder);
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
-      const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups);
+      const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups, groupContent);
       const relativePath = getProductPath(group.id, row.id).slice(1);
       const outPath = path.resolve(__dirname, '..', relativePath);
       fs.writeFileSync(outPath, html, 'utf8');
