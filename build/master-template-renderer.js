@@ -36,6 +36,12 @@ function productProject(row, group) {
   return match ? match[1].replace(/СБ(?=$|-)/g, 'СБ') : group.project;
 }
 
+function getProductModel(row) {
+  const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+/u);
+  const idMatch = String(row && row.id || '').match(/SG-\d+/i);
+  return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : String(row && row.id || ''));
+}
+
 function renderMasterProduct(template, group, row, rows, relatedVariantGroups = [], groupContent = '') {
   if (!group || typeof group !== 'object') throw new Error('A product group configuration is required.');
   if (!row || !row.id || !row.name) throw new Error('Product row must contain id and name.');
@@ -53,8 +59,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const productPath = getProductPath(group.id, row.id);
   const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
-  const modelMatch = String(row.name || '').match(/СГ-\d+/u) || String(row.id).match(/SG-\d+/i);
-  const model = modelMatch ? modelMatch[0] : String(row.id);
+  const model = getProductModel(row);
   const values = {
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
@@ -83,8 +88,11 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '" onclick="event.stopPropagation(); changeImage(' + index + ')">' + escapeHtml(item.label) + '</button>'
   ).join('\n                            ');
   const lightboxButtons = gallery.map((item, index) =>
-    '<button type="button" onclick="changeLightboxImage(' + index + ')"' +
+    '<button type="button" data-slide="' + index + '" onclick="scrollToSlide(' + index + ')"' +
     (index === 0 ? ' class="active"' : '') + '>' + escapeHtml(item.label) + '</button>'
+  ).join('\n            ');
+  const lightboxGallery = gallery.map(item =>
+    '<div class="gallery-item"><img src="' + escapeHtml(item.src) + '" alt="' + escapeHtml(item.alt) + '" loading="lazy" decoding="async"></div>'
   ).join('\n            ');
 
   const widthDisplay = group.widthDisplayUnit === 'both' ? widthMm + ' мм (' + widthCm + ' см)' : widthMm + ' мм';
@@ -141,7 +149,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       else dimensions = itemLength + ' см';
       const linkValues = {
         id: String(item.id),
-        model: (String(item.name || '').match(/СГ-\d+/u) || [String(item.id)])[0],
+        model: getProductModel(item),
         lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
         widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
         weight: Number(String(item.weight).replace(',', '.')),
@@ -202,7 +210,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         else dimensions = itemLength + ' см';
         const linkValues = {
           id: String(item.id),
-          model: (String(item.name || '').match(/СГ-\d+/u) || [String(item.id)])[0],
+          model: getProductModel(item),
           lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
           widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
           weight: Number(String(item.weight).replace(',', '.')),
@@ -276,6 +284,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_MAIN_IMAGE}}': escapeHtml(mainImage),
     '{{PRODUCT_GALLERY_CONTROLS}}': galleryButtons,
     '{{PRODUCT_LIGHTBOX_CONTROLS}}': lightboxButtons,
+    '{{PRODUCT_LIGHTBOX_GALLERY}}': lightboxGallery,
     '{{PRODUCT_GALLERY_JSON}}': JSON.stringify(gallery).replace(/</g, '\\u003c'),
     '{{PRODUCT_LENGTH_MM}}': String(Math.round(lengthCm * 10)),
     '{{PRODUCT_PRICE}}': price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу',
