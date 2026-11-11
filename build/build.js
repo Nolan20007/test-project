@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { renderMasterProduct } = require('./master-template-renderer');
+const { renderMasterProduct, getMasterProductSlug } = require('./master-template-renderer');
 
 const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 // Individual product pages are generated from templates, including the SSG series.
@@ -181,29 +181,6 @@ const CATEGORIES_TO_GENERATE = [
       { id: 'NTSS-S2', slug: 'lestnica-s2-4000' },
       { id: 'NTSS-S3', slug: 'lestnica-s3-4600' },
       { id: 'NTSS-S4', slug: 'lestnica-s4-5200' }
-    ]
-  },
-  {
-    template: 'stremyanki-ssg1.html',
-    folder: 'pozharnye-stremyanki-seriya-14503-794',
-    title: 'Пожарные стремянки СГ серия 1.450.3-7.94',
-    catalog_link: 'ssg1.html',
-    csv: 'data/ssg1-products.csv',
-    album: 'Выпуск 2',
-    project_phrase: 'серии 1.450.3-7.94',
-    product_title_prefix: 'Пожарная стремянка',
-    product_title_accusative: 'пожарную стремянку',
-    items: [
-      { id: 'SG-22', slug: 'pozharnaya-stremyanka-sg-22' },
-      { id: 'SG-28', slug: 'pozharnaya-stremyanka-sg-28' },
-      { id: 'SG-34', slug: 'pozharnaya-stremyanka-sg-34' },
-      { id: 'SG-40', slug: 'pozharnaya-stremyanka-sg-40' },
-      { id: 'SG-46', slug: 'pozharnaya-stremyanka-sg-46' },
-      { id: 'SG-52', slug: 'pozharnaya-stremyanka-sg-52' },
-      { id: 'SG-58', slug: 'pozharnaya-stremyanka-sg-58' },
-      { id: 'SG-64', slug: 'pozharnaya-stremyanka-sg-64' },
-      { id: 'SG-70', slug: 'pozharnaya-stremyanka-sg-70' },
-      { id: 'SG-82', slug: 'pozharnaya-stremyanka-sg-82' }
     ]
   },
   {
@@ -1413,7 +1390,7 @@ function buildProductPages() {
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
       const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups);
-      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
+      const slug = getMasterProductSlug(group, row);
       const relativePath = 'products/' + group.productFolder + '/' + slug + '.html';
       const outPath = path.resolve(__dirname, '..', relativePath);
       fs.writeFileSync(outPath, html, 'utf8');
@@ -1480,7 +1457,7 @@ function updateLlmsProductLinks() {
     const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     lines.push('### ' + group.catalogTitle);
     rows.forEach(row => {
-      const slug = String(row.id).toLowerCase().replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
+      const slug = getMasterProductSlug(group, row);
       const url = SITE_URL + '/products/' + group.productFolder + '/' + slug + '.html';
       lines.push('- [' + String(row.name || '').trim() + '](' + url + ')');
       productLinkCount += 1;
