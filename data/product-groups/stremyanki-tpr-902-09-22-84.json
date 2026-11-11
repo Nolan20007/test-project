@@ -1,0 +1,104 @@
+{
+  "id": "stremyanki-tpr-902-09-22-84",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "stremyanki-tpr-902-09-22-84",
+  "catalogPage": "ss2.html",
+  "catalogTitle": "Стремянки для канализационных колодцев ТПР 902-09-22.84",
+  "groupTitle": "Стремянки для канализационных колодцев ТПР 902-09-22.84",
+  "headerSubtitle": "Стальные стремянки для канализационных колодцев по типовому проекту ТПР 902-09-22.84",
+  "project": "ТПР 902-09-22.84",
+  "projectFromName": false,
+  "schemaProductType": "Стремянка для канализационного колодца",
+  "normativeLabel": "Типовой проект",
+  "albumReference": "ТПР 902-09-22.84, Альбом VII",
+  "albumNote": "Типовые проектные решения 902-09-22.84",
+  "construction": {
+    "type": "Стальная стремянка для канализационного колодца",
+    "stringers": "Вертикальные стойки — стальной уголок 50×50×5 мм по ГОСТ 8509",
+    "steps": "Ступени — стальной пруток Ø18 мм по ГОСТ 2590",
+    "material": "Сталь",
+    "finish": "Масляная краска (сурик МА-15)",
+    "availableWidthsMm": [
+      500
+    ],
+    "lengthRangeMm": [
+      600,
+      6000
+    ]
+  },
+  "csv": "data/ss2-products.csv",
+  "productIds": [
+    "C1-00",
+    "C1-01",
+    "C1-02",
+    "C1-03",
+    "C1-04",
+    "C1-05",
+    "C1-06",
+    "C1-07",
+    "C1-08",
+    "C1-09",
+    "C1-10",
+    "C1-11",
+    "C1-12",
+    "C1-13",
+    "C1-14",
+    "C1-15",
+    "C1-16",
+    "C1-17",
+    "C1-18"
+  ],
+  "groupContentTemplate": "templates/group-content/stremyanki-tpr-902-09-22-84.html",
+  "productNameTemplate": "Стремянка {model} по ТПР 902-09-22.84, длина {lengthCm} см",
+  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "stockTextFromRow": true,
+  "cartItemNameTemplate": "{productName}",
+  "cartLengthUnit": "cm",
+  "buyButtonLabel": "Добавить в корзину",
+  "seoTitleTemplate": "Стремянка {model} по ТПР 902-09-22.84, {lengthCm} см — купить",
+  "seoDescriptionTemplate": "Купить стальную стремянку {model} по ТПР 902-09-22.84. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг. Для канализационных колодцев, от производителя.",
+  "schemaNameTemplate": "Стремянка {model} по ТПР 902-09-22.84, длина {lengthMm} мм",
+  "schemaDescriptionTemplate": "Стальная стремянка {model} для канализационного колодца по ТПР 902-09-22.84. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "../../images/ss2/vid-1.webp",
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/ss2/vid-1.webp",
+      "alt": "Стремянка {model} по ТПР 902-09-22.84 — вид 1"
+    },
+    {
+      "label": "Вид 2",
+      "webp": "../../images/ss2/vid-2.webp",
+      "alt": "Стремянка {model} по ТПР 902-09-22.84 — вид 2"
+    },
+    {
+      "label": "Фото 1",
+      "webp": "../../images/ss2/foto-1.webp",
+      "alt": "Стремянка {model} — фотография 1"
+    },
+    {
+      "label": "Фото 2",
+      "webp": "../../images/ss2/foto-2.webp",
+      "alt": "Стремянка {model} — фотография 2"
+    },
+    {
+      "label": "Альбом",
+      "webp": "../../images/ss2/album.webp",
+      "alt": "Типовые проектные решения ТПР 902-09-22.84 — альбом VII"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/ss2/chertezh.webp",
+      "alt": "Чертёж стремянки {model} по ТПР 902-09-22.84"
+    }
+  ],
+  "otherSizesLabel": "Стремянки ТПР 902-09-22.84",
+  "otherSizesLimit": 20
+}
