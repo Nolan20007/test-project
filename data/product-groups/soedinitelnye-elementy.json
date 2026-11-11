@@ -61,5 +61,6 @@
     "@type": "Brand",
     "name": "Лестницы и стремянки для колодцев"
   },
-  "otherSizesMatchProject": true
+  "otherSizesMatchProject": true,
+  "skuLineTemplate": "Артикул: {id} | Ширина: {lengthMm} мм | Высота: {widthMm} мм"
 }
