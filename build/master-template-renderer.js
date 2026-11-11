@@ -89,14 +89,14 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
   const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
   const normalizeProductImagePath = source => {
-    const value = String(source || '').trim().replace(/^\\/+/, '');
+    const value = String(source || '').trim().replace(/^\/+/, '');
     return value.startsWith('../') ? value : '../../' + value;
   };
   const sourceImage = String(row.image || '').trim();
   const rowGallery = String(row.images || '').split(';').map(value => value.trim())
     .filter(value => value && value !== 'images/default-product.svg');
   const preferredImage = sourceImage
-    ? sourceImage.replace(/vid-mini\\.webp$/i, 'vid-1.webp').replace(/-mini\\.webp$/i, '.webp')
+    ? sourceImage.replace(/vid-mini\.webp$/i, 'vid-1.webp').replace(/-mini\.webp$/i, '.webp')
     : '';
   const gallerySources = [];
   if (preferredImage && preferredImage !== sourceImage && (!rowGallery.length || rowGallery.includes(preferredImage))) gallerySources.push(preferredImage);
@@ -105,7 +105,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const uniqueGallerySources = [...new Set(gallerySources.length ? gallerySources : ['images/default-product.svg'])];
   const gallery = uniqueGallerySources.map((source, index) => {
     const fileName = source.split('/').pop() || '';
-    const photoMatch = fileName.match(/foto-?(\\d+)/i);
+    const photoMatch = fileName.match(/foto-?(\d+)/i);
     const label = /chertezh|drawing/i.test(fileName) ? 'Чертёж'
       : /album/i.test(fileName) ? 'Альбом'
       : photoMatch ? 'Фото ' + photoMatch[1]
