@@ -83,7 +83,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
   const rowAvailability = String(row.available || '').trim();
   const stockText = group.stockTextFromRow
-    ? (rowAvailability ? (/в наличии/i.test(rowAvailability) ? '✓ В наличии на складе' : rowAvailability) : '')
+    ? rowAvailability
     : formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
   const priceDisplay = price > 0 ? 'от ' + values.priceFormatted + ' ₽' : 'Цена по запросу';
   const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
@@ -173,8 +173,10 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
     const lengthVaries = new Set(variantRows.map(item => Number(item.length))).size > 1;
     const widthVaries = new Set(variantRows.map(item => Number(item.width))).size > 1;
-    const allRows = variantRows.filter(item => !(variantGroup.id === group.id && item.id === currentRow.id))
-      .slice().sort((a, b) => Number(a.length) - Number(b.length) || String(a.id).localeCompare(String(b.id)));
+    const allRows = variantRows.filter(item =>
+      !(variantGroup.id === group.id && item.id === currentRow.id) &&
+      (!variantGroup.otherSizesMatchProject || productProject(item, variantGroup) === project)
+    ).slice().sort((a, b) => Number(a.length) - Number(b.length) || String(a.id).localeCompare(String(b.id)));
     const orderedRows = allRows;
     const renderLink = item => {
       const itemLength = Number(item.length);
