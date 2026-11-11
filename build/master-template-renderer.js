@@ -37,7 +37,7 @@ function productProject(row, group) {
 }
 
 function getProductModel(row) {
-  const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+/u);
+  const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+|Л-\d+/u);
   const idMatch = String(row && row.id || '').match(/SG-\d+/i);
   return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : String(row && row.id || ''));
 }
