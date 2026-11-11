@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  MASTER PRODUCT TEMPLATE
+  Shared layout, styles and interactions; group and product data are supplied by the renderer.
+-->
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +11,7 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <title>Пожарная стремянка СГ-40 по серии 1.450.3-7.94, 400 см — купить</title>
+    <!-- MASTER: shared document shell; SEO values are supplied by the product/group layer. -->
     <meta name="description" content="Купить пожарную стремянку СГ-40 по серии 1.450.3-7.94, Выпуск 2. Высота 400 см, масса 71,80 кг. От производителя, доставка по России.">
     <meta name="robots" content="index, follow">
     
@@ -30,19 +35,58 @@
     <script src="../../js/utils.js" defer></script>
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Пожарная стремянка Серия 1.450.3-7.94 СГ-40",
-      "sku": "SG-40",
-      "mpn": "SG-40",
-      "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/vid-search.webp",
-      "description": "Пожарная стремянка Серия 1.450.3-7.94 СГ-40. Высота 400 см, ширина 700 мм, масса 71,80 кг.",
-      "brand": { "@type": "Brand", "name": "Лестницы и стремянки для колодцев" }
-      ,
-      "offers": {"@type":"Offer","url":"https://stremyanki-dlya-kolodcev.ru/products/pozharnye-stremyanki-seriya-14503-794/pozharnaya-stremyanka-sg-40.html","priceCurrency":"RUB","price":"10770","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition","seller":{"@type":"Organization","name":"ИП Гневашева Кристина Дмитриевна"}}
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Пожарная стремянка Серия 1.450.3-7.94 СГ-40",
+  "sku": "SG-40",
+  "mpn": "SG-40",
+  "image": "https://stremyanki-dlya-kolodcev.ru/images/ssg1/vid-search.webp",
+  "description": "Пожарная стремянка Серия 1.450.3-7.94 СГ-40. Высота 400 см, ширина 700 мм, масса 71,80 кг.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://stremyanki-dlya-kolodcev.ru/products/pozharnye-stremyanki-seriya-14503-794/pozharnaya-stremyanka-sg-40.html",
+    "priceCurrency": "RUB",
+    "price": "10770",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "ИП Гневашева Кристина Дмитриевна"
     }
-    </script>
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://stremyanki-dlya-kolodcev.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Пожарные стремянки СГ серия 1.450.3-7.94",
+      "item": "https://stremyanki-dlya-kolodcev.ru/ssg1.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "СГ-40",
+      "item": "https://stremyanki-dlya-kolodcev.ru/products/pozharnye-stremyanki-seriya-14503-794/pozharnaya-stremyanka-sg-40.html"
+    }
+  ]
+}
+</script>
 
     <style>
         .product-page-wrap { padding: 20px 0 40px; background: #fafafa; }
@@ -79,14 +123,27 @@
         .mp-specs-table td { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; line-height: 1.4; }
         .mp-specs-table td:first-child { color: #666; width: 45%; }
         .mp-specs-table td:last-child { font-weight: 500; color: #222; }
-        .other-sizes { background: #fff; padding: 20px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .other-sizes h3 { margin-top: 0; color: #222; font-size: 18px; margin-bottom: 15px; }
-        .other-sizes__list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .other-sizes__list a { display: inline-block; padding: 8px 15px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; color: #333; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 14px; }
-        .other-sizes__list a:hover { border-color: var(--primary-color); color: var(--primary-color); background: #fff; }
-        .other-series { margin-top: 14px; padding: 18px 24px; background: #f4f7fb; border: 1px solid #dce5f0; border-radius: 12px; }
-        .other-series p { margin: 0; color: #333; line-height: 1.5; }
-        .other-series a { display: inline-block; margin-top: 8px; color: var(--primary-color); font-weight: 600; text-decoration: underline; }
+
+        .other-categories { margin-top: 12px; border: 1px solid #dce5f0; border-radius: 10px; background: #fff; overflow: hidden; }
+        .other-categories__heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; border-bottom: 1px solid #edf1f5; color: #222; font-size: 15px; font-weight: 600; }
+        .other-categories__toggle { display: inline-flex; align-items: center; gap: 8px; padding: 4px 0 4px 12px; border: 0; background: transparent; color: var(--primary-color); cursor: pointer; font: inherit; font-size: 13px; font-weight: 500; }
+        .other-categories__toggle:hover { text-decoration: underline; }
+        .other-categories__toggle::after { content: "⌄"; font-size: 18px; line-height: 1; transition: transform .2s; }
+        .other-categories__toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
+        .other-categories__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; padding: 16px; }
+        .other-categories__grid--featured { padding-bottom: 16px; }
+        .other-categories__grid--more { border-top: 1px solid #edf1f5; }
+        .other-categories__grid[hidden] { display: none; }
+        .other-categories__card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e6edf3; border-radius: 9px; background: #fff; color: var(--primary-color); text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .2s; }
+        .other-categories__card:hover { border-color: var(--primary-color); box-shadow: 0 4px 14px rgba(14,92,128,.10); transform: translateY(-2px); }
+        .other-categories__card img { display: block; width: 100%; height: 112px; padding: 8px; object-fit: contain; background: #fff; }
+        .other-categories__card span { display: flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px; border-top: 1px solid #edf1f5; text-align: center; font-size: 13px; line-height: 1.3; font-weight: 500; }
+        @media (max-width: 900px) { .other-categories__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (max-width: 700px) {
+            .other-categories__more summary { padding: 11px 13px; font-size: 14px; }
+            .other-categories__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 12px; }
+            .other-categories__card img { height: 100px; }
+        }
 
         .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); padding-top: 60px; }
         .lightbox-content { margin: auto; display: block; width: 90%; max-width: 1000px; position: relative; text-align: center; }
@@ -106,33 +163,39 @@
             .image-toggle__btn { padding: 5px 10px; font-size: 11px; }
         }
     .header .header-title { margin: 0; font-size: 2.2em; line-height: 1.2; font-weight: 600; color: #fff; }
-    </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Главная",
-      "item": "https://stremyanki-dlya-kolodcev.ru/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Пожарные стремянки СГ серия 1.450.3-7.94",
-      "item": "https://stremyanki-dlya-kolodcev.ru/ssg1.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "СГ-40",
-      "item": "https://stremyanki-dlya-kolodcev.ru/products/pozharnye-stremyanki-seriya-14503-794/pozharnaya-stremyanka-sg-40.html"
+    
+    /* Блок «Другие размеры»: единый стиль карточки С-1 для всех новых страниц */
+    .other-sizes { background: #fff; padding: 20px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+    .other-sizes__title { margin: 0 0 15px; color: #222; font-size: 18px; font-weight: 600; line-height: 1.3; }
+    .other-sizes__links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .other-sizes__link { display: inline-block; padding: 8px 15px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; color: #333; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 14px; }
+    .other-sizes__link:hover { border-color: var(--primary-color); color: var(--primary-color); background: #fff; }
+    .other-sizes--large { padding-top: 22px; padding-bottom: 22px; }
+    .other-sizes__variants { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: flex-start; gap: 8px; margin: 0 0 16px; }
+    .other-sizes__variant { display: flex; flex: 0 1 auto; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 112px; min-height: 48px; padding: 6px 14px; border: 1px solid #dce5f0; border-radius: 9px; background: #f7f9fc; color: #333; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; }
+    .other-sizes__variant span { font-size: 12px; font-weight: 400; color: #687586; }
+    .other-sizes__variant:hover { border-color: var(--primary-color); }
+    .other-sizes__variant.active { border-color: var(--primary-color); background: var(--primary-color); color: #fff; }
+    .other-sizes__variant.active span { color: #fff; }
+    .other-sizes__variant-panel[hidden], .other-sizes__extra[hidden] { display: none; }
+    .other-sizes__links { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start; gap: 8px; }
+    .other-sizes__links--collapsed { max-height: 80px; overflow: hidden; }
+    .other-sizes__link { display: inline-flex; flex: 0 1 auto; align-items: center; justify-content: center; width: max-content; max-width: 100%; min-width: 0; min-height: 36px; box-sizing: border-box; padding: 7px 11px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13px; line-height: 1.25; }
+    .other-sizes__link > span { display: block; min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .other-sizes__expand { display: block; margin: 14px auto 0; padding: 9px 22px; border: 1px solid var(--primary-color); border-radius: 9px; background: #fff; color: var(--primary-color); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .other-sizes__expand:hover { background: #f3f7fb; }
+    .other-sizes__expand[hidden] { display: none; }
+    @media (max-width: 700px) {
+        .other-sizes { padding: 20px; }
+        .other-sizes__links--collapsed { max-height: 80px; }
+        .other-sizes__variants { gap: 7px; }
+        .other-sizes__variant { min-width: 104px; min-height: 44px; padding: 6px 10px; font-size: 13px; }
+        .other-sizes__link { font-size: 13px; padding: 7px 9px; }
     }
-  ]
-}
-</script>
+        .other-series { margin-top: 14px; padding: 18px 24px; background: #f4f7fb; border: 1px solid #dce5f0; border-radius: 12px; }
+        .other-series p { margin: 0; color: #333; line-height: 1.5; }
+        .other-series a { display: inline-block; margin-top: 8px; color: var(--primary-color); font-weight: 600; text-decoration: underline; }
+</style>
     <link rel="preload" href="../../fonts/rubik/rubik-3.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../../css/rubik-local.css">
     <script defer src="../../js/analytics.js"></script>
@@ -146,6 +209,7 @@
     </div>
 </header>
 
+<!-- MASTER: shared navigation slot -->
 <!-- NAV_START -->
 <nav class="nav">
     <div class="container">
@@ -196,12 +260,12 @@
                 <div class="mp-gallery">
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
                         <img id="mainImage" src="../../images/ssg1/vid-1.webp" alt="Пожарная стремянка Серия 1.450.3-7.94 СГ-40 — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
-                        <div class="image-toggle">
-                            <button class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('../../images/ssg1/vid-1.webp', 0)">Вид 1</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ssg1/foto-1.webp', 1)">Фото 1</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ssg1/foto-2.webp', 2)">Фото 2</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ssg1/album.webp', 3)">Альбом</button>
-                            <button class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('../../images/ssg1/chertezh.webp', 4)">Чертёж</button>
+                        <div class="image-toggle" id="product-gallery-controls">
+                            <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage(0)">Вид 1</button>
+                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(1)">Фото 1</button>
+                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(2)">Фото 2</button>
+                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(3)">Альбом</button>
+                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(4)">Чертёж</button>
                         </div>
                     </div>
                 </div>
@@ -215,16 +279,7 @@
                         <div class="mp-price">от 10 770 ₽</div>
                     </div>
 
-                    <div class="mp-buy-controls">
-                        <div class="quantity-control" style="display:flex; align-items:center; border: 1px solid #c8d9ea; border-radius: 12px; overflow: hidden;">
-                            <button type="button" onclick="changeQuantity('SG-40', -1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">−</button>
-                            <input type="number" id="SG-40-qty" value="1" min="1" max="99" data-price="10770" style="width:50px; border:none; text-align:center; font-size:18px; font-weight:bold; padding:10px 0;">
-                            <button type="button" onclick="changeQuantity('SG-40', 1)" style="background:#f4f4f4; border:none; padding:12px 18px; font-size:20px; cursor:pointer;">+</button>
-                        </div>
-                        <button type="button" class="mp-btn-buy cart-button"
-                                data-item-id="SG-40" data-item-name="Пожарная стремянка СГ-40 по серии 1.450.3-7.94, длина 4000 мм"
-                                data-item-length="400" data-item-weight="71.8">Добавить в корзину</button>
-                    </div>
+                    <div class="mp-buy-controls"><div class="quantity-control" style="display:flex;align-items:center;border:1px solid #c8d9ea;border-radius:12px;overflow:hidden;"><button type="button" onclick="changeQuantity('SG-40',-1)" aria-label="Уменьшить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">−</button><input type="number" id="SG-40-qty" value="1" min="1" max="99" data-price="10770" style="width:55px;text-align:center;border:0;" aria-label="Количество"><button type="button" onclick="changeQuantity('SG-40',1)" aria-label="Увеличить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">+</button></div><button type="button" class="mp-btn-buy" onclick="addItemToCart(&quot;SG-40&quot;,&quot;Пожарная стремянка СГ-40 по серии 1.450.3-7.94, длина 4000 мм&quot;,Math.max(1,Math.min(99,Number(document.getElementById('SG-40-qty').value)||1)),10770,400,71.8)">Добавить в корзину</button></div>
 
                     <div class="mp-usp-list">
                         <div class="mp-usp-item"><b>Доставка</b>По всей России</div>
@@ -232,9 +287,7 @@
                         <div class="mp-usp-item"><b>Серия 1.450.3-7.94</b>типовой проект, выпуск 2</div>
                     </div>
 
-                    <p class="mp-short-desc">
-                        <strong>Пожарная стремянка СГ-40</strong> серии 1.450.3-7.94 предназначена для подъёма и спуска при эвакуации и проведении аварийно-спасательных работ. Конструкция шириной 700 мм изготовлена из стальных уголков 75×75×6 мм и круглого прутка Ø18 мм.
-                    </p>
+                    <p class="mp-short-desc">Пожарная стремянка СГ-40 серии 1.450.3-7.94 предназначена для подъёма и спуска при эвакуации и проведении аварийно-спасательных работ. Конструкция шириной 700 мм изготовлена из стальных уголков 75×75×6 мм и круглого прутка Ø18 мм.</p>
                 </div>
             </div>
 
@@ -245,55 +298,27 @@
             </div>
 
             <div id="specs" class="mp-tab-content active">
-                <table class="mp-specs-table">
-                    <tr><td>Типовой проект</td><td>Серия 1.450.3-7.94</td></tr>
-                    <tr><td>Марка (модель)</td><td>СГ-40</td></tr>
-                    <tr><td>Длина (высота)</td><td>4000 мм (400 см)</td></tr>
-                    <tr><td>Ширина лестницы</td><td>700 мм</td></tr>
-                    <tr><td>Масса изделия</td><td>71,80 кг</td></tr>
-                    
-                    <tr><td>Шаг ступеней</td><td>300 мм</td></tr>
-<tr><td>Вертикальные стойки</td><td>Уголок 75×75×6 мм по ГОСТ 8509</td></tr>
-                    <tr><td>Ступени</td><td>Пруток Ø18 мм по ГОСТ 2590</td></tr>
-                    <tr><td>Антикоррозийное покрытие</td><td>Грунт ГФ-021 по ГОСТ 25129</td></tr>
-                </table>
+                <table class="mp-specs-table"><tbody><tr><td>Типовой проект</td><td>Серия 1.450.3-7.94</td></tr><tr><td>Марка (модель)</td><td>СГ-40</td></tr><tr><td>Длина (высота)</td><td>4000 мм (400 см)</td></tr><tr><td>Ширина лестницы</td><td>700 мм</td></tr><tr><td>Масса изделия</td><td>71,80 кг</td></tr><tr><td>Шаг ступеней</td><td>300 мм</td></tr><tr><td>Вертикальные стойки</td><td>Уголок 75×75×6 мм по ГОСТ 8509</td></tr><tr><td>Ступени</td><td>Пруток Ø18 мм по ГОСТ 2590</td></tr><tr><td>Антикоррозийное покрытие</td><td>Грунт ГФ-021 по ГОСТ 25129</td></tr></tbody></table>
             </div>
 
             <div id="description" class="mp-tab-content">
-                <p>Пожарные стремянки СГ применяются как вертикальные стационарные пожарные лестницы типа П1. Конкретный способ установки и крепления определяется проектом здания и рабочей документацией.</p>
-                <h2>Особенности конструкции:</h2>
-                <p>Изделия изготавливаются по серии 1.450.3-7.94.2. При высоте более 2,8 м может предусматриваться ограждение ОСГ — комплектацию необходимо согласовать при заказе.</p>
+                <p>Пожарные стремянки СГ применяются как вертикальные стационарные пожарные лестницы типа П1. Конкретный способ установки и крепления определяется проектом здания и рабочей документацией.</p><h2>Особенности конструкции:</h2><p>Изделия изготавливаются по серии 1.450.3-7.94.2. При высоте более 2,8 м может предусматриваться ограждение ОСГ — комплектацию необходимо согласовать при заказе.</p>
             </div>
 
             <div id="delivery" class="mp-tab-content">
-                <p>Доставка осуществляется транспортными компаниями по всей России, а также возможен самовывоз со склада в г. Пермь.</p>
-                <p>Оплата производится по безналичному расчету (для юридических лиц) или онлайн на сайте (для физических лиц).</p>
+                <p>Доставка осуществляется транспортными компаниями по всей России, а также возможен самовывоз со склада в г. Пермь.</p><p>Оплата производится по безналичному расчету (для юридических лиц) или онлайн на сайте (для физических лиц).</p>
             </div>
         </div>
 
-        <div class="other-sizes">
-            <h2>Другие высоты пожарных стремянок Серия 1.450.3-7.94</h2>
-            <div class="other-sizes__list">
-                <a href="pozharnaya-stremyanka-sg-22.html">Пожарная стремянка СГ-22 по серии 1.450.3-7.94, длина 2200 мм</a>
-<a href="pozharnaya-stremyanka-sg-28.html">Пожарная стремянка СГ-28 по серии 1.450.3-7.94, длина 2800 мм</a>
-<a href="pozharnaya-stremyanka-sg-34.html">Пожарная стремянка СГ-34 по серии 1.450.3-7.94, длина 3400 мм</a>
-<a href="pozharnaya-stremyanka-sg-46.html">Пожарная стремянка СГ-46 по серии 1.450.3-7.94, длина 4600 мм</a>
-<a href="pozharnaya-stremyanka-sg-52.html">Пожарная стремянка СГ-52 по серии 1.450.3-7.94, длина 5200 мм</a>
-<a href="pozharnaya-stremyanka-sg-58.html">Пожарная стремянка СГ-58 по серии 1.450.3-7.94, длина 5800 мм</a>
-<a href="pozharnaya-stremyanka-sg-64.html">Пожарная стремянка СГ-64 по серии 1.450.3-7.94, длина 6400 мм</a>
-<a href="pozharnaya-stremyanka-sg-70.html">Пожарная стремянка СГ-70 по серии 1.450.3-7.94, длина 7000 мм</a>
-<a href="pozharnaya-stremyanka-sg-82.html">Пожарная стремянка СГ-82 по серии 1.450.3-7.94, длина 8200 мм</a>
-
-            </div>
-        </div>
-
-        <div class="other-series">
-            <p>Выберите подходящую высоту пожарной стремянки СГ из каталога.</p>
-            <a href="/ssg1.html">Каталог пожарных стремянок СГ — все модели</a>
-        </div>
+        <section class="other-sizes" aria-label="Другие высоты пожарных стремянок Серия 1.450.3-7.94"><h2 class="other-sizes__title">Другие высоты пожарных стремянок Серия 1.450.3-7.94</h2><div class="other-sizes__links"><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-22.html"><span>Пожарная стремянка SG-22 по серии 1.450.3-7.94, длина 2200 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-28.html"><span>Пожарная стремянка SG-28 по серии 1.450.3-7.94, длина 2800 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-34.html"><span>Пожарная стремянка SG-34 по серии 1.450.3-7.94, длина 3400 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-46.html"><span>Пожарная стремянка SG-46 по серии 1.450.3-7.94, длина 4600 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-52.html"><span>Пожарная стремянка SG-52 по серии 1.450.3-7.94, длина 5200 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-58.html"><span>Пожарная стремянка SG-58 по серии 1.450.3-7.94, длина 5800 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-64.html"><span>Пожарная стремянка SG-64 по серии 1.450.3-7.94, длина 6400 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-70.html"><span>Пожарная стремянка SG-70 по серии 1.450.3-7.94, длина 7000 мм</span></a><a class="other-sizes__link" href="pozharnaya-stremyanka-sg-82.html"><span>Пожарная стремянка SG-82 по серии 1.450.3-7.94, длина 8200 мм</span></a></div></section>
+        <div class="other-series"><p>Выберите подходящую высоту пожарной стремянки СГ из каталога.</p><a href="/ssg1.html">Каталог пожарных стремянок СГ — все модели</a></div>
+        <!-- GROUP_CONTENT_START: other categories -->
+        <section class="other-categories" aria-label="Другие категории товаров"><div class="other-categories__heading"><span>Другие категории товаров</span><button type="button" class="other-categories__toggle" aria-expanded="false" aria-controls="other-categories-extra" onclick="toggleOtherCategories(this)"><span class="other-categories__action">Показать остальные категории</span></button></div><nav class="other-categories__grid other-categories__grid--featured" aria-label="Популярные категории"><a class="other-categories__card" href="../../ss1.html"><img src="../../images/ss1/vid-card.webp" alt="Стремянки С-(1–9)" loading="lazy" decoding="async"><span>Стремянки С-(1–9)</span></a><a class="other-categories__card" href="../../ss2.html"><img src="../../images/ss2/vid-card.webp" alt="Стремянки С1-(00–18)" loading="lazy" decoding="async"><span>Стремянки С1-(00–18)</span></a><a class="other-categories__card" href="../../kl-1-dlya-kanalizacionnyh-kolodcev.html"><img src="../../images/kl1/vid-card.webp" alt="Канализационные лестницы КЛ-1" loading="lazy" decoding="async"><span>Канализационные лестницы КЛ-1</span></a><a class="other-categories__card" href="../../ssg1.html"><img src="../../images/ssg1/vid-card.webp" alt="Пожарные стремянки СГ" loading="lazy" decoding="async"><span>Пожарные стремянки СГ</span></a></nav><nav id="other-categories-extra" class="other-categories__grid other-categories__grid--more" aria-label="Остальные категории" hidden><a class="other-categories__card" href="../../l-3-sk-2201-88.html"><img src="../../images/l-3-sk-2201-88/vid-card.webp" alt="Лестницы Л-3" loading="lazy" decoding="async"><span>Лестницы Л-3</span></a><a class="other-categories__card" href="../../vl-2-l-19-vodoprovodnaya.html"><img src="../../images/vdl/vid-card.webp" alt="Водопроводные лестницы ВЛ-2" loading="lazy" decoding="async"><span>Водопроводные лестницы ВЛ-2</span></a><a class="other-categories__card" href="../../l-17-000SB.html"><img src="../../images/l-17-000SB/vid-card.webp" alt="Лестницы Л-17" loading="lazy" decoding="async"><span>Лестницы Л-17</span></a><a class="other-categories__card" href="../../l-19.html"><img src="../../images/l-19/vid-card.webp" alt="Лестницы Л-19" loading="lazy" decoding="async"><span>Лестницы Л-19</span></a><a class="other-categories__card" href="../../lestnica-podvesnaya-l-16.html"><img src="../../images/lestnica-podvesnaya-l-16/vid-card.webp" alt="Подвесные лестницы Л-16" loading="lazy" decoding="async"><span>Подвесные лестницы Л-16</span></a><a class="other-categories__card" href="../../lestnicy-teplovyh-setej-ts.html"><img src="../../images/lestnicy-teplovyh-setej-ts/vid-card.webp" alt="Лестницы тепловых сетей ТС" loading="lazy" decoding="async"><span>Лестницы тепловых сетей ТС</span></a><a class="other-categories__card" href="../../nts-62-91-111b.html"><img src="../../images/nts-62-91-111b/vid-card.webp" alt="Лестницы НТС 62-91-111Б" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111Б</span></a><a class="other-categories__card" href="../../nts-62-91-111.html"><img src="../../images/nts-62-91-111/vid-card.webp" alt="Лестницы НТС 62-91-111" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111</span></a><a class="other-categories__card" href="../../nts-62-91-111a.html"><img src="../../images/nts-62-91-111a/vid-1.webp" alt="Лестницы НТС 62-91-111А" loading="lazy" decoding="async"><span>Лестницы НТС 62-91-111А</span></a><a class="other-categories__card" href="../../skoby-dlya-kolodcev.html"><img src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-card.webp" alt="Скобы для колодцев" loading="lazy" decoding="async"><span>Скобы для колодцев</span></a><a class="other-categories__card" href="../../soedinitelnye-elementy.html"><img src="../../images/soedinitelnye-elementy/vid-1.webp" alt="Соединительные элементы МС" loading="lazy" decoding="async"><span>Соединительные элементы МС</span></a><a class="other-categories__card" href="../../tmp-902.html"><img src="../../images/tmp-902/vid-card.webp" alt="Стремянки ТМП 902" loading="lazy" decoding="async"><span>Стремянки ТМП 902</span></a></nav></section>
+        <!-- GROUP_CONTENT_END -->
     </div>
 </main>
 
+<!-- MASTER: shared CTA slot -->
 <!-- CTA_START -->
 <section class="cta-section">
     <div class="container">
@@ -327,7 +352,8 @@
     </div>
 </section>
 
-<!-- CTA_END --><!-- FOOTER_START -->
+<!-- CTA_END --><!-- MASTER: shared footer slot -->
+<!-- FOOTER_START -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -445,32 +471,90 @@ function copyEmailToClipboard(btn) {
         <button class="close-btn" onclick="closeLightbox()">&times;</button>
         <img id="lightbox-img" src="" alt="Просмотр">
         <div class="modal-nav" id="lightbox-nav">
-            <button onclick="changeLightboxImage(0)" class="active">Вид 1</button>
-            <button onclick="changeLightboxImage(1)">Фото 1</button>
-            <button onclick="changeLightboxImage(2)">Фото 2</button>
-            <button onclick="changeLightboxImage(3)">Альбом</button>
-            <button onclick="changeLightboxImage(4)">Чертёж</button>
+            <button type="button" onclick="changeLightboxImage(0)" class="active">Вид 1</button>
+            <button type="button" onclick="changeLightboxImage(1)">Фото 1</button>
+            <button type="button" onclick="changeLightboxImage(2)">Фото 2</button>
+            <button type="button" onclick="changeLightboxImage(3)">Альбом</button>
+            <button type="button" onclick="changeLightboxImage(4)">Чертёж</button>
         </div>
     </div>
 </div>
 
-<script>
-    const imgSources = ['../../images/ssg1/vid-1.webp','../../images/ssg1/foto-1.webp','../../images/ssg1/foto-2.webp','../../images/ssg1/album.webp','../../images/ssg1/chertezh.webp'];
+<script type="application/json" id="product-gallery-data">[{"label":"Вид 1","src":"../../images/ssg1/vid-1.webp","alt":"Пожарная стремянка Серия 1.450.3-7.94 СГ-40 — общий вид"},{"label":"Фото 1","src":"../../images/ssg1/foto-1.webp","alt":"Пожарная стремянка СГ-40 — фотография 1"},{"label":"Фото 2","src":"../../images/ssg1/foto-2.webp","alt":"Пожарная стремянка СГ-40 — фотография 2"},{"label":"Альбом","src":"../../images/ssg1/album.webp","alt":"Альбом серии 1.450.3-7.94.2"},{"label":"Чертёж","src":"../../images/ssg1/chertezh.webp","alt":"Чертёж пожарной стремянки СГ-40"}]</script>
 
-    const imageAltTexts = ['Пожарная стремянка СГ-40 — общий вид','Пожарная стремянка СГ-40 — фотография 1','Пожарная стремянка СГ-40 — фотография 2','Альбом серии 1.450.3-7.94.2','Чертёж пожарной стремянки СГ-40'];
+<script>function updateOtherSizesOverflow(panel) {
+  if (!panel || panel.hidden) return;
+  const links = panel.querySelector('.other-sizes__links');
+  const button = panel.querySelector('.other-sizes__expand');
+  if (!links || !button) return;
+  const collapsed = links.classList.contains('other-sizes__links--collapsed');
+  if (collapsed) button.hidden = links.scrollHeight <= links.clientHeight + 1;
+}
 
-    function changeImage(src, index) {
+function toggleOtherSizes(button) {
+  const panel = button.closest('.other-sizes__variant-panel');
+  const links = panel && panel.querySelector('.other-sizes__links');
+  if (!links) return;
+  const expanded = links.classList.contains('other-sizes__links--collapsed');
+  links.classList.toggle('other-sizes__links--collapsed', !expanded);
+  button.setAttribute('aria-expanded', String(expanded));
+  button.textContent = expanded ? 'Свернуть' : 'Показать все размеры';
+  button.hidden = false;
+}
+
+function selectOtherSizesVariant(button) {
+  const section = button.closest('.other-sizes');
+  if (!section) return;
+  section.querySelectorAll('.other-sizes__variant').forEach(tab => {
+    const active = tab === button;
+    tab.classList.toggle('active', active);
+    tab.setAttribute('aria-selected', String(active));
+  });
+  const targetPanelId = button.getAttribute('aria-controls');
+  section.querySelectorAll('.other-sizes__variant-panel').forEach(panel => {
+    panel.hidden = panel.id !== targetPanelId;
+    if (!panel.hidden) updateOtherSizesOverflow(panel);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.other-sizes__variant-panel').forEach(updateOtherSizesOverflow);
+});
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.other-sizes__variant-panel:not([hidden])').forEach(updateOtherSizesOverflow);
+});
+
+function toggleOtherCategories(button) {
+  const grid = document.getElementById("other-categories-extra");
+  if (!grid) return;
+  const expanded = grid.hidden;
+  grid.hidden = !expanded;
+  button.setAttribute("aria-expanded", String(expanded));
+  const label = button.querySelector(".other-categories__action");
+  if (label) label.textContent = expanded ? "Скрыть категории" : "Показать остальные категории";
+}
+
+
+    const productGallery = JSON.parse(document.getElementById('product-gallery-data').textContent);
+    const imgSources = productGallery.map(image => image.src);
+
+    function changeImage(index) {
+        const image = productGallery[index];
+        if (!image) return;
         const mainImage = document.getElementById('mainImage');
-        mainImage.src = src;
-        mainImage.alt = imageAltTexts[index] || 'Стремянка Серия 1.450.3-7.94 СГ-40';
-        document.querySelectorAll('.image-toggle__btn').forEach((b, i) => {
-            if (i === index) b.classList.add('active'); else b.classList.remove('active');
+        mainImage.src = image.src;
+        mainImage.alt = image.alt || 'Пожарная стремянка СГ-40, высота 400 см';
+        document.querySelectorAll('.image-toggle__btn').forEach((button, buttonIndex) => {
+            button.classList.toggle('active', buttonIndex === index);
         });
     }
 
     function openLightbox(index) {
+        const mainImage = document.getElementById('mainImage');
+        const currentSource = new URL(mainImage.currentSrc || mainImage.src, document.baseURI).pathname;
+        const currentIndex = imgSources.findIndex(src => new URL(src, document.baseURI).pathname === currentSource);
         document.getElementById('lightbox').style.display = 'block';
-        changeLightboxImage(index || 0);
+        changeLightboxImage(currentIndex >= 0 ? currentIndex : (Number.isInteger(index) ? index : 0));
     }
 
     function closeLightbox() {
@@ -478,19 +562,26 @@ function copyEmailToClipboard(btn) {
     }
 
     function changeLightboxImage(index) {
+        const image = productGallery[index];
+        if (!image) return;
         const lightboxImage = document.getElementById('lightbox-img');
-        lightboxImage.src = imgSources[index];
-        lightboxImage.alt = imageAltTexts[index] || 'Изображение стремянки Серия 1.450.3-7.94 СГ-40';
-        document.querySelectorAll('#lightbox-nav button').forEach((b, i) => {
-            if (i === index) b.classList.add('active'); else b.classList.remove('active');
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt || 'Пожарная стремянка СГ-40, высота 400 см';
+        document.querySelectorAll('#lightbox-nav button').forEach((button, buttonIndex) => {
+            button.classList.toggle('active', buttonIndex === index);
         });
     }
 
     function openTab(evt, tabName) {
+        const target = document.getElementById(tabName);
+        if (!target) return;
+
         document.querySelectorAll('.mp-tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.mp-tab').forEach(el => el.classList.remove('active'));
-        document.getElementById(tabName).classList.add('active');
-        evt.currentTarget.classList.add('active');
+
+        target.classList.add('active');
+        const trigger = evt && (evt.currentTarget || evt.target);
+        if (trigger) trigger.classList.add('active');
     }
 </script>
 
