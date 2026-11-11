@@ -46,7 +46,7 @@
   "schemaNameTemplate": "Лестница {model} по НТС 62-91-111Б, длина {lengthMm} мм",
   "schemaDescriptionTemplate": "{productName}. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
   "schemaMpnTemplate": "{id}",
-  "schemaImage": "../../images/lestnicy-nts-62-91-111b/vid-1.webp",
+  "schemaImage": "../../images/nts-62-91-111b/vid-1.webp",
   "schemaItemCondition": "https://schema.org/NewCondition",
   "schemaSeller": {
     "@type": "Organization",
@@ -55,7 +55,7 @@
   "gallery": [
     {
       "label": "Общий вид",
-      "webp": "../../images/lestnicy-nts-62-91-111b/vid-1.webp",
+      "webp": "../../images/nts-62-91-111b/vid-1.webp",
       "alt": "Лестница по НТС 62-91-111Б — общий вид"
     }
   ],
