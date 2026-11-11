@@ -58,17 +58,6 @@
 ## Индивидуальные страницы товаров
 
 <!-- PRODUCT_PAGES_START -->
-### Стремянки ТПР 901-09-11.84
-- [Стремянка для колодцев ТПР 901-09-11.84 С-1](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-1.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-2](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-2.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-3](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-3.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-4](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-4.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-5](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-5.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-6](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-6.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-7](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-7.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-8](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-8.html)
-- [Стремянка для колодцев ТПР 901-09-11.84 С-9](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-9.html)
-
 ### Канализационные лестницы КЛ-1
 - [Канализационная лестница КЛ-1 (Л-1 Л-18) - 1 Ø25 мм](https://stremyanki-dlya-kolodcev.ru/products/kl-1-dlya-kanalizacionnyh-kolodcev/kl-1.html)
 - [Канализационная лестница КЛ-1 (Л-1 Л-18) - 1.1 Ø25 мм](https://stremyanki-dlya-kolodcev.ru/products/kl-1-dlya-kanalizacionnyh-kolodcev/kl-1-1.html)
@@ -655,6 +644,17 @@
 - [Соединительный элемент МС-6 (ТПР 902-09-22.84)](https://stremyanki-dlya-kolodcev.ru/products/soedinitelnye-elementy/soedinitelny-element-ms-6-tpr-902-09-22-84.html)
 - [Соединительный элемент МС-7 (ТПР 902-09-22.84)](https://stremyanki-dlya-kolodcev.ru/products/soedinitelnye-elementy/soedinitelny-element-ms-7-tpr-902-09-22-84.html)
 - [Соединительный элемент МС-8 (ТПР 902-09-22.84)](https://stremyanki-dlya-kolodcev.ru/products/soedinitelnye-elementy/soedinitelny-element-ms-8-tpr-902-09-22-84.html)
+
+### Стремянки ТПР 901-09-11.84
+- [Стремянка для колодцев ТПР 901-09-11.84 С-1](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-1.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-2](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-2.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-3](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-3.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-4](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-4.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-5](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-5.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-6](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-6.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-7](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-7.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-8](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-8.html)
+- [Стремянка для колодцев ТПР 901-09-11.84 С-9](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-901-09-11-84/stremyanka-s-9.html)
 
 ### Стремянки для канализационных колодцев ТПР 902-09-22.84
 - [Стремянка для колодцев ТПР 902-09-22.84 С1-00](https://stremyanki-dlya-kolodcev.ru/products/stremyanki-tpr-902-09-22-84/stremyanka-s1-00.html)
