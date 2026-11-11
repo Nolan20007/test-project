@@ -66,5 +66,7 @@
       "alt": "Альбом серии 1.450.3-7.94 для ограждений ОСГ"
     }
   ],
-  "groupContentTemplate": "templates/group-content/ograzhdenie-osg.html"
+  "groupContentTemplate": "templates/group-content/ograzhdenie-osg.html",
+  "expectedProductCount": 8,
+  "productIdPrefix": "OSG-"
 }
