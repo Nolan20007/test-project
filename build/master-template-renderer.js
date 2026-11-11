@@ -59,7 +59,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const weight = Number(String(row.weight).replace(',', '.'));
   const price = Number(String(row.price).replace(/[^\d.,-]/g, '').replace(',', '.'));
   const stepCount = Number(row.step_count);
-  const hasStepCount = Number.isFinite(stepCount) && stepCount > 0;
+  const hasStepCount = Number.isInteger(stepCount) && stepCount > 0;
   if (![widthMm, widthCm, lengthCm, weight].every(Number.isFinite) || widthMm <= 0 || lengthCm <= 0 || weight <= 0 || (row.step_count && !hasStepCount) || !group.construction.availableWidthsMm.includes(widthMm) || lengthCm * 10 < group.construction.lengthRangeMm[0] || lengthCm * 10 > group.construction.lengthRangeMm[1]) {
     throw new Error('Invalid dimensions or weight for ' + row.id);
   }
@@ -72,6 +72,8 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
     price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
+    stepCount: hasStepCount ? stepCount : '',
+    stepCountFormatted: hasStepCount ? stepCount + ' шт.' : '',
     project, albumReference: row.drawing_album || group.albumReference || '',
     dimension1Label: escapeHtml(row.dimension1_label || group.dimension1Label || 'Длина'),
     dimension2Label: escapeHtml(row.dimension2_label || group.dimension2Label || 'Ширина'),
@@ -166,10 +168,30 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     if (group.construction.material) specifications.push(['Материал', group.construction.material]);
     if (group.construction.finish) specifications.push(['Защитное покрытие', group.construction.finish]);
   }
-  const specsHtml = groupContent ? readGroupHtmlField(groupContent, 'specifications', values) :
+  let specsHtml = groupContent ? readGroupHtmlField(groupContent, 'specifications', values) :
     '<table class="mp-specs-table"><tbody>' + specifications.map(item =>
       '<tr><td>' + escapeHtml(item[0]) + '</td><td>' + escapeHtml(item[1]) + '</td></tr>'
     ).join('') + '</tbody></table>';
+  if (hasStepCount) {
+    const stepCountRow = '<tr><td>Количество ступеней</td><td>' + stepCount + ' шт.</td></tr>';
+    let replacedStepCountRow = false;
+    specsHtml = specsHtml.replace(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi, rowHtml => {
+      if (!replacedStepCountRow && /<td\b[^>]*>\s*(?:Количество|Число)\s+ступеней\s*<\/td>/i.test(rowHtml)) {
+        replacedStepCountRow = true;
+        return stepCountRow;
+      }
+      return rowHtml;
+    });
+    if (!replacedStepCountRow) {
+      if (/<\/tbody>/i.test(specsHtml)) {
+        specsHtml = specsHtml.replace(/<\/tbody>/i, stepCountRow + '</tbody>');
+      } else if (/<\/table>/i.test(specsHtml)) {
+        specsHtml = specsHtml.replace(/<\/table>/i, stepCountRow + '</table>');
+      } else {
+        specsHtml += '<table class="mp-specs-table"><tbody>' + stepCountRow + '</tbody></table>';
+      }
+    }
+  }
 
   const descriptionHtml = groupContent ? readGroupHtmlField(groupContent, 'description', values) :
     (Array.isArray(group.descriptionSections)
