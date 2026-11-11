@@ -42,7 +42,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
 
   const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
-  const modelMatch = String(row.name || '').match(/СГ-\d+/u) || String(row.id).match(/SG-\\d+/i);
+  const modelMatch = String(row.name || '').match(/СГ-\d+/u) || String(row.id).match(/SG-\d+/i);
   const model = modelMatch ? modelMatch[0] : String(row.id);
   const values = {
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
@@ -227,13 +227,13 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_SLUG}}': productSlug,
     '{{PRODUCT_MAIN_IMAGE_URL}}': absoluteImage,
     '{{GROUP_PROJECT}}': escapeHtml(project),
-    '{{PRODUCT_MODEL}}': escapeHtml(productModel),
+    '{{PRODUCT_MODEL}}': escapeHtml(model),
     '{{PRODUCT_SKU}}': escapeHtml(row.id),
-    '{{PRODUCT_SCHEMA_IMAGE_URL}}': absoluteImage,
+    '{{PRODUCT_SCHEMA_IMAGE_URL}}': schemaImage,
     '{{PRODUCT_LENGTH_CM}}': String(lengthCm),
     '{{PRODUCT_WIDTH_MM}}': String(widthMm),
     '{{PRODUCT_WEIGHT}}': String(weight),
-    '{{PRODUCT_OFFER_JSONLD}}': offer,
+
     '{{PRODUCT_NAME}}': escapeHtml(productName),
     '{{PRODUCT_HEADER_TITLE}}': escapeHtml(headerTitle),
     '{{PRODUCT_BREADCRUMB_NAME}}': escapeHtml(breadcrumbName),
@@ -243,7 +243,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_PRICE_DISPLAY}}': escapeHtml(priceDisplay),
     '{{GROUP_DELIVERY_CONTENT}}': deliveryHtml,
     '{{GROUP_EXTRA_CONTENT}}': extraContentHtml,
-    '{{GROUP_BREADCRUMB_JSONLD}}': '<script type="application/ld+json">\\n' + JSON.stringify(breadcrumbJsonLd, null, 2) + '\\n</script>',
+    '{{GROUP_BREADCRUMB_JSONLD}}': '<script type="application/ld+json">\n' + JSON.stringify(breadcrumbJsonLd, null, 2) + '\n</script>',
     '{{GROUP_HEADER_SUBTITLE}}': escapeHtml(group.headerSubtitle),
     '{{GROUP_CATALOG_URL}}': escapeHtml(group.catalogPage),
     '{{GROUP_CATALOG_TITLE}}': escapeHtml(group.catalogTitle),
