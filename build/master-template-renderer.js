@@ -118,6 +118,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const otherSizesTitle = groupContent
     ? readGroupHtmlField(groupContent, 'otherSizesTitle', values)
     : group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
+  const otherSizesLinkTextTemplate = groupContent
+    ? readGroupHtmlField(groupContent, 'otherSizesLinkTextTemplate', values)
+    : group.otherSizesLinkTextTemplate;
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
   const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
     const lengthVaries = new Set(variantRows.map(item => Number(item.length))).size > 1;
@@ -141,7 +144,10 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
         project
       };
-      const linkText = formatProductTemplate(variantGroup.otherSizesLinkTextTemplate || (variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')', linkValues);
+      const linkTemplate = variantGroup.id === group.id
+        ? otherSizesLinkTextTemplate
+        : variantGroup.otherSizesLinkTextTemplate;
+      const linkText = formatProductTemplate(linkTemplate || (variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')', linkValues);
       return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(variantGroup, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
     };
     const linksHtml = orderedRows.map(renderLink).join('');
@@ -199,7 +205,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
           weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
           project
         };
-        const linkText = formatProductTemplate(group.otherSizesLinkTextTemplate || (otherSizesLabel + ' (' + dimensions + ')'), linkValues);
+        const linkText = formatProductTemplate(otherSizesLinkTextTemplate || (otherSizesLabel + ' (' + dimensions + ')'), linkValues);
         return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(group, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
       }).join('') + '</div></section>';
   }
