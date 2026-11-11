@@ -1,0 +1,64 @@
+{
+  "id": "lestnicy-nts-62-91-111b",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "lestnicy-nts-62-91-111b",
+  "catalogPage": "nts-62-91-111b.html",
+  "catalogTitle": "Лестницы тепловых сетей НТС 62-91-111Б",
+  "groupTitle": "Лестницы тепловых сетей НТС 62-91-111Б",
+  "headerSubtitle": "Стальные лестницы с перилами для тепловых камер по нормалям НТС 62-91-111Б",
+  "project": "НТС 62-91-111Б",
+  "projectFromName": false,
+  "schemaProductType": "Лестница для тепловых сетей",
+  "normativeLabel": "Типовой проект",
+  "albumReference": "НТС 62-91-111Б",
+  "albumNote": "Лестницы тепловых сетей по НТС 62-91-111Б",
+  "construction": {
+    "type": "Лестница с перилами",
+    "steps": "Ступени и несущие элементы — сталь Ст3",
+    "material": "Сталь Ст3",
+    "availableWidthsMm": [
+      626
+    ],
+    "lengthRangeMm": [
+      2000,
+      4000
+    ]
+  },
+  "csv": "data/nts-62-91-111b-products.csv",
+  "productIds": [
+    "NTSB-L2000",
+    "NTSB-L2250",
+    "NTSB-L2500",
+    "NTSB-L2750",
+    "NTSB-L3000",
+    "NTSB-L3250",
+    "NTSB-L3500",
+    "NTSB-L3750",
+    "NTSB-L4000"
+  ],
+  "groupContentTemplate": "templates/group-content/lestnicy-nts-62-91-111b.html",
+  "productNameTemplate": "{model} по НТС 62-91-111Б, длина {lengthMm} мм",
+  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "stockText": "Наличие и срок изготовления уточняйте у производителя",
+  "seoTitleTemplate": "{model} по НТС 62-91-111Б, длина {lengthCm} см — купить",
+  "seoDescriptionTemplate": "Купить {model} по НТС 62-91-111Б. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг. Стальная лестница для тепловых камер от производителя.",
+  "schemaNameTemplate": "Лестница {model} по НТС 62-91-111Б, длина {lengthMm} мм",
+  "schemaDescriptionTemplate": "{productName}. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "../../images/lestnicy-nts-62-91-111b/vid-1.webp",
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "gallery": [
+    {
+      "label": "Общий вид",
+      "webp": "../../images/lestnicy-nts-62-91-111b/vid-1.webp",
+      "alt": "Лестница по НТС 62-91-111Б — общий вид"
+    }
+  ],
+  "otherSizesLabel": "Лестницы НТС 62-91-111Б",
+  "otherSizesLimit": 10
+}

@@ -37,7 +37,7 @@ function productProject(row, group) {
 }
 
 function getProductModel(row) {
-  const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+/u);
+  const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+|Л-\d+/u);
   const idMatch = String(row && row.id || '').match(/SG-\d+/i);
   return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : String(row && row.id || ''));
 }
@@ -72,7 +72,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const breadcrumbName = formatProductTemplate(group.breadcrumbNameTemplate || productName, values);
   const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
   const stockText = formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
-  const priceDisplay = formatProductTemplate(group.priceDisplayTemplate || '{priceFormatted} ₽', values);
+  const priceDisplay = price > 0 ? 'от ' + values.priceFormatted + ' ₽' : 'Цена по запросу';
   const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
   const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
   const gallery = group.gallery.map(item => ({
@@ -227,7 +227,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
 
   const seoTitle = formatProductTemplate(group.seoTitleTemplate || (productName + ' — купить с доставкой по России'), values);
   const seoDescription = formatProductTemplate(group.seoDescriptionTemplate ||
-    (productName + '. ' + group.groupTitle + ' по ' + project + '. Длина ' + lengthCm + ' см, ширина ' + widthMm + ' мм, масса ' + values.weightFormatted + ' кг. Цена ' + (price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.'), values);
+    (productName + '. ' + group.groupTitle + ' по ' + project + '. Длина ' + lengthCm + ' см, ширина ' + widthMm + ' мм, масса ' + values.weightFormatted + ' кг. Цена ' + (price > 0 ? 'от ' + price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.'), values);
   const schemaImagePath = group.schemaImage || mainImage;
   const schemaImage = /^https?:\/\//i.test(schemaImagePath) ? schemaImagePath : 'https://stremyanki-dlya-kolodcev.ru/' + String(schemaImagePath).replace(/^(\.\.\/)+/, '');
   const schemaName = formatProductTemplate(group.schemaNameTemplate || productName, values);
@@ -287,7 +287,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_LIGHTBOX_GALLERY}}': lightboxGallery,
     '{{PRODUCT_GALLERY_JSON}}': JSON.stringify(gallery).replace(/</g, '\\u003c'),
     '{{PRODUCT_LENGTH_MM}}': String(Math.round(lengthCm * 10)),
-    '{{PRODUCT_PRICE}}': price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу',
+    '{{PRODUCT_PRICE}}': price > 0 ? 'от ' + price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу',
     '{{PRODUCT_BUY_CONTROLS}}': '<div class="mp-buy-controls"><div class="quantity-control" style="display:flex;align-items:center;border:1px solid #c8d9ea;border-radius:12px;overflow:hidden;">' +
       '<button type="button" onclick="changeQuantity(\'' + escapeHtml(String(row.id)) + '\',-1)" aria-label="Уменьшить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">−</button>' +
       '<input type="number" id="' + escapeHtml(String(row.id)) + '-qty" value="1" min="1" max="99" data-price="' + (price > 0 ? price : 0) + '" style="width:55px;text-align:center;border:0;" aria-label="Количество">' +
