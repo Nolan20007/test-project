@@ -175,18 +175,18 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   if (hasStepCount) {
     const stepCountRow = '<tr><td>Количество ступеней</td><td>' + stepCount + ' шт.</td></tr>';
     let replacedStepCountRow = false;
-    specsHtml = specsHtml.replace(/<tr\\b[^>]*>[\\s\\S]*?<\\/tr>/gi, rowHtml => {
-      if (!replacedStepCountRow && /<td\\b[^>]*>\\s*(?:Количество|Число)\\s+ступеней\\s*<\\/td>/i.test(rowHtml)) {
+    specsHtml = specsHtml.replace(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi, rowHtml => {
+      if (!replacedStepCountRow && /<td\b[^>]*>\s*(?:Количество|Число)\s+ступеней\s*<\/td>/i.test(rowHtml)) {
         replacedStepCountRow = true;
         return stepCountRow;
       }
       return rowHtml;
     });
     if (!replacedStepCountRow) {
-      if (/<\\/tbody>/i.test(specsHtml)) {
-        specsHtml = specsHtml.replace(/<\\/tbody>/i, stepCountRow + '</tbody>');
-      } else if (/<\\/table>/i.test(specsHtml)) {
-        specsHtml = specsHtml.replace(/<\\/table>/i, stepCountRow + '</table>');
+      if (/<\/tbody>/i.test(specsHtml)) {
+        specsHtml = specsHtml.replace(/<\/tbody>/i, stepCountRow + '</tbody>');
+      } else if (/<\/table>/i.test(specsHtml)) {
+        specsHtml = specsHtml.replace(/<\/table>/i, stepCountRow + '</table>');
       } else {
         specsHtml += '<table class="mp-specs-table"><tbody>' + stepCountRow + '</tbody></table>';
       }
