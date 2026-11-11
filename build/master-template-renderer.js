@@ -90,10 +90,8 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const headerTitle = formatProductTemplate(group.headerTitleTemplate || productName, values);
   const breadcrumbName = formatProductTemplate(group.breadcrumbNameTemplate || productName, values);
   const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
-  const rowAvailability = String(row.available || '').trim();
-  const stockText = group.stockTextFromRow
-    ? rowAvailability
-    : formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
+  // Product pages use one consistent stock label; CSV and group overrides do not change it.
+  const stockText = '✓ В наличии на складе';
   const priceDisplay = price > 0 ? 'от ' + values.priceFormatted + ' ₽' : 'Цена по запросу';
   const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
   const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
