@@ -17,13 +17,21 @@ function formatProductTemplate(template, values) {
   );
 }
 
+
+function readGroupHtmlField(source, key, values) {
+  const marker = new RegExp('<!-- GROUP_FIELD:' + key + ':START -->([\\\\s\\\\S]*?)<!-- GROUP_FIELD:' + key + ':END -->');
+  const match = String(source || '').match(marker);
+  if (!match) throw new Error('Missing group HTML section: ' + key);
+  return formatProductTemplate(match[1].trim(), values);
+}
+
 function productProject(row, group) {
   if (group.projectFromName === false) return group.project;
   const match = String(row.name || '').match(/\(([^)]+)\)/);
   return match ? match[1].replace(/СБ(?=$|-)/g, 'СБ') : group.project;
 }
 
-function renderMasterProduct(template, group, row, rows, relatedVariantGroups = []) {
+function renderMasterProduct(template, group, row, rows, relatedVariantGroups = [], groupContent = '') {
   if (!group || typeof group !== 'object') throw new Error('A product group configuration is required.');
   if (!row || !row.id || !row.name) throw new Error('Product row must contain id and name.');
   const widthCm = Number(row.width);
@@ -55,7 +63,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
   const stockText = formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
   const priceDisplay = formatProductTemplate(group.priceDisplayTemplate || '{priceFormatted} ₽', values);
-  const shortDescription = formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
+  const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
   const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
   const gallery = group.gallery.map(item => ({
     label: String(item.label),
@@ -93,16 +101,18 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     if (group.construction.material) specifications.push(['Материал', group.construction.material]);
     if (group.construction.finish) specifications.push(['Защитное покрытие', group.construction.finish]);
   }
-  const specsHtml = '<table class="mp-specs-table"><tbody>' + specifications.map(item =>
-    '<tr><td>' + escapeHtml(item[0]) + '</td><td>' + escapeHtml(item[1]) + '</td></tr>'
-  ).join('') + '</tbody></table>';
+  const specsHtml = groupContent ? readGroupHtmlField(groupContent, 'specifications', values) :
+    '<table class="mp-specs-table"><tbody>' + specifications.map(item =>
+      '<tr><td>' + escapeHtml(item[0]) + '</td><td>' + escapeHtml(item[1]) + '</td></tr>'
+    ).join('') + '</tbody></table>';
 
-  const descriptionHtml = Array.isArray(group.descriptionSections)
-    ? group.descriptionSections.map(section =>
-        (section.heading ? '<h2>' + escapeHtml(section.heading) + '</h2>' : '') +
-        '<p>' + escapeHtml(formatProductTemplate(section.text, values)) + '</p>'
-      ).join('')
-    : '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) + '</p><p>' + escapeHtml(group.installation) + '</p>';
+  const descriptionHtml = groupContent ? readGroupHtmlField(groupContent, 'description', values) :
+    (Array.isArray(group.descriptionSections)
+      ? group.descriptionSections.map(section =>
+          (section.heading ? '<h2>' + escapeHtml(section.heading) + '</h2>' : '') +
+          '<p>' + escapeHtml(formatProductTemplate(section.text, values)) + '</p>'
+        ).join('')
+      : '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) + '</p><p>' + escapeHtml(group.installation) + '</p>');
   // Large product families use a compact, expandable related-size navigator.
   const otherSizesTitle = group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
@@ -223,11 +233,11 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       { '@type': 'ListItem', position: 3, name: model, item: productUrl }
     ]
   };
-  const deliveryHtml = Array.isArray(group.deliveryParagraphs)
-    ? group.deliveryParagraphs.map(paragraph => '<p>' + escapeHtml(formatProductTemplate(paragraph, values)) + '</p>').join('')
-    : '<h3>Доставка:</h3><p>Стоимость уточняйте у менеджера.</p><ul><li>По России — транспортными компаниями (СДЭК, «Деловые линии», ПЭК и др.), до терминала в вашем городе. Срок — 3–14 дней, стоимость по тарифам транспортной компании.</li></ul><h3>Оплата:</h3><ul><li>Наличными при самовывозе.</li><li>Банковской картой онлайн.</li><li>Безналичный расчёт для юридических лиц — по счёту, с договором и закрывающими документами.</li></ul><p>Точную стоимость и сроки доставки уточняйте у менеджера.</p><a href="/dostavka-i-oplata.html" class="mp-btn-buy" style="display:inline-block; flex:none; text-align:center; text-decoration:none;">Подробнее</a>';
-  const extraContentHtml = group.extraContentHtml || '';
-
+  const deliveryHtml = groupContent ? readGroupHtmlField(groupContent, 'delivery', values) :
+    (Array.isArray(group.deliveryParagraphs)
+      ? group.deliveryParagraphs.map(paragraph => '<p>' + escapeHtml(formatProductTemplate(paragraph, values)) + '</p>').join('')
+      : '<h3>Доставка:</h3><p>Стоимость уточняйте у менеджера.</p>');
+  const extraContentHtml = groupContent ? readGroupHtmlField(groupContent, 'extraContent', values) : group.extraContentHtml || '';
   const replacements = {
     '{{PRODUCT_SEO_TITLE}}': escapeHtml(seoTitle),
     '{{PRODUCT_SEO_DESCRIPTION}}': escapeHtml(seoDescription),
