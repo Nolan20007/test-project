@@ -1035,7 +1035,7 @@ function parseJsonc(source, fileName) {
     if (inString) {
       output += ch;
       if (escaped) escaped = false;
-      else if (ch === '\\\\') escaped = true;
+      else if (ch === '\\') escaped = true;
       else if (ch === '"') inString = false;
       continue;
     }
@@ -1045,14 +1045,14 @@ function parseJsonc(source, fileName) {
       continue;
     }
     if (ch === '/' && next === '/') {
-      while (i < source.length && source[i] !== '\\n') i += 1;
-      output += '\\n';
+      while (i < source.length && source[i] !== '\n') i += 1;
+      output += '\n';
       continue;
     }
     if (ch === '/' && next === '*') {
       i += 2;
       while (i < source.length && !(source[i] === '*' && source[i + 1] === '/')) {
-        if (source[i] === '\\n') output += '\\n';
+        if (source[i] === '\n') output += '\\n';
         i += 1;
       }
       i += 1;
