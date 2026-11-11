@@ -18,13 +18,17 @@ function formatProductTemplate(template, values) {
 }
 
 
-function readGroupHtmlField(source, key, values) {
+function readGroupHtmlRawField(source, key) {
   const startMarker = '<!-- GROUP_FIELD:' + key + ':START -->';
   const endMarker = '<!-- GROUP_FIELD:' + key + ':END -->';
   const start = String(source || '').indexOf(startMarker);
   const end = String(source || '').indexOf(endMarker, start + startMarker.length);
   if (start < 0 || end < 0) throw new Error('Missing group HTML section: ' + key);
-  return formatProductTemplate(String(source).slice(start + startMarker.length, end).trim(), values);
+  return String(source).slice(start + startMarker.length, end).trim();
+}
+
+function readGroupHtmlField(source, key, values) {
+  return formatProductTemplate(readGroupHtmlRawField(source, key), values);
 }
 function productProject(row, group) {
   if (group.projectFromName === false) return group.project;
@@ -119,7 +123,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     ? readGroupHtmlField(groupContent, 'otherSizesTitle', values)
     : group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
   const otherSizesLinkTextTemplate = groupContent
-    ? readGroupHtmlField(groupContent, 'otherSizesLinkTextTemplate', values)
+    ? readGroupHtmlRawField(groupContent, 'otherSizesLinkTextTemplate')
     : group.otherSizesLinkTextTemplate;
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
   const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
@@ -198,7 +202,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         else dimensions = itemLength + ' см';
         const linkValues = {
           id: String(item.id),
-          model: (String(item.name || '').match(/СГ-\\d+/u) || [String(item.id)])[0],
+          model: (String(item.name || '').match(/СГ-\d+/u) || [String(item.id)])[0],
           lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
           widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
           weight: Number(String(item.weight).replace(',', '.')),
