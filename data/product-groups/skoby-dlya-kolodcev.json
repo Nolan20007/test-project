@@ -1,0 +1,68 @@
+{
+  "id": "skoby-dlya-kolodcev",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "skoby-dlya-kolodcev",
+  "catalogPage": "skoby-dlya-kolodcev.html",
+  "catalogTitle": "Скобы для колодцев",
+  "groupTitle": "Скобы для колодцев",
+  "headerSubtitle": "Ходовые скобы для спуска в водопроводные и канализационные колодцы",
+  "project": "Исполнение по обозначению изделия",
+  "projectFromName": false,
+  "schemaProductType": "Скоба для колодцев",
+  "schemaMpnTemplate": "{id}",
+  "schemaNameTemplate": "{productName}",
+  "schemaDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2Label} {widthCm} см, масса {weightFormatted} кг.",
+  "seoTitleTemplate": "{productName} — размеры, масса и цена",
+  "seoDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2Label} {widthCm} см, масса {weightFormatted} кг. Изготовление и доставка по России.",
+  "cartItemNameTemplate": "{productName}",
+  "cartLengthUnit": "cm",
+  "buyButtonLabel": "Добавить в корзину",
+  "stockTextFromRow": true,
+  "rowDescriptionFallback": "Стальная ходовая скоба для установки в колодце. Исполнение определяется обозначением изделия и его чертежом.",
+  "dimension1Label": "Длина",
+  "dimension2Label": "Ширина",
+  "construction": {
+    "type": "Стальная ходовая скоба для колодца",
+    "availableWidthsMm": [
+      70,
+      80,
+      90,
+      100,
+      170,
+      230,
+      205,
+      255,
+      250,
+      258,
+      186
+    ],
+    "lengthRangeMm": [
+      200,
+      752
+    ]
+  },
+  "csv": "data/skoby-dlya-kolodcev-products.csv",
+  "productIds": [
+    "GS-1",
+    "GS-2",
+    "GS-3",
+    "GS-4",
+    "MN-1",
+    "SK-1",
+    "SK-1-K",
+    "SK-2",
+    "SK-3",
+    "SK-4",
+    "SK-5",
+    "SK-6",
+    "MN-1-OMEGA",
+    "MN-1-3900"
+  ],
+  "groupContentTemplate": "templates/group-content/skoby-dlya-kolodcev.html",
+  "otherSizesLabel": "Скобы",
+  "schemaBrand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  }
+}

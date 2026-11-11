@@ -1,0 +1,64 @@
+{
+  "id": "soedinitelnye-elementy",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "soedinitelnye-elementy",
+  "catalogPage": "soedinitelnye-elementy.html",
+  "catalogTitle": "Соединительные элементы МС",
+  "groupTitle": "Соединительные элементы МС",
+  "headerSubtitle": "Соединительные элементы МС по типовым проектным решениям ТПР 901 и ТПР 902",
+  "project": "ТПР 901-09-11.84 / ТПР 902-09-22.84",
+  "projectFromName": true,
+  "schemaProductType": "Соединительный элемент МС",
+  "schemaMpnTemplate": "{id}",
+  "schemaNameTemplate": "{productName}",
+  "schemaDescriptionTemplate": "{productName}. Ширина {lengthMm} мм, высота {widthMm} мм, масса {weightFormatted} кг. Документ: {project}.",
+  "seoTitleTemplate": "{productName} — размеры, масса и цена",
+  "seoDescriptionTemplate": "{productName}. Ширина {lengthMm} мм, высота {widthMm} мм, масса {weightFormatted} кг. Изготовление и доставка по России.",
+  "cartItemNameTemplate": "{productName}",
+  "cartLengthUnit": "cm",
+  "buyButtonLabel": "Добавить в корзину",
+  "stockTextFromRow": true,
+  "rowDescriptionFallback": "Соединительный элемент МС для комплектации изделий по указанному типовому проектному решению.",
+  "dimension1Label": "Ширина",
+  "dimension2Label": "Высота",
+  "albumReference": "Типовые проектные решения ТПР 901-09-11.84 и ТПР 902-09-22.84",
+  "construction": {
+    "type": "Стальной соединительный элемент МС",
+    "availableWidthsMm": [
+      90,
+      100,
+      110,
+      120
+    ],
+    "lengthRangeMm": [
+      160,
+      160
+    ]
+  },
+  "csv": "data/soedinitelnye-elementy-products.csv",
+  "productIds": [
+    "MS-1",
+    "MS-2",
+    "MS-3",
+    "MS-4",
+    "MS-5",
+    "MS-6",
+    "MS-7",
+    "MS-8",
+    "MS-1-902",
+    "MS-2-902",
+    "MS-3-902",
+    "MS-4-902",
+    "MS-5-902",
+    "MS-6-902",
+    "MS-7-902",
+    "MS-8-902"
+  ],
+  "groupContentTemplate": "templates/group-content/soedinitelnye-elementy.html",
+  "otherSizesLabel": "Элементы МС",
+  "schemaBrand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  }
+}

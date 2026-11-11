@@ -64,22 +64,58 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
     price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
-    project, albumReference: group.albumReference || ''
+    project, albumReference: row.drawing_album || group.albumReference || '',
+    dimension1Label: escapeHtml(row.dimension1_label || group.dimension1Label || 'Длина'),
+    dimension2Label: escapeHtml(row.dimension2_label || group.dimension2Label || 'Ширина'),
+    rowDescription: escapeHtml(row.description || group.rowDescriptionFallback || ''),
+    material: escapeHtml(row.material || ''),
+    rodDiameter: escapeHtml(row.rod_diameter || ''),
+    blankLengthMm: escapeHtml(row.blank_length_mm || ''),
+    materialRowHtml: row.material ? '<tr><td>Материал</td><td>' + escapeHtml(row.material) + '</td></tr>' : '',
+    rodDiameterRowHtml: row.rod_diameter ? '<tr><td>Диаметр прутка</td><td>' + escapeHtml(row.rod_diameter) + '</td></tr>' : '',
+    blankLengthRowHtml: row.blank_length_mm ? '<tr><td>Длина заготовки</td><td>' + escapeHtml(row.blank_length_mm) + ' мм</td></tr>' : '',
+    drawingAlbumRowHtml: row.drawing_album ? '<tr><td>Чертёжный альбом</td><td>' + escapeHtml(row.drawing_album) + '</td></tr>' : ''
   };
   const productName = formatProductTemplate(group.productNameTemplate || row.name, values);
   values.productName = productName;
   const headerTitle = formatProductTemplate(group.headerTitleTemplate || productName, values);
   const breadcrumbName = formatProductTemplate(group.breadcrumbNameTemplate || productName, values);
   const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
-  const stockText = formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
+  const rowAvailability = String(row.available || '').trim();
+  const stockText = group.stockTextFromRow
+    ? (rowAvailability ? (/в наличии/i.test(rowAvailability) ? '✓ В наличии на складе' : rowAvailability) : '')
+    : formatProductTemplate(group.stockText || '✓ В наличии на складе', values);
   const priceDisplay = price > 0 ? 'от ' + values.priceFormatted + ' ₽' : 'Цена по запросу';
   const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
   const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
-  const gallery = group.gallery.map(item => ({
-    label: String(item.label),
-    src: item.webp,
-    alt: formatProductTemplate(item.alt || item.label, values)
-  }));
+  const normalizeProductImagePath = source => {
+    const value = String(source || '').trim().replace(/^\\/+/, '');
+    return value.startsWith('../') ? value : '../../' + value;
+  };
+  const sourceImage = String(row.image || '').trim();
+  const rowGallery = String(row.images || '').split(';').map(value => value.trim())
+    .filter(value => value && value !== 'images/default-product.svg');
+  const preferredImage = sourceImage
+    ? sourceImage.replace(/vid-mini\\.webp$/i, 'vid-1.webp').replace(/-mini\\.webp$/i, '.webp')
+    : '';
+  const gallerySources = [];
+  if (preferredImage && preferredImage !== sourceImage) gallerySources.push(preferredImage);
+  if (rowGallery.length) gallerySources.push(...rowGallery);
+  else if (sourceImage && sourceImage !== 'images/default-product.svg' && preferredImage === sourceImage) gallerySources.push(sourceImage);
+  const uniqueGallerySources = [...new Set(gallerySources.length ? gallerySources : ['images/default-product.svg'])];
+  const gallery = uniqueGallerySources.map((source, index) => {
+    const fileName = source.split('/').pop() || '';
+    const photoMatch = fileName.match(/foto-?(\\d+)/i);
+    const label = /chertezh|drawing/i.test(fileName) ? 'Чертёж'
+      : /album/i.test(fileName) ? 'Альбом'
+      : photoMatch ? 'Фото ' + photoMatch[1]
+      : index === 0 ? 'Вид 1' : 'Изображение ' + (index + 1);
+    return {
+      label,
+      src: normalizeProductImagePath(source),
+      alt: productName + (label === 'Вид 1' ? ' — общий вид' : ' — ' + label.toLowerCase())
+    };
+  });
   if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
   const mainImage = gallery[0].src;
   const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^(\.\.\/)+/, '');
