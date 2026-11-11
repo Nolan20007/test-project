@@ -32,6 +32,7 @@ const CATEGORIES_TO_GENERATE = [
     template: 'stremyanki-tpr-902-09-22-84.html',
     folder: 'stremyanki-tpr-902-09-22-84',
     title: 'Стремянки ТПР 902-09-22.84',
+    masterTemplate: true,
     catalog_link: 'ss2.html',
     csv: 'data/ss2-products.csv',
     items: [
