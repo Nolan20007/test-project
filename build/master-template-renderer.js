@@ -78,11 +78,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     const widthVaries = new Set(variantRows.map(item => Number(item.width))).size > 1;
     const allRows = variantRows.filter(item => !(variantGroup.id === group.id && item.id === currentRow.id))
       .slice().sort((a, b) => Number(a.length) - Number(b.length) || String(a.id).localeCompare(String(b.id)));
-    const limit = Number.isInteger(group.otherSizesDisplayLimit) && group.otherSizesDisplayLimit > 0
-      ? group.otherSizesDisplayLimit : 16;
-    const nearbyRows = allRows.slice().sort((a, b) =>
-      Math.abs(Number(a.length) - Number(currentRow.length)) - Math.abs(Number(b.length) - Number(currentRow.length))
-    ).slice(0, limit).sort((a, b) => Number(a.length) - Number(b.length));
+    const orderedRows = allRows;
     const renderLink = item => {
       const itemLength = Number(item.length);
       const itemWidth = Number(item.width);
@@ -93,14 +89,11 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       return '<a class="other-sizes__link" href="' + escapeHtml(slugify(item.id)) + '.html">' +
         escapeHtml(variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')</a>';
     };
-    const visibleIds = new Set(nearbyRows.map(item => item.id));
-    const visibleHtml = nearbyRows.map(renderLink).join('');
-    const extraHtml = allRows.filter(item => !visibleIds.has(item.id)).map(renderLink).join('');
+    const linksHtml = orderedRows.map(renderLink).join('');
     const panelId = 'other-sizes-panel-' + panelIndex;
     return '<div class="other-sizes__variant-panel" id="' + panelId + '" data-variant-id="' + escapeHtml(variantGroup.id) + '"' +
-      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links">' + visibleHtml + '</div>' +
-      (extraHtml ? '<div class="other-sizes__extra" hidden><div class="other-sizes__links">' + extraHtml + '</div></div>' +
-        '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
+      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links other-sizes__links--collapsed">' + linksHtml + '</div>' +
+      (orderedRows.length ? '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
       '</div>';
   };
   const configuredVariantIds = Array.isArray(group.otherSizesVariantGroupIds) ? group.otherSizesVariantGroupIds : [];
