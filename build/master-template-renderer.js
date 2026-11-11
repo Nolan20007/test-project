@@ -104,7 +104,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   if (rowGallery.length) gallerySources.push(...rowGallery);
   else if (sourceImage && sourceImage !== 'images/default-product.svg' && preferredImage === sourceImage) gallerySources.push(sourceImage);
   const uniqueGallerySources = [...new Set(gallerySources.length ? gallerySources : ['images/default-product.svg'])];
-  const gallery = uniqueGallerySources.map((source, index) => {
+  const rowBasedGallery = uniqueGallerySources.map((source, index) => {
     const fileName = source.split('/').pop() || '';
     const photoMatch = fileName.match(/foto-?(\d+)/i);
     const label = /chertezh|drawing/i.test(fileName) ? 'Чертёж'
@@ -117,6 +117,13 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       alt: productName + (label === 'Вид 1' ? ' — общий вид' : ' — ' + label.toLowerCase())
     };
   });
+  const gallery = Array.isArray(group.gallery) && group.gallery.length
+    ? group.gallery.map(item => ({
+        label: String(item.label),
+        src: item.webp,
+        alt: formatProductTemplate(item.alt || item.label, values)
+      }))
+    : rowBasedGallery;
   if (!gallery.length) throw new Error('Product group gallery must contain at least one image.');
   const mainImage = gallery[0].src;
   const absoluteImage = 'https://stremyanki-dlya-kolodcev.ru/' + mainImage.replace(/^(\.\.\/)+/, '');
