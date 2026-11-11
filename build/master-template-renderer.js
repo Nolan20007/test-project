@@ -36,21 +36,17 @@ function productProject(row, group) {
   return match ? match[1].replace(/СБ(?=$|-)/g, 'СБ') : group.project;
 }
 
-function getProductModel(row, groupContent = '') {
-  const hasGroupModelPattern = String(groupContent || '').includes('<!-- GROUP_FIELD:modelPattern:START -->');
-  if (hasGroupModelPattern) {
-    const modelPattern = readGroupHtmlRawField(groupContent, 'modelPattern');
-    if (modelPattern) {
-      const groupModelMatch = String(row && row.name || '').match(new RegExp(modelPattern, 'u'));
-      if (groupModelMatch) return groupModelMatch[0];
-    }
+function getProductModel(row, group) {
+  if (group && group.modelPattern) {
+    const groupModelMatch = String(row && row.name || '').match(new RegExp(group.modelPattern, 'u'));
+    if (groupModelMatch) return groupModelMatch[0];
   }
   const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+|Л-\d+/u);
   const idMatch = String(row && row.id || '').match(/SG-\d+/i);
   return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : String(row && row.id || ''));
 }
 
-function renderMasterProduct(template, group, row, rows, relatedVariantGroups = [], groupContent = '') {
+function renderMasterProduct(template, group, row, rows, relatedVariantGroups = []) {
   if (!group || typeof group !== 'object') throw new Error('A product group configuration is required.');
   if (!row || !row.id || !row.name) throw new Error('Product row must contain id and name.');
   const widthCm = Number(row.width);
@@ -67,7 +63,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const productPath = getProductPath(group.id, row.id);
   const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
-  const model = getProductModel(row, groupContent);
+  const model = getProductModel(row, group);
   const values = {
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
@@ -95,7 +91,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   // Product pages use one consistent stock label; CSV and group overrides do not change it.
   const stockText = '✓ В наличии на складе';
   const priceDisplay = price > 0 ? 'от ' + values.priceFormatted + ' ₽' : 'Цена по запросу';
-  const shortDescription = groupContent ? readGroupHtmlField(groupContent, 'shortDescription', values) : formatProductTemplate(group.shortDescriptionTemplate || (group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.'), values);
+  const shortDescription = group.shortDescriptionTemplate ? formatProductTemplate(group.shortDescriptionTemplate, values) : formatProductTemplate(group.groupTitle + ' — длина ' + lengthCm + ' см, ширина ' + widthCm + ' см (' + widthMm + ' мм), масса ' + weight.toLocaleString('ru-RU') + ' кг.', values);
   const cartItemName = formatProductTemplate(group.cartItemNameTemplate || productName, values);
   const normalizeProductImagePath = source => {
     const value = String(source || '').trim().replace(/^\/+/, '');
@@ -168,7 +164,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     if (group.construction.material) specifications.push(['Материал', group.construction.material]);
     if (group.construction.finish) specifications.push(['Защитное покрытие', group.construction.finish]);
   }
-  let specsHtml = groupContent ? readGroupHtmlField(groupContent, 'specifications', values) :
+  let specsHtml = group.specificationsHtmlTemplate ? formatProductTemplate(group.specificationsHtmlTemplate, values) :
     '<table class="mp-specs-table"><tbody>' + specifications.map(item =>
       '<tr><td>' + escapeHtml(item[0]) + '</td><td>' + escapeHtml(item[1]) + '</td></tr>'
     ).join('') + '</tbody></table>';
@@ -193,7 +189,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     }
   }
 
-  const descriptionHtml = groupContent ? readGroupHtmlField(groupContent, 'description', values) :
+  const descriptionHtml = group.descriptionHtmlTemplate ? formatProductTemplate(group.descriptionHtmlTemplate, values) :
     (Array.isArray(group.descriptionSections)
       ? group.descriptionSections.map(section =>
           (section.heading ? '<h2>' + escapeHtml(section.heading) + '</h2>' : '') +
@@ -201,12 +197,8 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         ).join('')
       : '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) + '</p><p>' + escapeHtml(group.installation) + '</p>');
   // Large product families use a compact, expandable related-size navigator.
-  const otherSizesTitle = groupContent
-    ? readGroupHtmlField(groupContent, 'otherSizesTitle', values)
-    : group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
-  const otherSizesLinkTextTemplate = groupContent
-    ? readGroupHtmlRawField(groupContent, 'otherSizesLinkTextTemplate')
-    : group.otherSizesLinkTextTemplate;
+  const otherSizesTitle = group.otherSizesTitle || group.otherSizesSwitcherTitle || ('Другие размеры ' + group.groupTitle);
+  const otherSizesLinkTextTemplate = group.otherSizesLinkTextTemplate;
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
   const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
     const lengthVaries = new Set(variantRows.map(item => Number(item.length))).size > 1;
@@ -225,7 +217,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       else dimensions = itemLength + ' см';
       const linkValues = {
         id: String(item.id),
-        model: getProductModel(item, variantGroup.id === group.id ? groupContent : ''),
+        model: getProductModel(item, variantGroup),
         lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
         widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
         weight: Number(String(item.weight).replace(',', '.')),
@@ -330,7 +322,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       { '@type': 'ListItem', position: 3, name: model, item: productUrl }
     ]
   };
-  const extraContentHtml = groupContent ? readGroupHtmlField(groupContent, 'extraContent', values) : group.extraContentHtml || '';
+  const extraContentHtml = formatProductTemplate(group.extraContentHtml || '', values);
   const replacements = {
     '{{PRODUCT_SEO_TITLE}}': escapeHtml(seoTitle),
     '{{PRODUCT_SEO_DESCRIPTION}}': escapeHtml(seoDescription),
