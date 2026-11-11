@@ -115,7 +115,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         ).join('')
       : '<h3>Описание конструкции</h3><p>' + escapeHtml(group.description) + '</p><p>' + escapeHtml(group.installation) + '</p>');
   // Large product families use a compact, expandable related-size navigator.
-  const otherSizesTitle = group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
+  const otherSizesTitle = groupContent
+    ? readGroupHtmlField(groupContent, 'otherSizesTitle', values)
+    : group.otherSizesSwitcherTitle || group.otherSizesTitle || ('Другие размеры ' + group.groupTitle);
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
   const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
     const lengthVaries = new Set(variantRows.map(item => Number(item.length))).size > 1;
