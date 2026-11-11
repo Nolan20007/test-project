@@ -60,5 +60,6 @@
   "schemaBrand": {
     "@type": "Brand",
     "name": "Лестницы и стремянки для колодцев"
-  }
+  },
+  "otherSizesMatchProject": true
 }
