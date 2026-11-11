@@ -12,7 +12,7 @@
   "schemaProductType": "Скоба для колодцев",
   "schemaMpnTemplate": "{id}",
   "schemaNameTemplate": "{productName}",
-  "schemaDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2Label} {widthCm} см, масса {weightFormatted} кг.",
+  "schemaDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2LabelLower} {widthMm} мм, масса {weightFormatted} кг.",
   "seoTitleTemplate": "{productName} — размеры, масса и цена",
   "seoDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2Label} {widthCm} см, масса {weightFormatted} кг. Изготовление и доставка по России.",
   "cartItemNameTemplate": "{productName}",

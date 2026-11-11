@@ -12,7 +12,7 @@
   "schemaProductType": "Соединительный элемент МС",
   "schemaMpnTemplate": "{id}",
   "schemaNameTemplate": "{productName}",
-  "schemaDescriptionTemplate": "{productName}. Ширина {lengthMm} мм, высота {widthMm} мм, масса {weightFormatted} кг. Документ: {project}.",
+  "schemaDescriptionTemplate": "{productName}. Ширина {lengthCm} см, высота {widthMm} мм, масса {weightFormatted} кг. Документ: {project}.",
   "seoTitleTemplate": "{productName} — размеры, масса и цена",
   "seoDescriptionTemplate": "{productName}. Ширина {lengthMm} мм, высота {widthMm} мм, масса {weightFormatted} кг. Изготовление и доставка по России.",
   "cartItemNameTemplate": "{productName}",

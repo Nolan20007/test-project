@@ -67,6 +67,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     project, albumReference: row.drawing_album || group.albumReference || '',
     dimension1Label: escapeHtml(row.dimension1_label || group.dimension1Label || 'Длина'),
     dimension2Label: escapeHtml(row.dimension2_label || group.dimension2Label || 'Ширина'),
+    dimension2LabelLower: escapeHtml(String(row.dimension2_label || group.dimension2Label || 'Ширина').toLowerCase()),
     rowDescription: escapeHtml(row.description || group.rowDescriptionFallback || ''),
     material: escapeHtml(row.material || ''),
     rodDiameter: escapeHtml(row.rod_diameter || ''),
