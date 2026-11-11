@@ -141,17 +141,18 @@
     .other-sizes__variant.active { border-color: var(--primary-color); background: var(--primary-color); color: #fff; }
     .other-sizes__variant.active span { color: #fff; }
     .other-sizes__variant-panel[hidden], .other-sizes__extra[hidden] { display: none; }
-    .other-sizes__links { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
-    .other-sizes__link { min-width: 0; padding: 8px 6px; text-align: center; font-size: 13px; line-height: 1.25; }
+    .other-sizes__links { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start; gap: 8px; }
+    .other-sizes__links--collapsed { max-height: 80px; overflow: hidden; }
+    .other-sizes__link { display: inline-flex; flex: 0 1 auto; align-items: center; justify-content: center; width: max-content; max-width: 100%; min-width: 0; min-height: 36px; box-sizing: border-box; padding: 7px 11px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13px; line-height: 1.25; }
     .other-sizes__expand { display: block; margin: 14px auto 0; padding: 9px 22px; border: 1px solid var(--primary-color); border-radius: 9px; background: #fff; color: var(--primary-color); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
     .other-sizes__expand:hover { background: #f3f7fb; }
-    @media (max-width: 1100px) { .other-sizes__links { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .other-sizes__expand[hidden] { display: none; }
     @media (max-width: 700px) {
         .other-sizes { padding: 20px; }
-        .other-sizes__links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+        .other-sizes__links--collapsed { max-height: 80px; }
         .other-sizes__variants { gap: 7px; }
         .other-sizes__variant { min-width: 104px; min-height: 44px; padding: 6px 10px; font-size: 13px; }
-        .other-sizes__link { font-size: 13px; }
+        .other-sizes__link { font-size: 13px; padding: 7px 9px; }
     }
 </style>
 </head>
@@ -266,13 +267,24 @@
 
 <script type="application/json" id="product-gallery-data">{{PRODUCT_GALLERY_JSON}}</script>
 
-<script>function toggleOtherSizes(button) {
-  const extra = button.previousElementSibling;
-  if (!extra || !extra.classList.contains('other-sizes__extra')) return;
-  const expanded = extra.hidden;
-  extra.hidden = !expanded;
+<script>function updateOtherSizesOverflow(panel) {
+  if (!panel || panel.hidden) return;
+  const links = panel.querySelector('.other-sizes__links');
+  const button = panel.querySelector('.other-sizes__expand');
+  if (!links || !button) return;
+  const collapsed = links.classList.contains('other-sizes__links--collapsed');
+  if (collapsed) button.hidden = links.scrollHeight <= links.clientHeight + 1;
+}
+
+function toggleOtherSizes(button) {
+  const panel = button.closest('.other-sizes__variant-panel');
+  const links = panel && panel.querySelector('.other-sizes__links');
+  if (!links) return;
+  const expanded = links.classList.contains('other-sizes__links--collapsed');
+  links.classList.toggle('other-sizes__links--collapsed', !expanded);
   button.setAttribute('aria-expanded', String(expanded));
   button.textContent = expanded ? 'Свернуть' : 'Показать все размеры';
+  button.hidden = false;
 }
 
 function selectOtherSizesVariant(button) {
@@ -286,8 +298,16 @@ function selectOtherSizesVariant(button) {
   const targetPanelId = button.getAttribute('aria-controls');
   section.querySelectorAll('.other-sizes__variant-panel').forEach(panel => {
     panel.hidden = panel.id !== targetPanelId;
+    if (!panel.hidden) updateOtherSizesOverflow(panel);
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.other-sizes__variant-panel').forEach(updateOtherSizesOverflow);
+});
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.other-sizes__variant-panel:not([hidden])').forEach(updateOtherSizesOverflow);
+});
 
 function toggleOtherCategories(button) {
   const grid = document.getElementById("other-categories-extra");
