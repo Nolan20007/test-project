@@ -1,0 +1,61 @@
+{
+  "id": "l-19",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "l-19",
+  "catalogPage": "l-19.html",
+  "catalogTitle": "Лестницы Л-19",
+  "groupTitle": "Лестница Л-19",
+  "headerSubtitle": "Стальные лестницы для спуска в подземные коммуникации по Альбому 6/88",
+  "project": "3650.Л-19-000СБ",
+  "projectFromName": true,
+  "schemaProductType": "Лестница для колодцев",
+  "normativeLabel": "Рабочий чертёж",
+  "albumReference": "Альбом 6/88",
+  "albumNote": "Металлические лестницы и площадки для инженерных коммуникаций",
+  "construction": {
+    "type": "Стальная лестница для подземных коммуникаций",
+    "stringers": "Стальной круглый пруток Ø25 мм по ГОСТ 2590-2006, сталь Ст3 по ГОСТ 535-2005",
+    "steps": "Стальной круглый пруток Ø20 мм по ГОСТ 2590-2006, сталь Ст3 по ГОСТ 535-2005",
+    "material": "Сталь Ст3 по ГОСТ 535-2005",
+    "finish": "Грунт КФ-030 или ГФ-021; защитный лак БТ-577 либо эмаль ХВ-51 (или аналогичная химически стойкая краска) в два слоя",
+    "availableWidthsMm": [
+      405
+    ],
+    "lengthRangeMm": [
+      1500,
+      5000
+    ]
+  },
+  "csv": "data/l-19-products.csv",
+  "productIds": [
+    "L-19-1.5",
+    "L-19-2.0",
+    "L-19-2.5",
+    "L-19-3.0",
+    "L-19-3.5",
+    "L-19-4.0",
+    "L-19-4.5",
+    "L-19-5.0"
+  ],
+  "groupContentTemplate": "templates/group-content/l-19.html",
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/l-19/vid-1.webp",
+      "alt": "Лестница Л-19 — общий вид"
+    },
+    {
+      "label": "Альбом 6/88",
+      "webp": "../../images/l-19/album.webp",
+      "alt": "Альбом 6/88 — металлические лестницы и площадки для инженерных коммуникаций"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/l-19/chertezh.webp",
+      "alt": "Чертёж лестницы Л-19"
+    }
+  ],
+  "otherSizesLabel": "Л-19",
+  "otherSizesLimit": 10
+}
