@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { renderMasterProduct, getMasterProductSlug } = require('./master-template-renderer');
+const { renderMasterProduct } = require('./master-template-renderer');
+const { getProductPath, getProductSlug, getProductPathById } = require('./product-url-registry');
 
 const SITE_URL = 'https://stremyanki-dlya-kolodcev.ru';
 // Individual product pages are generated from templates, including the SSG series.
@@ -16,15 +17,15 @@ const CATEGORIES_TO_GENERATE = [
     catalog_link: 'ss1.html',
     csv: 'data/ss1-products.csv',
     items: [
-      { id: 'C-1', slug: 'stremyanka-s-1' },
-      { id: 'C-2', slug: 'stremyanka-s-2' },
-      { id: 'C-3', slug: 'stremyanka-s-3' },
-      { id: 'C-4', slug: 'stremyanka-s-4' },
-      { id: 'C-5', slug: 'stremyanka-s-5' },
-      { id: 'C-6', slug: 'stremyanka-s-6' },
-      { id: 'C-7', slug: 'stremyanka-s-7' },
-      { id: 'C-8', slug: 'stremyanka-s-8' },
-      { id: 'C-9', slug: 'stremyanka-s-9' },
+      { id: 'C-1' },
+      { id: 'C-2' },
+      { id: 'C-3' },
+      { id: 'C-4' },
+      { id: 'C-5' },
+      { id: 'C-6' },
+      { id: 'C-7' },
+      { id: 'C-8' },
+      { id: 'C-9' },
     ]
   },
   {
@@ -34,25 +35,25 @@ const CATEGORIES_TO_GENERATE = [
     catalog_link: 'ss2.html',
     csv: 'data/ss2-products.csv',
     items: [
-      { id: 'C1-00', slug: 'stremyanka-s1-00' },
-      { id: 'C1-01', slug: 'stremyanka-s1-01' },
-      { id: 'C1-02', slug: 'stremyanka-s1-02' },
-      { id: 'C1-03', slug: 'stremyanka-s1-03' },
-      { id: 'C1-04', slug: 'stremyanka-s1-04' },
-      { id: 'C1-05', slug: 'stremyanka-s1-05' },
-      { id: 'C1-06', slug: 'stremyanka-s1-06' },
-      { id: 'C1-07', slug: 'stremyanka-s1-07' },
-      { id: 'C1-08', slug: 'stremyanka-s1-08' },
-      { id: 'C1-09', slug: 'stremyanka-s1-09' },
-      { id: 'C1-10', slug: 'stremyanka-s1-10' },
-      { id: 'C1-11', slug: 'stremyanka-s1-11' },
-      { id: 'C1-12', slug: 'stremyanka-s1-12' },
-      { id: 'C1-13', slug: 'stremyanka-s1-13' },
-      { id: 'C1-14', slug: 'stremyanka-s1-14' },
-      { id: 'C1-15', slug: 'stremyanka-s1-15' },
-      { id: 'C1-16', slug: 'stremyanka-s1-16' },
-      { id: 'C1-17', slug: 'stremyanka-s1-17' },
-      { id: 'C1-18', slug: 'stremyanka-s1-18' },
+      { id: 'C1-00' },
+      { id: 'C1-01' },
+      { id: 'C1-02' },
+      { id: 'C1-03' },
+      { id: 'C1-04' },
+      { id: 'C1-05' },
+      { id: 'C1-06' },
+      { id: 'C1-07' },
+      { id: 'C1-08' },
+      { id: 'C1-09' },
+      { id: 'C1-10' },
+      { id: 'C1-11' },
+      { id: 'C1-12' },
+      { id: 'C1-13' },
+      { id: 'C1-14' },
+      { id: 'C1-15' },
+      { id: 'C1-16' },
+      { id: 'C1-17' },
+      { id: 'C1-18' },
     ]
   },
   {
@@ -71,67 +72,67 @@ const CATEGORIES_TO_GENERATE = [
     installation_text: 'Лестница опирается на приваренные пятаки и крепится к стене тягами. Для тяг в лестнице предусмотрены отверстия диаметром 16 мм. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
     product_description: 'Стальная теплосетевая лестница-стремянка {{MODEL}} по нормалям тепловых сетей НТС 62-91-111А. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
-      { id: 'NTSA-L2000', slug: 'lestnica-l-2000' },
-      { id: 'NTSA-L2100', slug: 'lestnica-l-2100' },
-      { id: 'NTSA-L2200', slug: 'lestnica-l-2200' },
-      { id: 'NTSA-L2300', slug: 'lestnica-l-2300' },
-      { id: 'NTSA-L2400', slug: 'lestnica-l-2400' },
-      { id: 'NTSA-L2500', slug: 'lestnica-l-2500' },
-      { id: 'NTSA-L2600', slug: 'lestnica-l-2600' },
-      { id: 'NTSA-L2700', slug: 'lestnica-l-2700' },
-      { id: 'NTSA-L2800', slug: 'lestnica-l-2800' },
-      { id: 'NTSA-L2900', slug: 'lestnica-l-2900' },
-      { id: 'NTSA-L3000', slug: 'lestnica-l-3000' },
-      { id: 'NTSA-L3100', slug: 'lestnica-l-3100' },
-      { id: 'NTSA-L3200', slug: 'lestnica-l-3200' },
-      { id: 'NTSA-L3300', slug: 'lestnica-l-3300' },
-      { id: 'NTSA-L3400', slug: 'lestnica-l-3400' },
-      { id: 'NTSA-L3500', slug: 'lestnica-l-3500' },
-      { id: 'NTSA-L3600', slug: 'lestnica-l-3600' },
-      { id: 'NTSA-L3700', slug: 'lestnica-l-3700' },
-      { id: 'NTSA-L3800', slug: 'lestnica-l-3800' },
-      { id: 'NTSA-L3900', slug: 'lestnica-l-3900' },
-      { id: 'NTSA-L4000', slug: 'lestnica-l-4000' },
-      { id: 'NTSA-L4100', slug: 'lestnica-l-4100' },
-      { id: 'NTSA-L4200', slug: 'lestnica-l-4200' },
-      { id: 'NTSA-L4300', slug: 'lestnica-l-4300' },
-      { id: 'NTSA-L4400', slug: 'lestnica-l-4400' },
-      { id: 'NTSA-L4500', slug: 'lestnica-l-4500' },
-      { id: 'NTSA-L4600', slug: 'lestnica-l-4600' },
-      { id: 'NTSA-L4700', slug: 'lestnica-l-4700' },
-      { id: 'NTSA-L4800', slug: 'lestnica-l-4800' },
-      { id: 'NTSA-L4900', slug: 'lestnica-l-4900' },
-      { id: 'NTSA-L5000', slug: 'lestnica-l-5000' },
-      { id: 'NTSA-L5100', slug: 'lestnica-l-5100' },
-      { id: 'NTSA-L5200', slug: 'lestnica-l-5200' },
-      { id: 'NTSA-L5300', slug: 'lestnica-l-5300' },
-      { id: 'NTSA-L5400', slug: 'lestnica-l-5400' },
-      { id: 'NTSA-L5500', slug: 'lestnica-l-5500' },
-      { id: 'NTSA-L5600', slug: 'lestnica-l-5600' },
-      { id: 'NTSA-L5700', slug: 'lestnica-l-5700' },
-      { id: 'NTSA-L5800', slug: 'lestnica-l-5800' },
-      { id: 'NTSA-L5900', slug: 'lestnica-l-5900' },
-      { id: 'NTSA-L6000', slug: 'lestnica-l-6000' },
-      { id: 'NTSA-L6100', slug: 'lestnica-l-6100' },
-      { id: 'NTSA-L6200', slug: 'lestnica-l-6200' },
-      { id: 'NTSA-L6300', slug: 'lestnica-l-6300' },
-      { id: 'NTSA-L6400', slug: 'lestnica-l-6400' },
-      { id: 'NTSA-L6500', slug: 'lestnica-l-6500' },
-      { id: 'NTSA-L6600', slug: 'lestnica-l-6600' },
-      { id: 'NTSA-L6700', slug: 'lestnica-l-6700' },
-      { id: 'NTSA-L6800', slug: 'lestnica-l-6800' },
-      { id: 'NTSA-L6900', slug: 'lestnica-l-6900' },
-      { id: 'NTSA-L7000', slug: 'lestnica-l-7000' },
-      { id: 'NTSA-L7100', slug: 'lestnica-l-7100' },
-      { id: 'NTSA-L7200', slug: 'lestnica-l-7200' },
-      { id: 'NTSA-L7300', slug: 'lestnica-l-7300' },
-      { id: 'NTSA-L7400', slug: 'lestnica-l-7400' },
-      { id: 'NTSA-L7500', slug: 'lestnica-l-7500' },
-      { id: 'NTSA-L7600', slug: 'lestnica-l-7600' },
-      { id: 'NTSA-L7700', slug: 'lestnica-l-7700' },
-      { id: 'NTSA-L7800', slug: 'lestnica-l-7800' },
-      { id: 'NTSA-L7900', slug: 'lestnica-l-7900' },
-      { id: 'NTSA-L8000', slug: 'lestnica-l-8000' }
+      { id: 'NTSA-L2000' },
+      { id: 'NTSA-L2100' },
+      { id: 'NTSA-L2200' },
+      { id: 'NTSA-L2300' },
+      { id: 'NTSA-L2400' },
+      { id: 'NTSA-L2500' },
+      { id: 'NTSA-L2600' },
+      { id: 'NTSA-L2700' },
+      { id: 'NTSA-L2800' },
+      { id: 'NTSA-L2900' },
+      { id: 'NTSA-L3000' },
+      { id: 'NTSA-L3100' },
+      { id: 'NTSA-L3200' },
+      { id: 'NTSA-L3300' },
+      { id: 'NTSA-L3400' },
+      { id: 'NTSA-L3500' },
+      { id: 'NTSA-L3600' },
+      { id: 'NTSA-L3700' },
+      { id: 'NTSA-L3800' },
+      { id: 'NTSA-L3900' },
+      { id: 'NTSA-L4000' },
+      { id: 'NTSA-L4100' },
+      { id: 'NTSA-L4200' },
+      { id: 'NTSA-L4300' },
+      { id: 'NTSA-L4400' },
+      { id: 'NTSA-L4500' },
+      { id: 'NTSA-L4600' },
+      { id: 'NTSA-L4700' },
+      { id: 'NTSA-L4800' },
+      { id: 'NTSA-L4900' },
+      { id: 'NTSA-L5000' },
+      { id: 'NTSA-L5100' },
+      { id: 'NTSA-L5200' },
+      { id: 'NTSA-L5300' },
+      { id: 'NTSA-L5400' },
+      { id: 'NTSA-L5500' },
+      { id: 'NTSA-L5600' },
+      { id: 'NTSA-L5700' },
+      { id: 'NTSA-L5800' },
+      { id: 'NTSA-L5900' },
+      { id: 'NTSA-L6000' },
+      { id: 'NTSA-L6100' },
+      { id: 'NTSA-L6200' },
+      { id: 'NTSA-L6300' },
+      { id: 'NTSA-L6400' },
+      { id: 'NTSA-L6500' },
+      { id: 'NTSA-L6600' },
+      { id: 'NTSA-L6700' },
+      { id: 'NTSA-L6800' },
+      { id: 'NTSA-L6900' },
+      { id: 'NTSA-L7000' },
+      { id: 'NTSA-L7100' },
+      { id: 'NTSA-L7200' },
+      { id: 'NTSA-L7300' },
+      { id: 'NTSA-L7400' },
+      { id: 'NTSA-L7500' },
+      { id: 'NTSA-L7600' },
+      { id: 'NTSA-L7700' },
+      { id: 'NTSA-L7800' },
+      { id: 'NTSA-L7900' },
+      { id: 'NTSA-L8000' }
     ]
   },
   {
@@ -150,15 +151,15 @@ const CATEGORIES_TO_GENERATE = [
     installation_text: 'Перед установкой необходимо сверить длину лестницы, положение опор и способ крепления с проектом тепловой камеры. Монтаж выполняют с учетом конструкции стен и условий эксплуатации.',
     product_description: 'Стальная лестница с перилами {{MODEL}} по нормалям тепловых сетей НТС 62-91-111Б. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
-      { id: 'NTSB-L2000', slug: 'lestnica-l-2000' },
-      { id: 'NTSB-L2250', slug: 'lestnica-l-2250' },
-      { id: 'NTSB-L2500', slug: 'lestnica-l-2500' },
-      { id: 'NTSB-L2750', slug: 'lestnica-l-2750' },
-      { id: 'NTSB-L3000', slug: 'lestnica-l-3000' },
-      { id: 'NTSB-L3250', slug: 'lestnica-l-3250' },
-      { id: 'NTSB-L3500', slug: 'lestnica-l-3500' },
-      { id: 'NTSB-L3750', slug: 'lestnica-l-3750' },
-      { id: 'NTSB-L4000', slug: 'lestnica-l-4000' }
+      { id: 'NTSB-L2000' },
+      { id: 'NTSB-L2250' },
+      { id: 'NTSB-L2500' },
+      { id: 'NTSB-L2750' },
+      { id: 'NTSB-L3000' },
+      { id: 'NTSB-L3250' },
+      { id: 'NTSB-L3500' },
+      { id: 'NTSB-L3750' },
+      { id: 'NTSB-L4000' }
     ]
   },
   {
@@ -177,10 +178,10 @@ const CATEGORIES_TO_GENERATE = [
     installation_text: 'Лестница опирается на приваренные опорные пятаки и крепится к стене тягами. В конструкции предусмотрены отверстия Ø16 мм для установки тяг. Перед монтажом следует сверить расположение креплений с проектом тепловой камеры.',
     product_description: 'Стальная лестница с ограждением из дуг {{MODEL}} по нормалям тепловых сетей НТС 62-91-111. Предназначена для спуска в тепловые камеры при осмотре, ремонте и обслуживании оборудования. Длина {{LENGTH_MM}} мм, ширина {{WIDTH_MM}} мм, материал — сталь Ст3.',
     items: [
-      { id: 'NTSS-S1', slug: 'lestnica-s1-3400' },
-      { id: 'NTSS-S2', slug: 'lestnica-s2-4000' },
-      { id: 'NTSS-S3', slug: 'lestnica-s3-4600' },
-      { id: 'NTSS-S4', slug: 'lestnica-s4-5200' }
+      { id: 'NTSS-S1' },
+      { id: 'NTSS-S2' },
+      { id: 'NTSS-S3' },
+      { id: 'NTSS-S4' }
     ]
   },
   {
@@ -193,20 +194,20 @@ const CATEGORIES_TO_GENERATE = [
     dimension1_label: 'Длина',
     dimension2_label: 'Ширина',
     items: [
-      { id: 'GS-1', slug: 'skoba-gs-1' },
-      { id: 'GS-2', slug: 'skoba-gs-2' },
-      { id: 'GS-3', slug: 'skoba-gs-3' },
-      { id: 'GS-4', slug: 'skoba-gs-4' },
-      { id: 'MN-1', slug: 'skoba-mn-1' },
-      { id: 'SK-1', slug: 'skoba-sk-1' },
-      { id: 'SK-1-K', slug: 'skoba-sk-1-k' },
-      { id: 'SK-2', slug: 'skoba-sk-2' },
-      { id: 'SK-3', slug: 'skoba-sk-3' },
-      { id: 'SK-4', slug: 'skoba-sk-4' },
-      { id: 'SK-5', slug: 'skoba-sk-5' },
-      { id: 'SK-6', slug: 'skoba-sk-6' },
-      { id: 'MN-1-OMEGA', slug: 'skoba-mn1-omega' },
-      { id: 'MN-1-3900', slug: 'skoba-mn1-3900' }
+      { id: 'GS-1' },
+      { id: 'GS-2' },
+      { id: 'GS-3' },
+      { id: 'GS-4' },
+      { id: 'MN-1' },
+      { id: 'SK-1' },
+      { id: 'SK-1-K' },
+      { id: 'SK-2' },
+      { id: 'SK-3' },
+      { id: 'SK-4' },
+      { id: 'SK-5' },
+      { id: 'SK-6' },
+      { id: 'MN-1-OMEGA' },
+      { id: 'MN-1-3900' }
     ]
   },
   {
@@ -219,22 +220,22 @@ const CATEGORIES_TO_GENERATE = [
     dimension1_label: 'Ширина',
     dimension2_label: 'Высота',
     items: [
-      { id: 'MS-1', slug: 'soedinitelny-element-ms-1-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-1', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-2', slug: 'soedinitelny-element-ms-2-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-2', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-3', slug: 'soedinitelny-element-ms-3-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-3', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-4', slug: 'soedinitelny-element-ms-4-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-4', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-5', slug: 'soedinitelny-element-ms-5-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-5', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-6', slug: 'soedinitelny-element-ms-6-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-6', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-7', slug: 'soedinitelny-element-ms-7-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-7', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-8', slug: 'soedinitelny-element-ms-8-tpr-901-09-11-84', legacy_slug: 'soedinitelny-element-ms-8', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-1-902', slug: 'soedinitelny-element-ms-1-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-2-902', slug: 'soedinitelny-element-ms-2-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-3-902', slug: 'soedinitelny-element-ms-3-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-4-902', slug: 'soedinitelny-element-ms-4-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
-      { id: 'MS-5-902', slug: 'soedinitelny-element-ms-5-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-6-902', slug: 'soedinitelny-element-ms-6-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-7-902', slug: 'soedinitelny-element-ms-7-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
-      { id: 'MS-8-902', slug: 'soedinitelny-element-ms-8-tpr-902-09-22-84', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' }
+      { id: 'MS-1', legacy_slug: 'soedinitelny-element-ms-1', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-2', legacy_slug: 'soedinitelny-element-ms-2', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-3', legacy_slug: 'soedinitelny-element-ms-3', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-4', legacy_slug: 'soedinitelny-element-ms-4', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-5', legacy_slug: 'soedinitelny-element-ms-5', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-6', legacy_slug: 'soedinitelny-element-ms-6', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-7', legacy_slug: 'soedinitelny-element-ms-7', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-8', legacy_slug: 'soedinitelny-element-ms-8', tpr: '901-09-11.84', album: 'ТПР 901-09-11.84. Альбом VI.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-1-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-2-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-3-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-4-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-1-2-3-4-card.webp', images: 'images/soedinitelnye-elementy/ms-1-2-3-4.webp' },
+      { id: 'MS-5-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-6-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-7-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' },
+      { id: 'MS-8-902', tpr: '902-09-22.84', album: 'ТПР 902-09-22.84. Альбом VIII.88', card_image: 'images/soedinitelnye-elementy/ms-5-6-7-8-card.webp', images: 'images/soedinitelnye-elementy/ms-5-6-7-8.webp' }
     ]
   }
 
@@ -486,64 +487,9 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
       ? `<img src="${img}" alt="${name}" width="56" height="56" style="width:56px;height:56px;max-height:56px;object-fit:contain;" loading="lazy" decoding="async" >`
       : '<img class="product-thumb-placeholder-image" src="images/default-product.svg" alt="" aria-hidden="true" width="56" height="56" loading="lazy">';
 
-    // Логика генерации ссылки на карточку товара
-    let itemUrl = '#';
-    let modelSlug = '';
-    
-    if (id.startsWith('C-')) {
-        modelSlug = id.toLowerCase().replace('c-', 's-');
-        itemUrl = `products/stremyanki-tpr-901-09-11-84/stremyanka-${modelSlug}.html`;
-    } 
-    else if (id.startsWith('SG-')) {
-        modelSlug = id.toLowerCase();
-        itemUrl = `products/pozharnye-stremyanki-seriya-14503-794/pozharnaya-stremyanka-${modelSlug}.html`;
-    }
-    else if (id.startsWith('C1-')) {
-        modelSlug = id.toLowerCase().replace('c1-', 's1-');
-        itemUrl = `products/stremyanki-tpr-902-09-22-84/stremyanka-${modelSlug}.html`;
-    }
-    else if (id.startsWith('L-16-')) {
-        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        itemUrl = `products/lestnica-podvesnaya-l-16/${modelSlug}.html`;
-    }
-    else if (id.startsWith('TS-50-') || id.startsWith('TS-63-')) {
-        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        itemUrl = `products/lestnicy-teplovyh-setej-ts/${modelSlug}.html`;
-    }
-    else if (id.startsWith('VL-')) {
-        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        itemUrl = `products/vl-2-l-19-vodoprovodnaya/${modelSlug}.html`;
-    }
-    else if (id.startsWith('KL-')) {
-        modelSlug = id.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        itemUrl = `products/kl-1-dlya-kanalizacionnyh-kolodcev/${modelSlug}.html`;
-    }
-    else if (id.startsWith('Ст.')) {
-        modelSlug = id.toLowerCase().replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
-        itemUrl = `products/tmp-902/${modelSlug}.html`;
-    }
-    else if (id.startsWith('NTSS-')) {
-        const ntsSlugs = { 'NTSS-S1': 's1-3400', 'NTSS-S2': 's2-4000', 'NTSS-S3': 's3-4600', 'NTSS-S4': 's4-5200' };
-        itemUrl = `products/lestnicy-nts-62-91-111/lestnica-${ntsSlugs[id]}.html`;
-    }
-    else if (id.startsWith('NTSA-')) {
-        modelSlug = id.toLowerCase().replace('ntsa-', '').replace('l', 'l-');
-        itemUrl = `products/lestnicy-nts-62-91-111a/lestnica-${modelSlug}.html`;
-    }
-    else if (id.startsWith('NTSB-')) {
-        modelSlug = id.toLowerCase().replace('ntsb-', '').replace('l', 'l-');
-        itemUrl = `products/lestnicy-nts-62-91-111b/lestnica-${modelSlug}.html`;
-    }
-    else if (id.startsWith('GS-') || id.startsWith('MN-') || id.startsWith('SK-')) {
-        const slug = p.slug || ('skoba-' + id.toLowerCase().replace(/[^a-z0-9-]/g, '-'));
-        itemUrl = `products/skoby-dlya-kolodcev/${slug}.html`;
-    }
-    else if (id.startsWith('MS-')) {
-        const metalCategory = CATEGORIES_TO_GENERATE.find(category => category.folder === 'soedinitelnye-elementy');
-        const configuredItem = metalCategory && metalCategory.items.find(item => item.id === p.id);
-        const slug = configuredItem ? configuredItem.slug : ('soedinitelny-element-' + id.toLowerCase());
-        itemUrl = `products/soedinitelnye-elementy/${slug}.html`;
-    }
+    // Product detail URLs come only from the central registry.
+    const registeredPath = getProductPathById(p.id);
+    const itemUrl = registeredPath ? registeredPath.slice(1) : '#';
 
     const hiddenStyle = (needCollapse && idx >= COLLAPSE_SHOW) ? ' style="display:none;" class="hidden-row"' : '';
 
@@ -1071,10 +1017,11 @@ function processMarkers(file, navContent, footerContent, ctaContent) {
 // ============================================================
 
 function buildMetalProductHtml(cat, item, row, rows, template) {
-  const slug = item.slug;
-  const url = SITE_URL + '/products/' + cat.folder + '/' + slug + '.html';
   const name = String(row.name || '').trim();
   const id = String(row.id || '').trim();
+  const productPath = getProductPath(cat.folder, id);
+  const slug = getProductSlug(cat.folder, id);
+  const url = SITE_URL + productPath;
   const isMsCategory = cat.folder === 'soedinitelnye-elementy';
   const price = Number(row.price) > 0 ? Number(row.price) : null;
   const stockStatus = String(row.available || '').trim();
@@ -1128,7 +1075,7 @@ function buildMetalProductHtml(cat, item, row, rows, template) {
   }).map(other => {
     const otherItem = cat.items.find(candidate => candidate.id === other.id);
     if (!otherItem) return '';
-    return '<a class="related-product" href="' + esc(otherItem.slug) + '.html">' + esc(other.name) + '</a>';
+    return '<a class="related-product" href="' + esc(getProductSlug(cat.folder, other.id)) + '.html">' + esc(other.name) + '</a>';
   }).join('');
 
   const buyControls = price === null
@@ -1228,15 +1175,17 @@ function buildProductPages() {
     cat.items.forEach(p => {
       const row = byId.get(p.id);
       if (!row) throw new Error(`[product pages] ${cat.template} / ${cat.csv}: не найден ID "${p.id}"`);
+      const productPath = getProductPath(cat.folder, p.id);
+      const productSlug = getProductSlug(cat.folder, p.id);
       if (cat.type === 'metal') {
         const html = buildMetalProductHtml(cat, p, row, rows, template);
-        const outPath = path.join(outDir, `${p.slug}.html`);
+        const outPath = path.resolve(__dirname, '..', productPath.slice(1));
         fs.writeFileSync(outPath, html, 'utf8');
-        console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
-        createdPages.push(`products/${cat.folder}/${p.slug}.html`);
-        if (p.legacy_slug && p.legacy_slug !== p.slug) {
+        console.log(`  ✅ ${productPath.slice(1)} создан`);
+        createdPages.push(productPath.slice(1));
+        if (p.legacy_slug) {
           const legacyPath = path.join(outDir, `${p.legacy_slug}.html`);
-          const legacyUrl = SITE_URL + '/products/' + cat.folder + '/' + p.slug + '.html';
+          const legacyUrl = SITE_URL + productPath;
           const redirectHtml = '<!DOCTYPE html>\\n<html lang="ru">\\n<head>\\n' +
             '  <meta charset="UTF-8">\\n' +
             '  <meta http-equiv="refresh" content="0; url=' + legacyUrl + '">\\n' +
@@ -1248,7 +1197,7 @@ function buildProductPages() {
             '  <script>window.location.replace(' + JSON.stringify(legacyUrl) + ');</script>\\n' +
             '</body>\\n</html>\\n';
           fs.writeFileSync(legacyPath, redirectHtml, 'utf8');
-          console.log(`  ↪ products/${cat.folder}/${p.legacy_slug}.html → ${p.slug}.html`);
+          console.log(`  ↪ products/${cat.folder}/${p.legacy_slug}.html → ${productSlug}.html`);
         }
         return;
       }
@@ -1293,7 +1242,7 @@ function buildProductPages() {
       const offerJsonLd = price === null ? '' : `,
       "offers": ${JSON.stringify({
         "@type": "Offer",
-        "url": `https://stremyanki-dlya-kolodcev.ru/products/${cat.folder}/${p.slug}.html`,
+        "url": `${SITE_URL}${productPath}`,
         "priceCurrency": "RUB",
         "price": String(price),
         "availability": "https://schema.org/InStock",
@@ -1310,7 +1259,7 @@ function buildProductPages() {
         .replace(/\{\{PRICE\}\}/g, price === null ? 'по запросу' : price.toLocaleString('ru-RU')).replace(/\{\{PRICE_RAW\}\}/g, price === null ? '' : String(price))
         .replace(/\{\{WEIGHT\}\}/g, weight.toFixed(2).replace('.', ','))
         .replace(/\{\{WEIGHT_RAW\}\}/g, String(weight)).replace(/\{\{STEP_COUNT\}\}/g, stepCount === null ? '—' : String(stepCount))
-        .replace(/\{\{PROJECT\}\}/g, project).replace(/\{\{SLUG\}\}/g, p.slug)
+        .replace(/\{\{PROJECT\}\}/g, project).replace(/\{\{SLUG\}\}/g, productSlug)
         .replace(/\{\{PRODUCT_FOLDER\}\}/g, cat.folder)
         .replace(/\{\{WIDTH_MM\}\}/g, String(widthMm))
         .replace(/\{\{CONSTRUCTION\}\}/g, cat.construction || 'стальная конструкция')
@@ -1335,11 +1284,11 @@ function buildProductPages() {
         const linkTitle = cat.product_title_prefix
           ? `${cat.product_title_prefix} ${otherData.model} по ${cat.project_phrase || otherData.project}, длина ${otherData.lengthMm} мм`
           : `${otherData.model} (${otherData.lengthCm} см)`;
-        otherLinks += `<a href="${other.slug}.html">${linkTitle}</a>\n`;
+        otherLinks += `<a href="${getProductSlug(cat.folder, other.id)}.html">${linkTitle}</a>\n`;
       });
       html = html.replace(/\{\{OTHER_SIZES\}\}/g, otherLinks);
       // Machine-readable breadcrumbs for every generated product detail page.
-      const productUrl = `${SITE_URL}/products/${cat.folder}/${p.slug}.html`;
+      const productUrl = `${SITE_URL}${productPath}`;
       const breadcrumb = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -1354,10 +1303,10 @@ function buildProductPages() {
         JSON.stringify(breadcrumb, null, 2) +
         '\n</script>\n</head>');
 
-      const outPath = path.join(outDir, `${p.slug}.html`);
+      const outPath = path.resolve(__dirname, '..', productPath.slice(1));
       fs.writeFileSync(outPath, html, 'utf8');
-      console.log(`  ✅ products/${cat.folder}/${p.slug}.html создан`);
-      createdPages.push(`products/${cat.folder}/${p.slug}.html`);
+      console.log(`  ✅ ${productPath.slice(1)} создан`);
+      createdPages.push(productPath.slice(1));
     });
   });
   // Generate every configured master-template product family. Each group validates
@@ -1390,8 +1339,7 @@ function buildProductPages() {
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
       const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups);
-      const slug = getMasterProductSlug(group, row);
-      const relativePath = 'products/' + group.productFolder + '/' + slug + '.html';
+      const relativePath = getProductPath(group.id, row.id).slice(1);
       const outPath = path.resolve(__dirname, '..', relativePath);
       fs.writeFileSync(outPath, html, 'utf8');
       console.log('  ✅ ' + relativePath + ' создан');
@@ -1446,7 +1394,7 @@ function updateLlmsProductLinks() {
         throw new Error('[llms.txt] Не найдено название товара в CSV ' + cat.csv + ' для ID "' + product.id + '"');
       }
       const safeName = productName;
-      const url = SITE_URL + '/products/' + cat.folder + '/' + product.slug + '.html';
+      const url = SITE_URL + getProductPath(cat.folder, product.id);
       lines.push('- [' + safeName + '](' + url + ')');
       productLinkCount += 1;
     });
@@ -1457,8 +1405,7 @@ function updateLlmsProductLinks() {
     const rows = parseCSV(fs.readFileSync(path.resolve(__dirname, '..', group.csv), 'utf8').replace(/^\uFEFF/, ''));
     lines.push('### ' + group.catalogTitle);
     rows.forEach(row => {
-      const slug = getMasterProductSlug(group, row);
-      const url = SITE_URL + '/products/' + group.productFolder + '/' + slug + '.html';
+      const url = SITE_URL + getProductPath(group.id, row.id);
       lines.push('- [' + String(row.name || '').trim() + '](' + url + ')');
       productLinkCount += 1;
     });
