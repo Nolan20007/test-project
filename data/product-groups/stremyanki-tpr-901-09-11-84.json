@@ -1,0 +1,94 @@
+{
+  "id": "stremyanki-tpr-901-09-11-84",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "stremyanki-tpr-901-09-11-84",
+  "catalogPage": "ss1.html",
+  "catalogTitle": "Стремянки ТПР 901-09-11.84",
+  "groupTitle": "Стремянки для водопроводных колодцев ТПР 901-09-11.84",
+  "headerSubtitle": "Стальные стремянки для водопроводных колодцев по типовому проекту ТПР 901-09-11.84",
+  "project": "ТПР 901-09-11.84",
+  "projectFromName": false,
+  "schemaProductType": "Стремянка для водопроводного колодца",
+  "normativeLabel": "Типовой проект",
+  "albumReference": "ТПР 901-09-11.84, Альбом V",
+  "albumNote": "Типовые проектные решения ТПР 901-09-11.84, Альбом V",
+  "construction": {
+    "type": "Стальная стремянка для водопроводного колодца",
+    "stringers": "Вертикальные стойки — стальной уголок 50×50×5 мм по ГОСТ 8509",
+    "steps": "Ступени — стальной пруток Ø18 мм по ГОСТ 2590",
+    "material": "Сталь",
+    "finish": "Масляная краска (сурик МА-15)",
+    "availableWidthsMm": [
+      500
+    ],
+    "lengthRangeMm": [
+      1200,
+      4500
+    ]
+  },
+  "csv": "data/ss1-products.csv",
+  "productIds": [
+    "C-1",
+    "C-2",
+    "C-3",
+    "C-4",
+    "C-5",
+    "C-6",
+    "C-7",
+    "C-8",
+    "C-9"
+  ],
+  "groupContentTemplate": "templates/group-content/stremyanki-tpr-901-09-11-84.html",
+  "productNameTemplate": "Стремянка {model} для колодцев, {lengthCm} см",
+  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "cartItemNameTemplate": "Стремянка {model} по ТПР 901-09-11.84, длина {lengthMm} мм",
+  "cartLengthUnit": "cm",
+  "buyButtonLabel": "Добавить в корзину",
+  "seoTitleTemplate": "Стремянка {model} по ТПР 901-09-11.84, {lengthCm} см — купить",
+  "seoDescriptionTemplate": "Купить стальную стремянку {model} по ТПР 901-09-11.84. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг. Для водопроводных колодцев, от производителя.",
+  "schemaNameTemplate": "Стремянка {model} по ТПР 901-09-11.84, длина {lengthMm} мм",
+  "schemaDescriptionTemplate": "Стальная стремянка {model} для водопроводного колодца по ТПР 901-09-11.84. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "../../images/ss1/vid-1.webp",
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/ss1/vid-1.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — общий вид 1"
+    },
+    {
+      "label": "Вид 2",
+      "webp": "../../images/ss1/vid-2.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — общий вид 2"
+    },
+    {
+      "label": "Вид 3",
+      "webp": "../../images/ss1/vid-3.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — общий вид 3"
+    },
+    {
+      "label": "Фото 1",
+      "webp": "../../images/ss1/foto-1.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — фотография 1"
+    },
+    {
+      "label": "Фото 2",
+      "webp": "../../images/ss1/foto-2.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — фотография 2"
+    },
+    {
+      "label": "Альбом",
+      "webp": "../../images/ss1/album.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — альбом V"
+    },
+    {
+      "label": "Чертёж",
+      "webp": "../../images/ss1/chertezh.webp",
+      "alt": "Стремянка {model} по ТПР 901-09-11.84 — чертёж"
+    }
+  ],
+  "otherSizesLabel": "Стремянки ТПР 901-09-11.84",
+  "otherSizesLimit": 20
+}
