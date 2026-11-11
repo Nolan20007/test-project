@@ -1,27 +1,51 @@
 {
+  // Уникальный технический идентификатор группы; используется сборщиком для связи с товарами и вариантами.
   "id": "skoby-dlya-kolodcev",
+  // Состояние группы; управляет тем, участвует ли группа в генерации.
   "status": "active",
+  // Единственный HTML-шаблон карточки товара; общий каркас страницы для всех групп.
   "template": "templates/master-template.html",
+  // Папка, в которую сборщик записывает сгенерированные карточки товаров.
   "productFolder": "skoby-dlya-kolodcev",
+  // Имя HTML-страницы каталога, на которую ведёт ссылка из карточки.
   "catalogPage": "skoby-dlya-kolodcev.html",
+  // Название каталога; показывается в навигации и хлебных крошках.
   "catalogTitle": "Скобы для колодцев",
+  // Название товарной группы; используется в заголовках и текстах по умолчанию.
   "groupTitle": "Скобы для колодцев",
+  // Подзаголовок группы в шапке карточки товара.
   "headerSubtitle": "Ходовые скобы для спуска в водопроводные и канализационные колодцы",
+  // Обозначение проекта или серии, к которой относится группа.
   "project": "Исполнение по обозначению изделия",
+  // Если true, проект извлекается из наименования товара; если false, используется поле project.
   "projectFromName": false,
+  // Тип товара для структурированных данных Schema.org.
   "schemaProductType": "Скоба для колодцев",
+  // Шаблон номера производителя (mpn) в Schema.org.
   "schemaMpnTemplate": "{id}",
+  // Шаблон названия товара в Schema.org.
   "schemaNameTemplate": "{productName}",
+  // Шаблон описания товара в Schema.org.
   "schemaDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2LabelLower} {widthMm} мм, масса {weightFormatted} кг.",
+  // Шаблон SEO-заголовка страницы (HTML title).
   "seoTitleTemplate": "{productName} — размеры, масса и цена",
+  // Шаблон SEO-описания страницы (meta description).
   "seoDescriptionTemplate": "{productName}. {dimension1Label} {lengthCm} см, {dimension2Label} {widthCm} см, масса {weightFormatted} кг. Изготовление и доставка по России.",
+  // Шаблон названия товара, которое передаётся в корзину.
   "cartItemNameTemplate": "{productName}",
+  // Единица длины, используемая при формировании данных для корзины.
   "cartLengthUnit": "cm",
+  // Текст кнопки добавления товара в корзину.
   "buyButtonLabel": "Добавить в корзину",
+  // Если true, статус наличия берётся из строки CSV.
   "stockTextFromRow": true,
+  // Текст описания товара, если в CSV для него нет собственного описания.
   "rowDescriptionFallback": "Стальная ходовая скоба для установки в колодце. Исполнение определяется обозначением изделия и его чертежом.",
+  // Подпись первого размера товара в характеристиках.
   "dimension1Label": "Длина",
+  // Подпись второго размера товара в характеристиках.
   "dimension2Label": "Ширина",
+  // Параметры конструкции; используются для формирования характеристик товара.
   "construction": {
     "type": "Стальная ходовая скоба для колодца",
     "availableWidthsMm": [
@@ -42,7 +66,9 @@
       752
     ]
   },
+  // Путь к CSV-файлу с размерами, массой, артикулами и прочими характеристиками отдельных товаров.
   "csv": "data/skoby-dlya-kolodcev-products.csv",
+  // Список артикулов, которые относятся к этой группе.
   "productIds": [
     "GS-1",
     "GS-2",
@@ -59,10 +85,25 @@
     "MN-1-OMEGA",
     "MN-1-3900"
   ],
-  "groupContentTemplate": "templates/group-content/skoby-dlya-kolodcev.html",
+  // Подпись или обозначение для блока ссылок на другие типоразмеры.
   "otherSizesLabel": "Скобы",
+  // Название бренда в структурированных данных Schema.org.
   "schemaBrand": {
     "@type": "Brand",
     "name": "Лестницы и стремянки для колодцев"
-  }
+  },
+  // Регулярное выражение для извлечения обозначения модели из названия товара.
+  "modelPattern": "ГС-\\d+|МН-\\d+|СК-\\d+",
+  // Заголовок блока ссылок на другие размеры; отображается над списком типоразмеров.
+  "otherSizesTitle": "Другие типоразмеры скоб для колодцев",
+  // Шаблон текста каждой ссылки на другой размер; фигурные скобки заменяются размерами и моделью товара.
+  "otherSizesLinkTextTemplate": "Скоба {model} — {lengthCm} × {widthCm} см",
+  // Краткое описание товара в верхней части карточки; поддерживает переменные в фигурных скобках.
+  "shortDescriptionTemplate": "{rowDescription} Габариты конкретного исполнения: {lengthCm} × {widthCm} см; масса — {weightFormatted} кг.",
+  // HTML-шаблон таблицы характеристик товара; отображается в блоке характеристик карточки.
+  "specificationsHtmlTemplate": "<h3>Характеристики изделия</h3>\n<table class=\"mp-specs-table\"><tbody>\n<tr><td>Обозначение</td><td>{model}</td></tr>\n<tr><td>{dimension1Label}</td><td>{lengthCm} см</td></tr>\n<tr><td>{dimension2Label}</td><td>{widthCm} см</td></tr>\n<tr><td>Масса</td><td>{weightFormatted} кг</td></tr>\n{materialRowHtml}\n{rodDiameterRowHtml}\n{blankLengthRowHtml}\n{drawingAlbumRowHtml}\n</tbody></table>",
+  // HTML-содержимое подробного описания и монтажа; отображается ниже основных характеристик.
+  "descriptionHtmlTemplate": "<p>{rowDescription}</p>\n<p>Размеры, масса и цена относятся к конкретному артикулу. При подборе скобы сверяйте обозначение и размеры с проектной документацией колодца.</p>",
+  // Дополнительный HTML-блок после основного описания; оставьте пустым, если дополнительного блока нет.
+  "extraContentHtml": ""
 }
