@@ -99,7 +99,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     ? sourceImage.replace(/vid-mini\\.webp$/i, 'vid-1.webp').replace(/-mini\\.webp$/i, '.webp')
     : '';
   const gallerySources = [];
-  if (preferredImage && preferredImage !== sourceImage) gallerySources.push(preferredImage);
+  if (preferredImage && preferredImage !== sourceImage && (!rowGallery.length || rowGallery.includes(preferredImage))) gallerySources.push(preferredImage);
   if (rowGallery.length) gallerySources.push(...rowGallery);
   else if (sourceImage && sourceImage !== 'images/default-product.svg' && preferredImage === sourceImage) gallerySources.push(sourceImage);
   const uniqueGallerySources = [...new Set(gallerySources.length ? gallerySources : ['images/default-product.svg'])];
