@@ -12,6 +12,7 @@ const PRODUCT_CSV_FILES = [
   'data/nts-62-91-111-products.csv',
   'data/nts-62-91-111a-products.csv',
   'data/ssg1-products.csv',
+  'data/osg-products.csv',
   'data/skoby-dlya-kolodcev-products.csv',
   'data/soedinitelnye-elementy-products.csv',
   'data/lestnica-podvesnaya-l-16.csv',
