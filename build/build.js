@@ -136,10 +136,10 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  { html: 'nts-62-91-111a.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
+  { html: 'nts-62-91-111a.html', tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] }] },
   { html: 'soedinitelnye-elementy.html', tables: [{ id: 'nomenclature-container', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }] },
-  { html: 'nts-62-91-111b.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
+  { html: 'nts-62-91-111b.html', tables: [{ id: 'nomenclature-nts-b', csv: 'data/nts-62-91-111b-products.csv' }] },
   { html: 'nts-62-91-111.html', skipJsonLd: true, tables: [{ id: 'nomenclature-nts-s', csv: 'data/nts-62-91-111-products.csv' }] },
   { html: 'lestnicy-teplovyh-setej-ts.html', tables: [
       { id: 'nomenclature-50', csv: 'data/lestnica-ts-50-products.csv' },
