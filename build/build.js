@@ -138,6 +138,7 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
+  { html: 'ograzhdenie-osg-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/osg-products.csv' }] },
   { html: 'nts-62-91-111a.html', tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] }] },
   { html: 'soedinitelnye-elementy.html', tables: [{ id: 'nomenclature-container', csv: 'data/soedinitelnye-elementy-products.csv', dimensionHeaders: ['Ширина, см', 'Высота, см'] }] },
@@ -647,6 +648,7 @@ const ALL_HTML_FILES = [
   'ss1.html',
   'ss2.html',
   'ssg1.html',
+  'ograzhdenie-osg-seriya-1-450-3-7-94.html',
   'tipovye-proekty.html',
   'tmp-902.html',
   'vl-2-l-19-vodoprovodnaya.html',
