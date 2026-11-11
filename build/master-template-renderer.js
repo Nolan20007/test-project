@@ -266,7 +266,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         else dimensions = itemLength + ' см';
         const linkValues = {
           id: String(item.id),
-          model: getProductModel(item, group),
+          model: getProductModel(item, variantGroup),
           lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
           widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
           weight: Number(String(item.weight).replace(',', '.')),
