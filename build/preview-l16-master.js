@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderMasterProduct } = require('./master-template-renderer');
+const { parseJsonc } = require('./jsonc');
 
 function parseCSV(text) {
   const rows = [];
@@ -26,7 +27,8 @@ function parseCSV(text) {
 }
 
 const root = path.resolve(__dirname, '..');
-const group = JSON.parse(fs.readFileSync(path.join(root, 'data/product-groups/lestnica-podvesnaya-l-16.json'), 'utf8'));
+const groupConfigPath = path.join(root, 'data/product-groups/lestnica-podvesnaya-l-16.json');
+const group = parseJsonc(fs.readFileSync(groupConfigPath, 'utf8'), groupConfigPath);
 const template = fs.readFileSync(path.join(root, 'templates/master-template.html'), 'utf8');
 const rows = parseCSV(fs.readFileSync(path.join(root, group.csv), 'utf8').replace(/^\uFEFF/, ''));
 const selected = rows[0];
