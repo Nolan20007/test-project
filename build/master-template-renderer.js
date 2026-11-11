@@ -353,7 +353,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   };
 
   const productJsonLdHtml = '<script type="application/ld+json">\\n' + JSON.stringify(jsonLd, null, 2) + '\\n</script>';
-  let html = template.replace(/<script type="application\\/ld\\+json">[\\s\\S]*?<\\/script>/, productJsonLdHtml)
+  let html = template.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, productJsonLdHtml)
     .replace(/Стремянка для колодцев/g, escapeHtml(group.schemaProductType || 'Стремянка для колодцев'));
   for (const [token, value] of Object.entries(replacements)) html = html.split(token).join(value);
   html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">\n' +
