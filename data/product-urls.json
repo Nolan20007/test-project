@@ -2792,6 +2792,32 @@
       "VL-11.7-28": {
         "path": "/products/vl-2-l-19-vodoprovodnaya/vl-11-7-28.html"
       }
+    },
+    "l-19": {
+      "L-19-1.5": {
+        "path": "/products/l-19/l-19-1-5.html"
+      },
+      "L-19-2.0": {
+        "path": "/products/l-19/l-19-2-0.html"
+      },
+      "L-19-2.5": {
+        "path": "/products/l-19/l-19-2-5.html"
+      },
+      "L-19-3.0": {
+        "path": "/products/l-19/l-19-3-0.html"
+      },
+      "L-19-3.5": {
+        "path": "/products/l-19/l-19-3-5.html"
+      },
+      "L-19-4.0": {
+        "path": "/products/l-19/l-19-4-0.html"
+      },
+      "L-19-4.5": {
+        "path": "/products/l-19/l-19-4-5.html"
+      },
+      "L-19-5.0": {
+        "path": "/products/l-19/l-19-5-0.html"
+      }
     }
   },
   "legacyAliases": {
