@@ -1,0 +1,72 @@
+{
+  "id": "ograzhdenie-osg-seriya-14503-794",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "ograzhdenie-osg-seriya-14503-794",
+  "catalogPage": "ograzhdenie-osg-seriya-1-450-3-7-94.html",
+  "catalogTitle": "Ограждение ОСГ серия 1.450.3-7.94",
+  "groupTitle": "Ограждения стремянок ОСГ серия 1.450.3-7.94",
+  "headerSubtitle": "Ограждения для стремянок по серии 1.450.3-7.94",
+  "project": "Серия 1.450.3-7.94",
+  "projectFromName": false,
+  "albumReference": "Серия 1.450.3-7.94",
+  "albumNote": "Альбом типовых решений",
+  "csv": "data/osg-products.csv",
+  "productIds": [
+    "OSG-12",
+    "OSG-18",
+    "OSG-24",
+    "OSG-30",
+    "OSG-36",
+    "OSG-42",
+    "OSG-48",
+    "OSG-60"
+  ],
+  "productNameTemplate": "Ограждение стремянки {model}, длина {lengthCm} см",
+  "headerTitleTemplate": "Ограждение {model} — серия 1.450.3-7.94",
+  "breadcrumbNameTemplate": "Ограждение {model}",
+  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "cartItemNameTemplate": "Ограждение стремянки {model} по серии 1.450.3-7.94, длина {lengthMm} мм",
+  "cartLengthUnit": "cm",
+  "buyButtonLabel": "Добавить в корзину",
+  "seoTitleTemplate": "Ограждение стремянки {model} по серии 1.450.3-7.94, {lengthCm} см — купить",
+  "seoDescriptionTemplate": "Купить ограждение стремянки {model} по серии 1.450.3-7.94. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг. Цена от производителя.",
+  "schemaNameTemplate": "Ограждение стремянки {model} серия 1.450.3-7.94",
+  "schemaDescriptionTemplate": "Ограждение стремянки {model} по серии 1.450.3-7.94. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "images/ograzhdenie-osg/vid-1.webp",
+  "schemaBrand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  },
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "construction": {
+    "type": "Ограждение стремянки ОСГ",
+    "availableWidthsMm": [
+      700
+    ],
+    "lengthRangeMm": [
+      1240,
+      6040
+    ]
+  },
+  "gallery": [
+    {
+      "label": "Вид 1",
+      "webp": "../../images/ograzhdenie-osg/vid-1.webp",
+      "alt": "Ограждение стремянки {model} — общий вид"
+    },
+    {
+      "label": "Альбом",
+      "webp": "../../images/ograzhdenie-osg/album.webp",
+      "alt": "Альбом серии 1.450.3-7.94 для ограждений ОСГ"
+    }
+  ],
+  "groupContentTemplate": "templates/group-content/ograzhdenie-osg.html",
+  "expectedProductCount": 8,
+  "productIdPrefix": "OSG-"
+}
