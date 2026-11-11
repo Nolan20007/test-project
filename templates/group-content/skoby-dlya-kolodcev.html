@@ -1,0 +1,37 @@
+<!--
+  Групповой контент скоб для колодцев.
+  Артикулы, размеры, масса, цены, наличие и изображения берутся из CSV.
+-->
+<!-- GROUP_FIELD:otherSizesTitle:START -->
+Другие типоразмеры скоб для колодцев
+<!-- GROUP_FIELD:otherSizesTitle:END -->
+
+<!-- GROUP_FIELD:otherSizesLinkTextTemplate:START -->
+Скоба {model} — {lengthCm} × {widthCm} см
+<!-- GROUP_FIELD:otherSizesLinkTextTemplate:END -->
+
+<!-- GROUP_FIELD:shortDescription:START -->
+{rowDescription} Габариты конкретного исполнения: {lengthCm} × {widthCm} см; масса — {weightFormatted} кг.
+<!-- GROUP_FIELD:shortDescription:END -->
+
+<!-- GROUP_FIELD:specifications:START -->
+<h3>Характеристики изделия</h3>
+<table class="mp-specs-table"><tbody>
+<tr><td>Обозначение</td><td>{model}</td></tr>
+<tr><td>{dimension1Label}</td><td>{lengthCm} см</td></tr>
+<tr><td>{dimension2Label}</td><td>{widthCm} см</td></tr>
+<tr><td>Масса</td><td>{weightFormatted} кг</td></tr>
+{materialRowHtml}
+{rodDiameterRowHtml}
+{blankLengthRowHtml}
+{drawingAlbumRowHtml}
+</tbody></table>
+<!-- GROUP_FIELD:specifications:END -->
+
+<!-- GROUP_FIELD:description:START -->
+<p>{rowDescription}</p>
+<p>Размеры, масса и цена относятся к конкретному артикулу. При подборе скобы сверяйте обозначение и размеры с проектной документацией колодца.</p>
+<!-- GROUP_FIELD:description:END -->
+
+<!-- GROUP_FIELD:extraContent:START -->
+<!-- GROUP_FIELD:extraContent:END -->
