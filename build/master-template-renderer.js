@@ -19,12 +19,13 @@ function formatProductTemplate(template, values) {
 
 
 function readGroupHtmlField(source, key, values) {
-  const marker = new RegExp('<!-- GROUP_FIELD:' + key + ':START -->([\\\\s\\\\S]*?)<!-- GROUP_FIELD:' + key + ':END -->');
-  const match = String(source || '').match(marker);
-  if (!match) throw new Error('Missing group HTML section: ' + key);
-  return formatProductTemplate(match[1].trim(), values);
+  const startMarker = '<!-- GROUP_FIELD:' + key + ':START -->';
+  const endMarker = '<!-- GROUP_FIELD:' + key + ':END -->';
+  const start = String(source || '').indexOf(startMarker);
+  const end = String(source || '').indexOf(endMarker, start + startMarker.length);
+  if (start < 0 || end < 0) throw new Error('Missing group HTML section: ' + key);
+  return formatProductTemplate(String(source).slice(start + startMarker.length, end).trim(), values);
 }
-
 function productProject(row, group) {
   if (group.projectFromName === false) return group.project;
   const match = String(row.name || '').match(/\(([^)]+)\)/);
