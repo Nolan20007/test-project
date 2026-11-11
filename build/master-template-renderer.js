@@ -1,17 +1,14 @@
+const { getProductPath, getProductSlug } = require('./product-url-registry');
+
 function escapeHtml(value) {
   return String(value == null ? '' : value)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-function slugify(value) {
-  return String(value || '').toLowerCase()
-    .replace(/[^a-z0-9а-яё]+/giu, '-').replace(/^-+|-+$/g, '');
-}
-
 function getMasterProductSlug(group, rowOrId) {
   const id = typeof rowOrId === 'string' ? rowOrId : rowOrId && rowOrId.id;
-  return group && group.productSlugById && group.productSlugById[id] ? String(group.productSlugById[id]) : slugify(id);
+  return getProductSlug(group.id, id);
 }
 
 function formatProductTemplate(template, values) {
@@ -40,6 +37,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     throw new Error('Invalid dimensions or weight for ' + row.id);
   }
 
+  const productPath = getProductPath(group.id, row.id);
   const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
   const modelMatch = String(row.name || '').match(/СГ-\d+/u) || String(row.id).match(/SG-\d+/i);
@@ -204,7 +202,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const schemaName = formatProductTemplate(group.schemaNameTemplate || productName, values);
   const schemaDescription = formatProductTemplate(group.schemaDescriptionTemplate || seoDescription, values);
   const schemaMpn = formatProductTemplate(group.schemaMpnTemplate || project, values);
-  const productUrl = 'https://stremyanki-dlya-kolodcev.ru/products/' + group.productFolder + '/' + productSlug + '.html';
+  const productUrl = 'https://stremyanki-dlya-kolodcev.ru' + productPath;
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'Product',
     name: schemaName, sku: row.id, mpn: schemaMpn, image: schemaImage,
