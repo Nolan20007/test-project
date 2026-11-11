@@ -15,7 +15,7 @@ function getMasterProductSlug(group, rowOrId) {
 }
 
 function formatProductTemplate(template, values) {
-  return String(template == null ? '' : template).replace(/\\{([a-zA-Z0-9_]+)\\}/g, (match, key) =>
+  return String(template == null ? '' : template).replace(/\{([a-zA-Z0-9_]+)\}/g, (match, key) =>
     Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match
   );
 }
@@ -42,7 +42,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
 
   const productSlug = getMasterProductSlug(group, row);
   const project = productProject(row, group);
-  const modelMatch = String(row.name || '').match(/СГ-\\d+/u) || String(row.id).match(/SG-\\d+/i);
+  const modelMatch = String(row.name || '').match(/СГ-\d+/u) || String(row.id).match(/SG-\\d+/i);
   const model = modelMatch ? modelMatch[0] : String(row.id);
   const values = {
     id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
@@ -190,7 +190,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const seoDescription = formatProductTemplate(group.seoDescriptionTemplate ||
     (productName + '. ' + group.groupTitle + ' по ' + project + '. Длина ' + lengthCm + ' см, ширина ' + widthMm + ' мм, масса ' + values.weightFormatted + ' кг. Цена ' + (price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'по запросу') + '.'), values);
   const schemaImagePath = group.schemaImage || mainImage;
-  const schemaImage = /^https?:\\/\\//i.test(schemaImagePath) ? schemaImagePath : 'https://stremyanki-dlya-kolodcev.ru/' + String(schemaImagePath).replace(/^(\\.\\.\\/)+/, '');
+  const schemaImage = /^https?:\/\//i.test(schemaImagePath) ? schemaImagePath : 'https://stremyanki-dlya-kolodcev.ru/' + String(schemaImagePath).replace(/^(\.\.\/)+/, '');
   const schemaName = formatProductTemplate(group.schemaNameTemplate || productName, values);
   const schemaDescription = formatProductTemplate(group.schemaDescriptionTemplate || seoDescription, values);
   const schemaMpn = formatProductTemplate(group.schemaMpnTemplate || project, values);
@@ -254,12 +254,12 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '{{PRODUCT_LENGTH_MM}}': String(Math.round(lengthCm * 10)),
     '{{PRODUCT_PRICE}}': price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу',
     '{{PRODUCT_BUY_CONTROLS}}': '<div class="mp-buy-controls"><div class="quantity-control" style="display:flex;align-items:center;border:1px solid #c8d9ea;border-radius:12px;overflow:hidden;">' +
-      '<button type="button" onclick="changeQuantity(\\'' + escapeHtml(String(row.id)) + '\\',-1)" aria-label="Уменьшить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">−</button>' +
+      '<button type="button" onclick="changeQuantity(\'' + escapeHtml(String(row.id)) + '\',-1)" aria-label="Уменьшить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">−</button>' +
       '<input type="number" id="' + escapeHtml(String(row.id)) + '-qty" value="1" min="1" max="99" data-price="' + (price > 0 ? price : 0) + '" style="width:55px;text-align:center;border:0;" aria-label="Количество">' +
-      '<button type="button" onclick="changeQuantity(\\'' + escapeHtml(String(row.id)) + '\\',1)" aria-label="Увеличить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">+</button>' +
+      '<button type="button" onclick="changeQuantity(\'' + escapeHtml(String(row.id)) + '\',1)" aria-label="Увеличить количество" style="background:#f4f4f4;border:0;padding:12px 16px;font-size:20px;cursor:pointer;">+</button>' +
       '</div><button type="button" class="mp-btn-buy" onclick="addItemToCart(' +
       escapeHtml(JSON.stringify(String(row.id))) + ',' + escapeHtml(JSON.stringify(cartItemName)) +
-      ',Math.max(1,Math.min(99,Number(document.getElementById(\\'' + escapeHtml(String(row.id)) + '-qty\\').value)||1)),' +
+      ',Math.max(1,Math.min(99,Number(document.getElementById(\'' + escapeHtml(String(row.id)) + '-qty\').value)||1)),' +
       (price > 0 ? price : 0) + ',' + (group.cartLengthUnit === 'cm' ? lengthCm : Math.round(lengthCm * 10)) + ',' + weight + ')">' +
       escapeHtml(group.buyButtonLabel || 'В корзину') + '</button></div>',
     '{{GROUP_ALBUM_REFERENCE}}': escapeHtml(group.albumReference),
