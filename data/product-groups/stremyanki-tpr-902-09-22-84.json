@@ -100,5 +100,8 @@
     }
   ],
   "otherSizesLabel": "Стремянки ТПР 902-09-22.84",
-  "otherSizesLimit": 20
+  "otherSizesLimit": 20,
+  "similarProducts": [
+    "stremyanki-tpr-901-09-11-84"
+  ]
 }
