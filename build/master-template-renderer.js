@@ -328,7 +328,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       : similarGroupId === 'pozharnye-stremyanki-seriya-14503-794'
         ? similarProductId.replace(/^SG-/i, 'СГ-')
         : similarGroupId === 'l-1-l-2-sk-2201-88-35'
-          ? similarProductId.replace(/^L-/i, 'L-')
+          ? similarProductId.replace(/^L-/i, 'Л-')
           : (modelMatch ? modelMatch[0] : similarProductId.replace(/^C/, 'С'));
     const lengthCm = Number(similarRow.length);
     const labelValues = { id: similarRow.id, model, name: similarRow.name, lengthCm, lengthMm: Math.round(lengthCm * 10) };
