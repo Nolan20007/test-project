@@ -65,5 +65,11 @@
     }
   ],
   "otherSizesLabel": "Лестницы Л-1 и Л-2",
-  "otherSizesLimit": 10
+  "otherSizesLimit": 10,
+  "otherSizesLinkTextTemplate": "Лестница {model} — {lengthCm} см",
+  "similarProducts": [
+    "kl-1-25",
+    "kl-1-28"
+  ],
+  "similarProductLabelTemplate": "Канализационная лестница КЛ-1"
 }
