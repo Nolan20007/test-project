@@ -262,7 +262,24 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         .filter((item, index, all) => all.findIndex(candidate => candidate.group.id === item.group.id) === index)
     : [{ group, rows }];
   let otherSizesHtml;
-  if (rows.length > 20) {
+  const isL16WidthSwitcher = group.id === 'lestnica-podvesnaya-l-16' &&
+    new Set(rows.map(item => Number(item.width))).size === 2;
+  if (isL16WidthSwitcher) {
+    const widths = [...new Set(rows.map(item => Number(item.width)))].sort((a, b) => a - b);
+    const activeWidth = Number(row.width);
+    const widthButtons = '<div class="other-sizes__variants" role="tablist" aria-label="Выбор ширины лестницы Л-16">' +
+      widths.map((width, index) => '<button type="button" class="other-sizes__variant' +
+        (width === activeWidth ? ' active' : '') + '" role="tab" aria-selected="' + (width === activeWidth ? 'true' : 'false') +
+        '" aria-controls="other-sizes-panel-' + index + '" onclick="selectOtherSizesVariant(this)">' +
+        '<span>Л-16</span><span>Ширина ' + escapeHtml(width) + ' см</span></button>').join('') + '</div>';
+    const widthPanels = widths.map((width, index) =>
+      renderSizeLinks(group, rows.filter(item => Number(item.width) === width), row, index)
+    ).join('');
+    otherSizesHtml = '<section class="other-sizes other-sizes--large" aria-label="' + escapeHtml(otherSizesTitle) + '">' +
+      '<div class="other-sizes__heading"><h2 class="other-sizes__title">' + escapeHtml(otherSizesTitle) + '</h2>' +
+      '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все размеры" data-show-all-label="Показать все размеры" data-collapse-label="Свернуть список размеров" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div>' +
+      widthButtons + widthPanels + '</section>';
+  } else if (rows.length > 20) {
     const hasVariantSwitcher = relatedVariants.length > 1;
     const variantButtons = hasVariantSwitcher
       ? '<div class="other-sizes__variants" role="tablist" aria-label="Выбор исполнения">' +
