@@ -71,5 +71,5 @@
     "kl-1-25",
     "kl-1-28"
   ],
-  "similarProductLabelTemplate": "Канализационная лестница КЛ-1"
+  "similarProductLabelTemplate": "{model} — {lengthCm} см"
 }
