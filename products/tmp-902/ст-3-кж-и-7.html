@@ -194,6 +194,7 @@
     .other-sizes--similar .other-sizes__title { margin: 0; }
     .other-sizes__collapse-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; margin-left: auto; padding: 6px 10px; border: 1px solid #dce5f0; border-radius: 7px; background: #f7f9fc; color: var(--primary-color); font: inherit; font-size: 13px; line-height: 1.2; cursor: pointer; white-space: nowrap; }
     .other-sizes__collapse-toggle:hover { border-color: var(--primary-color); background: #fff; }
+    .other-sizes__collapse-toggle[hidden] { display: none; }
     .other-sizes__collapse-icon { display: block; font-size: 17px; line-height: 1; transition: transform .2s ease; }
     .other-sizes__collapse-toggle[aria-expanded="true"] .other-sizes__collapse-icon { transform: rotate(180deg); }
     @media (max-width: 700px) {
@@ -330,7 +331,7 @@
             </div>
         </div>
 
-        <section class="other-sizes" aria-label="Другие размеры"><h2 class="other-sizes__title">Другие размеры</h2><div class="other-sizes__links"><a class="other-sizes__link" href="ст-1-кж-и-7.html"><span>ТМП 902 (150 см)</span></a><a class="other-sizes__link" href="ст-2-кж-и-7.html"><span>ТМП 902 (165 см)</span></a><a class="other-sizes__link" href="ст-4-кж-и-7.html"><span>ТМП 902 (180 см)</span></a><a class="other-sizes__link" href="ст-5-кж-и-7.html"><span>ТМП 902 (190 см)</span></a></div></section>
+        <section class="other-sizes" aria-label="Другие размеры"><h2 class="other-sizes__title">Другие размеры</h2><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed"><a class="other-sizes__link" href="ст-1-кж-и-7.html"><span>ТМП 902 (150 см)</span></a><a class="other-sizes__link" href="ст-2-кж-и-7.html"><span>ТМП 902 (165 см)</span></a><a class="other-sizes__link" href="ст-4-кж-и-7.html"><span>ТМП 902 (180 см)</span></a><a class="other-sizes__link" href="ст-5-кж-и-7.html"><span>ТМП 902 (190 см)</span></a></div><button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button></div></section>
         
         
         <!-- GROUP_CONTENT_START: other categories -->
@@ -506,7 +507,8 @@ function copyEmailToClipboard(btn) {
 <script>function updateOtherSizesOverflow(panel) {
   if (!panel || panel.hidden) return;
   const links = panel.querySelector('.other-sizes__links');
-  const button = panel.querySelector('.other-sizes__expand');
+  const button = panel.querySelector('.other-sizes__expand') ||
+    panel.closest('.other-sizes')?.querySelector('.other-sizes__collapse-toggle');
   if (!links || !button) return;
   const collapsed = links.classList.contains('other-sizes__links--collapsed');
   if (collapsed) button.hidden = links.scrollHeight <= links.clientHeight + 1;

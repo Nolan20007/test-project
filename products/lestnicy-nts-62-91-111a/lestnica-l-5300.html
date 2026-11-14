@@ -199,6 +199,7 @@
     .other-sizes--similar .other-sizes__title { margin: 0; }
     .other-sizes__collapse-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; margin-left: auto; padding: 6px 10px; border: 1px solid #dce5f0; border-radius: 7px; background: #f7f9fc; color: var(--primary-color); font: inherit; font-size: 13px; line-height: 1.2; cursor: pointer; white-space: nowrap; }
     .other-sizes__collapse-toggle:hover { border-color: var(--primary-color); background: #fff; }
+    .other-sizes__collapse-toggle[hidden] { display: none; }
     .other-sizes__collapse-icon { display: block; font-size: 17px; line-height: 1; transition: transform .2s ease; }
     .other-sizes__collapse-toggle[aria-expanded="true"] .other-sizes__collapse-icon { transform: rotate(180deg); }
     @media (max-width: 700px) {
@@ -514,7 +515,8 @@ function copyEmailToClipboard(btn) {
 <script>function updateOtherSizesOverflow(panel) {
   if (!panel || panel.hidden) return;
   const links = panel.querySelector('.other-sizes__links');
-  const button = panel.querySelector('.other-sizes__expand');
+  const button = panel.querySelector('.other-sizes__expand') ||
+    panel.closest('.other-sizes')?.querySelector('.other-sizes__collapse-toggle');
   if (!links || !button) return;
   const collapsed = links.classList.contains('other-sizes__links--collapsed');
   if (collapsed) button.hidden = links.scrollHeight <= links.clientHeight + 1;
