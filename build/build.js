@@ -124,6 +124,7 @@ const PAGES = [
   
   { html: 'l-17-000SB.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-17-000SB-products.csv' }] },
   { html: 'l-3-sk-2201-88.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-3-sk-2201-88-products.csv' }] },
+  { html: 'l-1-l-2-sk-2201-88-35.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-1-l-2-sk-2201-88-35-products.csv' }] },
   { html: 'l-19.html', tables: [{ id: 'nomenclature-container', csv: 'data/l-19-products.csv' }] },
 
   { html: 'kl-1-dlya-kanalizacionnyh-kolodcev.html', tables: [
