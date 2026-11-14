@@ -113,5 +113,6 @@
     }
   ],
   "otherSizesLabel": "Лестницы НТС 62-91-111А",
-  "otherSizesLimit": 10
+  "otherSizesLimit": 10,
+  "similarProductLabelTemplate": "Лестница-стремянка {model} — {lengthCm} см"
 }
