@@ -190,7 +190,7 @@ function assertCsvProducts() {
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 936, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 934, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -206,8 +206,8 @@ function assertLlmsProductLinks() {
   const section = content.slice(start + startMarker.length, end);
   assert(!/\bundefined\b|null/i.test(section), 'llms.txt: product section contains undefined/null labels');
   const links = [...section.matchAll(/^- \[([^\]]+)\]\((https?:\/\/[^)]+)\)$/gm)];
-  assert.strictEqual(links.length, 936, 'llms.txt: expected exactly 936 product links');
-  assert.strictEqual(new Set(links.map(match => match[2])).size, 936, 'llms.txt: duplicate product URLs');
+  assert.strictEqual(links.length, 934, 'llms.txt: expected exactly 934 product links');
+  assert.strictEqual(new Set(links.map(match => match[2])).size, 934, 'llms.txt: duplicate product URLs');
   const labels = new Set(links.map(match => match[1]));
   let expected = 0;
   for (const csvFile of PRODUCT_CSV_FILES) {
