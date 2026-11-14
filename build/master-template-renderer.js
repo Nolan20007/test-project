@@ -72,7 +72,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const project = productProject(row, group);
   const model = getProductModel(row, groupContent);
   const values = {
-    id: String(row.id), displayId: group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : /^kl-1-(?:25|28)$/.test(group.id) ? String(row.id).replace(/^KL-/i, 'КЛ-').replace(/-28$/i, '') : group.id === 'lestnicy-nts-62-91-111' ? String(row.id).replace(/^NTSS-/i, 'НТСС-').replace(/-S(\d+)$/i, '-С$1') : String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
+    id: String(row.id), displayId: group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : /^kl-1-(?:25|28)$/.test(group.id) ? String(row.id).replace(/^KL-/i, 'КЛ-').replace(/-28$/i, '') : group.id === 'lestnicy-nts-62-91-111' ? String(row.id).replace(/^NTSS-/i, 'НТСС-').replace(/-S(\d+)$/i, '-С$1') : String(row.id), model, skuModel: group.id === 'lestnicy-nts-62-91-111' ? String(model).replace(/^С(\d+)$/u, 'С-$1') : model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
     price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
     stepCount: hasStepCount ? stepCount : '',
