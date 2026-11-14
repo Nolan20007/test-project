@@ -254,6 +254,7 @@
         </div>
 
         {{GROUP_OTHER_SIZES}}
+        {{GROUP_SIMILAR_PRODUCTS}}
         {{GROUP_EXTRA_CONTENT}}
         <!-- GROUP_CONTENT_START: other categories -->
         {{GROUP_OTHER_CATEGORIES}}
@@ -295,7 +296,7 @@ function toggleOtherSizes(button) {
   const expanded = links.classList.contains('other-sizes__links--collapsed');
   links.classList.toggle('other-sizes__links--collapsed', !expanded);
   button.setAttribute('aria-expanded', String(expanded));
-  button.textContent = expanded ? 'Свернуть' : 'Показать все размеры';
+  button.textContent = expanded ? 'Свернуть' : (button.dataset.expandText || 'Показать все размеры');
   button.hidden = false;
 }
 
