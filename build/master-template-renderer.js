@@ -72,7 +72,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const project = productProject(row, group);
   const model = getProductModel(row, groupContent);
   const values = {
-    id: String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
+    id: String(row.id), displayId: group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
     price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
     stepCount: hasStepCount ? stepCount : '',
