@@ -1202,6 +1202,18 @@ function buildProductPages() {
     const relatedVariantGroups = (group.otherSizesVariantGroupIds || [])
       .map(id => masterGroupData.get(id))
       .filter(Boolean);
+    const configuredSimilarIds = group.similarProducts == null ? [] : group.similarProducts;
+    if (!Array.isArray(configuredSimilarIds) || configuredSimilarIds.some(id => typeof id !== 'string' || !id.trim()) ||
+        new Set(configuredSimilarIds).size !== configuredSimilarIds.length) {
+      throw new Error('[product pages] ' + group.id + ' similarProducts must be an array of unique group IDs.');
+    }
+    const similarProductGroups = configuredSimilarIds.map(id => {
+      if (id === group.id) throw new Error('[product pages] ' + group.id + ' cannot reference itself in similarProducts.');
+      const target = masterGroupData.get(id);
+      if (!target) throw new Error('[product pages] ' + group.id + ' references unknown similar product group: ' + id);
+      if (!target.group.catalogPage) throw new Error('[product pages] ' + group.id + ' similar product group ' + id + ' has no catalogPage.');
+      return target.group;
+    });
     const csvIds = groupRows.map(row => row.id);
     if (Array.isArray(group.productIds)) {
       const missingIds = group.productIds.filter(id => !csvIds.includes(id));
@@ -1222,7 +1234,7 @@ function buildProductPages() {
     const groupOutDir = path.resolve(__dirname, '..', 'products', group.productFolder);
     if (!fs.existsSync(groupOutDir)) fs.mkdirSync(groupOutDir, { recursive: true });
     groupRows.forEach(row => {
-      const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups, groupContent);
+      const html = renderMasterProduct(groupTemplate, group, row, groupRows, relatedVariantGroups, groupContent, similarProductGroups);
       const relativePath = getProductPath(group.id, row.id).slice(1);
       const outPath = path.resolve(__dirname, '..', relativePath);
       fs.writeFileSync(outPath, html, 'utf8');
