@@ -346,6 +346,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   }).join('');
   const isKl1VariantSwitcher = uniqueSimilarGroups.length === 2 &&
     uniqueSimilarGroups.every(item => item.group.id === 'kl-1-25' || item.group.id === 'kl-1-28');
+  const isTsVariantSwitcher = uniqueSimilarGroups.length === 2 &&
+    uniqueSimilarGroups.every(item => item.group.id === 'lestnicy-teplovyh-setej-ts-50' || item.group.id === 'lestnicy-teplovyh-setej-ts-63');
+  const hasSimilarVariantSwitcher = isKl1VariantSwitcher || isTsVariantSwitcher;
   const similarGroupTitle = uniqueSimilarGroups
     .map(item => item.group.catalogTitle || item.group.groupTitle || item.group.project)
     .filter(Boolean)
@@ -355,12 +358,15 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     .filter(item => item && typeof item.label === 'string' && item.label.trim() && typeof item.url === 'string' && /^https:\/\//i.test(item.url)) : [];
   const similarProductsTitle = 'Похожие товары — ' + [similarGroupTitle, ...configuredSimilarLinks.map(item => item.label)]
     .filter(Boolean).join(', ');
-  const similarProductsContent = isKl1VariantSwitcher
-    ? '<div class="other-sizes__variants" role="tablist" aria-label="Выбор диаметра прутка">' +
+  const similarProductsContent = hasSimilarVariantSwitcher
+    ? '<div class="other-sizes__variants" role="tablist" aria-label="' + (isTsVariantSwitcher ? 'Выбор исполнения лестницы ТС' : 'Выбор диаметра прутка') + '">' +
       uniqueSimilarGroups.map((item, index) => '<button type="button" class="other-sizes__variant' +
         (index === 0 ? ' active' : '') + '" role="tab" aria-selected="' + (index === 0 ? 'true' : 'false') +
         '" aria-controls="similar-products-panel-' + index + '" onclick="selectOtherSizesVariant(this)">' +
-        '<span>Пруток ' + escapeHtml(item.group.otherSizesVariantDimensions || item.group.otherSizesLabel || '') + '</span></button>').join('') +
+        (isTsVariantSwitcher
+          ? '<span>' + escapeHtml(item.group.otherSizesLabel || item.group.groupTitle || '') + '</span>'
+          : '<span>Пруток ' + escapeHtml(item.group.otherSizesVariantDimensions || item.group.otherSizesLabel || '') + '</span>') +
+        '</button>').join('') +
       '</div>' +
       uniqueSimilarGroups.map((item, index) => '<div class="other-sizes__variant-panel" id="similar-products-panel-' + index + '"' +
         (index === 0 ? '' : ' hidden') + '><div class="other-sizes__links other-sizes__links--collapsed">' +
@@ -371,7 +377,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     '<a class="other-sizes__link" href="' + escapeHtml(item.url) + '"><span>' + escapeHtml(item.label) + '</span></a>'
   ).join('');
   const similarProductsHtml = uniqueSimilarGroups.length || configuredSimilarLinks.length
-    ? '<section class="other-sizes other-sizes--similar' + (isKl1VariantSwitcher ? ' other-sizes--large' : '') +
+    ? '<section class="other-sizes other-sizes--similar' + (hasSimilarVariantSwitcher ? ' other-sizes--large' : '') +
       '" aria-label="' + escapeHtml(similarProductsTitle) + '">' +
       '<div class="other-sizes__heading"><h2 class="other-sizes__title">' + escapeHtml(similarProductsTitle) + '</h2>' +
       '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все похожие товары" data-show-all-label="Показать все похожие товары" data-collapse-label="Свернуть список похожих товаров" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div>' +
