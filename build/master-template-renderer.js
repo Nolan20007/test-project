@@ -279,7 +279,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     const lengthVaries = new Set(rows.map(item => Number(item.length))).size > 1;
     const widthVaries = new Set(rows.map(item => Number(item.width))).size > 1;
     otherSizesHtml = '<section class="other-sizes" aria-label="' + escapeHtml(otherSizesTitle) + '"><h2 class="other-sizes__title">' +
-      escapeHtml(otherSizesTitle) + '</h2><div class="other-sizes__links">' + otherSizeRows.map(item => {
+      escapeHtml(otherSizesTitle) + '</h2><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed">' + otherSizeRows.map(item => {
         const itemLength = Number(item.length);
         const itemWidth = Number(item.width);
         let dimensions;
@@ -297,16 +297,21 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         };
         const linkText = formatProductTemplate(otherSizesLinkTextTemplate || (otherSizesLabel + ' (' + dimensions + ')'), linkValues);
         return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(group, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
-      }).join('') + '</div></section>';
+      }).join('') + '</div>' +
+      (otherSizeRows.length > 2 ? '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
+      '</div></section>';
   }
   const uniqueSimilarGroups = (Array.isArray(similarProductGroups) ? similarProductGroups : [])
     .filter((item, index, all) => item && item.group && item.group.id && item.group.id !== group.id &&
       Array.isArray(item.rows) && all.findIndex(candidate => candidate && candidate.group && candidate.group.id === item.group.id) === index);
   const similarProductLinks = uniqueSimilarGroups.flatMap(item => item.rows.map(similarRow => {
-    const modelMatch = String(similarRow.name || '').match(/С\d+-\d+/u);
+    const modelMatch = String(similarRow.name || '').match(/С-?\d+(?:-\d+)?/u);
+    const model = modelMatch ? modelMatch[0] : String(similarRow.id).replace(/^C/, 'С');
+    const lengthCm = Number(similarRow.length);
+    const labelValues = { id: similarRow.id, model, name: similarRow.name, lengthCm, lengthMm: Math.round(lengthCm * 10) };
     const label = item.group.similarProductLabelTemplate
-      ? formatProductTemplate(item.group.similarProductLabelTemplate, { id: similarRow.id, model: modelMatch ? modelMatch[0] : similarRow.id, name: similarRow.name })
-      : 'Стремянка ' + (modelMatch ? modelMatch[0] : String(similarRow.id).replace(/^C/, 'С'));
+      ? formatProductTemplate(item.group.similarProductLabelTemplate, labelValues)
+      : 'Стремянка ' + model + ' — ' + lengthCm + ' см';
     return '<a class="other-sizes__link" href="' + escapeHtml(getProductPath(item.group.id, similarRow.id)) + '"><span>' +
       escapeHtml(label) + '</span></a>';
   }));
