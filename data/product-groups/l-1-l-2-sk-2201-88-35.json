@@ -64,12 +64,12 @@
       "alt": "Альбом СК 2201-88 — чертёж лестницы {model}"
     }
   ],
-  "otherSizesLabel": "Лестницы Л-1 и Л-2",
+  "otherSizesLabel": "Лестницы Л-1 и Л-2 СК 2201-88-35",
   "otherSizesLimit": 10,
   "otherSizesLinkTextTemplate": "Лестница {model} — {lengthCm} см",
   "similarProducts": [
     "kl-1-25",
     "kl-1-28"
   ],
-  "similarProductLabelTemplate": "{model} СК 2201-88-35 — {lengthCm} см"
+  "similarProductLabelTemplate": "{model} — {lengthCm} см"
 }
