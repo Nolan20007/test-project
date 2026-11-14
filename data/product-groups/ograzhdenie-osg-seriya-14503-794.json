@@ -68,5 +68,10 @@
   ],
   "groupContentTemplate": "templates/group-content/ograzhdenie-osg.html",
   "expectedProductCount": 8,
-  "productIdPrefix": "OSG-"
+  "productIdPrefix": "OSG-",
+  "similarProducts": [
+    "pozharnye-stremyanki-seriya-14503-794"
+  ],
+  "otherSizesLabel": "Ограждения стремянок ОСГ серии 1.450.3-7.94",
+  "similarProductLabelTemplate": "Ограждение стремянки {model} — {lengthCm} см"
 }
