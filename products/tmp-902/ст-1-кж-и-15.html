@@ -190,8 +190,8 @@
     .other-sizes__expand { display: block; margin: 14px auto 0; padding: 9px 22px; border: 1px solid var(--primary-color); border-radius: 9px; background: #fff; color: var(--primary-color); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
     .other-sizes__expand:hover { background: #f3f7fb; }
     .other-sizes__expand[hidden] { display: none; }
-    .other-sizes--similar .other-sizes__heading { display: flex; align-items: center; gap: 12px; margin: 0 0 15px; }
-    .other-sizes--similar .other-sizes__title { margin: 0; }
+    .other-sizes__heading { display: flex; align-items: center; gap: 12px; margin: 0 0 15px; }
+    .other-sizes__heading .other-sizes__title { margin: 0; }
     .other-sizes__collapse-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; margin-left: auto; padding: 6px 10px; border: 1px solid #dce5f0; border-radius: 7px; background: #f7f9fc; color: var(--primary-color); font: inherit; font-size: 13px; line-height: 1.2; cursor: pointer; white-space: nowrap; }
     .other-sizes__collapse-toggle:hover { border-color: var(--primary-color); background: #fff; }
     .other-sizes__collapse-toggle[hidden] { display: none; }
@@ -331,7 +331,7 @@
             </div>
         </div>
 
-        <section class="other-sizes" aria-label="Другие размеры"><h2 class="other-sizes__title">Другие размеры</h2><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed"><a class="other-sizes__link" href="ст-2-кж-и-15.html"><span>ТМП 902 (180 см)</span></a><a class="other-sizes__link" href="ст-3-кж-и-15.html"><span>ТМП 902 (210 см)</span></a><a class="other-sizes__link" href="ст-4-кж-и-15.html"><span>ТМП 902 (240 см)</span></a><a class="other-sizes__link" href="ст-5-кж-и-15.html"><span>ТМП 902 (270 см)</span></a></div><button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button></div></section>
+        <section class="other-sizes" aria-label="Другие размеры"><div class="other-sizes__heading"><h2 class="other-sizes__title">Другие размеры</h2><button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все размеры" data-show-all-label="Показать все размеры" data-collapse-label="Свернуть список размеров" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed"><a class="other-sizes__link" href="ст-2-кж-и-15.html"><span>ТМП 902 (180 см)</span></a><a class="other-sizes__link" href="ст-3-кж-и-15.html"><span>ТМП 902 (210 см)</span></a><a class="other-sizes__link" href="ст-4-кж-и-15.html"><span>ТМП 902 (240 см)</span></a><a class="other-sizes__link" href="ст-5-кж-и-15.html"><span>ТМП 902 (270 см)</span></a></div></div></section>
         
         
         <!-- GROUP_CONTENT_START: other categories -->
@@ -516,7 +516,7 @@ function copyEmailToClipboard(btn) {
 
 function toggleOtherSizes(button) {
   const panel = button.dataset.iconToggle === 'true'
-    ? button.closest('.other-sizes')?.querySelector('.other-sizes__variant-panel')
+    ? button.closest('.other-sizes')?.querySelector('.other-sizes__variant-panel:not([hidden])')
     : button.closest('.other-sizes__variant-panel');
   const links = panel && panel.querySelector('.other-sizes__links');
   if (!links) return;
@@ -528,7 +528,9 @@ function toggleOtherSizes(button) {
   } else {
     const label = button.querySelector('.other-sizes__collapse-label');
     if (label) label.textContent = expanded ? 'Свернуть' : 'Показать все';
-    button.setAttribute('aria-label', expanded ? 'Свернуть список похожих товаров' : 'Показать все похожие товары');
+    button.setAttribute('aria-label', expanded
+      ? (button.dataset.collapseLabel || 'Свернуть список')
+      : (button.dataset.showAllLabel || 'Показать все'));
   }
   button.hidden = false;
 }
