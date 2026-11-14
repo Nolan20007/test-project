@@ -115,10 +115,8 @@
   "otherSizesLabel": "Лестницы НТС 62-91-111А",
   "otherSizesLimit": 10,
   "similarProductLabelTemplate": "Лестница-стремянка {model} — {lengthCm} см",
-  "similarProductLinks": [
-    {
-      "label": "Лестница тепловых сетей ТС",
-      "url": "https://stremyanki-dlya-kolodcev.ru/lestnicy-teplovyh-setej-ts.html"
-    }
+  "similarProducts": [
+    "lestnicy-teplovyh-setej-ts-50",
+    "lestnicy-teplovyh-setej-ts-63"
   ]
 }
