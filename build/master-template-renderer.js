@@ -300,15 +300,22 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       }).join('') + '</div></section>';
   }
   const uniqueSimilarGroups = (Array.isArray(similarProductGroups) ? similarProductGroups : [])
-    .filter((item, index, all) => item && item.id && item.id !== group.id &&
-      all.findIndex(candidate => candidate && candidate.id === item.id) === index);
-  const similarProductsHtml = uniqueSimilarGroups.length
+    .filter((item, index, all) => item && item.group && item.group.id && item.group.id !== group.id &&
+      Array.isArray(item.rows) && all.findIndex(candidate => candidate && candidate.group && candidate.group.id === item.group.id) === index);
+  const similarProductLinks = uniqueSimilarGroups.flatMap(item => item.rows.map(similarRow => {
+    const modelMatch = String(similarRow.name || '').match(/С\\d+-\\d+/u);
+    const label = item.group.similarProductLabelTemplate
+      ? formatProductTemplate(item.group.similarProductLabelTemplate, { id: similarRow.id, model: modelMatch ? modelMatch[0] : similarRow.id, name: similarRow.name })
+      : 'Стремянка ' + (modelMatch ? modelMatch[0] : String(similarRow.id).replace(/^C/, 'С'));
+    return '<a class="other-sizes__link" href="' + escapeHtml(getProductPath(item.group.id, similarRow.id)) + '"><span>' +
+      escapeHtml(label) + '</span></a>';
+  }));
+  const similarProductsHtml = similarProductLinks.length
     ? '<section class="other-sizes" aria-label="Похожий товар"><h2 class="other-sizes__title">Похожий товар</h2>' +
       '<div class="other-sizes__variant-panel" id="similar-products-panel"><div class="other-sizes__links other-sizes__links--collapsed">' +
-      uniqueSimilarGroups.map(item => '<a class="other-sizes__link" href="../../' + escapeHtml(item.catalogPage) + '"><span>' +
-        escapeHtml(item.similarProductLabel || item.groupTitle || item.catalogTitle || item.id) + '</span></a>').join('') +
+      similarProductLinks.join('') +
       '</div>' +
-      (uniqueSimilarGroups.length > 2
+      (similarProductLinks.length > 2
         ? '<button type="button" class="other-sizes__expand" aria-controls="similar-products-panel" aria-expanded="false" data-expand-text="Показать все похожие товары" onclick="toggleOtherSizes(this)">Показать все похожие товары</button>'
         : '') +
       '</div></section>'
