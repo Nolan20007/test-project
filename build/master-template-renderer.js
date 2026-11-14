@@ -243,9 +243,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     const linksHtml = orderedRows.map(renderLink).join('');
     const panelId = 'other-sizes-panel-' + panelIndex;
     return '<div class="other-sizes__variant-panel" id="' + panelId + '" data-variant-id="' + escapeHtml(variantGroup.id) + '"' +
-      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links other-sizes__links--collapsed">' + linksHtml + '</div>' +
-      (orderedRows.length ? '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
-      '</div>';
+      (panelIndex === 0 ? '' : ' hidden') + '><div class="other-sizes__links other-sizes__links--collapsed">' + linksHtml + '</div></div>';
   };
   const configuredVariantIds = Array.isArray(group.otherSizesVariantGroupIds) ? group.otherSizesVariantGroupIds : [];
   const relatedVariants = configuredVariantIds.length
@@ -266,7 +264,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       : '';
     const panels = relatedVariants.map((item, index) => renderSizeLinks(item.group, item.rows, row, index)).join('');
     otherSizesHtml = '<section class="other-sizes other-sizes--large" aria-label="' + escapeHtml(otherSizesTitle) + '">' +
-      '<h2 class="other-sizes__title">' + escapeHtml(otherSizesTitle) + '</h2>' + variantButtons + panels + '</section>';
+      '<div class="other-sizes__heading"><h2 class="other-sizes__title">' + escapeHtml(otherSizesTitle) + '</h2>' +
+      '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все размеры" data-show-all-label="Показать все размеры" data-collapse-label="Свернуть список размеров" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div>' +
+      variantButtons + panels + '</section>';
   } else {
     let otherSizeRows = rows.filter(item => item.id !== row.id);
     if (Number.isInteger(group.otherSizesLimit) && group.otherSizesLimit > 0) {
@@ -278,8 +278,10 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     }
     const lengthVaries = new Set(rows.map(item => Number(item.length))).size > 1;
     const widthVaries = new Set(rows.map(item => Number(item.width))).size > 1;
-    otherSizesHtml = '<section class="other-sizes" aria-label="' + escapeHtml(otherSizesTitle) + '"><h2 class="other-sizes__title">' +
-      escapeHtml(otherSizesTitle) + '</h2><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed">' + otherSizeRows.map(item => {
+    otherSizesHtml = '<section class="other-sizes" aria-label="' + escapeHtml(otherSizesTitle) + '"><div class="other-sizes__heading"><h2 class="other-sizes__title">' +
+      escapeHtml(otherSizesTitle) + '</h2>' +
+      (otherSizeRows.length > 2 ? '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все размеры" data-show-all-label="Показать все размеры" data-collapse-label="Свернуть список размеров" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button>' : '') +
+      '</div><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed">' + otherSizeRows.map(item => {
         const itemLength = Number(item.length);
         const itemWidth = Number(item.width);
         let dimensions;
@@ -297,9 +299,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         };
         const linkText = formatProductTemplate(otherSizesLinkTextTemplate || (otherSizesLabel + ' (' + dimensions + ')'), linkValues);
         return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(group, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
-      }).join('') + '</div>' +
-      (otherSizeRows.length > 2 ? '<button type="button" class="other-sizes__expand" aria-expanded="false" onclick="toggleOtherSizes(this)">Показать все размеры</button>' : '') +
-      '</div></section>';
+      }).join('') + '</div></div></section>';
   }
   const uniqueSimilarGroups = (Array.isArray(similarProductGroups) ? similarProductGroups : [])
     .filter((item, index, all) => item && item.group && item.group.id && item.group.id !== group.id &&
@@ -315,10 +315,14 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     return '<a class="other-sizes__link" href="' + escapeHtml(getProductPath(item.group.id, similarRow.id)) + '"><span>' +
       escapeHtml(label) + '</span></a>';
   }));
+  const similarGroupTitle = uniqueSimilarGroups
+    .map(item => item.group.otherSizesLabel || item.group.groupTitle || item.group.project)
+    .filter(Boolean).join(', ');
+  const similarProductsTitle = 'Похожие товары — ' + similarGroupTitle;
   const similarProductsHtml = similarProductLinks.length
-    ? '<section class="other-sizes other-sizes--similar" aria-label="Похожие товары">' +
-      '<div class="other-sizes__heading"><h2 class="other-sizes__title">Похожие товары</h2>' +
-      '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все похожие товары" aria-controls="similar-products-panel" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div>' +
+    ? '<section class="other-sizes other-sizes--similar" aria-label="' + escapeHtml(similarProductsTitle) + '">' +
+      '<div class="other-sizes__heading"><h2 class="other-sizes__title">' + escapeHtml(similarProductsTitle) + '</h2>' +
+      '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все похожие товары" data-show-all-label="Показать все похожие товары" data-collapse-label="Свернуть список похожих товаров" aria-controls="similar-products-panel" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div>' +
       '<div class="other-sizes__variant-panel" id="similar-products-panel"><div class="other-sizes__links other-sizes__links--collapsed">' +
       similarProductLinks.join('') +
       '</div></div></section>'
