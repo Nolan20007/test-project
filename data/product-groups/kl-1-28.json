@@ -56,5 +56,9 @@
   "otherSizesVariantLabel": "КЛ-1",
   "otherSizesVariantDimensions": "Ø28 мм",
   "otherSizesDisplayLimit": 16,
-  "otherSizesLabel": "КЛ-1 Ø28 мм"
+  "otherSizesLabel": "КЛ-1 Ø28 мм",
+  "similarProducts": [
+    "l-1-l-2-sk-2201-88-35"
+  ],
+  "similarProductLabelTemplate": "Лестница {model} СК 2201-88-35"
 }
