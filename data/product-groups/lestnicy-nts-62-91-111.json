@@ -33,7 +33,7 @@
   ],
   "groupContentTemplate": "templates/group-content/lestnicy-nts-62-91-111.html",
   "productNameTemplate": "Лестница с ограждением из дуг {model} по НТС 62-91-111, длина {lengthMm} мм",
-  "skuLineTemplate": "{skuModel}",
+  "skuLineTemplate": "Артикул: {skuModel} | Длина: {lengthMm} мм",
   "stockText": "Наличие и срок изготовления уточняйте у производителя",
   "seoTitleTemplate": "Лестница с ограждением из дуг {model} по НТС 62-91-111, {lengthCm} см — купить",
   "seoDescriptionTemplate": "Купить лестницу с ограждением из дуг {model} по НТС 62-91-111, нормалям тепловых сетей. Высота {lengthCm} см, масса {weightFormatted} кг. От производителя, доставка по России.",
