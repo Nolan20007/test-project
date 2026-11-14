@@ -225,9 +225,15 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
       else if (widthVaries) dimensions = itemWidth + ' см';
       else dimensions = itemLength + ' см';
+      const itemId = String(item.id);
+      const model = variantGroup.id === 'ograzhdenie-osg-seriya-14503-794'
+        ? itemId.replace(/^OSG-/i, 'ОСГ-')
+        : variantGroup.id === 'pozharnye-stremyanki-seriya-14503-794'
+          ? itemId.replace(/^SG-/i, 'СГ-')
+          : getProductModel(item, variantGroup.id === group.id ? groupContent : '');
       const linkValues = {
-        id: String(item.id),
-        model: getProductModel(item, variantGroup.id === group.id ? groupContent : ''),
+        id: itemId,
+        model,
         lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
         widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
         weight: Number(String(item.weight).replace(',', '.')),
@@ -237,7 +243,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       const linkTemplate = variantGroup.id === group.id
         ? otherSizesLinkTextTemplate
         : variantGroup.otherSizesLinkTextTemplate;
-      const linkText = formatProductTemplate(linkTemplate || (variantGroup.otherSizesLabel || otherSizesLabel) + ' (' + dimensions + ')', linkValues);
+      const linkText = formatProductTemplate(linkTemplate || (model + ' — ' + itemLength + ' см'), linkValues);
       return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(variantGroup, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
     };
     const linksHtml = orderedRows.map(renderLink).join('');
@@ -288,16 +294,22 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
         else if (widthVaries) dimensions = itemWidth + ' см';
         else dimensions = itemLength + ' см';
+        const itemId = String(item.id);
+        const model = group.id === 'ograzhdenie-osg-seriya-14503-794'
+          ? itemId.replace(/^OSG-/i, 'ОСГ-')
+          : group.id === 'pozharnye-stremyanki-seriya-14503-794'
+            ? itemId.replace(/^SG-/i, 'СГ-')
+            : getProductModel(item, groupContent);
         const linkValues = {
-          id: String(item.id),
-          model: getProductModel(item, groupContent),
+          id: itemId,
+          model,
           lengthCm: itemLength, lengthMm: Math.round(itemLength * 10),
           widthCm: itemWidth, widthMm: Math.round(itemWidth * 10),
           weight: Number(String(item.weight).replace(',', '.')),
           weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
           project
         };
-        const linkText = formatProductTemplate(otherSizesLinkTextTemplate || (otherSizesLabel + ' (' + dimensions + ')'), linkValues);
+        const linkText = formatProductTemplate(otherSizesLinkTextTemplate || (model + ' — ' + itemLength + ' см'), linkValues);
         return '<a class="other-sizes__link" href="' + escapeHtml(getMasterProductSlug(group, item)) + '.html"><span>' + escapeHtml(linkText) + '</span></a>';
       }).join('') + '</div></div></section>';
   }
