@@ -91,5 +91,10 @@
     "Product JSON-LD uses images/ssg1/vid-search.webp, while Open Graph and the gallery use images/ssg1/vid-1.webp.",
     "Keep the exact legacy Product and BreadcrumbList structured data, including seller and item condition."
   ],
-  "groupContentTemplate": "templates/group-content/pozharnye-stremyanki-sg.html"
+  "groupContentTemplate": "templates/group-content/pozharnye-stremyanki-sg.html",
+  "similarProducts": [
+    "ograzhdenie-osg-seriya-14503-794"
+  ],
+  "otherSizesLabel": "Пожарные стремянки СГ серии 1.450.3-7.94",
+  "similarProductLabelTemplate": "Пожарная стремянка {model} — {lengthCm} см"
 }
