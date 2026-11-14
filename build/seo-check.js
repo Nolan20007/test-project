@@ -26,7 +26,8 @@ const PRODUCT_CSV_FILES = [
   'data/tmp-902-kruglye.csv',
   'data/tmp-902-perepadnye.csv',
   'data/tmp-902-pryamougolnye.csv',
-  'data/l-19-products.csv'
+  'data/l-19-products.csv',
+  'data/l-1-l-2-sk-2201-88-35-products.csv'
 ];
 
 function parseCsvLine(line) {
@@ -190,7 +191,7 @@ function assertCsvProducts() {
       productsBySku.delete(String(row.id));
     }
   }
-  assert.strictEqual(expectedProducts, 934, 'Unexpected generated product count; review CSV/category inventory');
+  assert.strictEqual(expectedProducts, 936, 'Unexpected generated product count; review CSV/category inventory');
   assert.strictEqual(productsBySku.size, 0, 'Product JSON-LD contains SKUs not represented by the generated product CSV files');
   return expectedProducts;
 }
@@ -216,7 +217,7 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 934, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 936, 'llms.txt: unexpected CSV product inventory');
 }
 
 
