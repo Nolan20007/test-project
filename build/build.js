@@ -1211,8 +1211,9 @@ function buildProductPages() {
       if (id === group.id) throw new Error('[product pages] ' + group.id + ' cannot reference itself in similarProducts.');
       const target = masterGroupData.get(id);
       if (!target) throw new Error('[product pages] ' + group.id + ' references unknown similar product group: ' + id);
-      if (!target.group.catalogPage) throw new Error('[product pages] ' + group.id + ' similar product group ' + id + ' has no catalogPage.');
-      return target.group;
+      // Similar-product links point to every individual product page in the target group.
+      target.rows.forEach(row => getProductPath(target.group.id, row.id));
+      return target;
     });
     const csvIds = groupRows.map(row => row.id);
     if (Array.isArray(group.productIds)) {
