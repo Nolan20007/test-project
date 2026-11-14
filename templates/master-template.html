@@ -296,7 +296,9 @@
 }
 
 function toggleOtherSizes(button) {
-  const panel = button.closest('.other-sizes__variant-panel');
+  const panel = button.dataset.iconToggle === 'true'
+    ? button.closest('.other-sizes')?.querySelector('.other-sizes__variant-panel')
+    : button.closest('.other-sizes__variant-panel');
   const links = panel && panel.querySelector('.other-sizes__links');
   if (!links) return;
   const expanded = links.classList.contains('other-sizes__links--collapsed');
