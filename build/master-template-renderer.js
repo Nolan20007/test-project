@@ -364,7 +364,8 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         (index === 0 ? ' active' : '') + '" role="tab" aria-selected="' + (index === 0 ? 'true' : 'false') +
         '" aria-controls="similar-products-panel-' + index + '" onclick="selectOtherSizesVariant(this)">' +
         (isTsVariantSwitcher
-          ? '<span>' + escapeHtml(item.group.otherSizesLabel || item.group.groupTitle || '') + '</span>'
+          ? '<span>' + escapeHtml(item.group.otherSizesLabel || item.group.groupTitle || '') + '</span>' +
+            (item.group.otherSizesVariantDimensions ? '<span>' + escapeHtml(item.group.otherSizesVariantDimensions) + '</span>' : '')
           : '<span>Пруток ' + escapeHtml(item.group.otherSizesVariantDimensions || item.group.otherSizesLabel || '') + '</span>') +
         '</button>').join('') +
       '</div>' +
