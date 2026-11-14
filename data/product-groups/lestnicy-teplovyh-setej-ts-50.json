@@ -74,5 +74,6 @@
     "lestnicy-teplovyh-setej-ts-63"
   ],
   "otherSizesVariantLabel": "ТС-50",
-  "otherSizesVariantDimensions": "50×50×5 мм"
+  "otherSizesVariantDimensions": "50×50×5 мм",
+  "similarProductLabelTemplate": "{name} — {lengthCm} см"
 }
