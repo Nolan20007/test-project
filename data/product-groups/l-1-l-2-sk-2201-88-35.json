@@ -1,0 +1,69 @@
+{
+  "id": "l-1-l-2-sk-2201-88-35",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "l-1-l-2-sk-2201-88-35",
+  "catalogPage": "l-1-l-2-sk-2201-88-35.html",
+  "catalogTitle": "Лестницы Л-1 и Л-2 СК 2201-88-35",
+  "groupTitle": "Лестницы Л-1 и Л-2 СК 2201-88-35",
+  "headerSubtitle": "Стальные лестницы для спуска в сборные железобетонные колодцы по Альбому СК 2201-88",
+  "project": "СК 2201-88-35",
+  "projectFromName": false,
+  "schemaProductType": "Лестница для колодцев",
+  "normativeLabel": "Чертёжный альбом",
+  "albumReference": "Альбом СК 2201-88",
+  "csv": "data/l-1-l-2-sk-2201-88-35-products.csv",
+  "productIds": [
+    "L-1",
+    "L-2"
+  ],
+  "groupContentTemplate": "templates/group-content/l-1-l-2-sk-2201-88-35.html",
+  "productNameTemplate": "Лестница {model} СК 2201-88-35",
+  "skuLineTemplate": "Артикул: {id} | Габариты: {lengthMm} × {widthMm} мм",
+  "cartItemNameTemplate": "Лестница {model} СК 2201-88-35",
+  "seoTitleTemplate": "Лестница {model} СК 2201-88-35 — размеры, масса и цена",
+  "seoDescriptionTemplate": "Купить лестницу {model} СК 2201-88-35 для колодцев. Габариты {lengthMm} × {widthMm} мм, масса {weightFormatted} кг, сталь Ø25 мм по ГОСТ 5781-82. Цена от производителя.",
+  "schemaNameTemplate": "Лестница {model} СК 2201-88-35",
+  "schemaDescriptionTemplate": "Лестница {model} СК 2201-88-35. Габариты {lengthMm} × {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "../../images/l-1-l-2-sk-2201-88-35/vid-1.webp",
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "dimension1Label": "Длина",
+  "dimension2Label": "Ширина",
+  "widthDisplayUnit": "both",
+  "rowDescriptionFallback": "Стальная лестница для спуска в сборные железобетонные колодцы по Альбому СК 2201-88.",
+  "construction": {
+    "type": "Лестница для колодцев",
+    "material": "Сталь арматурная по ГОСТ 5781-82",
+    "availableWidthsMm": [
+      410
+    ],
+    "lengthRangeMm": [
+      1980,
+      1980
+    ]
+  },
+  "gallery": [
+    {
+      "label": "Общий вид",
+      "webp": "../../images/l-1-l-2-sk-2201-88-35/vid-1.webp",
+      "alt": "Лестница {model} СК 2201-88-35 — общий вид"
+    },
+    {
+      "label": "Фото",
+      "webp": "../../images/l-1-l-2-sk-2201-88-35/foto-1.webp",
+      "alt": "Лестница {model} СК 2201-88-35 — фотография"
+    },
+    {
+      "label": "Альбом",
+      "webp": "../../images/l-1-l-2-sk-2201-88-35/album.webp",
+      "alt": "Альбом СК 2201-88 — чертёж лестницы {model}"
+    }
+  ],
+  "otherSizesLabel": "Лестницы Л-1 и Л-2",
+  "otherSizesLimit": 10
+}
