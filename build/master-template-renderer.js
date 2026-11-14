@@ -449,7 +449,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       escapeHtml(group.buyButtonLabel || 'В корзину') + '</button></div>',
     '{{GROUP_ALBUM_REFERENCE}}': escapeHtml(group.albumReference),
     '{{GROUP_ALBUM_NOTE}}': escapeHtml(group.albumNote),
-    '{{PRODUCT_SHORT_DESCRIPTION}}': escapeHtml(shortDescription),
+    '{{PRODUCT_SHORT_DESCRIPTION}}': groupContent ? shortDescription : escapeHtml(shortDescription),
     '{{GROUP_AND_PRODUCT_SPECIFICATIONS}}': specsHtml,
     '{{GROUP_DESCRIPTION_AND_INSTALLATION}}': descriptionHtml,
     '{{GROUP_OTHER_SIZES}}': otherSizesHtml,
