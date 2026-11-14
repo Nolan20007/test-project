@@ -60,5 +60,5 @@
   "similarProducts": [
     "l-1-l-2-sk-2201-88-35"
   ],
-  "similarProductLabelTemplate": "Лестница {model} СК 2201-88-35"
+  "similarProductLabelTemplate": "{model} — {lengthCm} см"
 }
