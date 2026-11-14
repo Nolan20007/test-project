@@ -640,6 +640,7 @@ const ALL_HTML_FILES = [
   'lestnica-podvesnaya-l-16.html',
   'l-17-000SB.html',
   'l-3-sk-2201-88.html',
+  'l-1-l-2-sk-2201-88-35.html',
   'l-19.html',
   'montazh-stremyanok-v-kolodcy.html',
   'o-kompanii.html',
