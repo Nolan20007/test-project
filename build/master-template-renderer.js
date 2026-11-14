@@ -323,7 +323,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     const similarGroupId = String(item.group.id);
     const similarProductId = String(similarRow.id);
     const modelMatch = String(similarRow.name || '').match(/С-?\d+(?:-\d+)?/u);
-    const model = similarGroupId === 'ograzhdenie-osg-seriya-14503-794'
+    const model = similarGroupId === 'kl-1-25' || similarGroupId === 'kl-1-28'
+      ? similarProductId.replace(/^KL-/i, 'КЛ-')
+      : similarGroupId === 'ograzhdenie-osg-seriya-14503-794'
       ? similarProductId.replace(/^OSG-/i, 'ОСГ-')
       : similarGroupId === 'pozharnye-stremyanki-seriya-14503-794'
         ? similarProductId.replace(/^SG-/i, 'СГ-')
