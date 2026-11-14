@@ -45,9 +45,12 @@ function getProductModel(row, groupContent = '') {
       if (groupModelMatch) return groupModelMatch[0];
     }
   }
+  const rowId = String(row && row.id || '');
+  const klMatch = rowId.match(/^KL-(\d+(?:\.\d+)?)(?:-28)?$/i);
+  if (klMatch) return 'КЛ-' + klMatch[1];
   const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+|Л-\d+/u);
-  const idMatch = String(row && row.id || '').match(/SG-\d+/i);
-  return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : String(row && row.id || ''));
+  const idMatch = rowId.match(/SG-\d+/i);
+  return nameMatch ? nameMatch[0] : (idMatch ? idMatch[0] : rowId);
 }
 
 function renderMasterProduct(template, group, row, rows, relatedVariantGroups = [], groupContent = '', similarProductGroups = []) {
