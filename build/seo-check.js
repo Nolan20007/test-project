@@ -169,9 +169,12 @@ function assertCsvProducts() {
       const isSkoby = csvFile === 'data/skoby-dlya-kolodcev-products.csv';
       const firstLabel = String(row.dimension1_label || (isConnector ? 'Ширина' : 'Длина'));
       const secondLabel = String(row.dimension2_label || (isConnector ? 'Высота' : 'Ширина'));
-      const firstDimensionMatches = (isConnector || isSkoby)
-        ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
-        : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
+      const isL1L2 = csvFile === 'data/l-1-l-2-sk-2201-88-35-products.csv';
+      const firstDimensionMatches = isL1L2
+        ? object.description.includes('Габариты ' + Math.round(lengthCm * 10) + ' × ' + widthMm + ' мм')
+        : (isConnector || isSkoby)
+          ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
+          : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
       assert(firstDimensionMatches, csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
       assert(object.description.includes(secondLabel.toLowerCase() + ' ' + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
       if (isSkoby || isConnector) {
