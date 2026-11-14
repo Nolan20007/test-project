@@ -19,7 +19,7 @@
   ],
   "groupContentTemplate": "templates/group-content/l-1-l-2-sk-2201-88-35.html",
   "productNameTemplate": "Лестница {model} СК 2201-88-35",
-  "skuLineTemplate": "Артикул: {id} | Габариты: {lengthMm} × {widthMm} мм",
+  "skuLineTemplate": "Артикул: {displayId} | Габариты: {lengthMm} × {widthMm} мм",
   "cartItemNameTemplate": "Лестница {model} СК 2201-88-35",
   "seoTitleTemplate": "Лестница {model} СК 2201-88-35 — размеры, масса и цена",
   "seoDescriptionTemplate": "Купить лестницу {model} СК 2201-88-35 для колодцев. Габариты {lengthMm} × {widthMm} мм, масса {weightFormatted} кг, сталь Ø25 мм по ГОСТ 5781-82. Цена от производителя.",
@@ -49,9 +49,9 @@
   },
   "gallery": [
     {
-      "label": "Общий вид",
+      "label": "Вид",
       "webp": "../../images/l-1-l-2-sk-2201-88-35/vid-1.webp",
-      "alt": "Лестница {model} СК 2201-88-35 — общий вид"
+      "alt": "Лестница {model} СК 2201-88-35 — вид"
     },
     {
       "label": "Фото",
