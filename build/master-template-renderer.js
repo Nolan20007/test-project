@@ -327,7 +327,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
       ? similarProductId.replace(/^OSG-/i, 'ОСГ-')
       : similarGroupId === 'pozharnye-stremyanki-seriya-14503-794'
         ? similarProductId.replace(/^SG-/i, 'СГ-')
-        : (modelMatch ? modelMatch[0] : similarProductId.replace(/^C/, 'С'));
+        : similarGroupId === 'l-1-l-2-sk-2201-88-35'
+          ? similarProductId.replace(/^L-/i, 'L-')
+          : (modelMatch ? modelMatch[0] : similarProductId.replace(/^C/, 'С'));
     const lengthCm = Number(similarRow.length);
     const labelValues = { id: similarRow.id, model, name: similarRow.name, lengthCm, lengthMm: Math.round(lengthCm * 10) };
     const label = item.group.similarProductLabelTemplate
