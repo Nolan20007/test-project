@@ -75,5 +75,5 @@
   ],
   "otherSizesVariantLabel": "ТС-63",
   "otherSizesVariantDimensions": "63×63×5 мм",
-  "similarProductLabelTemplate": "{name} — {lengthCm} см"
+  "similarProductLabelTemplate": "{model} - {lengthCm} см"
 }
