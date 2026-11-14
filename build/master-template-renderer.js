@@ -312,8 +312,8 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   }));
   const similarProductsHtml = similarProductLinks.length
     ? '<section class="other-sizes other-sizes--similar" aria-label="Похожие товары">' +
-      '<div class="other-sizes__heading"><button type="button" class="other-sizes__collapse-toggle" aria-label="Развернуть список похожих товаров" aria-controls="similar-products-panel" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span aria-hidden="true">⌄</span></button>' +
-      '<h2 class="other-sizes__title">Похожие товары</h2></div>' +
+      '<div class="other-sizes__heading"><h2 class="other-sizes__title">Похожие товары</h2>' +
+      '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все похожие товары" aria-controls="similar-products-panel" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button></div>' +
       '<div class="other-sizes__variant-panel" id="similar-products-panel"><div class="other-sizes__links other-sizes__links--collapsed">' +
       similarProductLinks.join('') +
       '</div></div></section>'
