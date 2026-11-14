@@ -176,7 +176,11 @@ function assertCsvProducts() {
           ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
           : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
       assert(firstDimensionMatches, csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
-      assert(object.description.includes(secondLabel.toLowerCase() + ' ' + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
+      if (isL1L2) {
+        assert(object.description.includes('Габариты ' + Math.round(lengthCm * 10) + ' × ' + widthMm + ' мм'), csvFile + '/' + row.id + ': combined dimensions differ from CSV');
+      } else {
+        assert(object.description.includes(secondLabel.toLowerCase() + ' ' + widthMm + ' мм'), csvFile + '/' + row.id + ': second dimension label/value differs from CSV');
+      }
       if (isSkoby || isConnector) {
         assert(html.includes('<td>' + firstLabel + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
         assert(html.includes('<td>' + secondLabel + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
