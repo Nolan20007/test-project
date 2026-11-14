@@ -75,5 +75,5 @@
   ],
   "otherSizesVariantLabel": "ТС-50",
   "otherSizesVariantDimensions": "50×50×5 мм",
-  "similarProductLabelTemplate": "{name} — {lengthCm} см"
+  "similarProductLabelTemplate": "{model} - {lengthCm} см"
 }
