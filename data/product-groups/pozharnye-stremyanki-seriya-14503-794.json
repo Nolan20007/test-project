@@ -96,5 +96,5 @@
     "ograzhdenie-osg-seriya-14503-794"
   ],
   "otherSizesLabel": "Пожарные стремянки СГ серии 1.450.3-7.94",
-  "similarProductLabelTemplate": "Пожарная стремянка {model} — {lengthCm} см"
+  "similarProductLabelTemplate": "{model} — {lengthCm} см"
 }
