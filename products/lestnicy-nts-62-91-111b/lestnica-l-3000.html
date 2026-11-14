@@ -195,12 +195,12 @@
     .other-sizes__expand { display: block; margin: 14px auto 0; padding: 9px 22px; border: 1px solid var(--primary-color); border-radius: 9px; background: #fff; color: var(--primary-color); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
     .other-sizes__expand:hover { background: #f3f7fb; }
     .other-sizes__expand[hidden] { display: none; }
-    .other-sizes--similar .other-sizes__heading { display: flex; align-items: center; gap: 8px; margin: 0 0 15px; }
+    .other-sizes--similar .other-sizes__heading { display: flex; align-items: center; gap: 12px; margin: 0 0 15px; }
     .other-sizes--similar .other-sizes__title { margin: 0; }
-    .other-sizes__collapse-toggle { display: inline-flex; flex: 0 0 28px; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border: 1px solid #dce5f0; border-radius: 7px; background: #f7f9fc; color: var(--primary-color); font: inherit; font-size: 19px; line-height: 1; cursor: pointer; }
+    .other-sizes__collapse-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; margin-left: auto; padding: 6px 10px; border: 1px solid #dce5f0; border-radius: 7px; background: #f7f9fc; color: var(--primary-color); font: inherit; font-size: 13px; line-height: 1.2; cursor: pointer; white-space: nowrap; }
     .other-sizes__collapse-toggle:hover { border-color: var(--primary-color); background: #fff; }
-    .other-sizes__collapse-toggle span { display: block; transition: transform .2s ease; }
-    .other-sizes__collapse-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+    .other-sizes__collapse-icon { display: block; font-size: 17px; line-height: 1; transition: transform .2s ease; }
+    .other-sizes__collapse-toggle[aria-expanded="true"] .other-sizes__collapse-icon { transform: rotate(180deg); }
     @media (max-width: 700px) {
         .other-sizes { padding: 20px; }
         .other-sizes__links--collapsed { max-height: 80px; }
@@ -531,7 +531,9 @@ function toggleOtherSizes(button) {
   if (button.dataset.iconToggle !== 'true') {
     button.textContent = expanded ? 'Свернуть' : (button.dataset.expandText || 'Показать все размеры');
   } else {
-    button.setAttribute('aria-label', expanded ? 'Свернуть список похожих товаров' : 'Развернуть список похожих товаров');
+    const label = button.querySelector('.other-sizes__collapse-label');
+    if (label) label.textContent = expanded ? 'Свернуть' : 'Показать все';
+    button.setAttribute('aria-label', expanded ? 'Свернуть список похожих товаров' : 'Показать все похожие товары');
   }
   button.hidden = false;
 }
