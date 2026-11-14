@@ -117,10 +117,6 @@
   "similarProductLabelTemplate": "Лестница-стремянка {model} — {lengthCm} см",
   "similarProductLinks": [
     {
-      "label": "Л-16",
-      "url": "https://stremyanki-dlya-kolodcev.ru/lestnica-podvesnaya-l-16.html"
-    },
-    {
       "label": "Лестница тепловых сетей ТС",
       "url": "https://stremyanki-dlya-kolodcev.ru/lestnicy-teplovyh-setej-ts.html"
     }
