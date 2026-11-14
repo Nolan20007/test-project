@@ -326,7 +326,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const renderSimilarGroupLinks = item => item.rows.map(similarRow => {
     const similarGroupId = String(item.group.id);
     const similarProductId = String(similarRow.id);
-    const modelMatch = String(similarRow.name || '').match(/С-?\\d+(?:-\\d+)?/u);
+    const modelMatch = String(similarRow.name || '').match(/(?:С-?\\d+(?:-\\d+)?|Л-\\d+)/u);
     const model = similarGroupId === 'kl-1-25' || similarGroupId === 'kl-1-28'
       ? similarProductId.replace(/^KL-/i, 'КЛ-').replace(/-28$/i, '')
       : similarGroupId === 'ograzhdenie-osg-seriya-14503-794'
