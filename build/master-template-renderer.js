@@ -82,6 +82,8 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     material: escapeHtml(row.material || ''),
     rodDiameter: escapeHtml(row.rod_diameter || ''),
     blankLengthMm: escapeHtml(row.blank_length_mm || ''),
+    mountingHeightMm: escapeHtml(row.mounting_height_mm || ''),
+    mountingOffsetMm: escapeHtml(row.mounting_offset_mm || ''),
     materialRowHtml: row.material ? '<tr><td>Материал</td><td>' + escapeHtml(row.material) + '</td></tr>' : '',
     rodDiameterRowHtml: row.rod_diameter ? '<tr><td>Диаметр прутка</td><td>' + escapeHtml(row.rod_diameter) + '</td></tr>' : '',
     blankLengthRowHtml: row.blank_length_mm ? '<tr><td>Длина заготовки</td><td>' + escapeHtml(row.blank_length_mm) + ' мм</td></tr>' : '',
