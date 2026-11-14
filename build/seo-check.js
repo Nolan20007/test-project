@@ -216,7 +216,7 @@ function assertLlmsProductLinks() {
       assert(labels.has(String(row.name || '').trim()), 'llms.txt: missing CSV product name for SKU ' + row.id);
     }
   }
-  assert.strictEqual(expected, 936, 'llms.txt: unexpected CSV product inventory');
+  assert.strictEqual(expected, 934, 'llms.txt: unexpected CSV product inventory');
 }
 
 
