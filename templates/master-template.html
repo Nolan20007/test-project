@@ -289,7 +289,8 @@
 <script>function updateOtherSizesOverflow(panel) {
   if (!panel || panel.hidden) return;
   const links = panel.querySelector('.other-sizes__links');
-  const button = panel.querySelector('.other-sizes__expand');
+  const button = panel.querySelector('.other-sizes__expand') ||
+    panel.closest('.other-sizes')?.querySelector('.other-sizes__collapse-toggle');
   if (!links || !button) return;
   const collapsed = links.classList.contains('other-sizes__links--collapsed');
   if (collapsed) button.hidden = links.scrollHeight <= links.clientHeight + 1;
