@@ -72,7 +72,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const project = productProject(row, group);
   const model = getProductModel(row, groupContent);
   const values = {
-    id: String(row.id), displayId: group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
+    id: String(row.id), displayId: group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : /^kl-1-(?:25|28)$/.test(group.id) ? String(row.id).replace(/^KL-/i, 'КЛ-') : String(row.id), model, lengthCm, lengthMm: Math.round(lengthCm * 10),
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
     price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
     stepCount: hasStepCount ? stepCount : '',
@@ -96,7 +96,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   values.productName = productName;
   const headerTitle = formatProductTemplate(group.headerTitleTemplate || productName, values);
   const breadcrumbName = formatProductTemplate(group.breadcrumbNameTemplate || productName, values);
-  const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {id} | Длина: {lengthMm} мм'), values);
+  const skuLine = formatProductTemplate(group.skuLineTemplate || ('Артикул: {displayId} | Длина: {lengthMm} мм'), values);
   // Product pages use one consistent stock label; CSV and group overrides do not change it.
   const stockText = '✓ В наличии на складе';
   const priceDisplay = price > 0 ? 'от ' + values.priceFormatted + ' ₽' : 'Цена по запросу';
