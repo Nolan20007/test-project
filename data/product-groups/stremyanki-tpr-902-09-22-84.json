@@ -51,7 +51,7 @@
   ],
   "groupContentTemplate": "templates/group-content/stremyanki-tpr-902-09-22-84.html",
   "productNameTemplate": "Стремянка {model} по ТПР 902-09-22.84, длина {lengthCm} см",
-  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "skuLineTemplate": "Артикул: {displayId} | Длина: {lengthMm} мм",
   "stockTextFromRow": true,
   "cartItemNameTemplate": "{productName}",
   "cartLengthUnit": "cm",
