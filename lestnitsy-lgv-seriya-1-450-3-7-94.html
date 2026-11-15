@@ -809,9 +809,11 @@
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
                 <img id="mainImage" src="images/lvg/vid-1.png" alt="Лестница ЛГВ серии 1.450.3-7.94 — общий вид" class="main-image">
                 <div class="image-toggle" aria-label="Выбор изображения">
-                    <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/lvg/vid-1.png', '', 0)">Общий вид</button>
+                    <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/lvg/vid-1.png', '', 0)">Вид</button>
                     <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/lvg/foto-1.png', '', 1)">Фото 1</button>
                     <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/lvg/foto-2.png', '', 2)">Фото 2</button>
+                    <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/lvg/album-1.png', '', 3)">Альбом 1</button>
+                    <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/lvg/album-2.png', '', 4)">Альбом 2</button>
                 </div>
             </div>
         </div>
@@ -1277,7 +1279,7 @@ function copyEmailToClipboard(btn) {
             <div class="gallery-item"><img src="images/lvg/album-2.png" alt="Чертёжный альбом ЛГВ — лист 2" loading="lazy" decoding="async"></div>
         </div>
         <div class="modal-nav" id="modalNav">
-            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Общий вид</button>
+            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид</button>
             <button data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
             <button data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
             <button data-slide="3" onclick="scrollToSlide(3)">Альбом 1</button>
