@@ -1,0 +1,79 @@
+{
+  "id": "lestnicy-lgv-seriya-1-450-3-7-94",
+  "status": "active",
+  "template": "templates/master-template.html",
+  "productFolder": "lestnicy-lgv-seriya-1-450-3-7-94",
+  "catalogPage": "lestnitsy-lgv-seriya-1-450-3-7-94.html",
+  "catalogTitle": "Лестницы ЛГВ серия 1.450.3-7.94",
+  "groupTitle": "Лестницы ЛГВ серия 1.450.3-7.94",
+  "headerSubtitle": "Наклонные металлические лестницы для обслуживания оборудования и инженерных сооружений",
+  "project": "Серия 1.450.3-7.94",
+  "projectFromName": false,
+  "albumReference": "Серия 1.450.3-7.94. Выпуск 2",
+  "csv": "data/lgv-products.csv",
+  "productIds": [
+    "LGV-45-6.7",
+    "LGV-45-6.9",
+    "LGV-45-12.7",
+    "LGV-45-12.9",
+    "LGV-45-18.7",
+    "LGV-45-18.9",
+    "LGV-45-24.7",
+    "LGV-45-24.9",
+    "LGV-45-30.7",
+    "LGV-45-30.9",
+    "LGV-45-36.7",
+    "LGV-45-36.9",
+    "LGV-45-42.7",
+    "LGV-45-42.9",
+    "LGV-60-6.7",
+    "LGV-60-12.7",
+    "LGV-60-18.7",
+    "LGV-60-24.7",
+    "LGV-60-30.7",
+    "LGV-60-36.7",
+    "LGV-60-42.7"
+  ],
+  "productLengthField": "height",
+  "productLengthDivisor": 10,
+  "stepLengthField": "length",
+  "angleField": "angle",
+  "heightField": "height",
+  "productNameTemplate": "Лестница {model} серия 1.450.3-7.94",
+  "headerTitleTemplate": "Лестница {model} — серия 1.450.3-7.94, угол {angle}°",
+  "breadcrumbNameTemplate": "Лестница {model}",
+  "skuLineTemplate": "Артикул: {displayId} | Угол наклона: {angle}°",
+  "cartItemNameTemplate": "Лестница {model} по серии 1.450.3-7.94, высота {heightMm} мм, угол {angle}°",
+  "seoTitleTemplate": "Лестница {model} по серии 1.450.3-7.94, высота {heightMm} мм — купить",
+  "seoDescriptionTemplate": "Купить лестницу {model} по серии 1.450.3-7.94. Угол наклона {angle}°, высота {heightMm} мм, длина ступени {stepLengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг. От производителя, доставка по России.",
+  "schemaNameTemplate": "Лестница {model} по серии 1.450.3-7.94",
+  "schemaDescriptionTemplate": "Лестница {model} по серии 1.450.3-7.94. Угол наклона {angle}°, высота {heightMm} мм, длина ступени {stepLengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг.",
+  "schemaMpnTemplate": "{id}",
+  "schemaImage": "images/default-product.svg",
+  "schemaBrand": {
+    "@type": "Brand",
+    "name": "Лестницы и стремянки для колодцев"
+  },
+  "schemaItemCondition": "https://schema.org/NewCondition",
+  "schemaSeller": {
+    "@type": "Organization",
+    "name": "ИП Гневашева Кристина Дмитриевна"
+  },
+  "construction": {
+    "type": "Наклонная лестница из горячекатаных стальных профилей",
+    "availableWidthsMm": [
+      700,
+      900
+    ],
+    "lengthRangeMm": [
+      600,
+      4200
+    ]
+  },
+  "dimension1Label": "Высота изделия",
+  "dimension2Label": "Ширина",
+  "otherSizesSortByAngle": true,
+  "otherSizesLabel": "Лестницы ЛГВ серии 1.450.3-7.94",
+  "otherSizesLinkTextTemplate": "{model} — высота {lengthCm} см, угол {angle}°",
+  "groupContentTemplate": "templates/group-content/lestnicy-lgv-seriya-1-450-3-7-94.html"
+}
