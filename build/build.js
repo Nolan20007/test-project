@@ -139,7 +139,7 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  { html: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/lgv-products.csv', hidePrimaryDimension: true, extraDimensions: [{ field: 'height', label: 'Высота изделия, мм' }], hideAvailability: true, sortByAngle: true, cartLengthField: 'height', cartLengthDivisor: 10 }] },
+  { html: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/lgv-products.csv', hidePrimaryDimension: true, extraDimensions: [{ field: 'height', label: 'Высота, см', divisor: 10 }], compactTable: true, hideAvailability: true, sortByAngle: true, cartLengthField: 'height', cartLengthDivisor: 10 }] },
   { html: 'ograzhdenie-osg-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/osg-products.csv' }] },
   { html: 'nts-62-91-111a.html', tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] }] },
@@ -357,7 +357,7 @@ function buildTable(products, enableCollapse, dimensionHeaders, options = {}) {
   const hasSecondDimension = headers.length > 1;
   const extraDimensions = Array.isArray(options.extraDimensions) ? options.extraDimensions : [];
   const dimensionHeaderHtml = headers.map(header => '<th>' + esc(header) + '</th>').join('') + extraDimensions.map(item => '<th>' + esc(item.label) + '</th>').join('');
-  let html = `<table class="nomenclature-table"><thead><tr>
+  let html = `<table class="nomenclature-table${options.compactTable ? ' nomenclature-table--compact' : ''}"><thead><tr>
     <th>Фото</th><th>Изделие</th>${options.hidePrimaryDimension ? '' : dimensionHeaderHtml}${hasStepCount ? '<th>Ступени, шт</th>' : ''}
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasAvailability ? '<th>Наличие</th>' : ''}${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
@@ -393,7 +393,7 @@ function buildTable(products, enableCollapse, dimensionHeaders, options = {}) {
       <td><button type="button" class="cart-button" data-item-id="${id}" data-item-name="${name}"
             data-item-length="${cartLength}" data-item-weight="${weight}">В корзину</button></td>` : '<td>—</td><td>—</td>') : '';
     const stepsCell = hasStepCount ? `<td>${esc(p.step_count || '—')}</td>` : '';
-    const extraDimensionCells = extraDimensions.map(item => `<td>${esc(p[item.field] || '—')}</td>`).join('');
+    const extraDimensionCells = extraDimensions.map(item => { const raw = Number(p[item.field]); const divisor = Number(item.divisor) > 0 ? Number(item.divisor) : 1; const value = p[item.field] && Number.isFinite(raw) ? String(raw / divisor) : (p[item.field] || '—'); return `<td>${esc(value)}</td>`; }).join('');
     html += `<tr id="${anchor}"${hiddenStyle}>
       <td class="product-thumb-cell">${imageHtml}</td>
       <td>${nameHtml}</td>${options.hidePrimaryDimension ? '' : `<td>${length}</td>`}${hasSecondDimension ? `<td>${width}</td>` : ''}${extraDimensionCells}${stepsCell}<td>${weight}</td>
