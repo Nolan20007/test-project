@@ -358,7 +358,7 @@ function buildTable(products, enableCollapse, dimensionHeaders, options = {}) {
   const extraDimensions = Array.isArray(options.extraDimensions) ? options.extraDimensions : [];
   const dimensionHeaderHtml = headers.map(header => '<th>' + esc(header) + '</th>').join('') + extraDimensions.map(item => '<th>' + esc(item.label) + '</th>').join('');
   let html = `<table class="nomenclature-table${options.compactTable ? ' nomenclature-table--compact' : ''}"><thead><tr>
-    <th>Фото</th><th>Изделие</th>${options.hidePrimaryDimension ? '' : dimensionHeaderHtml}${hasStepCount ? '<th>Ступени, шт</th>' : ''}
+    <th>Фото</th><th>Изделие</th>${options.hidePrimaryDimension ? extraDimensions.map(item => '<th>' + esc(item.label) + '</th>').join('') : dimensionHeaderHtml}${hasStepCount ? '<th>Ступени, шт</th>' : ''}
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasAvailability ? '<th>Наличие</th>' : ''}${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
