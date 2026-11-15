@@ -27,7 +27,7 @@
   "productNameTemplate": "Пожарная стремянка {model}, высота {lengthCm} см",
   "headerTitleTemplate": "Пожарная стремянка {model} — серия 1.450.3-7.94 ({lengthCm} см)",
   "breadcrumbNameTemplate": "Стремянка {model}",
-  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "skuLineTemplate": "Артикул: {displayId} | Длина: {lengthMm} мм",
   "stockText": "✓ В наличии на складе",
   "priceDisplayTemplate": "от {priceFormatted} ₽",
   "cartItemNameTemplate": "Пожарная стремянка {model} по серии 1.450.3-7.94, длина {lengthMm} мм",
