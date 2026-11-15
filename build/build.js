@@ -139,7 +139,7 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  { html: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/lgv-products.csv', dimensionHeaders: ['Длина ступени, см', 'Ширина, см'] }] },
+  { html: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/lgv-products.csv', dimensionHeaders: ['Длина ступени, см'], hideAvailability: true, sortByAngle: true }] },
   { html: 'ograzhdenie-osg-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/osg-products.csv' }] },
   { html: 'nts-62-91-111a.html', tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] }] },
@@ -342,20 +342,22 @@ function replacePrices(html) {
   return { html: result, replaced };
 }
 
-function buildTable(products, enableCollapse, dimensionHeaders) {
+function buildTable(products, enableCollapse, dimensionHeaders, options = {}) {
   if (!products.length) return '<div class="loading">Нет данных о продукции</div>';
 
   const total = products.length;
   const needCollapse = enableCollapse && total > COLLAPSE_THRESHOLD;
 
   const hasPricedProducts = products.some(p => Number(p.price) > 0);
-  const hasAvailability = products.some(p => String(p.available || '').trim());
+  const hasAvailability = !options.hideAvailability && products.some(p => String(p.available || '').trim());
   const hasStepCount = products.some(p => String(p.step_count || '').trim() !== '');
-  const headers = Array.isArray(dimensionHeaders) && dimensionHeaders.length === 2
+  const headers = Array.isArray(dimensionHeaders) && dimensionHeaders.length
     ? dimensionHeaders
     : ['Длина, см', 'Ширина, см'];
+  const hasSecondDimension = headers.length > 1;
+  const dimensionHeaderHtml = headers.map(header => '<th>' + esc(header) + '</th>').join('');
   let html = `<table class="nomenclature-table"><thead><tr>
-    <th>Фото</th><th>Изделие</th><th>${esc(headers[0])}</th><th>${esc(headers[1])}</th>${hasStepCount ? '<th>Ступени, шт</th>' : ''}
+    <th>Фото</th><th>Изделие</th>${dimensionHeaderHtml}${hasStepCount ? '<th>Ступени, шт</th>' : ''}
     <th>Масса, кг</th><th>Цена</th><th>ед. изм.</th>${hasAvailability ? '<th>Наличие</th>' : ''}${hasPricedProducts ? '<th>Количество</th><th>Корзина</th>' : ''}</tr></thead><tbody>`;
 
   products.forEach((p, idx) => {
@@ -391,7 +393,7 @@ function buildTable(products, enableCollapse, dimensionHeaders) {
     const stepsCell = hasStepCount ? `<td>${esc(p.step_count || '—')}</td>` : '';
     html += `<tr id="${anchor}"${hiddenStyle}>
       <td class="product-thumb-cell">${imageHtml}</td>
-      <td>${nameHtml}</td><td>${length}</td><td>${width}</td>${stepsCell}<td>${weight}</td>
+      <td>${nameHtml}</td><td>${length}</td>${hasSecondDimension ? `<td>${width}</td>` : ''}${stepsCell}<td>${weight}</td>
       <td>${priceCell}</td><td>${unit}</td>${hasAvailability ? `<td>${availabilityCell}</td>` : ''}${orderCells}
     </tr>`;
   });
@@ -1415,11 +1417,14 @@ function build() {
       const csvPath = path.resolve(__dirname, '..', t.csv);
       if (!fs.existsSync(csvPath)) { console.warn(`  ⚠ Нет CSV: ${t.csv}`); return; }
       const csv = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
-      const products = parseCSV(csv);
+      let products = parseCSV(csv);
+      if (t.sortByAngle) {
+        products = products.slice().sort((a, b) => Number(a.angle) - Number(b.angle) || Number(a.height) - Number(b.height) || String(a.id).localeCompare(String(b.id), 'ru'));
+      }
 
       if (!isPriceList) allProducts.push(...products);
 
-      const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList, t.dimensionHeaders));
+      const newHtml = replaceContainer(html, t.id, buildTable(products, isPriceList, t.dimensionHeaders, t));
       if (newHtml !== html) {
         html = newHtml; changedThisPage = true;
         console.log(`  ✅ ${page.html} → #${t.id} (${products.length} строк)`);
