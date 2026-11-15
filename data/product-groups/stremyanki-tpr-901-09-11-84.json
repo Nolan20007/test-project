@@ -41,7 +41,7 @@
   ],
   "groupContentTemplate": "templates/group-content/stremyanki-tpr-901-09-11-84.html",
   "productNameTemplate": "Стремянка {model} для колодцев, {lengthCm} см",
-  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "skuLineTemplate": "Артикул: {displayId} | Длина: {lengthMm} мм",
   "cartItemNameTemplate": "Стремянка {model} по ТПР 901-09-11.84, длина {lengthMm} мм",
   "cartLengthUnit": "cm",
   "buyButtonLabel": "Добавить в корзину",
