@@ -481,6 +481,8 @@
             display: table;
             width: max-content;
             max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             table-layout: auto;
         }
         .nomenclature-table.nomenclature-table--compact th,
@@ -805,7 +807,12 @@
     <div class="content-grid">
         <div class="image-section">
             <div id="mainImageWrapper" class="main-image-wrapper" data-current-slide="0">
-                <img id="mainImage" src="images/default-product.svg" alt="Лестница ЛГВ серии 1.450.3-7.94" class="main-image">
+                <img id="mainImage" src="images/lvg/vid-1.png" alt="Лестница ЛГВ серии 1.450.3-7.94 — общий вид" class="main-image">
+                <div class="image-toggle" aria-label="Выбор изображения">
+                    <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage('images/lvg/vid-1.png', '', 0)">Общий вид</button>
+                    <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/lvg/foto-1.png', '', 1)">Фото 1</button>
+                    <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage('images/lvg/foto-2.png', '', 2)">Фото 2</button>
+                </div>
             </div>
         </div>
 
@@ -1263,10 +1270,18 @@ function copyEmailToClipboard(btn) {
     <div class="modal-content" onclick="event.stopPropagation()">
         <h3 id="modalTitle" style="text-align: center; color: white; background-color: var(--primary-color); padding: 10px 0; margin: 0;">Просмотр изображений</h3>
         <div class="gallery-container" id="galleryContainer">
-            <div class="gallery-item"><img src="images/default-product.svg" alt="Лестница ЛГВ серии 1.450.3-7.94"></div>
+            <div class="gallery-item"><img src="images/lvg/vid-1.png" alt="Лестница ЛГВ — общий вид" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="images/lvg/foto-1.png" alt="Лестница ЛГВ — фотография 1" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="images/lvg/foto-2.png" alt="Лестница ЛГВ — фотография 2" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="images/lvg/album-1.png" alt="Чертёжный альбом ЛГВ — лист 1" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="images/lvg/album-2.png" alt="Чертёжный альбом ЛГВ — лист 2" loading="lazy" decoding="async"></div>
         </div>
         <div class="modal-nav" id="modalNav">
-            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Вид изделия</button>
+            <button data-slide="0" onclick="scrollToSlide(0)" class="active">Общий вид</button>
+            <button data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
+            <button data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
+            <button data-slide="3" onclick="scrollToSlide(3)">Альбом 1</button>
+            <button data-slide="4" onclick="scrollToSlide(4)">Альбом 2</button>
         </div>
     </div>
 </div>
