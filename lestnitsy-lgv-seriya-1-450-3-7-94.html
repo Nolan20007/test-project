@@ -475,27 +475,50 @@
         .nomenclature-table td:nth-child(2) { font-weight: 500; color: var(--primary-color); }
         .nomenclature-table td:nth-child(6) { font-weight: 600; color: var(--primary-color); white-space: nowrap; }
         .nomenclature-table .availability-icon { color: #4CAF50; font-size: 1.2em; }
-        /* ЛГВ: компактная таблица, без растягивания на ширину контейнера. */
-        #nomenclature-container { max-width: 100%; overflow-x: auto; }
+        /* Таблица ЛГВ занимает ширину контейнера; на узких экранах прокручивается внутри него. */
+        #nomenclature-container {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            box-sizing: border-box;
+            -webkit-overflow-scrolling: touch;
+        }
         .nomenclature-table.nomenclature-table--compact {
             display: table;
-            width: max-content;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            min-width: 1080px;
+            max-width: none;
+            margin: 20px 0 0;
             table-layout: auto;
         }
         .nomenclature-table.nomenclature-table--compact th,
         .nomenclature-table.nomenclature-table--compact td { white-space: nowrap; }
-        /* В таблице ЛГВ пятая колонка — цена, шестая — единица измерения. */
-        .nomenclature-table.nomenclature-table--compact td:nth-child(5) {
+        .nomenclature-table.nomenclature-table--compact th:nth-child(2),
+        .nomenclature-table.nomenclature-table--compact td:nth-child(2) {
+            min-width: 260px;
+            white-space: normal;
+            text-align: left;
+        }
+        .nomenclature-table.nomenclature-table--compact th:first-child,
+        .nomenclature-table.nomenclature-table--compact td:first-child { min-width: 68px; }
+        .nomenclature-table.nomenclature-table--compact th:nth-child(8),
+        .nomenclature-table.nomenclature-table--compact td:nth-child(8) { min-width: 126px; }
+        .nomenclature-table.nomenclature-table--compact th:last-child,
+        .nomenclature-table.nomenclature-table--compact td:last-child { min-width: 112px; }
+        /* В таблице ЛГВ шестая колонка — цена, седьмая — единица измерения. */
+        .nomenclature-table.nomenclature-table--compact td:nth-child(6) {
             font-weight: 600;
             color: var(--primary-color);
         }
-        .nomenclature-table.nomenclature-table--compact td:nth-child(6) {
+        .nomenclature-table.nomenclature-table--compact td:nth-child(7) {
             font-weight: 400;
             color: inherit;
         }
+        .angle-filter { width: 100%; justify-content: flex-start; box-sizing: border-box; }
+        .lgv-pricing-title { text-align: left; }
 
         .angle-filter { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 14px; }
         .angle-filter__label { color:var(--dark-color); font-size:14px; font-weight:500; margin-right:4px; }
@@ -551,7 +574,8 @@
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
             .image-section { justify-content: flex-start; }
             .product-details h2 { font-size: 1.3em; }
-            .nomenclature-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
+            .nomenclature-table { font-size: 12px; }
+            .nomenclature-table.nomenclature-table--compact { display: table; width: 100%; min-width: 1080px; }
             .nomenclature-table th, .nomenclature-table td { padding: 6px 4px; font-size: 11px; }
             .characteristics-list li { grid-template-columns: 15px 1fr; gap: 8px; }
             .characteristics-list li strong { grid-column: 2 / 3; }
@@ -866,9 +890,8 @@
             </details>
         </div>
         </div>
-    </div>
 
-    <h2>Стоимость лестниц ЛГВ</h2>
+    <h2 class="lgv-pricing-title">Стоимость лестниц ЛГВ</h2>
 
     <div class="angle-filter" role="group" aria-label="Выбор угла наклона лестницы">
         <span class="angle-filter__label">Угол наклона:</span>
