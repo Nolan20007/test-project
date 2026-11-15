@@ -275,7 +275,7 @@
                     <textarea id="quoteMessage" placeholder="Что нужно: тип лестниц, длина, количество" rows="3" maxlength="500"></textarea>
 
                     <p class="quote-attach-hint">
-                        <img src="images/icons/paperclip.svg" alt="" width="14" height="14">
+                        <img src="/images/icons/paperclip.svg" alt="" width="14" height="14">
                         <span>Чертёж, фото или ТЗ пришлите на почту
                         <a href="mailto:sales@stremyanki-dlya-kolodcev.ru" style="color: var(--primary-color); font-weight: 500;">sales@stremyanki-dlya-kolodcev.ru</a></span>
                     </p>
@@ -350,7 +350,7 @@
         preview.innerHTML = `
             <div class="quote-cart-preview__header">
                 <h4 class="quote-cart-preview__title">Товары из корзины</h4>
-                <button type="button" class="quote-cart-preview__clear" id="quoteCartClear"><img src="images/icons/broom.svg" alt="" width="12" height="12"> Очистить</button>
+                <button type="button" class="quote-cart-preview__clear" id="quoteCartClear"><img src="/images/icons/broom.svg" alt="" width="12" height="12"> Очистить</button>
             </div>
             ${listHtml}
             <div class="quote-cart-preview__total">
