@@ -189,7 +189,7 @@ const FEED_SOURCES = [
   { csv: 'data/l-3-sk-2201-88-products.csv',  page: 'l-3-sk-2201-88.html',  bigImage: 'images/l-3-sk-2201-88/vid-1.png', typePrefix: 'Лестница Л-3 СК 2201-88-36' },
   { csv: 'data/l-19-products.csv',            page: 'l-19.html',            bigImage: 'images/l-19/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
-  { csv: 'data/lgv-products.csv',             page: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', bigImage: 'images/default-product.svg', typePrefix: 'Лестница ЛГВ серии 1.450.3-7.94' },
+  { csv: 'data/lgv-products.csv',             page: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', bigImage: 'images/lgv/vid-search.png', typePrefix: 'Лестница ЛГВ серии 1.450.3-7.94' },
   { csv: 'data/lestnica-ts-50-products.csv',              page: 'lestnicy-teplovyh-setej-ts.html', bigImage: 'images/lestnicy-teplovyh-setej-ts/vid-1.png', typePrefix: 'Лестница тепловых сетей ТС' },
   { csv: 'data/lestnica-ts-63-products.csv',           page: 'lestnicy-teplovyh-setej-ts.html', bigImage: 'images/lestnicy-teplovyh-setej-ts/vid-1.png', typePrefix: 'Лестница тепловых сетей ТС' },
   { csv: 'data/vdl-products-22.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
