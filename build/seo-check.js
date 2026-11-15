@@ -168,14 +168,19 @@ function assertCsvProducts() {
       assert(Number.isFinite(Number(row.weight)) && Number(row.weight) > 0, csvFile + '/' + row.id + ': invalid CSV weight');
       const isConnector = csvFile === 'data/soedinitelnye-elementy-products.csv';
       const isSkoby = csvFile === 'data/skoby-dlya-kolodcev-products.csv';
-      const firstLabel = String(row.dimension1_label || (isConnector ? 'Ширина' : 'Длина'));
+      const isLgv = csvFile === 'data/lgv-products.csv';
+      const firstLabel = String(row.dimension1_label || (isConnector ? 'Ширина' : isLgv ? 'Высота изделия' : 'Длина'));
       const secondLabel = String(row.dimension2_label || (isConnector ? 'Высота' : 'Ширина'));
       const isL1L2 = csvFile === 'data/l-1-l-2-sk-2201-88-35-products.csv';
-      const firstDimensionMatches = isL1L2
-        ? object.description.includes('Габариты ' + Math.round(lengthCm * 10) + ' × ' + widthMm + ' мм')
-        : (isConnector || isSkoby)
-          ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
-          : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
+      const firstDimensionMatches = isLgv
+        ? object.description.includes('высота ' + Number(row.height) + ' мм') &&
+          object.description.includes('длина ступени ' + lengthCm + ' см') &&
+          object.description.includes('Угол наклона ' + Number(row.angle) + '°')
+        : isL1L2
+          ? object.description.includes('Габариты ' + Math.round(lengthCm * 10) + ' × ' + widthMm + ' мм')
+          : (isConnector || isSkoby)
+            ? object.description.includes(firstLabel + ' ' + lengthCm + ' см')
+            : object.description.includes('Длина ' + lengthCm + ' см') || object.description.includes('Высота ' + lengthCm + ' см');
       assert(firstDimensionMatches, csvFile + '/' + row.id + ': first dimension label/value differs from CSV');
       if (isL1L2) {
         assert(object.description.includes('Габариты ' + Math.round(lengthCm * 10) + ' × ' + widthMm + ' мм'), csvFile + '/' + row.id + ': combined dimensions differ from CSV');
@@ -185,6 +190,11 @@ function assertCsvProducts() {
       if (isSkoby || isConnector) {
         assert(html.includes('<td>' + firstLabel + '</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible first dimension differs from CSV');
         assert(html.includes('<td>' + secondLabel + '</td><td>' + row.width + ' см</td>'), csvFile + '/' + row.id + ': visible second dimension differs from CSV');
+      }
+      if (isLgv) {
+        assert(html.includes('<td>Высота изделия</td><td>' + row.height + ' мм (' + (Number(row.height) / 10) + ' см)</td>'), csvFile + '/' + row.id + ': visible product height differs from CSV');
+        assert(html.includes('<td>Длина ступени</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible step length differs from CSV');
+        assert(html.includes('<td>Угол наклона</td><td>' + row.angle + '°</td>'), csvFile + '/' + row.id + ': visible angle differs from CSV');
       }
       assert(object.description.includes('масса ' + weight + ' кг'), csvFile + '/' + row.id + ': JSON-LD weight differs from CSV');
 
