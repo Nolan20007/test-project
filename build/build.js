@@ -181,6 +181,7 @@ const PAGES = [
   ]},
 ];
 
+// The LGV catalog participates in the same generated product feeds as the SSG catalog.
 const FEED_SOURCES = [
   { csv: 'data/ss1-products.csv',             page: 'ss1.html',             bigImage: 'images/ss1/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
   { csv: 'data/ss2-products.csv',             page: 'ss2.html',             bigImage: 'images/ss2/vid-1.png',  typePrefix: 'Стремянка, лестница для колодцев' },
