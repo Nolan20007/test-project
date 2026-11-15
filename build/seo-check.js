@@ -195,6 +195,10 @@ function assertCsvProducts() {
         assert(html.includes('<td>Высота изделия</td><td>' + row.height + ' мм (' + (Number(row.height) / 10) + ' см)</td>'), csvFile + '/' + row.id + ': visible product height differs from CSV');
         assert(html.includes('<td>Длина ступени</td><td>' + row.length + ' см</td>'), csvFile + '/' + row.id + ': visible step length differs from CSV');
         assert(html.includes('<td>Угол наклона</td><td>' + row.angle + '°</td>'), csvFile + '/' + row.id + ': visible angle differs from CSV');
+        const expectedCartLengthCm = Number(row.height) / 10;
+        const expectedCartCall = ',' + Number(row.price) + ',' + expectedCartLengthCm + ',' + Number(row.weight) + ')';
+        assert(html.includes(expectedCartCall), csvFile + '/' + row.id + ': cart must receive product height in centimetres');
+        assert(html.includes('Добавить в корзину'), csvFile + '/' + row.id + ': expected standard product-page cart button');
       }
       assert(object.description.includes('масса ' + weight + ' кг'), csvFile + '/' + row.id + ': JSON-LD weight differs from CSV');
 
