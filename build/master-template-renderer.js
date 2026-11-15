@@ -46,6 +46,7 @@ function getProductModel(row, groupContent = '') {
     }
   }
   const rowId = String(row && row.id || '');
+  if (/^LGV-/i.test(rowId)) return rowId.replace(/^LGV-/i, 'ЛГВ ');
   const klMatch = rowId.match(/^KL-(\d+(?:\.\d+)?)(?:-28)?$/i);
   if (klMatch) return 'КЛ-' + klMatch[1];
   const nameMatch = String(row && row.name || '').match(/СГ-\d+|С\d+|Л-\d+/u);
@@ -58,7 +59,12 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   if (!row || !row.id || !row.name) throw new Error('Product row must contain id and name.');
   const widthCm = Number(row.width);
   const widthMm = Math.round(widthCm * 10);
-  const lengthCm = Number(row.length);
+  const lengthSource = group.productLengthField ? row[group.productLengthField] : row.length;
+  const lengthDivisor = Number(group.productLengthDivisor) > 0 ? Number(group.productLengthDivisor) : 1;
+  const lengthCm = Number(lengthSource) / lengthDivisor;
+  const stepLengthCm = Number(row[group.stepLengthField || 'length']);
+  const angle = Number(row[group.angleField || 'angle']);
+  const heightMm = Number(row[group.heightField || 'height']);
   const weight = Number(String(row.weight).replace(',', '.'));
   const price = Number(String(row.price).replace(/[^\d.,-]/g, '').replace(',', '.'));
   const stepCount = Number(row.step_count);
@@ -72,7 +78,7 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   const project = productProject(row, group);
   const model = getProductModel(row, groupContent);
   const values = {
-    id: String(row.id), displayId: group.id === 'lestnica-podvesnaya-l-16' ? String(row.id).replace(/^L-16-/i, 'Л-16-') : group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : /^kl-1-(?:25|28)$/.test(group.id) ? String(row.id).replace(/^KL-/i, 'КЛ-').replace(/-28$/i, '') : group.id === 'lestnicy-nts-62-91-111' ? String(row.id).replace(/^NTSS-/i, 'НТСС-').replace(/-S(\d+)$/i, '-С$1') : group.id === 'lestnicy-nts-62-91-111a' ? String(model) : group.id === 'lestnicy-nts-62-91-111b' ? String(row.id).replace(/^NTSB-L/i, 'Л-') : /^lestnicy-teplovyh-setej-ts-(?:50|63)$/.test(group.id) ? String(row.id).replace(/^TS-(?:50|63)-/i, 'ТС-') : group.id === 'soedinitelnye-elementy' ? String(row.id).replace(/^MS-/i, 'МС-').replace(/-902$/i, '') : group.id === 'skoby-dlya-kolodcev' ? String(row.id).replace(/^GS-/i, 'ГС-').replace(/^MN-/i, 'МН-').replace(/^SK-/i, 'СК-') : /^vl-2-l-19-(?:22|25|28)$/.test(group.id) ? String(row.id).replace(/^VL-/i, 'ВЛ-') : group.id === 'l-19' ? String(row.id).replace(/^L-/i, 'Л-') : group.id === 'pozharnye-stremyanki-seriya-14503-794' ? String(row.id).replace(/^SG-/i, 'СГ-') : group.id === 'ograzhdenie-osg-seriya-14503-794' ? String(row.id).replace(/^OSG-/i, 'ОСГ-') : /^stremyanki-tpr-90[12]-/.test(group.id) ? String(row.id).replace(/^C/i, 'С') : String(row.id), model, skuModel: group.id === 'lestnicy-nts-62-91-111' ? String(model) : model, lengthCm, lengthMm: Math.round(lengthCm * 10),
+    id: String(row.id), displayId: group.id === 'lestnicy-lgv-seriya-1-450-3-7-94' ? String(row.id).replace(/^LGV-/i, 'ЛГВ ') : group.id === 'lestnica-podvesnaya-l-16' ? String(row.id).replace(/^L-16-/i, 'Л-16-') : group.id === 'l-1-l-2-sk-2201-88-35' ? String(row.id).replace(/^L-/i, 'Л-') : /^kl-1-(?:25|28)$/.test(group.id) ? String(row.id).replace(/^KL-/i, 'КЛ-').replace(/-28$/i, '') : group.id === 'lestnicy-nts-62-91-111' ? String(row.id).replace(/^NTSS-/i, 'НТСС-').replace(/-S(\d+)$/i, '-С$1') : group.id === 'lestnicy-nts-62-91-111a' ? String(model) : group.id === 'lestnicy-nts-62-91-111b' ? String(row.id).replace(/^NTSB-L/i, 'Л-') : /^lestnicy-teplovyh-setej-ts-(?:50|63)$/.test(group.id) ? String(row.id).replace(/^TS-(?:50|63)-/i, 'ТС-') : group.id === 'soedinitelnye-elementy' ? String(row.id).replace(/^MS-/i, 'МС-').replace(/-902$/i, '') : group.id === 'skoby-dlya-kolodcev' ? String(row.id).replace(/^GS-/i, 'ГС-').replace(/^MN-/i, 'МН-').replace(/^SK-/i, 'СК-') : /^vl-2-l-19-(?:22|25|28)$/.test(group.id) ? String(row.id).replace(/^VL-/i, 'ВЛ-') : group.id === 'l-19' ? String(row.id).replace(/^L-/i, 'Л-') : group.id === 'pozharnye-stremyanki-seriya-14503-794' ? String(row.id).replace(/^SG-/i, 'СГ-') : group.id === 'ograzhdenie-osg-seriya-14503-794' ? String(row.id).replace(/^OSG-/i, 'ОСГ-') : /^stremyanki-tpr-90[12]-/.test(group.id) ? String(row.id).replace(/^C/i, 'С') : String(row.id), model, skuModel: group.id === 'lestnicy-nts-62-91-111' ? String(model) : model, lengthCm, lengthMm: Math.round(lengthCm * 10), stepLengthCm, angle, heightMm,
     widthCm, widthMm, weight, weightFormatted: weight.toFixed(2).replace('.', ','),
     price, priceFormatted: price > 0 ? price.toLocaleString('ru-RU') : 'по запросу',
     stepCount: hasStepCount ? stepCount : '',
@@ -213,23 +219,34 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     ? readGroupHtmlRawField(groupContent, 'otherSizesLinkTextTemplate')
     : group.otherSizesLinkTextTemplate;
   const otherSizesLabel = group.otherSizesLabel || 'Л-16';
+  const getProductLengthCm = (item, variantGroup) => {
+    const source = variantGroup.productLengthField ? item[variantGroup.productLengthField] : item.length;
+    const divisor = Number(variantGroup.productLengthDivisor) > 0 ? Number(variantGroup.productLengthDivisor) : 1;
+    return Number(source) / divisor;
+  };
+  const sortProductRows = (items, variantGroup) => items.slice().sort((a, b) =>
+    (variantGroup.otherSizesSortByAngle ? Number(a[variantGroup.angleField || 'angle']) - Number(b[variantGroup.angleField || 'angle']) : 0) ||
+    getProductLengthCm(a, variantGroup) - getProductLengthCm(b, variantGroup) || String(a.id).localeCompare(String(b.id), 'ru')
+  );
   const renderSizeLinks = (variantGroup, variantRows, currentRow, panelIndex) => {
-    const lengthVaries = new Set(variantRows.map(item => Number(item.length))).size > 1;
+    const lengthVaries = new Set(variantRows.map(item => getProductLengthCm(item, variantGroup))).size > 1;
     const widthVaries = new Set(variantRows.map(item => Number(item.width))).size > 1;
-    const allRows = variantRows.filter(item =>
+    const allRows = sortProductRows(variantRows.filter(item =>
       !(variantGroup.id === group.id && item.id === currentRow.id) &&
       (!variantGroup.otherSizesMatchProject || productProject(item, variantGroup) === project)
-    ).slice().sort((a, b) => Number(a.length) - Number(b.length) || String(a.id).localeCompare(String(b.id)));
+    ), variantGroup);
     const orderedRows = allRows;
     const renderLink = item => {
-      const itemLength = Number(item.length);
+      const itemLength = getProductLengthCm(item, variantGroup);
       const itemWidth = Number(item.width);
       let dimensions;
       if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
       else if (widthVaries) dimensions = itemWidth + ' см';
       else dimensions = itemLength + ' см';
       const itemId = String(item.id);
-      const model = variantGroup.id === 'ograzhdenie-osg-seriya-14503-794'
+      const model = variantGroup.id === 'lestnicy-lgv-seriya-1-450-3-7-94'
+        ? itemId.replace(/^LGV-/i, 'ЛГВ ')
+        : variantGroup.id === 'ograzhdenie-osg-seriya-14503-794'
         ? itemId.replace(/^OSG-/i, 'ОСГ-')
         : variantGroup.id === 'pozharnye-stremyanki-seriya-14503-794'
           ? itemId.replace(/^SG-/i, 'СГ-')
@@ -243,6 +260,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
         weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
         mountingHeightMm: item.mounting_height_mm || '',
         mountingOffsetMm: item.mounting_offset_mm || '',
+        stepLengthCm: Number(item[variantGroup.stepLengthField || 'length']),
+        angle: Number(item[variantGroup.angleField || 'angle']),
+        heightMm: Number(item[variantGroup.heightField || 'height']),
         project
       };
       const linkTemplate = variantGroup.id === group.id
@@ -298,26 +318,28 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
   } else {
     let otherSizeRows = rows.filter(item => item.id !== row.id);
     if (Number.isInteger(group.otherSizesLimit) && group.otherSizesLimit > 0) {
-      const currentLength = Number(row.length);
-      otherSizeRows = otherSizeRows.slice()
-        .sort((a, b) => Math.abs(Number(a.length) - currentLength) - Math.abs(Number(b.length) - currentLength))
-        .slice(0, group.otherSizesLimit)
-        .sort((a, b) => Number(a.length) - Number(b.length));
+      const currentLength = getProductLengthCm(row, group);
+      otherSizeRows = sortProductRows(otherSizeRows, group)
+        .sort((a, b) => Math.abs(getProductLengthCm(a, group) - currentLength) - Math.abs(getProductLengthCm(b, group) - currentLength))
+        .slice(0, group.otherSizesLimit);
+
     }
-    const lengthVaries = new Set(rows.map(item => Number(item.length))).size > 1;
+    const lengthVaries = new Set(rows.map(item => getProductLengthCm(item, group))).size > 1;
     const widthVaries = new Set(rows.map(item => Number(item.width))).size > 1;
     otherSizesHtml = '<section class="other-sizes" aria-label="' + escapeHtml(otherSizesTitle) + '"><div class="other-sizes__heading"><h2 class="other-sizes__title">' +
       escapeHtml(otherSizesTitle) + '</h2>' +
       (otherSizeRows.length > 2 ? '<button type="button" class="other-sizes__collapse-toggle" aria-label="Показать все размеры" data-show-all-label="Показать все размеры" data-collapse-label="Свернуть список размеров" aria-expanded="false" data-icon-toggle="true" onclick="toggleOtherSizes(this)"><span class="other-sizes__collapse-label">Показать все</span><span class="other-sizes__collapse-icon" aria-hidden="true">⌄</span></button>' : '') +
       '</div><div class="other-sizes__variant-panel"><div class="other-sizes__links other-sizes__links--collapsed">' + otherSizeRows.map(item => {
-        const itemLength = Number(item.length);
+        const itemLength = getProductLengthCm(item, group);
         const itemWidth = Number(item.width);
         let dimensions;
         if (lengthVaries && widthVaries) dimensions = itemLength + ' × ' + itemWidth + ' см';
         else if (widthVaries) dimensions = itemWidth + ' см';
         else dimensions = itemLength + ' см';
         const itemId = String(item.id);
-        const model = group.id === 'ograzhdenie-osg-seriya-14503-794'
+        const model = group.id === 'lestnicy-lgv-seriya-1-450-3-7-94'
+          ? itemId.replace(/^LGV-/i, 'ЛГВ ')
+          : group.id === 'ograzhdenie-osg-seriya-14503-794'
           ? itemId.replace(/^OSG-/i, 'ОСГ-')
           : group.id === 'pozharnye-stremyanki-seriya-14503-794'
             ? itemId.replace(/^SG-/i, 'СГ-')
@@ -331,6 +353,9 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
           weightFormatted: Number(String(item.weight).replace(',', '.')).toFixed(2).replace('.', ','),
           mountingHeightMm: item.mounting_height_mm || '',
           mountingOffsetMm: item.mounting_offset_mm || '',
+          stepLengthCm: Number(item[group.stepLengthField || 'length']),
+          angle: Number(item[group.angleField || 'angle']),
+          heightMm: Number(item[group.heightField || 'height']),
           project
         };
         const linkText = formatProductTemplate(otherSizesLinkTextTemplate || (model + ' — ' + itemLength + ' см'), linkValues);
