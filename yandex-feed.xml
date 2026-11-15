@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-15 12:19">
+<yml_catalog date="2026-11-15 12:45">
   <shop>
     <name>Лестницы и стремянки для колодцев</name>
     <company>ИП Гневашева Кристина Дмитриевна</company>
@@ -634,6 +634,279 @@
       <model>SG-82</model>
       <weight>148</weight>
       <description>Пожарная стремянка серия 1.450.3-7.94 СГ-82. Длина 820 см, ширина 70 см, масса 148 кг.</description>
+    </offer>
+    <offer id="LGV-60-6.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-6.7</url>
+      <price>7078</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-6.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-6.7</model>
+      <weight>25.9</weight>
+      <description>Лестница ЛГВ 60-6.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 25.9 кг.</description>
+    </offer>
+    <offer id="LGV-45-6.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-6.7</url>
+      <price>9306</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-6.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-6.7</model>
+      <weight>33.9</weight>
+      <description>Лестница ЛГВ 45-6.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 33.9 кг.</description>
+    </offer>
+    <offer id="LGV-45-6.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-6.9</url>
+      <price>9875</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-6.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-6.9</model>
+      <weight>36.1</weight>
+      <description>Лестница ЛГВ 45-6.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 36.1 кг.</description>
+    </offer>
+    <offer id="LGV-60-12.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-12.7</url>
+      <price>13934</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-12.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-12.7</model>
+      <weight>50.9</weight>
+      <description>Лестница ЛГВ 60-12.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 50.9 кг.</description>
+    </offer>
+    <offer id="LGV-45-12.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-12.7</url>
+      <price>18240</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-12.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-12.7</model>
+      <weight>66.6</weight>
+      <description>Лестница ЛГВ 45-12.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 66.6 кг.</description>
+    </offer>
+    <offer id="LGV-45-12.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-12.9</url>
+      <price>19478</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-12.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-12.9</model>
+      <weight>71.2</weight>
+      <description>Лестница ЛГВ 45-12.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 71.2 кг.</description>
+    </offer>
+    <offer id="LGV-60-18.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-18.7</url>
+      <price>20814</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-18.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-18.7</model>
+      <weight>76.1</weight>
+      <description>Лестница ЛГВ 60-18.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 76.1 кг.</description>
+    </offer>
+    <offer id="LGV-45-18.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-18.7</url>
+      <price>27051</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-18.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-18.7</model>
+      <weight>98.9</weight>
+      <description>Лестница ЛГВ 45-18.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 98.9 кг.</description>
+    </offer>
+    <offer id="LGV-60-24.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-24.7</url>
+      <price>27522</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-24.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-24.7</model>
+      <weight>100.5</weight>
+      <description>Лестница ЛГВ 60-24.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 100.5 кг.</description>
+    </offer>
+    <offer id="LGV-45-18.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-18.9</url>
+      <price>28982</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-18.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-18.9</model>
+      <weight>105.9</weight>
+      <description>Лестница ЛГВ 45-18.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 105.9 кг.</description>
+    </offer>
+    <offer id="LGV-60-30.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-30.7</url>
+      <price>34328</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-30.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-30.7</model>
+      <weight>125.5</weight>
+      <description>Лестница ЛГВ 60-30.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 125.5 кг.</description>
+    </offer>
+    <offer id="LGV-45-24.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-24.7</url>
+      <price>36011</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-24.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-24.7</model>
+      <weight>131.6</weight>
+      <description>Лестница ЛГВ 45-24.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 131.6 кг.</description>
+    </offer>
+    <offer id="LGV-45-24.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-24.9</url>
+      <price>38585</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-24.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-24.9</model>
+      <weight>141</weight>
+      <description>Лестница ЛГВ 45-24.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 141 кг.</description>
+    </offer>
+    <offer id="LGV-60-36.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-36.7</url>
+      <price>41060</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-36.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-36.7</model>
+      <weight>150.1</weight>
+      <description>Лестница ЛГВ 60-36.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 150.1 кг.</description>
+    </offer>
+    <offer id="LGV-45-30.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-30.7</url>
+      <price>44797</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-30.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-30.7</model>
+      <weight>163.7</weight>
+      <description>Лестница ЛГВ 45-30.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 163.7 кг.</description>
+    </offer>
+    <offer id="LGV-60-42.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-42.7</url>
+      <price>47916</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 60-42.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-60-42.7</model>
+      <weight>175.1</weight>
+      <description>Лестница ЛГВ 60-42.7 серия 1.450.3-7.94. Длина 19 см, ширина 70 см, масса 175.1 кг.</description>
+    </offer>
+    <offer id="LGV-45-30.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-30.9</url>
+      <price>48015</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-30.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-30.9</model>
+      <weight>175.5</weight>
+      <description>Лестница ЛГВ 45-30.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 175.5 кг.</description>
+    </offer>
+    <offer id="LGV-45-36.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-36.7</url>
+      <price>53806</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-36.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-36.7</model>
+      <weight>196.6</weight>
+      <description>Лестница ЛГВ 45-36.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 196.6 кг.</description>
+    </offer>
+    <offer id="LGV-45-36.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-36.9</url>
+      <price>57667</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-36.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-36.9</model>
+      <weight>210.8</weight>
+      <description>Лестница ЛГВ 45-36.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 210.8 кг.</description>
+    </offer>
+    <offer id="LGV-45-42.7" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-42.7</url>
+      <price>62617</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-42.7 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-42.7</model>
+      <weight>228.9</weight>
+      <description>Лестница ЛГВ 45-42.7 серия 1.450.3-7.94. Длина 23 см, ширина 70 см, масса 228.9 кг.</description>
+    </offer>
+    <offer id="LGV-45-42.9" available="true">
+      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-42.9</url>
+      <price>67146</price>
+      <currencyId>RUB</currencyId>
+      <categoryId>1</categoryId>
+      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
+      <name>Лестница ЛГВ 45-42.9 серия 1.450.3-7.94</name>
+      <vendor>Лестницы и стремянки для колодцев</vendor>
+      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
+      <model>LGV-45-42.9</model>
+      <weight>245.5</weight>
+      <description>Лестница ЛГВ 45-42.9 серия 1.450.3-7.94. Длина 23 см, ширина 90 см, масса 245.5 кг.</description>
     </offer>
     <offer id="TS-50-1" available="true">
       <url>https://stremyanki-dlya-kolodcev.ru/lestnicy-teplovyh-setej-ts.html#item-TS-50-1</url>
@@ -11164,279 +11437,6 @@
       <model>NTSB-L4000</model>
       <weight>137.99</weight>
       <description>Лестница с перилами Л-4000 по НТС 62-91-111Б, длина 4000 мм. Длина 400 см, ширина 62.6 см, масса 137.99 кг.</description>
-    </offer>
-    <offer id="LGV-60-6.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-6.7</url>
-      <price>7078</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-6.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-6.7</model>
-      <weight>25.9</weight>
-      <description>Лестница ЛГВ 60-6.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 25.9 кг.</description>
-    </offer>
-    <offer id="LGV-45-6.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-6.7</url>
-      <price>9306</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-6.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-6.7</model>
-      <weight>33.9</weight>
-      <description>Лестница ЛГВ 45-6.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 33.9 кг.</description>
-    </offer>
-    <offer id="LGV-45-6.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-6.9</url>
-      <price>9875</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-6.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-6.9</model>
-      <weight>36.1</weight>
-      <description>Лестница ЛГВ 45-6.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 36.1 кг.</description>
-    </offer>
-    <offer id="LGV-60-12.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-12.7</url>
-      <price>13934</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-12.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-12.7</model>
-      <weight>50.9</weight>
-      <description>Лестница ЛГВ 60-12.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 50.9 кг.</description>
-    </offer>
-    <offer id="LGV-45-12.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-12.7</url>
-      <price>18240</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-12.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-12.7</model>
-      <weight>66.6</weight>
-      <description>Лестница ЛГВ 45-12.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 66.6 кг.</description>
-    </offer>
-    <offer id="LGV-45-12.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-12.9</url>
-      <price>19478</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-12.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-12.9</model>
-      <weight>71.2</weight>
-      <description>Лестница ЛГВ 45-12.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 71.2 кг.</description>
-    </offer>
-    <offer id="LGV-60-18.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-18.7</url>
-      <price>20814</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-18.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-18.7</model>
-      <weight>76.1</weight>
-      <description>Лестница ЛГВ 60-18.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 76.1 кг.</description>
-    </offer>
-    <offer id="LGV-45-18.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-18.7</url>
-      <price>27051</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-18.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-18.7</model>
-      <weight>98.9</weight>
-      <description>Лестница ЛГВ 45-18.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 98.9 кг.</description>
-    </offer>
-    <offer id="LGV-60-24.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-24.7</url>
-      <price>27522</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-24.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-24.7</model>
-      <weight>100.5</weight>
-      <description>Лестница ЛГВ 60-24.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 100.5 кг.</description>
-    </offer>
-    <offer id="LGV-45-18.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-18.9</url>
-      <price>28982</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-18.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-18.9</model>
-      <weight>105.9</weight>
-      <description>Лестница ЛГВ 45-18.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 105.9 кг.</description>
-    </offer>
-    <offer id="LGV-60-30.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-30.7</url>
-      <price>34328</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-30.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-30.7</model>
-      <weight>125.5</weight>
-      <description>Лестница ЛГВ 60-30.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 125.5 кг.</description>
-    </offer>
-    <offer id="LGV-45-24.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-24.7</url>
-      <price>36011</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-24.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-24.7</model>
-      <weight>131.6</weight>
-      <description>Лестница ЛГВ 45-24.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 131.6 кг.</description>
-    </offer>
-    <offer id="LGV-45-24.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-24.9</url>
-      <price>38585</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-24.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-24.9</model>
-      <weight>141</weight>
-      <description>Лестница ЛГВ 45-24.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 141 кг.</description>
-    </offer>
-    <offer id="LGV-60-36.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-36.7</url>
-      <price>41060</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-36.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-36.7</model>
-      <weight>150.1</weight>
-      <description>Лестница ЛГВ 60-36.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 150.1 кг.</description>
-    </offer>
-    <offer id="LGV-45-30.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-30.7</url>
-      <price>44797</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-30.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-30.7</model>
-      <weight>163.7</weight>
-      <description>Лестница ЛГВ 45-30.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 163.7 кг.</description>
-    </offer>
-    <offer id="LGV-60-42.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-60-42.7</url>
-      <price>47916</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 60-42.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-60-42.7</model>
-      <weight>175.1</weight>
-      <description>Лестница ЛГВ 60-42.7 серия 1.450.3-7.94. Длина ступени 19 см, ширина 70 см, масса 175.1 кг.</description>
-    </offer>
-    <offer id="LGV-45-30.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-30.9</url>
-      <price>48015</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-30.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-30.9</model>
-      <weight>175.5</weight>
-      <description>Лестница ЛГВ 45-30.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 175.5 кг.</description>
-    </offer>
-    <offer id="LGV-45-36.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-36.7</url>
-      <price>53806</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-36.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-36.7</model>
-      <weight>196.6</weight>
-      <description>Лестница ЛГВ 45-36.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 196.6 кг.</description>
-    </offer>
-    <offer id="LGV-45-36.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-36.9</url>
-      <price>57667</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-36.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-36.9</model>
-      <weight>210.8</weight>
-      <description>Лестница ЛГВ 45-36.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 210.8 кг.</description>
-    </offer>
-    <offer id="LGV-45-42.7" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-42.7</url>
-      <price>62617</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-42.7 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-42.7</model>
-      <weight>228.9</weight>
-      <description>Лестница ЛГВ 45-42.7 серия 1.450.3-7.94. Длина ступени 23 см, ширина 70 см, масса 228.9 кг.</description>
-    </offer>
-    <offer id="LGV-45-42.9" available="true">
-      <url>https://stremyanki-dlya-kolodcev.ru/lestnitsy-lgv-seriya-1-450-3-7-94.html#item-LGV-45-42.9</url>
-      <price>67146</price>
-      <currencyId>RUB</currencyId>
-      <categoryId>1</categoryId>
-      <picture>https://stremyanki-dlya-kolodcev.ru/images/default-product.svg</picture>
-      <name>Лестница ЛГВ 45-42.9 серия 1.450.3-7.94</name>
-      <vendor>Лестницы и стремянки для колодцев</vendor>
-      <typePrefix>Лестница ЛГВ серии 1.450.3-7.94</typePrefix>
-      <model>LGV-45-42.9</model>
-      <weight>245.5</weight>
-      <description>Лестница ЛГВ 45-42.9 серия 1.450.3-7.94. Длина ступени 23 см, ширина 90 см, масса 245.5 кг.</description>
     </offer>
     </offers>
   </shop>
