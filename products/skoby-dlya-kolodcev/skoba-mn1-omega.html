@@ -95,6 +95,8 @@
         .image-toggle__btn { border: none; background: transparent; padding: 6px 12px; font-size: 12px; font-weight: 500; border-radius: 999px; cursor: pointer; color: #555; transition: all 0.2s; white-space: nowrap; text-align: left; }
         .image-toggle__btn.active { background: var(--primary-color); color: white; }
         .image-toggle__btn:hover:not(.active) { background: #eef2f6; }
+        .image-toggle__btn { text-align: center; }
+        .mp-info h1 { text-align: center; }
         .mp-info h1 { font-size: 22px; color: #222; margin: 0 0 10px 0; line-height: 1.3; }
         .mp-sku { font-size: 13px; color: #888; margin-bottom: 15px; }
         .mp-stock { color: #4CAF50; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 5px; }
@@ -273,7 +275,7 @@
                     <div class="mp-main-img-wrapper" id="mainImageWrapper" onclick="openLightbox(0)">
                         <img id="mainImage" src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-1.webp" alt="Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — общий вид" class="mp-main-img" width="800" height="800" fetchpriority="high" decoding="async">
                         <div class="image-toggle" id="product-gallery-controls">
-                            <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage(0)">Вид 1</button>
+                            <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage(0)">Вид</button>
                             <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(1)">Фото 1</button>
                             <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(2)">Фото 2</button>
                             <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(3)">Чертёж</button>
@@ -509,7 +511,7 @@ function copyEmailToClipboard(btn) {
             <div class="gallery-item"><img src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/foto-2.webp" alt="Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — фото 2" loading="lazy" decoding="async"></div>
             <div class="gallery-item"><img src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/chertezh.webp" alt="Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — чертёж" loading="lazy" decoding="async"></div>
             <div class="gallery-item"><img src="../../images/skoby-dlya-kolodcev/skoba-mn1-omega/album.webp" alt="Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — альбом" loading="lazy" decoding="async"></div></div>
-        <div class="modal-nav" id="lightbox-nav"><button type="button" data-slide="0" onclick="scrollToSlide(0)" class="active">Вид 1</button>
+        <div class="modal-nav" id="lightbox-nav"><button type="button" data-slide="0" onclick="scrollToSlide(0)" class="active">Вид</button>
             <button type="button" data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
             <button type="button" data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
             <button type="button" data-slide="3" onclick="scrollToSlide(3)">Чертёж</button>
@@ -517,7 +519,7 @@ function copyEmailToClipboard(btn) {
     </div>
 </div>
 
-<script type="application/json" id="product-gallery-data">[{"label":"Вид 1","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-1.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — общий вид"},{"label":"Фото 1","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/foto-1.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — фото 1"},{"label":"Фото 2","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/foto-2.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — фото 2"},{"label":"Чертёж","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/chertezh.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — чертёж"},{"label":"Альбом","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/album.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — альбом"}]</script>
+<script type="application/json" id="product-gallery-data">[{"label":"Вид","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/vid-1.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — общий вид"},{"label":"Фото 1","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/foto-1.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — фото 1"},{"label":"Фото 2","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/foto-2.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — фото 2"},{"label":"Чертёж","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/chertezh.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — чертёж"},{"label":"Альбом","src":"../../images/skoby-dlya-kolodcev/skoba-mn1-omega/album.webp","alt":"Скоба ходовая ТПР 901-09-11.84 КЖИ МН-1 (омега-образная) — альбом"}]</script>
 
 <script>function updateOtherSizesOverflow(panel) {
   if (!panel || panel.hidden) return;
