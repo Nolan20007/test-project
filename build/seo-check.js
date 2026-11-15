@@ -251,7 +251,8 @@ function assertTeplovyeSetiProductPages() {
       assert(fs.existsSync(file), csvFile + ': missing generated product page for ' + row.id);
       const html = fs.readFileSync(file, 'utf8');
       assert(html.includes('<h1>' + row.name + '</h1>'), relative + ': missing product heading');
-      assert(html.includes('Артикул: ' + row.id), relative + ': product ID is not visible');
+      const displayId = String(row.id).replace(/^TS-(?:50|63)-/i, 'ТС-');
+      assert(html.includes('Артикул: ' + displayId), relative + ': displayed product article is not visible');
       assert(html.includes('<td>Ширина</td><td>' + expectedWidthMm + ' мм (' + expectedWidthCm + ' см)</td>'), relative + ': width differs from TS series');
       assert(html.includes('Другие размеры'), relative + ': related-size section is missing');
       assert(html.includes('ТС-50') && html.includes('50×50×5 мм'), relative + ': TS-50 execution tab is missing');
