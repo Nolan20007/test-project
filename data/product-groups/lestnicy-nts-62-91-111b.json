@@ -39,7 +39,7 @@
   ],
   "groupContentTemplate": "templates/group-content/lestnicy-nts-62-91-111b.html",
   "productNameTemplate": "{model} по НТС 62-91-111Б, длина {lengthMm} мм",
-  "skuLineTemplate": "Артикул: {id} | Длина: {lengthMm} мм",
+  "skuLineTemplate": "Артикул: {displayId} | Длина: {lengthMm} мм",
   "stockText": "Наличие и срок изготовления уточняйте у производителя",
   "seoTitleTemplate": "{model} по НТС 62-91-111Б, длина {lengthCm} см — купить",
   "seoDescriptionTemplate": "Купить {model} по НТС 62-91-111Б. Длина {lengthCm} см, ширина {widthMm} мм, масса {weightFormatted} кг. Стальная лестница для тепловых камер от производителя.",
