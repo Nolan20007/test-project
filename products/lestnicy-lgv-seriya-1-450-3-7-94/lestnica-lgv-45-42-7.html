@@ -283,8 +283,8 @@
                             <button type="button" class="image-toggle__btn active" onclick="event.stopPropagation(); changeImage(0)">Вид</button>
                             <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(1)">Фото 1</button>
                             <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(2)">Фото 2</button>
-                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(3)">Альбом 1</button>
-                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(4)">Альбом 2</button>
+                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(3)">Альбом</button>
+                            <button type="button" class="image-toggle__btn" onclick="event.stopPropagation(); changeImage(4)">Альбом</button>
                         </div>
                     </div>
                 </div>
@@ -521,8 +521,8 @@ function copyEmailToClipboard(btn) {
         <div class="gallery-container" id="lightbox-gallery"><div class="gallery-item"><img src="../../images/lgv/vid-1.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — общий вид" loading="lazy" decoding="async"></div>
             <div class="gallery-item"><img src="../../images/lgv/foto-1.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — фото 1" loading="lazy" decoding="async"></div>
             <div class="gallery-item"><img src="../../images/lgv/foto-2.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — фото 2" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="../../images/lgv/album-1.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом, лист 1" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="../../images/lgv/album-2.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом, лист 2" loading="lazy" decoding="async"></div></div>
+            <div class="gallery-item"><img src="../../images/lgv/album-1.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="../../images/lgv/album-2.png" alt="Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом" loading="lazy" decoding="async"></div></div>
         <div class="modal-nav" id="lightbox-nav"><button type="button" data-slide="0" onclick="scrollToSlide(0)" class="active">Вид</button>
             <button type="button" data-slide="1" onclick="scrollToSlide(1)">Фото 1</button>
             <button type="button" data-slide="2" onclick="scrollToSlide(2)">Фото 2</button>
@@ -531,7 +531,7 @@ function copyEmailToClipboard(btn) {
     </div>
 </div>
 
-<script type="application/json" id="product-gallery-data">[{"label":"Вид","src":"../../images/lgv/vid-1.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — общий вид"},{"label":"Фото 1","src":"../../images/lgv/foto-1.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — фото 1"},{"label":"Фото 2","src":"../../images/lgv/foto-2.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — фото 2"},{"label":"Альбом 1","src":"../../images/lgv/album-1.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом"},{"label":"Альбом 2","src":"../../images/lgv/album-2.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом"}]</script>
+<script type="application/json" id="product-gallery-data">[{"label":"Вид","src":"../../images/lgv/vid-1.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — общий вид"},{"label":"Фото 1","src":"../../images/lgv/foto-1.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — фото 1"},{"label":"Фото 2","src":"../../images/lgv/foto-2.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — фото 2"},{"label":"Альбом","src":"../../images/lgv/album-1.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом"},{"label":"Альбом","src":"../../images/lgv/album-2.png","alt":"Лестница ЛГВ 45-42.7 серия 1.450.3-7.94 — альбом"}]</script>
 
 <script>function updateOtherSizesOverflow(panel) {
   if (!panel || panel.hidden) return;
