@@ -139,7 +139,7 @@ const PAGES = [
   ]},
 
   { html: 'ssg1.html', tables: [{ id: 'nomenclature-container', csv: 'data/ssg1-products.csv' }] },
-  { html: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/lgv-products.csv', dimensionHeaders: ['Длина ступени, мм', 'Ширина, мм'] }] },
+  { html: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/lgv-products.csv', dimensionHeaders: ['Длина ступени, см', 'Ширина, см'] }] },
   { html: 'ograzhdenie-osg-seriya-1-450-3-7-94.html', tables: [{ id: 'nomenclature-container', csv: 'data/osg-products.csv' }] },
   { html: 'nts-62-91-111a.html', tables: [{ id: 'nomenclature-nts-a', csv: 'data/nts-62-91-111a-products.csv' }] },
   { html: 'skoby-dlya-kolodcev.html', tables: [{ id: 'nomenclature-container', csv: 'data/skoby-dlya-kolodcev-products.csv', dimensionHeaders: ['Габарит 1, см', 'Габарит 2, см'] }] },
@@ -188,6 +188,7 @@ const FEED_SOURCES = [
   { csv: 'data/l-3-sk-2201-88-products.csv',  page: 'l-3-sk-2201-88.html',  bigImage: 'images/l-3-sk-2201-88/vid-1.png', typePrefix: 'Лестница Л-3 СК 2201-88-36' },
   { csv: 'data/l-19-products.csv',            page: 'l-19.html',            bigImage: 'images/l-19/vid-1.png', typePrefix: 'Лестница для колодцев' },
   { csv: 'data/ssg1-products.csv',            page: 'ssg1.html',            bigImage: 'images/ssg1/vid-1.png', typePrefix: 'Пожарная стремянка' },
+  { csv: 'data/lgv-products.csv',             page: 'lestnitsy-lgv-seriya-1-450-3-7-94.html', bigImage: 'images/default-product.svg', typePrefix: 'Лестница ЛГВ серии 1.450.3-7.94' },
   { csv: 'data/lestnica-ts-50-products.csv',              page: 'lestnicy-teplovyh-setej-ts.html', bigImage: 'images/lestnicy-teplovyh-setej-ts/vid-1.png', typePrefix: 'Лестница тепловых сетей ТС' },
   { csv: 'data/lestnica-ts-63-products.csv',           page: 'lestnicy-teplovyh-setej-ts.html', bigImage: 'images/lestnicy-teplovyh-setej-ts/vid-1.png', typePrefix: 'Лестница тепловых сетей ТС' },
   { csv: 'data/vdl-products-22.csv',          page: 'vl-2-l-19-vodoprovodnaya.html', bigImage: 'images/vdl/vid-1.png', typePrefix: 'Лестница для колодцев' },
