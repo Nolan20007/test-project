@@ -129,11 +129,11 @@ function renderMasterProduct(template, group, row, rows, relatedVariantGroups = 
     const label = /chertezh|drawing/i.test(fileName) ? 'Чертёж'
       : /album/i.test(fileName) ? 'Альбом'
       : photoMatch ? 'Фото ' + photoMatch[1]
-      : index === 0 ? 'Вид 1' : 'Изображение ' + (index + 1);
+      : index === 0 ? 'Вид' : 'Изображение ' + (index + 1);
     return {
       label,
       src: normalizeProductImagePath(source),
-      alt: productName + (label === 'Вид 1' ? ' — общий вид' : ' — ' + label.toLowerCase())
+      alt: productName + (label === 'Вид' ? ' — общий вид' : ' — ' + label.toLowerCase())
     };
   });
   const gallery = Array.isArray(group.gallery) && group.gallery.length
