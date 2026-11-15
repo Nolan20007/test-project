@@ -458,9 +458,6 @@
             color: white;
         }
 
-        .nomenclature-table--compact { width: auto; max-width: 100%; table-layout: auto; }
-        .nomenclature-table--compact th, .nomenclature-table--compact td { white-space: nowrap; }
-        .nomenclature-table--compact td:nth-child(5) { font-weight: 600; color: var(--primary-color); white-space: nowrap; }
         .nomenclature-table {
             width: 100%;
             border-collapse: collapse;
@@ -478,6 +475,25 @@
         .nomenclature-table td:nth-child(2) { font-weight: 500; color: var(--primary-color); }
         .nomenclature-table td:nth-child(6) { font-weight: 600; color: var(--primary-color); white-space: nowrap; }
         .nomenclature-table .availability-icon { color: #4CAF50; font-size: 1.2em; }
+        /* ЛГВ: компактная таблица, без растягивания на ширину контейнера. */
+        #nomenclature-container { max-width: 100%; overflow-x: auto; }
+        .nomenclature-table.nomenclature-table--compact {
+            display: table;
+            width: max-content;
+            max-width: 100%;
+            table-layout: auto;
+        }
+        .nomenclature-table.nomenclature-table--compact th,
+        .nomenclature-table.nomenclature-table--compact td { white-space: nowrap; }
+        /* В таблице ЛГВ пятая колонка — цена, шестая — единица измерения. */
+        .nomenclature-table.nomenclature-table--compact td:nth-child(5) {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .nomenclature-table.nomenclature-table--compact td:nth-child(6) {
+            font-weight: 400;
+            color: inherit;
+        }
 
         .angle-filter { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 14px; }
         .angle-filter__label { color:var(--dark-color); font-size:14px; font-weight:500; margin-right:4px; }
