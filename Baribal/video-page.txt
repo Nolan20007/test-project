@@ -1,0 +1,1271 @@
+<html lang="ru"><head><script crossorigin="anonymous" src="https://mc.yandex.ru/metrika/tag_phono.js" type="text/javascript" charset="utf-8" async=""></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-param" content="_csrf-my">
+<meta name="csrf-token" content="B6rbTMQnS6VX8S7_2x7pxesZUJr8MrprV5CTeSt8CdBy_JU7iHgo6CO7b5edTrisvns57Y0Ggz852v0eTQ9wkg==">
+    <title>Редактор — Страница видео. — Барибал дубликат, 16 нояб., 14:13</title>
+
+    <!--[if IE]><link rel="shortcut icon" href="https://i.1.creatium.io/16/66/12/45c5c460a8bffc6b405443cdeba761693e/32x32/favicon.png"><![endif]-->
+<link rel="apple-touch-icon-precomposed" href="https://i.1.creatium.io/16/66/12/45c5c460a8bffc6b405443cdeba761693e/180x180/favicon.png">
+<link rel="icon" href="https://i.1.creatium.io/16/66/12/45c5c460a8bffc6b405443cdeba761693e/196x196/favicon.png">
+
+    <link rel="stylesheet" href="https://use.typekit.net/bgm2oef.css">
+
+    <link href="/css/reset.css?v=1530710067" rel="stylesheet">
+<link href="/fonts/rubik/rubik.css?v=1592313345" rel="stylesheet">
+<link href="/fonts/icomoon-creatium/style.css?v=1628765579" rel="stylesheet">
+<link href="/css/my-style.css?v=1660139759" rel="stylesheet">
+<link href="/css/info.css?v=1576584276" rel="stylesheet">
+<link href="/css/ajax-window.css?v=1602595391" rel="stylesheet">
+<link href="/css/cards.css?v=1659534258" rel="stylesheet">
+<link href="/css/form.css?v=1686045416" rel="stylesheet">
+<link href="/css/codemirror.css?v=1571733553" rel="stylesheet">
+<link href="/css/fullscreen.css?v=1572955218" rel="stylesheet">
+<link href="/css/form-round.css?v=1794291828" rel="stylesheet">
+<link href="/js/vue_build/app.css?v=1792031553" rel="stylesheet">
+<link href="/css/template-engine.css?v=1587554718" rel="stylesheet">
+<script async="" src="https://mc.yandex.ru/metrika/tag.js?id=110572097"></script><script src="/assets/53bcecbf/jquery.js?v=1698921260"></script>
+<script src="/js/lodash.min.js?v=1584518329"></script>
+<script src="/js/my/my-scripts.js?v=1651060994"></script>
+<script src="/js/my/alert.js?v=1535473573"></script>
+<script src="/js/my/ajax-window.js?v=1530710067"></script>
+<script src="/js/my/cards.js?v=1587554718"></script>
+<script src="/js/Chart.js/Chart.min.js?v=1562749290"></script>
+<script src="/js/Chart.js/Chart.js__roundedBar.js?v=1516279384"></script>
+<script src="/js/Chart.js/Chart.js__caption.js?v=1562749290"></script>
+    <!-- Доставка целей -->
+            <script>
+            $(document).ready(function () {
+                                track_goal(51479, 'payment')
+                                track_goal(84100, 'payment')
+                                track_goal(122585, 'payment')
+                                track_goal(160921, 'payment')
+                                track_goal(175979, 'payment')
+                            })
+
+            function track_goal(goal_id, type) {
+                if (window.dataLayer !== undefined) {
+                    dataLayer.push({ 'event': type })
+
+                    $.ajax({
+                        url: '/default/track-goal',
+                        method: 'POST',
+                        data: {
+                            goal_id: goal_id,
+                            type: type,
+                            '_csrf-my': 'B6rbTMQnS6VX8S7_2x7pxesZUJr8MrprV5CTeSt8CdBy_JU7iHgo6CO7b5edTrisvns57Y0Ggz852v0eTQ9wkg==',
+                        },
+                    })
+                }
+            }
+        </script>
+    
+            <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110572097', 'ym');
+
+ym(110572097, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/110572097" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
+<script type="text/javascript" async="" src="//cdn.carrotquest.app/api.min.js"></script><style>.picker_wrapper.no_alpha .picker_alpha{display:none}.picker_wrapper.no_editor .picker_editor{position:absolute;z-index:-1;opacity:0}.picker_wrapper.no_cancel .picker_cancel{display:none}.layout_default.picker_wrapper{display:-webkit-box;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-flow:row wrap;-webkit-box-pack:justify;justify-content:space-between;-webkit-box-align:stretch;align-items:stretch;font-size:10px;width:25em;padding:.5em}.layout_default.picker_wrapper input,.layout_default.picker_wrapper button{font-size:1rem}.layout_default.picker_wrapper>*{margin:.5em}.layout_default.picker_wrapper::before{content:'';display:block;width:100%;height:0;-webkit-box-ordinal-group:2;order:1}.layout_default .picker_slider,.layout_default .picker_selector{padding:1em}.layout_default .picker_hue{width:100%}.layout_default .picker_sl{-webkit-box-flex:1;flex:1 1 auto}.layout_default .picker_sl::before{content:'';display:block;padding-bottom:100%}.layout_default .picker_editor{-webkit-box-ordinal-group:2;order:1;width:6.5rem}.layout_default .picker_editor input{width:100%;height:100%}.layout_default .picker_sample{-webkit-box-ordinal-group:2;order:1;-webkit-box-flex:1;flex:1 1 auto}.layout_default .picker_done,.layout_default .picker_cancel{-webkit-box-ordinal-group:2;order:1}.picker_wrapper{box-sizing:border-box;background:#f2f2f2;box-shadow:0 0 0 1px silver;cursor:default;font-family:sans-serif;color:#444;pointer-events:auto}.picker_wrapper:focus{outline:none}.picker_wrapper button,.picker_wrapper input{box-sizing:border-box;border:none;box-shadow:0 0 0 1px silver;outline:none}.picker_wrapper button:focus,.picker_wrapper button:active,.picker_wrapper input:focus,.picker_wrapper input:active{box-shadow:0 0 2px 1px dodgerblue}.picker_wrapper button{padding:.4em .6em;cursor:pointer;background-color:whitesmoke;background-image:-webkit-gradient(linear, left bottom, left top, from(gainsboro), to(transparent));background-image:-webkit-linear-gradient(bottom, gainsboro, transparent);background-image:linear-gradient(0deg, gainsboro, transparent)}.picker_wrapper button:active{background-image:-webkit-gradient(linear, left bottom, left top, from(transparent), to(gainsboro));background-image:-webkit-linear-gradient(bottom, transparent, gainsboro);background-image:linear-gradient(0deg, transparent, gainsboro)}.picker_wrapper button:hover{background-color:white}.picker_selector{position:absolute;z-index:1;display:block;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);border:2px solid white;border-radius:100%;box-shadow:0 0 3px 1px #67b9ff;background:currentColor;cursor:pointer}.picker_slider .picker_selector{border-radius:2px}.picker_hue{position:relative;background-image:-webkit-gradient(linear, left top, right top, from(red), color-stop(yellow), color-stop(lime), color-stop(cyan), color-stop(blue), color-stop(magenta), to(red));background-image:-webkit-linear-gradient(left, red, yellow, lime, cyan, blue, magenta, red);background-image:linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);box-shadow:0 0 0 1px silver}.picker_sl{position:relative;box-shadow:0 0 0 1px silver;background-image:-webkit-gradient(linear, left top, left bottom, from(white), color-stop(50%, rgba(255,255,255,0))),-webkit-gradient(linear, left bottom, left top, from(black), color-stop(50%, rgba(0,0,0,0))),-webkit-gradient(linear, left top, right top, from(gray), to(rgba(128,128,128,0)));background-image:-webkit-linear-gradient(top, white, rgba(255,255,255,0) 50%),-webkit-linear-gradient(bottom, black, rgba(0,0,0,0) 50%),-webkit-linear-gradient(left, gray, rgba(128,128,128,0));background-image:linear-gradient(180deg, white, rgba(255,255,255,0) 50%),linear-gradient(0deg, black, rgba(0,0,0,0) 50%),linear-gradient(90deg, gray, rgba(128,128,128,0))}.picker_alpha,.picker_sample{position:relative;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Cpath d='M1,0H0V1H2V2H1' fill='lightgrey'/%3E%3C/svg%3E") left top/contain white;box-shadow:0 0 0 1px silver}.picker_alpha .picker_selector,.picker_sample .picker_selector{background:none}.picker_editor input{font-family:monospace;padding:.2em .4em}.picker_sample::before{content:'';position:absolute;display:block;width:100%;height:100%;background:currentColor}.picker_arrow{position:absolute;z-index:-1}.picker_wrapper.popup{position:absolute;z-index:2;margin:1.5em}.picker_wrapper.popup,.picker_wrapper.popup .picker_arrow::before,.picker_wrapper.popup .picker_arrow::after{background:#f2f2f2;box-shadow:0 0 10px 1px rgba(0,0,0,0.4)}.picker_wrapper.popup .picker_arrow{width:3em;height:3em;margin:0}.picker_wrapper.popup .picker_arrow::before,.picker_wrapper.popup .picker_arrow::after{content:"";display:block;position:absolute;top:0;left:0;z-index:-99}.picker_wrapper.popup .picker_arrow::before{width:100%;height:100%;-webkit-transform:skew(45deg);transform:skew(45deg);-webkit-transform-origin:0 100%;transform-origin:0 100%}.picker_wrapper.popup .picker_arrow::after{width:150%;height:150%;box-shadow:none}.popup.popup_top{bottom:100%;left:0}.popup.popup_top .picker_arrow{bottom:0;left:0;-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}.popup.popup_bottom{top:100%;left:0}.popup.popup_bottom .picker_arrow{top:0;left:0;-webkit-transform:rotate(90deg) scale(1, -1);transform:rotate(90deg) scale(1, -1)}.popup.popup_left{top:0;right:100%}.popup.popup_left .picker_arrow{top:0;right:0;-webkit-transform:scale(-1, 1);transform:scale(-1, 1)}.popup.popup_right{top:0;left:100%}.popup.popup_right .picker_arrow{top:0;left:0}</style><style type="text/css">.draggable-dominfo-placeholder{height:10px;display:block;overflow:hidden;background:#000!important;width:100%;position:absolute;left:0;z-index:1}.draggable-dominfo-placeholder:hover{background:#409eff!important}.el-table-draggable__empty-table{min-height:60px}.el-table-draggable__empty-table table{width:100%;height:100%;min-height:60px;position:absolute;z-index:99}.el-table-draggable__empty-table tbody{position:absolute;width:100%;min-height:100%}</style><style type="text/css">@charset "UTF-8";#carrotquest-messenger-collapsed-container{position:fixed!important;z-index:2147483000!important;max-width:90%!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_top{top:0!important;right:0!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_bottom{right:0!important;bottom:0!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-left_top{top:0!important;left:0!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-left_bottom{bottom:0!important;left:0!important}#carrotquest-messenger-collapsed-container #chat-container{display:flex!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_bottom #chat-container,#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_top #chat-container{flex-direction:row-reverse!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_bottom #chat-container,#carrotquest-messenger-collapsed-container.carrotquest-messenger-left_bottom #chat-container{align-items:flex-end!important}#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_top #chat-container,#carrotquest-messenger-collapsed-container.carrotquest-messenger-left_top #chat-container{align-items:flex-start!important}#carrotquest-messenger-collapsed-container #icon-container{flex-shrink:0;width:80px!important;min-width:80px!important;height:80px!important;z-index:1}#carrotquest-messenger-collapsed-container #tooltip-container{position:relative;flex-shrink:1;max-width:300px;height:146px;max-height:146px;margin-top:auto;margin-bottom:auto}#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_bottom #tooltip-container,#carrotquest-messenger-collapsed-container.carrotquest-messenger-right_top #tooltip-container{margin-right:-20px}#carrotquest-messenger-collapsed-container.carrotquest-messenger-left_bottom #tooltip-container,#carrotquest-messenger-collapsed-container.carrotquest-messenger-left_top #tooltip-container{margin-left:-20px}#carrotquest-messenger-collapsed-container #carrot-messenger-tooltip,#carrot-messenger-collapsed-frame{width:100%!important;height:100%!important;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}iframe{color-scheme:auto}#popup-container{position:fixed;top:0;width:385px;height:100%;max-height:100%;z-index:2147483000}#popup-container.right{right:0}#popup-container.left{left:0}#popup-container *{user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}#popup-container iframe,#popup-container div,#popup-container span,#popup-container a,#popup-container button{margin:0;padding:0;border:0;vertical-align:baseline}#popup-container iframe{max-height:none;max-width:none}.carrotquest-css-reset *,.carrotquest-css-reset-frame *{user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}.carrotquest-css-reset iframe,.carrotquest-css-reset div,.carrotquest-css-reset span,.carrotquest-css-reset a,.carrotquest-css-reset button,.carrotquest-css-reset-frame iframe,.carrotquest-css-reset-frame div,.carrotquest-css-reset-frame span,.carrotquest-css-reset-frame a,.carrotquest-css-reset-frame button{margin:0;padding:0;border:0;vertical-align:baseline}.carrotquest-css-reset iframe,.carrotquest-css-reset-frame iframe{max-height:none;max-width:none}.carrotquest-message-mobil-noscroll{position:fixed!important;overflow:hidden!important;width:100%!important;height:100%!important}.carrot-popup-frame{position:fixed!important;inset:0!important;z-index:2147483000!important;display:block!important;width:100%!important;height:100%!important;animation:carrotquest-fadein .25s!important}@keyframes carrotquest-fadein{0%{opacity:0}to{opacity:1}}.carrot-messenger-frame-container{position:fixed!important;top:0!important;z-index:2147483000!important;width:370px!important;height:100%!important;max-height:100%!important;box-shadow:0 8px 18px #0003,0 0 2px #0000000d!important}.carrot-messenger-frame-container.carrotquest-messenger-line-left{left:0!important}.carrot-messenger-frame-container.carrotquest-messenger-line-right{right:0!important}.carrot-messenger-frame-small-chat.carrot-messenger-frame-container.carrotquest-messenger-line-right{right:27px!important}.carrot-messenger-frame-small-chat.carrot-messenger-frame-container.carrotquest-messenger-line-left{left:27px!important}.carrot-messenger-frame-container.data-truncate-visibility{box-shadow:none!important}.carrot-messenger-frame,.carrot-notification-frame,.carrot-popup-small-frame{width:100%!important;height:100%!important}#carrot-notification-frame{width:100%}.carrotquest-messenger-mobile-chat{height:100%!important}.carrot-messenger-frame-small-chat{top:auto!important;bottom:27px!important;height:calc(100% - 120px)!important;min-height:250px!important;max-height:620px!important;border-radius:15px!important}.carrot-messenger-frame-small-chat .carrot-messenger-frame{height:100%!important;max-height:100%!important}.carrot-messenger-frame-mobile-chat,.carrot-messenger-frame-mobile-chat .carrot-messenger-frame{height:100%!important}.carrot-messenger-frame-small-chat .carrotquest-messenger-line-right{right:50px!important}.carrot-messenger-frame-small-chat .carrotquest-messenger-line-left{left:50px!important}@media only screen and (max-device-width: 667px),screen and (max-width: 450px){#carrot-messenger-frame{left:0!important;width:100%!important}.carrot-messenger-frame-container{inset:0!important;z-index:2147483001!important;width:100%!important;height:100%!important;max-height:none!important;border-radius:0!important}.carrot-messenger-frame-container.data-truncate-visibility{margin-top:0!important}div.carrot-notification-container{right:0!important}}@media screen and (max-height: 450px){.carrot-messenger-frame-container.data-truncate-visibility{min-height:411px!important;margin-top:0!important}}.carrotquest-messenger-line-anim{animation-name:carrotquest-messenger-line-anim-right!important;animation-duration:.15s!important;animation-timing-function:cubic-bezier(0,0,.2,1)!important}@keyframes carrotquest-messenger-line-anim-right{0%{opacity:0;transform:scale(.6) translate(124px,320px)}to{opacity:1;transform:scale(1) translate(0)}}.carrotquest-messenger-line-left{animation-name:carrotquest-messenger-line-anim-left!important}@keyframes carrotquest-messenger-line-anim-left{0%{opacity:0;transform:scale(.6) translate(-124px,320px)}to{opacity:1;transform:scale(1) translate(0)}}#carrot-frame-bumperCookies{position:fixed;bottom:0;left:0;z-index:2147482999!important;width:100%;box-shadow:0 1px 8px #0000001f,0 0 2px #00000014}.carrot-notification-container{position:fixed!important;z-index:2147483000!important;width:330px;min-width:330px!important;max-height:70vh!important;opacity:1!important;transform:translateY(0)!important;transition:opacity .4s,transform .4s!important}.carrot-notification-container.hidden{opacity:0!important;transform:translateY(90px)!important}.carrot-messenger-embedded-frame-container{height:100%!important;width:100%!important;position:relative}.carrot-messenger-embedded-frame-container .wrapper-calendly,.carrot-messenger-frame-container .wrapper-calendly{position:absolute;top:0;width:100%;height:100%;border:1px solid #fff;border-radius:15px;background-color:#fff;overflow:hidden}.carrot-messenger-embedded-frame-container .wrapper-calendly #widget-header,.carrot-messenger-frame-container .wrapper-calendly #widget-header{height:50px}.carrot-messenger-embedded-frame-container .wrapper-calendly #back-to-chat,.carrot-messenger-frame-container .wrapper-calendly #back-to-chat{padding:15px;cursor:pointer}.carrot-messenger-embedded-frame-container .wrapper-calendly .calendly-inline-widget,.carrot-messenger-frame-container .wrapper-calendly .calendly-inline-widget{position:relative;width:100%;height:calc(100% - 50px)}
+</style><style>
+    #carrotquest-messenger-collapsed-container {
+      margin-bottom:15px !important;
+    }
+    
+    .carrot-notification-container {
+      bottom:85px !important;
+    }
+  
+      #carrotquest-messenger-collapsed-container {
+        margin-right:15px !important;
+      }
+      .carrot-notification-container {
+        right:5px !important;
+      }
+    </style></head>
+<body class="b-body
+" style="overflow: hidden;"><iframe class="b-redactor js-redactor b-redactor--visible b-redactor--loaded" src="/page/open-redactor?page_id=2230007"></iframe>
+<script>    window.cr_page_pages = {"site":{"id":352533,"redactor_version":"3.8"},"hierarchy":{"2230007":{"id":2230007,"site_id":352533,"type":"page","ab_test":null,"path":"video","title":"Страница видео.","specific_title":"Видео о студии Барибал в Перми. Примеры защиты авто в Перми","meta_description":"Видео ролики с примером по оказанию услуг в студии Барибал в Перми.","meta_keywords":"химчистка авто, автохимчистка, автомойка, автосервис, полировка кузова, бронирование кузова, автовинил, антикор, защита от коррозии, шумоизоляция, тонировка, детейлинг, защита фар, автоателье, удаление вмятин, предпродажная подготовка авто","og_title":"Видео о студии Барибал в Перми. Примеры защиты авто в Перми","og_description":"Видео ролики с примером по оказанию услуг в студии Барибал в Перми.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":8,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:51","updated_at":"2026-11-16 14:13:51","published_at":null,"url":"https:\/\/762165.creatium.site\/video","encoded_url":"https:\/\/762165.creatium.site\/video","title_sortable":"страница видео.","ab":{"version":null},"table":{}},"2230008":{"id":2230008,"site_id":352533,"type":"page","ab_test":null,"path":"himchistka","title":"Страница автохимчистка.","specific_title":"Автохимчистка Пермь. Услуги по химчистке салона автомобиля в Перми.","meta_description":"Сделаем качественную химчистку салона вашего авто в Перми. Химчистка двигателя, химчистка багажника, химчистка сидений и всех остальных деталей в салоне автомобиля.","meta_keywords":"химчистка авто, автохимчистка, автомойка, автосервис, полировка кузова, бронирование кузова, автовинил, антикор, защита от коррозии, шумоизоляция, тонировка, детейлинг, защита фар, автоателье, удаление вмятин, предпродажная подготовка авто","og_title":"Автохимчистка Пермь. Услуги по химчистке салона автомобиля в Перми.","og_description":"Сделаем качественную химчистку салона вашего авто в Перми. Химчистка двигателя, химчистка багажника, химчистка сидений и всех остальных деталей в салоне автомобиля.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":2,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:51","updated_at":"2026-11-16 14:13:51","published_at":null,"url":"https:\/\/762165.creatium.site\/himchistka","encoded_url":"https:\/\/762165.creatium.site\/himchistka","title_sortable":"страница автохимчистка.","ab":{"version":null},"table":{}},"2230009":{"id":2230009,"site_id":352533,"type":"page","ab_test":null,"path":"mission","title":"Страница миссия.","specific_title":"Наша миссия. Качественное обслуживание автомобилей в Перми.","meta_description":"Опыт, современные материалы высокого качества и удобное для клиентов место – три основных параметра которые формируют успешное развитие предприятия выполняющее ремонт или преображение автомобилей. В нашей студии работают опытные полировщики. Постоянное повышение квалификации, высокая мотивация и личная ответственность за качественное выполнение работ присуще всему персоналу нашей студии. Мы проверяем все материалы предлагаемые на рынке и используем только лучшее. Наша цель, предоставить результат максимально грамотной и качественно оказанной услуги. Будь-то ремонт или нанесение защитного покрытия. Приезжайте к нам в гости!","meta_keywords":"Обслуживание автомобилей в Перми, Обслуживание автомобилей Пермь","og_title":"Наша миссия. Качественное обслуживание автомобилей в Перми.","og_description":"Опыт, современные материалы высокого качества и удобное для клиентов место – три основных параметра которые формируют успешное развитие предприятия выполняющее ремонт или преображение автомобилей. В нашей студии работают опытные полировщики. Постоянное повышение квалификации, высокая мотивация и личная ответственность за качественное выполнение работ присуще всему персоналу нашей студии. Мы проверяем все материалы предлагаемые на рынке и используем только лучшее. Наша цель, предоставить результат максимально грамотной и качественно оказанной услуги. Будь-то ремонт или нанесение защитного покрытия. Приезжайте к нам в гости!","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":6,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:51","updated_at":"2026-11-16 14:13:51","published_at":null,"url":"https:\/\/762165.creatium.site\/mission","encoded_url":"https:\/\/762165.creatium.site\/mission","title_sortable":"страница миссия.","ab":{"version":null},"table":{}},"2230010":{"id":2230010,"site_id":352533,"type":"page","ab_test":null,"path":"kuzov","title":"Страница защита кузова.","specific_title":"Услуги по защите кузова автомобиля в Перми","meta_description":"Оказываем большой комплекс услуг по защите кузова авто и различных кузовных деталей автомобилей в Перми.","meta_keywords":"защита кузова авто, защита кузова автомобиля, защитные технологии для кузова авто","og_title":"Услуги по защите кузова автомобиля в Перми","og_description":"Оказываем большой комплекс услуг по защите кузова авто и различных кузовных деталей автомобилей в Перми.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":3,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:51","updated_at":"2026-11-16 14:13:51","published_at":null,"url":"https:\/\/762165.creatium.site\/kuzov","encoded_url":"https:\/\/762165.creatium.site\/kuzov","title_sortable":"страница защита кузова.","ab":{"version":null},"table":{}},"2230011":{"id":2230011,"site_id":352533,"type":"page","ab_test":null,"path":"reviews","title":"Страница отзывы.","specific_title":"Отзывы о студии Барибал в Перми","meta_description":"Прочитайте отзывы о нашей компании. Страница в разработке.","meta_keywords":"Отзывы о студии Барибал в Перми","og_title":"Отзывы о студии Барибал в Перми","og_description":"Прочитайте отзывы о нашей компании. Страница в разработке.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":7,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:51","updated_at":"2026-11-16 14:13:51","published_at":null,"url":"https:\/\/762165.creatium.site\/reviews","encoded_url":"https:\/\/762165.creatium.site\/reviews","title_sortable":"страница отзывы.","ab":{"version":null},"table":{}},"2230012":{"id":2230012,"site_id":352533,"type":"page","ab_test":null,"path":"foto","title":"Страница наши работы.","specific_title":"Каталог фотографий выполненных работ по защите и обслуживанию автомобилей в Перми.","meta_description":"Посмотрите каталог с примерами фотографий выполненных нами за долгие годы работ. Работаем на совесть! Это лишь малая часть фотоотчётов.","meta_keywords":"фотографии обслуживания автомобилей, пример оклейки кузова авто, фото бронирования кузова пленкой, фото нанесения керамики на кузов авто, фотографии авто, фотоотчет, каталог фотографий автомобилей","og_title":"Каталог фотографий выполненных работ по защите и обслуживанию автомобилей в Перми.","og_description":"Посмотрите каталог с примерами фотографий выполненных нами за долгие годы работ. Работаем на совесть! Это лишь малая часть фотоотчётов.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":5,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:51","updated_at":"2026-11-16 14:13:51","published_at":null,"url":"https:\/\/762165.creatium.site\/foto","encoded_url":"https:\/\/762165.creatium.site\/foto","title_sortable":"страница наши работы.","ab":{"version":null},"table":{}},"2230013":{"id":2230013,"site_id":352533,"type":"page","ab_test":null,"path":"tehnology","title":"Страница технологии.","specific_title":"Бронирование кузова автомобилей плёнкой в Перми. Керамика, бронирование дверей, фар, лобового стекла плёнкой Пермь. Полировка кузова","meta_description":"Быстро и качественно проведём комплексное бронирование кузова вашего автомобиля плёнкой, отполируем или нанесём керамику. Бронирование лобового стекла, бронирование передних и задних фар пленкой, тонировка стекол, полировка и защитная обработка фар. Бронирование автомобиля пленкой HEXIS, SunTek. Такая защитная пленка сохранит Ваш автомобиль от летящего мелкого щебня, мусора и насекомых.","meta_keywords":"бронирование авто плёнкой, бронирование кузова плёнкой, бронирование кузова автомобиля плёнкой, бронирование пленкой в перми, бронирование пермь, керамическое покрытие кузова, керамика для кузова авто, бронирование фар, бронирование лобового стекла","og_title":"Бронирование кузова автомобилей плёнкой в Перми. Керамика, бронирование дверей, фар, лобового стекла плёнкой Пермь. Полировка кузова","og_description":"Быстро и качественно проведём комплексное бронирование кузова вашего автомобиля плёнкой, отполируем или нанесём керамику. Бронирование лобового стекла, бронирование передних и задних фар пленкой, тонировка стекол, полировка и защитная обработка фар. Бронирование автомобиля пленкой HEXIS, SunTek. Такая защитная пленка сохранит Ваш автомобиль от летящего мелкого щебня, мусора и насекомых.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":4,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:52","updated_at":"2026-11-16 14:13:52","published_at":null,"url":"https:\/\/762165.creatium.site\/tehnology","encoded_url":"https:\/\/762165.creatium.site\/tehnology","title_sortable":"страница технологии.","ab":{"version":null},"table":{}},"2230014":{"id":2230014,"site_id":352533,"type":"page","ab_test":null,"path":"","title":"Главная страница","specific_title":"Студия защитных технологий BARIBAL в Перми. Барибал Пермь","meta_description":"Барибал. Наш телефон: +7 (342) 202-41-42. Полировка и бронирование пленкой кузова и лобового стекла. Оклейка винилом. Химчистка салона. Удаление вмятин. Шумоизоляция. Тонировка. Предпродажная подготовка автомобиля. Шумо-вибро-тепло изоляция. Ручная полировка. Стайлинг пленкой. Ремонт пластика салона авто. Ремонт сидений автомобиля. Перетяжка руля и многое другое.","meta_keywords":"химчистка авто, автохимчистка, автомойка, автосервис, полировка кузова, бронирование кузова, автовинил, антикор, защита от коррозии, шумоизоляция, тонировка, детейлинг, защита фар, автоателье, удаление вмятин, предпродажная подготовка авто","og_title":"Студия защитных технологий BARIBAL в Перми. Барибал Пермь","og_description":"Барибал. Наш телефон: +7 (342) 202-41-42. Полировка и бронирование пленкой кузова и лобового стекла. Оклейка винилом. Химчистка салона. Удаление вмятин. Шумоизоляция. Тонировка. Предпродажная подготовка автомобиля. Шумо-вибро-тепло изоляция. Ручная полировка. Стайлинг пленкой. Ремонт пластика салона авто. Ремонт сидений автомобиля. Перетяжка руля и многое другое.","og_image":"https:\/\/i.1.creatium.io\/8f\/38\/cf\/54a303adca00c3fd3208d291c7ab1c20f0\/baribal_perm.png","dynamic_data":"","pretty_url":null,"proxy":"","sorting":0,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:52","updated_at":"2026-11-16 14:15:56","published_at":null,"url":"https:\/\/762165.creatium.site","encoded_url":"https:\/\/762165.creatium.site","title_sortable":"главная страница","ab":{"version":null},"table":{}},"2230015":{"id":2230015,"site_id":352533,"type":"page","ab_test":null,"path":"avtovinil","title":"Страница автовинил.","specific_title":"Оклейка кузова автомобиля виниловой плёнкой в Перми. Оклейка винилом Пермь. Автовинил.","meta_description":"Автовинил в Перми. Качественно оклеим кузов вашего авто винилом в Перми. Любой цвет, дизайн и формат рисунка.","meta_keywords":"оклейка винилом, оклейка кузова винилом, оклейка авто винилом, оклейка авто винилом в перми, оклейка автомобиля виниловой пленкой в перми","og_title":"Оклейка кузова автомобиля виниловой плёнкой в Перми. Оклейка винилом Пермь. Автовинил.","og_description":"Автовинил в Перми. Качественно оклеим кузов вашего авто винилом в Перми. Любой цвет, дизайн и формат рисунка.","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":1,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:52","updated_at":"2026-11-16 14:13:52","published_at":null,"url":"https:\/\/762165.creatium.site\/avtovinil","encoded_url":"https:\/\/762165.creatium.site\/avtovinil","title_sortable":"страница автовинил.","ab":{"version":null},"table":{}},"2230016":{"id":2230016,"site_id":352533,"type":"page","ab_test":null,"path":"politika-konfidencialnosti","title":"Политика конфиденциальности","specific_title":"","meta_description":"","meta_keywords":"","og_title":"","og_description":"","og_image":"","dynamic_data":"","pretty_url":null,"proxy":"","sorting":9,"ab_test_started_at":null,"is_temporary":null,"created_at":"2026-11-16 14:13:52","updated_at":"2026-11-16 14:13:52","published_at":null,"url":"https:\/\/762165.creatium.site\/politika-konfidencialnosti","encoded_url":"https:\/\/762165.creatium.site\/politika-konfidencialnosti","title_sortable":"политика конфиденциальности","ab":{"version":null},"table":{}}},"folder":{},"user_site_count":"2","csrf":"B6rbTMQnS6VX8S7_2x7pxesZUJr8MrprV5CTeSt8CdBy_JU7iHgo6CO7b5edTrisvns57Y0Ggz852v0eTQ9wkg==","isWritable":true,"redactor_url":"https:\/\/redactor.creatium.io","my_url":"https:\/\/my.creatium.io","site_url":{"with_protocol":"https:\/\/762165.creatium.site","no_protocol":"762165.creatium.site"},"site_url_clear":"762165.creatium.site","is_admin":0,"exported_url":"\/table\/exports?site_id=352533"};
+    window.cr_common_settings = {"language":"ru","messenger":"CarrotQuest","csrf":"B6rbTMQnS6VX8S7_2x7pxesZUJr8MrprV5CTeSt8CdBy_JU7iHgo6CO7b5edTrisvns57Y0Ggz852v0eTQ9wkg=="};</script>
+
+<div class="b-wrapper">
+
+            
+<!--suppress CssUnusedSymbol -->
+<style>
+
+    .b-header {
+        flex       : 0 0 auto;
+        width      : 100%;
+        box-shadow : 0 3px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .b-header__columns {
+        margin      : auto;
+        display     : flex;
+        align-items : center;
+        flex-wrap   : wrap;
+        background  : white;
+    }
+
+    .b-header__columns--menu {
+        background : #F6F6F6;
+    }
+
+
+    .b-site-selector {
+        display     : block;
+        font-family : "museo-sans", sans-serif;
+        font-weight : 500;
+        font-size   : 16px;
+        cursor      : pointer;
+        color       : #0C0C0C;
+        padding     : 28px 0 28px 40px;
+    }
+
+    .b-site-selector:hover {
+        color : #844CE6;
+    }
+
+    .b-site-selector__inner {
+        display      : flex;
+        align-items  : center;
+        padding      : 5px 40px 5px 0;;
+        border-right : 1px solid #CECECE;
+    }
+
+    .b-site-selector__title {
+        display        : inline-block;
+        max-width      : 170px;
+        overflow       : hidden;
+        vertical-align : middle;
+    }
+
+    .b-site-selector__expand-icon {
+        margin-left : 20px;
+        font-size   : 8px;
+        margin-top  : 2px;
+    }
+
+
+    .b-top-menu {
+        display : flex;
+        height  : 100%;
+        width   : 100%;
+    }
+
+    .b-top-menu--wide {
+        padding : 0 20px;
+    }
+
+    .b-top-menu__link--to-right {
+        margin-left : auto;
+    }
+
+    .b-top-menu__link {
+        display     : inline-block;
+        padding     : 15px 20px;
+        font-size   : 14px;
+        font-weight : 300;
+        color       : #676767;
+    }
+
+    .b-top-menu__link--active {
+        color : #844CE6;
+    }
+
+    .b-header-url {
+        margin-left : 40px;
+    }
+
+    .b-header-url__link {
+        display     : block;
+        font-family : "museo-sans", sans-serif;
+        font-size   : 18px;
+        font-weight : 300;
+    }
+
+    .b-header-url__icon-link {
+        margin-left : 9px;
+        font-size   : 11px;
+    }
+
+    .b-header-url__status {
+        margin-top : 10px;
+        font-size  : 12px;
+        color      : #676767;
+    }
+
+    .b-header-graph-wrap {
+    }
+
+    .b-header-graph {
+        display      : flex;
+        align-items  : center;
+        margin-right : 20px;
+        cursor       : pointer;
+    }
+
+    .b-header-graph__graph {
+        margin-right : 10px;
+    }
+
+    .b-header-graph__expand {
+        font-size  : 8px;
+        margin-top : -13px;
+    }
+
+    .b-header-graph-canvas {
+        margin-top : -10px;
+        height     : 42px;
+    }
+
+    .b-graph-legend {
+        margin-left : 4px;
+
+        font-size   : 12px;
+        color       : #6b6b6b;
+    }
+
+    .b-graph-legend__icon {
+        display       : inline-block;
+        width         : 8px;
+        height        : 8px;
+        border-radius : 50%;
+        margin-right  : 4px;
+    }
+
+    .b-graph-legend__icon--visitors {
+        background : #844ce6;
+    }
+
+    .b-graph-legend__icon--orders {
+        background : #25cbc5;
+    }
+
+    .b-graph-legend__text {
+        font-size : 12px;
+        color     : #676767;
+    }
+
+    .b-header-graph-icon {
+        margin-right : 5px;
+        font-size    : 12px;
+    }
+
+    .b-header-graph-icon--visitors {
+        color : #844ce6;
+    }
+
+    .b-header-graph-icon--orders {
+        color : #25cbc5;
+    }
+
+    .b-header-graph-details {
+        position      : absolute;
+        display       : none;
+
+        background    : white;
+        width         : 123px;
+        padding       : 22px;
+        margin        : 10px 0 0 -47px;
+        border-radius : 4px;
+        border        : 1px solid rgba(224, 224, 224, 1);
+
+        box-shadow    : 0 23px 21px -16px rgba(0, 0, 0, 0.1);
+
+        z-index       : 1010;
+    }
+
+    .b-header-graph-details__arrow-border {
+        position      : absolute;
+        top           : -10px;
+        right         : 8px;
+        display       : inline-block;
+
+        width         : 0;
+        height        : 0;
+        border-left   : 10px solid transparent;
+        border-right  : 10px solid transparent;
+        border-bottom : 10px solid rgba(224, 224, 224, 1);
+    }
+
+    .b-header-graph-details__arrow {
+        position      : absolute;
+        top           : -8px;
+        right         : 10px;
+        display       : inline-block;
+
+        width         : 0;
+        height        : 0;
+        border-left   : 8px solid transparent;
+        border-right  : 8px solid transparent;
+        border-bottom : 8px solid white;
+
+    }
+
+    .b-header-graph-details__arrow--plugins {
+        border-bottom : 8px solid #0c0c0c;
+        top           : -8px;
+        right         : auto;
+        left          : 50px;
+    }
+
+    .b-header-graph-details__number {
+        font-family : "museo-sans", sans-serif;
+        color       : #0c0c0c;
+        font-weight : 300;
+    }
+
+    .b-header-graph-details__number--big {
+        font-size : 24px;
+    }
+
+    .b-header-graph-details__number--mid {
+        font-size : 17px;
+    }
+
+    .b-header-graph-details__number--small {
+        font-size : 17px;
+    }
+
+    .b-header-graph-details__caption {
+        color      : #676767;
+        font-size  : 12px;
+        margin-top : 5px;
+    }
+
+
+    .b-header-balance {
+        margin-right   : 30px;
+        margin-left    : auto;
+        vertical-align : middle;
+    }
+
+    .b-header-balance__link {
+        display     : block;
+        font-size   : 18px;
+        font-weight : 300;
+    }
+
+    .b-header-balance__status {
+        margin-top : 10px;
+        font-size  : 12px;
+        color      : #6b6b6b;
+        text-align : right;
+    }
+
+
+    .b-header-alert {
+        margin-right : 40px;
+    }
+
+    .b-header-alert__button {
+        display     : inline-block;
+        font-size   : 42px;
+        line-height : 0;
+        color       : #c1c1c1;
+    }
+
+    .b-header-alert__button:hover,
+    .b-header-alert__button--active {
+        color : #949494;
+    }
+
+    .b-header-alert-details {
+        position      : absolute;
+        display       : none;
+
+        background    : white;
+        width         : 420px;
+        margin        : 10px 0 0 -363px;
+        border-radius : 4px;
+        border        : 1px solid rgba(224, 224, 224, 1);
+        box-shadow    : 0 23px 21px -16px rgba(0, 0, 0, 0.1);
+
+        z-index       : 1010;
+    }
+
+    .b-header-alert-details__arrow-border {
+        position      : absolute;
+        top           : -10px;
+        right         : 28px;
+        display       : inline-block;
+
+        width         : 0;
+        height        : 0;
+        border-left   : 10px solid transparent;
+        border-right  : 10px solid transparent;
+        border-bottom : 10px solid rgba(224, 224, 224, 1);
+    }
+
+    .b-header-alert-details__arrow {
+        position      : absolute;
+        top           : -8px;
+        right         : 30px;
+        display       : inline-block;
+
+        width         : 0;
+        height        : 0;
+        border-left   : 8px solid transparent;
+        border-right  : 8px solid transparent;
+        border-bottom : 8px solid white;
+
+    }
+
+    .b-header-alert-details__header {
+        padding       : 16px 18px;
+        border-bottom : 1px solid rgba(224, 224, 224, 1);
+        font-weight   : 500;
+        text-align    : center;
+    }
+
+    .b-header-alert-details__rows {
+        overflow-x : auto;
+        max-height : 70vh;
+    }
+
+    .b-header-alert-row {
+        position      : relative;
+        border-bottom : 1px solid rgba(224, 224, 224, 0.7);
+        padding       : 16px 60px 16px 40px;
+    }
+
+    .b-header-alert-row a {
+        text-decoration : underline;
+    }
+
+    .b-header-alert-row__message {
+        font-size   : 13px;
+        line-height : 1.6;
+    }
+
+    .b-header-alert-row__date {
+        font-size  : 12px;
+        margin-top : 8px;
+        color      : #676767;
+    }
+
+    .b-header-alert-row__badge_new {
+        position      : absolute;
+        top           : 21px;
+        left          : 15px;
+
+        background    : #844ce6;
+        width         : 9px;
+        height        : 9px;
+        border-radius : 100%;
+    }
+
+    .b-header-alert-empty {
+        text-align : center;
+        margin     : 92px 0;
+    }
+
+    .b-header-alert-empty__caption {
+        font-family : "museo-sans", sans-serif;
+        font-size   : 22px;
+        font-weight : 500;
+    }
+
+    .b-header-alert-empty__description {
+        line-height : 1.6;
+        color       : rgba(12, 12, 12, 0.52);
+    }
+
+    .b-userpic {
+        display       : inline-block;
+        width         : 47px;
+        height        : 47px;
+        margin        : 16px 39px 16px 22px;
+        border-radius : 50%;
+    }
+
+    .b-userpic__icon {
+        width  : 47px;
+        height : 47px;
+    }
+
+    .b-top-menu--sticker {
+        padding       : 3px 9px;
+        background    : #ffffff;
+        border-radius : 15px;
+        font-size     : 12px;
+        position      : relative;
+        top           : -16px;
+        left          : -5px;
+    }
+
+    .b-region-links {
+        background    : rgba(239, 239, 239, 0.4);
+        border        : 1px solid #EFEFEF;
+        border-radius : 8px;
+        display       : flex;
+        align-items   : center;
+        margin-left   : 30px;
+        width         : 322px;
+        height        : 70px;
+        box-sizing    : border-box;
+    }
+
+    .b-region-links_item {
+        display      : flex;
+        align-items  : center;
+        padding-left : 13px;
+        flex         : 1 1 auto;
+        height       : calc(100% - 8px);
+        margin       : 4px
+    }
+
+    .b-region-links_item img {
+        width : 30px;
+    }
+
+    .b-region-links_item_text {
+        font-size   : 14px;
+        line-height : 19px;
+        width       : 88px;
+        margin-left : 8px;
+    }
+
+    .b-region-links_item:hover,
+    .b-region-links_item_active {
+        background    : #FFFFFF;
+        box-shadow    : 0 2px 9px -2px rgb(0 0 0 / 25%);
+        border-radius : 6px;
+        box-sizing    : border-box;
+        color         : #844CE6;
+    }
+
+    .b-region-help {
+        display     : flex;
+        margin-left : 20px;
+        position    : relative;
+    }
+
+    .b-help__region {
+        margin          : 0;
+        background      : #e8e8e8;
+        width           : 40px;
+        height          : 40px;
+        color           : #a2a2a2;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        font-size       : 20px;
+        font-weight     : bold;
+        padding         : 0;
+        line-height     : 1;
+        border-radius   : 100%;
+        font-family     : "museo-sans", sans-serif;
+        cursor          : pointer;
+        box-sizing      : border-box;
+    }
+
+    .b-help__region--active,
+    .b-help__region:hover {
+        background : #844CE6;
+        color      : #FFFFFF;
+    }
+
+    .b-region-help__popup {
+        position      : absolute;
+        display       : none;
+        background    : #fff;
+        border-radius : 10px;
+        z-index       : 1010;
+        padding       : 18px 25px;
+        width         : 410px;
+        top           : 41px;
+        left          : -222px;
+        box-shadow    : 0 2px 9px -2px rgb(0 0 0 / 25%);
+    }
+
+    .b-region-help__popup a:hover{
+        color : #0c0c0c;
+    }
+
+    .b-region-help__popup a {
+        color           : #844CE6;
+        text-decoration : underline;
+    }
+</style>
+
+<header class="b-header">
+    <div class="b-header__columns">
+
+        
+            <a href="#" class="b-site-selector js-site-selector" title="Барибал дубликат, 16 нояб., 14:13">
+                <div class="b-site-selector__inner">
+            <span class="b-site-selector__title">
+                Барибал дублика...            </span>
+                    <span class="icon-down b-site-selector__expand-icon"></span>
+                </div>
+            </a>
+
+            <div class="b-header-url">
+                <a href="https://762165.creatium.site" target="_blank" class="b-header-url__link">
+                    <span>https://762165.creatium.site</span>
+                    <span class="icon-link b-header-url__icon-link"></span>
+                </a>
+            </div>
+
+                                    <div class="b-region-links b-region-links_cis">
+                <a href="https://my.creatium.io" class="b-region-links_item b-region-links_item_active">
+                    <img src="/icons/logo/cr-logo.svg" alt="">
+                    <span class="b-region-links_item_text">Creatium<br> в России</span>
+                </a>
+                <a href="https://my.creatium.app" class="b-region-links_item ">
+                    <img src="/icons/logo/world.svg" alt="">
+                    <span class="b-region-links_item_text">Creatium International</span>
+                </a>
+            </div>
+            <div class="b-region-help">
+                <span class="b-help__region js-b-help__region">?</span>
+                <div class="b-region-help__popup js-b-region-help__popup">
+                    Creatium International — это отдельная версия Creatium, которая и юридически и технически независима от
+                    российской версии.<br><br>
+
+                    • Компания зарегистрирована в Сингапуре<br>
+                    • Налоги тоже платятся в Сингапуре<br>
+                    • Сервера находятся в Нидерландах<br>
+                    • Основатель — гражданин Молдовы<br><br>
+
+                    Можно оплачивать иностранными картами и безопасно работать с иностранными заказчиками.<br><br>
+
+                    Перенос сайтов на Creatium International рекомендуется для клиентов из Украины, Казахстана, стран Европы
+                    и т.д.<br><br>
+
+                    <a href="https://creatium.notion.site/Creatium-International-6098a462a2fa42e8ade6a3c873fc7284" target="_blank">
+                        Инструкция по переезду и ответы на частые вопросы
+                    </a>
+                </div>
+            </div>
+                <div class="b-header-balance">
+            <a href="/profile/balance" class="b-header-balance__link">
+                Баланс:
+                13&nbsp;581                руб.            </a>
+                                        <div class="b-header-balance__status">
+                    Хватит до 12 мая 2028                </div>
+                    </div>
+
+        <div class="b-header-alert">
+            <a href="#alerts" class="b-header-alert__button js-header-alert__button">
+                                    <span class="icon-bell js-bell_regular"></span>
+                            </a>
+
+            <div class="b-header-alert-details js-header-alert-details">
+                <div class="b-header-alert-details__arrow-border"></div>
+                <div class="b-header-alert-details__arrow"></div>
+
+                <div class="b-header-alert-details__header">
+                    Уведомления
+                </div>
+                <div class="b-header-alert-details__rows">
+                                                                                            <div class="b-header-alert-row" data-id="3927847" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 20 tokens.</b> Голосуйте и создавайте запросы на новый функционал в <a href="https://voice.creatium.io" target="_blank">Базе идей</a>.                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    27 нояб. 2025                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3927846" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 6,000 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    27 нояб. 2025                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3927845" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 12,000 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    27 нояб. 2025                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3834960" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 5 tokens.</b> Голосуйте и создавайте запросы на новый функционал в <a href="https://voice.creatium.io" target="_blank">Базе идей</a>.                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    1 июл. 2025                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3834959" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 1,200 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    1 июл. 2025                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3834958" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 6,000 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    1 июл. 2025                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3173579" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 5 tokens.</b> Голосуйте и создавайте запросы на новый функционал в <a href="https://voice.creatium.io" target="_blank">Базе идей</a>.                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    27 июн. 2024                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3173578" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 1,200 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    27 июн. 2024                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="3173577" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 6,000 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    27 июн. 2024                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="2220184" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 5 tokens.</b> Голосуйте и создавайте запросы на новый функционал в <a href="https://voice.creatium.io" target="_blank">Базе идей</a>.                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    5 июл. 2023                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="2220183" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 1,200 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    5 июл. 2023                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="2220182" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 6,000 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    5 июл. 2023                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="1157723" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 5 tokens.</b> Голосуйте и создавайте запросы на новый функционал в <a href="https://voice.creatium.io" target="_blank">Базе идей</a>.                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    5 июл. 2022                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="1157722" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 1,200 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    5 июл. 2022                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="1157721" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 6,000 RUB</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    5 июл. 2022                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="408866" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 2&nbsp;291 руб.</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    17 февр. 2022                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="408856" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>Услуга «Сайт» подключена.</b> Стоимость первого сайта 600 руб/мес. Управлять услугами можно в <a href="/profile/services">профиле</a>.                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    17 февр. 2022                                </div>
+                            </div>
+                                                    <div class="b-header-alert-row" data-id="407993" data-status="read">
+                                
+                                <div class="b-header-alert-row__message">
+                                    <b>+ 600 руб.</b> Ваш баланс успешно пополнен. Спасибо, что вы с нами!                                </div>
+
+                                <div class="b-header-alert-row__date">
+                                    17 февр. 2022                                </div>
+                            </div>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+            <div class="b-header__columns b-header__columns--menu">
+
+            
+            <div class="b-top-menu b-top-menu--wide">
+                
+                                        
+
+                    <a href="/352533" class="b-top-menu__link
+                            b-top-menu__link--active                                                   ">
+                        Страницы                    </a>
+
+                
+                                        
+
+                    <a href="/352533/orders" class="b-top-menu__link
+                                                                             ">
+                        Заявки                    </a>
+
+                
+                                        
+
+                    <a href="/352533/analytics/daily" class="b-top-menu__link
+                                                                             ">
+                        Аналитика                    </a>
+
+                
+                                        
+
+                    <a href="/352533/settings/general" class="b-top-menu__link
+                                                                             ">
+                        Настройки                    </a>
+
+                
+                                        
+
+                    <a href="/352533/integration/connected" class="b-top-menu__link
+                                                                             ">
+                        Интеграции и уведомления                    </a>
+
+                
+                                        
+
+                    <a href="/352533/plugins" class="b-top-menu__link
+                                                                             ">
+                        Плагины                    </a>
+
+                
+                                        
+
+                    <a href="/352533/database/tables" class="b-top-menu__link
+                                                                             ">
+                        База данных                    </a>
+
+                
+                                        
+
+                    <a href="/352533/member" class="b-top-menu__link
+                                                                             ">
+                        Пользователи                    </a>
+
+                
+                                        
+
+                    <a href="/profile/transfer?site_id=352533" class="b-top-menu__link
+                                                       b-top-menu__link--to-right                        ">
+                        Переезд с Платформы LP                    </a>
+
+                
+                                        
+
+                    <a href="/profile?site_id=352533" class="b-top-menu__link
+                                                                             ">
+                        Профиль                    </a>
+
+                            </div>
+
+        </div>
+    </header>
+
+
+    
+    <div class="b-alerts js-alerts" data-emergency-text="Изменения не сохранены, свяжитесь с поддержкой.">
+            </div>
+
+    <div id="app" class="b-content"><div class="b-ajax-window-wrap js-ajax-window-wrap js-ajax-sites"><div class="b-ajax-window b-ajax-window--sites"><div class="b-ajax-window-header"><div class="b-ajax-window-header__left"><h1>Ваши сайты</h1></div><div class="b-ajax-window-header__right"><a href="#" class="b-close-ajax-window js-close-ajax-window"><span class="icon-x b-close-ajax-window__icon"></span></a></div></div><div class="b-folder-container"><div class="aside-wrap"><div class="aside"><h2 class="aside-title">Папки</h2><div class="aside-cards-wrap"><div class="aside-card active"><div class="aside-card-header"><span class="aside-card-title">2 сайта</span><!----><!----></div><div class="aside-card-content"><span class="aside-card-caption">Все сайты</span></div></div><div class="aside-card-new"><div class="aside-card-new-inner"><span class="aside-card-new-caption">Создать папку</span><img src="/icons/plus-small.svg"></div></div></div></div></div><div class="content-wrap"><div class="content"><div class="content-title">Все сайты</div><div class="content-cards"><div class="content-card"><div class="content-card-header"><div><span class="content-card-badge active"></span><span class="content-card-title">10 страниц</span></div><div class="content-card-header-container"><img src="/icons/folder.svg" class="content-card-folder"><span class="content-card-subheader">Все сайты</span><select name="choose" class="content-card-select"><option value="0">Все сайты</option></select></div></div><div class="content-card-row"><div class="content-card-name"><div class="content-card-name-title">Барибал</div><div class="content-card-name-title pink b-card-name__link--hidden">Выбрать сайт<div class="icon-go-to-editor b-icon-right-arrow"></div></div><div class="content-card-name-url">https://baribal-studio.ru</div></div></div></div><div class="content-card active"><div class="content-card-header"><div><span class="content-card-badge"></span><span class="content-card-title">10 страниц</span></div><div class="content-card-header-container"><img src="/icons/folder.svg" class="content-card-folder"><span class="content-card-subheader">Все сайты</span><select name="choose" class="content-card-select"><option value="0">Все сайты</option></select></div></div><div class="content-card-row"><div class="content-card-name"><div class="content-card-name-title">Барибал дубликат, 16 нояб., 14:13</div><div class="content-card-name-title pink b-card-name__link--hidden">Выбрать сайт<div class="icon-go-to-editor b-icon-right-arrow"></div></div><div class="content-card-name-url">https://762165.creatium.site</div></div></div></div><div class="content-card-new"><span class="icon-plus b-card__new-icon" style="margin-top: 5px;"></span><div class="b-card__new-caption">Создать новый сайт</div></div></div><!----></div></div></div><div class="b-folder-loader"><img src="/icons/preloader.png" class="b-preloader__spinner"></div></div></div> <div class="vue-page-pages" style="opacity: 1;"><div class="b-info"><div class="b-info__left"><!----></div><div class="b-info__right"><div class="b-form-round"><select name="sorting" class="b-form-round__input b-form-round__input--dropdown"><option value="updated_at+desc">Изменен (сначала свежие)</option><option value="updated_at+asc">Изменен (сначала давние)</option><option value="created_at+desc">Создан (свежие)</option><option value="created_at+asc">Создан (давние)</option><option value="published_at+desc">Опубликован (свежие)</option><option value="published_at+asc">Опубликован (давние)</option><option value="title_sortable+asc">По названию</option><option value="pagePathSortable+asc">По адресу</option><option value="sorting+asc">Своя сортировка</option></select><span class="b-icon-down-box b-icon-down-box--round"><span class="icon-down b-icon-down-box__icon"></span></span></div></div><div class="gap--40"></div></div><div class="b-pages"><div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/home.svg"></div><a data-id="2230014" href="#page-2230014" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Главная страница </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230015" href="#page-2230015" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница автовинил. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/avtovinil" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/avtovinil<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230008" href="#page-2230008" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница автохимчистка. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/himchistka" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/himchistka<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230010" href="#page-2230010" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница защита кузова. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/kuzov" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/kuzov<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230013" href="#page-2230013" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница технологии. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/tehnology" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/tehnology<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230012" href="#page-2230012" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница наши работы. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/foto" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/foto<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230009" href="#page-2230009" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница миссия. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/mission" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/mission<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230011" href="#page-2230011" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница отзывы. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/reviews" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/reviews<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230007" href="#page-2230007" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Страница видео. </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/video" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/video<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div><div class="b-page draggable"><div class="b-page__drag"><img src="/icons/page-list/drag.svg"></div><div class="b-page__icon"><img src="/icons/page-list/page.svg"></div><a data-id="2230016" href="#page-2230016" data-type="redactor" class="b-page-info js-card-id"><div class="b-page-info__title"><div class="b-page-info__title--unpublished">Политика конфиденциальности </div><div class="b-page-info__title--transparent" style="color: rgb(132, 76, 230); position: absolute; top: 0px;">Открыть редактор<span class="icon-go-to-editor b-icon-right-arrow b-icon-right-arrow--page"></span></div></div><div data-url="https://762165.creatium.site/politika-konfidencialnosti" class="b-page-info__path js-card-name__url"><div class="b-status-icon"><img src="/icons/page-list/pause.svg"></div><span>https://762165.creatium.site/politika-konfidencialnosti<!----></span></div><!----></a><div class="b-page__stat"><span class="icon-stat b-icon-stat"></span></div><!----><div class="b-page__menu"><span class="icon-menu"></span></div><!----></div></div></div><!----><div class="gap--20"></div><a class="b-big-form-button b-big-form-button--solo b-big-form-button--theme_dashed b-big-form-button--flex">Создать новую страницу<span class="icon-plus b-dashed-button-icon"></span></a><!----></div> <div data-v-25bfe03c="" class="b-help-container b-help-container--carrot"><div data-v-25bfe03c=""></div><div data-v-25bfe03c="" class="b-help-button b-help-button_open"><div data-v-25bfe03c="" class="b-help-button__question-icon">?</div></div></div></div>
+
+    <style>
+    .b-footer {
+        padding    : 50px 40px 33px;
+        background : #F6F6F6;
+    }
+
+        .b-footer__top {
+            display        : flex;
+            padding-bottom : 30px;
+            margin-bottom  : 30px;
+            border-bottom  : 1px solid #efefef;
+        }
+
+        .b-footer__bottom {
+            display     : flex;
+            align-items : center;
+            flex        : 0 0 auto;
+            font-size   : 12px;
+        }
+
+    .b-footer-menu {
+        display     : flex;
+        flex-wrap   : wrap;
+        max-width   : 800px;
+        margin-left : -10px;
+    }
+
+        .b-footer-menu__link {
+            display     : flex;
+            align-items : center;
+            width       : 180px;
+            padding     : 10px;
+            color       : #676767;
+            font-size   : 12px;
+            line-height : 12px;
+            white-space : nowrap;
+        }
+
+    .b-footer-top-right {
+        display : flex;
+        flex-direction: column;
+
+        margin-left : auto;
+        font-size   : 12px;
+        line-height : 1.6;
+        color       : #A8A8A8;
+        text-align  : right;
+    }
+
+    .b-social-link {
+        display         : inline-flex;
+        align-items     : center;
+        justify-content : center;
+        width           : 30px;
+        height          : 30px;
+        color           : #5B5B5B;
+        border-radius   : 15px;
+    }
+
+    .b-social-link:hover, .b-social-link:focus {
+        color      : #844CE6;
+        background : #E8E8E8;
+    }
+
+    .b-footer-separator {
+        margin : 0 12px;
+        color  : #CECECE;
+    }
+
+        .b-footer-separator--five {
+            margin : 0 5px;
+        }
+</style>
+
+<footer class="b-footer">
+    <div class="b-footer__top">
+        <div class="b-footer-menu">
+            <a href="https://creatium.academy/help" target="_blank" class="b-footer-menu__link">База знаний</a>
+            <a href="https://creatium.io/updates" class="b-footer-menu__link">Обновления</a>
+            <a href="https://creatium.io/experts" class="b-footer-menu__link">Эксперты Creatium</a>
+            <a href="https://lp-prof.com/creatium?utm_source=partners&amp;utm_medium=creatium&amp;utm_campaign=footer" class="b-footer-menu__link">
+                Заказать сайт у партнеров
+                <img src="/icons/logo/lp-prof.png" alt="Telegram" style="max-width: 20px; margin-left: 5px;">
+            </a>
+            <a href="https://creatium.io/library" class="b-footer-menu__link">Библиотека компонентов</a>
+            <a href="https://voice.creatium.io/?_ga=2.235288712.805281900.1602584213-1673966459.1598275182" class="b-footer-menu__link">Идеи и предложения</a>
+            <a href="https://creatium.io/works" class="b-footer-menu__link">Сделано на Creatium</a>
+            <a href="https://docs.creatium.io/?_ga=2.235288712.805281900.1602584213-1673966459.1598275182" class="b-footer-menu__link">Документация разработчикам</a>
+        </div>
+        <div class="b-footer-top-right">
+            <div>
+                <a class="b-social-link" style="font-size: 11px;" href="https://t.me/CreatiumNews"><span class="icon-telegram"></span></a>
+                <a class="b-social-link" style="font-size: 10px;" href="https://vk.com/creatium"><span class="icon-vk"></span></a>
+                <a class="b-social-link" style="font-size: 11px;" href="https://www.youtube.com/channel/UCbVM86iLMvxzDkrbCLprRjQ"><span class="icon-youtube"></span></a>
+            </div>
+            <div style="margin-top: auto">
+                                    Версия редактора: 3.8                
+                <div style="color:#0c0c0c;">
+                                            <b>Русский</b>
+                        <span class="b-footer-separator b-footer-separator--five">|</span>
+                        <a class="b-link" href="/anonymous/change-language?language=en">English</a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="b-footer__bottom">
+        <img src="/icons/logo/cr-rounded-square.svg" alt="Creaitum" style="max-width:34px; border-radius:4px; margin-right: 20px;">
+        © <a href="https://creatium.io" target="_blank">Creatium.io</a>
+        <span class="b-footer-separator">|</span>
+        Все права защищены        <span class="b-footer-separator">|</span>
+        <b><a href="mailto:help@creatium.io">help@creatium.io</a></b>
+    </div>
+</footer>
+
+</div>
+
+<div class="b-preloader b-preloader--global js-preloader " style="display: none;">
+    <img src="/icons/preloader.png" alt="preloader" class="b-preloader__spinner">
+</div>
+
+<!--suppress JSUnusedAssignment -->
+<script>
+    $(document).ready(function() {
+        var current_timezone = 300;
+        var date = new Date();
+        var visitor_timezone = -date.getTimezoneOffset();
+        if (current_timezone != visitor_timezone) {
+            $.ajax({
+                type: "GET",
+                url: "/default/ajax-set-timezone",
+                data: 'timezone=' + visitor_timezone
+            });
+        }
+    });
+</script>
+
+    <script>
+  window.carrotSettings = {
+    api_key: '49155-1f70dbfe4f52ee204b81691377'
+          , user_id: 74328    , email: "baribal-st@yandex.ru"
+    , created_at: "2022-02-17 11:54:56"
+    , user_hash: "5dea21ad0ac481ae831f906653ab9845b1d6a1dc467892b2f3c1795817ca9147"
+    , websites_count: 2    , language: "ru"
+    , country_code: "RU"
+    , region: "CIS"
+        };
+  let messengerObject = null;
+</script>
+<!-- Carrot quest BEGIN -->
+    <script type="text/javascript">
+      !function(){function t(t,e){return function(){window.carrotquestasync.push(t,arguments)}}if("undefined"==typeof carrotquest){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//cdn.carrotquest.app/api.min.js",document.getElementsByTagName("head")[0].appendChild(e),window.carrotquest={},window.carrotquestasync=[],carrotquest.settings={};for(var n=["connect","track","identify","auth","onReady","addCallback","removeCallback","trackMessageInteraction"],a=0;a<n.length;a++)carrotquest[n[a]]=t(n[a])}}(),carrotquest.connect(carrotSettings.api_key);
+      messengerObject = carrotquest
+      carrotquest.onReady(function () {
+          auth(carrotquest);
+      })
+    </script>
+<!-- Carrot quest END -->
+
+<script>
+  function auth(messengerObject) {
+      messengerObject.auth(carrotSettings.user_id, carrotSettings.user_hash)
+      messengerObject.identify({
+          $email: carrotSettings.email,
+          $name: carrotSettings.email,
+          $user_id: carrotSettings.user_id,
+          $region: carrotSettings.region,
+          created_at: carrotSettings.created_at,
+          websites_count: carrotSettings.websites_count,
+          language: carrotSettings.language,
+          country_code: carrotSettings.country_code
+      });
+  }
+  let messenger_shifted = false;
+  messengerObject.addCallback('messenger_closed', function () {
+    if (messenger_shifted) { // Нужно для момента когда открыта панель слоев в редакторе
+      let target = $('#carrotquest-messenger-collapsed-container')
+      if (target.length > 0) {
+        target.attr('style', 'margin-right: 330px!important;')
+      }
+    }
+  })
+
+  messengerObject.addCallback('messenger_opened', function () {
+    window.top.postMessage({ // Шлем команду закрыть ВиО
+      type: 'action',
+      name: 'faq-close',
+    }, '*');
+  })
+
+  function listener(event) { // С редактора все по прежнему идет с приставкой intercom, заменить в будущем
+    if (event.data.name === 'intercom-event') {
+        messengerObject.track(event.data.data)
+    }
+    const intercom_shift = event.data.name === 'intercom-shift'
+    const intercom_unshift = event.data.name === 'intercom-unshift'
+    const redactor_close = event.data.name === 'redactor-close'
+    let target = $('#carrotquest-messenger-collapsed-container')
+
+    if (intercom_shift) {
+      if (target.length > 0) {
+        target.attr('style', 'margin-right: 330px!important;');
+        messenger_shifted = true;
+      }
+    }
+    if (intercom_unshift || redactor_close) {
+      if (target.length > 0) {
+        target.attr('style', 'margin-right: 13px!important;');
+        messenger_shifted = false;
+      }
+    }
+  }
+
+  if (window.addEventListener) {
+    window.addEventListener("message", listener)
+  } else {
+    // IE8
+    window.attachEvent("onmessage", listener)
+  }
+
+</script>
+<script src="/assets/53bcecbf/jquery.min.js?v=1698921260"></script>
+<script src="/js/my/form.js?v=1615822081"></script>
+<script src="/js/vue_build/app.js?v=1792031553"></script>
+<script src="/js/my/hash-to-redactor-iframe.js?v=1753940011"></script>
+<script src="/js/my/template-engine.js?v=1698921308"></script>
+<script>jQuery(function ($) {
+var redactor_state = null;
+function listener(event) {
+    var REDACTOR_SAVED = 'redactor-saved';
+    var REDACTOR_SAVING = 'redactor-saving';
+    var REDACTOR_LOADED = 'redactor-loaded';
+    var REDACTOR_CLOSE = 'redactor-close';
+    var SWITCH_VARIANT = 'switch-variant';
+    var frame = jIframe || jIframe_a || jIframe_b;
+    
+    if (event.origin != 'https://redactor.creatium.io') {
+        // что-то прислали с неизвестного домена - проигнорируем..
+        return;
+    }
+    
+    if (event.data.name == REDACTOR_SAVING) { // Черновик не сохранен
+        redactor_state = REDACTOR_SAVING;
+        window.onbeforeunload = function (evt) {
+            frame[0].contentWindow.postMessage('redactor-save', '*');
+            return evt;
+        }
+        
+    } else if (event.data.name == REDACTOR_SAVED) { // Черновик сохранен, все хорошо
+        redactor_state = REDACTOR_SAVED;
+        window.onbeforeunload = null;
+        
+    } else if (event.data.name == REDACTOR_LOADED) { // редактор загрузился, для версии 3.6+
+        frame.addClass('b-redactor--loaded');
+        
+    } else if (event.data.name == REDACTOR_CLOSE) { // закрытие редактора
+        window.location.hash = '';
+        document.title = $(document).data('my-title'); // @see my/web/js/my/hash-to-redactor-iframe.js
+        
+    } else if (event.data.name == SWITCH_VARIANT) { // Переключение между AB-вариантами
+        if (!/^#page-/.test(window.location.hash)) {
+            return;
+        }
+
+        var hash_parts = window.location.hash.split('-');
+        var page_id = hash_parts[1] * 1;
+        var version = hash_parts[2] || null;
+        
+        if (version === "a") {
+            window.location.hash = 'page-' + page_id + '-b';
+        } else if (version === "b") {
+            window.location.hash = 'page-' + page_id + '-a';
+        }
+    } 
+
+    if (event.data.name == 'set-editor-title') {
+        document.title = event.data.title;
+    }
+    
+    if (event.data.name === 'legacy-modal') {
+        frame[0].contentWindow.postMessage({
+            result: window[event.data.fn].apply(window, event.data.args),
+            uid: event.data.uid
+        }, '*');
+    }
+}
+
+if (window.addEventListener) {
+    window.addEventListener("message", listener);
+} else {
+    // IE8
+    window.attachEvent("onmessage", listener);
+}
+
+
+var ALERT_CLICK_COUNT = 0;
+$('html')
+    .on('click', '.js-site-selector', function(event) {
+        event.preventDefault();
+
+        $('.js-ajax-sites').show();
+    })
+    .on('click', '.js-header-graph', function(event) {
+        event.preventDefault();
+
+        var jDetails = $(this).parents('.js-header-graph-wrap').find('.js-header-graph-details');
+        
+        if (jDetails.is(':visible')) {
+            jDetails.hide();
+        } else {
+            jDetails.show();
+        }
+        
+    })
+    .on('click', '.js-header-alert__button', function(event) {
+        event.preventDefault();
+    
+        $('.js-bell_new').hide();
+        $('.js-bell_regular').show();
+        
+        var jDetails = $('.js-header-alert-details'); 
+        if (jDetails.is(':visible')) {
+            jDetails.hide();
+            $('.js-header-alert__button').removeClass('b-header-alert__button--active');
+        } else {
+            jDetails.show();
+            $('.js-header-alert__button').addClass('b-header-alert__button--active');
+        }
+        
+        if (ALERT_CLICK_COUNT == 0) {
+            var new_alerts = $('div[data-status="new"]')
+                .map(function() {
+                    return $(this).data('id');
+                })
+                .get();
+            
+            $.ajax({
+                url: '/default/alert-mark-read',
+                method: 'POST',
+                data: {
+                    new_alerts : new_alerts,
+                    '_csrf-my': "B6rbTMQnS6VX8S7_2x7pxesZUJr8MrprV5CTeSt8CdBy_JU7iHgo6CO7b5edTrisvns57Y0Ggz852v0eTQ9wkg=="
+                }    
+            });
+        }
+        
+        ALERT_CLICK_COUNT = ALERT_CLICK_COUNT + 1;
+    }).on('click', '.js-b-help__region', function(event) {
+        event.preventDefault();
+    
+        var jDetails = $('.js-b-region-help__popup'); 
+        if (jDetails.is(':visible')) {
+            jDetails.hide();
+            $('.js-b-help__region').removeClass('b-help__region--active');
+        } else {
+            jDetails.show();
+            $('.js-b-help__region').addClass('b-help__region--active');
+        }
+    });
+   
+
+});</script>
+
+<iframe id="proxy-iframe" name="proxy-iframe" title="proxy-iframe" style="display: block !important; width: 0 !important; height: 0 !important; border: none !important; position: absolute !important; top: 0 !important; left: 0 !important; visibility: hidden !important;"></iframe><div class="carrotquest-css-reset carrotquest-messenger-right_bottom" id="carrotquest-messenger-collapsed-container"><div id="chat-container"><div id="icon-container"><iframe id="carrot-messenger-collapsed-frame" name="carrot-messenger-collapsed-frame" title="carrot-messenger-collapsed-frame" class="carrot-messenger-collapsed-frame"></iframe></div></div></div></body></html>
