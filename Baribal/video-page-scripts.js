@@ -6,7 +6,7 @@
 
 
 /* Исходный скрипт 1 */
-$(window).load(function (){
+$(function () {
 if ($(window).scrollTop() >= 250) $(".goup").fadeIn("slow")
 $(window).scroll(function(){
 if ($(window).scrollTop() <= 1250) $(".goup").fadeOut("slow")
@@ -33,7 +33,7 @@ window.scrollBy(0,1);
 }, 300 );
 });
 
-    document.addEventListener("DOMContentLoaded", function () {
+    $(function () {
         var unread = true;
         if ($(window).width() > 767) $('#popup_expert').addClass('active').addClass('dt');
         $(window).on('resize', function () {
