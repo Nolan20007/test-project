@@ -105,7 +105,7 @@ jQuery.browser = {};
   (function () {
     jQuery.browser.msie = false
     jQuery.browser.version = 0;
-    if (navigator.userAgent.match(/MSIE ([0-9]+)\\./)) {
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
       jQuery.browser.msie = true;
       jQuery.browser.version = RegExp.$1
     }
@@ -123,7 +123,7 @@ cr.api(page => {
       input.dataset.nativePhoneMask = '1'
 
       const formatPhone = () => {
-        let digits = input.value.replace(/\\D/g, '')
+        let digits = input.value.replace(/\D/g, '')
         if (digits.startsWith('7') || digits.startsWith('8')) digits = digits.slice(1)
         digits = digits.slice(0, 10)
         let value = '+7'
@@ -145,7 +145,7 @@ cr.api(page => {
     page.on('before-form-submit', event => {
       const apiPhoneFields = event.form.fields.filter(apiField => apiField.type == 'phone')
       apiPhoneFields.forEach(apiField => {
-        const phoneNumber = apiField.value.replace(/\\D/g, '')
+        const phoneNumber = apiField.value.replace(/\D/g, '')
         if (phoneNumber.length < characters) {
           page.showErrorMessage(errorTitle, errorText)
           event.prevent()
