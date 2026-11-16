@@ -1,1 +1,0 @@
-Не использовать. Вкладку CDN в Creatium оставить пустой: зависимость от jQuery Mask удалена из video-page-scripts.js.
