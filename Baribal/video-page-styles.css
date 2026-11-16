@@ -1,0 +1,1698 @@
+/* Стили исходной страницы «Видео». Вставить во вкладку CSS HTML-секции Creatium. */
+
+.btn.css0 { background-color: rgba(226, 84, 64, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(247, 219, 100);padding-top: 3px;padding-bottom: 10px;font-size: 25px;color: rgb(247, 219, 100)!important; } .btn.css0:hover, .btn.css0.hover { background-color: rgba(226, 84, 64, 0);border-color: rgb(249, 226, 131);color: rgb(252, 29, 0)!important; } .btn.css0:active, .btn.css0.active { background-color: rgba(226, 84, 64, 0);border-color: rgb(152, 38, 23);color: rgb(202, 23, 0)!important; } .btn.css0:before {  } .btn.css0:active:before, .btn.css0.active:before { background-color: rgba(226, 84, 64, 0); }.btn.css0 .fas { font-size: 33px; } 
+.node.css1  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px }
+.screen-xs .node.css1  { padding-top: 0px!important }
+.node.css1 a { color: rgb(229, 230, 25) }
+
+.btn.css2 { background-color: rgba(14, 126, 227, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(14, 126, 227);padding-top: 0px;padding-bottom: 0px;font-size: 14px;color: rgb(14, 126, 227)!important; } .btn.css2:hover, .btn.css2.hover { background-color: rgba(14, 126, 227, 0);border-color: rgb(52, 152, 243);color: rgb(52, 152, 243)!important; } .btn.css2:active, .btn.css2.active { background-color: rgba(14, 126, 227, 0);border-color: rgb(8, 75, 136);color: rgb(13, 123, 222)!important; } .btn.css2:before {  } .btn.css2:active:before, .btn.css2.active:before { background-color: rgba(14, 126, 227, 0); }
+.node.css3  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 0px }
+.screen-sm .node.css3  { padding-left: 0px!important }
+.node.css3 a { color: rgb(229, 230, 25) }
+
+.metahtml.css4 .menu-btn:after {
+  content: '\2261';
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.metahtml.css4 .menu-btn:hover {
+  cursor: pointer;
+}
+
+.metahtml.css4 .menu-btn {
+  width: 45px;
+  height: 45px;
+  background-color: rgb(247, 220, 100);
+  position: fixed;
+  top: 0%;
+  right: 80%;
+  border-radius: 0px;
+  z-index: 99999 !important;
+  transition: 0.5s;
+  transform: translateX(-150%);
+  padding: 1px 0px;
+  text-align: center;
+  text-decoration: none !important;
+  font-size: 29px;
+}
+.node.css5  { color: #FFF; padding-top: 0px; padding-bottom: 5px; padding-left: 0px; padding-right: 15px }
+.screen-xs .node.css5  { padding-top: 20px!important }
+.node.css5 a { color: rgb(229, 230, 25) }
+
+.metahtml.css6 .prokrutka {
+  height: 988px;
+  width: 100%;
+  background: rgba(237, 237, 237, 0);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.metahtml.css6 .prokrutka::-webkit-scrollbar {
+  width: 5px;
+}
+
+.metahtml.css6 .prokrutka::-webkit-scrollbar-thumb {
+  height: 10px;
+  border-radius: 0px;
+  background: rgb(247, 219, 100);
+}
+
+.metahtml.css6 .prokrutka:hover::-webkit-scrollbar-thumb {
+  background: rgb(247, 220, 100);
+}
+
+.metahtml.css6 .prokrutka::-webkit-scrollbar-track-piece {
+  background: rgb(247, 220, 100);
+}
+
+.metahtml.css6 .prokrutka:hover::-webkit-scrollbar-track-piece {
+  background: rgb(240, 240, 240);
+}
+.node.css7  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px }
+.node.css7 a { color: rgb(229, 230, 25) }
+
+.node.css8 .padding { height: 20px }
+
+.btn.css9 { background-color: rgba(3, 3, 3, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(230, 230, 230);padding-top: 0px;padding-bottom: 5px;font-size: 14px;font-weight: bold;color: rgb(230, 230, 230)!important; } .btn.css9:hover, .btn.css9.hover { background-color: rgba(0, 0, 0, 0);border-color: rgb(235, 235, 235);color: rgb(247, 221, 100)!important; } .btn.css9:active, .btn.css9.active { background-color: rgba(0, 0, 0, 0);border-color: rgb(0, 0, 0);color: rgb(0, 0, 0)!important; } .btn.css9:before {  } .btn.css9:active:before, .btn.css9.active:before { background-color: rgba(0, 0, 0, 0); }.area.screen-md .btn.css9 { font-size: 13px; } .area.screen-sm .btn.css9 { font-size: 13px; } .area.screen-xs .btn.css9 { font-size: 14px; } .btn.css9 .fas { font-size: 18px;margin-right: 7px; } .area.screen-md .btn.css9 .fas { font-size: 17px;margin-right: 7px; } .area.screen-sm .btn.css9 .fas { font-size: 17px;margin-right: 7px; } .area.screen-xs .btn.css9 .fas { font-size: 18px;margin-right: 7px; } 
+.btn.css10 { background-color: rgba(3, 3, 3, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(230, 230, 230);padding-top: 0px;padding-bottom: 5px;font-size: 14px;font-weight: bold;color: rgb(230, 230, 230)!important; } .btn.css10:hover, .btn.css10.hover { background-color: rgba(0, 0, 0, 0);border-color: rgb(235, 235, 235);color: rgb(247, 220, 100)!important; } .btn.css10:active, .btn.css10.active { background-color: rgba(0, 0, 0, 0);border-color: rgb(0, 0, 0);color: rgb(0, 0, 0)!important; } .btn.css10:before {  } .btn.css10:active:before, .btn.css10.active:before { background-color: rgba(0, 0, 0, 0); }.area.screen-md .btn.css10 { font-size: 13px; } .area.screen-sm .btn.css10 { font-size: 13px; } .area.screen-xs .btn.css10 { font-size: 14px; } .btn.css10 .fas { font-size: 18px;margin-right: 7px; } .area.screen-md .btn.css10 .fas { font-size: 17px;margin-right: 7px; } .area.screen-sm .btn.css10 .fas { font-size: 17px;margin-right: 7px; } .area.screen-xs .btn.css10 .fas { font-size: 18px;margin-right: 7px; } 
+.node.css11 .padding { height: 19px }
+
+.node.css12 .padding { height: 325px }
+
+.node.css13  { color: #FFF; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 0px }
+.screen-sm .node.css13  { padding-left: 0px!important }
+.node.css13 a { color: rgb(229, 230, 25) }
+
+.node.css14  { color: #FFF; padding-top: 0px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px }
+.screen-sm .node.css14  { padding-left: 0px!important; padding-right: 0px!important }
+.node.css14 a { color: rgb(229, 230, 25) }
+
+.node.css15 > .wrapper1 { background-color: rgb(6, 6, 4) }
+.node.css15  { color: #FFF }
+.node.css15  > .padding_top { padding-top: 0px }
+.node.css15  > .padding_bottom { padding-bottom: 6px }
+.node.css15 a { color: rgb(229, 230, 25) }
+
+.node.css16  { color: #FFF; padding-top: 5px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px }
+.node.css16 a { color: rgb(229, 230, 25) }
+
+.screen-xs .node.css17 img { max-width: 81.60000000000001px!important }
+
+.node.css18  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px }
+.screen-sm .node.css18  { padding-bottom: 0px!important }
+.node.css18 a { color: rgb(229, 230, 25) }
+
+.textable.css19  { text-align: left; font-family: "Georgia"; font-size: 52px; line-height: 1.2; letter-spacing: 0em; color: rgb(255, 229, 153); opacity: 1 }
+.screen-md .textable.css19  { font-size: 50px!important }
+.screen-sm .textable.css19  { font-size: 40px!important }
+.screen-xs .textable.css19  { text-align: center!important; font-size: 40px!important }
+
+.node.css20  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px }
+.node.css20 a { color: rgb(229, 230, 25) }
+
+.textable.css21  { text-align: left; font-family: "Open Sans"; font-size: 16px; line-height: 1.5; letter-spacing: 0em; opacity: 1 }
+.screen-sm .textable.css21  { font-size: 14px!important }
+.screen-xs .textable.css21  { text-align: center!important; font-size: 14px!important }
+
+.node.css22  { color: #FFF; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px }
+.node.css22 a { color: rgb(229, 230, 25) }
+
+.textable.css23  { text-align: right; font-family: "Roboto Slab"; font-size: 21px; line-height: 1.2; letter-spacing: 0em; color: rgb(255, 229, 153); opacity: 1 }
+.screen-sm .textable.css23  { font-size: 20px!important }
+.screen-xs .textable.css23  { text-align: center!important; font-size: 20px!important }
+
+.node.css24  { color: #FFF; padding-top: 0px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px }
+.node.css24 a { color: rgb(229, 230, 25) }
+
+.textable.css25  { text-align: right; font-family: "Open Sans"; font-size: 16px; line-height: 1.4; letter-spacing: 0em; opacity: 1 }
+.screen-sm .textable.css25  { text-align: right!important; font-size: 14px!important }
+.screen-xs .textable.css25  { text-align: center!important; font-size: 14px!important }
+
+.btn.css26 { background-color: rgba(252, 252, 252, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(252, 252, 252);padding-top: 8px;padding-bottom: 8px;font-size: 15px;font-weight: bold;color: rgb(252, 252, 252)!important; } .btn.css26:hover, .btn.css26.hover { background-color: rgba(252, 252, 252, 0);border-color: rgb(253, 253, 253);color: rgb(247, 222, 100)!important; } .btn.css26:active, .btn.css26.active { background-color: rgba(252, 252, 252, 0);border-color: rgb(151, 151, 151);color: rgb(247, 222, 100)!important; } .btn.css26:before {  } .btn.css26:active:before, .btn.css26.active:before { background-color: rgba(252, 252, 252, 0); }
+.node.css27  { color: #FFF; padding-top: 5px; padding-bottom: 5px; padding-left: 0px; padding-right: 0px }
+.node.css27 a { color: rgb(229, 230, 25) }
+
+.node.css28 > .wrapper1 { background-color: rgb(15, 15, 9) }
+.node.css28  { color: #FFF }
+.node.css28  > .padding_top { padding-top: 0px }
+.node.css28  > .padding_bottom { padding-bottom: 0px }
+.node.css28 a { color: rgb(229, 230, 25) }
+
+.btn.css29 { background-color: rgba(255, 255, 255, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(255, 255, 255);padding-top: 6px;padding-bottom: 6px;font-size: 15px;color: rgb(255, 255, 255)!important;font-family: "Arial"; } .btn.css29:hover, .btn.css29.hover { background-color: rgb(247, 223, 100);border-color: rgb(243, 210, 34);color: rgb(0, 0, 0)!important; } .btn.css29:active, .btn.css29.active { background-color: rgb(245, 217, 67);border-color: rgb(211, 179, 11);color: rgb(0, 0, 0)!important; } .btn.css29:before {  } .btn.css29:active:before, .btn.css29.active:before { background-color: rgb(245, 217, 67); }
+.metahtml.css30 .hamburger1 {
+  position: relative;
+}
+
+.metahtml.css30 .hamburger1-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.metahtml.css30 .hamburger1-altmenu {
+  flex-grow: 1;
+  order: 1;
+}
+
+.metahtml.css30 .hamburger1-toggle {
+  width: 30px;
+  height: 18px;
+  flex: 0 0 30px;
+  margin: 5px;
+  cursor: pointer;
+  margin-top: 0;
+  order: 2;
+  position: relative;
+}
+
+.metahtml.css30 .hamburger1-toggle span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: rgb(255, 244, 138);
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.metahtml.css30 .hamburger1-toggle span:nth-child(1) {
+  top: 0px;
+}
+
+.metahtml.css30 .hamburger1-toggle span:nth-child(2),
+.metahtml.css30 .hamburger1-toggle span:nth-child(3) {
+  top: 9px;
+}
+
+.metahtml.css30 .hamburger1-toggle span:nth-child(4) {
+  top: 18px;
+}
+
+.metahtml.css30 .hamburger1-toggle.is-expanded span:nth-child(1) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}
+
+.metahtml.css30 .hamburger1-toggle.is-expanded span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.metahtml.css30 .hamburger1-toggle.is-expanded span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.metahtml.css30 .hamburger1-toggle.is-expanded span:nth-child(4) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}
+.btn.css31 { background-color: rgb(247, 223, 100);border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border-style: solid;border-top-width: 2px;border-bottom-width: 2px;border-left-width: 2px;border-right-width: 2px;border-color: rgb(243, 210, 34);padding-top: 3px;padding-bottom: 3px;font-size: 14px;color: rgb(0, 0, 0)!important; } .btn.css31:hover, .btn.css31.hover { background-color: rgb(245, 217, 67);border-color: rgb(211, 179, 11);color: rgb(0, 0, 0)!important; } .btn.css31:active, .btn.css31.active { background-color: rgb(244, 211, 37);border-color: rgb(169, 143, 9);color: rgb(0, 0, 0)!important; } .btn.css31:before {  } .btn.css31:active:before, .btn.css31.active:before { background-color: rgb(244, 211, 37); }.btn.css31 .fas { font-size: 18px;margin-right: 7px; } 
+.metahtml.css32 .modal0-root {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  outline: none;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: 300ms all ease-out;
+}
+
+.metahtml.css32 .modal0-root.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.metahtml.css32 .modal0-root.is-hiding {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.metahtml.css32 .modal0-header {
+  padding: 15px;
+  color: rgb(25, 25, 25);
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.metahtml.css32 .modal0-body {
+  position: relative;
+  padding: 20px;
+}
+
+.metahtml.css32 .modal0-title {
+  margin-right: 20px;
+  text-align: left;
+}
+
+.metahtml.css32 .modal0-close {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+  opacity: 0.4;
+  margin-top: -2px;
+}
+
+.metahtml.css32 .modal0-close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.btn.css33 { background-color: rgb(247, 223, 100);border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border-style: solid;border-top-width: 1px;border-bottom-width: 3px;border-left-width: 1px;border-right-width: 1px;border-color: rgb(243, 210, 34);padding-top: 8px;padding-bottom: 8px;font-size: 18px;color: rgb(0, 0, 0)!important;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25); } .btn.css33:hover, .btn.css33.hover { background-color: rgb(245, 217, 67);border-color: rgb(211, 179, 11);color: rgb(0, 0, 0)!important; } .btn.css33:active, .btn.css33.active { background-color: rgb(245, 217, 67);border-color: rgb(237, 201, 12);border-top-width: 3px;border-bottom-width: 1px;color: rgb(0, 0, 0)!important;box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.25); } .btn.css33:before {  } .btn.css33:active:before, .btn.css33.active:before { background-color: rgb(245, 217, 67);box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.25); }
+.node.css34  { color: #333; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px }
+.node.css34 a { color: rgb(229, 230, 25) }
+
+.textable.css35  { text-align: center; font-family: "Open Sans"; font-size: 10px; line-height: 2.2399999999999998; letter-spacing: 0em; opacity: 1 }
+
+.btn.css36 { background-color: rgba(247, 223, 100, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(247, 222, 100);padding-top: 0px;padding-bottom: 0px;font-size: 18px;font-weight: bold;color: rgb(247, 222, 100)!important; } .btn.css36:hover, .btn.css36.hover { background-color: rgba(247, 223, 100, 0);border-color: rgb(249, 229, 131);color: rgb(247, 222, 100)!important; } .btn.css36:active, .btn.css36.active { background-color: rgba(247, 222, 100, 0);border-color: rgb(198, 168, 10);color: rgb(247, 222, 100)!important; } .btn.css36:before {  } .btn.css36:active:before, .btn.css36.active:before { background-color: rgba(247, 222, 100, 0); }
+.btn.css37 { background-color: rgba(0, 0, 0, 0);border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(247, 223, 100);padding-top: 5px;padding-bottom: 5px;font-size: 12px;text-decoration: underline;color: rgb(247, 223, 100)!important; } .btn.css37:hover, .btn.css37.hover { background-color: rgb(0, 0, 0);border-color: rgb(248, 230, 131);color: rgb(0, 0, 0)!important; } .btn.css37:active, .btn.css37.active { background-color: rgba(0, 0, 0, 0);border-color: rgb(0, 0, 0);color: rgb(0, 0, 0)!important; } .btn.css37:before { background-color: rgb(0, 0, 0); } .btn.css37:active:before, .btn.css37.active:before { background-color: rgba(0, 0, 0, 0); }.btn.css37 .fas { font-size: 16px;margin-right: 6px; } 
+.node.css38 > .wrapper1 { background-color: rgba(15, 15, 9, 0.5) }
+.node.css38  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px }
+.node.css38 a { color: rgb(229, 230, 25) }
+
+.btn.css39 { background-color: rgba(0, 0, 0, 0);border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(247, 223, 100);padding-top: 5px;padding-bottom: 5px;font-size: 12px;color: rgb(247, 223, 100)!important; } .btn.css39:hover, .btn.css39.hover { background-color: rgb(0, 0, 0);border-color: rgb(248, 230, 131);color: rgb(0, 0, 0)!important; } .btn.css39:active, .btn.css39.active { background-color: rgba(0, 0, 0, 0);border-color: rgb(0, 0, 0);color: rgb(0, 0, 0)!important; } .btn.css39:before { background-color: rgb(0, 0, 0); } .btn.css39:active:before, .btn.css39.active:before { background-color: rgba(0, 0, 0, 0); }.btn.css39 .fas { font-size: 16px;margin-right: 6px; } 
+.node.css40  { color: #333; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px }
+.node.css40 a { color: rgb(25, 230, 108) }
+
+.textable.css41  { text-align: center; font-family: "Open Sans"; font-size: 32px; line-height: 1.4; letter-spacing: 0em; opacity: 1 }
+.screen-xs .textable.css41  { text-align: center!important }
+
+.node.css42  { color: #333; padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px }
+.node.css42 a { color: rgb(25, 230, 108) }
+
+.textable.css43  { text-align: left; font-family: "Open Sans"; font-size: 16px; line-height: 1.4; letter-spacing: 0em; opacity: 1 }
+.screen-xs .textable.css43  { text-align: center!important }
+
+.node.css44 > .wrapper1 { background-color: white }
+.node.css44  { color: #333 }
+.node.css44  > .padding_top { padding-top: 25px }
+.node.css44  > .padding_bottom { padding-bottom: 20px }
+.node.css44 a { color: rgb(25, 230, 108) }
+
+.node.css45 .s-elements-grid { margin-left: -10px; margin-right: -10px }
+.node.css45 .s-elements-grid__cell.cell-0 { width: 50%; padding-left: 10px; padding-right: 0 }
+.node.css45 .s-elements-grid__cell.cell-0 > .s-elements-grid__cellwrapper { padding-top: 10px; padding-bottom: 10px; padding-left: 0; padding-right: 10px }
+.node.css45 .s-elements-grid__cell.cell-1 { width: 50%; padding-left: 0; padding-right: 10px }
+.node.css45 .s-elements-grid__cell.cell-1 > .s-elements-grid__cellwrapper { padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 0 }
+.node.css45 .s-elements-grid__cell.cell-2 { width: 50%; padding-left: 10px; padding-right: 0 }
+.node.css45 .s-elements-grid__cell.cell-2 > .s-elements-grid__cellwrapper { padding-top: 10px; padding-bottom: 10px; padding-left: 0; padding-right: 10px }
+.node.css45 .s-elements-grid__cell.cell-3 { width: 50%; padding-left: 0; padding-right: 10px }
+.node.css45 .s-elements-grid__cell.cell-3 > .s-elements-grid__cellwrapper { padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 0 }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-0 { width: 100%!important; padding-left: 10px!important; padding-right: 10px!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-0 > .s-elements-grid__cellwrapper { padding-top: 10px!important; padding-bottom: 10px!important; padding-left: 0!important; padding-right: 0!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-1 { width: 100%!important; padding-left: 10px!important; padding-right: 10px!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-1 > .s-elements-grid__cellwrapper { padding-top: 10px!important; padding-bottom: 10px!important; padding-left: 0!important; padding-right: 0!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-2 { width: 100%!important; padding-left: 10px!important; padding-right: 10px!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-2 > .s-elements-grid__cellwrapper { padding-top: 10px!important; padding-bottom: 10px!important; padding-left: 0!important; padding-right: 0!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-3 { width: 100%!important; padding-left: 10px!important; padding-right: 10px!important }
+.screen-xs .node.css45 .s-elements-grid__cell.cell-3 > .s-elements-grid__cellwrapper { padding-top: 10px!important; padding-bottom: 10px!important; padding-left: 0!important; padding-right: 0!important }
+
+.textable.css46  { text-align: left; font-family: "Georgia"; font-size: 40px; line-height: 1.1; letter-spacing: 0em; color: rgb(255, 229, 153); opacity: 1 }
+.screen-xs .textable.css46  { text-align: center!important }
+
+.node.css47  { color: #FFF; padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 0px }
+.node.css47 a { color: rgb(229, 230, 25) }
+
+.textable.css48  { text-align: left; font-family: "Open Sans"; font-size: 16px; line-height: 1.5; letter-spacing: 0em; opacity: 1 }
+.screen-xs .textable.css48  { text-align: center!important }
+
+.node.css49  { color: #FFF; padding-top: 3px; padding-bottom: 0px; padding-left: 5px; padding-right: 0px }
+.node.css49 a { color: rgb(229, 230, 25) }
+
+.textable.css50  { text-align: left; font-family: "Open Sans"; font-size: 16px; line-height: 1.5; letter-spacing: 0em; opacity: 1 }
+.screen-xs .textable.css50  { text-align: left!important; font-size: 14px!important }
+
+.node.css51  { color: #FFF; padding-top: 0px; padding-bottom: 3px; padding-left: 5px; padding-right: 0px }
+.node.css51 a { color: rgb(229, 230, 25) }
+
+.textable.css52  { text-align: left; font-family: "Open Sans"; font-size: 16px; line-height: 1.8666666666666665; letter-spacing: 0em; color: rgb(255, 255, 255); opacity: 1 }
+.screen-xs .textable.css52  { text-align: left!important; font-size: 14px!important }
+
+.btn.css53 { background-color: rgba(252, 252, 252, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(255, 229, 133);padding-top: 0px;padding-bottom: 8px;font-size: 22px;color: rgb(255, 229, 133)!important;font-family: "Roboto Slab"; } .btn.css53:hover, .btn.css53.hover { background-color: rgba(252, 252, 252, 0);border-color: rgb(255, 234, 157);color: rgb(255, 234, 157)!important; } .btn.css53:active, .btn.css53.active { background-color: rgba(252, 252, 252, 0);border-color: rgb(151, 151, 151);color: rgb(255, 217, 75)!important; } .btn.css53:before {  } .btn.css53:active:before, .btn.css53.active:before { background-color: rgba(252, 252, 252, 0); }
+.btn.css54 { background-color: rgba(252, 252, 252, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(255, 230, 133);padding-top: 0px;padding-bottom: 8px;font-size: 16px;color: rgb(255, 230, 133)!important;font-family: "Roboto Slab"; } .btn.css54:hover, .btn.css54.hover { background-color: rgba(252, 252, 252, 0);border-color: rgb(255, 235, 158);color: rgb(255, 235, 158)!important; } .btn.css54:active, .btn.css54.active { background-color: rgba(252, 252, 252, 0);border-color: rgb(151, 151, 151);color: rgb(255, 218, 75)!important; } .btn.css54:before {  } .btn.css54:active:before, .btn.css54.active:before { background-color: rgba(252, 252, 252, 0); }
+.btn.css55 { background-color: rgba(222, 222, 222, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(178, 178, 178);padding-top: 0px;padding-bottom: 0px;font-size: 13px;color: rgb(222, 222, 222)!important; } .btn.css55:hover, .btn.css55.hover { background-color: rgba(200, 200, 200, 0);border-color: rgb(142, 142, 142);color: rgb(178, 178, 178)!important; } .btn.css55:active, .btn.css55.active { background-color: rgba(180, 180, 180, 0);border-color: rgb(160, 160, 160);color: rgb(255, 255, 255)!important; } .btn.css55:before {  } .btn.css55:active:before, .btn.css55.active:before { background-color: rgba(180, 180, 180, 0); }
+.node.css56  { color: #FFF; padding-top: 6px; padding-bottom: 6px; padding-left: 6px; padding-right: 6px }
+.node.css56 > .wrapper1 { border-radius: 5px; border-width: 3px; border-style: solid; border-color: rgb(255, 229, 133) }
+.node.css56 a { color: rgb(229, 230, 25) }
+
+.node.css57 .padding { height: 20px }
+.screen-xs .node.css57 .padding { height: 10px!important }
+
+.btn.css58 { background-color: rgba(8, 8, 8, 0);border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(6, 6, 6);padding-top: 8px;padding-bottom: 8px;font-size: 14px;font-weight: bold;color: rgb(255, 255, 255)!important; } .btn.css58:hover, .btn.css58.hover { background-color: rgba(7, 7, 7, 0);border-color: rgb(5, 5, 5);color: rgb(241, 42, 249)!important; } .btn.css58:active, .btn.css58.active { background-color: rgba(6, 6, 6, 0);border-color: rgb(6, 6, 6);color: rgb(255, 255, 255)!important; } .btn.css58:before {  } .btn.css58:active:before, .btn.css58.active:before { background-color: rgba(6, 6, 6, 0); }.btn.css58 .fas { font-size: 18px;margin-right: 7px; } 
+.metahtml.css59 #popup_expert {
+  margin-top: 50px;
+  position: fixed;
+  z-index: 9999 !important;
+  right: 2%;
+  bottom: 5px;
+  box-shadow: 0 17px 40px hsla(0, 8%, 36%, .26);
+  border-radius: 5px;
+  background: rgb(0, 0, 0);
+  min-width: 312px;
+}
+
+.metahtml.css59 #popup_expert .pe_photo {
+  display: block;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  margin: -86px auto 0;
+  border: 2px solid rgb(247, 220, 100);
+  float: right;
+  cursor: pointer;
+}
+
+.metahtml.css59 #popup_expert.active .pe_photo {
+  margin: -40px auto 0;
+  border: none;
+  float: none;
+  cursor: default;
+}
+
+.metahtml.css59 #popup_expert.active.no-activate .pe_photo {
+  margin: -86px auto 0;
+  border: 2px solid rgb(247, 220, 100);
+  float: right;
+  cursor: pointer;
+}
+
+.metahtml.css59 #popup_expert .pe_content {
+  position: relative;
+  display: none;
+}
+
+.metahtml.css59 #popup_expert.active .pe_content {
+  display: block;
+}
+
+.metahtml.css59 #popup_expert.active.no-activate .pe_content {
+  display: none;
+}
+
+.metahtml.css59 #popup_expert .pe_close {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 15px;
+  top: -27px;
+  cursor: pointer;
+  z-index: 99;
+  background: url(//i.1.creatium.io/plp/u21.plpstatic.ru/733fae76f88dbb7711ea11ff613d229c/be61fd7f851efcd0f9009b38b7a3eaad.png) no-repeat top center;
+  transition: .2s all ease;
+  background-size: contain;
+}
+
+.metahtml.css59 #popup_expert.unread::after {
+  content: '1';
+  display: block;
+  position: absolute;
+  top: -82px;
+  right: 8px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 0, 0);
+  font-size: 11px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  padding: 8px 0 0 4.8px;
+  line-height: 0;
+}
+.metahtml.css60 .form1-cover {
+  padding: 20px 0px;
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(0, 160, 65);
+  border-style: none;
+  border-width: 2px;
+  border-radius: 0px;
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+.node.css61  { color: #FFF; padding-top: 0px; padding-bottom: 20px; padding-left: 10px; padding-right: 5px }
+.screen-xs .node.css61  { padding-bottom: 10px!important }
+.node.css61 a { color: rgb(229, 230, 25) }
+
+.textable.css62  { text-align: left; font-family: "Open Sans"; font-size: 20px; line-height: 1.4; letter-spacing: 0.04em; color: rgb(255, 255, 255); opacity: 1 }
+.screen-md .textable.css62  { font-size: 18px!important }
+.screen-sm .textable.css62  { font-size: 16px!important }
+.screen-xs .textable.css62  { font-size: 18px!important }
+
+.metahtml.css63 [cr-field] {
+  padding-bottom: 14px;
+  font-size: 14px;
+  font-family: Open Sans;
+}
+
+.metahtml.css63 .name {
+  font-weight: normal;
+  font-family: Open Sans;
+  opacity: 0.8;
+  margin-bottom: 5.5px;
+  font-size: 11px;
+  word-wrap: break-word;
+  text-transform: uppercase;;
+  letter-spacing: 0.1em;;
+}
+
+.metahtml.css63 .form-control {
+  height: auto;
+  line-height: 1.2;
+  box-shadow: none;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 12px 9.6px;
+  font-size: 14px;
+  cursor: initial;
+}
+
+.metahtml.css63 .form-control:focus,
+.metahtml.css63 .form-control:focus-within {
+  border-color: rgb(247, 222, 100);
+  background-color: rgb(252, 252, 252);
+}
+
+.metahtml.css63 .form-control + .form-control {
+  margin-top: 10px;
+}
+
+.metahtml.css63 label {
+  font-weight: normal;
+  display: block;
+  cursor: pointer;
+}
+
+.metahtml.css63 textarea {
+  resize: vertical;
+}
+
+.metahtml.css63 .checkbox {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin: 0 5.5px 0 0;
+  line-height: 0;
+  min-height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: 300ms all;
+  border-radius: 2px;
+}
+
+.metahtml.css63 .checkbox svg {
+  width: 100%;
+  opacity: 0;
+  transform: scale(0);
+  transition: 300ms all;
+}
+
+.metahtml.css63 input:hover ~ .checkbox,
+.metahtml.css63 input:focus ~ .checkbox {
+  border-color: rgb(251, 238, 178);
+}
+
+.metahtml.css63 input:checked ~ .checkbox {
+  border-color: rgb(245, 215, 67);
+  background-color: rgb(247, 222, 100);
+}
+
+.metahtml.css63 input:active ~ .checkbox {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.metahtml.css63 input:checked ~ .checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.metahtml.css63 .radio {
+  margin: 0;
+  margin: 0 5.5px 0 0;
+  padding: 0;
+  line-height: 0;
+  width: 22px;
+  height: 22px;
+  min-height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: 300ms all;
+  border-radius: 100px;
+}
+
+.metahtml.css63 .radio:before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  content: '';
+  display: block;
+  background-color: white;
+  border-radius: 100px;
+  opacity: 0;
+  transform: scale(0);
+  transition: 300ms all;
+}
+
+.metahtml.css63 input:hover ~ .radio,
+.metahtml.css63 input:focus ~ .radio {
+  border-color: rgb(251, 238, 178);
+}
+
+.metahtml.css63 input:active ~ .radio {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.metahtml.css63 input:checked ~ .radio {
+  border-color: rgb(245, 215, 67);
+  background-color: rgb(247, 222, 100);
+}
+
+.metahtml.css63 input:checked ~ .radio:before {
+  opacity: 1;
+  transform: scale(0.5);
+}
+
+.metahtml.css63 [cr-field="checkbox-list"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css63 [cr-field="checkbox-list"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css63 [cr-field="checkbox-list"] label + label {
+  margin-top: 7.333333333333333px;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] {
+  overflow: hidden;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] .items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -20px;
+  justify-content: space-between;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] .item {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 19%;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] label {
+  position: relative;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] .bgimage {
+  background-size: cover;
+  display: inline-block;
+  background-position: center;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] .tick {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(247, 222, 100, 0.75);
+  transition: all 300ms;
+  opacity: 0;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] .tick svg {
+  opacity: 0;
+  transition: all 300ms;
+  max-width: 26px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] .subname {
+  margin: 7px 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] input:hover ~ .bgimage .tick,
+.metahtml.css63 [cr-field="checkbox-visual"] input:focus ~ .bgimage .tick {
+  opacity: 0.5;
+}
+
+.metahtml.css63 [cr-field="checkbox-visual"] input:checked ~ .bgimage .tick,
+.metahtml.css63 [cr-field="checkbox-visual"] input:checked ~ .bgimage .tick svg {
+  opacity: 1;
+}
+
+.screen-xs .metahtml.css63 [cr-field="checkbox-visual"] .item {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.screen-xs .metahtml.css63 [cr-field="checkbox-visual"] .bgimage {
+  width: 25%;
+  padding-top: 25%;
+  vertical-align: middle;
+}
+
+.screen-xs .metahtml.css63 [cr-field="checkbox-visual"] .subname {
+  width: 75%;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5%;
+  margin-left: -4px;
+}
+
+.metahtml.css63 [cr-field="checkbox-input"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css63 [cr-field="checkbox-input"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css63 [cr-field="radio-list"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css63 [cr-field="radio-list"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css63 [cr-field="radio-list"] label + label {
+  margin-top: 7.333333333333333px;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] {
+  overflow: hidden;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] .items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -20px;
+  justify-content: space-between;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] .item {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 19%;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] label {
+  position: relative;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] .bgimage {
+  background-size: cover;
+  display: inline-block;
+  background-position: center;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] .tick {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(247, 222, 100, 0.75);
+  transition: all 300ms;
+  opacity: 0;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] .tick svg {
+  opacity: 0;
+  transition: all 300ms;
+  max-width: 26px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.metahtml.css63 [cr-field="radio-visual"] .subname {
+  margin: 7px 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] input:hover ~ .bgimage .tick {
+  opacity: 0.5;
+}
+
+.metahtml.css63 [cr-field="radio-visual"] input:checked ~ .bgimage .tick,
+.metahtml.css63 [cr-field="radio-visual"] input:checked ~ .bgimage .tick svg {
+  opacity: 1;
+}
+
+.screen-xs .metahtml.css63 [cr-field="radio-visual"] .item {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.screen-xs .metahtml.css63 [cr-field="radio-visual"] .bgimage {
+  width: 25%;
+  padding-top: 25%;
+  vertical-align: middle;
+}
+
+.screen-xs .metahtml.css63 [cr-field="radio-visual"] .subname {
+  width: 75%;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5%;
+  margin-left: -4px;
+}
+
+.metahtml.css63 [cr-field="select-menu"] select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+  color: black;
+  -webkit-appearance: none;
+}
+
+.metahtml.css63 [cr-field="select-menu"] .fa {
+  font-size: 20px;
+  line-height: 0;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+.metahtml.css63 [cr-field="select-menu"] .flexgrid {
+  display: flex;
+  align-items: center;
+}
+
+.metahtml.css63 [cr-field="select-menu"] .flexgrid .left {
+  flex-grow: 1;
+  min-width: 50%;
+  word-wrap: break-word;
+}
+
+.metahtml.css63 [cr-field="file"] svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.metahtml.css63 [cr-field="file"] span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.metahtml.css63 [cr-field="file"] input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.metahtml.css63 [cr-field="file"] .clean {
+  float: right;
+  opacity: 0.5;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.metahtml.css63 [cr-field="file"] .clean:hover {
+  opacity: 1;
+}
+
+.metahtml.css63 [cr-field="file"] .flexgrid {
+  display: flex;
+  align-items: center;
+}
+
+.metahtml.css63 [cr-field="file"] .flexgrid .center {
+  flex-grow: 1;
+  min-width: 50%;
+  word-wrap: break-word;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-sides {
+  display: flex;
+  align-items: center;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-sides .left .name {
+  margin-bottom: 0;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-center .left {
+  text-align: center;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-right .left {
+  text-align: right;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid .right {
+  flex-grow: 1;
+  min-width: 25%;
+  word-wrap: break-word;
+  text-align: right;
+  font-size: 100%;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-left .right {
+  text-align: left;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-center .right {
+  text-align: center;
+}
+
+.metahtml.css63 [cr-field="result"] .flexgrid.align-right .right {
+  text-align: right;
+}
+
+.metahtml.css63 [cr-field="privacy-button"] .open {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 80%;
+  cursor: pointer;
+}
+
+.metahtml.css63 [cr-field="privacy-button"] .open a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.metahtml.css63 [cr-field="privacy-checkbox"] {
+  font-size: 80%;
+}
+
+.metahtml.css63 [cr-field="privacy-checkbox"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css63 [cr-field="privacy-checkbox"] a {
+  vertical-align: middle;
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  color: inherit;
+  cursor: pointer;
+}
+
+.metahtml.css63 [cr-field="privacy-checkbox"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css63 [cr-field="privacy-text"] {
+  font-size: 80%;
+  text-align: center;
+}
+
+.metahtml.css63 [cr-field="privacy-text"] a {
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  color: inherit;
+  cursor: pointer;
+}
+
+.metahtml.css63 [cr-field="hidden"] {
+  opacity: 0.25;
+}
+.node.css64  { color: #FFF; padding-top: 5px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px }
+.node.css64 a { color: rgb(229, 230, 25) }
+
+.metahtml.css65 [cr-field] {
+  padding-bottom: 14px;
+  font-size: 14px;
+  font-family: Open Sans;
+}
+
+.metahtml.css65 .name {
+  font-weight: normal;
+  font-family: Open Sans;
+  opacity: 0.8;
+  margin-bottom: 5.5px;
+  font-size: 11px;
+  word-wrap: break-word;
+  text-transform: uppercase;;
+  letter-spacing: 0.1em;;
+}
+
+.metahtml.css65 .form-control {
+  height: auto;
+  line-height: 1.2;
+  box-shadow: none;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 12px 9.6px;
+  font-size: 14px;
+  cursor: initial;
+}
+
+.metahtml.css65 .form-control:focus,
+.metahtml.css65 .form-control:focus-within {
+  border-color: rgb(247, 222, 100);
+  background-color: rgb(252, 252, 252);
+}
+
+.metahtml.css65 .form-control + .form-control {
+  margin-top: 10px;
+}
+
+.metahtml.css65 label {
+  font-weight: normal;
+  display: block;
+  cursor: pointer;
+}
+
+.metahtml.css65 textarea {
+  resize: vertical;
+}
+
+.metahtml.css65 .checkbox {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin: 0 5.5px 0 0;
+  line-height: 0;
+  min-height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: 300ms all;
+  border-radius: 2px;
+}
+
+.metahtml.css65 .checkbox svg {
+  width: 100%;
+  opacity: 0;
+  transform: scale(0);
+  transition: 300ms all;
+}
+
+.metahtml.css65 input:hover ~ .checkbox,
+.metahtml.css65 input:focus ~ .checkbox {
+  border-color: rgb(251, 238, 178);
+}
+
+.metahtml.css65 input:checked ~ .checkbox {
+  border-color: rgb(245, 215, 67);
+  background-color: rgb(247, 222, 100);
+}
+
+.metahtml.css65 input:active ~ .checkbox {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.metahtml.css65 input:checked ~ .checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.metahtml.css65 .radio {
+  margin: 0;
+  margin: 0 5.5px 0 0;
+  padding: 0;
+  line-height: 0;
+  width: 22px;
+  height: 22px;
+  min-height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: 300ms all;
+  border-radius: 100px;
+}
+
+.metahtml.css65 .radio:before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  content: '';
+  display: block;
+  background-color: white;
+  border-radius: 100px;
+  opacity: 0;
+  transform: scale(0);
+  transition: 300ms all;
+}
+
+.metahtml.css65 input:hover ~ .radio,
+.metahtml.css65 input:focus ~ .radio {
+  border-color: rgb(251, 238, 178);
+}
+
+.metahtml.css65 input:active ~ .radio {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.metahtml.css65 input:checked ~ .radio {
+  border-color: rgb(245, 215, 67);
+  background-color: rgb(247, 222, 100);
+}
+
+.metahtml.css65 input:checked ~ .radio:before {
+  opacity: 1;
+  transform: scale(0.5);
+}
+
+.metahtml.css65 [cr-field="checkbox-list"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css65 [cr-field="checkbox-list"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css65 [cr-field="checkbox-list"] label + label {
+  margin-top: 7.333333333333333px;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] {
+  overflow: hidden;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] .items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -20px;
+  justify-content: space-between;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] .item {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 30%;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] label {
+  position: relative;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] .bgimage {
+  background-size: cover;
+  display: inline-block;
+  background-position: center;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] .tick {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(247, 222, 100, 0.75);
+  transition: all 300ms;
+  opacity: 0;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] .tick svg {
+  opacity: 0;
+  transition: all 300ms;
+  max-width: 26px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] .subname {
+  margin: 7px 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] input:hover ~ .bgimage .tick,
+.metahtml.css65 [cr-field="checkbox-visual"] input:focus ~ .bgimage .tick {
+  opacity: 0.5;
+}
+
+.metahtml.css65 [cr-field="checkbox-visual"] input:checked ~ .bgimage .tick,
+.metahtml.css65 [cr-field="checkbox-visual"] input:checked ~ .bgimage .tick svg {
+  opacity: 1;
+}
+
+.screen-xs .metahtml.css65 [cr-field="checkbox-visual"] .item {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.screen-xs .metahtml.css65 [cr-field="checkbox-visual"] .bgimage {
+  width: 25%;
+  padding-top: 25%;
+  vertical-align: middle;
+}
+
+.screen-xs .metahtml.css65 [cr-field="checkbox-visual"] .subname {
+  width: 75%;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5%;
+  margin-left: -4px;
+}
+
+.metahtml.css65 [cr-field="checkbox-input"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css65 [cr-field="checkbox-input"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css65 [cr-field="radio-list"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css65 [cr-field="radio-list"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css65 [cr-field="radio-list"] label + label {
+  margin-top: 7.333333333333333px;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] {
+  overflow: hidden;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] .items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -20px;
+  justify-content: space-between;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] .item {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 30%;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] label {
+  position: relative;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] .bgimage {
+  background-size: cover;
+  display: inline-block;
+  background-position: center;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] .tick {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(247, 222, 100, 0.75);
+  transition: all 300ms;
+  opacity: 0;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] .tick svg {
+  opacity: 0;
+  transition: all 300ms;
+  max-width: 26px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.metahtml.css65 [cr-field="radio-visual"] .subname {
+  margin: 7px 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] input:hover ~ .bgimage .tick {
+  opacity: 0.5;
+}
+
+.metahtml.css65 [cr-field="radio-visual"] input:checked ~ .bgimage .tick,
+.metahtml.css65 [cr-field="radio-visual"] input:checked ~ .bgimage .tick svg {
+  opacity: 1;
+}
+
+.screen-xs .metahtml.css65 [cr-field="radio-visual"] .item {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.screen-xs .metahtml.css65 [cr-field="radio-visual"] .bgimage {
+  width: 25%;
+  padding-top: 25%;
+  vertical-align: middle;
+}
+
+.screen-xs .metahtml.css65 [cr-field="radio-visual"] .subname {
+  width: 75%;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5%;
+  margin-left: -4px;
+}
+
+.metahtml.css65 [cr-field="select-menu"] select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+  color: black;
+  -webkit-appearance: none;
+}
+
+.metahtml.css65 [cr-field="select-menu"] .fa {
+  font-size: 20px;
+  line-height: 0;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+.metahtml.css65 [cr-field="select-menu"] .flexgrid {
+  display: flex;
+  align-items: center;
+}
+
+.metahtml.css65 [cr-field="select-menu"] .flexgrid .left {
+  flex-grow: 1;
+  min-width: 50%;
+  word-wrap: break-word;
+}
+
+.metahtml.css65 [cr-field="file"] svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.metahtml.css65 [cr-field="file"] span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.metahtml.css65 [cr-field="file"] input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.metahtml.css65 [cr-field="file"] .clean {
+  float: right;
+  opacity: 0.5;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.metahtml.css65 [cr-field="file"] .clean:hover {
+  opacity: 1;
+}
+
+.metahtml.css65 [cr-field="file"] .flexgrid {
+  display: flex;
+  align-items: center;
+}
+
+.metahtml.css65 [cr-field="file"] .flexgrid .center {
+  flex-grow: 1;
+  min-width: 50%;
+  word-wrap: break-word;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-sides {
+  display: flex;
+  align-items: center;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-sides .left .name {
+  margin-bottom: 0;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-center .left {
+  text-align: center;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-right .left {
+  text-align: right;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid .right {
+  flex-grow: 1;
+  min-width: 25%;
+  word-wrap: break-word;
+  text-align: right;
+  font-size: 100%;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-left .right {
+  text-align: left;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-center .right {
+  text-align: center;
+}
+
+.metahtml.css65 [cr-field="result"] .flexgrid.align-right .right {
+  text-align: right;
+}
+
+.metahtml.css65 [cr-field="privacy-button"] .open {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 80%;
+  cursor: pointer;
+}
+
+.metahtml.css65 [cr-field="privacy-button"] .open a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.metahtml.css65 [cr-field="privacy-checkbox"] {
+  font-size: 80%;
+}
+
+.metahtml.css65 [cr-field="privacy-checkbox"] span {
+  vertical-align: middle;
+}
+
+.metahtml.css65 [cr-field="privacy-checkbox"] a {
+  vertical-align: middle;
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  color: inherit;
+  cursor: pointer;
+}
+
+.metahtml.css65 [cr-field="privacy-checkbox"] input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.metahtml.css65 [cr-field="privacy-text"] {
+  font-size: 80%;
+  text-align: center;
+}
+
+.metahtml.css65 [cr-field="privacy-text"] a {
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  color: inherit;
+  cursor: pointer;
+}
+
+.metahtml.css65 [cr-field="hidden"] {
+  opacity: 0.25;
+}
+.btn.css66 { background-color: rgb(247, 223, 100);border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border-style: solid;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;border-color: rgb(243, 210, 34);padding-top: 14px;padding-bottom: 14px;font-size: 14px;font-weight: bold;color: rgb(0, 0, 0)!important;font-family: "Open Sans";box-shadow: 0px 11px 5px -7px rgba(0, 0, 0, 0.35); } .btn.css66:hover, .btn.css66.hover { background-color: rgb(245, 217, 67);border-color: rgb(211, 179, 11);color: rgb(0, 0, 0)!important; } .btn.css66:active, .btn.css66.active { background-color: rgb(244, 211, 37);border-color: rgb(237, 201, 12);color: rgb(0, 0, 0)!important;box-shadow: inset 0px 11px 5px -7px rgba(0, 0, 0, 0.35); } .btn.css66:before {  } .btn.css66:active:before, .btn.css66.active:before { background-color: rgb(244, 211, 37);box-shadow: inset 0px 11px 5px -7px rgba(0, 0, 0, 0.35); }
+.node.css67  { color: #FFF; padding-top: 0px; padding-bottom: 5px; padding-left: 10px; padding-right: 10px }
+.node.css67 a { color: rgb(229, 230, 25) }
+
+.node.css68  { color: #FFF; padding-top: 5px; padding-bottom: 5px; padding-left: 15px; padding-right: 15px }
+.node.css68 a { color: rgb(229, 230, 25) }
+
+.node.css69 > .wrapper1 { background-color: rgb(0, 0, 0) }
+.node.css69  { color: #FFF }
+.node.css69  > .padding_top { padding-top: 35px }
+.screen-md .node.css69  > .padding_top { padding-top: 30px!important }
+.screen-sm .node.css69  > .padding_top { padding-top: 30px!important }
+.screen-xs .node.css69  > .padding_top { padding-top: 25px!important }
+.node.css69  > .padding_bottom { padding-bottom: 0px }
+.node.css69 a { color: rgb(229, 230, 25) }
+
+.area.screen-lg { min-width: 1200px; }.area.screen-lg .container { width: 1140px; }.area.screen-lg .container.soft { max-width: 1140px; }.area.screen-md { min-width: 960px; }.area.screen-md .container { width: 940px; }.area.screen-md .container.soft { max-width: 940px; }.area.screen-sm { min-width: 720px; }.area.screen-sm .container { width: 720px; }.area.screen-sm .container.soft { max-width: 720px; }.area.screen-xs .container { max-width: 737px; padding: 0 15px; }
+
+#cont {
+
+width: 100%;
+
+position: fixed;
+
+top:0;
+
+bottom: 0;
+
+height: 3px;
+
+margin: -1px;
+
+z-index:99999 ;
+
+}
+
+#progress {
+
+background: #FFD700;
+
+width: 0%;
+
+height: 4px;
+
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+.menu {
+z-index: 9999 !important;
+   width: 27,5% ;
+    position: fixed !important;
+  transition: 0.5s;
+transform: translateX(100%);
+right: 0;
+/*transform: translateX(-100%);
+left: 0;*/
+}
+@media (max-width: 720px) { 
+.menu {
+   width: 85% ;
+ }
+ }
+.menu .container{
+    width: 100% !important;
+}
+.menu_active {
+  transform: translateX(0%);
+}
+
+.menu-btn_active {
+    transform: translateX(0%);
+}
+
+.goup {
+display: none;
+position: fixed;
+z-index: 9999;
+left: 3%;
+background: black;
+border-radius: 10px;
+cursor: pointer;
+color: #FFE473;
+text-align: center;
+opacity: .3;
+padding: 5px 15px;
+bottom: 15px;
+}
+.goup:hover {
+opacity: 1;
+}
+
+::-webkit-scrollbar-button {width:4px;height:0px;} 
+::-webkit-scrollbar-track {background:black;}
+::-webkit-scrollbar-thumb {-webkit-border-radius:0px;border-radius:0px;background:#FFE473;}
+::-webkit-scrollbar-thumb:hover {background:#FFE473;}
+::-webkit-resizer {width:4px;height:5px;} 
+::-webkit-scrollbar {width:10px;}
+
+.goup {
+display: none;
+position: fixed;
+z-index: 9999;
+left: 3%;
+background: black;
+border-radius: 10px;
+cursor: pointer;
+color: #FFE473;
+text-align: center;
+opacity: .3;
+padding: 5px 15px;
+bottom: 15px;
+}
+.goup:hover {
+opacity: 1;
+}
+
+::-webkit-scrollbar-button {width:4px;height:0px;} 
+::-webkit-scrollbar-track {background:black;}
+::-webkit-scrollbar-thumb {-webkit-border-radius:0px;border-radius:0px;background:#FFE473;}
+::-webkit-scrollbar-thumb:hover {background:#FFE473;}
+::-webkit-resizer {width:4px;height:5px;} 
+::-webkit-scrollbar {width:10px;}
