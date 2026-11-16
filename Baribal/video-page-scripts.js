@@ -113,63 +113,43 @@ jQuery.browser = {};
 
 /* Исходный скрипт 7 */
 cr.api(page => {
-    const errorTitle = 'Ошибка' /* Заголовок сообщения об ошибке */
-    const errorText = 'Неправильно указан номер телефона' /* Текст сообщения об ошибке */
-    const characters = 10 /* Минимальное количество цифр в номере телефона */
-    const template = '+7 (000) 000-00-00'
-    const startContent = '+7'
-
-    $.jMaskGlobals = {}
-    $.jMaskGlobals.maskElements = 'input'
-    $.jMaskGlobals.translation = {
-      "0": { pattern: /\d/ },
-      "+": { pattern: /\+/, optional: true }
-    }
+    const errorTitle = 'Ошибка'
+    const errorText = 'Неправильно указан номер телефона'
+    const characters = 10
 
     page.waitForAppear('[cr-field="phone"]', field => {
-      const namePosition = getProp(field.querySelector('.name'), 'position')
       const input = field.querySelector('input')
+      if (!input || input.dataset.nativePhoneMask === '1') return
+      input.dataset.nativePhoneMask = '1'
 
-      if (namePosition == 'static') setMask(input)
-      else input.addEventListener('focus', () => setMask(input))
+      const formatPhone = () => {
+        let digits = input.value.replace(/\\D/g, '')
+        if (digits.startsWith('7') || digits.startsWith('8')) digits = digits.slice(1)
+        digits = digits.slice(0, 10)
+        let value = '+7'
+        if (digits.length) value += ' (' + digits.slice(0, 3)
+        if (digits.length >= 3) value += ')'
+        if (digits.length > 3) value += ' ' + digits.slice(3, 6)
+        if (digits.length > 6) value += '-' + digits.slice(6, 8)
+        if (digits.length > 8) value += '-' + digits.slice(8, 10)
+        input.value = value
+      }
 
-      input.addEventListener('input', () => {
-        if (!input.value) return setMask(input)
-        input.value = input.value.replace(/(\+7\s?\(?)(\+?7|8)/, '$1')
-        setStartContent(input)
+      input.addEventListener('focus', () => {
+        if (!input.value) input.value = '+7'
       })
+      input.addEventListener('input', formatPhone)
+      if (input.value) formatPhone()
     })
 
     page.on('before-form-submit', event => {
-      const apiPhoneFields = event.form.fields.filter(apiField => {
-        return apiField.type == 'phone'
-      })
-
+      const apiPhoneFields = event.form.fields.filter(apiField => apiField.type == 'phone')
       apiPhoneFields.forEach(apiField => {
-        const phoneNumber = apiField.value.replace(/\D/g, '')
+        const phoneNumber = apiField.value.replace(/\\D/g, '')
         if (phoneNumber.length < characters) {
           page.showErrorMessage(errorTitle, errorText)
           event.prevent()
         }
       })
     })
-
-    function setMask(input) {
-      if (!input) return
-      $(input).mask(template, { selectOnFocus: false })
-      setStartContent(input)
-    }
-
-    function setStartContent(input) {
-      if (!input) return
-      const value = input.value ? input.value : ''
-      if (!value.startsWith(startContent)) {
-        input.value = startContent + value
-      }
-    }
-
-    function getProp(el, prop) {
-      if (!el || !prop) return
-      return getComputedStyle(el, null).getPropertyValue(prop)
-    }
   })
